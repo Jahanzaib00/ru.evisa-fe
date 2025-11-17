@@ -115,6 +115,7 @@ export interface Application {
   createdAt: string;
   updatedAt: string;
   payment?: Payment;
+  travelers?: any[];
 }
 
 export interface CreateApplicationRequest {
@@ -135,6 +136,7 @@ export interface CreateApplicationRequest {
   passportIssueDate: string;
   passportExpiryDate: string;
   totalAmount?: number;
+  totalApplicants?: number;
 }
 
 export interface SaveDraftRequest {

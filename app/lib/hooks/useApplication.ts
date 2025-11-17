@@ -80,7 +80,6 @@ export function useApplication(): UseApplicationReturn {
         nationality,
         totalApplicants,
         totalAmount: getTotalAmount(),
-        denialProtection: denialProtectionEnabled,
       });
 
       setApplicationId(response.data.id);

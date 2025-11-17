@@ -45,7 +45,9 @@ export async function validateApplicationState(
     // Application exists but in wrong state (paid, submitted, etc.)
     // Silently create a new one
     logError(
-      new Error(`Application ${applicationId} is in ${application.status} status`),
+      new Error(
+        `Application ${applicationId} is in ${application.status} status`
+      ),
       "Application state validation"
     );
 
@@ -103,7 +105,9 @@ export async function hasExistingTravelers(
 ): Promise<boolean> {
   try {
     const response = await applicationsService.getById(applicationId);
-    return response.data.travelers && response.data.travelers.length > 0;
+    return (
+      (response.data?.travelers && response.data.travelers.length > 0) || false
+    );
   } catch (error) {
     logError(error, "Check existing travelers");
     return false;
