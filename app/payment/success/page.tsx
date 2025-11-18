@@ -93,7 +93,7 @@ export default function PaymentSuccessPage() {
                     <span className="font-semibold text-gov-gray-dark">
                       Expected Delivery:
                     </span>{" "}
-                    You should receive your approved ESTA within 4 hours.
+                    You should receive your approved ESTA within 24 hours.
                   </p>
                 </div>
               </div>

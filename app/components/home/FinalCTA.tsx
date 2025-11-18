@@ -8,7 +8,7 @@ import { trackCTAClick } from "@/app/lib/analytics";
 export default function FinalCTA() {
   const handleCTAClick = () => {
     trackCTAClick("final-cta");
-    window.location.href = '/apply';
+    window.location.href = "/apply";
   };
 
   return (
@@ -48,7 +48,7 @@ export default function FinalCTA() {
                 />
               </svg>
               <span className="font-semibold text-white">
-                Average processing time: 24-72 hours
+                Average processing time: 24 hours
               </span>
             </div>
 
