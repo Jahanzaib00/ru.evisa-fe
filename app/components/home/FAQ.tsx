@@ -14,7 +14,7 @@ const faqs: FAQItem[] = [
   {
     question: "How long does ESTA take to process?",
     answer:
-      "Most ESTA applications are approved within 24-72 hours. We recommend applying at least 72 hours before your flight, though you can apply up to 2 years before travel. We monitor your application status and notify you immediately upon approval.",
+      "Most ESTA applications are approved within 4-24 hours. We recommend applying at least 24 hours before your flight, though you can apply up to 2 years before travel. We monitor your application status and notify you immediately upon approval.",
   },
   {
     question: "How long is ESTA valid?",

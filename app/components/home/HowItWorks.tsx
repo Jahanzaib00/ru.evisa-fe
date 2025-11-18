@@ -66,7 +66,7 @@ const steps: Step[] = [
     number: 3,
     title: "Receive Approval",
     description:
-      "Get your ESTA approval via email (usually within 72 hours). Valid for 2 years, multiple entries.",
+      "Get your ESTA approval via email (usually within 24 hours). Valid for 2 years, multiple entries.",
     icon: (
       <svg
         className="w-8 h-8"
@@ -88,7 +88,7 @@ const steps: Step[] = [
 export default function HowItWorks() {
   const handleCTAClick = () => {
     trackCTAClick("how-it-works");
-    window.location.href = '/apply';
+    window.location.href = "/apply";
   };
 
   return (

@@ -47,7 +47,7 @@ const benefits: Benefit[] = [
     ),
     title: "Fast Processing",
     description:
-      "Most applications approved within 24-72 hours. We monitor your status and notify you immediately.",
+      "Most applications approved within 4-24 hours. We monitor your status and notify you immediately.",
   },
   {
     icon: (

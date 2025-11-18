@@ -10,7 +10,7 @@ interface Stat {
 
 const stats: Stat[] = [
   {
-    value: "50,000+",
+    value: "70,000+",
     label: "Applications Processed",
     icon: (
       <svg
@@ -67,7 +67,7 @@ const stats: Stat[] = [
     ),
   },
   {
-    value: "72 Hours",
+    value: "4 Hours",
     label: "Average Processing",
     icon: (
       <svg

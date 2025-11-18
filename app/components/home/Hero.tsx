@@ -25,7 +25,7 @@ export default function Hero() {
             <p className="text-lg md:text-xl text-gov-gray mb-8 leading-relaxed">
               Expert assistance with your U.S. Electronic System for Travel
               Authorization. 99% approval rate. Apply now and get approved
-              within 72 hours.
+              within 4 hours.
             </p>
 
             {/* Primary CTA */}
