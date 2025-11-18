@@ -182,28 +182,6 @@ export default function Header() {
               </div>
             )}
 
-            <Link
-              href="/"
-              className="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-150"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Home
-            </Link>
-            <Link
-              href="/#how-it-works"
-              className="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-150"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              How It Works
-            </Link>
-            <Link
-              href="/#faq"
-              className="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-150"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              FAQ
-            </Link>
-
             {user ? (
               <>
                 <Link
@@ -213,13 +191,13 @@ export default function Header() {
                 >
                   My Applications
                 </Link>
-                <Link
+                {/* <Link
                   href="/profile"
                   className="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-150"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Account Settings
-                </Link>
+                </Link> */}
                 <button
                   onClick={handleLogout}
                   className="w-full text-left block px-3 py-2 rounded-lg text-base font-medium text-red-600 hover:bg-red-50 transition-colors duration-150"
@@ -237,11 +215,11 @@ export default function Header() {
                   Sign In
                 </Link>
                 <Link
-                  href="/signup"
+                  href="/apply"
                   className="block px-3 py-2.5 bg-linear-to-r from-blue-600 to-indigo-600 text-white font-medium rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 shadow-md text-center"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  Get Started
+                  APPLY NOW
                 </Link>
               </div>
             )}
