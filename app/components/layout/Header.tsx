@@ -33,7 +33,7 @@ export default function Header() {
           <div className="flex items-center">
             <Link href="/" className="flex items-center group">
               <Image
-                src="/images/logo1.png"
+                src="/images/logo.png"
                 alt="ESTA Application Online"
                 width={140}
                 height={40}
