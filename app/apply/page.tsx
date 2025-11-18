@@ -19,11 +19,6 @@ export default function TripDetailsPage() {
 
   const { createOrGetApplication, isLoading, error } = useApplication();
 
-  const [selectedNationality, setSelectedNationality] = useState(
-    nationality || ""
-  );
-  const [applicants, setApplicants] = useState(totalApplicants || 1);
-
   // Auto-select nationality based on IP on first mount
   useEffect(() => {
     const autoSelect = async () => {
@@ -36,7 +31,7 @@ export default function TripDetailsPage() {
         );
 
         if (country) {
-          setSelectedNationality(country.name);
+          setNationality(country.name);
         }
       }
     };
@@ -45,10 +40,6 @@ export default function TripDetailsPage() {
   }, []);
 
   const handleContinue = async () => {
-    // Update store with selected values
-    setNationality(selectedNationality);
-    setTotalApplicants(applicants);
-
     // Create or validate application on server
     const applicationId = await createOrGetApplication();
 
@@ -62,7 +53,7 @@ export default function TripDetailsPage() {
       action: "step_1_completed",
       category: "conversion",
       label: "trip_details",
-      value: applicants,
+      value: totalApplicants,
     });
 
     // Navigate to next step
@@ -70,21 +61,21 @@ export default function TripDetailsPage() {
   };
 
   const incrementApplicants = () => {
-    if (applicants < MAX_APPLICANTS) {
-      setApplicants(applicants + 1);
+    if (totalApplicants < MAX_APPLICANTS) {
+      setTotalApplicants(totalApplicants + 1);
     }
   };
 
   const decrementApplicants = () => {
-    if (applicants > MIN_APPLICANTS) {
-      setApplicants(applicants - 1);
+    if (totalApplicants > MIN_APPLICANTS) {
+      setTotalApplicants(totalApplicants - 1);
     }
   };
 
   return (
     <ApplicationLayout
       title="Start Application for your United States ESTA"
-      description={`The United States ESTA is mandatory for ${selectedNationality} passport holders planning to enter United States`}
+      description={`The United States ESTA is mandatory for ${nationality} passport holders planning to enter United States`}
       showSidebar={true}
       showMobileCTA={true}
       mobileButtonText={"Start your application"}
@@ -124,8 +115,8 @@ export default function TripDetailsPage() {
         <div>
           <CountrySelect
             label="What's your nationality?"
-            value={selectedNationality}
-            onChange={(value) => setSelectedNationality(value)}
+            value={nationality}
+            onChange={(value) => setNationality(value)}
             helperText="Ensure you select the nationality of the passport you'll be traveling with."
             valueType="name"
           />
@@ -140,7 +131,7 @@ export default function TripDetailsPage() {
             <button
               type="button"
               onClick={decrementApplicants}
-              disabled={applicants <= MIN_APPLICANTS}
+              disabled={totalApplicants <= MIN_APPLICANTS}
               className="w-12 h-12 rounded-full border-2 border-gov-gray-light
                        flex items-center justify-center text-gov-gray-dark
                        hover:border-primary hover:text-primary transition-colors
@@ -152,13 +143,13 @@ export default function TripDetailsPage() {
             </button>
 
             <span className="text-3xl font-bold text-gov-dark-gray min-w-12 text-center">
-              {applicants}
+              {totalApplicants}
             </span>
 
             <button
               type="button"
               onClick={incrementApplicants}
-              disabled={applicants >= MAX_APPLICANTS}
+              disabled={totalApplicants >= MAX_APPLICANTS}
               className="w-12 h-12 rounded-full border-2 border-gov-gray-light
                        flex items-center justify-center text-gov-gray-dark
                        hover:border-primary hover:text-primary transition-colors
