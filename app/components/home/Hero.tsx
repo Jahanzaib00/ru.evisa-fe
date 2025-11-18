@@ -9,7 +9,7 @@ import { trackCTAClick } from "@/app/lib/analytics";
 export default function Hero() {
   const handleCTAClick = () => {
     trackCTAClick("hero");
-    window.location.href = '/apply';
+    window.location.href = "/apply";
   };
 
   return (
@@ -25,7 +25,7 @@ export default function Hero() {
             <p className="text-lg md:text-xl text-gov-gray mb-8 leading-relaxed">
               Expert assistance with your U.S. Electronic System for Travel
               Authorization. 99% approval rate. Apply now and get approved
-              within 4 hours.
+              within 24 hours.
             </p>
 
             {/* Primary CTA */}
