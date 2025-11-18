@@ -1,6 +1,6 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosError } from 'axios';
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosError } from "axios";
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+const API_BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 class ApiClient {
   private client: AxiosInstance;
@@ -9,7 +9,7 @@ class ApiClient {
     this.client = axios.create({
       baseURL: API_BASE_URL,
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       timeout: 30000,
     });
@@ -37,7 +37,7 @@ class ApiClient {
           try {
             const refreshToken = this.getRefreshToken();
             if (refreshToken) {
-              const response = await this.client.post('/auth/refresh', {
+              const response = await this.client.post("/auth/refresh", {
                 refresh_token: refreshToken,
               });
 
@@ -54,8 +54,8 @@ class ApiClient {
           } catch (refreshError) {
             // Refresh failed, clear tokens and redirect to login
             this.clearAuth();
-            if (typeof window !== 'undefined') {
-              window.location.href = '/login';
+            if (typeof window !== "undefined") {
+              window.location.href = "/login";
             }
           }
         }
@@ -65,30 +65,30 @@ class ApiClient {
   }
 
   private getToken(): string | null {
-    if (typeof window === 'undefined') return null;
-    return localStorage.getItem('access_token');
+    if (typeof window === "undefined") return null;
+    return localStorage.getItem("access_token");
   }
 
   private getRefreshToken(): string | null {
-    if (typeof window === 'undefined') return null;
-    return localStorage.getItem('refresh_token');
+    if (typeof window === "undefined") return null;
+    return localStorage.getItem("refresh_token");
   }
 
   private setToken(token: string): void {
-    if (typeof window === 'undefined') return;
-    localStorage.setItem('access_token', token);
+    if (typeof window === "undefined") return;
+    localStorage.setItem("access_token", token);
   }
 
   private setRefreshToken(token: string): void {
-    if (typeof window === 'undefined') return;
-    localStorage.setItem('refresh_token', token);
+    if (typeof window === "undefined") return;
+    localStorage.setItem("refresh_token", token);
   }
 
   private clearAuth(): void {
-    if (typeof window === 'undefined') return;
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('refresh_token');
-    localStorage.removeItem('user');
+    if (typeof window === "undefined") return;
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("refresh_token");
+    localStorage.removeItem("user");
   }
 
   public async get<T>(url: string, config?: AxiosRequestConfig) {
