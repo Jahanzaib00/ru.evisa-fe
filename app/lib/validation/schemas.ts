@@ -89,7 +89,7 @@ export const personalDetailsSchema = z
       return emailRegex.test(data.travelers[0].email);
     },
     {
-      message: "Email is required for the first traveler",
+      message: "Email is required",
       path: ["travelers", 0, "email"],
     }
   );

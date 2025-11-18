@@ -20,23 +20,23 @@ export default function TripDetailsPage() {
   const { createOrGetApplication, isLoading, error } = useApplication();
 
   // Auto-select nationality based on IP on first mount
+  const autoSelect = async () => {
+    const eligibleCodes = ELIGIBLE_COUNTRIES.map((c) => c.code);
+    const countryCode = await autoSelectNationality(eligibleCodes);
+
+    const country = ELIGIBLE_COUNTRIES.find(
+      (c) => c.code.toUpperCase() === countryCode.toUpperCase()
+    );
+
+    if (country) {
+      setNationality(country.name);
+    }
+  };
+
   useEffect(() => {
-    const autoSelect = async () => {
-      if (!nationality) {
-        const eligibleCodes = ELIGIBLE_COUNTRIES.map((c) => c.code);
-        const countryCode = await autoSelectNationality(eligibleCodes);
-
-        const country = ELIGIBLE_COUNTRIES.find(
-          (c) => c.code.toUpperCase() === countryCode.toUpperCase()
-        );
-
-        if (country) {
-          setNationality(country.name);
-        }
-      }
-    };
-
-    autoSelect();
+    if (!nationality) {
+      autoSelect();
+    }
   }, []);
 
   const handleContinue = async () => {
