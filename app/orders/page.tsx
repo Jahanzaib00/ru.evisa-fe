@@ -34,7 +34,7 @@ export default function OrdersPage() {
 
   if (authLoading || isLoading) {
     return (
-      <div className="min-h-screen bg-gov-gray-lightest flex items-center justify-center">
+      <div className="min-h-screen bg-gray-lightest flex items-center justify-center">
         <LoadingSpinner text="Loading your applications..." size="xl" />
       </div>
     );
@@ -45,17 +45,15 @@ export default function OrdersPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gov-gray-lightest">
+    <div className="min-h-screen bg-gray-lightest">
       {/* Header */}
       <Header />
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8">
-          <h2 className="text-3xl font-bold text-gov-gray-dark">
-            My Applications
-          </h2>
-          <p className="mt-2 text-gov-gray">
+          <h2 className="text-3xl font-bold text-gray-dark">My Applications</h2>
+          <p className="mt-2 text-gray">
             View and track the status of your ESTA applications
           </p>
         </div>
@@ -77,10 +75,10 @@ export default function OrdersPage() {
                 d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
               />
             </svg>
-            <h3 className="mt-4 text-lg font-medium text-gov-gray-dark">
+            <h3 className="mt-4 text-lg font-medium text-gray-dark">
               No applications yet
             </h3>
-            <p className="mt-2 text-gov-gray">
+            <p className="mt-2 text-gray">
               Get started by submitting your first ESTA application.
             </p>
             <Link href="/apply" className="mt-6 inline-block">
@@ -99,10 +97,10 @@ export default function OrdersPage() {
                 <div className="p-6">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
                     <div>
-                      <h3 className="text-xl font-bold text-gov-gray-dark">
+                      <h3 className="text-xl font-bold text-gray-dark">
                         Application #{index + 1}
                       </h3>
-                      <p className="text-sm text-gov-gray mt-1">
+                      <p className="text-sm text-gray mt-1">
                         {application.firstName} {application.lastName}
                       </p>
                     </div>
@@ -126,33 +124,31 @@ export default function OrdersPage() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
                     <div>
-                      <p className="text-xs text-gov-gray font-medium">Email</p>
-                      <p className="text-sm text-gov-gray-dark">
+                      <p className="text-xs text-gray font-medium">Email</p>
+                      <p className="text-sm text-gray-dark">
                         {application.email}
                       </p>
                     </div>
                     <div>
-                      <p className="text-xs text-gov-gray font-medium">
-                        Submitted
-                      </p>
-                      <p className="text-sm text-gov-gray-dark">
+                      <p className="text-xs text-gray font-medium">Submitted</p>
+                      <p className="text-sm text-gray-dark">
                         {formatDate(application.createdAt)}
                       </p>
                     </div>
                     <div>
-                      <p className="text-xs text-gov-gray font-medium">
+                      <p className="text-xs text-gray font-medium">
                         Last Updated
                       </p>
-                      <p className="text-sm text-gov-gray-dark">
+                      <p className="text-sm text-gray-dark">
                         {formatDate(application.updatedAt)}
                       </p>
                     </div>
                     {application.payment && (
                       <div>
-                        <p className="text-xs text-gov-gray font-medium">
+                        <p className="text-xs text-gray font-medium">
                           Amount Paid
                         </p>
-                        <p className="text-sm text-gov-gray-dark">
+                        <p className="text-sm text-gray-dark">
                           ${(application.payment.amount / 100).toFixed(2)}{" "}
                           {application.payment.currency.toUpperCase()}
                         </p>
@@ -186,11 +182,11 @@ export default function OrdersPage() {
 
         {/* Quick Actions */}
         {/* <div className="mt-8 bg-white rounded-2xl shadow-lg p-6">
-          <h3 className="text-lg font-bold text-gov-gray-dark mb-4">Quick Actions</h3>
+          <h3 className="text-lg font-bold text-gray-dark mb-4">Quick Actions</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <Link
               href="/"
-              className="flex items-center p-4 border-2 border-gov-gray-light rounded-lg hover:border-primary-light hover:bg-blue-50 transition duration-150 ease-in-out group"
+              className="flex items-center p-4 border-2 border-gray-light rounded-lg hover:border-primary-light hover:bg-blue-50 transition duration-150 ease-in-out group"
             >
               <div className="shrink-0">
                 <svg
@@ -208,13 +204,13 @@ export default function OrdersPage() {
                 </svg>
               </div>
               <div className="ml-4">
-                <p className="text-sm font-medium text-gov-gray-dark group-hover:text-primary-light">
+                <p className="text-sm font-medium text-gray-dark group-hover:text-primary-light">
                   New Application
                 </p>
               </div>
             </Link>
 
-            <button className="flex items-center p-4 border-2 border-gov-gray-light rounded-lg hover:border-primary-light hover:bg-blue-50 transition duration-150 ease-in-out group">
+            <button className="flex items-center p-4 border-2 border-gray-light rounded-lg hover:border-primary-light hover:bg-blue-50 transition duration-150 ease-in-out group">
               <div className="shrink-0">
                 <svg
                   className="h-6 w-6 text-primary-light"
@@ -231,13 +227,13 @@ export default function OrdersPage() {
                 </svg>
               </div>
               <div className="ml-4">
-                <p className="text-sm font-medium text-gov-gray-dark group-hover:text-primary-light">
+                <p className="text-sm font-medium text-gray-dark group-hover:text-primary-light">
                   Update Profile
                 </p>
               </div>
             </button>
 
-            <button className="flex items-center p-4 border-2 border-gov-gray-light rounded-lg hover:border-primary-light hover:bg-blue-50 transition duration-150 ease-in-out group">
+            <button className="flex items-center p-4 border-2 border-gray-light rounded-lg hover:border-primary-light hover:bg-blue-50 transition duration-150 ease-in-out group">
               <div className="shrink-0">
                 <svg
                   className="h-6 w-6 text-primary-light"
@@ -254,7 +250,7 @@ export default function OrdersPage() {
                 </svg>
               </div>
               <div className="ml-4">
-                <p className="text-sm font-medium text-gov-gray-dark group-hover:text-primary-light">
+                <p className="text-sm font-medium text-gray-dark group-hover:text-primary-light">
                   Help & Support
                 </p>
               </div>

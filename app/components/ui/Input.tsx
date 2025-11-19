@@ -11,7 +11,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className="w-full">
         {label && (
-          <label className="block text-sm font-medium text-gov-gray-dark mb-1.5">
+          <label className="block text-sm font-medium text-gray-dark mb-1.5">
             {label}
             {props.required && <span className="text-accent ml-1">*</span>}
           </label>
@@ -22,11 +22,11 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
                      ${
                        error
                          ? "border-accent focus:border-accent focus:ring-accent"
-                         : "border-gov-gray-light focus:border-primary focus:ring-primary"
+                         : "border-gray-light focus:border-primary focus:ring-primary"
                      }
                      focus:outline-none focus:ring-2 focus:ring-opacity-20
-                     bg-white text-gov-gray-dark placeholder-gov-gray
-                     disabled:bg-gov-gray-lightest disabled:cursor-not-allowed
+                     bg-white text-gray-dark placeholder-gray
+                     disabled:bg-gray-lightest disabled:cursor-not-allowed
                      ${className}`}
           aria-invalid={error ? "true" : "false"}
           aria-describedby={
@@ -47,7 +47,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           </p>
         )}
         {helperText && !error && (
-          <p id={`${props.id}-helper`} className="mt-2 text-sm text-gov-gray">
+          <p id={`${props.id}-helper`} className="mt-2 text-sm text-gray">
             {helperText}
           </p>
         )}

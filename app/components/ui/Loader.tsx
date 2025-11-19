@@ -25,7 +25,7 @@ const sizeClasses = {
 const variantClasses = {
   primary: "border-primary border-b-transparent",
   white: "border-white border-b-transparent",
-  gray: "border-gov-gray border-b-transparent",
+  gray: "border-gray border-b-transparent",
 };
 
 /**
@@ -83,7 +83,7 @@ export function LoadingSpinner({
     <div className={`flex items-center justify-center py-12 ${className}`}>
       <div className="text-center">
         <Spinner size={size} variant={variant} className="mx-auto mb-4" />
-        {text && <p className="text-gov-gray text-sm">{text}</p>}
+        {text && <p className="text-gray text-sm">{text}</p>}
       </div>
     </div>
   );

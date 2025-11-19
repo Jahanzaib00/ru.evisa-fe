@@ -13,7 +13,7 @@ const testimonials: Testimonial[] = [
     name: "Sarah M.",
     location: "London, UK",
     rating: 5,
-    text: "Fast and easy process. Got my ESTA approved in 24 hours. Excellent support team helped me with photo requirements. Highly recommend!",
+    text: "Fast and easy process. Got my ESTA approved in 12 hours. Excellent support team helped me with photo requirements. Highly recommend!",
   },
   {
     name: "Michael Chen",
@@ -25,7 +25,7 @@ const testimonials: Testimonial[] = [
     name: "Emma Williams",
     location: "Sydney, Australia",
     rating: 5,
-    text: "I was worried about making mistakes on the form, but their error checking caught everything. Approved in 48 hours. Thank you!",
+    text: "I was worried about making mistakes on the form, but their error checking caught everything. Approved in 4 hours. Thank you!",
   },
 ];
 
@@ -36,7 +36,7 @@ const StarRating = ({ rating }: { rating: number }) => {
         <svg
           key={index}
           className={`w-5 h-5 ${
-            index < rating ? "text-warning" : "text-gov-gray-light"
+            index < rating ? "text-warning" : "text-gray-light"
           }`}
           fill="currentColor"
           viewBox="0 0 20 20"
@@ -54,10 +54,10 @@ export default function Testimonials() {
       <Container>
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gov-gray-dark mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4">
             What Our Customers Say
           </h2>
-          <p className="text-lg text-gov-gray">
+          <p className="text-lg text-gray">
             Join thousands of satisfied travelers who trusted us with their ESTA
           </p>
         </div>
@@ -75,18 +75,16 @@ export default function Testimonials() {
               </div>
 
               {/* Quote */}
-              <p className="text-gov-gray italic mb-6 leading-relaxed">
+              <p className="text-gray italic mb-6 leading-relaxed">
                 "{testimonial.text}"
               </p>
 
               {/* Author */}
-              <div className="pt-4 border-t border-gov-gray-light">
-                <div className="font-semibold text-gov-gray-dark">
+              <div className="pt-4 border-t border-gray-light">
+                <div className="font-semibold text-gray-dark">
                   {testimonial.name}
                 </div>
-                <div className="text-sm text-gov-gray">
-                  {testimonial.location}
-                </div>
+                <div className="text-sm text-gray">{testimonial.location}</div>
               </div>
             </div>
           ))}
@@ -108,12 +106,10 @@ export default function Testimonials() {
               ))}
             </div>
             <div className="text-left">
-              <div className="font-bold text-xl text-gov-gray-dark">
+              <div className="font-bold text-xl text-gray-dark">
                 4.95 out of 5
               </div>
-              <div className="text-sm text-gov-gray">
-                Based on 66,000+ reviews
-              </div>
+              <div className="text-sm text-gray">Based on 66,000+ reviews</div>
             </div>
           </div>
         </div>

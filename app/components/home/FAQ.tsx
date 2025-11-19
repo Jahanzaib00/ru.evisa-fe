@@ -80,10 +80,10 @@ export default function FAQ() {
         <Container maxWidth="md">
           {/* Section Header */}
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gov-gray-dark mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4">
               Frequently Asked Questions
             </h2>
-            <p className="text-lg text-gov-gray">
+            <p className="text-lg text-gray">
               Get answers to common questions about ESTA applications
             </p>
           </div>
@@ -93,15 +93,15 @@ export default function FAQ() {
             {faqs.map((faq, index) => (
               <div
                 key={index}
-                className="bg-white border border-gov-gray-light rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                className="bg-white border border-gray-light rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
               >
                 {/* Question Button */}
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 hover:bg-gov-gray-lightest transition-colors"
+                  className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 hover:bg-gray-lightest transition-colors"
                   aria-expanded={openIndex === index}
                 >
-                  <h3 className="text-lg font-semibold text-gov-gray-dark pr-4">
+                  <h3 className="text-lg font-semibold text-gray-dark pr-4">
                     {faq.question}
                   </h3>
 
@@ -125,7 +125,7 @@ export default function FAQ() {
 
                 {/* Answer */}
                 {openIndex === index && (
-                  <div className="px-6 pb-5 text-gov-gray leading-relaxed">
+                  <div className="px-6 pb-5 text-gray leading-relaxed">
                     {faq.answer}
                   </div>
                 )}
@@ -135,10 +135,10 @@ export default function FAQ() {
 
           {/* View All FAQ Link */}
           <div className="text-center mt-10">
-            <p className="text-gov-gray">
+            <p className="text-gray">
               Still have questions?{" "}
               <a
-                href="#"
+                href="/support"
                 className="text-primary-light font-semibold hover:text-primary underline"
               >
                 Contact our support team

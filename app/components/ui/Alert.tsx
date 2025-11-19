@@ -29,25 +29,25 @@ const variantStyles = {
     container: "bg-red-50 border-l-4 border-accent",
     icon: "text-accent",
     title: "text-accent",
-    message: "text-gov-gray-dark",
+    message: "text-gray-dark",
   },
   success: {
     container: "bg-green-50 border-l-4 border-success",
     icon: "text-success",
     title: "text-success",
-    message: "text-gov-gray-dark",
+    message: "text-gray-dark",
   },
   warning: {
     container: "bg-yellow-50 border-l-4 border-warning",
     icon: "text-warning",
     title: "text-warning",
-    message: "text-gov-gray-dark",
+    message: "text-gray-dark",
   },
   info: {
     container: "bg-blue-50 border-l-4 border-primary-light",
     icon: "text-primary-light",
     title: "text-primary",
-    message: "text-gov-gray-dark",
+    message: "text-gray-dark",
   },
 };
 

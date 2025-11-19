@@ -26,10 +26,10 @@ export default function Requirements() {
       <Container>
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gov-gray-dark mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4">
             What You Need to Apply
           </h2>
-          <p className="text-lg text-gov-gray mx-auto">
+          <p className="text-lg text-gray mx-auto">
             Make sure you have these documents and meet the eligibility
             requirements
           </p>
@@ -53,7 +53,7 @@ export default function Requirements() {
                   d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                 />
               </svg>
-              <h3 className="text-2xl font-bold text-gov-gray-dark">
+              <h3 className="text-2xl font-bold text-gray-dark">
                 Required Documents
               </h3>
             </div>
@@ -72,7 +72,7 @@ export default function Requirements() {
                       clipRule="evenodd"
                     />
                   </svg>
-                  <span className="text-gov-gray text-lg">{item.text}</span>
+                  <span className="text-gray text-lg">{item.text}</span>
                 </li>
               ))}
             </ul>
@@ -94,9 +94,7 @@ export default function Requirements() {
                   d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              <h3 className="text-2xl font-bold text-gov-gray-dark">
-                Eligibility
-              </h3>
+              <h3 className="text-2xl font-bold text-gray-dark">Eligibility</h3>
             </div>
 
             <ul className="space-y-4">
@@ -113,7 +111,7 @@ export default function Requirements() {
                       clipRule="evenodd"
                     />
                   </svg>
-                  <span className="text-gov-gray text-lg">{item.text}</span>
+                  <span className="text-gray text-lg">{item.text}</span>
                 </li>
               ))}
             </ul>

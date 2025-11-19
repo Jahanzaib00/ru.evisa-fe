@@ -40,7 +40,7 @@ export default function StepProgress() {
                                    ? "bg-primary text-white"
                                    : isCurrent
                                    ? "bg-primary text-white"
-                                   : "bg-gov-gray-lightest text-gov-gray border-2 border-gov-gray-light"
+                                   : "bg-gray-lightest text-gray border-2 border-gray-light"
                                }`}
                 >
                   {isCompleted ? (
@@ -63,11 +63,7 @@ export default function StepProgress() {
                 {/* Step Label */}
                 <span
                   className={`mt-2 text-xs sm:text-sm font-medium hidden sm:block
-                               ${
-                                 isCurrent
-                                   ? "text-gov-gray-dark"
-                                   : "text-gov-gray"
-                               }`}
+                               ${isCurrent ? "text-gray-dark" : "text-gray"}`}
                 >
                   {step.label}
                 </span>
@@ -81,7 +77,7 @@ export default function StepProgress() {
                                  ${
                                    step.number < currentStep
                                      ? "bg-primary"
-                                     : "bg-gov-gray-light"
+                                     : "bg-gray-light"
                                  }`}
                   />
                 </div>

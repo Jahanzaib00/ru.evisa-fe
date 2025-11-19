@@ -174,7 +174,7 @@ export default function PassportDetailsPage() {
           return (
             <div
               key={field.id}
-              className="border border-gov-gray-light rounded-lg overflow-hidden bg-gov-gray-lightest"
+              className="border border-gray-light rounded-lg overflow-hidden bg-gray-lightest"
             >
               {/* Accordion Header */}
               <button
@@ -183,11 +183,11 @@ export default function PassportDetailsPage() {
                 className="w-full px-6 py-4 flex items-center justify-between
                          hover:bg-white transition-colors text-left"
               >
-                <span className="font-semibold text-gov-gray-dark text-base">
+                <span className="font-semibold text-gray-dark text-base">
                   Traveler #{index + 1} - {travelerName}
                 </span>
                 <svg
-                  className={`w-5 h-5 text-gov-gray transition-transform ${
+                  className={`w-5 h-5 text-gray transition-transform ${
                     isExpanded ? "rotate-180" : ""
                   }`}
                   fill="currentColor"
@@ -203,7 +203,7 @@ export default function PassportDetailsPage() {
 
               {/* Accordion Content */}
               {isExpanded && (
-                <div className="px-6 py-6 bg-white border-t border-gov-gray-light space-y-6">
+                <div className="px-6 py-6 bg-white border-t border-gray-light space-y-6">
                   {/* Nationality on Passport */}
                   <Controller
                     name={`travelers.${index}.nationalityOnPassport` as const}
@@ -224,7 +224,7 @@ export default function PassportDetailsPage() {
                   />
 
                   {/* Add Passport Details Later Checkbox */}
-                  <div className="bg-gov-gray-lightest rounded-lg p-4">
+                  <div className="bg-gray-lightest rounded-lg p-4">
                     <Checkbox
                       {...register(`travelers.${index}.addLater` as const)}
                       label="Add passport details later"

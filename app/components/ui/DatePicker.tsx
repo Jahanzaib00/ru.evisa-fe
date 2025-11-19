@@ -51,7 +51,7 @@ export default function DatePicker<T extends FieldValues>({
 
   return (
     <div>
-      <label className="block text-sm font-medium text-gov-gray-dark mb-1.5">
+      <label className="block text-sm font-medium text-gray-dark mb-1.5">
         {label}
         {required && <span className="text-accent ml-1">*</span>}
       </label>

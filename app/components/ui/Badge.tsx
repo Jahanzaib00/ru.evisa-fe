@@ -1,16 +1,16 @@
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
 
 export interface BadgeProps {
   /**
    * The variant/color scheme of the badge
    * @default 'default'
    */
-  variant?: 'default' | 'success' | 'error' | 'warning' | 'info' | 'primary';
+  variant?: "default" | "success" | "error" | "warning" | "info" | "primary";
   /**
    * The size of the badge
    * @default 'md'
    */
-  size?: 'sm' | 'md' | 'lg';
+  size?: "sm" | "md" | "lg";
   /**
    * The content to display in the badge
    */
@@ -22,18 +22,18 @@ export interface BadgeProps {
 }
 
 const variantStyles = {
-  default: 'bg-gov-gray-lightest text-gov-gray-dark',
-  success: 'bg-green-100 text-success',
-  error: 'bg-red-100 text-accent',
-  warning: 'bg-yellow-100 text-warning',
-  info: 'bg-blue-100 text-primary-light',
-  primary: 'bg-blue-100 text-primary',
+  default: "bg-gray-lightest text-gray-dark",
+  success: "bg-green-100 text-success",
+  error: "bg-red-100 text-accent",
+  warning: "bg-yellow-100 text-warning",
+  info: "bg-blue-100 text-primary-light",
+  primary: "bg-blue-100 text-primary",
 };
 
 const sizeStyles = {
-  sm: 'px-2 py-0.5 text-xs',
-  md: 'px-3 py-1 text-xs',
-  lg: 'px-4 py-1.5 text-sm',
+  sm: "px-2 py-0.5 text-xs",
+  md: "px-3 py-1 text-xs",
+  lg: "px-4 py-1.5 text-sm",
 };
 
 /**
@@ -41,10 +41,10 @@ const sizeStyles = {
  * Follows the government design system color scheme
  */
 export default function Badge({
-  variant = 'default',
-  size = 'md',
+  variant = "default",
+  size = "md",
   children,
-  className = '',
+  className = "",
 }: BadgeProps) {
   return (
     <span
@@ -59,36 +59,38 @@ export default function Badge({
  * Helper function to get badge variant based on status string
  * Useful for application/payment status badges
  */
-export function getStatusBadgeVariant(status: string): 'default' | 'success' | 'error' | 'warning' | 'info' | 'primary' {
+export function getStatusBadgeVariant(
+  status: string
+): "default" | "success" | "error" | "warning" | "info" | "primary" {
   const normalizedStatus = status.toUpperCase();
 
   switch (normalizedStatus) {
-    case 'APPROVED':
-    case 'COMPLETED':
-    case 'ACTIVE':
-      return 'success';
+    case "APPROVED":
+    case "COMPLETED":
+    case "ACTIVE":
+      return "success";
 
-    case 'REJECTED':
-    case 'FAILED':
-    case 'CANCELLED':
-      return 'error';
+    case "REJECTED":
+    case "FAILED":
+    case "CANCELLED":
+      return "error";
 
-    case 'PENDING':
-    case 'PROCESSING':
-      return 'warning';
+    case "PENDING":
+    case "PROCESSING":
+      return "warning";
 
-    case 'DRAFT':
-    case 'INACTIVE':
-      return 'default';
+    case "DRAFT":
+    case "INACTIVE":
+      return "default";
 
-    case 'SUBMITTED':
-    case 'IN_REVIEW':
-      return 'info';
+    case "SUBMITTED":
+    case "IN_REVIEW":
+      return "info";
 
-    case 'REFUNDED':
-      return 'primary';
+    case "REFUNDED":
+      return "primary";
 
     default:
-      return 'default';
+      return "default";
   }
 }

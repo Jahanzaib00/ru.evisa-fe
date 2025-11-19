@@ -187,7 +187,7 @@ export default function ReviewPage() {
           {/* Expected Delivery */}
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 flex items-center gap-3">
             <svg
-              className="w-6 h-6 text-gov-gray-dark shrink-0"
+              className="w-6 h-6 text-gray-dark shrink-0"
               fill="currentColor"
               viewBox="0 0 20 20"
             >
@@ -198,36 +198,36 @@ export default function ReviewPage() {
               />
             </svg>
             <div className="text-sm">
-              <span className="font-semibold text-gov-gray-dark">
+              <span className="font-semibold text-gray-dark">
                 Expected delivery date:
               </span>{" "}
-              <span className="text-gov-gray">{getExpectedDeliveryTime()}</span>
+              <span className="text-gray">{getExpectedDeliveryTime()}</span>
             </div>
           </div>
 
           {/* ESTA Product Card */}
-          <div className="border border-gov-gray-light rounded-lg p-6">
+          <div className="border border-gray-light rounded-lg p-6">
             <div className="flex items-start justify-between mb-6">
               <div>
-                <h3 className="text-xl font-bold text-gov-gray-dark mb-4">
+                <h3 className="text-xl font-bold text-gray-dark mb-4">
                   United States ESTA
                 </h3>
 
-                <div className="space-y-2 text-sm text-gov-gray">
+                <div className="space-y-2 text-sm text-gray">
                   <div>
-                    <span className="font-medium text-gov-gray-dark">
+                    <span className="font-medium text-gray-dark">
                       Valid for:
                     </span>{" "}
                     {ESTA_VALIDITY_YEARS} years after issued
                   </div>
                   <div>
-                    <span className="font-medium text-gov-gray-dark">
+                    <span className="font-medium text-gray-dark">
                       Max stay:
                     </span>{" "}
                     {ESTA_MAX_STAY_DAYS} days per entry
                   </div>
                   <div>
-                    <span className="font-medium text-gov-gray-dark">
+                    <span className="font-medium text-gray-dark">
                       Number of entries:
                     </span>{" "}
                     {ESTA_ENTRY_TYPE}
@@ -241,15 +241,15 @@ export default function ReviewPage() {
             </div>
 
             {/* Travelers List */}
-            <div className="border-t border-gov-gray-light pt-4">
-              <p className="font-medium text-gov-gray-dark mb-3 text-sm">
+            <div className="border-t border-gray-light pt-4">
+              <p className="font-medium text-gray-dark mb-3 text-sm">
                 Travelers:
               </p>
               <div className="space-y-2">
                 {travelers.map((traveler, index) => (
                   <div
                     key={index}
-                    className="flex items-center gap-2 text-sm text-gov-gray"
+                    className="flex items-center gap-2 text-sm text-gray"
                   >
                     <svg
                       className="w-4 h-4 shrink-0"

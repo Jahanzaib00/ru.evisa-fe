@@ -18,11 +18,11 @@ export default function Hero() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Content Column */}
           <div className="text-center md:text-left">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gov-gray-dark leading-tight mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-dark leading-tight mb-6">
               Get Your U.S. ESTA in 3 Simple Steps
             </h1>
 
-            <p className="text-lg md:text-xl text-gov-gray mb-8 leading-relaxed">
+            <p className="text-lg md:text-xl text-gray mb-8 leading-relaxed">
               Expert assistance with your U.S. Electronic System for Travel
               Authorization. 99% approval rate. Apply now and get approved
               within 24 hours.

@@ -26,19 +26,20 @@ export default function PricingSidebar({
     useApplicationStore();
 
   const total = getTotalAmount();
+  const isMultipleTravelers = totalApplicants > 1;
 
   return (
-    <div className="bg-white rounded-lg border border-gov-gray-light p-6 shadow-sm">
+    <div className="bg-white rounded-lg border border-gray-light p-6 shadow-sm">
       {/* ESTA Info */}
       <div className="mb-6">
-        <h3 className="text-lg font-bold text-gov-gray-dark mb-4">
+        <h3 className="text-lg font-bold text-gray-dark mb-4">
           United States ESTA
         </h3>
 
         <div className="space-y-3 text-sm">
           <div className="flex items-start gap-3">
             <svg
-              className="w-5 h-5 text-gov-gray mt-0.5 shrink-0"
+              className="w-5 h-5 text-gray mt-0.5 shrink-0"
               fill="currentColor"
               viewBox="0 0 20 20"
             >
@@ -49,30 +50,28 @@ export default function PricingSidebar({
               />
             </svg>
             <div>
-              <p className="font-medium text-gov-gray-dark">Valid for</p>
-              <p className="text-gov-gray">2 years after issued</p>
+              <p className="font-medium text-gray-dark">Valid for</p>
+              <p className="text-gray">2 years after issued</p>
             </div>
           </div>
 
           <div className="flex items-start gap-3">
             <svg
-              className="w-5 h-5 text-gov-gray mt-0.5 shrink-0"
+              className="w-5 h-5 text-gray mt-0.5 shrink-0"
               fill="currentColor"
               viewBox="0 0 20 20"
             >
               <path d="M8.445 14.832A1 1 0 0010 14v-2.798l5.445 3.63A1 1 0 0017 14V6a1 1 0 00-1.555-.832L10 8.798V6a1 1 0 00-1.555-.832l-6 4a1 1 0 000 1.664l6 4z" />
             </svg>
             <div>
-              <p className="font-medium text-gov-gray-dark">
-                Number of entries
-              </p>
-              <p className="text-gov-gray">Multiple entry</p>
+              <p className="font-medium text-gray-dark">Number of entries</p>
+              <p className="text-gray">Multiple entry</p>
             </div>
           </div>
 
           <div className="flex items-start gap-3">
             <svg
-              className="w-5 h-5 text-gov-gray mt-0.5 shrink-0"
+              className="w-5 h-5 text-gray mt-0.5 shrink-0"
               fill="currentColor"
               viewBox="0 0 20 20"
             >
@@ -83,54 +82,67 @@ export default function PricingSidebar({
               />
             </svg>
             <div>
-              <p className="font-medium text-gov-gray-dark">Max stay</p>
-              <p className="text-gov-gray">90 days per entry</p>
+              <p className="font-medium text-gray-dark">Max stay</p>
+              <p className="text-gray">90 days per entry</p>
             </div>
           </div>
         </div>
       </div>
 
       {/* Pricing */}
-
-      <div className="border-t border-gov-gray-light pt-5">
+      <div className="border-t border-gray-light pt-5">
         {showPricing && (
           <>
             <div className="space-y-3 text-sm mb-4">
-              <div className="flex justify-between">
-                <span className="text-gov-gray">
-                  United States ESTA
-                  <span className="ml-1">
+              <div className="flex justify-between items-start">
+                <div>
+                  <span className="text-gray-dark font-medium">
+                    United States ESTA
+                  </span>
+                  <p className="text-xs text-gray mt-0.5">
                     {totalApplicants}{" "}
                     {totalApplicants === 1 ? "traveler" : "travelers"}
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex justify-between items-baseline">
+                <span className="text-gray">Government fees</span>
+                <div className="text-right">
+                  {isMultipleTravelers && (
+                    <p className="text-xs text-gray mb-0.5">
+                      ${governmentFee.toFixed(2)} × {totalApplicants}
+                    </p>
+                  )}
+                  <span className="font-semibold text-gray-dark">
+                    ${(governmentFee * totalApplicants).toFixed(2)}
                   </span>
-                </span>
+                </div>
               </div>
 
-              <div className="flex justify-between">
-                <span className="text-gov-gray">Government fees</span>
-                <span className="font-semibold text-gov-gray-dark">
-                  ${(governmentFee * totalApplicants).toFixed(2)}
-                </span>
-              </div>
-
-              <div className="flex justify-between">
-                <span className="text-gov-gray">Processing Fee</span>
-                <span className="font-semibold text-gov-gray-dark">
-                  ${(serviceFee * totalApplicants).toFixed(2)}
-                </span>
+              <div className="flex justify-between items-baseline">
+                <span className="text-gray">Processing fee</span>
+                <div className="text-right">
+                  {isMultipleTravelers && (
+                    <p className="text-xs text-gray mb-0.5">
+                      ${serviceFee.toFixed(2)} × {totalApplicants}
+                    </p>
+                  )}
+                  <span className="font-semibold text-gray-dark">
+                    ${(serviceFee * totalApplicants).toFixed(2)}
+                  </span>
+                </div>
               </div>
             </div>
 
-            <div className="border-t border-gov-gray-light pt-4 mb-6">
+            <div className="border-t border-gray-light pt-4 mb-6">
               <div className="flex justify-between items-baseline">
-                <span className="text-sm font-medium text-gov-gray-dark">
+                <span className="text-sm font-medium text-gray-dark">
                   Total
                 </span>
                 <div className="text-right">
-                  <p className="text-xs text-gov-gray mb-1">
-                    For all travelers
-                  </p>
-                  <p className="text-2xl font-bold text-gov-gray-dark">
+                  <p className="text-xs text-gray mb-1">For all travelers</p>
+                  <p className="text-2xl font-bold text-gray-dark">
                     USD ${total.toFixed(2)}
                   </p>
                 </div>
@@ -181,8 +193,8 @@ export default function PricingSidebar({
       </div>
 
       {/* Trust Badge */}
-      <div className="mt-6 pt-6 border-t border-gov-gray-light">
-        <div className="flex items-center gap-2 text-xs text-gov-gray">
+      <div className="mt-6 pt-6 border-t border-gray-light">
+        <div className="flex items-center gap-2 text-xs text-gray">
           <svg
             className="w-4 h-4 text-success shrink-0"
             fill="currentColor"

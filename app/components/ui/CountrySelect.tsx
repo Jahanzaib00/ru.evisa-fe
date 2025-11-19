@@ -83,7 +83,7 @@ const CountrySelect = forwardRef<HTMLButtonElement, CountrySelectProps>(
     return (
       <div className="w-full relative" ref={dropdownRef}>
         {label && (
-          <label className="block text-sm font-medium text-gov-gray-dark mb-1.5">
+          <label className="block text-sm font-medium text-gray-dark mb-1.5">
             {label}
             {required && <span className="text-accent ml-1">*</span>}
           </label>
@@ -100,11 +100,11 @@ const CountrySelect = forwardRef<HTMLButtonElement, CountrySelectProps>(
                      ${
                        error
                          ? "border-accent focus:border-accent focus:ring-accent"
-                         : "border-gov-gray-light focus:border-primary focus:ring-primary"
+                         : "border-gray-light focus:border-primary focus:ring-primary"
                      }
                      focus:outline-none focus:ring-2 focus:ring-opacity-20
-                     bg-white text-gov-gray-dark
-                     disabled:bg-gov-gray-lightest disabled:cursor-not-allowed
+                     bg-white text-gray-dark
+                     disabled:bg-gray-lightest disabled:cursor-not-allowed
                      ${isOpen ? "ring-2 ring-primary ring-opacity-20" : ""}`}
           aria-haspopup="listbox"
           aria-expanded={isOpen}
@@ -118,11 +118,11 @@ const CountrySelect = forwardRef<HTMLButtonElement, CountrySelectProps>(
                 <span>{selectedCountry.name}</span>
               </>
             ) : (
-              <span className="text-gov-gray">{placeholder}</span>
+              <span className="text-gray">{placeholder}</span>
             )}
           </span>
           <svg
-            className={`w-5 h-5 text-gov-gray transition-transform ${
+            className={`w-5 h-5 text-gray transition-transform ${
               isOpen ? "rotate-180" : ""
             }`}
             fill="none"
@@ -141,7 +141,7 @@ const CountrySelect = forwardRef<HTMLButtonElement, CountrySelectProps>(
         {/* Dropdown Panel */}
         {isOpen && (
           <div
-            className="fixed z-9999 mt-1 bg-white border border-gov-gray-light rounded-md shadow-lg max-h-80 overflow-hidden"
+            className="fixed z-9999 mt-1 bg-white border border-gray-light rounded-md shadow-lg max-h-80 overflow-hidden"
             style={{
               width: dropdownRef.current?.offsetWidth,
               top: dropdownRef.current?.getBoundingClientRect().bottom,
@@ -149,14 +149,14 @@ const CountrySelect = forwardRef<HTMLButtonElement, CountrySelectProps>(
             }}
           >
             {/* Search Input */}
-            <div className="p-3 border-b border-gov-gray-light sticky top-0 bg-white">
+            <div className="p-3 border-b border-gray-light sticky top-0 bg-white">
               <input
                 ref={searchInputRef}
                 type="text"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Search countries..."
-                className="w-full px-3 py-2 text-sm border border-gov-gray-light rounded-md
+                className="w-full px-3 py-2 text-sm border border-gray-light rounded-md
                          focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
               />
             </div>
@@ -176,11 +176,11 @@ const CountrySelect = forwardRef<HTMLButtonElement, CountrySelectProps>(
                       type="button"
                       onClick={() => handleSelect(country)}
                       className={`w-full px-4 py-3 flex items-center gap-3 text-left transition-colors
-                               hover:bg-gov-gray-lightest
+                               hover:bg-gray-lightest
                                ${
                                  isSelected
                                    ? "bg-primary bg-opacity-10 text-white font-medium hover:text-primary"
-                                   : "text-gov-gray-dark"
+                                   : "text-gray-dark"
                                }`}
                       role="option"
                       aria-selected={isSelected}
@@ -206,7 +206,7 @@ const CountrySelect = forwardRef<HTMLButtonElement, CountrySelectProps>(
                   );
                 })
               ) : (
-                <div className="px-4 py-8 text-center text-gov-gray text-sm">
+                <div className="px-4 py-8 text-center text-gray text-sm">
                   No eligible country found
                 </div>
               )}
@@ -219,7 +219,7 @@ const CountrySelect = forwardRef<HTMLButtonElement, CountrySelectProps>(
           <p className="mt-1.5 text-sm text-accent font-medium">{error}</p>
         )}
         {helperText && !error && (
-          <p className="mt-1.5 text-sm text-gov-gray">{helperText}</p>
+          <p className="mt-1.5 text-sm text-gray">{helperText}</p>
         )}
       </div>
     );

@@ -28,21 +28,27 @@ export default function MobileOrderSummary({
     ? denialProtectionFee * totalApplicants
     : 0;
   const grandTotal = baseTotal + protectionCost;
+  const isMultipleTravelers = totalApplicants > 1;
 
   return (
     <div className="md:hidden mb-6">
       {/* Collapsed View */}
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className="w-full bg-white border border-gov-gray-light rounded-lg p-5
-                   hover:border-primary/40 hover:bg-blue-50/40 transition-all shadow-sm"
+        className={`w-full bg-white border border-gray-light rounded-lg p-4
+            hover:border-primary/30 ${
+              isExpanded ? "rounded-b-none border-b-0" : ""
+            }`}
         aria-expanded={isExpanded}
         aria-label={isExpanded ? "Hide order summary" : "Show order summary"}
       >
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2">
+            <span className="text-sm font-medium text-gray-dark">
+              Order summary
+            </span>
             <svg
-              className={`w-5 h-5 text-gov-gray-dark transition-transform shrink-0 ${
+              className={`w-4 h-4 text-gray transition-transform ${
                 isExpanded ? "rotate-180" : ""
               }`}
               fill="none"
@@ -52,81 +58,88 @@ export default function MobileOrderSummary({
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                strokeWidth={2.5}
+                strokeWidth={2}
                 d="M19 9l-7 7-7-7"
               />
             </svg>
-            <div className="text-left">
-              <p className="text-sm font-semibold text-gov-gray-dark">
-                {isExpanded ? "Hide" : "Show"} order summary
-              </p>
-              <p className="text-xs text-gov-gray mt-0.5">
-                {totalApplicants}{" "}
-                {totalApplicants === 1 ? "traveler" : "travelers"}
-              </p>
-            </div>
           </div>
 
-          <div className="text-right">
-            <p className="text-2xl font-bold text-gov-gray-dark">
+          {!isExpanded && (
+            <p className="text-xl font-bold text-gray-dark">
               ${grandTotal.toFixed(2)}
             </p>
-          </div>
+          )}
         </div>
       </button>
 
       {/* Expanded View */}
       {isExpanded && (
-        <div className="border border-t-0 border-gov-gray-light rounded-b-lg bg-white p-4 space-y-4 -mt-1">
+        <div className="border border-t-0 border-gray-light rounded-b-lg bg-white px-4 pb-4 -mt-1">
           {/* Pricing Breakdown */}
-          <div className="space-y-3">
-            <h5 className="text-sm font-semibold text-gov-gray-dark">
-              Price Breakdown
-            </h5>
-
-            <div className="space-y-2 text-sm">
-              <div className="flex justify-between items-center">
-                <span className="text-gov-gray">
-                  Processing fee{" "}
-                  <span className="text-xs">(x{totalApplicants})</span>
-                </span>
-                <span className="font-medium text-gov-gray-dark">
-                  ${(serviceFee * totalApplicants).toFixed(2)}
-                </span>
-              </div>
-
-              <div className="flex justify-between items-center">
-                <span className="text-gov-gray">
-                  Government fee{" "}
-                  <span className="text-xs">(x{totalApplicants})</span>
-                </span>
-                <span className="font-medium text-gov-gray-dark">
+          <div className="pt-4 space-y-3 text-sm">
+            <div className="flex justify-between items-baseline">
+              <span className="text-gray">Government fees</span>
+              <div className="text-right">
+                {isMultipleTravelers && (
+                  <p className="text-xs text-gray mb-0.5">
+                    ${governmentFee.toFixed(2)} × {totalApplicants}
+                  </p>
+                )}
+                <span className="font-semibold text-gray-dark">
                   ${(governmentFee * totalApplicants).toFixed(2)}
                 </span>
               </div>
             </div>
+
+            <div className="flex justify-between items-baseline">
+              <span className="text-gray">Processing fee</span>
+              <div className="text-right">
+                {isMultipleTravelers && (
+                  <p className="text-xs text-gray mb-0.5">
+                    ${serviceFee.toFixed(2)} × {totalApplicants}
+                  </p>
+                )}
+                <span className="font-semibold text-gray-dark">
+                  ${(serviceFee * totalApplicants).toFixed(2)}
+                </span>
+              </div>
+            </div>
+
+            {denialProtection && (
+              <div className="flex justify-between items-baseline">
+                <span className="text-gray">Denial protection</span>
+                <div className="text-right">
+                  {isMultipleTravelers && (
+                    <p className="text-xs text-gray mb-0.5">
+                      ${denialProtectionFee.toFixed(2)} × {totalApplicants}
+                    </p>
+                  )}
+                  <span className="font-semibold text-gray-dark">
+                    ${protectionCost.toFixed(2)}
+                  </span>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Total */}
-          <div className="border-t border-gov-gray-light pt-3">
+          <div className="border-t border-gray-light mt-4 pt-4">
             <div className="flex justify-between items-baseline">
-              <span className="text-base font-bold text-gov-gray-dark">
-                Total Amount
-              </span>
+              <span className="text-sm font-medium text-gray-dark">Total</span>
               <div className="text-right">
-                <p className="text-xs text-gov-gray mb-0.5">
-                  For all travelers
-                </p>
-                <p className="text-2xl font-bold text-primary">
+                {isMultipleTravelers && (
+                  <p className="text-xs text-gray mb-1">For all travelers</p>
+                )}
+                <p className="text-2xl font-bold text-gray-dark">
                   USD ${grandTotal.toFixed(2)}
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Trust Signals */}
-          <div className="space-y-2 pt-2">
-            <div className="flex items-center gap-2 text-xs text-gov-gray">
+          {/* Trust Badge */}
+          <div className="mt-4 pt-4 border-t border-gray-light">
+            <div className="flex items-center gap-2 text-xs text-gray">
               <svg
                 className="w-4 h-4 text-success shrink-0"
                 fill="currentColor"
@@ -138,35 +151,7 @@ export default function MobileOrderSummary({
                   clipRule="evenodd"
                 />
               </svg>
-              <span>Secure payment processing</span>
-            </div>
-            <div className="flex items-center gap-2 text-xs text-gov-gray">
-              <svg
-                className="w-4 h-4 text-success shrink-0"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <span>Money-back guarantee</span>
-            </div>
-            <div className="flex items-center gap-2 text-xs text-gov-gray">
-              <svg
-                className="w-4 h-4 text-success shrink-0"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <span>Your data is protected</span>
+              <span>We take strong measures to protect your information.</span>
             </div>
           </div>
         </div>

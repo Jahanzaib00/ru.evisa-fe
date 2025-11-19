@@ -97,10 +97,10 @@ export default function ValueProposition() {
       <Container>
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gov-gray-dark mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4">
             Why Choose Us for Your ESTA?
           </h2>
-          <p className="text-lg text-gov-gray mx-auto">
+          <p className="text-lg text-gray mx-auto">
             We make the ESTA application process simple, secure, and stress-free
           </p>
         </div>
@@ -110,20 +110,18 @@ export default function ValueProposition() {
           {benefits.map((benefit, index) => (
             <div
               key={index}
-              className="bg-white border border-gov-gray-light rounded-lg p-8 hover:shadow-lg transition-shadow duration-300"
+              className="bg-white border border-gray-light rounded-lg p-8 hover:shadow-lg transition-shadow duration-300"
             >
               {/* Icon */}
               <div className="text-primary mb-4">{benefit.icon}</div>
 
               {/* Title */}
-              <h3 className="text-xl font-bold text-gov-gray-dark mb-3">
+              <h3 className="text-xl font-bold text-gray-dark mb-3">
                 {benefit.title}
               </h3>
 
               {/* Description */}
-              <p className="text-gov-gray leading-relaxed">
-                {benefit.description}
-              </p>
+              <p className="text-gray leading-relaxed">{benefit.description}</p>
             </div>
           ))}
         </div>

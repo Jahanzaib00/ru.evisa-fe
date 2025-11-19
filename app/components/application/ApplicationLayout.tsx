@@ -56,12 +56,10 @@ export default function ApplicationLayout({
           showMobileCTA ? "pb-32 md:pb-12" : ""
         }`}
       >
-        <h1 className="text-2xl sm:text-3xl font-bold text-gov-gray-dark mb-2">
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-dark mb-2">
           {title}
         </h1>
-        {description && (
-          <p className="text-base text-gov-gray">{description}</p>
-        )}
+        {description && <p className="text-base text-gray">{description}</p>}
         <div className="grid md:grid-cols-12 gap-8">
           {/* Left Column - Form Content */}
           <div
@@ -94,11 +92,11 @@ export default function ApplicationLayout({
 
       {/* Sticky Bottom CTA (Mobile Only) */}
       {showMobileCTA && onMobileButtonClick && (
-        <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gov-gray-light p-4 shadow-lg z-40">
+        <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-light p-4 shadow-lg z-40">
           <div className="flex items-center justify-between mb-3">
-            <span className="text-sm text-gov-gray">Total</span>
+            <span className="text-sm text-gray">Total</span>
             <span
-              className="text-lg font-bold text-gov-gray-dark"
+              className="text-lg font-bold text-gray-dark"
               suppressHydrationWarning
             >
               USD ${getTotalAmount().toFixed(2)}

@@ -105,12 +105,12 @@ export default function TrustBar() {
               )}
 
               {/* Value */}
-              <div className="text-3xl md:text-4xl font-bold text-(--color-gov-gray-dark) mb-2">
+              <div className="text-3xl md:text-4xl font-bold text-(--color-gray-dark) mb-2">
                 {stat.value}
               </div>
 
               {/* Label */}
-              <div className="text-sm md:text-base text-(--color-gov-gray)">
+              <div className="text-sm md:text-base text-(--color-gray)">
                 {stat.label}
               </div>
             </div>
@@ -118,8 +118,8 @@ export default function TrustBar() {
         </div>
 
         {/* Security Badges */}
-        <div className="flex flex-wrap items-center justify-center gap-8 mt-12 pt-8 border-t border-(--color-gov-gray-light)">
-          <div className="flex items-center gap-2 text-(--color-gov-gray)">
+        <div className="flex flex-wrap items-center justify-center gap-8 mt-12 pt-8 border-t border-(--color-gray-light)">
+          <div className="flex items-center gap-2 text-(--color-gray)">
             <svg
               className="w-6 h-6 text-(--color-success)"
               fill="currentColor"
@@ -134,7 +134,7 @@ export default function TrustBar() {
             <span className="font-semibold">SSL Secured</span>
           </div>
 
-          <div className="flex items-center gap-2 text-(--color-gov-gray)">
+          <div className="flex items-center gap-2 text-(--color-gray)">
             <svg
               className="w-6 h-6 text-(--color-success)"
               fill="currentColor"
@@ -149,7 +149,7 @@ export default function TrustBar() {
             <span className="font-semibold">Secure Payment</span>
           </div>
 
-          <div className="flex items-center gap-2 text-(--color-gov-gray)">
+          <div className="flex items-center gap-2 text-(--color-gray)">
             <svg
               className="w-6 h-6 text-(--color-success)"
               fill="currentColor"

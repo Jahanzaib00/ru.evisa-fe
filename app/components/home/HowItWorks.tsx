@@ -96,10 +96,10 @@ export default function HowItWorks() {
       <Container>
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gov-gray-dark mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4">
             Get Your ESTA in 3 Easy Steps
           </h2>
-          <p className="text-lg text-gov-gray mx-auto">
+          <p className="text-lg text-gray mx-auto">
             Our streamlined process makes getting your travel authorization
             simple and fast
           </p>
@@ -127,12 +127,12 @@ export default function HowItWorks() {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl font-bold text-gov-gray-dark mb-3 text-center">
+                <h3 className="text-xl font-bold text-gray-dark mb-3 text-center">
                   {step.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-gov-gray text-center leading-relaxed">
+                <p className="text-gray text-center leading-relaxed">
                   {step.description}
                 </p>
               </div>

@@ -8,28 +8,24 @@ import {
   GOVERNMENT_FEE,
   SERVICE_FEE,
   BASE_TOTAL_FEE,
-  INCLUDED_SERVICES
+  INCLUDED_SERVICES,
 } from "@/app/lib/constants";
 
 export default function Pricing() {
   const handleCTAClick = () => {
     trackCTAClick("pricing");
-    window.location.href = '/apply';
+    window.location.href = "/apply";
   };
-
-  // const handleOfficialLinkClick = () => {
-  //   trackExternalClick("https://esta.cbp.dhs.gov/");
-  // };
 
   return (
     <Section id="pricing" background="gray" padding="xl">
       <Container maxWidth="md">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gov-gray-dark mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4">
             Clear Pricing - No Hidden Fees
           </h2>
-          <p className="text-lg text-gov-gray">
+          <p className="text-lg text-gray">
             Complete transparency on what you pay and what you get
           </p>
         </div>
@@ -44,45 +40,34 @@ export default function Pricing() {
               </h3>
 
               <table className="w-full mb-6">
-                <tbody className="divide-y divide-gov-gray-light">
+                <tbody className="divide-y divide-gray-light">
                   <tr>
-                    <td className="py-4 text-gov-gray">
-                      Official U.S. ESTA Fee
-                    </td>
-                    <td className="py-4 text-right font-semibold text-gov-gray-dark">
+                    <td className="py-4 text-gray">Government Fee</td>
+                    <td className="py-4 text-right font-semibold text-gray-dark">
                       ${GOVERNMENT_FEE.toFixed(2)}
                     </td>
                   </tr>
                   <tr>
-                    <td className="py-4 text-gov-gray">
-                      Service Fee (Processing & Support)
-                    </td>
-                    <td className="py-4 text-right font-semibold text-gov-gray-dark">
+                    <td className="py-4 text-gray">Services Fee</td>
+                    <td className="py-4 text-right font-semibold text-gray-dark">
                       ${SERVICE_FEE.toFixed(2)}
                     </td>
                   </tr>
-                  <tr className="bg-gov-gray-lightest">
-                    <td className="py-4 font-bold text-gov-gray-dark">Total</td>
+                  <tr className="bg-gray-lightest">
+                    <td className="py-4 font-bold text-gray-dark">
+                      Total <span className="text-xs"> (per applicant) </span>
+                    </td>
                     <td className="py-4 text-right font-bold text-2xl text-primary">
                       ${BASE_TOTAL_FEE.toFixed(2)}
                     </td>
                   </tr>
                 </tbody>
               </table>
-
-              <div className="bg-gov-gray-lightest rounded-lg p-4 text-sm text-gov-gray">
-                <p className="mb-2">
-                  <strong>Note:</strong> Official U.S. government ESTA fee is $
-                  {GOVERNMENT_FEE.toFixed(2)}. Our service fee covers
-                  application assistance, error checking, status monitoring, and
-                  24/7 support.
-                </p>
-              </div>
             </div>
 
             {/* What's Included */}
             <div className="md:col-span-2">
-              <h4 className="text-lg font-bold text-gov-gray-dark mb-4 flex items-center gap-2">
+              <h4 className="text-lg font-bold text-gray-dark mb-4 flex items-center gap-2">
                 <svg
                   className="w-6 h-6 text-success"
                   fill="currentColor"
@@ -101,7 +86,7 @@ export default function Pricing() {
                 {INCLUDED_SERVICES.map((service, index) => (
                   <li
                     key={index}
-                    className="flex items-start gap-2 text-sm text-gov-gray"
+                    className="flex items-start gap-2 text-sm text-gray"
                   >
                     <svg
                       className="w-4 h-4 text-success shrink-0 mt-0.5"
@@ -122,7 +107,7 @@ export default function Pricing() {
           </div>
 
           {/* CTA */}
-          <div className="mt-8 pt-8 border-t border-gov-gray-light">
+          <div className="mt-8 pt-8 border-t border-gray-light">
             <Button
               variant="primary"
               size="lg"
@@ -136,8 +121,8 @@ export default function Pricing() {
 
         {/* Transparency Disclaimer */}
         {/* <div className="mt-8 text-center">
-          <p className="text-sm text-gov-gray bg-white rounded-lg p-4 shadow-sm">
-            <strong className="text-gov-gray-dark">
+          <p className="text-sm text-gray bg-white rounded-lg p-4 shadow-sm">
+            <strong className="text-gray-dark">
               Important Transparency Notice:
             </strong>{" "}
             You can also apply directly at the{" "}

@@ -169,7 +169,7 @@ export default function PersonalDetailsPage() {
           return (
             <div
               key={field.id}
-              className="border border-gov-gray-light rounded-lg overflow-hidden bg-gov-gray-lightest"
+              className="border border-gray-light rounded-lg overflow-hidden bg-gray-lightest"
             >
               {/* Accordion Header */}
               <button
@@ -178,16 +178,16 @@ export default function PersonalDetailsPage() {
                 className="w-full px-6 py-4 flex items-center justify-between
                          hover:bg-white transition-colors text-left"
               >
-                <span className="font-semibold text-gov-gray-dark text-base">
+                <span className="font-semibold text-gray-dark text-base">
                   Traveler #{index + 1}
                   {travelerData?.firstName && travelerData?.lastName && (
-                    <span className="font-normal text-gov-gray ml-2">
+                    <span className="font-normal text-gray ml-2">
                       - {travelerData.firstName} {travelerData.lastName}
                     </span>
                   )}
                 </span>
                 <svg
-                  className={`w-5 h-5 text-gov-gray transition-transform ${
+                  className={`w-5 h-5 text-gray transition-transform ${
                     isExpanded ? "rotate-180" : ""
                   }`}
                   fill="currentColor"
@@ -203,7 +203,7 @@ export default function PersonalDetailsPage() {
 
               {/* Accordion Content */}
               {isExpanded && (
-                <div className="px-6 py-6 bg-white border-t border-gov-gray-light space-y-6">
+                <div className="px-6 py-6 bg-white border-t border-gray-light space-y-6">
                   {/* First and Middle Name */}
                   <Input
                     label="First and middle name"

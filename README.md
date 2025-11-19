@@ -79,8 +79,8 @@ const SITE_URL = "https://yoursite.com"; // Your actual domain
 Edit `app/components/sections/Pricing.tsx`:
 
 ```typescript
-const OFFICIAL_ESTA_FEE = 40.00;  // Official U.S. fee
-const SERVICE_FEE = 49.00;         // Your service fee
+const OFFICIAL_ESTA_FEE = 40.0; // Official U.S. fee
+const SERVICE_FEE = 49.0; // Your service fee
 ```
 
 ### 3. Add Images
@@ -97,8 +97,8 @@ In section components, update button click handlers:
 ```typescript
 // app/components/sections/Hero.tsx
 const handleCTAClick = () => {
-  trackCTAClick('hero');
-  window.location.href = '/application/start'; // Update this URL
+  trackCTAClick("hero");
+  window.location.href = "/application/start"; // Update this URL
 };
 ```
 
@@ -107,11 +107,11 @@ const handleCTAClick = () => {
 ### Colors (Government-Inspired)
 
 ```css
---color-gov-blue: #112e51;        /* Primary navy */
---color-gov-blue-light: #205493;  /* Links, accents */
---color-gov-red: #cd2026;         /* CTA buttons */
---color-success-green: #2e8540;   /* Success indicators */
---color-warning-gold: #fdb81e;    /* Urgency */
+--color-blue: #112e51; /* Primary navy */
+--color-blue-light: #205493; /* Links, accents */
+--color-red: #cd2026; /* CTA buttons */
+--color-success-green: #2e8540; /* Success indicators */
+--color-warning-gold: #fdb81e; /* Urgency */
 ```
 
 Customize in `app/globals.css` under `@theme inline`.
@@ -195,7 +195,7 @@ All colors in `app/globals.css`:
 
 ```css
 @theme inline {
-  --color-gov-blue: #112e51;
+  --color-blue: #112e51;
   --color-accent: #cd2026;
   /* ... */
 }

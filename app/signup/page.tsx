@@ -61,7 +61,7 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gov-gray-lightest flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-lightest flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full">
         {/* Header */}
         <div className="text-center mb-8">
@@ -155,7 +155,7 @@ export default function SignupPage() {
               {isLoading ? "Creating account..." : "Create account"}
             </Button>
 
-            <div className="text-xs text-gov-gray text-center">
+            <div className="text-xs text-gray text-center">
               By signing up, you agree to our{" "}
               <Link
                 href="/terms"
@@ -199,7 +199,7 @@ export default function SignupPage() {
         <div className="mt-8 text-center">
           <Link
             href="/"
-            className="text-sm font-medium text-gov-gray hover:text-gov-gray-dark transition duration-150 ease-in-out"
+            className="text-sm font-medium text-gray hover:text-gray-dark transition duration-150 ease-in-out"
           >
             ← Back to home
           </Link>

@@ -24,7 +24,7 @@ export default function PaymentSuccessPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gov-gray-lightest">
+    <div className="min-h-screen bg-gray-lightest">
       <Header />
       <div className="flex items-center justify-center px-4 py-12">
         <div className="max-w-2xl w-full">
@@ -48,25 +48,25 @@ export default function PaymentSuccessPage() {
             </div>
 
             {/* Success Message */}
-            <h1 className="text-3xl sm:text-4xl font-bold text-gov-gray-dark mb-4">
+            <h1 className="text-3xl sm:text-4xl font-bold text-gray-dark mb-4">
               Payment Successful!
             </h1>
-            <p className="text-lg text-gov-gray mb-8">
+            <p className="text-lg text-gray mb-8">
               Your ESTA application payment has been processed successfully.
             </p>
 
             {/* Details Card */}
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8 text-left">
-              <h2 className="font-semibold text-gov-gray-dark mb-4 text-lg">
+              <h2 className="font-semibold text-gray-dark mb-4 text-lg">
                 What happens next?
               </h2>
-              <div className="space-y-3 text-sm text-gov-gray">
+              <div className="space-y-3 text-sm text-gray">
                 <div className="flex items-start gap-3">
                   <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center shrink-0 mt-0.5">
                     <span className="text-xs font-bold text-primary">1</span>
                   </div>
                   <p>
-                    <span className="font-semibold text-gov-gray-dark">
+                    <span className="font-semibold text-gray-dark">
                       Email Confirmation:
                     </span>{" "}
                     You will receive a confirmation email within the next few
@@ -78,7 +78,7 @@ export default function PaymentSuccessPage() {
                     <span className="text-xs font-bold text-primary">2</span>
                   </div>
                   <p>
-                    <span className="font-semibold text-gov-gray-dark">
+                    <span className="font-semibold text-gray-dark">
                       Processing:
                     </span>{" "}
                     Your application will be processed and you'll receive
@@ -90,7 +90,7 @@ export default function PaymentSuccessPage() {
                     <span className="text-xs font-bold text-primary">3</span>
                   </div>
                   <p>
-                    <span className="font-semibold text-gov-gray-dark">
+                    <span className="font-semibold text-gray-dark">
                       Expected Delivery:
                     </span>{" "}
                     You should receive your approved ESTA within 24 hours.
@@ -110,16 +110,16 @@ export default function PaymentSuccessPage() {
               </button>
               <button
                 onClick={() => router.replace("/orders")}
-                className="w-full border border-gov-gray-light hover:bg-gov-gray-lightest
-                       text-gov-gray-dark font-medium py-3 px-6 rounded-lg transition-colors"
+                className="w-full border border-gray-light hover:bg-gray-lightest
+                       text-gray-dark font-medium py-3 px-6 rounded-lg transition-colors"
               >
                 View My Applications
               </button>
             </div>
 
             {/* Support Info */}
-            <div className="mt-8 pt-6 border-t border-gov-gray-light">
-              <p className="text-sm text-gov-gray">
+            <div className="mt-8 pt-6 border-t border-gray-light">
+              <p className="text-sm text-gray">
                 Need help?{" "}
                 <a
                   href="/contact"
@@ -133,7 +133,7 @@ export default function PaymentSuccessPage() {
 
           {/* Additional Info */}
           <div className="mt-6 text-center">
-            <p className="text-sm text-gov-gray">
+            <p className="text-sm text-gray">
               Keep this page for your records or check your email for the
               confirmation.
             </p>

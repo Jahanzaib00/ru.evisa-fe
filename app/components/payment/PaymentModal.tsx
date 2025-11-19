@@ -110,14 +110,39 @@ function PaymentForm({
         }}
       />
 
+      {/* Terms Acknowledgment */}
+      <div className="text-xs text-gray-600 leading-relaxed bg-gray-50 p-4 rounded-lg border border-gray-200">
+        <p>
+          By submitting payment I acknowledge that I have read and accept the{" "}
+          <a
+            href="/terms"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:text-blue-700 underline font-medium"
+          >
+            ESTA Visa Portal Terms of Service
+          </a>{" "}
+          and{" "}
+          <a
+            href="/privacy"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:text-blue-700 underline font-medium"
+          >
+            Privacy Policy
+          </a>
+          .
+        </p>
+      </div>
+
       {/* Payment Button */}
       <button
         type="submit"
         disabled={!stripe || isProcessing}
         className={`w-full ${
           isProcessing
-            ? "bg-gov-gray-light hover:bg-gov-gray"
-            : "bg-gov-blue hover:bg-gov-blue-light"
+            ? "bg-gray-light hover:bg-gray"
+            : "bg-blue hover:bg-blue-light"
         } text-white font-semibold
                    py-4 px-6 rounded-lg transition-colors disabled:opacity-50
                    disabled:cursor-not-allowed text-base flex items-center justify-center gap-2`}
@@ -143,7 +168,7 @@ function PaymentForm({
         type="button"
         onClick={onClose}
         disabled={isProcessing}
-        className="w-full text-gov-gray hover:text-gov-gray-dark font-medium py-2 transition-colors"
+        className="w-full text-gray hover:text-gray-dark font-medium py-2 transition-colors"
       >
         Cancel
       </button>
@@ -190,8 +215,8 @@ export default function PaymentModal({
     >
       <div className="bg-white rounded-xl max-w-lg w-full shadow-2xl max-h-[90vh] overflow-y-auto">
         {/* Header */}
-        <div className="bg-white border-b border-gov-gray-light px-6 py-4 flex items-center justify-center">
-          <h2 className="text-2xl font-bold text-gov-gray-dark mb-0!">
+        <div className="bg-white border-b border-gray-light px-6 py-4 flex items-center justify-center">
+          <h2 className="text-2xl font-bold text-gray-dark mb-0!">
             Card information
           </h2>
         </div>
