@@ -59,7 +59,9 @@ export default function ApplicationLayout({
         <h1 className="text-2xl sm:text-3xl font-bold text-gray-dark mb-2">
           {title}
         </h1>
-        {description && <p className="text-base text-gray">{description}</p>}
+        {description && (
+          <p className="text-base text-gray mb-4">{description}</p>
+        )}
         <div className="grid md:grid-cols-12 gap-8">
           {/* Left Column - Form Content */}
           <div

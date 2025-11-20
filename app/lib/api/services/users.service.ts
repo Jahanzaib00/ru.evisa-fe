@@ -1,5 +1,9 @@
-import { apiClient } from '../client';
-import type { User, Application, ApiResponse, PaginatedResponse } from '../types';
+import { api } from "../client";
+import type {
+  User,
+  Application,
+  PaginatedResponse,
+} from "../types";
 
 interface UpdateUserRequest {
   firstName?: string;
@@ -8,42 +12,42 @@ interface UpdateUserRequest {
 }
 
 export const usersService = {
-  async getProfile(): Promise<ApiResponse<User>> {
-    return apiClient.get<ApiResponse<User>>('/users/me');
+  async getProfile(): Promise<User> {
+    return api.get<User>("/users/me");
   },
 
-  async updateProfile(data: UpdateUserRequest): Promise<ApiResponse<User>> {
-    return apiClient.put<ApiResponse<User>>('/users/me', data);
+  async updateProfile(data: UpdateUserRequest): Promise<User> {
+    return api.put<User>("/users/me", data);
   },
 
-  async getMyApplications(): Promise<ApiResponse<Application[]>> {
-    return apiClient.get<ApiResponse<Application[]>>('/users/me/applications');
+  async getMyApplications(): Promise<Application[]> {
+    return api.get<Application[]>("/users/me/applications");
   },
 
   async getAllUsers(params?: {
     page?: number;
     limit?: number;
-  }): Promise<ApiResponse<PaginatedResponse<User>>> {
-    return apiClient.get<ApiResponse<PaginatedResponse<User>>>('/users', { params });
+  }): Promise<PaginatedResponse<User>> {
+    return api.get<PaginatedResponse<User>>("/users", { params });
   },
 
-  async getUserById(id: string): Promise<ApiResponse<User>> {
-    return apiClient.get<ApiResponse<User>>(`/users/${id}`);
+  async getUserById(id: string): Promise<User> {
+    return api.get<User>(`/users/${id}`);
   },
 
-  async updateUser(id: string, data: UpdateUserRequest): Promise<ApiResponse<User>> {
-    return apiClient.put<ApiResponse<User>>(`/users/${id}`, data);
+  async updateUser(id: string, data: UpdateUserRequest): Promise<User> {
+    return api.put<User>(`/users/${id}`, data);
   },
 
-  async deactivateUser(id: string): Promise<ApiResponse<{ message: string }>> {
-    return apiClient.patch<ApiResponse<{ message: string }>>(`/users/${id}/deactivate`);
+  async deactivateUser(id: string): Promise<{ message: string }> {
+    return api.patch<{ message: string }>(`/users/${id}/deactivate`, {});
   },
 
-  async activateUser(id: string): Promise<ApiResponse<{ message: string }>> {
-    return apiClient.patch<ApiResponse<{ message: string }>>(`/users/${id}/activate`);
+  async activateUser(id: string): Promise<{ message: string }> {
+    return api.patch<{ message: string }>(`/users/${id}/activate`, {});
   },
 
-  async getUserApplications(id: string): Promise<ApiResponse<Application[]>> {
-    return apiClient.get<ApiResponse<Application[]>>(`/users/${id}/applications`);
+  async getUserApplications(id: string): Promise<Application[]> {
+    return api.get<Application[]>(`/users/${id}/applications`);
   },
 };

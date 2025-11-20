@@ -82,10 +82,10 @@ export function useApplication(): UseApplicationReturn {
         totalAmount: getTotalAmount(),
       });
 
-      setApplicationId(response.data.id);
-      setApplicationStatus(response.data.status);
+      setApplicationId(response.id);
+      setApplicationStatus(response.status);
       setIsLoading(false);
-      return response.data.id;
+      return response.id;
     } catch (err: any) {
       logError(err, "Creating application");
       setError(extractErrorMessage(err, "Failed to start application."));

@@ -94,8 +94,8 @@ export default function ReviewPage() {
       });
 
       // Only open payment modal if we successfully got a client secret
-      if (response?.data?.clientSecret) {
-        setClientSecret(response.data.clientSecret);
+      if (response?.clientSecret) {
+        setClientSecret(response.clientSecret);
         setShowPaymentModal(true);
       } else {
         throw new Error("No client secret received from server");

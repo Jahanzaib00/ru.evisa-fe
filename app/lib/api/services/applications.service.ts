@@ -1,101 +1,83 @@
-import { apiClient } from "../client";
+import { api } from "../client";
 import type {
   Application,
   CreateApplicationRequest,
   SaveDraftRequest,
-  ApiResponse,
   PaginatedResponse,
   ApplicationStatus,
 } from "../types";
 
 export const applicationsService = {
-  async create(
-    data: Partial<CreateApplicationRequest>
-  ): Promise<ApiResponse<Application>> {
-    return apiClient.post<ApiResponse<Application>>("/applications", data);
+  async create(data: Partial<CreateApplicationRequest>): Promise<Application> {
+    return api.post<Application>("/applications", data);
   },
 
   async getAll(params?: {
     page?: number;
     limit?: number;
     status?: ApplicationStatus;
-  }): Promise<ApiResponse<PaginatedResponse<Application>>> {
-    return apiClient.get<ApiResponse<PaginatedResponse<Application>>>(
-      "/applications",
-      {
-        params,
-      }
-    );
+  }): Promise<PaginatedResponse<Application>> {
+    return api.get<PaginatedResponse<Application>>("/applications", {
+      params,
+    });
   },
 
   async getMyApplications(params?: {
     page?: number;
     limit?: number;
     status?: ApplicationStatus;
-  }): Promise<ApiResponse<PaginatedResponse<Application>>> {
-    return apiClient.get<ApiResponse<PaginatedResponse<Application>>>(
-      "/applications/my",
-      {
-        params,
-      }
-    );
+  }): Promise<PaginatedResponse<Application>> {
+    return api.get<PaginatedResponse<Application>>("/applications/my", {
+      params,
+    });
   },
 
-  async getById(id: string): Promise<ApiResponse<Application>> {
-    return apiClient.get<ApiResponse<Application>>(`/applications/${id}`);
+  async getById(id: string): Promise<Application> {
+    return api.get<Application>(`/applications/${id}`);
   },
 
   async update(
     id: string,
     data: Partial<CreateApplicationRequest>
-  ): Promise<ApiResponse<Application>> {
-    return apiClient.put<ApiResponse<Application>>(`/applications/${id}`, data);
+  ): Promise<Application> {
+    return api.put<Application>(`/applications/${id}`, data);
   },
 
   async saveDraft(
     id: string,
     data: SaveDraftRequest
-  ): Promise<ApiResponse<{ message: string; applicationId: string }>> {
-    return apiClient.post<
-      ApiResponse<{ message: string; applicationId: string }>
-    >(`/applications/${id}/draft`, data);
+  ): Promise<{ message: string; applicationId: string }> {
+    return api.post<{ message: string; applicationId: string }>(
+      `/applications/${id}/draft`,
+      data
+    );
   },
 
   async submit(
     id: string
-  ): Promise<ApiResponse<{ message: string; applicationNumber: string }>> {
-    return apiClient.post<
-      ApiResponse<{ message: string; applicationNumber: string }>
-    >(`/applications/${id}/submit`);
+  ): Promise<{ message: string; applicationNumber: string }> {
+    return api.post<{ message: string; applicationNumber: string }>(
+      `/applications/${id}/submit`,
+      {}
+    );
   },
 
   async updateStatus(
     id: string,
     status: ApplicationStatus,
     adminNotes?: string
-  ): Promise<ApiResponse<Application>> {
-    return apiClient.patch<ApiResponse<Application>>(
-      `/applications/${id}/status`,
-      {
-        status,
-        adminNotes,
-      }
-    );
+  ): Promise<Application> {
+    return api.patch<Application>(`/applications/${id}/status`, {
+      status,
+      adminNotes,
+    });
   },
 
-  async delete(id: string): Promise<ApiResponse<{ message: string }>> {
-    return apiClient.delete<ApiResponse<{ message: string }>>(
-      `/applications/${id}`
-    );
+  async delete(id: string): Promise<{ message: string }> {
+    return api.delete<{ message: string }>(`/applications/${id}`);
   },
 
-  async saveTravelers(
-    id: string,
-    travelers: any[]
-  ): Promise<ApiResponse<Application>> {
-    return apiClient.post<ApiResponse<Application>>(
-      `/applications/${id}/travelers`,
-      travelers
-    );
+  async saveTravelers(id: string, travelers: any[]): Promise<Application> {
+    return api.post<Application>(`/applications/${id}/travelers`, travelers);
   },
 };

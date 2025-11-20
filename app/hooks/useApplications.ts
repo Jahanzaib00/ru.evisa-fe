@@ -40,7 +40,7 @@ export function useApplications(
       });
 
       // Handle both paginated and non-paginated responses
-      const data = response.data.data || [];
+      const data = response.data || [];
       setApplications(Array.isArray(data) ? data : []);
     } catch (err: any) {
       const errorMessage =

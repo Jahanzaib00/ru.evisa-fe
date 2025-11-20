@@ -30,8 +30,7 @@ export async function validateApplicationState(
 
   try {
     // Check if application exists and get its status
-    const response = await applicationsService.getById(applicationId);
-    const application = response.data;
+    const application = await applicationsService.getById(applicationId);
 
     // Application exists and is in correct state - continue with it
     if (application.status === ApplicationStatus.PENDING_PAYMENT) {
@@ -85,8 +84,8 @@ export async function canProceedWithApplication(
   }
 
   try {
-    const response = await applicationsService.getById(applicationId);
-    return response.data.status === ApplicationStatus.PENDING_PAYMENT;
+    const application = await applicationsService.getById(applicationId);
+    return application.status === ApplicationStatus.PENDING_PAYMENT;
   } catch (error) {
     logError(error, "Application verification");
     return false;
@@ -104,9 +103,9 @@ export async function hasExistingTravelers(
   applicationId: string
 ): Promise<boolean> {
   try {
-    const response = await applicationsService.getById(applicationId);
+    const application = await applicationsService.getById(applicationId);
     return (
-      (response.data?.travelers && response.data.travelers.length > 0) || false
+      (application?.travelers && application.travelers.length > 0) || false
     );
   } catch (error) {
     logError(error, "Check existing travelers");

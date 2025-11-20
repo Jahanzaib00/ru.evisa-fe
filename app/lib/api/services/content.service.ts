@@ -1,0 +1,97 @@
+import { api } from "../client";
+
+export interface Content {
+  id: string;
+  type: "BLOG" | "GUIDE" | "COUNTRY" | "FAQ";
+  category?: string;
+  title: string;
+  slug: string;
+  content: string;
+  excerpt?: string;
+  metaTitle?: string;
+  metaDescription?: string;
+  keywords?: string[];
+  featuredImage?: string;
+  metadata?: any;
+  aiGenerated: boolean;
+  status: string;
+  publishedAt?: string;
+  views: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface ContentListResponse {
+  data: Content[];
+  total: number;
+  limit: number;
+  offset: number;
+}
+
+export interface ContentStats {
+  totalContent: number;
+  publishedContent: number;
+  draftContent: number;
+  totalViews: number;
+  contentByType: { type: string; _count: number }[];
+}
+
+export const contentService = {
+  // Get all published content (client unwraps TransformInterceptor automatically)
+  async getPublicContent(params?: {
+    type?: string;
+    category?: string;
+    limit?: number;
+    offset?: number;
+  }): Promise<ContentListResponse> {
+    return api.get<ContentListResponse>("/content/public", { params });
+  },
+
+  // Get content by slug (client unwraps TransformInterceptor automatically)
+  async getBySlug(slug: string): Promise<Content> {
+    return api.get<Content>(`/content/public/slug/${slug}`);
+  },
+
+  // Get content statistics (client unwraps TransformInterceptor automatically)
+  async getStats(): Promise<ContentStats> {
+    return api.get<ContentStats>("/content/public/stats");
+  },
+
+  // Get blog posts
+  async getBlogPosts(params?: {
+    category?: string;
+    limit?: number;
+    offset?: number;
+  }): Promise<ContentListResponse> {
+    return this.getPublicContent({ ...params, type: "BLOG" });
+  },
+
+  // Get country content
+  async getCountryContent(params?: {
+    limit?: number;
+    offset?: number;
+  }): Promise<ContentListResponse> {
+    return this.getPublicContent({ ...params, type: "COUNTRY" });
+  },
+
+  // Get guides
+  async getGuides(params?: {
+    limit?: number;
+    offset?: number;
+  }): Promise<ContentListResponse> {
+    return this.getPublicContent({ ...params, type: "GUIDE" });
+  },
+
+  // Get related content
+  async getRelatedContent(slug: string, limit: number = 3): Promise<Content[]> {
+    const current = await this.getBySlug(slug);
+    const { data } = await this.getPublicContent({
+      type: current.type,
+      category: current.category,
+      limit: limit + 1,
+    });
+
+    // Filter out current content and limit results
+    return data.filter((item) => item.slug !== slug).slice(0, limit);
+  },
+};

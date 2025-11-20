@@ -9,6 +9,13 @@ import FAQ from './components/home/FAQ';
 import Testimonials from './components/home/Testimonials';
 import FinalCTA from './components/home/FinalCTA';
 import Footer from './components/home/Footer';
+import {
+  generateOrganizationSchema,
+  generateWebSiteSchema,
+  generateServiceSchema,
+  generateHowToSchema,
+  renderStructuredData,
+} from './lib/seo/structured-data';
 
 /**
  * ESTA Landing Page
@@ -16,45 +23,86 @@ import Footer from './components/home/Footer';
  * High-converting landing page for ESTA application service
  * - Government-inspired design for trust and credibility
  * - CRO-optimized with clear CTAs and conversion tactics
- * - SEO-optimized with schema markup
+ * - SEO-optimized with schema markup (JSON-LD)
  * - Mobile-first responsive design
  * - Accessibility compliant (WCAG 2.1 AA)
  */
 export default function Home() {
+  // Generate structured data for homepage
+  const organizationSchema = generateOrganizationSchema();
+  const websiteSchema = generateWebSiteSchema();
+  const serviceSchema = generateServiceSchema();
+  const howToSchema = generateHowToSchema({
+    name: 'How to Apply for ESTA',
+    description: 'Complete guide to applying for U.S. ESTA travel authorization in 3 simple steps',
+    url: 'https://visaportal.online',
+    totalTime: 'PT10M',
+    steps: [
+      {
+        name: 'Fill Out Application',
+        text: 'Complete the online ESTA application form with your passport and travel information. Takes about 5 minutes.',
+        url: 'https://visaportal.online/apply',
+      },
+      {
+        name: 'Review and Pay',
+        text: 'Review your application details and pay the processing fee securely with Stripe.',
+      },
+      {
+        name: 'Receive Authorization',
+        text: 'Get your ESTA approval via email within 24-72 hours. Most applications are approved within 24 hours.',
+      },
+    ],
+  });
+
   return (
-    <main className="landing-page">
-      {/* Header */}
-      <Header />
+    <>
+      {/* JSON-LD Structured Data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: renderStructuredData([
+            organizationSchema,
+            websiteSchema,
+            serviceSchema,
+            howToSchema,
+          ]),
+        }}
+      />
 
-      {/* 1. Hero Section - Above the fold with primary CTA */}
-      <Hero />
+      <main className="landing-page">
+        {/* Header */}
+        <Header />
 
-      {/* 2. Trust Bar - Social proof and credentials */}
-      <TrustBar />
+        {/* 1. Hero Section - Above the fold with primary CTA */}
+        <Hero />
 
-      {/* 3. Value Proposition - Why choose our service */}
-      <ValueProposition />
+        {/* 2. Trust Bar - Social proof and credentials */}
+        <TrustBar />
 
-      {/* 4. How It Works - 3-step process */}
-      <HowItWorks />
+        {/* 3. Value Proposition - Why choose our service */}
+        <ValueProposition />
 
-      {/* 5. Requirements - What you need to apply */}
-      <Requirements />
+        {/* 4. How It Works - 3-step process */}
+        <HowItWorks />
 
-      {/* 6. Pricing - Transparent pricing breakdown */}
-      <Pricing />
+        {/* 5. Requirements - What you need to apply */}
+        <Requirements />
 
-      {/* 7. FAQ - Common questions with schema markup */}
-      <FAQ />
+        {/* 6. Pricing - Transparent pricing breakdown */}
+        <Pricing />
 
-      {/* 8. Testimonials - Social proof */}
-      <Testimonials />
+        {/* 7. FAQ - Common questions with schema markup */}
+        <FAQ />
 
-      {/* 9. Final CTA - Last conversion opportunity */}
-      <FinalCTA />
+        {/* 8. Testimonials - Social proof */}
+        <Testimonials />
 
-      {/* 10. Footer - Legal links and disclaimer */}
-      <Footer />
-    </main>
+        {/* 9. Final CTA - Last conversion opportunity */}
+        <FinalCTA />
+
+        {/* 10. Footer - Legal links and disclaimer */}
+        <Footer />
+      </main>
+    </>
   );
 }

@@ -110,31 +110,6 @@ function PaymentForm({
         }}
       />
 
-      {/* Terms Acknowledgment */}
-      <div className="text-xs text-gray-600 leading-relaxed bg-gray-50 p-4 rounded-lg border border-gray-200">
-        <p>
-          By submitting payment I acknowledge that I have read and accept the{" "}
-          <a
-            href="/terms"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-600 hover:text-blue-700 underline font-medium"
-          >
-            ESTA Visa Portal Terms of Service
-          </a>{" "}
-          and{" "}
-          <a
-            href="/privacy"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-600 hover:text-blue-700 underline font-medium"
-          >
-            Privacy Policy
-          </a>
-          .
-        </p>
-      </div>
-
       {/* Payment Button */}
       <button
         type="submit"
@@ -162,6 +137,32 @@ function PaymentForm({
           ? "Processing..."
           : `Pay $${(amount / 100).toFixed(2)} USD`}
       </button>
+
+      {/* Terms Acknowledgment */}
+      <div className="text-xs text-center">
+        <p>
+          By submitting payment I acknowledge that I have read and accept the
+          ESTA Visa Portal{" "}
+          <a
+            href="/terms"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:text-blue-700 underline font-medium"
+          >
+            Terms of Service
+          </a>{" "}
+          and{" "}
+          <a
+            href="/privacy"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:text-blue-700 underline font-medium"
+          >
+            Privacy Policy
+          </a>
+          .
+        </p>
+      </div>
 
       {/* Cancel Button */}
       <button

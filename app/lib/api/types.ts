@@ -68,7 +68,6 @@ export enum ApplicationStatus {
   PROCESSING = "PROCESSING",
   APPROVED = "APPROVED",
   DENIED = "DENIED",
-  EXPIRED = "EXPIRED",
 }
 
 export interface Application {

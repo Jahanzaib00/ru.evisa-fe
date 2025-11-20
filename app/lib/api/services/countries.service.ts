@@ -1,16 +1,16 @@
-import { apiClient } from '../client';
-import type { Country, ApiResponse } from '../types';
+import { api } from "../client";
+import type { Country } from "../types";
 
 export const countriesService = {
-  async getEligibleCountries(): Promise<ApiResponse<Country[]>> {
-    return apiClient.get<ApiResponse<Country[]>>('/countries/eligible');
+  async getEligibleCountries(): Promise<Country[]> {
+    return api.get<Country[]>("/countries/eligible");
   },
 
-  async getAllCountries(): Promise<ApiResponse<Country[]>> {
-    return apiClient.get<ApiResponse<Country[]>>('/countries/all');
+  async getAllCountries(): Promise<Country[]> {
+    return api.get<Country[]>("/countries/all");
   },
 
-  async checkEligibility(countryCode: string): Promise<ApiResponse<Country>> {
-    return apiClient.get<ApiResponse<Country>>(`/countries/${countryCode}/eligible`);
+  async checkEligibility(countryCode: string): Promise<Country> {
+    return api.get<Country>(`/countries/${countryCode}/eligible`);
   },
 };

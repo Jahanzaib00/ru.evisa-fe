@@ -52,7 +52,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const fetchUserProfile = async (token: string) => {
     try {
       const response = await authService.getProfile();
-      setUser(response.data.user);
+      setUser(response.user);
     } catch (error) {
       console.error("Error fetching user profile:", error);
       localStorage.removeItem("access_token");
@@ -66,32 +66,36 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const login = async (email: string, password: string) => {
     try {
       const response = await authService.login({ email, password });
-      setUser(response.data.user);
+      setUser(response.user);
       router.push("/orders");
     } catch (error: any) {
       console.error("Login error:", error);
-      throw new Error(error.response?.data?.message || error.message || "Login failed");
+      throw new Error(
+        error.response?.data?.message || error.message || "Login failed"
+      );
     }
   };
 
   const register = async (registerData: RegisterData) => {
     try {
       const response = await authService.register(registerData);
-      setUser(response.data.user);
+      setUser(response.user);
       router.push("/orders");
     } catch (error: any) {
       console.error("Registration error:", error);
-      throw new Error(error.response?.data?.message || error.message || "Registration failed");
+      throw new Error(
+        error.response?.data?.message || error.message || "Registration failed"
+      );
     }
   };
 
   const logout = async () => {
-    try {
-      await authService.logout();
-    } finally {
-      setUser(null);
-      router.push("/");
-    }
+    setUser(null);
+    // try {
+    // await authService.logout();
+    // } finally {
+    //   router.push("/");
+    // }
   };
 
   const setAuthFromPayment = (token: string) => {
