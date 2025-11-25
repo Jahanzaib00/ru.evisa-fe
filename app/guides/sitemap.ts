@@ -1,5 +1,5 @@
-import { MetadataRoute } from 'next';
-import { ESTA_GUIDES } from '@/app/lib/data/guides';
+import { MetadataRoute } from "next";
+import { ESTA_GUIDES } from "@/app/lib/data/guides";
 
 /**
  * Guides Sitemap
@@ -19,12 +19,13 @@ import { ESTA_GUIDES } from '@/app/lib/data/guides';
  * - Grouped logically by content type
  */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://visaportal.online';
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.com";
 
   return ESTA_GUIDES.map((guide) => ({
     url: `${baseUrl}/guides/${guide.slug}`,
     lastModified: guide.lastUpdated ? new Date(guide.lastUpdated) : new Date(),
-    changeFrequency: 'monthly' as const,
+    changeFrequency: "monthly" as const,
     priority: 0.8, // Higher priority than blog posts
   }));
 }

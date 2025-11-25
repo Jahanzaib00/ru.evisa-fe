@@ -18,7 +18,7 @@ import {
 
 const SITE_NAME = "ESTA Visa Portal";
 const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://visaportal.online";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.com";
 const LOGO_URL = `${SITE_URL}/images/logo.png`;
 const CONTACT_EMAIL = "support@visaportal.online";
 

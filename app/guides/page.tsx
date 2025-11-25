@@ -21,7 +21,7 @@ export const metadata: Metadata = generateSEOMetadata({
     "ESTA knowledge base",
   ],
   canonicalUrl: `${
-    process.env.NEXT_PUBLIC_SITE_URL || "https://visaportal.online"
+    process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.com"
   }/guides`,
 });
 

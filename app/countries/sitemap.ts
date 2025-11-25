@@ -1,5 +1,5 @@
-import { MetadataRoute } from 'next';
-import { VWP_COUNTRIES } from '@/app/lib/data/countries';
+import { MetadataRoute } from "next";
+import { VWP_COUNTRIES } from "@/app/lib/data/countries";
 
 /**
  * Countries Sitemap
@@ -20,12 +20,13 @@ import { VWP_COUNTRIES } from '@/app/lib/data/countries';
  * - Stable content with infrequent updates
  */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://visaportal.online';
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.com";
 
   return VWP_COUNTRIES.map((country) => ({
     url: `${baseUrl}/countries/${country.slug}`,
     lastModified: new Date(), // Updated when country data changes
-    changeFrequency: 'weekly' as const,
+    changeFrequency: "weekly" as const,
     priority: 0.9, // High priority landing pages
   }));
 }

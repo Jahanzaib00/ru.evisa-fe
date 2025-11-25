@@ -1,21 +1,21 @@
-import Header from './components/layout/Header';
-import Hero from './components/home/Hero';
-import TrustBar from './components/home/TrustBar';
-import ValueProposition from './components/home/ValueProposition';
-import HowItWorks from './components/home/HowItWorks';
-import Requirements from './components/home/Requirements';
-import Pricing from './components/home/Pricing';
-import FAQ from './components/home/FAQ';
-import Testimonials from './components/home/Testimonials';
-import FinalCTA from './components/home/FinalCTA';
-import Footer from './components/home/Footer';
+import Header from "./components/layout/Header";
+import Hero from "./components/home/Hero";
+import TrustBar from "./components/home/TrustBar";
+import ValueProposition from "./components/home/ValueProposition";
+import HowItWorks from "./components/home/HowItWorks";
+import Requirements from "./components/home/Requirements";
+import Pricing from "./components/home/Pricing";
+import FAQ from "./components/home/FAQ";
+import Testimonials from "./components/home/Testimonials";
+import FinalCTA from "./components/home/FinalCTA";
+import Footer from "./components/home/Footer";
 import {
   generateOrganizationSchema,
   generateWebSiteSchema,
   generateServiceSchema,
   generateHowToSchema,
   renderStructuredData,
-} from './lib/seo/structured-data';
+} from "./lib/seo/structured-data";
 
 /**
  * ESTA Landing Page
@@ -33,23 +33,24 @@ export default function Home() {
   const websiteSchema = generateWebSiteSchema();
   const serviceSchema = generateServiceSchema();
   const howToSchema = generateHowToSchema({
-    name: 'How to Apply for ESTA',
-    description: 'Complete guide to applying for U.S. ESTA travel authorization in 3 simple steps',
-    url: 'https://visaportal.online',
-    totalTime: 'PT10M',
+    name: "How to Apply for ESTA",
+    description:
+      "Complete guide to applying for U.S. ESTA travel authorization in 3 simple steps",
+    url: "https://www.visaportal.com",
+    totalTime: "PT10M",
     steps: [
       {
-        name: 'Fill Out Application',
-        text: 'Complete the online ESTA application form with your passport and travel information. Takes about 5 minutes.',
-        url: 'https://visaportal.online/apply',
+        name: "Fill Out Application",
+        text: "Complete the online ESTA application form with your passport and travel information. Takes about 5 minutes.",
+        url: "https://www.visaportal.com/apply",
       },
       {
-        name: 'Review and Pay',
-        text: 'Review your application details and pay the processing fee securely with Stripe.',
+        name: "Review and Pay",
+        text: "Review your application details and pay the processing fee securely with Stripe.",
       },
       {
-        name: 'Receive Authorization',
-        text: 'Get your ESTA approval via email within 24-72 hours. Most applications are approved within 24 hours.',
+        name: "Receive Authorization",
+        text: "Get your ESTA approval via email within 24-72 hours. Most applications are approved within 24 hours.",
       },
     ],
   });

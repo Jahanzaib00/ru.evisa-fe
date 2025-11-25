@@ -20,7 +20,7 @@ export const metadata: Metadata = generateSEOMetadata({
     "countries eligible for ESTA",
   ],
   canonicalUrl: `${
-    process.env.NEXT_PUBLIC_SITE_URL || "https://visaportal.online"
+    process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.com"
   }/countries`,
 });
 

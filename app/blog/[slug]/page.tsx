@@ -4,12 +4,12 @@
  * Fetches from backend API - NO PRISMA
  */
 
-import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import ReactMarkdown from 'react-markdown';
-import { generateBlogMetadata } from '@/app/lib/seo/metadata';
-import { generateArticleSchema } from '@/app/lib/seo/structured-data';
-import { contentService } from '@/app/lib/api';
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
+import ReactMarkdown from "react-markdown";
+import { generateBlogMetadata } from "@/app/lib/seo/metadata";
+import { generateArticleSchema } from "@/app/lib/seo/structured-data";
+import { contentService } from "@/app/lib/api";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -27,7 +27,7 @@ export async function generateStaticParams() {
       slug: post.slug,
     }));
   } catch (error) {
-    console.error('Error fetching blog posts for static params:', error);
+    console.error("Error fetching blog posts for static params:", error);
     return [];
   }
 }
@@ -38,25 +38,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { slug } = await params;
     const post = await contentService.getBySlug(slug);
 
-    if (!post || post.status !== 'PUBLISHED') {
+    if (!post || post.status !== "PUBLISHED") {
       return {
-        title: 'Blog Post Not Found',
+        title: "Blog Post Not Found",
       };
     }
 
     return generateBlogMetadata(
       post.metaTitle || post.title,
-      post.metaDescription || post.excerpt || '',
+      post.metaDescription || post.excerpt || "",
       post.slug,
       post.publishedAt || new Date().toISOString(),
       post.updatedAt,
-      'ESTA Visa Portal Team',
+      "ESTA Visa Portal Team",
       post.keywords,
       post.featuredImage || undefined
     );
   } catch (error) {
     return {
-      title: 'Blog Post Not Found',
+      title: "Blog Post Not Found",
     };
   }
 }
@@ -70,11 +70,11 @@ export default async function BlogPostPage({ params }: Props) {
   try {
     post = await contentService.getBySlug(slug);
   } catch (error) {
-    console.error('Error fetching blog post:', error);
+    console.error("Error fetching blog post:", error);
     notFound();
   }
 
-  if (!post || post.status !== 'PUBLISHED') {
+  if (!post || post.status !== "PUBLISHED") {
     notFound();
   }
 
@@ -84,11 +84,13 @@ export default async function BlogPostPage({ params }: Props) {
   // Generate structured data
   const structuredData = generateArticleSchema({
     title: post.title,
-    description: post.metaDescription || post.excerpt || '',
-    url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://visaportal.online'}/blog/${post.slug}`,
+    description: post.metaDescription || post.excerpt || "",
+    url: `${
+      process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.com"
+    }/blog/${post.slug}`,
     datePublished: post.publishedAt || new Date().toISOString(),
     dateModified: post.updatedAt,
-    author: 'ESTA Visa Portal Team',
+    author: "ESTA Visa Portal Team",
     image: post.featuredImage,
     keywords: post.keywords,
   });
@@ -115,12 +117,12 @@ export default async function BlogPostPage({ params }: Props) {
               )}
               <span className="text-sm text-gray-500">
                 {post.publishedAt
-                  ? new Date(post.publishedAt).toLocaleDateString('en-US', {
-                      month: 'long',
-                      day: 'numeric',
-                      year: 'numeric',
+                  ? new Date(post.publishedAt).toLocaleDateString("en-US", {
+                      month: "long",
+                      day: "numeric",
+                      year: "numeric",
                     })
-                  : 'Draft'}
+                  : "Draft"}
               </span>
               <span className="text-sm text-gray-500">
                 {post.views.toLocaleString()} views
@@ -147,17 +149,15 @@ export default async function BlogPostPage({ params }: Props) {
           <footer className="mt-12 pt-8 border-t border-gray-200">
             <div className="flex items-center justify-between">
               <div className="text-sm text-gray-500">
-                Last updated:{' '}
-                {new Date(post.updatedAt).toLocaleDateString('en-US', {
-                  month: 'long',
-                  day: 'numeric',
-                  year: 'numeric',
+                Last updated:{" "}
+                {new Date(post.updatedAt).toLocaleDateString("en-US", {
+                  month: "long",
+                  day: "numeric",
+                  year: "numeric",
                 })}
               </div>
               {post.aiGenerated && (
-                <div className="text-xs text-gray-400">
-                  AI-Enhanced Content
-                </div>
+                <div className="text-xs text-gray-400">AI-Enhanced Content</div>
               )}
             </div>
           </footer>

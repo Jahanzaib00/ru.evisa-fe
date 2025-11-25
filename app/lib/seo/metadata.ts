@@ -4,12 +4,13 @@
  * Inspired by Rails project but enhanced for Next.js 13+ App Router
  */
 
-import { Metadata } from 'next';
+import { Metadata } from "next";
 
-const SITE_NAME = 'ESTA Visa Portal';
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://visaportal.online';
+const SITE_NAME = "ESTA Visa Portal";
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.com";
 const DEFAULT_IMAGE = `${SITE_URL}/images/og-image.jpg`;
-const TWITTER_HANDLE = '@ESTAVisaPortal'; // Update with actual handle
+const TWITTER_HANDLE = "@ESTAVisaPortal"; // Update with actual handle
 
 export interface SEOConfig {
   title: string;
@@ -17,7 +18,7 @@ export interface SEOConfig {
   keywords?: string[];
   canonicalUrl?: string;
   ogImage?: string;
-  ogType?: 'website' | 'article';
+  ogType?: "website" | "article";
   publishedTime?: string;
   modifiedTime?: string;
   author?: string;
@@ -36,7 +37,7 @@ export function generateMetadata(config: SEOConfig): Metadata {
     keywords = [],
     canonicalUrl,
     ogImage = DEFAULT_IMAGE,
-    ogType = 'website',
+    ogType = "website",
     publishedTime,
     modifiedTime,
     author,
@@ -51,7 +52,7 @@ export function generateMetadata(config: SEOConfig): Metadata {
   const metadata: Metadata = {
     title: fullTitle,
     description,
-    keywords: keywords.length > 0 ? keywords.join(', ') : undefined,
+    keywords: keywords.length > 0 ? keywords.join(", ") : undefined,
 
     // Authors
     authors: author ? [{ name: author }] : [{ name: SITE_NAME }],
@@ -67,9 +68,9 @@ export function generateMetadata(config: SEOConfig): Metadata {
       googleBot: {
         index: !noindex,
         follow: !nofollow,
-        'max-video-preview': -1,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
       },
     },
 
@@ -81,7 +82,7 @@ export function generateMetadata(config: SEOConfig): Metadata {
     // Open Graph
     openGraph: {
       type: ogType,
-      locale: 'en_US',
+      locale: "en_US",
       url: canonical,
       title: fullTitle,
       description,
@@ -100,7 +101,7 @@ export function generateMetadata(config: SEOConfig): Metadata {
 
     // Twitter Card
     twitter: {
-      card: 'summary_large_image',
+      card: "summary_large_image",
       title: fullTitle,
       description,
       images: [ogImage],
@@ -110,14 +111,14 @@ export function generateMetadata(config: SEOConfig): Metadata {
 
     // Additional meta tags
     other: {
-      'application-name': SITE_NAME,
-      'apple-mobile-web-app-capable': 'yes',
-      'apple-mobile-web-app-status-bar-style': 'default',
-      'apple-mobile-web-app-title': SITE_NAME,
-      'format-detection': 'telephone=no',
-      'mobile-web-app-capable': 'yes',
-      'msapplication-tap-highlight': 'no',
-      'theme-color': '#1a56db',
+      "application-name": SITE_NAME,
+      "apple-mobile-web-app-capable": "yes",
+      "apple-mobile-web-app-status-bar-style": "default",
+      "apple-mobile-web-app-title": SITE_NAME,
+      "format-detection": "telephone=no",
+      "mobile-web-app-capable": "yes",
+      "msapplication-tap-highlight": "no",
+      "theme-color": "#1a56db",
     },
   };
 
@@ -129,20 +130,20 @@ export function generateMetadata(config: SEOConfig): Metadata {
  */
 export function generateHomeMetadata(): Metadata {
   return generateMetadata({
-    title: 'Fast U.S. Travel Authorization',
+    title: "Fast U.S. Travel Authorization",
     description:
-      'Apply for U.S. ESTA in 3 easy steps. Expert assistance, 99% approval rate, 24/7 support. Get approved within 24 hours. Fast, secure, and reliable ESTA application service.',
+      "Apply for U.S. ESTA in 3 easy steps. Expert assistance, 99% approval rate, 24/7 support. Get approved within 24 hours. Fast, secure, and reliable ESTA application service.",
     keywords: [
-      'ESTA application',
-      'US ESTA',
-      'travel authorization',
-      'visa waiver program',
-      'ESTA online',
-      'apply ESTA',
-      'USA travel permit',
-      'electronic travel authorization',
-      'ESTA assistance',
-      'fast ESTA approval',
+      "ESTA application",
+      "US ESTA",
+      "travel authorization",
+      "visa waiver program",
+      "ESTA online",
+      "apply ESTA",
+      "USA travel permit",
+      "electronic travel authorization",
+      "ESTA assistance",
+      "fast ESTA approval",
     ],
   });
 }
@@ -150,7 +151,10 @@ export function generateHomeMetadata(): Metadata {
 /**
  * Generate metadata for country-specific pages
  */
-export function generateCountryMetadata(countryName: string, countrySlug: string): Metadata {
+export function generateCountryMetadata(
+  countryName: string,
+  countrySlug: string
+): Metadata {
   return generateMetadata({
     title: `ESTA for ${countryName} Citizens`,
     description: `Complete guide to ESTA application for ${countryName} citizens. Requirements, process, fees, and tips for ${countryName} nationals traveling to the United States. Apply now with expert assistance.`,
@@ -179,15 +183,15 @@ export function generateGuideMetadata(
     title: guideTitle,
     description: guideDescription,
     keywords: [
-      'ESTA guide',
-      'ESTA information',
-      'travel authorization guide',
-      'USA travel requirements',
+      "ESTA guide",
+      "ESTA information",
+      "travel authorization guide",
+      "USA travel requirements",
       ...keywords,
     ],
     canonicalUrl: `${SITE_URL}/guides/${guideSlug}`,
-    ogType: 'article',
-    author: 'ESTA Visa Portal Team',
+    ogType: "article",
+    author: "ESTA Visa Portal Team",
   });
 }
 
@@ -207,10 +211,10 @@ export function generateBlogMetadata(
   return generateMetadata({
     title,
     description,
-    keywords: ['ESTA blog', 'travel tips', 'visa information', ...keywords],
+    keywords: ["ESTA blog", "travel tips", "visa information", ...keywords],
     canonicalUrl: `${SITE_URL}/blog/${slug}`,
     ogImage: featuredImage || DEFAULT_IMAGE,
-    ogType: 'article',
+    ogType: "article",
     publishedTime: publishedAt,
     modifiedTime: updatedAt,
     author,

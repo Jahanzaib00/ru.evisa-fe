@@ -1,15 +1,19 @@
-import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import Link from 'next/link';
-import Header from '@/app/components/layout/Header';
-import Footer from '@/app/components/home/Footer';
-import { getGuideBySlug, getAllGuideSlugs, getRelatedGuides } from '@/app/lib/data/guides';
-import { generateGuideMetadata } from '@/app/lib/seo/metadata';
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import Header from "@/app/components/layout/Header";
+import Footer from "@/app/components/home/Footer";
+import {
+  getGuideBySlug,
+  getAllGuideSlugs,
+  getRelatedGuides,
+} from "@/app/lib/data/guides";
+import { generateGuideMetadata } from "@/app/lib/seo/metadata";
 import {
   generateArticleSchema,
   generateWebPageSchema,
   renderStructuredData,
-} from '@/app/lib/seo/structured-data';
+} from "@/app/lib/seo/structured-data";
 
 /**
  * Generate static paths for all guides
@@ -35,11 +39,16 @@ export async function generateMetadata({
 
   if (!guide) {
     return {
-      title: 'Guide Not Found',
+      title: "Guide Not Found",
     };
   }
 
-  return generateGuideMetadata(guide.title, guide.description, guide.slug, guide.keywords);
+  return generateGuideMetadata(
+    guide.title,
+    guide.description,
+    guide.slug,
+    guide.keywords
+  );
 }
 
 /**
@@ -48,14 +57,18 @@ export async function generateMetadata({
  *
  * NOTE: Content can be enhanced with OpenAI generation
  */
-export default async function GuidePage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function GuidePage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
 
   let guide;
   try {
     guide = getGuideBySlug(slug);
   } catch (error) {
-    console.error('Error fetching guide:', error);
+    console.error("Error fetching guide:", error);
     notFound();
   }
 
@@ -70,23 +83,40 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
   const articleSchema = generateArticleSchema({
     title: guide.title,
     description: guide.description,
-    url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://visaportal.online'}/guides/${guide.slug}`,
+    url: `${
+      process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.com"
+    }/guides/${guide.slug}`,
     datePublished: guide.lastUpdated || currentDate,
     dateModified: guide.lastUpdated || currentDate,
-    author: 'ESTA Visa Portal Team',
+    author: "ESTA Visa Portal Team",
     keywords: guide.keywords,
   });
 
   const webPageSchema = generateWebPageSchema({
     title: guide.title,
     description: guide.description,
-    url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://visaportal.online'}/guides/${guide.slug}`,
+    url: `${
+      process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.com"
+    }/guides/${guide.slug}`,
     datePublished: guide.lastUpdated || currentDate,
     dateModified: guide.lastUpdated || currentDate,
     breadcrumbs: [
-      { name: 'Home', url: process.env.NEXT_PUBLIC_SITE_URL || 'https://visaportal.online' },
-      { name: 'Guides', url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://visaportal.online'}/guides` },
-      { name: guide.title, url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://visaportal.online'}/guides/${guide.slug}` },
+      {
+        name: "Home",
+        url: process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.com",
+      },
+      {
+        name: "Guides",
+        url: `${
+          process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.com"
+        }/guides`,
+      },
+      {
+        name: guide.title,
+        url: `${
+          process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.com"
+        }/guides/${guide.slug}`,
+      },
     ],
   });
 
@@ -139,7 +169,10 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
                 )}
                 <span>✍️ ESTA Visa Portal Team</span>
                 <span>
-                  🕐 Last updated: {new Date(guide.lastUpdated || currentDate).toLocaleDateString()}
+                  🕐 Last updated:{" "}
+                  {new Date(
+                    guide.lastUpdated || currentDate
+                  ).toLocaleDateString()}
                 </span>
               </div>
             </header>
@@ -154,17 +187,24 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
               {/* Template content - will be replaced with OpenAI generated content */}
               <h2>Introduction</h2>
               <p>
-                This comprehensive guide covers everything you need to know about {guide.title.toLowerCase()}.
-                Whether you're applying for the first time or need clarification on specific requirements,
+                This comprehensive guide covers everything you need to know
+                about {guide.title.toLowerCase()}. Whether you're applying for
+                the first time or need clarification on specific requirements,
                 this guide will walk you through all the essential information.
               </p>
 
               <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6 my-8">
-                <p className="text-sm font-semibold mb-2">🚧 Enhanced Content Coming Soon</p>
+                <p className="text-sm font-semibold mb-2">
+                  🚧 Enhanced Content Coming Soon
+                </p>
                 <p className="text-sm mb-0">
-                  This guide is currently being enhanced with detailed, expert-level content. Check back
-                  soon for the complete guide, or{' '}
-                  <Link href="/apply" className="text-blue-600 hover:underline font-semibold">
+                  This guide is currently being enhanced with detailed,
+                  expert-level content. Check back soon for the complete guide,
+                  or{" "}
+                  <Link
+                    href="/apply"
+                    className="text-blue-600 hover:underline font-semibold"
+                  >
                     start your ESTA application now
                   </Link>
                   .
@@ -173,7 +213,10 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
 
               <h2>Key Points</h2>
               <ul>
-                <li>ESTA is required for Visa Waiver Program travelers to the United States</li>
+                <li>
+                  ESTA is required for Visa Waiver Program travelers to the
+                  United States
+                </li>
                 <li>The application process is completed entirely online</li>
                 <li>Most applications are approved within 24-72 hours</li>
                 <li>ESTA is valid for 2 years or until passport expiration</li>
@@ -182,14 +225,16 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
 
               <h2>Need Help?</h2>
               <p>
-                If you have questions about this topic or need assistance with your ESTA application,
-                our expert team is here to help 24/7.
+                If you have questions about this topic or need assistance with
+                your ESTA application, our expert team is here to help 24/7.
               </p>
             </div>
 
             {/* CTA */}
             <div className="bg-blue-900 text-white rounded-lg p-8 my-12 text-center">
-              <h2 className="text-3xl font-bold mb-4">Ready to Apply for ESTA?</h2>
+              <h2 className="text-3xl font-bold mb-4">
+                Ready to Apply for ESTA?
+              </h2>
               <p className="text-xl text-blue-100 mb-6">
                 Get expert assistance with your ESTA application
               </p>
@@ -223,7 +268,9 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
                       <h3 className="text-lg font-semibold mb-2 text-gray-900">
                         {relatedGuide.title}
                       </h3>
-                      <p className="text-gray-600 text-sm">{relatedGuide.description}</p>
+                      <p className="text-gray-600 text-sm">
+                        {relatedGuide.description}
+                      </p>
                       {relatedGuide.estimatedReadTime && (
                         <p className="text-xs text-gray-500 mt-2">
                           📖 {relatedGuide.estimatedReadTime} min read

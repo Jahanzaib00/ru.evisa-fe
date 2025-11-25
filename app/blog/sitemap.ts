@@ -1,5 +1,5 @@
-import { MetadataRoute } from 'next';
-import { contentService } from '@/app/lib/api';
+import { MetadataRoute } from "next";
+import { contentService } from "@/app/lib/api";
 
 /**
  * Dynamic Blog Sitemap
@@ -22,7 +22,8 @@ import { contentService } from '@/app/lib/api';
  * - Includes lastModified for better crawling
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://visaportal.online';
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.com";
 
   try {
     // Fetch all blog posts (up to 50K limit)
@@ -35,11 +36,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     return posts.map((post) => ({
       url: `${baseUrl}/blog/${post.slug}`,
       lastModified: new Date(post.updatedAt),
-      changeFrequency: 'monthly' as const,
+      changeFrequency: "monthly" as const,
       priority: 0.7,
     }));
   } catch (error) {
-    console.error('Error generating blog sitemap:', error);
+    console.error("Error generating blog sitemap:", error);
     // Return empty array on error (Next.js will handle gracefully)
     return [];
   }
