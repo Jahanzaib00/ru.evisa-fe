@@ -210,3 +210,16 @@ textarea:focus-visible {
   outline: 2px solid var(--color-primary-light);
   outline-offset: 2px;
 }
+
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.5s ease-out 1s forwards;
+}

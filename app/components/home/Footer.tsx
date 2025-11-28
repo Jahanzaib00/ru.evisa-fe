@@ -16,11 +16,10 @@ interface FooterColumn {
 
 const footerColumns: FooterColumn[] = [
   {
-    title: "About",
+    title: "Company",
     links: [
       { text: "About Us", href: "/about" },
       { text: "Support Center", href: "/support" },
-      { text: "FAQ", href: "/support#faq" },
       { text: "Contact", href: "/support" },
     ],
   },
@@ -35,18 +34,10 @@ const footerColumns: FooterColumn[] = [
   {
     title: "Resources",
     links: [
-      { text: "ESTA Requirements", href: "/#requirements" },
-      { text: "How It Works", href: "/#how-it-works" },
-      {
-        text: "Official U.S. ESTA Site",
-        href: "https://esta.cbp.dhs.gov/",
-        external: true,
-      },
-      {
-        text: "U.S. Customs & Border",
-        href: "https://www.cbp.gov/",
-        external: true,
-      },
+      { text: "ESTA Guides", href: "/guides" },
+      { text: "Eligible Countries", href: "/countries" },
+      { text: "Blog & News", href: "/blog" },
+      { text: "FAQ", href: "/support#faq" },
     ],
   },
 ];

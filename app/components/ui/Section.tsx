@@ -4,7 +4,7 @@ interface SectionProps {
   id?: string;
   children: ReactNode;
   className?: string;
-  background?: "white" | "gray" | "blue" | "dark";
+  background?: "white" | "gray" | "blue" | "dark" | "primary";
   padding?: "sm" | "md" | "lg" | "xl";
 }
 
@@ -20,6 +20,7 @@ export default function Section({
     gray: "bg-gray-lightest",
     blue: "bg-primary",
     dark: "bg-gray-dark",
+    primary: "bg-primary",
   };
 
   const paddingStyles = {

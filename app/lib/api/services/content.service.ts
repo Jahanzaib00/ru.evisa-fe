@@ -41,6 +41,7 @@ export const contentService = {
   async getPublicContent(params?: {
     type?: string;
     category?: string;
+    search?: string;
     limit?: number;
     offset?: number;
   }): Promise<ContentListResponse> {
@@ -60,6 +61,7 @@ export const contentService = {
   // Get blog posts
   async getBlogPosts(params?: {
     category?: string;
+    search?: string;
     limit?: number;
     offset?: number;
   }): Promise<ContentListResponse> {
@@ -76,6 +78,8 @@ export const contentService = {
 
   // Get guides
   async getGuides(params?: {
+    category?: string;
+    search?: string;
     limit?: number;
     offset?: number;
   }): Promise<ContentListResponse> {
@@ -93,5 +97,12 @@ export const contentService = {
 
     // Filter out current content and limit results
     return data.filter((item) => item.slug !== slug).slice(0, limit);
+  },
+
+  // Get categories (backend handles filtering)
+  async getCategories(type?: string): Promise<string[]> {
+    return api.get<string[]>("/content/public/categories", {
+      params: type ? { type } : undefined,
+    });
   },
 };

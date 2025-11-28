@@ -130,7 +130,7 @@ export function generateMetadata(config: SEOConfig): Metadata {
  */
 export function generateHomeMetadata(): Metadata {
   return generateMetadata({
-    title: "Fast U.S. Travel Authorization",
+    title: "ESTA Visa Portal",
     description:
       "Apply for U.S. ESTA in 3 easy steps. Expert assistance, 99% approval rate, 24/7 support. Get approved within 24 hours. Fast, secure, and reliable ESTA application service.",
     keywords: [
@@ -144,6 +144,9 @@ export function generateHomeMetadata(): Metadata {
       "electronic travel authorization",
       "ESTA assistance",
       "fast ESTA approval",
+      "US Visa",
+      "US Tourist Visa",
+      "US Business Visa",
     ],
   });
 }

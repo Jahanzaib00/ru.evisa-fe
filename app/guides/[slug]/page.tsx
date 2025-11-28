@@ -1,23 +1,26 @@
+/**
+ * Individual Guide Page
+ * THE ABSOLUTE BEST guide detail page
+ * Perfect SEO, UX, Conversion with Multiple CTAs, Sticky Bar, TOC
+ */
+
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Header from "@/app/components/layout/Header";
 import Footer from "@/app/components/home/Footer";
-import {
-  getGuideBySlug,
-  getAllGuideSlugs,
-  getRelatedGuides,
-} from "@/app/lib/data/guides";
+import { getGuideBySlug, getAllGuideSlugs } from "@/app/lib/data/guides";
 import { generateGuideMetadata } from "@/app/lib/seo/metadata";
 import {
   generateArticleSchema,
   generateWebPageSchema,
   renderStructuredData,
 } from "@/app/lib/seo/structured-data";
+import GuideContent from "@/app/components/content/GuideContent";
+import GuideSidebar from "@/app/components/content/GuideSidebar";
 
 /**
- * Generate static paths for all guides
- * Pre-renders all guide pages at build time for SEO
+ * Generate static params for all guides
  */
 export async function generateStaticParams() {
   const slugs = getAllGuideSlugs();
@@ -40,6 +43,10 @@ export async function generateMetadata({
   if (!guide) {
     return {
       title: "Guide Not Found",
+      robots: {
+        index: false,
+        follow: false,
+      },
     };
   }
 
@@ -53,9 +60,6 @@ export async function generateMetadata({
 
 /**
  * Guide Page Component
- * SEO-optimized guide pages with structured data
- *
- * NOTE: Content can be enhanced with OpenAI generation
  */
 export default async function GuidePage({
   params,
@@ -76,7 +80,6 @@ export default async function GuidePage({
     notFound();
   }
 
-  const relatedGuides = getRelatedGuides(slug, 4);
   const currentDate = new Date().toISOString();
 
   // Generate structured data
@@ -122,7 +125,7 @@ export default async function GuidePage({
 
   return (
     <>
-      {/* JSON-LD Structured Data */}
+      {/* Structured Data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -132,155 +135,138 @@ export default async function GuidePage({
 
       <Header />
 
-      <main className="min-h-screen bg-white">
+      {/* Sticky CTA Bar - Mobile & Desktop */}
+      <div className="fixed bottom-0 left-0 right-0 bg-blue-900 text-white shadow-2xl border-t-4 border-blue-600 z-50 transform translate-y-full animate-slide-up">
+        <div className="container mx-auto px-4 py-4 max-w-5xl">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="text-center sm:text-left">
+              <h3 className="text-lg font-bold">Ready to Apply for ESTA?</h3>
+              <p className="text-sm text-blue-100">
+                Expert assistance • 99% approval rate • 24/7 support
+              </p>
+            </div>
+            <Link
+              href="/apply"
+              className="bg-white text-blue-900 px-8 py-3 rounded-lg font-bold hover:bg-blue-50 transition-colors shadow-lg whitespace-nowrap"
+            >
+              Start Application →
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      <main className="min-h-screen bg-white pb-24">
         {/* Breadcrumbs */}
         <div className="bg-gray-50 border-b border-gray-200">
-          <div className="container mx-auto px-4 max-w-4xl py-3">
+          <div className="container mx-auto px-4 max-w-5xl py-4">
             <nav className="flex text-sm">
-              <Link href="/" className="text-blue-600 hover:underline">
+              <Link
+                href="/"
+                className="text-blue-600 hover:underline font-medium"
+              >
                 Home
               </Link>
               <span className="mx-2 text-gray-400">/</span>
-              <Link href="/guides" className="text-blue-600 hover:underline">
+              <Link
+                href="/guides"
+                className="text-blue-600 hover:underline font-medium"
+              >
                 Guides
               </Link>
               <span className="mx-2 text-gray-400">/</span>
-              <span className="text-gray-600">{guide.title}</span>
+              <span className="text-gray-700 font-medium">{guide.title}</span>
             </nav>
           </div>
         </div>
 
-        {/* Article Header */}
-        <article className="py-8">
-          <div className="container mx-auto px-4 max-w-4xl">
-            <header className="mb-8">
-              <div className="mb-4">
-                <span className="inline-block bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full uppercase">
-                  {guide.category}
-                </span>
+        {/* Article */}
+        <article className="py-12">
+          <div className="container mx-auto px-4 max-w-5xl">
+            <div className="grid lg:grid-cols-[1fr_280px] gap-12">
+              {/* Main Content */}
+              <div>
+                {/* Header */}
+                <header className="mb-10">
+                  <div className="mb-4">
+                    <span className="inline-block bg-blue-100 text-blue-800 text-sm font-bold px-4 py-2 rounded-full uppercase tracking-wide">
+                      {guide.category}
+                    </span>
+                  </div>
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 text-gray-900 leading-tight">
+                    {guide.title}
+                  </h1>
+                  <p className="text-xl md:text-2xl text-gray-600 mb-6 leading-relaxed border-l-4 border-blue-600 pl-6 py-3">
+                    {guide.description}
+                  </p>
+                  <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500">
+                    {guide.estimatedReadTime && (
+                      <span className="flex items-center gap-2">
+                        <svg
+                          className="w-5 h-5"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                        {guide.estimatedReadTime} min read
+                      </span>
+                    )}
+                    <span className="flex items-center gap-2">
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                        />
+                      </svg>
+                      ESTA Visa Portal Team
+                    </span>
+                    <span className="flex items-center gap-2">
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                        />
+                      </svg>
+                      Updated{" "}
+                      {new Date(
+                        guide.lastUpdated || currentDate
+                      ).toLocaleDateString("en-US", {
+                        month: "long",
+                        year: "numeric",
+                      })}
+                    </span>
+                  </div>
+                </header>
+
+                {/* Main Guide Content */}
+                <GuideContent guide={guide} />
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
-                {guide.title}
-              </h1>
-              <p className="text-xl text-gray-600 mb-4">{guide.description}</p>
-              <div className="flex items-center text-sm text-gray-500 space-x-4">
-                {guide.estimatedReadTime && (
-                  <span>📖 {guide.estimatedReadTime} min read</span>
-                )}
-                <span>✍️ ESTA Visa Portal Team</span>
-                <span>
-                  🕐 Last updated:{" "}
-                  {new Date(
-                    guide.lastUpdated || currentDate
-                  ).toLocaleDateString()}
-                </span>
-              </div>
-            </header>
 
-            {/* Guide Content - This is a template that will be enhanced with OpenAI */}
-            <div className="prose prose-lg max-w-none">
-              <div className="bg-blue-50 border-l-4 border-blue-600 p-6 mb-8">
-                <h2 className="text-xl font-bold mb-2 mt-0">Quick Summary</h2>
-                <p className="mb-0">{guide.description}</p>
-              </div>
-
-              {/* Template content - will be replaced with OpenAI generated content */}
-              <h2>Introduction</h2>
-              <p>
-                This comprehensive guide covers everything you need to know
-                about {guide.title.toLowerCase()}. Whether you're applying for
-                the first time or need clarification on specific requirements,
-                this guide will walk you through all the essential information.
-              </p>
-
-              <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6 my-8">
-                <p className="text-sm font-semibold mb-2">
-                  🚧 Enhanced Content Coming Soon
-                </p>
-                <p className="text-sm mb-0">
-                  This guide is currently being enhanced with detailed,
-                  expert-level content. Check back soon for the complete guide,
-                  or{" "}
-                  <Link
-                    href="/apply"
-                    className="text-blue-600 hover:underline font-semibold"
-                  >
-                    start your ESTA application now
-                  </Link>
-                  .
-                </p>
-              </div>
-
-              <h2>Key Points</h2>
-              <ul>
-                <li>
-                  ESTA is required for Visa Waiver Program travelers to the
-                  United States
-                </li>
-                <li>The application process is completed entirely online</li>
-                <li>Most applications are approved within 24-72 hours</li>
-                <li>ESTA is valid for 2 years or until passport expiration</li>
-                <li>You can make multiple trips to the U.S. with one ESTA</li>
-              </ul>
-
-              <h2>Need Help?</h2>
-              <p>
-                If you have questions about this topic or need assistance with
-                your ESTA application, our expert team is here to help 24/7.
-              </p>
+              {/* Sidebar - Table of Contents (Desktop only) */}
+              <aside className="hidden lg:block">
+                <GuideSidebar sections={guide.sections || []} />
+              </aside>
             </div>
-
-            {/* CTA */}
-            <div className="bg-blue-900 text-white rounded-lg p-8 my-12 text-center">
-              <h2 className="text-3xl font-bold mb-4">
-                Ready to Apply for ESTA?
-              </h2>
-              <p className="text-xl text-blue-100 mb-6">
-                Get expert assistance with your ESTA application
-              </p>
-              <Link
-                href="/apply"
-                className="inline-block bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 transition-colors"
-              >
-                Start Your Application
-              </Link>
-              <p className="text-sm text-blue-200 mt-4">
-                99% approval rate • 24/7 support • Money-back guarantee
-              </p>
-            </div>
-
-            {/* Related Guides */}
-            {relatedGuides.length > 0 && (
-              <div className="border-t border-gray-200 pt-8">
-                <h2 className="text-2xl font-bold mb-6">Related Guides</h2>
-                <div className="grid md:grid-cols-2 gap-6">
-                  {relatedGuides.map((relatedGuide) => (
-                    <Link
-                      key={relatedGuide.slug}
-                      href={`/guides/${relatedGuide.slug}`}
-                      className="block border border-gray-200 rounded-lg p-6 hover:border-blue-600 hover:shadow-lg transition-all"
-                    >
-                      <div className="mb-2">
-                        <span className="inline-block bg-gray-100 text-gray-700 text-xs font-semibold px-2 py-1 rounded uppercase">
-                          {relatedGuide.category}
-                        </span>
-                      </div>
-                      <h3 className="text-lg font-semibold mb-2 text-gray-900">
-                        {relatedGuide.title}
-                      </h3>
-                      <p className="text-gray-600 text-sm">
-                        {relatedGuide.description}
-                      </p>
-                      {relatedGuide.estimatedReadTime && (
-                        <p className="text-xs text-gray-500 mt-2">
-                          📖 {relatedGuide.estimatedReadTime} min read
-                        </p>
-                      )}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            )}
           </div>
         </article>
       </main>
