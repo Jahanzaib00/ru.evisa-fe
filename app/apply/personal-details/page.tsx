@@ -69,6 +69,19 @@ export default function PersonalDetailsPage() {
     verify();
   }, [verifyApplicationState, router]);
 
+  // Auto-expand first traveler with validation errors
+  useEffect(() => {
+    if (errors.travelers && Array.isArray(errors.travelers)) {
+      const firstErrorIndex = errors.travelers.findIndex(
+        (travelerError) => travelerError && Object.keys(travelerError).length > 0
+      );
+
+      if (firstErrorIndex !== -1) {
+        setExpandedTraveler(firstErrorIndex);
+      }
+    }
+  }, [errors.travelers]);
+
   const onSubmit = async (data: any) => {
     // Save to localStorage (optimistic update)
     updateTravelers(data.travelers);
@@ -178,14 +191,14 @@ export default function PersonalDetailsPage() {
                 className="w-full px-6 py-4 flex items-center justify-between
                          hover:bg-white transition-colors text-left"
               >
-                <span className="font-semibold text-gray-dark text-base">
-                  Traveler #{index + 1}
-                  {travelerData?.firstName && travelerData?.lastName && (
-                    <span className="font-normal text-gray ml-2">
-                      - {travelerData.firstName} {travelerData.lastName}
-                    </span>
-                  )}
-                </span>
+                  <span className="font-semibold text-gray-dark text-base">
+                    Traveler #{index + 1}
+                    {travelerData?.firstName && travelerData?.lastName && (
+                      <span className="font-normal text-gray ml-2">
+                        - {travelerData.firstName} {travelerData.lastName}
+                      </span>
+                    )}
+                  </span>
                 <svg
                   className={`w-5 h-5 text-gray transition-transform ${
                     isExpanded ? "rotate-180" : ""

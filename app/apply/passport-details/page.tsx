@@ -69,6 +69,19 @@ export default function PassportDetailsPage() {
     verify();
   }, [verifyApplicationState, router]);
 
+  // Auto-expand first traveler with validation errors
+  useEffect(() => {
+    if (errors.travelers && Array.isArray(errors.travelers)) {
+      const firstErrorIndex = errors.travelers.findIndex(
+        (travelerError) => travelerError && Object.keys(travelerError).length > 0
+      );
+
+      if (firstErrorIndex !== -1) {
+        setExpandedTraveler(firstErrorIndex);
+      }
+    }
+  }, [errors.travelers]);
+
   const onSubmit = async (data: any) => {
     // Merge passport data with existing traveler data
     const mergedTravelers = travelers.map((t, index) => ({
@@ -183,9 +196,9 @@ export default function PassportDetailsPage() {
                 className="w-full px-6 py-4 flex items-center justify-between
                          hover:bg-white transition-colors text-left"
               >
-                <span className="font-semibold text-gray-dark text-base">
-                  Traveler #{index + 1} - {travelerName}
-                </span>
+                  <span className="font-semibold text-gray-dark text-base">
+                    Traveler #{index + 1} - {travelerName}
+                  </span>
                 <svg
                   className={`w-5 h-5 text-gray transition-transform ${
                     isExpanded ? "rotate-180" : ""
