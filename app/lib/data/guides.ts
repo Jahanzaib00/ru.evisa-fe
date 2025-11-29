@@ -2475,7 +2475,7 @@ function generateRemainingGuides(): Guide[] {
                 "Answer all eligibility questions on behalf of the child",
                 "Provide parent or guardian contact information in the emergency contact section",
                 "Review all information carefully for accuracy",
-                "Pay the $21 USD application fee using a valid credit or debit card",
+                "Pay the $40 USD application fee using a valid credit or debit card",
               ],
             },
             {
@@ -2516,8 +2516,8 @@ function generateRemainingGuides(): Guide[] {
           id: "child-esta-fees",
           title: "ESTA Fees for Children and Minors",
           content: [
-            "The ESTA application fee for children is exactly the same as for adults: $21 USD per application. There are no discounts, family rates, or reduced fees for minors, infants, or children.",
-            "The $21 fee breaks down as follows:",
+            "The ESTA application fee for children is exactly the same as for adults: $40 USD per application. There are no discounts, family rates, or reduced fees for minors, infants, or children.",
+            "The $40 fee breaks down as follows:",
             {
               type: "list",
               items: [
@@ -2658,7 +2658,7 @@ function generateRemainingGuides(): Guide[] {
         {
           question: "Can I include my child on my ESTA application?",
           answer:
-            "No, each person must have their own individual ESTA application, including children and infants. There is no family or group ESTA option. Parents or guardians can submit applications on behalf of their children, but each child needs a separate application and separate $21 fee.",
+            "No, each person must have their own individual ESTA application, including children and infants. There is no family or group ESTA option. Parents or guardians can submit applications on behalf of their children, but each child needs a separate application and separate $40 fee.",
         },
         {
           question: "How long does an ESTA for a child last?",
@@ -2884,7 +2884,7 @@ function generateRemainingGuides(): Guide[] {
                 "ESTA is electronically linked to a specific passport number",
                 "When you renew your passport, you receive a new passport number",
                 "The ESTA system cannot transfer an approval to a new passport",
-                "You must submit a new ESTA application ($21 fee) with new passport details",
+                "You must submit a new ESTA application ($40 fee) with new passport details",
                 "Previous ESTA approval doesn't guarantee approval of new application",
               ],
             },
@@ -3003,7 +3003,7 @@ function generateRemainingGuides(): Guide[] {
         {
           question: "What happens to my ESTA when I renew my passport?",
           answer:
-            "Your ESTA becomes invalid when you renew your passport, even if the ESTA hasn't expired. You must apply for a new ESTA using your new passport information and pay the $21 fee again. The old ESTA cannot be transferred to a new passport number. Apply for your new ESTA after receiving your new passport.",
+            "Your ESTA becomes invalid when you renew your passport, even if the ESTA hasn't expired. You must apply for a new ESTA using your new passport information and pay the $40 fee again. The old ESTA cannot be transferred to a new passport number. Apply for your new ESTA after receiving your new passport.",
         },
         {
           question: "My passport photo looks very different from how I look now. Is this a problem?",
@@ -3390,7 +3390,7 @@ function generateRemainingGuides(): Guide[] {
         {
           question: "Can I reapply for ESTA after being denied?",
           answer:
-            "Generally, no. If you were legitimately denied due to eligibility issues, reapplying won't change the outcome and wastes the $21 fee. Only reapply if your denial was clearly due to an application error (wrong passport number, typo, accidentally clicked wrong answer). Otherwise, apply for a visa instead.",
+            "Generally, no. If you were legitimately denied due to eligibility issues, reapplying won't change the outcome and wastes the $40 fee. Only reapply if your denial was clearly due to an application error (wrong passport number, typo, accidentally clicked wrong answer). Otherwise, apply for a visa instead.",
         },
         {
           question: "How long does it take to get a visa after ESTA denial?",
@@ -3405,7 +3405,7 @@ function generateRemainingGuides(): Guide[] {
         {
           question: "Will I get my ESTA fee refunded if denied?",
           answer:
-            "Partially. The $4 processing fee is non-refundable whether approved or denied. However, you will not be charged the $17 authorization fee if your ESTA is denied. So you'll only lose $4, not the full $21.",
+            "Partially. The $4 processing fee is non-refundable whether approved or denied. However, you will not be charged the $17 authorization fee if your ESTA is denied. So you'll only lose $4, not the full $40.",
         },
         {
           question: "Should I disclose my ESTA denial when applying for a visa?",

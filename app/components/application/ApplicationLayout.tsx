@@ -21,6 +21,7 @@ interface ApplicationLayoutProps {
   sidebarButtonDisabled?: boolean;
   showPrevious?: boolean;
   showPricing?: boolean;
+  showTotalAmount?: boolean;
   onPreviousClick?: () => void;
 }
 
@@ -38,6 +39,7 @@ export default function ApplicationLayout({
   sidebarButtonDisabled = false,
   showPrevious = true,
   showPricing = true,
+  showTotalAmount = false,
   onPreviousClick,
 }: ApplicationLayoutProps) {
   const { getTotalAmount } = useApplicationStore();
@@ -85,6 +87,7 @@ export default function ApplicationLayout({
                 onButtonClick={onSidebarButtonClick}
                 showPrevious={showPrevious}
                 showPricing={showPricing}
+                showTotalAmount={true}
                 onPreviousClick={onPreviousClick}
               />
             </div>
@@ -98,10 +101,14 @@ export default function ApplicationLayout({
           <div className="flex items-center justify-between mb-3">
             <span className="text-sm text-gray">Total</span>
             <span
-              className="text-lg font-bold text-gray-dark"
+              className={`${
+                showTotalAmount ? "text-lg" : "text-md"
+              } font-bold text-gray-dark`}
               suppressHydrationWarning
             >
-              USD ${getTotalAmount().toFixed(2)}
+              {showTotalAmount
+                ? `USD $${getTotalAmount().toFixed(2)}`
+                : "Calculated at checkout"}
             </span>
           </div>
           <button

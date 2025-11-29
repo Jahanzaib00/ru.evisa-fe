@@ -10,6 +10,7 @@ interface PricingSidebarProps {
   onButtonClick?: () => void;
   showPrevious?: boolean;
   showPricing?: boolean;
+  showTotalAmount?: boolean;
   onPreviousClick?: () => void;
 }
 
@@ -20,6 +21,7 @@ export default function PricingSidebar({
   onButtonClick,
   showPrevious = true,
   showPricing = true,
+  showTotalAmount = false,
   onPreviousClick,
 }: PricingSidebarProps) {
   const { totalApplicants, governmentFee, serviceFee, getTotalAmount } =
@@ -141,10 +143,22 @@ export default function PricingSidebar({
                   Total
                 </span>
                 <div className="text-right">
-                  <p className="text-xs text-gray mb-1">For all travelers</p>
-                  <p className="text-2xl font-bold text-gray-dark">
-                    USD ${total.toFixed(2)}
-                  </p>
+                  {showTotalAmount ? (
+                    <>
+                      {totalApplicants > 1 && (
+                        <p className="text-xs text-gray mb-1">
+                          For all travelers
+                        </p>
+                      )}
+                      <p className="text-2xl font-bold text-gray-dark">
+                        USD ${total.toFixed(2)}
+                      </p>
+                    </>
+                  ) : (
+                    <p className="text-md font-semibold text-gray-dark">
+                      Calculated at checkout
+                    </p>
+                  )}
                 </div>
               </div>
             </div>

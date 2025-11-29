@@ -20,7 +20,7 @@ export default function FinalCTA() {
           </h2>
 
           <p className="text-xl md:text-2xl mb-8 opacity-90 mx-auto text-white">
-            Join 50,000+ travelers who trusted us with their ESTA application
+            Join 70,000+ travelers who trusted us with their ESTA application
           </p>
 
           <div className="flex flex-col items-center gap-4">

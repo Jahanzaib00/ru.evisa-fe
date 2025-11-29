@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useApplicationStore } from "@/app/lib/store/applicationStore";
-import { useApplication } from "@/app/lib/hooks/useApplication";
 import ApplicationLayout from "@/app/components/application/ApplicationLayout";
 import MobileOrderSummary from "@/app/components/application/MobileOrderSummary";
 import PaymentModal from "@/app/components/payment/PaymentModal";
@@ -40,9 +39,7 @@ export default function ReviewPage() {
   const [clientSecret, setClientSecret] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const totalWithProtection =
-    getTotalAmount() +
-    (denialProtection ? DENIAL_PROTECTION_FEE * totalApplicants : 0);
+  const total = getTotalAmount();
 
   // Calculate expected delivery time
   const getExpectedDeliveryTime = () => {
@@ -79,11 +76,11 @@ export default function ReviewPage() {
         action: "payment_initiated",
         category: "conversion",
         label: "review_page",
-        value: totalWithProtection,
+        value: total,
       });
 
       // Create payment intent
-      const amountInCents = Math.round(totalWithProtection * 100);
+      const amountInCents = Math.round(total * 100);
       const guestEmail = travelers[0]?.email; // First traveler's email for guest users
 
       const response = await paymentsService.createPaymentIntent({
@@ -111,7 +108,7 @@ export default function ReviewPage() {
           action: "purchase",
           category: "conversion",
           label: "esta_application_already_paid",
-          value: totalWithProtection,
+          value: total,
         });
         router.push("/payment/success");
         return;
@@ -137,7 +134,7 @@ export default function ReviewPage() {
       action: "purchase",
       category: "conversion",
       label: "esta_application",
-      value: totalWithProtection,
+      value: total,
     });
 
     setShowPaymentModal(false);
@@ -181,6 +178,7 @@ export default function ReviewPage() {
         sidebarButtonText="Continue to payment"
         sidebarButtonDisabled={isProcessing}
         showPrevious={false}
+        showTotalAmount={true}
         onPreviousClick={handlePrevious}
       >
         <div className="space-y-6">
@@ -334,7 +332,7 @@ export default function ReviewPage() {
             setClientSecret(null);
           }}
           clientSecret={clientSecret}
-          amount={Math.round(totalWithProtection * 100)}
+          amount={Math.round(total * 100)}
           onSuccess={handlePaymentSuccess}
           onError={handlePaymentError}
         />

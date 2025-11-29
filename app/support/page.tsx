@@ -25,7 +25,7 @@ const faqs: FAQItem[] = [
     category: "General",
     question: "How is your service different from the government website?",
     answer:
-      "While you can apply directly through the government website (esta.cbp.dhs.gov) for $21, our service provides additional value through expert form review, error checking, simplified application process, 24/7 multilingual support, real-time status monitoring, and resubmission assistance. We charge a $5 service fee in addition to the $40 government fee for these professional services.",
+      "While you can apply directly through the government website (esta.cbp.dhs.gov) for $40, our service provides additional value through expert form review, error checking, simplified application process, 24/7 multilingual support, real-time status monitoring, and resubmission assistance. We charge a $5 service fee in addition to the $40 government fee for these professional services.",
   },
   {
     category: "General",

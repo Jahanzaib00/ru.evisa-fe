@@ -1,7 +1,12 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { ApplicationStatus } from "../api/types";
-import { GOVERNMENT_FEE, SERVICE_FEE, DENIAL_PROTECTION_FEE } from "../constants";
+import {
+  GOVERNMENT_FEE,
+  SERVICE_FEE,
+  DENIAL_PROTECTION_FEE,
+  BASE_TOTAL_FEE,
+} from "../constants";
 
 interface Traveler {
   firstName: string;
@@ -201,12 +206,8 @@ export const useApplicationStore = create<ApplicationState>()(
       // Computed Values
       getTotalAmount: () => {
         const state = get();
-        const base =
-          (state.governmentFee + state.serviceFee) * state.totalApplicants;
-        // const protection = state.denialProtectionEnabled
-        //   ? state.denialProtection * state.totalApplicants
-        //   : 0;
-        return parseFloat((base).toFixed(2));
+        const base = BASE_TOTAL_FEE * state.totalApplicants;
+        return parseFloat(base.toFixed(2));
       },
 
       canUpdateApplication: () => {
