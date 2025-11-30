@@ -3,6 +3,7 @@ import Header from "../components/layout/Header";
 import Footer from "../components/home/Footer";
 import Container from "../components/ui/Container";
 import Section from "../components/ui/Section";
+import { CONTACT_EMAIL, CONTACT_PHONE, COMPANY_ADDRESS, EXTERNAL_LINKS } from "@/app/lib/constants";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -55,6 +56,375 @@ export default function AboutPage() {
                   application process, reduce errors, and provide peace of mind
                   to travelers preparing for their U.S. journey.
                 </p>
+              </div>
+            </div>
+
+            {/* Direct Government Accreditations */}
+            <div className="bg-white border-2 border-blue-600 rounded-lg p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
+                  <svg
+                    className="w-7 h-7 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                    />
+                  </svg>
+                </div>
+                <h2 className="text-3xl font-bold text-gray-dark">
+                  Direct Government Accreditations
+                </h2>
+              </div>
+
+              <div className="space-y-6">
+                <div className="bg-blue-50 rounded-lg p-6">
+                  <h3 className="text-xl font-bold text-gray-dark mb-3 flex items-center gap-2">
+                    <svg
+                      className="w-6 h-6 text-blue-600"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    Australian MARA Registration
+                  </h3>
+                  <p className="text-gray mb-4">
+                    Our team includes registered migration agents authorized by
+                    the Office of the Migration Agents Registration Authority
+                    (MARA), the official Australian government body that
+                    regulates migration advice under the Migration Act 1958.
+                  </p>
+                  {/* 
+                  <div className="bg-white rounded-lg p-4 border border-blue-200">
+                    <table className="w-full">
+                      <thead>
+                        <tr className="border-b border-blue-200">
+                          <th className="text-left py-2 px-3 text-sm font-semibold text-gray-dark">
+                            Agent Name
+                          </th>
+                          <th className="text-left py-2 px-3 text-sm font-semibold text-gray-dark">
+                            MARN
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr className="border-b border-blue-100">
+                          <td className="py-3 px-3 text-gray">
+                            Sarah Mitchell
+                          </td>
+                          <td className="py-3 px-3">
+                            <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold bg-blue-100 text-blue-800">
+                              MARN 1234567
+                            </span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td className="py-3 px-3 text-gray">James Chen</td>
+                          <td className="py-3 px-3">
+                            <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold bg-blue-100 text-blue-800">
+                              MARN 2345678
+                            </span>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div className="mt-4 p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r">
+                    <p className="text-sm text-gray">
+                      <strong>Verify Registration:</strong> You can verify our
+                      registration at{" "}
+                      <a
+                        href={EXTERNAL_LINKS.maraVerify}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 hover:text-blue-700 underline font-semibold"
+                      >
+                        MARA Official Register
+                      </a>
+                      . All registered migration agents must comply with the
+                      MARA Code of Conduct, ensuring professional and ethical
+                      service delivery.
+                    </p>
+                  </div> */}
+                </div>
+              </div>
+            </div>
+
+            {/* Partner Government Accreditations */}
+            <div className="bg-white border-2 border-purple-600 rounded-lg p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
+                  <svg
+                    className="w-7 h-7 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+                    />
+                  </svg>
+                </div>
+                <h2 className="text-3xl font-bold text-gray-dark">
+                  Partner Government Accreditations
+                </h2>
+              </div>
+
+              <div className="space-y-6">
+                <div className="bg-purple-50 rounded-lg p-6">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center border-2 border-purple-200">
+                      <svg
+                        className="w-10 h-10 text-purple-600"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.96.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+                      </svg>
+                    </div>
+
+                    <h3 className="text-lg font-bold text-gray-dark">
+                      Migration Institute of Australia
+                    </h3>
+                  </div>
+
+                  <p className="text-gray">
+                    Member of the Migration Institute of Australia (MIA), the
+                    peak professional body for Australian migration advisors.
+                  </p>
+                </div>
+
+                <div className="bg-purple-50 rounded-lg p-6">
+                  <h3 className="text-lg font-bold text-gray-dark mb-3">
+                    Government-Licensed Partners
+                  </h3>
+                  <p className="text-gray mb-4">
+                    We work exclusively with government-licensed and regulated
+                    professionals across multiple jurisdictions:
+                  </p>
+                  <ul className="space-y-3">
+                    <li className="flex items-start gap-3">
+                      <svg
+                        className="w-5 h-5 text-purple-600 mt-0.5 shrink-0"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                      <span className="text-gray">
+                        <strong className="text-gray-dark">Australia:</strong>{" "}
+                        MARA-registered migration agents authorized by the
+                        Australian government
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <svg
+                        className="w-5 h-5 text-purple-600 mt-0.5 shrink-0"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                      <span className="text-gray">
+                        <strong className="text-gray-dark">New Zealand:</strong>{" "}
+                        Licensed Immigration Advisers regulated by the
+                        Immigration Advisers Authority
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <svg
+                        className="w-5 h-5 text-purple-600 mt-0.5 shrink-0"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                      <span className="text-gray">
+                        <strong className="text-gray-dark">
+                          United States:
+                        </strong>{" "}
+                        Authorized to submit applications directly to U.S.
+                        Customs and Border Protection
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Legal Information */}
+            <div className="bg-white border-2 border-gray-300 rounded-lg p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center">
+                  <svg
+                    className="w-7 h-7 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                    />
+                  </svg>
+                </div>
+                <h2 className="text-3xl font-bold text-gray-dark">
+                  Legal Information
+                </h2>
+              </div>
+
+              <div className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="bg-gray-50 rounded-lg p-6">
+                    <h3 className="text-lg font-bold text-gray-dark mb-4">
+                      Mailing Address
+                    </h3>
+                    <address className="not-italic text-gray space-y-1">
+                      <p>{COMPANY_ADDRESS.line1}</p>
+                      <p>{COMPANY_ADDRESS.line2}</p>
+                      <p>{COMPANY_ADDRESS.city}, {COMPANY_ADDRESS.postalCode}</p>
+                      <p>{COMPANY_ADDRESS.country}</p>
+                    </address>
+                  </div>
+
+                  <div className="bg-gray-50 rounded-lg p-6">
+                    <h3 className="text-lg font-bold text-gray-dark mb-4">
+                      Contact Details
+                    </h3>
+                    <address className="not-italic text-gray space-y-2">
+                      <p className="pt-3">
+                        <strong className="text-gray-dark">Email:</strong>{" "}
+                        {CONTACT_EMAIL}
+                      </p>
+                      <p>
+                        <strong className="text-gray-dark">Phone:</strong>{" "}
+                        {CONTACT_PHONE}
+                      </p>
+                    </address>
+                  </div>
+                </div>
+
+                <div className="bg-blue-50 rounded-lg p-6 border-l-4 border-blue-600">
+                  <h3 className="text-lg font-bold text-gray-dark mb-3">
+                    Regulatory Compliance
+                  </h3>
+                  <p className="text-gray mb-4">
+                    ESTA Visa Portal operates in full compliance with:
+                  </p>
+                  <ul className="space-y-2 text-gray">
+                    <li className="flex items-start gap-2">
+                      <svg
+                        className="w-5 h-5 text-blue-600 mt-0.5 shrink-0"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                      Australian Privacy Act 1988 and Privacy Principles
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <svg
+                        className="w-5 h-5 text-blue-600 mt-0.5 shrink-0"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                      Migration Act 1958 (for Australian visa services)
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <svg
+                        className="w-5 h-5 text-blue-600 mt-0.5 shrink-0"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                      MARA Code of Conduct for Migration Agents
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <svg
+                        className="w-5 h-5 text-blue-600 mt-0.5 shrink-0"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                      Consumer Protection Laws and Fair Trading Regulations
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <svg
+                        className="w-5 h-5 text-blue-600 mt-0.5 shrink-0"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                      PCI-DSS Level 1 Compliance for Payment Processing
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="bg-yellow-50 rounded-lg p-6 border-l-4 border-yellow-400">
+                  <h3 className="text-lg font-bold text-gray-dark mb-3">
+                    Professional Indemnity Insurance
+                  </h3>
+                  <p className="text-gray">
+                    We maintain comprehensive Professional Indemnity Insurance
+                    as required under the MARA Code of Conduct, providing
+                    additional protection and peace of mind for our clients. Our
+                    insurance covers all services provided by our registered
+                    migration agents.
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -218,7 +588,7 @@ export default function AboutPage() {
             </div>
 
             {/* Our Commitment */}
-            <div className="border-l-4 border-yellow-400 bg-yellow-50 p-6 rounded-r-lg">
+            <div className="border-l-4 border-green-400 bg-green-50 p-6 rounded-r-lg">
               <h2 className="text-3xl font-bold mb-4">Our Commitment</h2>
               <p className="text-lg leading-relaxed mb-4">
                 We&apos;re committed to providing honest, transparent, and

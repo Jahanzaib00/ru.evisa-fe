@@ -3,6 +3,7 @@ import Header from "../components/layout/Header";
 import Footer from "../components/home/Footer";
 import Container from "../components/ui/Container";
 import Section from "../components/ui/Section";
+import { SUPPORT_EMAIL } from "@/app/lib/constants";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
@@ -68,46 +69,11 @@ export default function TermsPage() {
             {/* Section 2 */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
-                2. Important Disclaimers
+                2. Disclaimer
               </h2>
-              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mb-4">
-                <h3 className="text-xl font-bold text-gray-dark mb-3">
-                  2.1 Not a Government Entity
-                </h3>
-                <p className="text-gray mb-0">
-                  <strong>
-                    We are not affiliated with, endorsed by, or connected to the
-                    U.S. government, the Department of Homeland Security, U.S.
-                    Customs and Border Protection, or any other governmental
-                    agency.
-                  </strong>{" "}
-                  The official U.S. government ESTA website is{" "}
-                  <a
-                    href="https://esta.cbp.dhs.gov/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 hover:text-blue-700 underline font-semibold"
-                  >
-                    esta.cbp.dhs.gov
-                  </a>
-                  . Travelers may apply directly through the government website.
-                </p>
-              </div>
 
               <h3 className="text-xl font-bold text-gray-dark mb-3">
-                2.2 Not Legal Services
-              </h3>
-              <p className="text-gray mb-4">
-                We are not a law firm and do not provide legal advice,
-                immigration advice, or legal representation. Our services are
-                limited to application assistance only. No attorney-client
-                relationship or privilege is created through the use of our
-                services. If you require legal advice, please consult with a
-                licensed immigration attorney.
-              </p>
-
-              <h3 className="text-xl font-bold text-gray-dark mb-3">
-                2.3 No Guarantee of Approval
+                2.1 No Guarantee of Approval
               </h3>
               <p className="text-gray">
                 While we maintain a 99% approval rate through our thorough
@@ -223,9 +189,9 @@ export default function TermsPage() {
                 4.3 Refund Process
               </h3>
               <p className="text-gray">
-                To request a refund, contact our support team at
-                support@estavisaportal.com. Approved refunds will be processed
-                within 5-10 business days to the original payment method.
+                To request a refund, contact our support team at {SUPPORT_EMAIL}
+                . Approved refunds will be processed within 5-10 business days
+                to the original payment method.
               </p>
             </section>
 
@@ -425,7 +391,7 @@ export default function TermsPage() {
               </p>
               <ul className="space-y-2 text-gray">
                 <li>
-                  <strong>Email:</strong> support@estavisaportal.com
+                  <strong>Email:</strong> {SUPPORT_EMAIL}
                 </li>
                 <li>
                   <strong>Support Center:</strong>{" "}

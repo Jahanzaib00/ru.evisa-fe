@@ -3,6 +3,7 @@ import Header from "../components/layout/Header";
 import Footer from "../components/home/Footer";
 import Container from "../components/ui/Container";
 import Section from "../components/ui/Section";
+import { PRIVACY_EMAIL } from "@/app/lib/constants";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -374,8 +375,7 @@ export default function PrivacyPage() {
 
               <p className="text-gray mt-4">
                 To exercise any of these rights, contact us at
-                privacy@estavisaportal.com. We will respond to your request
-                within 30 days.
+                {PRIVACY_EMAIL}. We will respond to your request within 30 days.
               </p>
             </section>
 
@@ -491,8 +491,7 @@ export default function PrivacyPage() {
               </ul>
               <p className="text-gray">
                 To exercise these rights, contact us at
-                privacy@estavisaportal.com or call our toll-free number at
-                1-800-XXX-XXXX.
+                {PRIVACY_EMAIL}.
               </p>
             </section>
 
@@ -525,7 +524,7 @@ export default function PrivacyPage() {
               <div className="bg-blue-50 rounded-lg p-6 mt-4">
                 <ul className="space-y-2 text-gray">
                   <li>
-                    <strong>Email:</strong> privacy@estavisaportal.com
+                    <strong>Email:</strong> {PRIVACY_EMAIL}
                   </li>
                   <li>
                     <strong>Subject Line:</strong> Privacy Request
@@ -545,7 +544,7 @@ export default function PrivacyPage() {
               </p>
               <ul className="space-y-2 text-gray">
                 <li>
-                  <strong>Email:</strong> privacy@estavisaportal.com
+                  <strong>Email:</strong> {PRIVACY_EMAIL}
                 </li>
                 <li>
                   <strong>Support Center:</strong>{" "}

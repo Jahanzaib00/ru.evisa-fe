@@ -735,34 +735,6 @@ export const ESTA_GUIDES: Guide[] = [
         ],
       },
       {
-        id: "third-party-warnings",
-        title: "Avoiding Third-Party Scams",
-        content: [
-          "Many websites charge inflated fees by posing as official ESTA sites. Here is how to avoid overpaying:",
-          {
-            type: "warning",
-            title: "Third-Party Website Warning",
-            text: "Numerous third-party websites charge $5 0-$150 for ESTA applications. These sites are NOT affiliated with the U.S. government. They simply fill out the official application on your behalf and charge a premium service fee.",
-          },
-          "How to identify the official ESTA website:",
-          {
-            type: "list",
-            items: [
-              "The ONLY official website is: esta.cbp.dhs.gov",
-              "The official site ends in .gov (U.S. government website)",
-              "The official fee is ALWAYS $40, no exceptions",
-              'Look for "Official U.S. Department of Homeland Security" branding',
-              "The URL will show a padlock icon (HTTPS secure connection)",
-            ],
-          },
-          {
-            type: "callout",
-            title: "Save Money",
-            text: "By applying directly through esta.cbp.dhs.gov, you will pay only $40. Third-party websites can charge up to $150 for the same application - a markup of over 600%.",
-          },
-        ],
-      },
-      {
         id: "fee-comparison",
         title: "ESTA Fee vs Visa Fee Comparison",
         content: [
@@ -2360,18 +2332,19 @@ function generateRemainingGuides(): Guide[] {
             "You must pay the full $40 fee for a new ESTA application. There is no reduced renewal fee or discount for previous ESTA holders. Each application costs $40 regardless of whether it is your first application or your fifth.",
         },
         {
-          question:
-            "Can I use my old ESTA application number to renew?",
+          question: "Can I use my old ESTA application number to renew?",
           answer:
             "No, you cannot renew using your old application number. You must complete an entirely new application. Your new ESTA will receive a new application number. However, you can reference your old application for information accuracy.",
         },
         {
-          question: "What if I get a new passport 6 months before my ESTA expires?",
+          question:
+            "What if I get a new passport 6 months before my ESTA expires?",
           answer:
             "You must apply for a new ESTA immediately. Your ESTA is electronically linked to your passport number, so when you get a new passport, your old ESTA becomes invalid instantly, regardless of how much validity time remains. Apply for a new ESTA with your new passport information before traveling.",
         },
         {
-          question: "Is the renewal process different from the original application?",
+          question:
+            "Is the renewal process different from the original application?",
           answer:
             "No, the process is identical. There is no simplified renewal process. You must complete the full application form, answer all eligibility questions, and pay the full fee, just as you did for your original ESTA.",
         },
@@ -2386,18 +2359,19 @@ function generateRemainingGuides(): Guide[] {
             "The new application process takes 10-20 minutes to complete, and most applications are approved within minutes to hours. However, U.S. Customs and Border Protection recommends allowing up to 72 hours for processing. Apply well in advance of any travel.",
         },
         {
-          question: "Will my new ESTA have the same approval status as my old one?",
+          question:
+            "Will my new ESTA have the same approval status as my old one?",
           answer:
             "Not necessarily. Each application is reviewed independently. While most renewals are approved if nothing has changed, circumstances can change, and a new application could be denied if your eligibility has changed (new criminal record, travel to restricted countries, etc.).",
         },
         {
-          question:
-            "Can I travel while my renewal application is pending?",
+          question: "Can I travel while my renewal application is pending?",
           answer:
             "If your old ESTA is still valid and your passport has not changed, yes, you can travel on your existing ESTA while the new application is pending. However, if your old ESTA has expired or you have a new passport, you must wait for the new ESTA to be approved before traveling.",
         },
         {
-          question: "Do I need to renew if I am not planning to travel to the U.S.?",
+          question:
+            "Do I need to renew if I am not planning to travel to the U.S.?",
           answer:
             "No, you only need a valid ESTA when you are actually traveling to the United States. If you have no travel plans, there is no need to maintain a valid ESTA. You can apply for a new one when you decide to travel again.",
         },
@@ -2651,7 +2625,8 @@ function generateRemainingGuides(): Guide[] {
       ],
       faqs: [
         {
-          question: "Does my baby need an ESTA even though they won't have their own seat on the plane?",
+          question:
+            "Does my baby need an ESTA even though they won't have their own seat on the plane?",
           answer:
             "Yes, all travelers entering the U.S. under the Visa Waiver Program need an approved ESTA, regardless of age or whether they have their own seat. Even infants traveling as lap children must have their own passport and approved ESTA before boarding the flight.",
         },
@@ -2666,12 +2641,14 @@ function generateRemainingGuides(): Guide[] {
             "A child's ESTA is valid for two years from the approval date or until the child's passport expires, whichever comes first. Since many countries issue child passports with 5-year validity, the ESTA will likely remain valid for the full two years. However, you'll need a new ESTA if the child gets a new passport.",
         },
         {
-          question: "What if my child's appearance has changed significantly since their passport photo?",
+          question:
+            "What if my child's appearance has changed significantly since their passport photo?",
           answer:
             "Natural changes in a child's appearance do not invalidate their ESTA or passport, as long as the documents remain within their validity period. CBP officers are trained to account for how children grow and change. However, if the photo is extremely outdated or the child is unrecognizable, consider renewing the passport.",
         },
         {
-          question: "Do I need a consent letter if I'm traveling alone with my child?",
+          question:
+            "Do I need a consent letter if I'm traveling alone with my child?",
           answer:
             "While not always required, it's highly recommended to carry a notarized consent letter from the non-traveling parent if you're traveling to the U.S. with a child alone. CBP officers may ask for this documentation to prevent international child abduction. The letter should include both parents' information, the child's information, travel dates, and the non-traveling parent's consent.",
         },
@@ -2686,7 +2663,8 @@ function generateRemainingGuides(): Guide[] {
             "ESTA denials for children are rare but can occur. If denied, your child cannot travel to the U.S. under the Visa Waiver Program and must apply for a B-2 tourist visa at a U.S. embassy or consulate. Common denial reasons include passport issues, eligibility question answers, or previous immigration violations. The denial notice will not provide a specific reason.",
         },
         {
-          question: "My child was born in the U.S. but we live abroad. Do they need ESTA?",
+          question:
+            "My child was born in the U.S. but we live abroad. Do they need ESTA?",
           answer:
             "No. If your child was born in the United States, they are a U.S. citizen regardless of where you live now. U.S. citizens cannot and should not apply for ESTA. Instead, obtain a U.S. passport for your child from the nearest U.S. embassy or consulate. U.S. citizens must enter the United States using their U.S. passport.",
         },
@@ -2996,7 +2974,8 @@ function generateRemainingGuides(): Guide[] {
             "No. All ESTA applicants must have an e-passport (electronic passport with a chip). If your passport doesn't have a chip, you are not eligible for ESTA and must apply for a B-1/B-2 visitor visa at a U.S. embassy or consulate. You should also consider renewing your passport as most countries now only issue e-passports.",
         },
         {
-          question: "Does my passport need to be valid for six months beyond my trip?",
+          question:
+            "Does my passport need to be valid for six months beyond my trip?",
           answer:
             "It depends on your country. Most VWP countries are part of the 'Six-Month Club,' meaning your passport only needs to be valid for the duration of your U.S. stay, not six months beyond. However, countries not in this club do need six months validity. Check the CBP website for your specific country, or plan for six months validity to be safe.",
         },
@@ -3006,7 +2985,8 @@ function generateRemainingGuides(): Guide[] {
             "Your ESTA becomes invalid when you renew your passport, even if the ESTA hasn't expired. You must apply for a new ESTA using your new passport information and pay the $40 fee again. The old ESTA cannot be transferred to a new passport number. Apply for your new ESTA after receiving your new passport.",
         },
         {
-          question: "My passport photo looks very different from how I look now. Is this a problem?",
+          question:
+            "My passport photo looks very different from how I look now. Is this a problem?",
           answer:
             "It can be. While your passport remains legally valid until its expiration date, significant appearance changes may lead to additional questioning at immigration or even denied boarding by airlines. If your appearance has changed dramatically (major weight change, different hair color, facial surgery, aging), consider renewing your passport to avoid potential issues.",
         },
@@ -3021,12 +3001,14 @@ function generateRemainingGuides(): Guide[] {
             "A damaged chip can cause significant problems. While you may technically still be able to enter the U.S., you'll likely face long delays as officers manually verify your information. Airlines may deny boarding if they cannot read your chip. If your chip is damaged, it's strongly recommended to renew your passport before traveling.",
         },
         {
-          question: "I have dual citizenship - which passport should I use for ESTA?",
+          question:
+            "I have dual citizenship - which passport should I use for ESTA?",
           answer:
             "Use your Visa Waiver Program country passport for both the ESTA application and your U.S. travel. If you hold passports from both a VWP and non-VWP country, use your VWP passport. However, if one of your citizenships is from Iraq, Syria, Iran, Sudan, Libya, Somalia, or Yemen, you are not eligible for ESTA and must apply for a visa.",
         },
         {
-          question: "Do I need a new ESTA if my name changes but my passport number stays the same?",
+          question:
+            "Do I need a new ESTA if my name changes but my passport number stays the same?",
           answer:
             "Yes. Any change to your biographical information requires a new ESTA. First, update your passport with your new name through your passport issuing authority. Some countries issue a new passport with a new number, while others may endorse the change in your existing passport. Either way, you'll need to apply for a new ESTA with the updated information.",
         },
@@ -3398,7 +3380,8 @@ function generateRemainingGuides(): Guide[] {
             "Visa processing typically takes 2-4 weeks to schedule an interview appointment (longer in some countries), followed by 3-10 business days after your interview for visa issuance if approved. Total timeline is usually 3-8 weeks, but can be several months in countries with high demand. Apply as early as possible.",
         },
         {
-          question: "Does ESTA denial mean I can never visit the United States?",
+          question:
+            "Does ESTA denial mean I can never visit the United States?",
           answer:
             "No. ESTA denial only means you cannot use the Visa Waiver Program. You can still apply for a visitor visa (B-1/B-2) and many people who are denied ESTA successfully obtain visas. The visa process is more thorough and allows you to present documentation and attend an interview to demonstrate your eligibility.",
         },
@@ -3408,12 +3391,14 @@ function generateRemainingGuides(): Guide[] {
             "Partially. The $4 processing fee is non-refundable whether approved or denied. However, you will not be charged the $17 authorization fee if your ESTA is denied. So you'll only lose $4, not the full $40.",
         },
         {
-          question: "Should I disclose my ESTA denial when applying for a visa?",
+          question:
+            "Should I disclose my ESTA denial when applying for a visa?",
           answer:
             "Yes, absolutely. The DS-160 visa application form asks if you've ever been denied a U.S. visa or entry authorization. You must answer 'Yes' and include your ESTA denial. Failing to disclose this is fraud and will result in permanent visa ineligibility. Always be honest on visa applications.",
         },
         {
-          question: "Can I enter the U.S. through Canada or Mexico without ESTA?",
+          question:
+            "Can I enter the U.S. through Canada or Mexico without ESTA?",
           answer:
             "While you don't technically need ESTA for land border entry, you'll still undergo full inspection by CBP officers. If you're ineligible for ESTA due to overstay, criminal history, or other serious issues, you'll likely be deemed inadmissible at the land border as well. The safest and most reliable option is obtaining a proper visa.",
         },

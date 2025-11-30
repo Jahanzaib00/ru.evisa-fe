@@ -6,6 +6,7 @@ import Header from "../components/layout/Header";
 import Footer from "../components/home/Footer";
 import Container from "../components/ui/Container";
 import Section from "../components/ui/Section";
+import { SUPPORT_EMAIL } from "@/app/lib/constants";
 
 // FAQ data structure
 interface FAQItem {
@@ -26,12 +27,6 @@ const faqs: FAQItem[] = [
     question: "How is your service different from the government website?",
     answer:
       "While you can apply directly through the government website (esta.cbp.dhs.gov) for $40, our service provides additional value through expert form review, error checking, simplified application process, 24/7 multilingual support, real-time status monitoring, and resubmission assistance. We charge a $5 service fee in addition to the $40 government fee for these professional services.",
-  },
-  {
-    category: "General",
-    question: "Are you affiliated with the U.S. government?",
-    answer:
-      "No, we are a private company providing application assistance services. We are not affiliated with, endorsed by, or connected to the U.S. government, Department of Homeland Security, or any governmental agency. The official government website is esta.cbp.dhs.gov.",
   },
   {
     category: "Application Process",
@@ -318,10 +313,10 @@ export default function SupportPage() {
                 Get a response within 24 hours
               </p>
               <a
-                href="mailto:support@estavisaportal.com"
+                href={`mailto:${SUPPORT_EMAIL}`}
                 className="text-blue-600 hover:text-blue-700 font-semibold"
               >
-                support@estavisaportal.com
+                {SUPPORT_EMAIL}
               </a>
             </div>
 
@@ -505,7 +500,7 @@ export default function SupportPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="mailto:support@estavisaportal.com"
+                href={`mailto:${SUPPORT_EMAIL}`}
                 className="inline-flex items-center justify-center px-8 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
               >
                 Email Us
