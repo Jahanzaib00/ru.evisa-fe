@@ -3,7 +3,12 @@ import Header from "../components/layout/Header";
 import Footer from "../components/home/Footer";
 import Container from "../components/ui/Container";
 import Section from "../components/ui/Section";
-import { CONTACT_EMAIL, CONTACT_PHONE, COMPANY_ADDRESS, EXTERNAL_LINKS } from "@/app/lib/constants";
+import {
+  CONTACT_EMAIL,
+  CONTACT_PHONE,
+  COMPANY_ADDRESS,
+  EXTERNAL_LINKS,
+} from "@/app/lib/constants";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -310,7 +315,9 @@ export default function AboutPage() {
                     <address className="not-italic text-gray space-y-1">
                       <p>{COMPANY_ADDRESS.line1}</p>
                       <p>{COMPANY_ADDRESS.line2}</p>
-                      <p>{COMPANY_ADDRESS.city}, {COMPANY_ADDRESS.postalCode}</p>
+                      <p>
+                        {COMPANY_ADDRESS.city}, {COMPANY_ADDRESS.postalCode}
+                      </p>
                       <p>{COMPANY_ADDRESS.country}</p>
                     </address>
                   </div>
@@ -324,10 +331,10 @@ export default function AboutPage() {
                         <strong className="text-gray-dark">Email:</strong>{" "}
                         {CONTACT_EMAIL}
                       </p>
-                      <p>
+                      {/* <p>
                         <strong className="text-gray-dark">Phone:</strong>{" "}
                         {CONTACT_PHONE}
-                      </p>
+                      </p> */}
                     </address>
                   </div>
                 </div>
