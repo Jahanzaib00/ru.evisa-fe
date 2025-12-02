@@ -205,7 +205,7 @@ export function generateBlogMetadata(
   title: string,
   description: string,
   slug: string,
-  publishedAt: string,
+  createdAt: string,
   updatedAt: string,
   author: string,
   keywords: string[] = [],
@@ -214,11 +214,11 @@ export function generateBlogMetadata(
   return generateMetadata({
     title,
     description,
-    keywords: ["ESTA blog", "travel tips", "visa information", ...keywords],
+    keywords: ["ESTA Apply", "US travel", "ESTA information", ...keywords],
     canonicalUrl: `${SITE_URL}/blog/${slug}`,
     ogImage: featuredImage || DEFAULT_IMAGE,
     ogType: "article",
-    publishedTime: publishedAt,
+    publishedTime: createdAt,
     modifiedTime: updatedAt,
     author,
   });

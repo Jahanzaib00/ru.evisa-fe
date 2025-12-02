@@ -18,12 +18,7 @@ interface MarkdownRendererProps {
  * - Professional, branded appearance
  * - Follows YOUR existing component patterns
  */
-export default function MarkdownRenderer({
-  content,
-}: MarkdownRendererProps) {
-  // Process content as-is (CTA injection disabled for now to avoid complexity)
-  const processedContent = content;
-
+export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
   // Custom component overrides for react-markdown
   const components: Components = {
     // Headings
@@ -169,7 +164,7 @@ export default function MarkdownRenderer({
 
   return (
     <div className="markdown-content">
-      <ReactMarkdown components={components}>{processedContent}</ReactMarkdown>
+      <ReactMarkdown components={components}>{content}</ReactMarkdown>
     </div>
   );
 }

@@ -70,9 +70,9 @@ export default function ContentGrid({
                     {item.category}
                   </span>
                 )}
-                {showDate && item.publishedAt && (
+                {showDate && item.createdAt && (
                   <span className="text-gray-500">
-                    {new Date(item.publishedAt).toLocaleDateString("en-US", {
+                    {new Date(item.createdAt).toLocaleDateString("en-US", {
                       month: "short",
                       day: "numeric",
                       year: "numeric",

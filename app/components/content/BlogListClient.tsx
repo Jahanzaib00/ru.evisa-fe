@@ -132,8 +132,8 @@ export default function BlogListClient({
                         d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                       />
                     </svg>
-                    {featuredPost.publishedAt
-                      ? new Date(featuredPost.publishedAt).toLocaleDateString(
+                    {featuredPost.createdAt
+                      ? new Date(featuredPost.createdAt).toLocaleDateString(
                           "en-US",
                           {
                             month: "long",
@@ -319,8 +319,8 @@ export default function BlogListClient({
                     </span>
                   )}
                   <span className="text-gray">
-                    {post.publishedAt
-                      ? new Date(post.publishedAt).toLocaleDateString("en-US", {
+                    {post.createdAt
+                      ? new Date(post.createdAt).toLocaleDateString("en-US", {
                           month: "short",
                           day: "numeric",
                           year: "numeric",

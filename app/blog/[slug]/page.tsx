@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { slug } = await params;
     const post = await contentService.getBySlug(slug);
 
-    if (!post || post.status !== "PUBLISHED") {
+    if (!post) {
       return {
         title: "Blog Post Not Found",
         robots: {
@@ -46,14 +46,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       };
     }
 
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.com";
+    const baseUrl =
+      process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.com";
     const canonicalUrl = `${baseUrl}/blog/${post.slug}`;
 
     const metadata = generateBlogMetadata(
       post.metaTitle || post.title,
       post.metaDescription || post.excerpt || "",
       post.slug,
-      post.publishedAt || new Date().toISOString(),
+      post.createdAt || new Date().toISOString(),
       post.updatedAt,
       "ESTA Visa Portal Team",
       post.keywords,
@@ -128,7 +129,7 @@ export default async function BlogPostPage({ params }: Props) {
     url: `${
       process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.com"
     }/blog/${post.slug}`,
-    datePublished: post.publishedAt || new Date().toISOString(),
+    datePublished: post.createdAt || new Date().toISOString(),
     dateModified: post.updatedAt,
     author: "ESTA Visa Portal Team",
     image: post.featuredImage,
@@ -182,15 +183,12 @@ export default async function BlogPostPage({ params }: Props) {
                           d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                         />
                       </svg>
-                      {post.publishedAt
-                        ? new Date(post.publishedAt).toLocaleDateString(
-                            "en-US",
-                            {
-                              month: "long",
-                              day: "numeric",
-                              year: "numeric",
-                            }
-                          )
+                      {post.createdAt
+                        ? new Date(post.createdAt).toLocaleDateString("en-US", {
+                            month: "long",
+                            day: "numeric",
+                            year: "numeric",
+                          })
                         : "Draft"}
                     </span>
                     <span className="text-gray-500 flex items-center gap-2">
@@ -238,11 +236,7 @@ export default async function BlogPostPage({ params }: Props) {
 
                 {/* Content - Rich Markdown Rendering with YOUR Design System */}
                 <div className="max-w-none mb-12">
-                  <MarkdownRenderer
-                    content={post.content}
-                    injectCTAs={true}
-                    ctaFrequency={3}
-                  />
+                  <MarkdownRenderer content={post.content} />
                 </div>
 
                 {/* Bottom CTA */}
