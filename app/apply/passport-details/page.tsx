@@ -73,7 +73,8 @@ export default function PassportDetailsPage() {
   useEffect(() => {
     if (errors.travelers && Array.isArray(errors.travelers)) {
       const firstErrorIndex = errors.travelers.findIndex(
-        (travelerError) => travelerError && Object.keys(travelerError).length > 0
+        (travelerError) =>
+          travelerError && Object.keys(travelerError).length > 0
       );
 
       if (firstErrorIndex !== -1) {
@@ -196,9 +197,9 @@ export default function PassportDetailsPage() {
                 className="w-full px-6 py-4 flex items-center justify-between
                          hover:bg-white transition-colors text-left"
               >
-                  <span className="font-semibold text-gray-dark text-base">
-                    Traveler #{index + 1} - {travelerName}
-                  </span>
+                <span className="font-semibold text-gray-dark text-base">
+                  Traveler #{index + 1} - {travelerName}
+                </span>
                 <svg
                   className={`w-5 h-5 text-gray transition-transform ${
                     isExpanded ? "rotate-180" : ""

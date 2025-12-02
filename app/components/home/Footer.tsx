@@ -57,7 +57,7 @@ export default function Footer() {
           <div className="grid md:grid-cols-4 gap-8">
             {/* Brand Column */}
             <div>
-              <h3 className="text-2xl font-bold mb-4">ESTA Service</h3>
+              <h3 className="text-2xl font-bold mb-4">ESTA Visa Portal</h3>
               <p className="text-sm text-gray-300 leading-relaxed">
                 Expert assistance with U.S. Electronic System for Travel
                 Authorization applications. Fast, secure, and reliable.
