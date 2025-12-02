@@ -15,9 +15,8 @@ export interface Content {
   metadata?: any;
   aiGenerated: boolean;
   status: string;
-  createdAt?: string;
   views: number;
-  createdAt: string;
+  createdAt?: string;
   updatedAt: string;
 }
 
