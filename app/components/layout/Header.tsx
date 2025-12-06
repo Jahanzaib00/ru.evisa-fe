@@ -26,7 +26,7 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-md backdrop-blur-sm">
+    <header className="sticky top-0 z-50 bg-white shadow-md backdrop-blur-sm">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
@@ -44,7 +44,7 @@ export default function Header() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex! items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-8">
             {user ? (
               <div className="relative">
                 <button
@@ -129,7 +129,7 @@ export default function Header() {
           <div className="md:hidden">
             <button
               onClick={toggleMobileMenu}
-              className="inline-flex items-center justify-center p-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 transition-colors duration-200"
+              className="inline-flex items-center justify-center p-2 rounded-lg text-gray-700 duration-200"
               aria-expanded="false"
             >
               <span className="sr-only">Open main menu</span>
@@ -171,7 +171,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden border-t border-gray-200 bg-white shadow-lg animate-slideDown">
+        <div className="md:hidden border-t border-primary bg-white shadow-lg animate-slideDown">
           <div className="px-4 pt-2 pb-3 space-y-1">
             {user && (
               <div className="px-3 py-3 mb-2 bg-linear-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-100">
@@ -206,7 +206,7 @@ export default function Header() {
                 </button>
               </>
             ) : (
-              <div className="space-y-2 pt-2 border-t border-gray-200 mt-2">
+              <div className="space-y-2 mt-2">
                 <Link
                   href="/login"
                   className="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-150"
@@ -216,7 +216,7 @@ export default function Header() {
                 </Link>
                 <Link
                   href="/apply"
-                  className="block px-3 py-2.5 bg-linear-to-r from-blue-600 to-indigo-600 text-white font-medium rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 shadow-md text-center"
+                  className="block px-3 py-2.5 bg-primary text-white font-medium rounded-lg hover:bg-primary-dark transition-all duration-200 shadow-md text-center"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   APPLY NOW
