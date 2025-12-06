@@ -79,7 +79,7 @@ export default function ApplicationLayout({
 
           {/* Right Column - Pricing Sidebar (Desktop Only) */}
           {showSidebar && (
-            <div className="hidden md:block! md:col-span-5">
+            <div className="hidden md:block md:col-span-5">
               <PricingSidebar
                 showButton={!!onSidebarButtonClick}
                 buttonText={sidebarButtonText}

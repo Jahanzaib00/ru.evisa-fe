@@ -1,7 +1,9 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* U.S. Government-Inspired Design System */
-@layer theme {
+@layer base {
   :root {
     /* Government Color Palette */
     --color-blue: #112e51;
