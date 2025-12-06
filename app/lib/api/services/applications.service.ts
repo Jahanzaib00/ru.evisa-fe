@@ -81,57 +81,67 @@ export const applicationsService = {
     return api.post<Application>(`/applications/${id}/travelers`, travelers);
   },
 
-  // Post-payment application updates
+  // Post-payment unified progress endpoint
+  async saveProgress(
+    id: string,
+    data: {
+      application?: Record<string, any>;
+      travelers?: Array<{ id: string } & Record<string, any>>;
+    }
+  ): Promise<Application> {
+    return api.patch<Application>(`/applications/${id}/progress`, data);
+  },
+
+  // Helper methods for convenience (wrapper around saveProgress)
   async updateUsContact(id: string, data: any): Promise<Application> {
-    return api.put<Application>(`/applications/${id}/us-contact`, data);
+    return this.saveProgress(id, { application: data });
   },
 
   async updateUsStay(id: string, data: any): Promise<Application> {
-    return api.put<Application>(`/applications/${id}/us-stay`, data);
+    return this.saveProgress(id, { application: data });
   },
 
   async updateTravelDetails(id: string, data: any): Promise<Application> {
-    return api.put<Application>(`/applications/${id}/travel-details`, data);
+    return this.saveProgress(id, { application: data });
   },
 
-  // Traveler-specific updates
   async updateTravelerPersonal(id: string, travelerId: string, data: any): Promise<Application> {
-    return api.put<Application>(`/applications/${id}/travelers/${travelerId}/personal`, data);
+    return this.saveProgress(id, { travelers: [{ id: travelerId, ...data }] });
   },
 
   async updateTravelerParents(id: string, travelerId: string, data: any): Promise<Application> {
-    return api.put<Application>(`/applications/${id}/travelers/${travelerId}/parents`, data);
+    return this.saveProgress(id, { travelers: [{ id: travelerId, ...data }] });
   },
 
   async updateTravelerContact(id: string, travelerId: string, data: any): Promise<Application> {
-    return api.put<Application>(`/applications/${id}/travelers/${travelerId}/contact`, data);
+    return this.saveProgress(id, { travelers: [{ id: travelerId, ...data }] });
   },
 
   async updateTravelerPassport(id: string, travelerId: string, data: any): Promise<Application> {
-    return api.put<Application>(`/applications/${id}/travelers/${travelerId}/passport`, data);
+    return this.saveProgress(id, { travelers: [{ id: travelerId, ...data }] });
   },
 
   async updateTravelerCitizenship(id: string, travelerId: string, data: any): Promise<Application> {
-    return api.put<Application>(`/applications/${id}/travelers/${travelerId}/citizenship`, data);
+    return this.saveProgress(id, { travelers: [{ id: travelerId, ...data }] });
   },
 
   async updateTravelerEmployment(id: string, travelerId: string, data: any): Promise<Application> {
-    return api.put<Application>(`/applications/${id}/travelers/${travelerId}/employment`, data);
+    return this.saveProgress(id, { travelers: [{ id: travelerId, ...data }] });
   },
 
   async updateTravelerEmergencyContact(id: string, travelerId: string, data: any): Promise<Application> {
-    return api.put<Application>(`/applications/${id}/travelers/${travelerId}/emergency-contact`, data);
+    return this.saveProgress(id, { travelers: [{ id: travelerId, ...data }] });
   },
 
   async updateTravelerGlobalEntry(id: string, travelerId: string, data: any): Promise<Application> {
-    return api.put<Application>(`/applications/${id}/travelers/${travelerId}/global-entry`, data);
+    return this.saveProgress(id, { travelers: [{ id: travelerId, ...data }] });
   },
 
   async updateTravelerSocialMedia(id: string, travelerId: string, data: any): Promise<Application> {
-    return api.put<Application>(`/applications/${id}/travelers/${travelerId}/social-media`, data);
+    return this.saveProgress(id, { travelers: [{ id: travelerId, ...data }] });
   },
 
   async updateTravelerEligibility(id: string, travelerId: string, data: any): Promise<Application> {
-    return api.put<Application>(`/applications/${id}/travelers/${travelerId}/eligibility`, data);
+    return this.saveProgress(id, { travelers: [{ id: travelerId, ...data }] });
   },
 };

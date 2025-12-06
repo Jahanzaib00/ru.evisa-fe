@@ -1,10 +1,18 @@
-'use client';
+"use client";
 
-import { useState, useRef, ChangeEvent } from 'react';
-import { Upload, X, Check, Loader2, FileText, Image as ImageIcon } from 'lucide-react';
-import axios from 'axios';
-
-export type UploadType = 'passport' | 'photo';
+import { useState, useRef, ChangeEvent } from "react";
+import {
+  Upload,
+  X,
+  Check,
+  Loader2,
+  FileText,
+  Image as ImageIcon,
+} from "lucide-react";
+import {
+  uploadsService,
+  type UploadType,
+} from "@/app/lib/api/services/uploads.service";
 
 interface FileUploadProps {
   label: string;
@@ -26,7 +34,9 @@ export default function FileUpload({
   travelerId,
   currentFileUrl,
   onUploadComplete,
-  accept = uploadType === 'photo' ? 'image/jpeg,image/png' : 'image/jpeg,image/png,application/pdf',
+  accept = uploadType === "photo"
+    ? "image/jpeg,image/png"
+    : "image/jpeg,image/png,application/pdf",
   helperText,
   error,
   required = false,
@@ -37,84 +47,37 @@ export default function FileUpload({
   const [uploadError, setUploadError] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const getFileExtension = (filename: string): string => {
-    return filename.split('.').pop()?.toLowerCase() || '';
-  };
-
   const handleFileSelect = async (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-
-    // Validate file size (max 10MB)
-    if (file.size > 10 * 1024 * 1024) {
-      setUploadError('File size must be less than 10MB');
-      return;
-    }
-
-    // Validate file type
-    const extension = getFileExtension(file.name);
-    const validExtensions = uploadType === 'photo' ? ['jpg', 'jpeg', 'png'] : ['jpg', 'jpeg', 'png', 'pdf'];
-
-    if (!validExtensions.includes(extension)) {
-      setUploadError(`Invalid file type. Allowed: ${validExtensions.join(', ')}`);
-      return;
-    }
 
     setUploadError(null);
     setUploading(true);
     setProgress(0);
 
     try {
-      // Step 1: Get presigned URL from backend
-      const { data: presignedData } = await axios.post(
-        `/api/applications/${applicationId}/uploads/presigned-url`,
-        {
-          travelerId,
-          uploadType,
-          fileExtension: extension,
-        }
+      // Upload file using uploads service
+      const publicUrl = await uploadsService.uploadFile(
+        file,
+        applicationId,
+        travelerId,
+        uploadType,
+        (progress) => setProgress(progress)
       );
-
-      const { uploadUrl, fileKey } = presignedData.data;
-
-      // Step 2: Upload directly to S3
-      await axios.put(uploadUrl, file, {
-        headers: {
-          'Content-Type': file.type,
-        },
-        onUploadProgress: (progressEvent) => {
-          const percentCompleted = Math.round(
-            (progressEvent.loaded * 100) / (progressEvent.total || 100)
-          );
-          setProgress(percentCompleted);
-        },
-      });
-
-      // Step 3: Save file URL to database
-      const { data: saveData } = await axios.post(
-        `/api/applications/${applicationId}/uploads/save`,
-        {
-          travelerId,
-          uploadType,
-          fileKey,
-        }
-      );
-
-      const publicUrl = saveData.data.url;
 
       // Set preview for images
-      if (file.type.startsWith('image/')) {
+      if (file.type.startsWith("image/")) {
         const reader = new FileReader();
         reader.onload = (e) => setPreview(e.target?.result as string);
         reader.readAsDataURL(file);
       } else {
-        setPreview('pdf');
+        setPreview("pdf");
       }
 
       onUploadComplete(publicUrl);
     } catch (err: any) {
-      console.error('Upload error:', err);
-      setUploadError(err.response?.data?.message || 'Upload failed. Please try again.');
+      console.error("Upload error:", err);
+      setUploadError(err.message || "Upload failed. Please try again.");
     } finally {
       setUploading(false);
       setProgress(0);
@@ -125,7 +88,7 @@ export default function FileUpload({
     setPreview(null);
     setUploadError(null);
     if (fileInputRef.current) {
-      fileInputRef.current.value = '';
+      fileInputRef.current.value = "";
     }
   };
 
@@ -145,15 +108,19 @@ export default function FileUpload({
       <div
         className={`
           border-2 border-dashed rounded-lg transition-colors
-          ${error || uploadError ? 'border-accent' : 'border-gray-light hover:border-primary'}
-          ${preview ? 'p-4' : 'p-6'}
+          ${
+            error || uploadError
+              ? "border-accent"
+              : "border-gray-light hover:border-primary"
+          }
+          ${preview ? "p-4" : "p-6"}
         `}
       >
         {preview ? (
           // File uploaded - show preview
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              {preview === 'pdf' ? (
+              {preview === "pdf" ? (
                 <FileText className="w-10 h-10 text-blue-600" />
               ) : (
                 <img
@@ -168,7 +135,7 @@ export default function FileUpload({
                   File uploaded
                 </p>
                 <p className="text-xs text-gray mt-0.5">
-                  {uploadType === 'passport' ? 'Passport scan' : 'Photo'}
+                  {uploadType === "passport" ? "Passport scan" : "Photo"}
                 </p>
               </div>
             </div>
@@ -211,7 +178,7 @@ export default function FileUpload({
             ) : (
               <>
                 <div className="mx-auto w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center mb-3">
-                  {uploadType === 'photo' ? (
+                  {uploadType === "photo" ? (
                     <ImageIcon className="w-6 h-6 text-primary" />
                   ) : (
                     <Upload className="w-6 h-6 text-primary" />
@@ -225,9 +192,9 @@ export default function FileUpload({
                   Click to upload
                 </button>
                 <p className="text-xs text-gray mt-1">
-                  {uploadType === 'photo'
-                    ? 'JPG or PNG (max 10MB)'
-                    : 'JPG, PNG or PDF (max 10MB)'}
+                  {uploadType === "photo"
+                    ? "JPG or PNG (max 10MB)"
+                    : "JPG, PNG or PDF (max 10MB)"}
                 </p>
               </>
             )}

@@ -6,7 +6,7 @@ import { useApplicationStore } from "@/app/lib/store/applicationStore";
 import { useApplication } from "@/app/lib/hooks/useApplication";
 import { useForm, useFieldArray } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { personalDetailsSchema } from "@/app/lib/validation/schemas";
+import { personalDetailsSchema } from "@/app/lib/validation/apply";
 import ApplicationLayout from "@/app/components/application/ApplicationLayout";
 import Input from "@/app/components/ui/Input";
 import DatePicker from "@/app/components/ui/DatePicker";
@@ -73,7 +73,8 @@ export default function PersonalDetailsPage() {
   useEffect(() => {
     if (errors.travelers && Array.isArray(errors.travelers)) {
       const firstErrorIndex = errors.travelers.findIndex(
-        (travelerError) => travelerError && Object.keys(travelerError).length > 0
+        (travelerError) =>
+          travelerError && Object.keys(travelerError).length > 0
       );
 
       if (firstErrorIndex !== -1) {
@@ -191,14 +192,14 @@ export default function PersonalDetailsPage() {
                 className="w-full px-6 py-4 flex items-center justify-between
                          hover:bg-white transition-colors text-left"
               >
-                  <span className="font-semibold text-gray-dark text-base">
-                    Traveler #{index + 1}
-                    {travelerData?.firstName && travelerData?.lastName && (
-                      <span className="font-normal text-gray ml-2">
-                        - {travelerData.firstName} {travelerData.lastName}
-                      </span>
-                    )}
-                  </span>
+                <span className="font-semibold text-gray-dark text-base">
+                  Traveler #{index + 1}
+                  {travelerData?.firstName && travelerData?.lastName && (
+                    <span className="font-normal text-gray ml-2">
+                      - {travelerData.firstName} {travelerData.lastName}
+                    </span>
+                  )}
+                </span>
                 <svg
                   className={`w-5 h-5 text-gray transition-transform ${
                     isExpanded ? "rotate-180" : ""

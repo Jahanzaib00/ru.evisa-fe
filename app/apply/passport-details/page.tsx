@@ -6,7 +6,7 @@ import { useApplicationStore } from "@/app/lib/store/applicationStore";
 import { useApplication } from "@/app/lib/hooks/useApplication";
 import { useForm, useFieldArray, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { passportDetailsSchema } from "@/app/lib/validation/schemas";
+import { passportDetailsSchema } from "@/app/lib/validation/apply";
 import ApplicationLayout from "@/app/components/application/ApplicationLayout";
 import Input from "@/app/components/ui/Input";
 import DatePicker from "@/app/components/ui/DatePicker";

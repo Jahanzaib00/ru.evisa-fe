@@ -140,13 +140,12 @@ export default function ReviewPage() {
     setShowPaymentModal(false);
     setClientSecret(null);
 
-    // Clear application data from localStorage
-    // This ensures user can start a fresh application
-    const { reset } = useApplicationStore.getState();
-    reset();
-
-    // Redirect to success page using replace to prevent back navigation
-    router.replace("/payment/success");
+    // Redirect to first step of post-payment flow
+    if (applicationId) {
+      router.replace(`/application/${applicationId}/step-1-personal`);
+    } else {
+      router.replace("/");
+    }
   };
 
   const handlePaymentError = (errorMessage: string) => {

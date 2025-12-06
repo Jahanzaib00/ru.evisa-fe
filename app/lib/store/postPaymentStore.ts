@@ -102,7 +102,6 @@ interface Application {
 
 interface PostPaymentStore {
   application: Application | null;
-  travelers: Traveler[];
   currentTravelerId: string | null;
   isLoading: boolean;
   error: string | null;
@@ -125,9 +124,6 @@ export const usePostPaymentStore = create<PostPaymentStore>()(
   persist(
     (set, get) => ({
       application: null,
-      get travelers() {
-        return get().application?.travelers || [];
-      },
       currentTravelerId: null,
       isLoading: false,
       error: null,
@@ -178,3 +174,9 @@ export const usePostPaymentStore = create<PostPaymentStore>()(
     }
   )
 );
+
+export const useTravelers = () =>
+  usePostPaymentStore((state) => state.application?.travelers ?? []);
+
+export const useApplication = () =>
+  usePostPaymentStore((state) => state.application);

@@ -1,0 +1,28 @@
+User-Agent: *
+Allow: /
+Disallow: /api/*
+Disallow: /login
+Disallow: /signup
+Disallow: /apply/personal-details
+Disallow: /apply/passport-details
+Disallow: /apply/review
+Disallow: /payment/
+Disallow: /orders
+Disallow: /_next/*
+Disallow: /static/*
+
+User-Agent: AhrefsBot
+User-Agent: SemrushBot
+User-Agent: DotBot
+Crawl-delay: 10
+
+User-Agent: Googlebot
+User-Agent: Bingbot
+User-Agent: Slurp
+Allow: /
+
+Host: https://www.visaportal.online
+Sitemap: https://www.visaportal.online/sitemap.xml
+Sitemap: https://www.visaportal.online/blog/sitemap.xml
+Sitemap: https://www.visaportal.online/guides/sitemap.xml
+Sitemap: https://www.visaportal.online/countries/sitemap.xml

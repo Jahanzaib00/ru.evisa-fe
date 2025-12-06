@@ -1,0 +1,388 @@
+[00:00:01.636] Server  LOG      ✓ Ready in 1236ms
+[00:00:05.020] Server  LOG     Active Traveler ID: ""
+[00:00:05.290] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:05.462] Browser ERROR   The result of getServerSnapshot should be cached to avoid an infinite loop
+[00:00:05.462] Browser LOG     Active Traveler ID: 
+[00:00:05.462] Browser LOG     Active Traveler ID: 
+[00:00:05.462] Browser LOG     Loading application with ID: cmioqa4y30001sf3pzcyeyzok
+[00:00:06.297] Browser LOG     Active Traveler ID: 
+[00:00:06.297] Browser LOG     Active Traveler ID: 
+[00:00:06.297] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:00:06.297] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:00:23.717] Server  LOG      ✓ Compiled in 82ms
+[00:00:23.807] Browser LOG     Loading application with ID: cmioqa4y30001sf3pzcyeyzok
+[00:00:24.517] Browser LOG     Active Traveler ID: 
+[00:00:24.517] Browser LOG     Active Traveler ID: 
+[00:00:24.517] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:00:24.517] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:00:30.020] Server  LOG      ✓ Compiled in 44ms
+[00:00:30.264] Browser LOG     Loading application with ID: cmioqa4y30001sf3pzcyeyzok
+[00:00:31.264] Browser LOG     Active Traveler ID: 
+[00:00:31.264] Browser LOG     Active Traveler ID: 
+[00:00:31.264] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:00:31.264] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:00:32.402] Server  LOG      ✓ Compiled in 69ms
+[00:00:34.318] Browser LOG     Loading application with ID: cmioqa4y30001sf3pzcyeyzok
+[00:00:34.318] Browser LOG     Active Traveler ID: 
+[00:00:34.318] Browser LOG     Active Traveler ID: 
+[00:00:34.318] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:00:34.318] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:00:39.875] Server  LOG      ✓ Compiled in 39ms
+[00:00:40.264] Browser LOG     Loading application with ID: cmioqa4y30001sf3pzcyeyzok
+[00:00:41.020] Browser LOG     Active Traveler ID: 
+[00:00:41.020] Browser LOG     Active Traveler ID: 
+[00:00:41.020] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:00:41.020] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:00:42.427] Server  LOG      ✓ Compiled in 63ms
+[00:00:42.509] Browser LOG     Loading application with ID: cmioqa4y30001sf3pzcyeyzok
+[00:00:42.961] Browser LOG     Active Traveler ID: 
+[00:00:42.961] Browser LOG     Active Traveler ID: 
+[00:00:42.961] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:00:42.961] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:00:50.592] Server  LOG      ✓ Compiled in 88ms
+[00:00:50.687] Browser LOG     Loading application with ID: cmioqa4y30001sf3pzcyeyzok
+[00:00:51.302] Browser LOG     Active Traveler ID: 
+[00:00:51.302] Browser LOG     Active Traveler ID: 
+[00:00:51.302] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:00:51.302] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:01:19.359] Server  LOG      ✓ Compiled in 59ms
+[00:01:19.452] Browser LOG     Loading application with ID: cmioqa4y30001sf3pzcyeyzok
+[00:01:20.208] Browser LOG     Active Traveler ID: 
+[00:01:20.208] Browser LOG     Active Traveler ID: 
+[00:01:20.208] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:01:20.208] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:01:48.360] Server  LOG      ✓ Compiled in 42ms
+[00:01:48.442] Browser LOG     Loading application with ID: cmioqa4y30001sf3pzcyeyzok
+[00:01:49.039] Browser LOG     Active Traveler ID: 
+[00:01:49.039] Browser LOG     Active Traveler ID: 
+[00:01:49.039] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:01:49.039] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:02:01.813] Server  LOG      ✓ Compiled in 42ms
+[00:02:02.311] Browser LOG     Loading application with ID: cmioqa4y30001sf3pzcyeyzok
+[00:02:02.311] Browser LOG     Active Traveler ID: 
+[00:02:02.311] Browser LOG     Active Traveler ID: 
+[00:02:02.311] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:02:02.311] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:02:07.713] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:02:07.713] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:02:07.713] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:02:08.437] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:02:08.437] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:03:19.686] Server  LOG      ✓ Compiled in 40ms
+[00:03:20.261] Browser LOG     Loading application with ID: cmioqa4y30001sf3pzcyeyzok
+[00:03:21.259] Browser LOG     Active Traveler ID: 
+[00:03:21.259] Browser LOG     Active Traveler ID: 
+[00:03:21.259] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:03:21.259] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:04:07.378] Server  LOG      ✓ Compiled in 37ms
+[00:04:07.461] Browser LOG     Loading application with ID: cmioqa4y30001sf3pzcyeyzok
+[00:04:08.121] Browser LOG     Active Traveler ID: 
+[00:04:08.121] Browser LOG     Active Traveler ID: 
+[00:04:08.121] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:04:08.121] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:04:14.148] Server  LOG      ✓ Compiled in 57ms
+[00:04:14.240] Browser LOG     Loading application with ID: cmioqa4y30001sf3pzcyeyzok
+[00:04:14.857] Browser LOG     Active Traveler ID: 
+[00:04:14.857] Browser LOG     Active Traveler ID: 
+[00:04:14.857] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:04:14.857] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:04:38.360] Server  LOG      ✓ Compiled in 42ms
+[00:04:38.445] Browser LOG     Loading application with ID: cmioqa4y30001sf3pzcyeyzok
+[00:04:41.533] Browser LOG     Active Traveler ID: 
+[00:04:41.533] Browser LOG     Active Traveler ID: 
+[00:04:41.533] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:04:41.533] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:04:47.358] Server  LOG      ✓ Compiled in 38ms
+[00:04:47.443] Browser LOG     Loading application with ID: cmioqa4y30001sf3pzcyeyzok
+[00:04:47.931] Browser LOG     Active Traveler ID: 
+[00:04:47.931] Browser LOG     Active Traveler ID: 
+[00:04:47.931] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:04:47.931] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:05:30.441] Server  LOG      ✓ Compiled in 36ms
+[00:05:32.249] Browser LOG     Loading application with ID: cmioqa4y30001sf3pzcyeyzok
+[00:05:32.249] Browser LOG     Active Traveler ID: 
+[00:05:32.249] Browser LOG     Active Traveler ID: 
+[00:05:32.249] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:05:32.249] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:05:33.254] Server  LOG      ✓ Compiled in 45ms
+[00:05:33.344] Browser LOG     Loading application with ID: cmioqa4y30001sf3pzcyeyzok
+[00:05:33.849] Browser LOG     Active Traveler ID: 
+[00:05:33.849] Browser LOG     Active Traveler ID: 
+[00:05:33.849] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:05:33.849] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:06:39.378] Server  LOG      ✓ Compiled in 46ms
+[00:06:40.249] Browser LOG     Loading application with ID: cmioqa4y30001sf3pzcyeyzok
+[00:06:40.249] Browser LOG     Active Traveler ID: 
+[00:06:40.249] Browser LOG     Active Traveler ID: 
+[00:06:40.249] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:06:40.249] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:06:43.406] Server  LOG      ✓ Compiled in 36ms
+[00:06:44.248] Browser LOG     Loading application with ID: cmioqa4y30001sf3pzcyeyzok
+[00:06:44.249] Browser LOG     Active Traveler ID: 
+[00:06:44.249] Browser LOG     Active Traveler ID: 
+[00:06:44.249] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:06:44.249] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:07:00.491] Server  LOG      ✓ Compiled in 35ms
+[00:07:02.248] Browser LOG     Loading application with ID: cmioqa4y30001sf3pzcyeyzok
+[00:07:02.248] Browser LOG     Active Traveler ID: 
+[00:07:02.249] Browser LOG     Active Traveler ID: 
+[00:07:02.249] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:07:02.249] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:07:03.803] Server  LOG      ✓ Compiled in 35ms
+[00:07:05.249] Browser LOG     Loading application with ID: cmioqa4y30001sf3pzcyeyzok
+[00:07:05.249] Browser LOG     Active Traveler ID: 
+[00:07:05.249] Browser LOG     Active Traveler ID: 
+[00:07:05.249] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:07:05.249] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:07:31.623] Server  LOG      ✓ Compiled in 35ms
+[00:07:32.251] Browser LOG     Loading application with ID: cmioqa4y30001sf3pzcyeyzok
+[00:07:33.250] Browser LOG     Active Traveler ID: 
+[00:07:33.251] Browser LOG     Active Traveler ID: 
+[00:07:33.251] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:07:33.251] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:08:30.342] Server  LOG      ✓ Compiled in 42ms
+[00:08:32.248] Browser LOG     Loading application with ID: cmioqa4y30001sf3pzcyeyzok
+[00:08:32.249] Browser LOG     Active Traveler ID: 
+[00:08:32.249] Browser LOG     Active Traveler ID: 
+[00:08:32.249] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:08:32.249] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:08:32.662] Server  LOG      ✓ Compiled in 91ms
+[00:08:32.791] Browser LOG     Loading application with ID: cmioqa4y30001sf3pzcyeyzok
+[00:08:33.369] Browser LOG     Active Traveler ID: 
+[00:08:33.369] Browser LOG     Active Traveler ID: 
+[00:08:33.369] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:08:33.369] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:08:38.202] Server  LOG      ✓ Compiled in 36ms
+[00:08:38.848] Browser LOG     Loading application with ID: cmioqa4y30001sf3pzcyeyzok
+[00:08:39.070] Browser LOG     Active Traveler ID: 
+[00:08:39.070] Browser LOG     Active Traveler ID: 
+[00:08:39.070] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:08:39.070] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:08:40.801] Server  LOG      ✓ Compiled in 45ms
+[00:08:40.908] Browser LOG     Loading application with ID: cmioqa4y30001sf3pzcyeyzok
+[00:08:41.396] Browser LOG     Active Traveler ID: 
+[00:08:41.397] Browser LOG     Active Traveler ID: 
+[00:08:41.397] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:08:41.397] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:08:50.369] Server  LOG      ✓ Compiled in 62ms
+[00:08:50.489] Browser LOG     Loading application with ID: cmioqa4y30001sf3pzcyeyzok
+[00:08:51.607] Browser LOG     Active Traveler ID: 
+[00:08:51.607] Browser LOG     Active Traveler ID: 
+[00:08:51.607] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:08:51.607] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:09:05.169] Server  LOG      ✓ Compiled in 140ms
+[00:09:05.380] Browser LOG     Loading application with ID: cmioqa4y30001sf3pzcyeyzok
+[00:09:06.088] Browser LOG     Active Traveler ID: 
+[00:09:06.088] Browser LOG     Active Traveler ID: 
+[00:09:06.088] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:09:06.088] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:09:08.102] Server  LOG      ✓ Compiled in 66ms
+[00:09:08.264] Browser LOG     Loading application with ID: cmioqa4y30001sf3pzcyeyzok
+[00:09:08.973] Browser LOG     Active Traveler ID: 
+[00:09:08.973] Browser LOG     Active Traveler ID: 
+[00:09:08.973] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:09:08.973] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:09:11.433] Server  LOG      ✓ Compiled in 43ms
+[00:09:12.236] Browser LOG     Loading application with ID: cmioqa4y30001sf3pzcyeyzok
+[00:09:12.236] Browser LOG     Active Traveler ID: 
+[00:09:12.236] Browser LOG     Active Traveler ID: 
+[00:09:12.236] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:09:12.236] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:09:58.518] Server  LOG      ✓ Compiled in 44ms
+[00:09:59.064] Browser LOG     Loading application with ID: cmioqa4y30001sf3pzcyeyzok
+[00:10:01.277] Browser LOG     Active Traveler ID: 
+[00:10:01.277] Browser LOG     Active Traveler ID: 
+[00:10:01.277] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:10:01.277] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:10:55.169] Server  LOG      ✓ Compiled in 47ms
+[00:10:55.720] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:10:55.720] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:11:30.401] Browser ERROR   unhandledRejection: TypeError: Cannot read properties of undefined (reading 'name')
+[00:11:37.585] Browser ERROR   unhandledRejection: TypeError: Cannot read properties of undefined (reading 'name')
+[00:14:09.753] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:14:09.753] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:14:10.572] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:14:10.572] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:14:33.420] Browser ERROR   unhandledRejection: TypeError: Cannot read properties of undefined (reading 'name')
+[00:14:57.392] Browser ERROR   Upload error: {}
+[00:15:40.455] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:15:40.455] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:15:40.455] Browser ERROR   [Error - Updating traveler personal info]: {}
+[00:15:40.455] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:15:40.455] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:19:53.376] Browser ERROR   unhandledRejection: TypeError: Cannot read properties of undefined (reading 'name')
+[00:25:17.661] Browser ERROR   unhandledRejection: TypeError: Cannot read properties of undefined (reading 'name')
+[00:25:22.906] Browser ERROR   unhandledRejection: TypeError: Cannot read properties of undefined (reading 'name')
+[00:25:45.657] Browser ERROR   unhandledRejection: TypeError: Cannot read properties of undefined (reading 'name')
+[00:27:33.026] Server  LOG      ✓ Compiled in 39ms
+[00:27:33.253] Browser ERROR   ./Documents/Self /esta/frontend/app/components/ui/CountrySelectWrapper.tsx:23:38
+Parsing ecmascript source code failed
+  21 |         ref={ref}
+  22 |         value={value || ''}
+> 23 |         onChange={(val) =>           if (onChange) onChange(val);
+     |                                      ^^
+  24 | }
+  25 |         {...props}
+  26 |       />
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Self /esta/frontend/app/components/ui/CountrySelectWrapper.tsx [Client Component Browser]
+    ./Documents/Self /esta/frontend/app/application/[id]/step-1-personal/page.tsx [Client Component Browser]
+    ./Documents/Self /esta/frontend/app/application/[id]/step-1-personal/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Self /esta/frontend/app/components/ui/CountrySelectWrapper.tsx [Client Component SSR]
+    ./Documents/Self /esta/frontend/app/application/[id]/step-1-personal/page.tsx [Client Component SSR]
+    ./Documents/Self /esta/frontend/app/application/[id]/step-1-personal/page.tsx [Server Component]
+[00:27:39.548] Server  LOG      ✓ Compiled in 35ms
+[00:27:40.249] Browser ERROR   ./Documents/Self /esta/frontend/app/components/ui/CountrySelectWrapper.tsx:25:9
+Parsing ecmascript source code failed
+  23 |         onChange={(val) =>           {if (onChange) onChange(val);
+  24 | }
+> 25 |         {...props}
+     |         ^
+  26 |       />
+  27 |     );
+  28 |   }
+
+Expected '}', got '{'
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Self /esta/frontend/app/components/ui/CountrySelectWrapper.tsx [Client Component Browser]
+    ./Documents/Self /esta/frontend/app/application/[id]/step-1-personal/page.tsx [Client Component Browser]
+    ./Documents/Self /esta/frontend/app/application/[id]/step-1-personal/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Self /esta/frontend/app/components/ui/CountrySelectWrapper.tsx [Client Component SSR]
+    ./Documents/Self /esta/frontend/app/application/[id]/step-1-personal/page.tsx [Client Component SSR]
+    ./Documents/Self /esta/frontend/app/application/[id]/step-1-personal/page.tsx [Server Component]
+[00:27:42.045] Server  LOG      ✓ Compiled in 35ms
+[00:27:42.249] Browser ERROR   ./Documents/Self /esta/frontend/app/components/ui/CountrySelectWrapper.tsx:23:67
+Parsing ecmascript source code failed
+  21 |         ref={ref}
+  22 |         value={value || ''}
+> 23 |         onChange={(val) =>           {if (onChange) onChange(val)};
+     |                                                                   ^
+  24 | }
+  25 |         {...props}
+  26 |       />
+
+Expected '}', got ';'
+
+Import traces:
+  Client Component Browser:
+    ./Documents/Self /esta/frontend/app/components/ui/CountrySelectWrapper.tsx [Client Component Browser]
+    ./Documents/Self /esta/frontend/app/application/[id]/step-1-personal/page.tsx [Client Component Browser]
+    ./Documents/Self /esta/frontend/app/application/[id]/step-1-personal/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/Self /esta/frontend/app/components/ui/CountrySelectWrapper.tsx [Client Component SSR]
+    ./Documents/Self /esta/frontend/app/application/[id]/step-1-personal/page.tsx [Client Component SSR]
+    ./Documents/Self /esta/frontend/app/application/[id]/step-1-personal/page.tsx [Server Component]
+[00:27:46.259] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:27:46.259] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:27:49.692] Browser ERROR   unhandledRejection: TypeError: Cannot read properties of undefined (reading 'name')
+[00:27:54.255] Server  LOG     Active Traveler ID: ""
+[00:27:54.625] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:27:54.825] Browser ERROR   The result of getServerSnapshot should be cached to avoid an infinite loop
+[00:27:54.825] Browser LOG     Active Traveler ID: 
+[00:27:54.825] Browser LOG     Active Traveler ID: 
+[00:27:54.825] Browser LOG     Loading application with ID: cmioqa4y30001sf3pzcyeyzok
+[00:27:57.448] Browser LOG     Active Traveler ID: 
+[00:27:57.448] Browser LOG     Active Traveler ID: 
+[00:27:57.448] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:27:57.448] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:28:01.325] Browser ERROR   unhandledRejection: TypeError: Cannot read properties of undefined (reading 'name')
+[00:32:39.601] Server  LOG      ✓ Compiled in 60ms
+[00:32:51.048] Server  LOG      ✓ Compiled in 54ms
+[00:33:03.966] Server  LOG      ✓ Compiled in 39ms
+[00:33:04.248] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:33:04.248] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:33:35.878] Server  LOG      ✓ Compiled in 37ms
+[00:33:39.859] Server  LOG      ✓ Compiled in 38ms
+[00:34:10.874] Server  LOG      ✓ Compiled in 36ms
+[00:34:11.294] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:34:11.294] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[00:34:13.442] Server  LOG      ✓ Compiled in 81ms
+[00:34:24.043] Server  LOG      ✓ Compiled in 73ms
+[00:34:26.085] Server  LOG      ✓ Compiled in 47ms
+[11:11:58.785] Server  LOG        Reload env: .env
+[11:11:59.789] Server  LOG      ✓ Compiled in 338ms
+[11:12:00.746] Browser LOG     Loading application with ID: cmioqa4y30001sf3pzcyeyzok
+[11:12:03.742] Browser LOG     Active Traveler ID: 
+[11:12:03.742] Browser LOG     Active Traveler ID: 
+[11:12:03.742] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:12:03.742] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:15:17.745] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:15:17.745] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:16:06.681] Server  LOG        Reload env: .env
+[11:16:07.742] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:16:07.742] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:16:08.462] Server  LOG        Reload env: .env
+[11:16:09.742] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:16:09.743] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:16:11.173] Server  LOG        Reload env: .env
+[11:16:11.742] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:16:11.742] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:16:16.462] Server  LOG        Reload env: .env
+[11:16:17.742] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:16:17.742] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:16:24.570] Server  LOG        Reload env: .env
+[11:16:25.742] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:16:25.742] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:16:26.186] Server  LOG        Reload env: .env
+[11:16:26.742] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:16:26.742] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:16:30.975] Server  LOG        Reload env: .env
+[11:16:31.742] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:16:31.742] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:16:33.869] Server  LOG        Reload env: .env
+[11:16:34.742] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:16:34.742] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:16:38.749] Server  LOG        Reload env: .env
+[11:16:39.742] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:16:39.742] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:16:40.441] Server  LOG        Reload env: .env
+[11:16:41.742] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:16:41.742] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:16:41.928] Server  LOG        Reload env: .env
+[11:16:42.742] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:16:42.742] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:16:49.436] Server  LOG        Reload env: .env
+[11:16:50.742] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:16:50.742] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:28:56.266] Server  LOG        Reload env: .env
+[11:28:57.751] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:28:57.751] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:29:01.888] Server  LOG        Reload env: .env
+[11:29:02.742] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:29:02.742] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:29:07.733] Server  LOG        Reload env: .env
+[11:29:08.780] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:29:08.780] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:29:10.430] Server  LOG        Reload env: .env
+[11:29:11.741] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:29:11.742] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:29:13.637] Server  LOG        Reload env: .env
+[11:29:14.742] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:29:14.742] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:29:24.661] Server  LOG        Reload env: .env
+[11:29:25.742] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:29:25.742] Browser LOG     Active Traveler ID: cmioqgjn40003sf3p75g7cane
+[11:29:28.335] Server  LOG        Reload env: .env
+[11:29:29.741] Browser LOG     Active Traveler ID: 
+[11:29:29.741] Browser LOG     Active Traveler ID: 
+[11:29:29.741] Browser LOG     Loading application with ID: cmioqa4y30001sf3pzcyeyzok
+[11:29:29.741] Browser LOG     Loading application with ID: cmioqa4y30001sf3pzcyeyzok
+[11:29:30.184] Server  LOG        Reload env: .env
+[11:29:30.907] Server  LOG      ✓ Compiled in 503ms
+[11:29:31.741] Browser LOG     Active Traveler ID: 
+[11:29:31.742] Browser LOG     Active Traveler ID: 
+[11:29:31.742] Browser LOG     Loading application with ID: cmioqa4y30001sf3pzcyeyzok
+[11:29:31.742] Browser LOG     Loading application with ID: cmioqa4y30001sf3pzcyeyzok
+[11:30:46.743] Browser ERROR   [Error - Loading application]: {}
+[11:30:46.743] Browser ERROR   [Error - Loading application]: {}

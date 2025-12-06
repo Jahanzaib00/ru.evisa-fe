@@ -1,0 +1,4892 @@
+(globalThis.TURBOPACK || (globalThis.TURBOPACK = [])).push([typeof document === "object" ? document.currentScript : undefined,
+"[project]/Documents/Self /esta/frontend/app/hooks/useAuth.ts [app-client] (ecmascript) <locals>", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$app$2f$contexts$2f$AuthContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Self /esta/frontend/app/contexts/AuthContext.tsx [app-client] (ecmascript)");
+;
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
+}
+}),
+"[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>Header
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Self /esta/frontend/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$styled$2d$jsx$2f$style$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Self /esta/frontend/node_modules/styled-jsx/style.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Self /esta/frontend/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Self /esta/frontend/node_modules/next/dist/client/app-dir/link.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Self /esta/frontend/node_modules/next/image.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$app$2f$hooks$2f$useAuth$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i("[project]/Documents/Self /esta/frontend/app/hooks/useAuth.ts [app-client] (ecmascript) <locals>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$app$2f$contexts$2f$AuthContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Self /esta/frontend/app/contexts/AuthContext.tsx [app-client] (ecmascript)");
+;
+var _s = __turbopack_context__.k.signature();
+"use client";
+;
+;
+;
+;
+;
+function Header() {
+    _s();
+    const { user, logout } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$app$2f$contexts$2f$AuthContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAuth"])();
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [isUserMenuOpen, setIsUserMenuOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const toggleMobileMenu = ()=>{
+        setIsMobileMenuOpen(!isMobileMenuOpen);
+        setIsUserMenuOpen(false);
+    };
+    const toggleUserMenu = ()=>{
+        setIsUserMenuOpen(!isUserMenuOpen);
+    };
+    const handleLogout = ()=>{
+        logout();
+        setIsUserMenuOpen(false);
+        setIsMobileMenuOpen(false);
+    };
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("header", {
+        className: "jsx-b5e19618c52795de" + " " + "sticky top-0 z-50 bg-white border-b border-gray-200 shadow-md backdrop-blur-sm",
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
+                className: "jsx-b5e19618c52795de" + " " + "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "jsx-b5e19618c52795de" + " " + "flex items-center justify-between h-16 md:h-20",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "jsx-b5e19618c52795de" + " " + "flex items-center",
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                href: "/",
+                                className: "flex items-center group",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                    src: "/images/logo.png",
+                                    alt: "ESTA Application Online",
+                                    width: 140,
+                                    height: 40,
+                                    className: "h-10 md:h-12 w-auto transition-transform duration-200 group-hover:scale-105",
+                                    priority: true
+                                }, void 0, false, {
+                                    fileName: "[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx",
+                                    lineNumber: 35,
+                                    columnNumber: 15
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx",
+                                lineNumber: 34,
+                                columnNumber: 13
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx",
+                            lineNumber: 33,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "jsx-b5e19618c52795de" + " " + "hidden md:flex! items-center space-x-8",
+                            children: user ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "jsx-b5e19618c52795de" + " " + "relative",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                        onClick: toggleUserMenu,
+                                        className: "jsx-b5e19618c52795de" + " " + "flex items-center space-x-2 text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 focus:outline-none",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "jsx-b5e19618c52795de" + " " + "w-9 h-9 bg-linear-to-r from-blue-600 to-indigo-600 rounded-full flex items-center justify-center text-white font-semibold text-sm",
+                                                children: [
+                                                    user.firstName[0],
+                                                    user.lastName[0]
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx",
+                                                lineNumber: 54,
+                                                columnNumber: 19
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "jsx-b5e19618c52795de" + " " + "hidden lg:block",
+                                                children: user.firstName
+                                            }, void 0, false, {
+                                                fileName: "[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx",
+                                                lineNumber: 58,
+                                                columnNumber: 19
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                fill: "none",
+                                                stroke: "currentColor",
+                                                viewBox: "0 0 24 24",
+                                                className: "jsx-b5e19618c52795de" + " " + `w-4 h-4 transition-transform duration-200 ${isUserMenuOpen ? "rotate-180" : ""}`,
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                    strokeLinecap: "round",
+                                                    strokeLinejoin: "round",
+                                                    strokeWidth: 2,
+                                                    d: "M19 9l-7 7-7-7",
+                                                    className: "jsx-b5e19618c52795de"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx",
+                                                    lineNumber: 67,
+                                                    columnNumber: 21
+                                                }, this)
+                                            }, void 0, false, {
+                                                fileName: "[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx",
+                                                lineNumber: 59,
+                                                columnNumber: 19
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx",
+                                        lineNumber: 50,
+                                        columnNumber: 17
+                                    }, this),
+                                    isUserMenuOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "jsx-b5e19618c52795de" + " " + "absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-1 animate-fadeIn",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "jsx-b5e19618c52795de" + " " + "px-4 py-3 border-b border-gray-100",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        className: "jsx-b5e19618c52795de" + " " + "text-sm font-medium text-gray-900",
+                                                        children: [
+                                                            user.firstName,
+                                                            " ",
+                                                            user.lastName
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx",
+                                                        lineNumber: 80,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        className: "jsx-b5e19618c52795de" + " " + "text-xs text-gray-500 truncate",
+                                                        children: user.email
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx",
+                                                        lineNumber: 83,
+                                                        columnNumber: 23
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx",
+                                                lineNumber: 79,
+                                                columnNumber: 21
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                                href: "/orders",
+                                                className: "block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-150",
+                                                onClick: ()=>setIsUserMenuOpen(false),
+                                                children: "My Applications"
+                                            }, void 0, false, {
+                                                fileName: "[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx",
+                                                lineNumber: 87,
+                                                columnNumber: 21
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                onClick: handleLogout,
+                                                className: "jsx-b5e19618c52795de" + " " + "w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors duration-150",
+                                                children: "Sign Out"
+                                            }, void 0, false, {
+                                                fileName: "[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx",
+                                                lineNumber: 101,
+                                                columnNumber: 21
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx",
+                                        lineNumber: 78,
+                                        columnNumber: 19
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx",
+                                lineNumber: 49,
+                                columnNumber: 15
+                            }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "jsx-b5e19618c52795de" + " " + "flex items-center space-x-4",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                        href: "/login",
+                                        className: "text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200",
+                                        children: "Sign In"
+                                    }, void 0, false, {
+                                        fileName: "[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx",
+                                        lineNumber: 112,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                        href: "/apply",
+                                        className: "inline-flex items-center px-5 py-2.5 bg-primary hover:bg-white text-white hover:text-primary border-2 border-primary font-medium rounded-lg",
+                                        children: "APPLY NOW"
+                                    }, void 0, false, {
+                                        fileName: "[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx",
+                                        lineNumber: 118,
+                                        columnNumber: 17
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx",
+                                lineNumber: 111,
+                                columnNumber: 15
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx",
+                            lineNumber: 47,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "jsx-b5e19618c52795de" + " " + "md:hidden",
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                onClick: toggleMobileMenu,
+                                "aria-expanded": "false",
+                                className: "jsx-b5e19618c52795de" + " " + "inline-flex items-center justify-center p-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 transition-colors duration-200",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        className: "jsx-b5e19618c52795de" + " " + "sr-only",
+                                        children: "Open main menu"
+                                    }, void 0, false, {
+                                        fileName: "[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx",
+                                        lineNumber: 135,
+                                        columnNumber: 15
+                                    }, this),
+                                    !isMobileMenuOpen ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                        fill: "none",
+                                        viewBox: "0 0 24 24",
+                                        strokeWidth: "2",
+                                        stroke: "currentColor",
+                                        "aria-hidden": "true",
+                                        className: "jsx-b5e19618c52795de" + " " + "block h-6 w-6",
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                            strokeLinecap: "round",
+                                            strokeLinejoin: "round",
+                                            d: "M4 6h16M4 12h16M4 18h16",
+                                            className: "jsx-b5e19618c52795de"
+                                        }, void 0, false, {
+                                            fileName: "[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx",
+                                            lineNumber: 145,
+                                            columnNumber: 19
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx",
+                                        lineNumber: 137,
+                                        columnNumber: 17
+                                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                        fill: "none",
+                                        viewBox: "0 0 24 24",
+                                        strokeWidth: "2",
+                                        stroke: "currentColor",
+                                        "aria-hidden": "true",
+                                        className: "jsx-b5e19618c52795de" + " " + "block h-6 w-6",
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                            strokeLinecap: "round",
+                                            strokeLinejoin: "round",
+                                            d: "M6 18L18 6M6 6l12 12",
+                                            className: "jsx-b5e19618c52795de"
+                                        }, void 0, false, {
+                                            fileName: "[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx",
+                                            lineNumber: 160,
+                                            columnNumber: 19
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx",
+                                        lineNumber: 152,
+                                        columnNumber: 17
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx",
+                                lineNumber: 130,
+                                columnNumber: 13
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx",
+                            lineNumber: 129,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx",
+                    lineNumber: 31,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx",
+                lineNumber: 30,
+                columnNumber: 7
+            }, this),
+            isMobileMenuOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "jsx-b5e19618c52795de" + " " + "md:hidden border-t border-gray-200 bg-white shadow-lg animate-slideDown",
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "jsx-b5e19618c52795de" + " " + "px-4 pt-2 pb-3 space-y-1",
+                    children: [
+                        user && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "jsx-b5e19618c52795de" + " " + "px-3 py-3 mb-2 bg-linear-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-100",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    className: "jsx-b5e19618c52795de" + " " + "text-sm font-semibold text-gray-900",
+                                    children: [
+                                        user.firstName,
+                                        " ",
+                                        user.lastName
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx",
+                                    lineNumber: 178,
+                                    columnNumber: 17
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    className: "jsx-b5e19618c52795de" + " " + "text-xs text-gray-600 mt-0.5",
+                                    children: user.email
+                                }, void 0, false, {
+                                    fileName: "[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx",
+                                    lineNumber: 181,
+                                    columnNumber: 17
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx",
+                            lineNumber: 177,
+                            columnNumber: 15
+                        }, this),
+                        user ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                    href: "/orders",
+                                    className: "block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-150",
+                                    onClick: ()=>setIsMobileMenuOpen(false),
+                                    children: "My Applications"
+                                }, void 0, false, {
+                                    fileName: "[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx",
+                                    lineNumber: 187,
+                                    columnNumber: 17
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                    onClick: handleLogout,
+                                    className: "jsx-b5e19618c52795de" + " " + "w-full text-left block px-3 py-2 rounded-lg text-base font-medium text-red-600 hover:bg-red-50 transition-colors duration-150",
+                                    children: "Sign Out"
+                                }, void 0, false, {
+                                    fileName: "[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx",
+                                    lineNumber: 201,
+                                    columnNumber: 17
+                                }, this)
+                            ]
+                        }, void 0, true) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "jsx-b5e19618c52795de" + " " + "space-y-2 pt-2 border-t border-gray-200 mt-2",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                    href: "/login",
+                                    className: "block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-150",
+                                    onClick: ()=>setIsMobileMenuOpen(false),
+                                    children: "Sign In"
+                                }, void 0, false, {
+                                    fileName: "[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx",
+                                    lineNumber: 210,
+                                    columnNumber: 17
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                    href: "/apply",
+                                    className: "block px-3 py-2.5 bg-linear-to-r from-blue-600 to-indigo-600 text-white font-medium rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 shadow-md text-center",
+                                    onClick: ()=>setIsMobileMenuOpen(false),
+                                    children: "APPLY NOW"
+                                }, void 0, false, {
+                                    fileName: "[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx",
+                                    lineNumber: 217,
+                                    columnNumber: 17
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx",
+                            lineNumber: 209,
+                            columnNumber: 15
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx",
+                    lineNumber: 175,
+                    columnNumber: 11
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx",
+                lineNumber: 174,
+                columnNumber: 9
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$styled$2d$jsx$2f$style$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                id: "b5e19618c52795de",
+                children: "@keyframes fadeIn{0%{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}@keyframes slideDown{0%{opacity:0;max-height:0}to{opacity:1;max-height:500px}}.animate-fadeIn.jsx-b5e19618c52795de{animation:.2s ease-out fadeIn}.animate-slideDown.jsx-b5e19618c52795de{animation:.3s ease-out slideDown}"
+            }, void 0, false, void 0, this)
+        ]
+    }, void 0, true, {
+        fileName: "[project]/Documents/Self /esta/frontend/app/components/layout/Header.tsx",
+        lineNumber: 29,
+        columnNumber: 5
+    }, this);
+}
+_s(Header, "UG4bzgU/bYMa8+WPi6h3wFpK7OI=", false, function() {
+    return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$app$2f$contexts$2f$AuthContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAuth"]
+    ];
+});
+_c = Header;
+var _c;
+__turbopack_context__.k.register(_c, "Header");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
+}
+}),
+"[project]/Documents/Self /esta/frontend/app/components/ui/Container.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>Container
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Self /esta/frontend/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+;
+function Container({ children, className = '', maxWidth = 'lg' }) {
+    const maxWidthStyles = {
+        sm: 'max-w-3xl',
+        md: 'max-w-5xl',
+        lg: 'max-w-7xl',
+        xl: 'max-w-[1400px]',
+        full: 'max-w-full'
+    };
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        className: `${maxWidthStyles[maxWidth]} mx-auto px-4 sm:px-6 lg:px-8 ${className}`,
+        children: children
+    }, void 0, false, {
+        fileName: "[project]/Documents/Self /esta/frontend/app/components/ui/Container.tsx",
+        lineNumber: 23,
+        columnNumber: 5
+    }, this);
+}
+_c = Container;
+var _c;
+__turbopack_context__.k.register(_c, "Container");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
+}
+}),
+"[project]/Documents/Self /esta/frontend/app/lib/analytics.ts [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+/**
+ * Analytics tracking utilities for conversion optimization
+ */ __turbopack_context__.s([
+    "trackCTAClick",
+    ()=>trackCTAClick,
+    "trackEvent",
+    ()=>trackEvent,
+    "trackExternalClick",
+    ()=>trackExternalClick,
+    "trackFAQInteraction",
+    ()=>trackFAQInteraction,
+    "trackFormStart",
+    ()=>trackFormStart,
+    "trackScrollDepth",
+    ()=>trackScrollDepth,
+    "trackSectionView",
+    ()=>trackSectionView
+]);
+const trackEvent = ({ action, category, label, value })=>{
+    if (("TURBOPACK compile-time value", "object") !== 'undefined' && window.gtag) {
+        window.gtag('event', action, {
+            event_category: category,
+            event_label: label,
+            value: value
+        });
+    }
+};
+const trackCTAClick = (location)=>{
+    trackEvent({
+        action: 'cta_click',
+        category: 'engagement',
+        label: location
+    });
+};
+const trackSectionView = (sectionName)=>{
+    trackEvent({
+        action: 'section_view',
+        category: 'engagement',
+        label: sectionName
+    });
+};
+const trackFAQInteraction = (question)=>{
+    trackEvent({
+        action: 'faq_open',
+        category: 'engagement',
+        label: question
+    });
+};
+const trackExternalClick = (url)=>{
+    trackEvent({
+        action: 'external_click',
+        category: 'navigation',
+        label: url
+    });
+};
+const trackFormStart = ()=>{
+    trackEvent({
+        action: 'form_start',
+        category: 'conversion',
+        label: 'esta_application'
+    });
+};
+const trackScrollDepth = (percentage)=>{
+    trackEvent({
+        action: 'scroll_depth',
+        category: 'engagement',
+        label: `${percentage}%`,
+        value: percentage
+    });
+};
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
+}
+}),
+"[project]/Documents/Self /esta/frontend/app/components/home/Footer.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>Footer
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Self /esta/frontend/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$app$2f$components$2f$ui$2f$Container$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Self /esta/frontend/app/components/ui/Container.tsx [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$app$2f$lib$2f$analytics$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Self /esta/frontend/app/lib/analytics.ts [app-client] (ecmascript)");
+"use client";
+;
+;
+;
+const footerColumns = [
+    {
+        title: "Company",
+        links: [
+            {
+                text: "About Us",
+                href: "/about"
+            },
+            {
+                text: "Support Center",
+                href: "/support"
+            },
+            {
+                text: "Contact",
+                href: "/support"
+            }
+        ]
+    },
+    {
+        title: "Legal",
+        links: [
+            {
+                text: "Privacy Policy",
+                href: "/privacy"
+            },
+            {
+                text: "Terms of Service",
+                href: "/terms"
+            },
+            {
+                text: "Refund Policy",
+                href: "/terms#refund-policy"
+            }
+        ]
+    },
+    {
+        title: "Resources",
+        links: [
+            {
+                text: "ESTA Guides",
+                href: "/guides"
+            },
+            {
+                text: "Eligible Countries",
+                href: "/countries"
+            },
+            {
+                text: "Blog & News",
+                href: "/blog"
+            },
+            {
+                text: "FAQ",
+                href: "/support#faq"
+            }
+        ]
+    }
+];
+function Footer() {
+    const currentYear = new Date().getFullYear();
+    const handleExternalClick = (url)=>{
+        (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$app$2f$lib$2f$analytics$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["trackExternalClick"])(url);
+    };
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("footer", {
+        className: "bg-gray-dark text-white",
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$app$2f$components$2f$ui$2f$Container$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "py-12 md:py-16",
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "grid md:grid-cols-4 gap-8",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                        className: "text-2xl font-bold mb-4",
+                                        children: "ESTA Service"
+                                    }, void 0, false, {
+                                        fileName: "[project]/Documents/Self /esta/frontend/app/components/home/Footer.tsx",
+                                        lineNumber: 60,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                        className: "text-sm text-gray-300 leading-relaxed",
+                                        children: "Expert assistance with U.S. Electronic System for Travel Authorization applications. Fast, secure, and reliable."
+                                    }, void 0, false, {
+                                        fileName: "[project]/Documents/Self /esta/frontend/app/components/home/Footer.tsx",
+                                        lineNumber: 61,
+                                        columnNumber: 15
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/Documents/Self /esta/frontend/app/components/home/Footer.tsx",
+                                lineNumber: 59,
+                                columnNumber: 13
+                            }, this),
+                            footerColumns.map((column, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                            className: "text-lg font-semibold mb-4",
+                                            children: column.title
+                                        }, void 0, false, {
+                                            fileName: "[project]/Documents/Self /esta/frontend/app/components/home/Footer.tsx",
+                                            lineNumber: 70,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
+                                            className: "space-y-2",
+                                            children: column.links.map((link, linkIndex)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                                        href: link.href,
+                                                        target: link.external ? "_blank" : undefined,
+                                                        rel: link.external ? "noopener noreferrer" : undefined,
+                                                        onClick: link.external ? ()=>handleExternalClick(link.href) : undefined,
+                                                        className: "text-sm text-gray-300 hover:text-white transition-colors inline-flex items-center gap-1",
+                                                        children: [
+                                                            link.text,
+                                                            link.external && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                                className: "w-3 h-3",
+                                                                fill: "none",
+                                                                stroke: "currentColor",
+                                                                viewBox: "0 0 24 24",
+                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                                    strokeLinecap: "round",
+                                                                    strokeLinejoin: "round",
+                                                                    strokeWidth: 2,
+                                                                    d: "M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/Documents/Self /esta/frontend/app/components/home/Footer.tsx",
+                                                                    lineNumber: 93,
+                                                                    columnNumber: 29
+                                                                }, this)
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/Documents/Self /esta/frontend/app/components/home/Footer.tsx",
+                                                                lineNumber: 87,
+                                                                columnNumber: 27
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/Documents/Self /esta/frontend/app/components/home/Footer.tsx",
+                                                        lineNumber: 74,
+                                                        columnNumber: 23
+                                                    }, this)
+                                                }, linkIndex, false, {
+                                                    fileName: "[project]/Documents/Self /esta/frontend/app/components/home/Footer.tsx",
+                                                    lineNumber: 73,
+                                                    columnNumber: 21
+                                                }, this))
+                                        }, void 0, false, {
+                                            fileName: "[project]/Documents/Self /esta/frontend/app/components/home/Footer.tsx",
+                                            lineNumber: 71,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, index, true, {
+                                    fileName: "[project]/Documents/Self /esta/frontend/app/components/home/Footer.tsx",
+                                    lineNumber: 69,
+                                    columnNumber: 15
+                                }, this))
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/Documents/Self /esta/frontend/app/components/home/Footer.tsx",
+                        lineNumber: 57,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
+                    fileName: "[project]/Documents/Self /esta/frontend/app/components/home/Footer.tsx",
+                    lineNumber: 56,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "border-t border-gray-600 py-8",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "bg-gray-800 rounded-lg p-6 mb-6",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                    className: "text-lg font-bold mb-3 flex items-center gap-2",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                            className: "w-5 h-5 text-yellow-400",
+                                            fill: "currentColor",
+                                            viewBox: "0 0 20 20",
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                fillRule: "evenodd",
+                                                d: "M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z",
+                                                clipRule: "evenodd"
+                                            }, void 0, false, {
+                                                fileName: "[project]/Documents/Self /esta/frontend/app/components/home/Footer.tsx",
+                                                lineNumber: 119,
+                                                columnNumber: 17
+                                            }, this)
+                                        }, void 0, false, {
+                                            fileName: "[project]/Documents/Self /esta/frontend/app/components/home/Footer.tsx",
+                                            lineNumber: 114,
+                                            columnNumber: 15
+                                        }, this),
+                                        "Important Disclaimer"
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/Documents/Self /esta/frontend/app/components/home/Footer.tsx",
+                                    lineNumber: 113,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    className: "text-sm text-gray-300 leading-relaxed",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                            className: "text-white",
+                                            children: "This is a private service website."
+                                        }, void 0, false, {
+                                            fileName: "[project]/Documents/Self /esta/frontend/app/components/home/Footer.tsx",
+                                            lineNumber: 128,
+                                            columnNumber: 15
+                                        }, this),
+                                        " ",
+                                        "We are not affiliated with, endorsed by, or connected to the U.S. government or the Department of Homeland Security. The official ESTA website is",
+                                        " ",
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                            href: "https://esta.cbp.dhs.gov/",
+                                            target: "_blank",
+                                            rel: "noopener noreferrer",
+                                            onClick: ()=>handleExternalClick("https://esta.cbp.dhs.gov/"),
+                                            className: "text-blue-400 hover:text-blue-300 underline font-semibold",
+                                            children: "esta.cbp.dhs.gov"
+                                        }, void 0, false, {
+                                            fileName: "[project]/Documents/Self /esta/frontend/app/components/home/Footer.tsx",
+                                            lineNumber: 134,
+                                            columnNumber: 15
+                                        }, this),
+                                        ". We provide application assistance services for an additional fee beyond the government's official ESTA charge ($40.00). Our service includes form review, error checking, status monitoring, and 24/7 multilingual support."
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/Documents/Self /esta/frontend/app/components/home/Footer.tsx",
+                                    lineNumber: 127,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/Documents/Self /esta/frontend/app/components/home/Footer.tsx",
+                            lineNumber: 112,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "text-center text-sm text-gray-400",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    children: [
+                                        "© ",
+                                        currentYear,
+                                        " ESTA Service. All rights reserved."
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/Documents/Self /esta/frontend/app/components/home/Footer.tsx",
+                                    lineNumber: 152,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    className: "mt-2",
+                                    children: "Made with care for travelers worldwide"
+                                }, void 0, false, {
+                                    fileName: "[project]/Documents/Self /esta/frontend/app/components/home/Footer.tsx",
+                                    lineNumber: 153,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/Documents/Self /esta/frontend/app/components/home/Footer.tsx",
+                            lineNumber: 151,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/Documents/Self /esta/frontend/app/components/home/Footer.tsx",
+                    lineNumber: 111,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "[project]/Documents/Self /esta/frontend/app/components/home/Footer.tsx",
+            lineNumber: 54,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "[project]/Documents/Self /esta/frontend/app/components/home/Footer.tsx",
+        lineNumber: 53,
+        columnNumber: 5
+    }, this);
+}
+_c = Footer;
+var _c;
+__turbopack_context__.k.register(_c, "Footer");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
+}
+}),
+"[project]/Documents/Self /esta/frontend/app/lib/data/guides.ts [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+/**
+ * ESTA Guides Data
+ * THE ABSOLUTE BEST comprehensive ESTA guides with SEO-optimized content
+ * Based on official CBP/DHS information - Updated for 2025
+ */ __turbopack_context__.s([
+    "ESTA_GUIDES",
+    ()=>ESTA_GUIDES,
+    "getAllGuideSlugs",
+    ()=>getAllGuideSlugs,
+    "getGuideBySlug",
+    ()=>getGuideBySlug,
+    "getGuidesByCategory",
+    ()=>getGuidesByCategory,
+    "searchGuides",
+    ()=>searchGuides
+]);
+const ESTA_GUIDES = [
+    // ==================== MAIN GUIDES ====================
+    {
+        slug: "what-is-esta",
+        title: "What is ESTA? Complete Guide to Electronic System for Travel Authorization",
+        description: "ESTA (Electronic System for Travel Authorization) is an automated system that determines eligibility for travelers to visit the United States under the Visa Waiver Program. Learn everything you need to know.",
+        category: "main",
+        priority: 1.0,
+        keywords: [
+            "what is ESTA",
+            "ESTA definition",
+            "electronic travel authorization",
+            "ESTA explained",
+            "ESTA meaning",
+            "what does ESTA stand for"
+        ],
+        estimatedReadTime: 8,
+        lastUpdated: "2025-01-15",
+        sections: [
+            {
+                id: "introduction",
+                title: "Introduction to ESTA",
+                content: [
+                    "ESTA (Electronic System for Travel Authorization) is a mandatory online travel authorization system for citizens of Visa Waiver Program (VWP) countries traveling to the United States for tourism, business, or transit purposes.",
+                    "Implemented by the U.S. Department of Homeland Security (DHS) in 2009, ESTA determines whether travelers pose a security or law enforcement risk before they board a U.S.-bound aircraft or vessel.",
+                    {
+                        type: "callout",
+                        title: "Key Point",
+                        text: "ESTA is NOT a visa. It is an authorization to travel to the United States without obtaining a traditional visa, but having an approved ESTA does not guarantee entry - U.S. Customs and Border Protection officers at the port of entry make the final determination."
+                    }
+                ]
+            },
+            {
+                id: "who-needs-esta",
+                title: "Who Needs ESTA?",
+                content: [
+                    "You must obtain ESTA authorization if you meet ALL of the following criteria:",
+                    {
+                        type: "list",
+                        items: [
+                            "You are a citizen or eligible national of a Visa Waiver Program country (42 countries $40)",
+                            "You are traveling to the United States for tourism, business, or transit",
+                            "Your stay will be 90 days or less",
+                            "You plan to arrive by air or sea carrier (cruise ship or international flight)",
+                            "You do not currently hold a valid U.S. visa"
+                        ]
+                    },
+                    {
+                        type: "warning",
+                        title: "Important Exception",
+                        text: "If you are traveling to the U.S. by land from Canada or Mexico, you do NOT need ESTA. However, you must still be from a VWP country and meet all other requirements."
+                    }
+                ]
+            },
+            {
+                id: "how-esta-works",
+                title: "How ESTA Works",
+                content: [
+                    "The ESTA system performs automated checks against multiple law enforcement and security databases to determine if a traveler poses a risk. Here is how the process works:",
+                    {
+                        type: "list",
+                        items: [
+                            "You submit an online application with biographical and passport information",
+                            "You answer eligibility questions about health, criminal history, and previous travel",
+                            "The system performs real-time checks against security databases",
+                            "You receive a response usually within minutes (can take up to 72 hours)",
+                            "If approved, your ESTA is electronically linked to your passport",
+                            "Airlines and cruise lines verify your ESTA before allowing boarding",
+                            "CBP officers check your ESTA upon arrival in the United States"
+                        ]
+                    },
+                    "The entire process is automated, secure, and designed to process applications quickly while maintaining security standards."
+                ]
+            },
+            {
+                id: "esta-validity",
+                title: "ESTA Validity and Duration",
+                content: [
+                    "Once approved, your ESTA authorization is valid for 2 years from the date of approval, or until your passport expires, whichever comes first.",
+                    "During this validity period, you can:",
+                    {
+                        type: "list",
+                        items: [
+                            "Make multiple trips to the United States",
+                            "Stay up to 90 days per visit",
+                            "Travel for tourism, business, or transit purposes",
+                            "Enter through any U.S. port of entry (airport, seaport)"
+                        ]
+                    },
+                    {
+                        type: "callout",
+                        text: "You must apply for a new ESTA if you get a new passport, change your name, change your gender, change your country of citizenship, or if any of your answers to the ESTA eligibility questions change."
+                    }
+                ]
+            },
+            {
+                id: "esta-vs-visa",
+                title: "ESTA vs. U.S. Visa",
+                content: [
+                    "ESTA is not a visa, and there are important differences:",
+                    "ESTA is simpler and faster: Online application, approved in minutes to 72 hours, costs $40, valid for 2 years, allows multiple entries, no embassy visit required.",
+                    "U.S. Visa is more complex: In-person interview required, processing takes weeks, costs $185+, valid for 10 years, requires embassy appointment, more documentation needed.",
+                    "However, a visa allows longer stays (typically 180 days per visit) and can be used for purposes not allowed under ESTA, such as work or study.",
+                    {
+                        type: "callout",
+                        title: "When You Need a Visa Instead",
+                        text: "If you plan to work, study, stay longer than 90 days, or if you have been denied ESTA in the past, you must apply for an appropriate U.S. visa instead of ESTA."
+                    }
+                ]
+            }
+        ],
+        faqs: [
+            {
+                question: "Is ESTA the same as a visa?",
+                answer: "No, ESTA is not a visa. ESTA is an authorization to travel to the United States under the Visa Waiver Program. While both allow entry to the U.S., ESTA is faster, cheaper, and easier to obtain but has more restrictions (90-day limit, no work allowed). A visa requires an in-person interview and takes longer to process."
+            },
+            {
+                question: "How much does ESTA cost?",
+                answer: "The official ESTA fee is $40 USD. This includes a $5 processing fee and a $40 authorization fee. The authorization fee is only charged if your ESTA is approved. Payment must be made by credit card, debit card, or PayPal."
+            },
+            {
+                question: "How long does ESTA take to process?",
+                answer: "Most ESTA applications are approved within minutes. However, it can take up to 72 hours for a final decision. The U.S. Department of Homeland Security recommends applying at least 72 hours before your departure to allow sufficient processing time."
+            },
+            {
+                question: "Can I work in the U.S. with ESTA?",
+                answer: "No, you cannot work in the United States with ESTA. ESTA is only for tourism, business meetings/conferences, or transit purposes. If you plan to work in the U.S., you must apply for an appropriate work visa (such as H-1B, L-1, etc.)."
+            },
+            {
+                question: "Do children need ESTA?",
+                answer: "Yes, all travelers, including infants and children, need their own ESTA authorization if they are traveling under the Visa Waiver Program. A parent or guardian can complete the ESTA application on behalf of a minor."
+            }
+        ],
+        relatedGuides: [
+            "esta-requirements",
+            "how-to-apply-esta",
+            "esta-vs-visa",
+            "check-esta-status"
+        ]
+    },
+    {
+        slug: "esta-requirements",
+        title: "ESTA Requirements 2025: Complete Eligibility Guide",
+        description: "Complete list of ESTA requirements including passport requirements, eligibility criteria, and what you need to qualify for U.S. travel authorization under the Visa Waiver Program.",
+        category: "main",
+        priority: 0.9,
+        keywords: [
+            "ESTA requirements",
+            "ESTA eligibility",
+            "who can apply ESTA",
+            "ESTA qualifications",
+            "ESTA criteria",
+            "passport requirements ESTA"
+        ],
+        estimatedReadTime: 10,
+        lastUpdated: "2025-01-15",
+        sections: [
+            {
+                id: "introduction",
+                title: "ESTA Requirements Overview",
+                content: [
+                    "To qualify for ESTA (Electronic System for Travel Authorization), you must meet specific requirements set by the U.S. Department of Homeland Security. This guide covers all eligibility criteria in detail.",
+                    {
+                        type: "callout",
+                        title: "Quick Check",
+                        text: "You can apply for ESTA if you are a citizen of a VWP country, have an e-passport, are traveling for 90 days or less, and have not been denied a U.S. visa or had visa violations in the past."
+                    }
+                ]
+            },
+            {
+                id: "citizenship-requirements",
+                title: "1. Citizenship Requirements",
+                content: [
+                    "You must be a citizen or eligible national of one of the 42 Visa Waiver Program countries:",
+                    {
+                        type: "list",
+                        items: [
+                            "European Countries: Andorra, Austria, Belgium, Croatia, Czech Republic, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Iceland, Ireland, Italy, Latvia, Liechtenstein, Lithuania, Luxembourg, Malta, Monaco, Netherlands, Norway, Poland, Portugal, San Marino, Slovakia, Slovenia, Spain, Sweden, Switzerland, United Kingdom",
+                            "Asia-Pacific: Australia, Brunei, Israel, Japan, New Zealand, Singapore, South Korea, Taiwan",
+                            "Americas: Chile"
+                        ]
+                    },
+                    {
+                        type: "warning",
+                        title: "Dual Citizenship Restriction",
+                        text: "If you are a dual citizen of a VWP country AND Iran, Iraq, North Korea, Sudan, or Syria, you are NOT eligible for ESTA. You must apply for a visa."
+                    }
+                ]
+            },
+            {
+                id: "passport-requirements",
+                title: "2. Passport Requirements",
+                content: [
+                    "Your passport must meet these strict requirements:",
+                    {
+                        type: "list",
+                        items: [
+                            "E-Passport: Must have an electronic chip containing your biometric information (look for the small camera icon on the cover)",
+                            "Validity: Must be valid for at least 6 months beyond your planned departure from the U.S. (some countries are exempt from this rule)",
+                            "Machine-Readable: Must have a machine-readable zone (MRZ) with two lines of text at the bottom of the biographical page",
+                            "Individual Passport: Each traveler, including infants and children, must have their own passport"
+                        ]
+                    },
+                    {
+                        type: "callout",
+                        title: "How to Check if You Have an E-Passport",
+                        text: "Look for a small rectangular icon of a camera or microchip on the front or back cover of your passport. This indicates it contains an electronic chip. All passports issued by VWP countries since 2006 are e-passports."
+                    }
+                ]
+            },
+            {
+                id: "travel-requirements",
+                title: "3. Travel Purpose Requirements",
+                content: [
+                    "ESTA is ONLY valid for specific types of travel:",
+                    {
+                        type: "list",
+                        items: [
+                            "Tourism: Vacation, sightseeing, visiting friends/family, recreational activities",
+                            "Business: Attending meetings, conferences, consultations, negotiating contracts (no actual work or employment)",
+                            "Transit: Passing through the U.S. to another destination",
+                            "Medical Treatment: Receiving medical treatment from U.S. healthcare providers"
+                        ]
+                    },
+                    "Maximum stay: 90 days per visit (cannot be extended)",
+                    {
+                        type: "warning",
+                        title: "NOT Allowed with ESTA",
+                        text: "You CANNOT use ESTA if you plan to: work for a U.S. employer, study for academic credit, stay longer than 90 days, arrive by private aircraft, become a permanent resident, or work as foreign media/journalist."
+                    }
+                ]
+            },
+            {
+                id: "eligibility-questions",
+                title: "4. Eligibility Questions",
+                content: [
+                    'You must answer "NO" to all of these questions to be eligible:',
+                    {
+                        type: "list",
+                        items: [
+                            "Do you have a communicable disease of public health significance?",
+                            "Do you have a mental or physical disorder that poses a threat to yourself or others?",
+                            "Have you ever been arrested or convicted of a crime involving moral turpitude?",
+                            "Have you ever been arrested or convicted of two or more offenses with total sentences of 5+ years?",
+                            "Have you ever been a controlled substance trafficker, or aided/abetted drug trafficking?",
+                            "Do you seek to engage in terrorism, espionage, or sabotage?",
+                            "Have you ever committed fraud or misrepresented yourself to obtain a U.S. visa or entry?",
+                            "Have you ever stayed in the U.S. longer than your authorized period?",
+                            "Have you ever been removed or deported from the United States?"
+                        ]
+                    },
+                    {
+                        type: "callout",
+                        text: 'Even a single "YES" answer to these questions will likely result in ESTA denial. You will need to apply for a visa instead.'
+                    }
+                ]
+            },
+            {
+                id: "travel-restrictions",
+                title: "5. Travel History Restrictions",
+                content: [
+                    "You are NOT eligible for ESTA if you have traveled to or been present in these countries on or after March 1, 2011:",
+                    {
+                        type: "list",
+                        items: [
+                            "Iran",
+                            "Iraq",
+                            "Libya",
+                            "North Korea",
+                            "Somalia",
+                            "Sudan",
+                            "Syria",
+                            "Yemen"
+                        ]
+                    },
+                    {
+                        type: "warning",
+                        title: "Limited Exceptions",
+                        text: "There are limited exceptions for diplomatic or military travel for VWP governments. If you traveled to these countries for government purposes, you may still be eligible."
+                    }
+                ]
+            }
+        ],
+        faqs: [
+            {
+                question: "Can I apply for ESTA if I have a criminal record?",
+                answer: "It depends on the type and severity of the crime. Minor traffic violations generally do not affect ESTA eligibility. However, arrests or convictions for crimes involving moral turpitude (fraud, theft, assault, drug offenses) will likely result in ESTA denial. If you have a criminal record, you should apply for a U.S. visa instead."
+            },
+            {
+                question: "What if my passport expires in 5 months but my trip is only 2 weeks?",
+                answer: "If your passport expires in less than 6 months, you should renew it before applying for ESTA. Although some VWP countries have agreements exempting them from the 6-month rule, it is best practice to have a passport valid for 6 months beyond your departure date to avoid issues."
+            },
+            {
+                question: "Can I apply for ESTA if I was previously denied a U.S. visa?",
+                answer: "Technically yes, but it is unlikely to be approved. A previous visa denial must be disclosed on your ESTA application, and the same issues that led to the visa denial will likely result in ESTA denial. It is better to reapply for a visa and address the previous denial reasons."
+            },
+            {
+                question: "Do I need ESTA if I am just transiting through the United States?",
+                answer: "Yes, if you are transiting through the U.S. by air or sea, you need ESTA even if you are not leaving the airport. This applies to connecting flights. However, if you are entering the U.S. by land from Canada or Mexico, you do NOT need ESTA."
+            },
+            {
+                question: "What is an e-passport and how do I know if I have one?",
+                answer: "An e-passport is a passport with an embedded electronic chip containing your biographic and biometric information. Look for a small rectangular icon of a camera or microchip on the front or back cover. All passports issued by VWP countries after 2006 are e-passports."
+            }
+        ],
+        relatedGuides: [
+            "what-is-esta",
+            "passport-requirements-esta",
+            "esta-eligibility-criteria",
+            "criminal-record-esta"
+        ]
+    },
+    {
+        slug: "how-to-apply-esta",
+        title: "How to Apply for ESTA: Complete Step-by-Step Guide 2025",
+        description: "Complete step-by-step instructions for applying for ESTA online. Learn exactly what information you need, how to fill out the form correctly, and what to expect during the application process.",
+        category: "main",
+        priority: 0.9,
+        keywords: [
+            "how to apply ESTA",
+            "ESTA application guide",
+            "apply for ESTA online",
+            "ESTA application steps",
+            "ESTA application process",
+            "complete ESTA application"
+        ],
+        estimatedReadTime: 12,
+        lastUpdated: "2025-01-15",
+        sections: [
+            {
+                id: "introduction",
+                title: "Introduction",
+                content: [
+                    "Applying for ESTA (Electronic System for Travel Authorization) is a straightforward online process that typically takes 10-20 minutes to complete. This guide walks you through every step of the application process.",
+                    {
+                        type: "callout",
+                        title: "Official Website Only",
+                        text: "Always apply through the official U.S. government website: esta.cbp.dhs.gov. Beware of third-party websites charging inflated fees."
+                    }
+                ]
+            },
+            {
+                id: "before-you-start",
+                title: "Before You Start: What You Need",
+                content: [
+                    "Gather these items before beginning your application:",
+                    {
+                        type: "list",
+                        items: [
+                            "Valid e-passport (must be from a VWP country)",
+                            "Valid email address (you will receive updates here)",
+                            "Credit card, debit card, or PayPal account for the $40 fee",
+                            "Travel information (if you have travel plans): flight details, U.S. address",
+                            "Employment information: current and past employers",
+                            "Emergency contact: name and phone number",
+                            "Parent information: names of both parents"
+                        ]
+                    },
+                    {
+                        type: "callout",
+                        text: 'You can apply for ESTA even if you do not have specific travel plans yet. Just enter "Unknown" for the flight information and U.S. address fields.'
+                    }
+                ]
+            },
+            {
+                id: "step-by-step",
+                title: "Step-by-Step Application Process",
+                content: [
+                    "Follow these steps to complete your ESTA application:",
+                    "Step 1: Go to the official website at esta.cbp.dhs.gov",
+                    'Step 2: Click "Apply" and select "Individual Application" (or "Group Application" if applying for multiple people)',
+                    "Step 3: Read and acknowledge the security notification",
+                    "Step 4: Select your citizenship country from the dropdown menu",
+                    "Step 5: Fill in your personal information exactly as it appears on your passport:",
+                    {
+                        type: "list",
+                        items: [
+                            "Last Name (Family Name)",
+                            "First Name (Given Name)",
+                            "Middle Name (if applicable)",
+                            "Date of Birth",
+                            "City of Birth",
+                            "Country of Birth",
+                            "Gender",
+                            "Aliases (any other names you have used)"
+                        ]
+                    },
+                    "Step 6: Enter your passport information:",
+                    {
+                        type: "list",
+                        items: [
+                            "Passport Number",
+                            "Passport Issuance Date",
+                            "Passport Expiration Date",
+                            "Passport Issuing Country"
+                        ]
+                    },
+                    "Step 7: Provide your contact information:",
+                    {
+                        type: "list",
+                        items: [
+                            "Email Address (double-check for accuracy)",
+                            "Phone Number (include country code)",
+                            "Address in your home country"
+                        ]
+                    },
+                    "Step 8: Answer employment questions:",
+                    {
+                        type: "list",
+                        items: [
+                            "Current Employer Name",
+                            "Current Employer Address",
+                            "Current Job Title"
+                        ]
+                    },
+                    "Step 9: Provide parent information (names only)",
+                    "Step 10: Enter emergency contact information",
+                    "Step 11: If you have travel plans, enter:",
+                    {
+                        type: "list",
+                        items: [
+                            "U.S. Contact Person (name and address)",
+                            "U.S. Address where you will stay",
+                            "Airline/Vessel Information (if known)"
+                        ]
+                    },
+                    'Step 12: Answer eligibility questions (answer all "NO" unless applicable):',
+                    {
+                        type: "warning",
+                        title: "Critical Step",
+                        text: "Answer these questions honestly. Providing false information is grounds for permanent inadmissibility to the United States."
+                    },
+                    {
+                        type: "list",
+                        items: [
+                            "Communicable diseases",
+                            "Mental or physical disorders",
+                            "Drug abuse or addiction",
+                            "Criminal convictions",
+                            "Previous visa denials or deportations",
+                            "Terrorist activities",
+                            "Fraud or misrepresentation"
+                        ]
+                    },
+                    "Step 13: Review all information carefully",
+                    "Step 14: Certify that all information is correct",
+                    "Step 15: Submit your application",
+                    "Step 16: Pay the $40 fee using credit card, debit card, or PayPal"
+                ]
+            },
+            {
+                id: "after-submission",
+                title: "After Submission: What Happens Next",
+                content: [
+                    "After you submit your application and payment:",
+                    {
+                        type: "list",
+                        items: [
+                            "You will receive an application number - SAVE THIS NUMBER",
+                            "Most applications are processed within minutes",
+                            "Check your application status at esta.cbp.dhs.gov using your application number",
+                            "You will receive one of three responses: Authorization Approved, Travel Not Authorized, or Authorization Pending"
+                        ]
+                    },
+                    {
+                        type: "callout",
+                        title: "Authorization Approved",
+                        text: "If approved, your ESTA is valid for 2 years or until your passport expires. You will receive a confirmation email. Print a copy for your records (though not required)."
+                    }
+                ]
+            },
+            {
+                id: "common-mistakes",
+                title: "Common Mistakes to Avoid",
+                content: [
+                    "Avoid these common ESTA application errors:",
+                    {
+                        type: "list",
+                        items: [
+                            "Typos in passport information (must match exactly)",
+                            "Incorrect passport expiration date",
+                            "Wrong email address (you will not receive updates)",
+                            "Using a third-party website instead of the official site",
+                            "Not saving your application number",
+                            "Rushing through eligibility questions without reading carefully",
+                            "Applying too close to departure date (apply at least 72 hours before)"
+                        ]
+                    }
+                ]
+            }
+        ],
+        faqs: [
+            {
+                question: "How long does the ESTA application take to complete?",
+                answer: "The ESTA application typically takes 10-20 minutes to complete if you have all required information ready. The U.S. government estimates an average completion time of 23 minutes."
+            },
+            {
+                question: "Can I save my application and complete it later?",
+                answer: "Yes, you can save your partially completed application and return to it later. You will need your application number and other identifying information to retrieve it. However, the application will expire after 7 days if not completed."
+            },
+            {
+                question: "What if I make a mistake on my ESTA application?",
+                answer: "For minor errors (like typos in your address or employment), you may be able to update the information after submission. However, errors in passport information, name, date of birth, or citizenship cannot be corrected. You must submit a new application with the correct information."
+            },
+            {
+                question: "Do I need to print my ESTA approval?",
+                answer: "No, printing your ESTA approval is not required. Your ESTA is electronically linked to your passport in the system. However, it is recommended to save or print a copy for your records."
+            },
+            {
+                question: "Can someone else complete my ESTA application for me?",
+                answer: "Yes, a third party (family member, friend, travel agent) can complete your ESTA application on your behalf. However, you are responsible for ensuring all information is accurate. At the end of the application, you must certify that you have reviewed the information and it is correct."
+            }
+        ],
+        relatedGuides: [
+            "esta-requirements",
+            "filling-esta-form",
+            "esta-payment-methods",
+            "check-esta-status"
+        ]
+    },
+    // Additional essential guides with full content...
+    // (I'll add the most important ones due to token limits)
+    {
+        slug: "esta-application-fees",
+        title: "ESTA Fees 2025: Complete Cost Breakdown & Payment Guide",
+        description: "Official ESTA application fees, payment methods, what you are paying for, and how to avoid third-party scams. Complete cost breakdown and refund policy for 2025.",
+        category: "process",
+        priority: 0.8,
+        keywords: [
+            "ESTA fees",
+            "ESTA cost",
+            "how much ESTA",
+            "ESTA price",
+            "ESTA payment",
+            "ESTA fee 2025",
+            "ESTA application cost"
+        ],
+        estimatedReadTime: 8,
+        lastUpdated: "2025-01-15",
+        sections: [
+            {
+                id: "introduction",
+                title: "ESTA Fee Overview",
+                content: [
+                    "Understanding the official ESTA fee structure is important to avoid overpaying through third-party websites. This comprehensive guide covers the current ESTA fees, payment methods, what the fees cover, and how to ensure you pay the correct amount.",
+                    {
+                        type: "callout",
+                        title: "Official ESTA Fee",
+                        text: "The official ESTA fee is $40 USD as of September 30, 2024. This is the ONLY fee charged by the U.S. government. Any website charging more is a third-party service adding extra charges."
+                    }
+                ]
+            },
+            {
+                id: "current-fees",
+                title: "Current ESTA Fees Breakdown",
+                content: [
+                    "As of September 30, 2024, the official ESTA fee is $40 USD, which consists of two components:",
+                    {
+                        type: "list",
+                        items: [
+                            "$5 Processing Fee: Charged to all applicants regardless of approval status. This fee covers the cost of processing your application.",
+                            "$40 Authorization Fee: Only charged if your ESTA is approved. This fee funds travel promotion and tourism programs."
+                        ]
+                    },
+                    {
+                        type: "warning",
+                        title: "Fee Increase",
+                        text: "The ESTA fee increased from $14 to $40 on September 30, 2024. This represents a 50% increase and is the current official fee charged by U.S. Customs and Border Protection."
+                    }
+                ]
+            },
+            {
+                id: "payment-methods",
+                title: "Accepted Payment Methods",
+                content: [
+                    "The official ESTA website (esta.cbp.dhs.gov) accepts the following payment methods:",
+                    {
+                        type: "list",
+                        items: [
+                            "Credit Cards: Visa, Mastercard, American Express, Discover",
+                            "Debit Cards: Visa or Mastercard debit cards",
+                            "PayPal: PayPal account payments accepted"
+                        ]
+                    },
+                    {
+                        type: "callout",
+                        text: "All payments must be made in U.S. dollars (USD). Currency conversion fees may apply depending on your bank or credit card provider."
+                    },
+                    "Payment is required at the time of application submission. You cannot submit your ESTA application without paying the fee."
+                ]
+            },
+            {
+                id: "what-fees-cover",
+                title: "What ESTA Fees Cover",
+                content: [
+                    "The $40 ESTA fee covers the following services:",
+                    "$5  Processing Fee covers:",
+                    {
+                        type: "list",
+                        items: [
+                            "Automated background checks against security and law enforcement databases",
+                            "System maintenance and operation costs",
+                            "Application processing infrastructure",
+                            "Customer support and help desk services"
+                        ]
+                    },
+                    "$40 Authorization Fee (if approved) funds:",
+                    {
+                        type: "list",
+                        items: [
+                            "Travel Promotion Act programs",
+                            "U.S. tourism marketing initiatives",
+                            "International visitor program development",
+                            "Brand USA campaigns promoting U.S. tourism"
+                        ]
+                    },
+                    {
+                        type: "callout",
+                        title: "One-Time Fee",
+                        text: "The $40 fee covers your ESTA for its entire validity period (2 years or until passport expiration). There are NO annual renewal fees or hidden charges."
+                    }
+                ]
+            },
+            {
+                id: "refund-policy",
+                title: "Refund Policy",
+                content: [
+                    "Understanding when you can and cannot get a refund:",
+                    "If your ESTA is DENIED (Travel Not Authorized):",
+                    {
+                        type: "list",
+                        items: [
+                            "The $5 processing fee is NON-REFUNDABLE",
+                            "You will NOT be charged the $40 authorization fee",
+                            "Total charge if denied: $5"
+                        ]
+                    },
+                    "If your ESTA is APPROVED (Authorization Approved):",
+                    {
+                        type: "list",
+                        items: [
+                            "You will be charged the full $40 fee",
+                            "The fee is NON-REFUNDABLE even if you do not travel",
+                            "The fee is valid for 2 years or until passport expiration"
+                        ]
+                    },
+                    {
+                        type: "warning",
+                        title: "No Refunds",
+                        text: "ESTA fees are non-refundable under any circumstances, including: change of travel plans, application errors, duplicate applications, or if you decide not to travel to the U.S."
+                    }
+                ]
+            },
+            {
+                id: "third-party-warnings",
+                title: "Avoiding Third-Party Scams",
+                content: [
+                    "Many websites charge inflated fees by posing as official ESTA sites. Here is how to avoid overpaying:",
+                    {
+                        type: "warning",
+                        title: "Third-Party Website Warning",
+                        text: "Numerous third-party websites charge $5 0-$150 for ESTA applications. These sites are NOT affiliated with the U.S. government. They simply fill out the official application on your behalf and charge a premium service fee."
+                    },
+                    "How to identify the official ESTA website:",
+                    {
+                        type: "list",
+                        items: [
+                            "The ONLY official website is: esta.cbp.dhs.gov",
+                            "The official site ends in .gov (U.S. government website)",
+                            "The official fee is ALWAYS $40, no exceptions",
+                            'Look for "Official U.S. Department of Homeland Security" branding',
+                            "The URL will show a padlock icon (HTTPS secure connection)"
+                        ]
+                    },
+                    {
+                        type: "callout",
+                        title: "Save Money",
+                        text: "By applying directly through esta.cbp.dhs.gov, you will pay only $40. Third-party websites can charge up to $150 for the same application - a markup of over 600%."
+                    }
+                ]
+            },
+            {
+                id: "fee-comparison",
+                title: "ESTA Fee vs Visa Fee Comparison",
+                content: [
+                    "Comparing ESTA fees to traditional U.S. visa fees:",
+                    "ESTA: $40 $40 fee, valid for 2 years, unlimited entries, 90-day stays, online application only, approved in hours.",
+                    "B-2 Tourist Visa: $185 MRV fee, valid up to 10 years, unlimited entries, up to 6-month stays, requires embassy interview, processing takes weeks.",
+                    {
+                        type: "callout",
+                        text: "ESTA is significantly cheaper ($40 vs $185) and faster than a traditional tourist visa. If you are eligible for ESTA, it is the most cost-effective option for U.S. travel."
+                    }
+                ]
+            },
+            {
+                id: "payment-security",
+                title: "Payment Security",
+                content: [
+                    "The official ESTA website uses industry-standard security measures to protect your payment information:",
+                    {
+                        type: "list",
+                        items: [
+                            "256-bit SSL encryption for all transactions",
+                            "PCI DSS compliant payment processing",
+                            "No credit card information stored on ESTA servers",
+                            "Secure government payment gateway",
+                            "Transaction confirmation numbers for tracking"
+                        ]
+                    },
+                    {
+                        type: "callout",
+                        text: "Your payment information is safe when using the official esta.cbp.dhs.gov website. Never provide payment information to unofficial third-party sites."
+                    }
+                ]
+            }
+        ],
+        faqs: [
+            {
+                question: "Is the ESTA fee refundable if denied?",
+                answer: "The $5 processing fee is non-refundable. However, if your ESTA is denied, you will NOT be charged the $40 authorization fee. Only applicants with approved ESTA applications pay the full $40. The processing fee is charged for the cost of reviewing your application, regardless of the outcome."
+            },
+            {
+                question: "Can I get a refund if I do not travel to the U.S.?",
+                answer: "No, the ESTA fee is non-refundable once your application is approved, even if you never travel to the United States. The $40 fee covers the 2-year validity period, and you can use it for multiple trips during that time."
+            },
+            {
+                question: "Why did the ESTA fee increase from $14 to $40?",
+                answer: "The ESTA fee increased from $14 to $40 on September 30, 2024, due to updated regulations and increased costs for maintaining the ESTA system and funding travel promotion programs. The fee had remained at $14 since 2010, so this was the first increase in 14 years."
+            },
+            {
+                question: "Do I have to pay the ESTA fee for children?",
+                answer: "Yes, every traveler, including infants and children, must have their own ESTA and pay the $40 fee. There are no discounts or exemptions for minors. Each individual requires a separate application and fee."
+            },
+            {
+                question: "What if I made a mistake on my application? Do I have to pay again?",
+                answer: "It depends on the type of mistake. Minor errors (like address or employment information) can sometimes be updated without reapplying. However, errors in passport information, name, date of birth, or citizenship require a new application and a new $40 fee. Always double-check your information before submitting."
+            },
+            {
+                question: "Can I pay the ESTA fee with cash?",
+                answer: "No, the ESTA application is entirely online, and cash payments are not accepted. You must pay using a credit card, debit card, or PayPal account. There is no option to mail a check or pay in person."
+            },
+            {
+                question: "Why are some websites charging $5 0 or more for ESTA?",
+                answer: "These are third-party commercial websites that charge service fees to complete your ESTA application on your behalf. The official U.S. government fee is only $40. Third-party sites charge premium prices ($5 0-$150) for application assistance, which you do not need. Apply directly at esta.cbp.dhs.gov to pay only $40."
+            },
+            {
+                question: "Does the $40 ESTA fee cover my entire family?",
+                answer: "No, the $40 fee is per person. Each traveler, including children and infants, needs their own ESTA application and must pay the $40 fee. For a family of four, the total cost would be $160 ($40 x 4 people)."
+            },
+            {
+                question: "Can I use a foreign credit card to pay the ESTA fee?",
+                answer: "Yes, you can use credit or debit cards issued by foreign banks, as long as they are Visa, Mastercard, American Express, or Discover. The charge will appear in U.S. dollars, and your bank may apply currency conversion fees and foreign transaction fees."
+            }
+        ],
+        relatedGuides: [
+            "how-to-apply-esta",
+            "esta-requirements",
+            "esta-vs-visa",
+            "esta-payment-methods",
+            "check-esta-status"
+        ]
+    },
+    {
+        slug: "check-esta-status",
+        title: "How to Check ESTA Status Online - Complete Lookup Guide 2025",
+        description: "Check your ESTA application status online using the official CBP website. Complete step-by-step guide to tracking your application, understanding status types, and what to do if you lost your application number.",
+        category: "status",
+        priority: 0.8,
+        keywords: [
+            "check ESTA status",
+            "ESTA status check",
+            "track ESTA application",
+            "ESTA lookup",
+            "check ESTA approval",
+            "ESTA application number",
+            "verify ESTA",
+            "ESTA status online"
+        ],
+        estimatedReadTime: 9,
+        lastUpdated: "2025-01-15",
+        sections: [
+            {
+                id: "introduction",
+                title: "Introduction: Checking Your ESTA Status",
+                content: [
+                    "Checking your ESTA (Electronic System for Travel Authorization) status is essential to confirm your application has been approved before traveling to the United States. You can check your status at any time using the official CBP website, whether you just applied or your ESTA was approved years ago.",
+                    {
+                        type: "callout",
+                        title: "Quick Access",
+                        text: "You can check your ESTA status 24/7 online at esta.cbp.dhs.gov. The status check is free and provides real-time information about your authorization."
+                    }
+                ]
+            },
+            {
+                id: "how-to-check-step-by-step",
+                title: "How to Check Your ESTA Status: Step-by-Step",
+                content: [
+                    "There are two methods to check your ESTA status, depending on whether you have your application number:",
+                    "Method 1: Check with Application Number (Fastest)",
+                    {
+                        type: "list",
+                        items: [
+                            "Go to the official ESTA website: esta.cbp.dhs.gov",
+                            'Click "Check ESTA Status" or "Check Individual Status"',
+                            'Select "Individual Status Inquiry" option',
+                            "Enter your Application Number (a 14-character alphanumeric code starting with a letter)",
+                            "Enter your date of birth (MM/DD/YYYY format)",
+                            'Click "Check Status"',
+                            "Your ESTA status will be displayed immediately"
+                        ]
+                    },
+                    "Method 2: Check without Application Number (Using Passport Information)",
+                    {
+                        type: "list",
+                        items: [
+                            "Go to esta.cbp.dhs.gov",
+                            'Click "Check ESTA Status"',
+                            'Select "Retrieve Application" if you do not have your application number',
+                            "Enter your passport number exactly as it appears on your passport",
+                            "Select your country of citizenship from the dropdown",
+                            "Enter your passport issuance date",
+                            "Enter your passport expiration date",
+                            "Enter your date of birth",
+                            'Click "Retrieve Application"',
+                            "Your application number will be displayed, then you can check status"
+                        ]
+                    },
+                    {
+                        type: "callout",
+                        title: "Pro Tip",
+                        text: "Save your application number in a safe place (email it to yourself or write it down). It makes checking your status much faster and easier."
+                    }
+                ]
+            },
+            {
+                id: "understanding-status-types",
+                title: "Understanding ESTA Status Types",
+                content: [
+                    "Your ESTA can show one of three official statuses. Here is what each means:",
+                    "1. Authorization Approved (Green Status)",
+                    "This is the status you want to see. It means:",
+                    {
+                        type: "list",
+                        items: [
+                            "Your ESTA application has been approved",
+                            "You are authorized to travel to the United States under the Visa Waiver Program",
+                            "Your ESTA is valid for 2 years or until your passport expires (whichever comes first)",
+                            "You can make multiple trips to the U.S. during the validity period",
+                            "Each trip can be up to 90 days",
+                            "You do NOT need to print this confirmation (though it is recommended)"
+                        ]
+                    },
+                    {
+                        type: "callout",
+                        title: "What to Do",
+                        text: "If approved, note your ESTA expiration date. You can travel to the U.S. anytime before that date. Your ESTA is electronically linked to your passport."
+                    },
+                    "2. Authorization Pending (Yellow Status)",
+                    "This status means your application is still being reviewed:",
+                    {
+                        type: "list",
+                        items: [
+                            "Your application requires additional processing time",
+                            "This is normal and does not mean denial",
+                            "The system is conducting further security checks",
+                            "You should receive a final decision within 72 hours",
+                            "Most pending applications are eventually approved"
+                        ]
+                    },
+                    {
+                        type: "warning",
+                        title: "What to Do",
+                        text: "Do NOT book flights or make final travel plans until your ESTA is approved. Check your status again after 24-72 hours. If still pending after 72 hours, contact CBP."
+                    },
+                    "3. Travel Not Authorized (Red Status)",
+                    "This is a denial. It means:",
+                    {
+                        type: "list",
+                        items: [
+                            "Your ESTA application has been denied",
+                            "You are NOT authorized to travel under the Visa Waiver Program",
+                            "You cannot reapply for ESTA (reapplying will result in another denial)",
+                            "You must apply for a U.S. visa at an embassy or consulate instead",
+                            "The denial is typically permanent for ESTA (though visa applications may still succeed)"
+                        ]
+                    },
+                    {
+                        type: "warning",
+                        title: "What to Do",
+                        text: "If denied, you must apply for a B-1/B-2 visitor visa through a U.S. embassy. Do not attempt to reapply for ESTA, as the denial reason still applies. Contact the embassy for visa application guidance."
+                    }
+                ]
+            },
+            {
+                id: "lost-application-number",
+                title: "What If You Lost Your Application Number?",
+                content: [
+                    "If you did not save your application number, do not worry - you can still retrieve it and check your status:",
+                    {
+                        type: "list",
+                        items: [
+                            "Go to esta.cbp.dhs.gov and click 'Check ESTA Status'",
+                            'Select "Retrieve Application Number"',
+                            "Enter your passport information (passport number, issuance date, expiration date)",
+                            "Enter your date of birth and country of citizenship",
+                            "The system will display your application number",
+                            "Save this number for future use"
+                        ]
+                    },
+                    {
+                        type: "callout",
+                        title: "Email Confirmation",
+                        text: "If you provided an email address when applying, you should have received a confirmation email with your application number. Check your spam/junk folder if you cannot find it."
+                    },
+                    "If you cannot retrieve your application number using passport information:",
+                    {
+                        type: "list",
+                        items: [
+                            "Double-check that you are entering passport information exactly as it appears on your passport",
+                            "Verify you are using the correct passport (the one you used for the ESTA application)",
+                            "Make sure you are entering the correct date of birth format (MM/DD/YYYY)",
+                            "If still unable to retrieve, contact CBP help desk at +1-202-344-3710"
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "checking-expiration",
+                title: "Checking Your ESTA Expiration Date",
+                content: [
+                    "When you check your ESTA status, the system will display important validity information:",
+                    {
+                        type: "list",
+                        items: [
+                            "Authorization Approval Date: When your ESTA was approved",
+                            "Expiration Date: When your ESTA authorization expires",
+                            "Travel Valid Until: The last date you can use your ESTA to enter the U.S."
+                        ]
+                    },
+                    {
+                        type: "callout",
+                        title: "Expiration Rule Reminder",
+                        text: "Your ESTA expires on whichever date comes FIRST: (1) Two years from approval date, OR (2) Your passport expiration date. If you get a new passport before your ESTA expires, the ESTA immediately becomes invalid."
+                    },
+                    "It is recommended to check your ESTA status:",
+                    {
+                        type: "list",
+                        items: [
+                            "Before booking any travel to the U.S. (to ensure it is still valid)",
+                            "At least 72 hours before your departure",
+                            "If you get a new passport (your old ESTA will show invalid)",
+                            "If any of your circumstances change (name change, new citizenship, etc.)",
+                            "Periodically if you travel to the U.S. frequently"
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "updating-information",
+                title: "Updating ESTA Information",
+                content: [
+                    "Some information on your ESTA can be updated after approval, while other changes require a new application:",
+                    "Information You CAN Update:",
+                    {
+                        type: "list",
+                        items: [
+                            "Email address",
+                            "Phone number",
+                            "Home address",
+                            "Employment information",
+                            "U.S. contact information",
+                            "Travel itinerary details (flight information, U.S. address)"
+                        ]
+                    },
+                    "To update this information:",
+                    {
+                        type: "list",
+                        items: [
+                            "Go to esta.cbp.dhs.gov",
+                            'Click "Check ESTA Status"',
+                            "Enter your application number and date of birth",
+                            'Click "Update" next to the information you want to change',
+                            "Make your changes and submit"
+                        ]
+                    },
+                    {
+                        type: "warning",
+                        title: "Information You CANNOT Update",
+                        text: "Passport information, name, date of birth, country of citizenship, gender, and eligibility question answers cannot be updated. If any of these change, you MUST apply for a new ESTA."
+                    }
+                ]
+            },
+            {
+                id: "group-applications",
+                title: "Checking Status for Group Applications",
+                content: [
+                    "If you applied for ESTA for multiple people at once (family, group travel), you can check all statuses together:",
+                    {
+                        type: "list",
+                        items: [
+                            "Go to esta.cbp.dhs.gov",
+                            'Click "Check ESTA Status"',
+                            'Select "Group Status Inquiry"',
+                            "Enter the Group ID provided when you submitted the group application",
+                            "All individual applications in the group will be displayed with their current status"
+                        ]
+                    },
+                    {
+                        type: "callout",
+                        text: "Each person in a group application receives their own individual application number and ESTA authorization. Group members can have different statuses (some approved, some pending)."
+                    }
+                ]
+            },
+            {
+                id: "troubleshooting",
+                title: "Troubleshooting Common Status Check Issues",
+                content: [
+                    "Problem: 'Application Not Found' message",
+                    {
+                        type: "list",
+                        items: [
+                            "Verify you entered the application number correctly (it is case-sensitive)",
+                            "Check that you are using the correct date of birth format (MM/DD/YYYY)",
+                            "Make sure your application was actually submitted and paid for",
+                            "If using passport information, verify all details match your passport exactly",
+                            "Wait 24 hours if you just submitted - the system may still be processing"
+                        ]
+                    },
+                    "Problem: Status has been 'Pending' for more than 72 hours",
+                    {
+                        type: "list",
+                        items: [
+                            "Contact CBP help desk: +1-202-344-3710 (international) or use the online contact form",
+                            "Have your application number ready",
+                            "Be prepared to provide passport information",
+                            "CBP can provide additional information about the delay"
+                        ]
+                    },
+                    "Problem: Status changed from 'Approved' to 'Not Authorized'",
+                    {
+                        type: "list",
+                        items: [
+                            "This can happen if CBP discovers new information or circumstances change",
+                            "ESTA authorizations can be revoked at any time",
+                            "You will need to apply for a visa instead",
+                            "Contact CBP for specific information about the revocation"
+                        ]
+                    },
+                    {
+                        type: "callout",
+                        title: "Need Help?",
+                        text: "For technical issues or questions about your ESTA status, contact CBP at +1-202-344-3710 (available 24/7) or submit a help request through the official ESTA website."
+                    }
+                ]
+            }
+        ],
+        faqs: [
+            {
+                question: "How often should I check my ESTA status?",
+                answer: "You should check your ESTA status: (1) After submitting your application to confirm approval, (2) Before booking any travel to the U.S., (3) At least 72 hours before your departure date, (4) If you get a new passport, and (5) If your circumstances change (name change, new citizenship, etc.). Once approved, your ESTA remains valid for 2 years or until passport expiration unless revoked."
+            },
+            {
+                question: "Can I check my ESTA status without my application number?",
+                answer: "Yes, you can check your ESTA status using your passport information if you do not have your application number. Go to esta.cbp.dhs.gov, select 'Retrieve Application', and enter your passport number, issuance date, expiration date, date of birth, and citizenship country. The system will retrieve your application number and display your status."
+            },
+            {
+                question: "What if I never received a confirmation email after applying?",
+                answer: "Check your spam/junk folder first. If you still cannot find it, you can retrieve your ESTA status using your passport information on the official website. The confirmation email is not required - your ESTA is electronically linked to your passport. However, it is recommended to save your application number for easy future access."
+            },
+            {
+                question: "How long does 'Authorization Pending' status typically last?",
+                answer: "Most pending applications are processed within 72 hours. The majority are approved within 24 hours. If your status remains pending for more than 72 hours, contact CBP help desk at +1-202-344-3710. Do not book travel until your ESTA is approved."
+            },
+            {
+                question: "Can I check someone else's ESTA status (family member, child)?",
+                answer: "Yes, you can check anyone's ESTA status if you have their application number (or passport information) and date of birth. This is common for parents checking children's ESTA applications or travel agents managing group applications. However, you need the specific information to perform the lookup."
+            },
+            {
+                question: "Why does the system say it cannot find my ESTA application?",
+                answer: "Common reasons: (1) Application number entered incorrectly (it is case-sensitive), (2) Wrong date of birth format (use MM/DD/YYYY), (3) Passport information does not match exactly, (4) Application was not successfully submitted or paid, or (5) System is still processing (wait 24 hours after submission). Double-check all information and try both retrieval methods."
+            },
+            {
+                question: "Do I need to print my ESTA approval status?",
+                answer: "No, printing your ESTA approval is not required. Your ESTA is electronically linked to your passport number in the CBP system, and airlines can verify it automatically. However, it is recommended to save or print a copy for your personal records, including your application number and expiration date."
+            },
+            {
+                question: "Can I check my ESTA status from outside the United States?",
+                answer: "Yes, the ESTA status check system is accessible worldwide 24/7 from any internet connection. You can check your status from any country at esta.cbp.dhs.gov. This is particularly useful for checking your status before international travel."
+            },
+            {
+                question: "What if my ESTA status shows expired but I am already in the U.S.?",
+                answer: "This is normal and acceptable. Your ESTA only needs to be valid when you ENTER the United States. If it expires during your authorized 90-day stay, you can complete your visit and depart as planned. However, you will need to apply for a new ESTA before your next trip to the U.S."
+            },
+            {
+                question: "Will my ESTA status change automatically if my passport expires?",
+                answer: "Yes, your ESTA status will automatically show as invalid/expired once your passport expiration date passes, even if your ESTA authorization has not reached its 2-year limit. The system is electronically linked to passport validity, so expired passports invalidate ESTA authorizations."
+            }
+        ],
+        relatedGuides: [
+            "how-to-apply-esta",
+            "esta-validity-period",
+            "esta-processing-time",
+            "esta-denied-what-to-do",
+            "renew-esta"
+        ]
+    },
+    // Continue with remaining core guides... (Adding key ones)
+    {
+        slug: "esta-validity-period",
+        title: "ESTA Validity Period: How Long is ESTA Valid?",
+        description: "Learn how long ESTA is valid, when it expires, and when you need to renew. Complete guide to ESTA validity duration, passport expiration rules, and multiple entry requirements for 2025.",
+        category: "main",
+        priority: 0.8,
+        keywords: [
+            "ESTA validity",
+            "how long ESTA valid",
+            "ESTA expiration",
+            "ESTA duration",
+            "ESTA renewal period",
+            "ESTA 2 years",
+            "ESTA multiple entries",
+            "ESTA passport expiration"
+        ],
+        estimatedReadTime: 9,
+        lastUpdated: "2025-01-15",
+        sections: [
+            {
+                id: "introduction",
+                title: "Understanding ESTA Validity",
+                content: [
+                    "Understanding how long your ESTA authorization is valid and when it expires is crucial for planning your U.S. travel. This comprehensive guide explains all ESTA validity rules, passport expiration requirements, and when you need to apply for a new authorization.",
+                    {
+                        type: "callout",
+                        title: "Quick Answer",
+                        text: "An approved ESTA is valid for 2 years from the date of approval OR until your passport expires, whichever comes first. During this period, you can make unlimited trips to the U.S., with each stay limited to 90 days."
+                    }
+                ]
+            },
+            {
+                id: "two-year-validity",
+                title: "The 2-Year Validity Rule",
+                content: [
+                    "When your ESTA application is approved by U.S. Customs and Border Protection (CBP), it is valid for two years from the approval date. This means:",
+                    {
+                        type: "list",
+                        items: [
+                            "The validity period starts on the approval date, NOT your travel date",
+                            "You can travel to the U.S. multiple times during the 2-year period",
+                            "Each visit can be up to 90 consecutive days",
+                            "There is no limit on the number of trips you can make",
+                            "The ESTA remains valid even if you do not travel immediately"
+                        ]
+                    },
+                    {
+                        type: "callout",
+                        title: "Example: 2-Year Validity",
+                        text: "If your ESTA is approved on February 15, 2025, it will remain valid until February 15, 2027. You can travel to the U.S. as many times as you want between these dates."
+                    }
+                ]
+            },
+            {
+                id: "passport-expiration",
+                title: "Passport Expiration and ESTA Validity",
+                content: [
+                    "Your ESTA validity is directly tied to your passport. Even if your ESTA has not reached its 2-year expiration date, it will expire when your passport expires.",
+                    {
+                        type: "warning",
+                        title: "Critical Rule",
+                        text: "Your ESTA expires on whichever date comes FIRST: (1) Two years from approval date, OR (2) Your passport expiration date."
+                    },
+                    {
+                        type: "callout",
+                        title: "Example: Passport Expiration Scenario",
+                        text: "ESTA approved: March 1, 2025 (normally valid until March 1, 2027). Passport expires: October 15, 2025. Your ESTA will expire: October 15, 2025 (when your passport expires), NOT March 1, 2027."
+                    },
+                    "This is because your ESTA is electronically linked to your specific passport number. When you get a new passport, even if your ESTA has not expired, you MUST apply for a new ESTA with your new passport information."
+                ]
+            },
+            {
+                id: "new-passport-requirement",
+                title: "When You Must Apply for a New ESTA",
+                content: [
+                    "You are required to submit a new ESTA application if ANY of the following situations occur:",
+                    {
+                        type: "list",
+                        items: [
+                            "You obtain a new passport (even from the same country)",
+                            "You change your name (marriage, divorce, legal name change)",
+                            "You change your gender",
+                            "You change your country of citizenship",
+                            "Your circumstances change regarding ESTA eligibility questions (health, criminal record, visa history, etc.)",
+                            "Your previous ESTA has expired (after 2 years)"
+                        ]
+                    },
+                    {
+                        type: "warning",
+                        title: "New Passport = New ESTA Required",
+                        text: "Even if your old ESTA shows 1 year of validity remaining, if you renew your passport, you MUST apply for a new ESTA. The old ESTA is no longer valid because it is tied to your old passport number."
+                    },
+                    "Each new ESTA application requires payment of the $40 fee. There are no renewals or transfers - you must complete a new full application."
+                ]
+            },
+            {
+                id: "multiple-entries",
+                title: "Multiple Entries and the 90-Day Rule",
+                content: [
+                    "During your ESTA validity period (up to 2 years), you can enter the United States multiple times. However, each individual visit is subject to the 90-day maximum stay rule:",
+                    {
+                        type: "list",
+                        items: [
+                            "Each entry allows up to 90 consecutive days in the U.S.",
+                            "You cannot extend your 90-day stay - it is a hard limit",
+                            "There is no official requirement for how long you must stay outside the U.S. between visits",
+                            "However, CBP officers have discretion to deny entry if they suspect you are living in the U.S.",
+                            "Quick trips to Canada, Mexico, or Caribbean islands do NOT reset your 90-day counter"
+                        ]
+                    },
+                    {
+                        type: "callout",
+                        title: "Best Practice",
+                        text: "While there is no legal requirement, immigration experts recommend spending more time outside the U.S. than inside. If you spend 85 days in the U.S., leave for a week, then try to return for another 85 days, CBP officers may question your intentions and deny entry."
+                    }
+                ]
+            },
+            {
+                id: "canada-mexico-travel",
+                title: "Important Rule: Canada, Mexico, and Caribbean Travel",
+                content: [
+                    "This is one of the most misunderstood ESTA rules:",
+                    {
+                        type: "warning",
+                        title: "Critical Information",
+                        text: "Trips to Canada, Mexico, or adjacent Caribbean islands do NOT reset your 90-day counter. The days you spend in these countries are counted as part of your U.S. stay."
+                    },
+                    {
+                        type: "callout",
+                        title: "Example: Canada Trip Scenario",
+                        text: "You enter the U.S. on Day 1. On Day 60, you take a 10-day trip to Canada. When you return to the U.S., you have already used 60 days of your 90-day allowance. You now have only 30 days remaining in the U.S., NOT a fresh 90 days."
+                    },
+                    'This rule exists to prevent people from "resetting" their 90-day stay by making quick trips across the border.'
+                ]
+            },
+            {
+                id: "checking-expiration",
+                title: "How to Check Your ESTA Expiration Date",
+                content: [
+                    "You can check your ESTA status and expiration date at any time:",
+                    {
+                        type: "list",
+                        items: [
+                            "Visit the official ESTA website: esta.cbp.dhs.gov",
+                            'Click "Check ESTA Status"',
+                            "Enter your application number (or passport details) and date of birth",
+                            "Your status page will show your ESTA expiration date"
+                        ]
+                    },
+                    {
+                        type: "callout",
+                        text: "It is recommended to check your ESTA status before booking any travel to ensure it is still valid."
+                    }
+                ]
+            },
+            {
+                id: "validity-scenarios",
+                title: "Common ESTA Validity Scenarios",
+                content: [
+                    "Here are real-world scenarios to help you understand ESTA validity:",
+                    "Scenario 1 - Standard 2-Year Validity: ESTA approved January 1, 2025. Passport expires December 1, 2027. ESTA valid until: January 1, 2027 (full 2 years).",
+                    "Scenario 2 - Passport Expires First: ESTA approved January 1, 2025. Passport expires June 1, 2026. ESTA valid until: June 1, 2026 (18 months, when passport expires).",
+                    "Scenario 3 - New Passport Obtained: ESTA approved and valid until December 2026. New passport issued in March 2025. ESTA valid until: Invalid immediately. Must apply for new ESTA with new passport.",
+                    "Scenario 4 - Multiple Trips: ESTA approved January 2025, valid until January 2027. Trips: March 2025 (20 days), July 2025 (30 days), December 2025 (15 days), May 2026 (25 days). All trips allowed under same ESTA as long as each is ≤90 days."
+                ]
+            }
+        ],
+        faqs: [
+            {
+                question: "What happens if my ESTA expires while I am in the United States?",
+                answer: "This is allowed and not a problem. Your ESTA only needs to be valid when you ENTER the United States. If your ESTA expires during your authorized 90-day stay, you can complete your visit and depart as planned. However, you will need to apply for a new ESTA before your next trip to the U.S."
+            },
+            {
+                question: "Can I renew my ESTA before it expires?",
+                answer: "There is no renewal process for ESTA. When your ESTA expires (or is about to expire), you must submit a completely new application and pay the $40 fee again. You can apply for a new ESTA at any time, even before your current one expires."
+            },
+            {
+                question: "If I get a new passport, can I still use my valid ESTA?",
+                answer: "No. Your ESTA is electronically linked to a specific passport number. If you obtain a new passport for any reason, your old ESTA immediately becomes invalid, even if it shows years of remaining validity. You must apply for a new ESTA using your new passport information."
+            },
+            {
+                question: "How many times can I visit the U.S. with one ESTA?",
+                answer: "There is no limit on the number of visits you can make during your ESTA validity period (up to 2 years). However, each visit must be 90 days or less, and CBP officers have discretion to deny entry if they believe you are attempting to live in the U.S. or abuse the system."
+            },
+            {
+                question: "Do I need to wait a certain time between U.S. visits on ESTA?",
+                answer: "There is no official waiting period between visits. However, if you spend extended periods in the U.S. with only short trips abroad, CBP officers may question whether you are using ESTA appropriately. As a general guideline, you should spend more time outside the U.S. than inside to avoid issues."
+            },
+            {
+                question: "Can I stay in the U.S. for 90 days, leave for a week, and return for another 90 days?",
+                answer: "Technically there is no rule preventing this, but it is highly risky. CBP officers have discretion to deny entry if they suspect you are trying to live in the U.S. or circumvent visa requirements. This pattern would likely raise red flags and could result in denial of entry or revocation of your ESTA."
+            },
+            {
+                question: "If I visit Canada during my U.S. trip, does my 90-day counter reset?",
+                answer: "No. Trips to Canada, Mexico, and adjacent Caribbean islands do NOT reset your 90-day counter. The time spent in these countries is counted as part of your U.S. stay. For example, if you spend 60 days in the U.S., then 5 days in Canada, you have used 60 of your 90 days and have 30 days remaining when you return to the U.S."
+            },
+            {
+                question: "How early should I apply for a new ESTA before my old one expires?",
+                answer: "You can apply for a new ESTA at any time, even before your current one expires. However, most travelers apply for a new ESTA 1-2 weeks before their existing one expires or before booking new travel. Remember that each new ESTA application costs $40."
+            }
+        ],
+        relatedGuides: [
+            "renew-esta",
+            "check-esta-status",
+            "passport-requirements-esta",
+            "esta-multiple-entries",
+            "new-passport-esta"
+        ]
+    },
+    {
+        slug: "esta-vs-visa",
+        title: "ESTA vs U.S. Visa: Which One Do You Need?",
+        description: "Compare ESTA and U.S. B-2 tourist visa. Complete comparison of differences, requirements, costs, processing time, validity, and which option is right for your travel needs in 2025.",
+        category: "comparison",
+        priority: 0.8,
+        keywords: [
+            "ESTA vs visa",
+            "difference ESTA visa",
+            "ESTA or visa",
+            "do I need ESTA or visa",
+            "B2 visa vs ESTA",
+            "B1 B2 visa ESTA comparison",
+            "visitor visa vs ESTA"
+        ],
+        estimatedReadTime: 11,
+        lastUpdated: "2025-01-15",
+        sections: [
+            {
+                id: "introduction",
+                title: "ESTA vs U.S. Visa: What You Need to Know",
+                content: [
+                    "Both ESTA (Electronic System for Travel Authorization) and the U.S. B-1/B-2 visitor visa allow foreign nationals to enter the United States for tourism or business purposes. However, they differ significantly in eligibility, application process, cost, validity, and flexibility.",
+                    {
+                        type: "callout",
+                        title: "Quick Decision Guide",
+                        text: "If you are from a Visa Waiver Program country and planning a trip under 90 days, choose ESTA. If you are not from a VWP country, need to stay longer than 90 days, or want the flexibility to extend your stay, apply for a B-2 visa."
+                    }
+                ]
+            },
+            {
+                id: "comparison-table",
+                title: "Side-by-Side Comparison",
+                content: [
+                    "Here is a comprehensive comparison of ESTA and B-1/B-2 visitor visa:",
+                    "ELIGIBILITY - ESTA: Citizens of 42 Visa Waiver Program countries only. B-2 Visa: Available to citizens of all countries worldwide.",
+                    "APPLICATION PROCESS - ESTA: 100% online application, no in-person interview required. B-2 Visa: Form DS-160 online application + mandatory in-person interview at U.S. embassy or consulate.",
+                    "COST - ESTA: $40 USD (as of September 2024). B-2 Visa: $185 USD (MRV fee).",
+                    "PROCESSING TIME - ESTA: Most applications approved within minutes to 72 hours. B-2 Visa: Several weeks to several months depending on embassy wait times and processing.",
+                    "VALIDITY PERIOD - ESTA: Valid for 2 years or until passport expires. B-2 Visa: Valid for up to 10 years (depends on nationality and bilateral agreements).",
+                    "MAXIMUM STAY PER VISIT - ESTA: 90 days maximum, cannot be extended. B-2 Visa: Initially up to 6 months per visit, can be extended.",
+                    "NUMBER OF ENTRIES - ESTA: Unlimited entries during validity period. B-2 Visa: Unlimited entries during validity period.",
+                    "DOCUMENTATION REQUIRED - ESTA: Valid passport, payment method, basic travel information. B-2 Visa: Passport, DS-160 confirmation, photo, appointment confirmation, supporting documents (financial proof, ties to home country, travel itinerary).",
+                    "INTERVIEW REQUIRED - ESTA: No. B-2 Visa: Yes, mandatory in-person interview."
+                ]
+            },
+            {
+                id: "when-choose-esta",
+                title: "When to Choose ESTA",
+                content: [
+                    "ESTA is the right choice if you meet ALL of these criteria:",
+                    {
+                        type: "list",
+                        items: [
+                            "You are a citizen or eligible national of a Visa Waiver Program country (42 countries including UK, Germany, France, Japan, Australia, South Korea, etc.)",
+                            "Your trip will be 90 days or less",
+                            "You are traveling for tourism, business meetings/conferences, or transit",
+                            "You have a valid e-passport",
+                            "You have not been denied a U.S. visa in the past",
+                            "You do not need the flexibility to extend your stay",
+                            "You want a fast, convenient, online-only application process"
+                        ]
+                    },
+                    {
+                        type: "callout",
+                        title: "ESTA Advantages",
+                        text: "ESTA is faster (approved in hours vs weeks), cheaper ($40 vs $185), and more convenient (no embassy visit required). Perfect for short-term tourists and business travelers from VWP countries."
+                    }
+                ]
+            },
+            {
+                id: "when-choose-visa",
+                title: "When to Choose a U.S. Visa",
+                content: [
+                    "You must or should apply for a B-1/B-2 visa if ANY of these apply:",
+                    {
+                        type: "list",
+                        items: [
+                            "You are NOT a citizen of a Visa Waiver Program country",
+                            "You plan to stay in the U.S. for more than 90 days",
+                            "You may need to extend your stay beyond your initial entry",
+                            "You have been denied ESTA in the past",
+                            "You have a criminal record or visa violations",
+                            "You have traveled to Iran, Iraq, Libya, North Korea, Somalia, Sudan, Syria, or Yemen since March 2011 (ESTA ineligibility)",
+                            "You are a dual citizen of a VWP country AND Iran, Iraq, North Korea, Sudan, or Syria",
+                            "You want longer validity (up to 10 years vs 2 years)"
+                        ]
+                    },
+                    {
+                        type: "warning",
+                        title: "Visa Required Situations",
+                        text: "If you are not from a VWP country or do not meet ESTA eligibility requirements, you have NO choice - you MUST apply for a visa. There is no alternative for visa-required nationals."
+                    }
+                ]
+            },
+            {
+                id: "application-differences",
+                title: "Application Process Comparison",
+                content: [
+                    "The application processes for ESTA and B-2 visa are vastly different:",
+                    "ESTA Application Process:",
+                    {
+                        type: "list",
+                        items: [
+                            "Step 1: Go to esta.cbp.dhs.gov",
+                            "Step 2: Complete online form (10-20 minutes)",
+                            "Step 3: Pay $40 fee online",
+                            "Step 4: Receive approval (usually within minutes, up to 72 hours)",
+                            "Step 5: Travel to the U.S. (no physical document needed)"
+                        ]
+                    },
+                    "B-2 Visa Application Process:",
+                    {
+                        type: "list",
+                        items: [
+                            "Step 1: Complete Form DS-160 online (30-60 minutes)",
+                            "Step 2: Pay $185 MRV fee",
+                            "Step 3: Schedule visa interview appointment (wait time varies by location)",
+                            "Step 4: Gather supporting documents (financial statements, employment letter, travel itinerary, proof of ties to home country)",
+                            "Step 5: Attend in-person interview at U.S. embassy or consulate",
+                            "Step 6: Wait for visa processing (several days to weeks)",
+                            "Step 7: Receive passport with visa stamp (or denial notice)"
+                        ]
+                    },
+                    {
+                        type: "callout",
+                        text: "ESTA can be completed entirely from home in under an hour. B-2 visa requires embassy visit, documentation preparation, and much longer processing time."
+                    }
+                ]
+            },
+            {
+                id: "cost-comparison",
+                title: "Cost Comparison",
+                content: [
+                    "The cost difference between ESTA and B-2 visa is significant:",
+                    "ESTA Cost: $45 $40 fee ($5 processing + $40 authorization fee). One-time payment online. Valid for 2 years.",
+                    "B-2 Visa Cost: $185 MRV (Machine Readable Visa) fee. Paid before interview. Valid for up to 10 years depending on nationality.",
+                    {
+                        type: "callout",
+                        title: "Cost-Per-Year Analysis",
+                        text: "ESTA: $40 for 2 years = $10.50/year. B-2 Visa: $185 for 10 years = $18.50/year. While the B-2 visa has a higher upfront cost, it can be more economical over time if you travel to the U.S. frequently."
+                    },
+                    "Additional costs to consider for B-2 visa:",
+                    {
+                        type: "list",
+                        items: [
+                            "Travel to U.S. embassy or consulate (if not in your city)",
+                            "Passport photos ($10-30)",
+                            "Document translation/notarization fees (if required)",
+                            "Potential legal assistance fees (optional)"
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "flexibility-extensions",
+                title: "Stay Duration and Extension Flexibility",
+                content: [
+                    "One of the biggest differences between ESTA and B-2 visa is flexibility:",
+                    {
+                        type: "warning",
+                        title: "ESTA Limitations",
+                        text: "ESTA allows a maximum 90-day stay that CANNOT be extended under any circumstances. If you stay beyond 90 days, you will face serious immigration consequences including bans from future U.S. travel."
+                    },
+                    "B-2 Visa Flexibility:",
+                    {
+                        type: "list",
+                        items: [
+                            "Initial admission typically granted for 6 months",
+                            "Can apply for extension of stay (Form I-539) if circumstances change",
+                            "Extensions may be granted for up to 6 additional months",
+                            "Useful if you need longer stays for medical treatment, visiting family, or extended tourism"
+                        ]
+                    },
+                    {
+                        type: "callout",
+                        title: "When Flexibility Matters",
+                        text: "If there is any possibility your trip might exceed 90 days, apply for a B-2 visa instead of ESTA. Converting from ESTA to a visa while in the U.S. is not possible."
+                    }
+                ]
+            },
+            {
+                id: "which-is-better",
+                title: "Which is Better for You?",
+                content: [
+                    "The answer depends on your specific situation:",
+                    "Choose ESTA if:",
+                    {
+                        type: "list",
+                        items: [
+                            "You are from a VWP country and meet eligibility requirements",
+                            "Your trip is definitely under 90 days",
+                            "You want fast approval and no embassy hassle",
+                            "You prefer lower cost and online convenience",
+                            "You have a clean travel and criminal record"
+                        ]
+                    },
+                    "Choose B-2 Visa if:",
+                    {
+                        type: "list",
+                        items: [
+                            "You are not from a VWP country (no choice - must apply for visa)",
+                            "Your trip will exceed 90 days or you are unsure of exact duration",
+                            "You want the flexibility to extend your stay if needed",
+                            "You have ESTA ineligibility issues (criminal record, previous denials, travel to restricted countries)",
+                            "You travel to the U.S. very frequently and want 10-year validity",
+                            "You are willing to invest time and money for greater flexibility"
+                        ]
+                    }
+                ]
+            }
+        ],
+        faqs: [
+            {
+                question: "Can I apply for both ESTA and a B-2 visa?",
+                answer: "Generally, you only need one or the other, not both. If you have a valid B-2 visa, you should use it to enter the U.S. - you do not need ESTA. However, if your visa expires, you can apply for ESTA (if eligible) for future trips. You cannot hold an active ESTA and active B visa simultaneously in practice, as you will use whichever is valid for entry."
+            },
+            {
+                question: "If I have a valid B-2 visa, do I still need ESTA?",
+                answer: "No, if you have a valid B-2 visa, you do NOT need ESTA. You should use your visa to enter the United States. ESTA is only for travelers from Visa Waiver Program countries who are traveling without a visa."
+            },
+            {
+                question: "Can I switch from ESTA to a visa while in the U.S.?",
+                answer: "No, you cannot apply for or switch to a B-2 visa while in the United States on ESTA. If you enter on ESTA with a 90-day limit, you must depart within 90 days. To get a visa, you must return to your home country and apply through a U.S. embassy or consulate."
+            },
+            {
+                question: "What if I am from a VWP country but my ESTA is denied?",
+                answer: "If your ESTA is denied, you can apply for a B-1/B-2 visa at a U.S. embassy or consulate. The visa application process is more rigorous and requires an interview, but it is an option if ESTA is not available to you. Be prepared to explain the ESTA denial during your visa interview."
+            },
+            {
+                question: "Is it easier to get ESTA or a B-2 visa?",
+                answer: "ESTA is significantly easier and faster if you meet the eligibility requirements. ESTA has a 99%+ approval rate for eligible applicants, requires no interview, and is approved in hours. B-2 visa requires documentation, interview, and has variable approval rates depending on your nationality and circumstances. However, if you are not from a VWP country, B-2 visa is your only option."
+            },
+            {
+                question: "Can I work in the U.S. with ESTA or a B-2 visa?",
+                answer: "No, you cannot work in the United States with either ESTA or a B-2 visitor visa. Both are strictly for tourism, business meetings/conferences, or transit. Any form of employment or paid work requires an appropriate work visa (such as H-1B, L-1, O-1, etc.)."
+            },
+            {
+                question: "Which lasts longer, ESTA or B-2 visa?",
+                answer: "B-2 visas typically have longer validity. ESTA is valid for 2 years or until your passport expires. B-2 visas can be valid for up to 10 years depending on your nationality and bilateral agreements between your country and the U.S. However, the validity period does not determine how long you can stay per visit."
+            },
+            {
+                question: "What if my travel plans change after getting ESTA or visa?",
+                answer: "If you have ESTA and your plans change (new passport, name change, address change), you can update some information online or apply for a new ESTA. With a B-2 visa, minor changes do not affect your visa validity, but major changes (new passport, name change) require a new visa application. Both ESTA and B-2 visa allow flexible travel dates within their validity periods."
+            }
+        ],
+        relatedGuides: [
+            "what-is-esta",
+            "esta-requirements",
+            "how-to-apply-esta",
+            "esta-denied-what-to-do",
+            "esta-validity-period"
+        ]
+    },
+    // Add abbreviated entries for remaining guides to maintain SEO coverage
+    ...generateRemainingGuides()
+];
+/**
+ * Generate remaining guide entries with basic structure
+ * These can be expanded with full content as needed
+ */ function generateRemainingGuides() {
+    return [
+        {
+            slug: "esta-processing-time",
+            title: "ESTA Processing Time: How Long Does Approval Take? 2025 Guide",
+            description: "Average ESTA processing times, what to expect after submitting your application, factors affecting processing speed, and what to do if your application takes longer than expected.",
+            category: "questions",
+            priority: 0.8,
+            keywords: [
+                "ESTA processing time",
+                "how long ESTA",
+                "ESTA approval time",
+                "ESTA processing speed",
+                "how fast ESTA",
+                "ESTA waiting time",
+                "ESTA decision time"
+            ],
+            estimatedReadTime: 8,
+            lastUpdated: "2025-01-15",
+            sections: [
+                {
+                    id: "introduction",
+                    title: "Understanding ESTA Processing Time",
+                    content: [
+                        "One of the biggest advantages of ESTA (Electronic System for Travel Authorization) is its fast processing time. Unlike traditional visa applications that can take weeks or months, most ESTA applications are processed almost instantly. However, processing times can vary, and it is important to understand what to expect.",
+                        {
+                            type: "callout",
+                            title: "Quick Answer",
+                            text: "The majority of ESTA applications (95%+) are approved within minutes of submission. However, U.S. Customs and Border Protection (CBP) recommends applying at least 72 hours before your departure to allow for any unexpected delays or additional processing."
+                        }
+                    ]
+                },
+                {
+                    id: "typical-processing-times",
+                    title: "Typical ESTA Processing Times",
+                    content: [
+                        "Here is what you can expect for ESTA processing times in 2025:",
+                        "Instant Approval (Most Common):",
+                        {
+                            type: "list",
+                            items: [
+                                "Time: Within seconds to 5 minutes",
+                                "Percentage: Approximately 70-80% of applications",
+                                "What it means: Your application passed automated background checks immediately",
+                                "Next step: You receive 'Authorization Approved' status right away"
+                            ]
+                        },
+                        "Fast Approval (Common):",
+                        {
+                            type: "list",
+                            items: [
+                                "Time: Within 1-4 hours",
+                                "Percentage: Approximately 15-20% of applications",
+                                "What it means: Your application requires slightly more processing time",
+                                "Next step: Check status periodically; approval typically comes within hours"
+                            ]
+                        },
+                        "Pending Status (Less Common):",
+                        {
+                            type: "list",
+                            items: [
+                                "Time: Up to 72 hours",
+                                "Percentage: Approximately 3-5% of applications",
+                                "What it means: Your application requires manual review or additional security checks",
+                                "Next step: Wait up to 72 hours before checking status again"
+                            ]
+                        },
+                        {
+                            type: "callout",
+                            title: "Official Guidance",
+                            text: "The U.S. Department of Homeland Security officially states that ESTA applications can take up to 72 hours to process. This is the maximum timeframe, not the typical timeframe."
+                        }
+                    ]
+                },
+                {
+                    id: "factors-affecting-processing",
+                    title: "Factors That Affect Processing Speed",
+                    content: [
+                        "Several factors can influence how quickly your ESTA application is processed:",
+                        "1. Application Accuracy:",
+                        {
+                            type: "list",
+                            items: [
+                                "Clean applications with no errors process faster",
+                                "Typos or inconsistencies may trigger additional review",
+                                "Passport information that matches databases exactly speeds up approval"
+                            ]
+                        },
+                        "2. Background Check Complexity:",
+                        {
+                            type: "list",
+                            items: [
+                                "Applicants with common names may require additional verification",
+                                "Previous travel to sensitive countries may extend processing",
+                                "Any criminal record or visa violations trigger manual review"
+                            ]
+                        },
+                        "3. System Load:",
+                        {
+                            type: "list",
+                            items: [
+                                "Peak travel seasons (summer, holidays) may have slightly slower processing",
+                                "Off-peak times typically see faster approvals",
+                                "Time of day generally does not affect processing speed (system operates 24/7)"
+                            ]
+                        },
+                        "4. Type of Application:",
+                        {
+                            type: "list",
+                            items: [
+                                "First-time ESTA applications may take slightly longer than renewals",
+                                "Group applications are processed individually (each has own timeline)",
+                                "Updated applications (corrections) may process faster than new ones"
+                            ]
+                        },
+                        {
+                            type: "warning",
+                            title: "Cannot Expedite",
+                            text: "There is NO expedited or rush processing option for ESTA. All applications are processed in the order received and according to automated security protocols. Be wary of third-party websites claiming to offer faster processing - they cannot."
+                        }
+                    ]
+                },
+                {
+                    id: "timeline-breakdown",
+                    title: "What Happens During Processing",
+                    content: [
+                        "Understanding what happens behind the scenes during ESTA processing:",
+                        "Immediate (Within Seconds):",
+                        {
+                            type: "list",
+                            items: [
+                                "Your application is submitted to the ESTA system",
+                                "Payment is processed and verified",
+                                "Application number is generated and displayed",
+                                "Initial data validation begins (passport format, eligibility criteria)"
+                            ]
+                        },
+                        "Within Minutes:",
+                        {
+                            type: "list",
+                            items: [
+                                "Automated background checks run against multiple databases",
+                                "Security screenings conducted (no-fly lists, law enforcement databases)",
+                                "Passport validity and e-passport chip data verified",
+                                "Eligibility question responses analyzed"
+                            ]
+                        },
+                        "If Pending (Up to 72 Hours):",
+                        {
+                            type: "list",
+                            items: [
+                                "Manual review by CBP officers if automated checks flag concerns",
+                                "Additional cross-referencing with international databases",
+                                "Verification of travel history or previous U.S. entries",
+                                "Resolution of any name matches or identity verification issues"
+                            ]
+                        },
+                        {
+                            type: "callout",
+                            text: "The entire ESTA process is automated and designed for speed. Most delays are due to security checks, not administrative backlog."
+                        }
+                    ]
+                },
+                {
+                    id: "when-to-apply",
+                    title: "When Should You Apply for ESTA?",
+                    content: [
+                        "Timing your ESTA application correctly is important:",
+                        "Recommended Timeline:",
+                        {
+                            type: "list",
+                            items: [
+                                "Ideal: Apply 2-4 weeks before your trip (gives plenty of buffer time)",
+                                "Minimum: Apply at least 72 hours (3 days) before departure",
+                                "Acceptable: Can apply months in advance (up to 2 years before travel)",
+                                "Not recommended: Applying less than 72 hours before flight (risky if delays occur)"
+                            ]
+                        },
+                        {
+                            type: "callout",
+                            title: "Best Practice",
+                            text: "Apply for ESTA as soon as you decide to travel to the U.S., even before booking flights. This ensures your ESTA is approved before you make non-refundable travel arrangements."
+                        },
+                        "You CAN apply for ESTA:",
+                        {
+                            type: "list",
+                            items: [
+                                "Before you have specific travel plans",
+                                "Without flight or hotel bookings",
+                                "Up to 2 years before your trip (ESTA is valid for 2 years)",
+                                "Even if your travel dates are uncertain"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: "checking-status-timeline",
+                    title: "When and How to Check Your Application Status",
+                    content: [
+                        "After submitting your ESTA, here is when to check your status:",
+                        "Immediately After Submission:",
+                        {
+                            type: "list",
+                            items: [
+                                "Most applications show approval status right away",
+                                "Save your application number immediately",
+                                "If status is 'pending', note the time"
+                            ]
+                        },
+                        "After 1 Hour:",
+                        {
+                            type: "list",
+                            items: [
+                                "If still pending, check status again",
+                                "Many pending applications are approved within 1-4 hours"
+                            ]
+                        },
+                        "After 24 Hours:",
+                        {
+                            type: "list",
+                            items: [
+                                "Check status if still pending",
+                                "Most pending applications are resolved by this point"
+                            ]
+                        },
+                        "After 72 Hours:",
+                        {
+                            type: "list",
+                            items: [
+                                "If still pending after 72 hours, contact CBP help desk",
+                                "Call +1-202-344-3710 or use the online contact form",
+                                "Have your application number ready"
+                            ]
+                        },
+                        "How to check your status:",
+                        {
+                            type: "list",
+                            items: [
+                                "Go to esta.cbp.dhs.gov",
+                                'Click "Check ESTA Status"',
+                                "Enter your application number and date of birth",
+                                "Status will display immediately (Approved, Pending, or Travel Not Authorized)"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: "delayed-applications",
+                    title: "What to Do If Your Application Is Delayed",
+                    content: [
+                        "If your ESTA application is taking longer than expected:",
+                        "If Pending for 24-48 Hours:",
+                        {
+                            type: "list",
+                            items: [
+                                "This is normal - wait the full 72 hours before contacting CBP",
+                                "Do NOT submit a duplicate application (this can cause more delays)",
+                                "Continue checking status every 12-24 hours",
+                                "Avoid making final travel plans until approved"
+                            ]
+                        },
+                        "If Pending for 72+ Hours:",
+                        {
+                            type: "list",
+                            items: [
+                                "Contact CBP Customer Service: +1-202-344-3710",
+                                "Available 24 hours a day, 7 days a week",
+                                "Have your application number, passport number, and date of birth ready",
+                                "CBP can provide information about the delay and expected resolution time"
+                            ]
+                        },
+                        {
+                            type: "warning",
+                            title: "Important",
+                            text: "Do NOT book flights or make non-refundable travel plans if your ESTA is still pending. Wait for approval confirmation before finalizing travel arrangements."
+                        },
+                        "Alternative Contact Methods:",
+                        {
+                            type: "list",
+                            items: [
+                                "Email: esta@dhs.gov (response time: 1-3 business days)",
+                                "Online contact form: Available on esta.cbp.dhs.gov",
+                                "Do not use third-party services - contact CBP directly"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: "urgent-travel",
+                    title: "Urgent Travel Situations",
+                    content: [
+                        "What to do if you need to travel urgently:",
+                        {
+                            type: "warning",
+                            title: "No Emergency Processing",
+                            text: "CBP does NOT offer emergency or expedited ESTA processing under any circumstances. There is no way to speed up the process, even for urgent travel, medical emergencies, or last-minute business trips."
+                        },
+                        "If you need to travel within 72 hours:",
+                        {
+                            type: "list",
+                            items: [
+                                "Apply for ESTA immediately - many applications are approved within minutes",
+                                "If your ESTA is approved instantly, you can travel right away",
+                                "If your ESTA shows 'pending' status, you have two options:",
+                                "Option 1: Wait for ESTA approval (up to 72 hours)",
+                                "Option 2: Contact nearest U.S. embassy/consulate about emergency visa options"
+                            ]
+                        },
+                        {
+                            type: "callout",
+                            title: "Last-Minute Travel Tip",
+                            text: "If traveling urgently, apply for ESTA and monitor status closely. If approved within hours, you are cleared to travel. If still pending after 24 hours and departure is imminent, contact the U.S. embassy about emergency visa alternatives."
+                        }
+                    ]
+                }
+            ],
+            faqs: [
+                {
+                    question: "How long does ESTA approval usually take?",
+                    answer: "Most ESTA applications (70-80%) are approved instantly within seconds to 5 minutes. Another 15-20% are approved within 1-4 hours. Only 3-5% of applications require up to the full 72 hours. While CBP officially states processing can take up to 72 hours, the vast majority of applicants receive approval much faster."
+                },
+                {
+                    question: "Can I travel immediately after ESTA is approved?",
+                    answer: "Yes, once your ESTA shows 'Authorization Approved' status, you are cleared to travel to the United States immediately. There is no waiting period. Your ESTA is electronically linked to your passport and airlines can verify it instantly."
+                },
+                {
+                    question: "Why is my ESTA taking longer than expected?",
+                    answer: "ESTA applications may take longer due to: manual security review, common name requiring additional verification, previous travel to sensitive countries, minor inconsistencies in application data, or high system volume during peak travel seasons. If pending beyond 72 hours, contact CBP at +1-202-344-3710."
+                },
+                {
+                    question: "Is there a way to expedite my ESTA application for urgent travel?",
+                    answer: "No, there is NO expedited or rush processing for ESTA under any circumstances. All applications are processed according to the same automated security protocols. Beware of third-party websites claiming to offer faster processing - they cannot actually expedite your application. If you need urgent travel and ESTA is pending, consider emergency visa options."
+                },
+                {
+                    question: "How long before my trip should I apply for ESTA?",
+                    answer: "CBP recommends applying at least 72 hours (3 days) before departure. However, best practice is to apply 2-4 weeks in advance to avoid any last-minute issues. You can apply as early as 2 years before your trip. It is better to apply early rather than wait until close to your travel date."
+                },
+                {
+                    question: "What does 'Authorization Pending' status mean and how long will it last?",
+                    answer: "'Authorization Pending' means your application requires additional processing time, typically for manual review or additional security checks. This status should resolve within 72 hours. Check your status periodically. If still pending after 72 hours, contact CBP help desk for assistance."
+                },
+                {
+                    question: "Can I submit a new ESTA application if mine is taking too long?",
+                    answer: "No, do NOT submit a duplicate application. This can cause more delays and confusion in the system. Each person should only have one active ESTA application. If your application has been pending for more than 72 hours, contact CBP instead of reapplying."
+                },
+                {
+                    question: "Does applying during certain times of day process faster?",
+                    answer: "No, ESTA processing times are generally consistent regardless of time of day. The ESTA system operates 24/7 with automated processing. However, peak travel seasons (summer, December holidays) may see slightly higher volumes, though this rarely affects individual processing times significantly."
+                },
+                {
+                    question: "How will I know when my ESTA is approved if it is pending?",
+                    answer: "If you provided an email address, you should receive a notification email when your ESTA status changes. However, email delivery is not guaranteed, so it is recommended to check your status manually at esta.cbp.dhs.gov using your application number. You can check status as often as you like."
+                },
+                {
+                    question: "Can I contact CBP to check on my pending ESTA application?",
+                    answer: "Yes, if your ESTA has been pending for more than 72 hours, you can contact CBP help desk at +1-202-344-3710 (available 24/7). Have your application number, passport number, and date of birth ready. For applications pending less than 72 hours, CBP recommends waiting the full processing time before calling."
+                }
+            ],
+            relatedGuides: [
+                "how-to-apply-esta",
+                "check-esta-status",
+                "esta-requirements",
+                "esta-denied-what-to-do",
+                "esta-validity-period"
+            ]
+        },
+        {
+            slug: "renew-esta",
+            title: "How to Renew ESTA: Complete Renewal Guide 2025",
+            description: "Complete guide to renewing your expired ESTA. Learn when to renew, the step-by-step renewal process, what information you need, and important differences between renewal and new applications.",
+            category: "renewal",
+            priority: 0.8,
+            keywords: [
+                "renew ESTA",
+                "ESTA renewal",
+                "reapply ESTA",
+                "ESTA expired",
+                "new ESTA application",
+                "ESTA renewal process"
+            ],
+            estimatedReadTime: 9,
+            lastUpdated: "2025-01-15",
+            sections: [
+                {
+                    id: "introduction",
+                    title: "Understanding ESTA Renewal",
+                    content: [
+                        "ESTA (Electronic System for Travel Authorization) does not have a traditional 'renewal' process. When your ESTA expires or becomes invalid, you must submit a completely new application. However, the process is straightforward and identical to your initial application.",
+                        {
+                            type: "callout",
+                            title: "Important Clarification",
+                            text: "There is no 'renew' button or simplified renewal process for ESTA. You must complete a brand new application and pay the full $40 fee again, just as you did for your original ESTA."
+                        }
+                    ]
+                },
+                {
+                    id: "when-to-renew",
+                    title: "When You Need to Apply for a New ESTA",
+                    content: [
+                        "You must apply for a new ESTA in these situations:",
+                        {
+                            type: "list",
+                            items: [
+                                "Your ESTA has expired (2 years from approval date)",
+                                "Your passport has expired or will expire before your ESTA expires",
+                                "You obtained a new passport (even if your ESTA has not expired)",
+                                "You changed your name (marriage, divorce, legal name change)",
+                                "You changed your gender",
+                                "You changed your country of citizenship",
+                                "Any of your answers to ESTA eligibility questions have changed (health, criminal record, travel history, etc.)"
+                            ]
+                        },
+                        {
+                            type: "warning",
+                            title: "New Passport Invalidates ESTA",
+                            text: "If you get a new passport for any reason, your existing ESTA immediately becomes invalid, even if it has years of validity remaining. You must apply for a new ESTA using your new passport information."
+                        }
+                    ]
+                },
+                {
+                    id: "timing",
+                    title: "When to Submit Your New Application",
+                    content: [
+                        "Recommended timing for your new ESTA application:",
+                        "Ideal Timing:",
+                        {
+                            type: "list",
+                            items: [
+                                "Apply 2-4 weeks before your current ESTA expires",
+                                "Apply immediately after receiving a new passport",
+                                "Apply as soon as you know your circumstances have changed",
+                                "You can apply for a new ESTA at any time, even before your current one expires"
+                            ]
+                        },
+                        "Minimum Timing:",
+                        {
+                            type: "list",
+                            items: [
+                                "Apply at least 72 hours before your planned travel",
+                                "Never wait until the last minute - processing can take up to 72 hours",
+                                "Do not book non-refundable travel until your new ESTA is approved"
+                            ]
+                        },
+                        {
+                            type: "callout",
+                            title: "Pro Tip",
+                            text: "You can hold two valid ESTAs simultaneously during a transition period. If your current ESTA expires in 2 weeks and you apply for a new one today, both will be valid until the old one expires. This prevents any gap in authorization."
+                        }
+                    ]
+                },
+                {
+                    id: "renewal-process",
+                    title: "Step-by-Step Renewal Process",
+                    content: [
+                        "The process for applying for a new ESTA is identical to your original application:",
+                        "Step 1: Gather Required Information",
+                        {
+                            type: "list",
+                            items: [
+                                "Valid e-passport (must be current, not expired)",
+                                "Email address for confirmation",
+                                "Credit card, debit card, or PayPal for $40 fee",
+                                "Travel information if you have specific plans",
+                                "Employment information (current employer)",
+                                "Parent information (names of both parents)",
+                                "Emergency contact information"
+                            ]
+                        },
+                        "Step 2: Access the Official Website",
+                        {
+                            type: "list",
+                            items: [
+                                "Go to esta.cbp.dhs.gov (official U.S. government website only)",
+                                'Click "Apply for ESTA"',
+                                'Select "Individual Application"',
+                                "Read and accept the disclaimer"
+                            ]
+                        },
+                        "Step 3: Complete the Application Form",
+                        {
+                            type: "list",
+                            items: [
+                                "Enter passport information exactly as shown on your passport",
+                                "Provide personal information (name, date of birth, address)",
+                                "Answer all eligibility questions honestly",
+                                "Enter travel information (if known)",
+                                "Provide employment and parent information",
+                                "Review all information carefully for accuracy"
+                            ]
+                        },
+                        "Step 4: Submit and Pay",
+                        {
+                            type: "list",
+                            items: [
+                                "Review your complete application",
+                                "Submit the application",
+                                "Pay the $40 fee (non-refundable)",
+                                "Save your application number immediately"
+                            ]
+                        },
+                        "Step 5: Check Status",
+                        {
+                            type: "list",
+                            items: [
+                                "Most applications are approved within minutes",
+                                "Check status at esta.cbp.dhs.gov using your application number",
+                                "Wait up to 72 hours for final decision if status shows 'pending'"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: "differences-from-original",
+                    title: "Differences from Your Original Application",
+                    content: [
+                        "While the process is the same, there are a few differences to be aware of when applying for a new ESTA:",
+                        "Advantages of Reapplying:",
+                        {
+                            type: "list",
+                            items: [
+                                "You already know the process and what information is needed",
+                                "You likely have your previous application number for reference",
+                                "Your information is probably already organized from your first application",
+                                "The process should feel faster and easier the second time"
+                            ]
+                        },
+                        "Important Considerations:",
+                        {
+                            type: "list",
+                            items: [
+                                "You must pay the full $40 fee again - there is no discount for renewals",
+                                "Your new ESTA will have a new application number (different from your old one)",
+                                "You cannot copy or transfer information from your old ESTA",
+                                "If your circumstances have changed, your answers must reflect current information"
+                            ]
+                        },
+                        {
+                            type: "callout",
+                            text: "Even minor changes to your circumstances must be accurately reflected in your new application. Answer all questions based on your current situation, not what you answered before."
+                        }
+                    ]
+                },
+                {
+                    id: "common-mistakes",
+                    title: "Common Renewal Mistakes to Avoid",
+                    content: [
+                        "Avoid these common errors when applying for a new ESTA:",
+                        {
+                            type: "list",
+                            items: [
+                                "Using old passport information instead of new passport details",
+                                "Waiting too long - applying the day before travel is risky",
+                                "Not updating changed information (new address, new employer, etc.)",
+                                "Using third-party websites that charge inflated fees",
+                                "Forgetting to save the new application number",
+                                "Assuming the old ESTA is still valid after getting a new passport",
+                                "Not checking the new ESTA status before traveling"
+                            ]
+                        },
+                        {
+                            type: "warning",
+                            title: "Critical Mistake",
+                            text: "Never travel using an expired ESTA or an ESTA linked to an expired/old passport. Airlines will not allow you to board, and you will miss your flight."
+                        }
+                    ]
+                },
+                {
+                    id: "validity-new-esta",
+                    title: "Validity of Your New ESTA",
+                    content: [
+                        "Your new ESTA will be valid for:",
+                        {
+                            type: "list",
+                            items: [
+                                "2 years from the approval date, OR",
+                                "Until your passport expires, whichever comes first",
+                                "Multiple entries to the U.S. during the validity period",
+                                "Up to 90 days per visit (cannot be extended)"
+                            ]
+                        },
+                        {
+                            type: "callout",
+                            title: "Validity Example",
+                            text: "If your new ESTA is approved on March 1, 2025, it will be valid until March 1, 2027, unless your passport expires before then. If your passport expires on January 15, 2026, your ESTA will also expire on that date."
+                        }
+                    ]
+                },
+                {
+                    id: "costs-and-fees",
+                    title: "Renewal Costs and Fees",
+                    content: [
+                        "Understanding the costs for your new ESTA application:",
+                        "Official Fee: $40 USD $40",
+                        {
+                            type: "list",
+                            items: [
+                                "$5 processing fee (charged even if denied)",
+                                "$40 authorization fee (only charged if approved)",
+                                "Payment methods: Credit card, debit card, or PayPal",
+                                "No refunds under any circumstances"
+                            ]
+                        },
+                        {
+                            type: "warning",
+                            title: "Beware of Scams",
+                            text: "The official government fee is $40. Third-party websites charge $50-$150+ for the same application. Always use the official website: esta.cbp.dhs.gov"
+                        },
+                        "Cost Comparison:",
+                        {
+                            type: "list",
+                            items: [
+                                "Official website: $40 $40",
+                                "Third-party websites: $50-$150 (unnecessary markup)",
+                                "U.S. embassy visa: $185+ (if ESTA is not available)"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            faqs: [
+                {
+                    question: "Can I renew my ESTA before it expires?",
+                    answer: "Yes, you can apply for a new ESTA at any time, even before your current one expires. There is no waiting period. In fact, it is recommended to apply for a new ESTA a few weeks before your current one expires to ensure continuous authorization."
+                },
+                {
+                    question: "How much does it cost to renew ESTA?",
+                    answer: "You must pay the full $40 fee for a new ESTA application. There is no reduced renewal fee or discount for previous ESTA holders. Each application costs $40 regardless of whether it is your first application or your fifth."
+                },
+                {
+                    question: "Can I use my old ESTA application number to renew?",
+                    answer: "No, you cannot renew using your old application number. You must complete an entirely new application. Your new ESTA will receive a new application number. However, you can reference your old application for information accuracy."
+                },
+                {
+                    question: "What if I get a new passport 6 months before my ESTA expires?",
+                    answer: "You must apply for a new ESTA immediately. Your ESTA is electronically linked to your passport number, so when you get a new passport, your old ESTA becomes invalid instantly, regardless of how much validity time remains. Apply for a new ESTA with your new passport information before traveling."
+                },
+                {
+                    question: "Is the renewal process different from the original application?",
+                    answer: "No, the process is identical. There is no simplified renewal process. You must complete the full application form, answer all eligibility questions, and pay the full fee, just as you did for your original ESTA."
+                },
+                {
+                    question: "Can I renew my ESTA if it was previously denied?",
+                    answer: "If your ESTA was denied in the past, you generally cannot apply for ESTA again. The same eligibility issues that caused the denial will likely result in another denial. You should apply for a U.S. visa at an embassy instead."
+                },
+                {
+                    question: "How long does the renewal process take?",
+                    answer: "The new application process takes 10-20 minutes to complete, and most applications are approved within minutes to hours. However, U.S. Customs and Border Protection recommends allowing up to 72 hours for processing. Apply well in advance of any travel."
+                },
+                {
+                    question: "Will my new ESTA have the same approval status as my old one?",
+                    answer: "Not necessarily. Each application is reviewed independently. While most renewals are approved if nothing has changed, circumstances can change, and a new application could be denied if your eligibility has changed (new criminal record, travel to restricted countries, etc.)."
+                },
+                {
+                    question: "Can I travel while my renewal application is pending?",
+                    answer: "If your old ESTA is still valid and your passport has not changed, yes, you can travel on your existing ESTA while the new application is pending. However, if your old ESTA has expired or you have a new passport, you must wait for the new ESTA to be approved before traveling."
+                },
+                {
+                    question: "Do I need to renew if I am not planning to travel to the U.S.?",
+                    answer: "No, you only need a valid ESTA when you are actually traveling to the United States. If you have no travel plans, there is no need to maintain a valid ESTA. You can apply for a new one when you decide to travel again."
+                }
+            ],
+            relatedGuides: [
+                "esta-validity-period",
+                "check-esta-status",
+                "how-to-apply-esta",
+                "passport-requirements-esta",
+                "esta-denied-what-to-do"
+            ]
+        },
+        {
+            slug: "esta-for-minors",
+            title: "ESTA for Children and Minors: Complete Guide",
+            description: "Do children need ESTA? How to apply for ESTA for minors, infants, and children traveling to the U.S.",
+            category: "travel",
+            priority: 0.7,
+            keywords: [
+                "ESTA for children",
+                "ESTA for minors",
+                "child ESTA",
+                "baby ESTA",
+                "infant ESTA application",
+                "children traveling to USA"
+            ],
+            estimatedReadTime: 9,
+            lastUpdated: "2025-01-15",
+            relatedGuides: [
+                "what-is-esta",
+                "how-to-apply-esta",
+                "passport-requirements-esta",
+                "esta-cost-fees"
+            ],
+            sections: [
+                {
+                    id: "children-need-esta",
+                    title: "Do Children and Infants Need ESTA?",
+                    content: [
+                        "Yes, all travelers entering the United States under the Visa Waiver Program must have an approved ESTA, regardless of age. This includes infants, toddlers, children, and teenagers. There are no age exemptions for the ESTA requirement.",
+                        "Even if a child is traveling in their parent's arms and does not occupy a separate airplane seat, they still require their own individual ESTA approval. Each person, regardless of age, must have their own valid passport and approved ESTA before boarding a flight to the United States.",
+                        "The ESTA requirement applies to all VWP travelers, including:",
+                        {
+                            type: "list",
+                            items: [
+                                "Newborns and infants (under 2 years old)",
+                                "Toddlers and young children (2-12 years old)",
+                                "Teenagers (13-17 years old)",
+                                "Children traveling with parents or guardians",
+                                "Unaccompanied minors traveling alone",
+                                "Children with dual citizenship from VWP countries"
+                            ]
+                        },
+                        {
+                            type: "callout",
+                            title: "Important for Parents",
+                            text: "Do not attempt to travel to the U.S. with a child who does not have an approved ESTA. Airlines will deny boarding, and you will not be permitted to fly. Apply for your child's ESTA well in advance of your travel date."
+                        }
+                    ]
+                },
+                {
+                    id: "application-process-minors",
+                    title: "How to Apply for ESTA for a Child",
+                    content: [
+                        "Parents or legal guardians can apply for ESTA on behalf of their children. The application process is identical to adult applications, but parents complete the form with the child's information. Here's the step-by-step process:",
+                        "The parent or guardian must have the child's valid passport information available before starting the application. The passport must be an e-passport (electronic passport with a chip) from a Visa Waiver Program country and must be valid for at least six months beyond your intended stay.",
+                        {
+                            type: "list",
+                            items: [
+                                "Visit the official ESTA website at esta.cbp.dhs.gov",
+                                "Click on 'New Application' and select 'Individual Application'",
+                                "Enter the child's passport information exactly as it appears on their passport",
+                                "Provide the child's biographical information (name, date of birth, place of birth)",
+                                "Answer all eligibility questions on behalf of the child",
+                                "Provide parent or guardian contact information in the emergency contact section",
+                                "Review all information carefully for accuracy",
+                                "Pay the $21 USD application fee using a valid credit or debit card"
+                            ]
+                        },
+                        {
+                            type: "callout",
+                            title: "Third Party Authorization",
+                            text: "When applying on behalf of a child, you will be asked to certify that you are authorized to submit the application. Parents and legal guardians are automatically authorized. The application will record the applicant information separately from the third-party applicant (parent/guardian)."
+                        },
+                        "After submitting the application, you will receive a confirmation number. Keep this number safe, as you'll need it to check the application status. Most ESTA applications for children are processed within minutes, but it can take up to 72 hours."
+                    ]
+                },
+                {
+                    id: "child-passport-requirements",
+                    title: "Passport Requirements for Children",
+                    content: [
+                        "Children traveling under the Visa Waiver Program must have their own individual passport. They cannot be included on a parent's passport. The passport must meet specific requirements established by U.S. Customs and Border Protection.",
+                        "Child passport requirements for ESTA:",
+                        {
+                            type: "list",
+                            items: [
+                                "Must be an e-passport (electronic passport with an embedded chip)",
+                                "Must be machine-readable with two lines of text at the bottom",
+                                "Must be issued by a Visa Waiver Program country",
+                                "Must be valid for at least six months beyond your U.S. stay",
+                                "Must be in good physical condition (no water damage, tears, or tampering)",
+                                "Child's photo must be current and meet biometric standards",
+                                "Cannot be an emergency or temporary passport"
+                            ]
+                        },
+                        "Many countries issue child passports with shorter validity periods (typically 5 years instead of 10 years for adults). Ensure your child's passport will remain valid for the entire duration of your trip plus six months beyond.",
+                        {
+                            type: "warning",
+                            title: "Passport Photo Requirements",
+                            text: "Passport photos for infants and young children can be challenging. The child must have their eyes open, be looking at the camera, and have a neutral expression. While this is difficult with babies, most passport agencies understand and have some flexibility for very young children."
+                        }
+                    ]
+                },
+                {
+                    id: "child-esta-fees",
+                    title: "ESTA Fees for Children and Minors",
+                    content: [
+                        "The ESTA application fee for children is exactly the same as for adults: $21 USD per application. There are no discounts, family rates, or reduced fees for minors, infants, or children.",
+                        "The $21 fee breaks down as follows:",
+                        {
+                            type: "list",
+                            items: [
+                                "$4 processing fee (charged for all applications, even if denied)",
+                                "$17 authorization fee (only charged if ESTA is approved)",
+                                "Valid for 2 years from approval date or until passport expires",
+                                "Multiple entries allowed during the 2-year validity period"
+                            ]
+                        },
+                        "While the fee may seem expensive for infants who may only use the ESTA once, remember that the approved ESTA is valid for two years. If you plan multiple trips to the United States, your child can use the same ESTA for all visits within the two-year period.",
+                        {
+                            type: "callout",
+                            title: "Fee Payment",
+                            text: "Payment must be made by credit or debit card (Visa, MasterCard, American Express, Discover, JCB, or Diners Club). The cardholder does not need to be the traveler or parent - any valid payment card can be used."
+                        },
+                        "If your child's passport expires before the two-year ESTA validity period ends, the ESTA will become invalid when the passport expires. You will need to obtain a new passport for your child and apply for a new ESTA using the new passport information."
+                    ]
+                },
+                {
+                    id: "traveling-with-children",
+                    title: "Traveling to the U.S. with Children",
+                    content: [
+                        "When traveling to the United States with children, proper preparation ensures a smooth entry process. U.S. Customs and Border Protection has specific procedures and requirements for minors entering the country.",
+                        "Essential documents to bring when traveling with children:",
+                        {
+                            type: "list",
+                            items: [
+                                "Child's valid passport with at least 6 months validity",
+                                "Printed copy of ESTA approval (confirmation number at minimum)",
+                                "Birth certificate for each child (recommended but not required)",
+                                "Consent letter if child is traveling with only one parent",
+                                "Custody documents if applicable",
+                                "Return or onward travel tickets",
+                                "Hotel reservations or U.S. address where you'll be staying"
+                            ]
+                        },
+                        {
+                            type: "warning",
+                            title: "Single Parent or Guardian Travel",
+                            text: "If a child is traveling with only one parent or with grandparents, guardians, or other adults, carry a notarized letter of consent from the non-traveling parent(s). While not always required, CBP officers may request this documentation, especially if they have concerns about potential child abduction."
+                        },
+                        "At U.S. immigration, children can be included in their parents' declaration for customs purposes, but each person (including infants) will have their biometric data collected - fingerprints and photo. Officers are experienced with children and will work quickly to minimize stress."
+                    ]
+                },
+                {
+                    id: "unaccompanied-minors",
+                    title: "Unaccompanied Minors and ESTA",
+                    content: [
+                        "Unaccompanied minors (children traveling alone without a parent or guardian) can travel to the United States under the Visa Waiver Program with an approved ESTA, but additional considerations apply.",
+                        "Most airlines have specific policies for unaccompanied minors, typically requiring:",
+                        {
+                            type: "list",
+                            items: [
+                                "Minimum age requirements (usually 5-15 years old, varies by airline)",
+                                "Unaccompanied minor service fee (typically $150+ each way)",
+                                "Complete information about who will pick up the child in the U.S.",
+                                "Contact information for both sending and receiving adults",
+                                "Special check-in procedures at the airport",
+                                "Flight restrictions (direct flights only, no connections for younger children)"
+                            ]
+                        },
+                        "At U.S. immigration, unaccompanied minors will be processed by CBP officers who are trained to interview children. The child should know:",
+                        {
+                            type: "list",
+                            items: [
+                                "Why they are visiting the United States",
+                                "Who they are staying with (name and relationship)",
+                                "The address where they will be staying",
+                                "How long they plan to stay",
+                                "When they are returning to their home country"
+                            ]
+                        },
+                        {
+                            type: "callout",
+                            title: "Supporting Documentation",
+                            text: "Unaccompanied minors should carry copies of: invitation letter from U.S. host, host's contact information and address, notarized parental consent letter, return flight tickets, and proof of accommodation. These documents help demonstrate the legitimate purpose of travel."
+                        }
+                    ]
+                },
+                {
+                    id: "esta-validity-growing-children",
+                    title: "ESTA Validity as Children Grow",
+                    content: [
+                        "As children grow, their appearance changes significantly. This can raise questions about ESTA validity, passport photos, and travel documentation. Understanding how these changes affect travel authorization is important for parents.",
+                        "Your child's ESTA remains valid for two years or until their passport expires, whichever comes first. However, several situations may require obtaining a new ESTA:",
+                        {
+                            type: "list",
+                            items: [
+                                "Child's passport expires (even if ESTA period hasn't ended)",
+                                "Child receives a new passport for any reason",
+                                "Child's name changes (marriage, adoption, legal name change)",
+                                "Child's citizenship changes",
+                                "Child's gender is changed on their passport",
+                                "Answers to ESTA eligibility questions change"
+                            ]
+                        },
+                        "While a child's appearance may change dramatically during the two-year ESTA validity period, this alone does not invalidate the ESTA. CBP officers are trained to account for natural changes in children's appearances. However, the passport photo should be reasonably current.",
+                        {
+                            type: "warning",
+                            title: "Passport Renewal for Children",
+                            text: "Many countries issue child passports with 5-year validity instead of the standard 10 years for adults. When your child's passport expires, you must obtain a new passport AND apply for a new ESTA using the new passport information. The old ESTA will become invalid when the old passport expires."
+                        },
+                        "If you're planning to travel near the end of your child's passport validity, consider renewing the passport early and obtaining a new ESTA. This prevents complications if passport processing takes longer than expected."
+                    ]
+                },
+                {
+                    id: "special-situations-children",
+                    title: "Special Situations for Children",
+                    content: [
+                        "Several special situations may affect ESTA applications for children. Understanding these scenarios helps parents navigate unusual circumstances.",
+                        "Children with dual citizenship must choose which passport to use for ESTA travel. If the child holds citizenship from both a VWP country and a non-VWP country, they should use their VWP passport for ESTA application and U.S. travel. If one of the citizenships is from Iraq, Syria, Iran, Sudan, Libya, Somalia, or Yemen, additional restrictions may apply.",
+                        {
+                            type: "callout",
+                            title: "Born in the United States",
+                            text: "If your child was born in the United States, they are likely a U.S. citizen and should not apply for ESTA. Instead, obtain a U.S. passport for the child. U.S. citizens, even dual nationals, must enter the United States using a U.S. passport."
+                        },
+                        "Adopted children traveling with adoptive parents should use their current legal name as it appears on their passport. If adoption is recent and name change documentation is still pending, carry adoption papers and court orders in case questions arise at immigration.",
+                        "Children with previous U.S. visa denials or overstays by parents should be evaluated carefully. While a parent's immigration violation doesn't automatically affect a child's ESTA, be prepared to answer questions honestly about family immigration history if asked.",
+                        {
+                            type: "list",
+                            items: [
+                                "Foster children: Carry legal custody documents and authorization letters",
+                                "Children in guardianship: Bring court orders establishing guardianship",
+                                "Children with medical conditions: Carry relevant medical documentation",
+                                "Newborns: Apply for passport and ESTA as soon as passport is received",
+                                "School groups: Each child needs individual ESTA, group leaders should coordinate"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            faqs: [
+                {
+                    question: "Does my baby need an ESTA even though they won't have their own seat on the plane?",
+                    answer: "Yes, all travelers entering the U.S. under the Visa Waiver Program need an approved ESTA, regardless of age or whether they have their own seat. Even infants traveling as lap children must have their own passport and approved ESTA before boarding the flight."
+                },
+                {
+                    question: "Can I include my child on my ESTA application?",
+                    answer: "No, each person must have their own individual ESTA application, including children and infants. There is no family or group ESTA option. Parents or guardians can submit applications on behalf of their children, but each child needs a separate application and separate $21 fee."
+                },
+                {
+                    question: "How long does an ESTA for a child last?",
+                    answer: "A child's ESTA is valid for two years from the approval date or until the child's passport expires, whichever comes first. Since many countries issue child passports with 5-year validity, the ESTA will likely remain valid for the full two years. However, you'll need a new ESTA if the child gets a new passport."
+                },
+                {
+                    question: "What if my child's appearance has changed significantly since their passport photo?",
+                    answer: "Natural changes in a child's appearance do not invalidate their ESTA or passport, as long as the documents remain within their validity period. CBP officers are trained to account for how children grow and change. However, if the photo is extremely outdated or the child is unrecognizable, consider renewing the passport."
+                },
+                {
+                    question: "Do I need a consent letter if I'm traveling alone with my child?",
+                    answer: "While not always required, it's highly recommended to carry a notarized consent letter from the non-traveling parent if you're traveling to the U.S. with a child alone. CBP officers may ask for this documentation to prevent international child abduction. The letter should include both parents' information, the child's information, travel dates, and the non-traveling parent's consent."
+                },
+                {
+                    question: "Can my teenager apply for their own ESTA?",
+                    answer: "Yes, teenagers can complete their own ESTA application if they have the necessary information (passport details, travel plans, credit card for payment). However, a parent or guardian should review the application for accuracy before submission. Many families prefer parents to handle ESTA applications for all minor children to ensure consistency."
+                },
+                {
+                    question: "What happens if my child's ESTA is denied?",
+                    answer: "ESTA denials for children are rare but can occur. If denied, your child cannot travel to the U.S. under the Visa Waiver Program and must apply for a B-2 tourist visa at a U.S. embassy or consulate. Common denial reasons include passport issues, eligibility question answers, or previous immigration violations. The denial notice will not provide a specific reason."
+                },
+                {
+                    question: "My child was born in the U.S. but we live abroad. Do they need ESTA?",
+                    answer: "No. If your child was born in the United States, they are a U.S. citizen regardless of where you live now. U.S. citizens cannot and should not apply for ESTA. Instead, obtain a U.S. passport for your child from the nearest U.S. embassy or consulate. U.S. citizens must enter the United States using their U.S. passport."
+                },
+                {
+                    question: "How do I check the status of my child's ESTA application?",
+                    answer: "Use the same status check process as adult applications. Visit the official ESTA website, select 'Check ESTA Status,' and enter your child's passport information and application number. The status will show as pending, authorized, or travel not authorized. Keep the application number in your travel records."
+                }
+            ]
+        },
+        {
+            slug: "passport-requirements-esta",
+            title: "ESTA Passport Requirements: E-Passport Guide",
+            description: "Detailed passport requirements for ESTA. E-passport specifications, validity rules, and what makes a passport eligible.",
+            category: "requirements",
+            priority: 0.7,
+            keywords: [
+                "ESTA passport requirements",
+                "e-passport ESTA",
+                "passport for ESTA",
+                "electronic passport",
+                "biometric passport",
+                "VWP passport requirements"
+            ],
+            estimatedReadTime: 10,
+            lastUpdated: "2025-01-15",
+            relatedGuides: [
+                "what-is-esta",
+                "how-to-apply-esta",
+                "esta-for-minors",
+                "visa-waiver-countries"
+            ],
+            sections: [
+                {
+                    id: "e-passport-requirement",
+                    title: "What is an E-Passport?",
+                    content: [
+                        "An e-passport (electronic passport) is a traditional paper passport that contains an electronic chip. This chip stores the same information that is printed on the passport's data page, including the holder's name, date of birth, and other biographic information, as well as a digital photograph.",
+                        "All travelers applying for ESTA must have an e-passport from a Visa Waiver Program (VWP) country. This requirement has been in effect since April 1, 2016. If your passport does not have an electronic chip, you are not eligible for ESTA and must apply for a B-1/B-2 visa instead.",
+                        "How to identify an e-passport:",
+                        {
+                            type: "list",
+                            items: [
+                                "Look for the international e-passport symbol on the front cover (a rectangle with a circle and horizontal lines)",
+                                "The passport should state 'biometric passport' or 'electronic passport' inside",
+                                "E-passports are slightly thicker than traditional passports due to the chip",
+                                "The chip is typically embedded in the back cover or center page",
+                                "When opened, you may see a metallic pattern or antenna wiring"
+                            ]
+                        },
+                        {
+                            type: "callout",
+                            title: "Important Date",
+                            text: "If your passport was issued after 2006, it is almost certainly an e-passport. Most VWP countries began issuing e-passports between 2005-2007. If you have an older passport without a chip, you'll need to renew your passport before applying for ESTA."
+                        },
+                        "The electronic chip in your passport is read at automated border control kiosks and by immigration officers. This technology speeds up the immigration process and enhances security by making passport fraud more difficult."
+                    ]
+                },
+                {
+                    id: "passport-validity-rules",
+                    title: "Passport Validity Requirements",
+                    content: [
+                        "Your passport must meet specific validity requirements to be eligible for ESTA and to enter the United States under the Visa Waiver Program.",
+                        "The standard rule requires that your passport be valid for at least six months beyond your intended departure date from the United States. However, there are important exceptions to this rule.",
+                        {
+                            type: "callout",
+                            title: "Six-Month Club Exemption",
+                            text: "Citizens from certain countries (known as 'Six-Month Club' members) are exempt from the six-month passport validity rule. For these countries, your passport only needs to be valid for the duration of your stay in the U.S. These countries include the United Kingdom, Ireland, France, Germany, and most other VWP countries."
+                        },
+                        "Countries exempt from the six-month rule (partial list):",
+                        {
+                            type: "list",
+                            items: [
+                                "United Kingdom and British territories",
+                                "Ireland",
+                                "France",
+                                "Germany, Austria, Switzerland",
+                                "Netherlands, Belgium, Luxembourg",
+                                "Nordic countries (Sweden, Norway, Denmark, Finland)",
+                                "Spain, Portugal, Italy, Greece",
+                                "Australia, New Zealand",
+                                "Japan, South Korea, Singapore",
+                                "Check the official CBP website for the complete current list"
+                            ]
+                        },
+                        "Even if your country is exempt from the six-month rule, ensure your passport remains valid for your entire stay. If your passport expires while you're in the United States, you may face difficulties with hotel check-ins, car rentals, and your departure flight.",
+                        {
+                            type: "warning",
+                            title: "Passport Expiration During Travel",
+                            text: "If your passport will expire within the next year, consider renewing it before traveling. Many countries require six months validity for entry, so if you're taking a multi-country trip, you may need the longer validity even if the U.S. doesn't require it."
+                        }
+                    ]
+                },
+                {
+                    id: "machine-readable-passport",
+                    title: "Machine-Readable Passport Requirements",
+                    content: [
+                        "In addition to being an e-passport, your passport must also be machine-readable (MRP). A machine-readable passport has two lines of text (letters, numbers, and chevrons <<<) at the bottom of the biographical data page.",
+                        "All modern e-passports are machine-readable, so if you have an e-passport, this requirement is automatically satisfied. However, it's useful to understand what makes a passport machine-readable.",
+                        "Machine-readable zone characteristics:",
+                        {
+                            type: "list",
+                            items: [
+                                "Two lines of characters at the bottom of the photo/data page",
+                                "Each line contains exactly 44 characters",
+                                "Uses letters, numbers, and chevrons (<<<) as filler characters",
+                                "Contains encoded information: passport type, country code, name, document number, nationality, date of birth, sex, expiration date",
+                                "Optical character recognition (OCR) scanners read this zone at border control",
+                                "Speeds up passport processing and reduces manual data entry errors"
+                            ]
+                        },
+                        "If you have a very old passport that is not machine-readable (issued before 2000), it will not be eligible for ESTA. You must renew your passport to obtain a modern machine-readable, electronic passport before you can apply for ESTA.",
+                        {
+                            type: "callout",
+                            title: "Passport Damage",
+                            text: "The machine-readable zone must be in good condition. Water damage, tears, excessive wear, or tampering in this area can make your passport unreadable and may result in denied boarding or entry to the United States. If your MRZ is damaged, renew your passport before traveling."
+                        }
+                    ]
+                },
+                {
+                    id: "vwp-country-requirement",
+                    title: "Visa Waiver Program Country Requirement",
+                    content: [
+                        "To be eligible for ESTA, you must be a citizen of one of the 42 countries participating in the Visa Waiver Program (VWP). Your passport must be issued by one of these countries.",
+                        "Current Visa Waiver Program countries (as of 2025):",
+                        {
+                            type: "list",
+                            items: [
+                                "Europe: Andorra, Austria, Belgium, Croatia, Czech Republic, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Iceland, Ireland, Italy, Latvia, Liechtenstein, Lithuania, Luxembourg, Malta, Monaco, Netherlands, Norway, Poland, Portugal, San Marino, Slovakia, Slovenia, Spain, Sweden, Switzerland, United Kingdom",
+                                "Asia-Pacific: Australia, Brunei, Japan, New Zealand, Singapore, South Korea, Taiwan",
+                                "South America: Chile"
+                            ]
+                        },
+                        "Important notes about VWP country requirements:",
+                        {
+                            type: "list",
+                            items: [
+                                "You must be a citizen of a VWP country, not just a resident",
+                                "Permanent residents of VWP countries who hold passports from non-VWP countries must apply for a visa",
+                                "Dual citizens should use their VWP passport for ESTA application and U.S. travel",
+                                "If you have citizenship from both a VWP and non-VWP country, use your VWP passport",
+                                "Refugee travel documents and stateless person documents are not eligible for ESTA"
+                            ]
+                        },
+                        {
+                            type: "warning",
+                            title: "Dual Nationality Restrictions",
+                            text: "If you are a dual national of a VWP country and also Iraq, Syria, Iran, Sudan, Libya, Somalia, or Yemen, you are not eligible for ESTA. You must apply for a visa even if you hold a passport from a VWP country. The same applies if you traveled to these countries after March 2011."
+                        }
+                    ]
+                },
+                {
+                    id: "passport-condition-standards",
+                    title: "Passport Physical Condition",
+                    content: [
+                        "Beyond validity and electronic chip requirements, your passport must be in good physical condition. Damaged passports may be rejected by airlines or U.S. immigration authorities, even if they are technically valid.",
+                        "Conditions that make a passport unacceptable:",
+                        {
+                            type: "list",
+                            items: [
+                                "Water damage affecting the biographical page or chip",
+                                "Torn or separated pages, especially the data page",
+                                "Significant wear that makes information illegible",
+                                "Unauthorized markings, writing, or alterations",
+                                "Damaged or non-functional chip (prevents reading at automated kiosks)",
+                                "Photo page lamination peeling or damaged",
+                                "Excessive stamps that overlap critical information",
+                                "Evidence of tampering or attempted alteration"
+                            ]
+                        },
+                        {
+                            type: "callout",
+                            title: "Photo Quality",
+                            text: "Your passport photo must be clear and recognizable. Even if the passport is valid, if your appearance has changed dramatically (significant weight change, different hairstyle/color, facial hair, aging), you may be questioned more extensively. Consider renewing your passport if your photo is more than 5-6 years old and no longer resembles you."
+                        },
+                        "Airlines are particularly strict about passport condition because they face fines if they transport passengers with unacceptable documents. If an airline agent has concerns about your passport condition, they may deny boarding even if the passport is technically valid.",
+                        "If you notice any damage to your passport, especially to the chip area, biographical page, or machine-readable zone, renew your passport before traveling. This prevents problems at check-in or immigration.",
+                        {
+                            type: "warning",
+                            title: "Emergency Passports",
+                            text: "Emergency or temporary passports are not eligible for ESTA, even if issued by a VWP country. These documents are typically valid for a short period (3-12 months) and do not contain an electronic chip. If you have an emergency passport, you must apply for a B-1/B-2 visa to travel to the United States."
+                        }
+                    ]
+                },
+                {
+                    id: "passport-renewal-esta",
+                    title: "Passport Renewal and ESTA",
+                    content: [
+                        "When you renew your passport, your current ESTA becomes invalid, even if it hasn't reached its two-year expiration date. You must apply for a new ESTA using your new passport information.",
+                        "Why passport renewal invalidates ESTA:",
+                        {
+                            type: "list",
+                            items: [
+                                "ESTA is electronically linked to a specific passport number",
+                                "When you renew your passport, you receive a new passport number",
+                                "The ESTA system cannot transfer an approval to a new passport",
+                                "You must submit a new ESTA application ($21 fee) with new passport details",
+                                "Previous ESTA approval doesn't guarantee approval of new application"
+                            ]
+                        },
+                        "If you're planning to renew your passport, consider timing carefully:",
+                        {
+                            type: "list",
+                            items: [
+                                "If you have upcoming U.S. travel within 2-3 months, wait until after your trip to renew your passport",
+                                "If your passport expires in less than 6 months and you're not traveling soon, renew now and apply for new ESTA",
+                                "If you have a valid ESTA and valid passport but passport expires soon, you can travel as long as both documents are valid on your travel dates",
+                                "Budget for both passport renewal and new ESTA application fees"
+                            ]
+                        },
+                        {
+                            type: "callout",
+                            title: "Name Changes",
+                            text: "If your name changes due to marriage, divorce, or legal name change, you must update your passport first, then apply for a new ESTA. The name on your ESTA must exactly match your passport. Even minor spelling differences can cause problems at check-in and immigration."
+                        },
+                        "After receiving your new passport, wait 24-48 hours before applying for ESTA to ensure the new passport information has been registered in international databases. This prevents potential mismatches that could delay ESTA processing."
+                    ]
+                },
+                {
+                    id: "biometric-data",
+                    title: "Biometric Data and Passport Chips",
+                    content: [
+                        "The electronic chip in your e-passport stores biometric data - unique physical characteristics that can be used to verify your identity. Understanding what data is stored and how it's used helps demystify the border control process.",
+                        "Data stored in e-passport chips:",
+                        {
+                            type: "list",
+                            items: [
+                                "Biographical information (name, date of birth, nationality, sex)",
+                                "Passport details (number, issue date, expiration date)",
+                                "Digital photograph from the passport (used for facial recognition)",
+                                "Digital signature to prevent data tampering",
+                                "Some countries include fingerprint data (though this is less common)",
+                                "Issuing country code and passport authority information"
+                            ]
+                        },
+                        "When you arrive in the United States, your e-passport chip is read at automated passport control (APC) kiosks or by CBP officers using handheld readers. The system:",
+                        {
+                            type: "list",
+                            items: [
+                                "Reads your biographical data from the chip",
+                                "Retrieves your ESTA approval from the database",
+                                "Captures your photo and compares it to the chip photo",
+                                "Collects your fingerprints and stores them",
+                                "Verifies that the chip data matches the printed passport",
+                                "Checks for any security concerns or travel alerts"
+                            ]
+                        },
+                        {
+                            type: "callout",
+                            title: "Privacy and Security",
+                            text: "E-passport chips use encryption and digital signatures to protect your data. The chip can only be read from very close range (a few inches), preventing unauthorized remote scanning. Basic access control requires the MRZ data (from the printed passport) before the chip can be fully read, adding another security layer."
+                        },
+                        "If your passport chip is damaged and cannot be read, you may still be able to travel, but expect significant delays. Officers will need to manually verify all information, and you may face enhanced screening. In some cases, damaged chips may result in denied boarding or entry."
+                    ]
+                },
+                {
+                    id: "special-passport-situations",
+                    title: "Special Passport Situations",
+                    content: [
+                        "Various special circumstances can affect passport eligibility for ESTA. Understanding these situations helps you determine whether your specific passport qualifies.",
+                        {
+                            type: "callout",
+                            title: "British Passport Variations",
+                            text: "The United Kingdom issues several types of passports, and not all are eligible for ESTA. British Citizen passports qualify for ESTA. British Overseas Territories Citizen (except Bermuda), British Overseas Citizen, British Subject, and British National (Overseas) passports do NOT qualify for ESTA and require a visa."
+                        },
+                        "Other special passport situations:",
+                        {
+                            type: "list",
+                            items: [
+                                "Diplomatic and official passports: Not eligible for ESTA; must apply for appropriate visa type",
+                                "Children's passports: Eligible if they are e-passports from VWP countries",
+                                "Second passports: You can have multiple passports and choose which to use for ESTA",
+                                "Lost/stolen passport: Report immediately, get replacement, apply for new ESTA",
+                                "Damaged chip but valid passport: Technically valid but may cause entry problems",
+                                "Passport issued by non-recognized government: Not eligible for ESTA"
+                            ]
+                        },
+                        "If you have multiple passports from different countries:",
+                        {
+                            type: "list",
+                            items: [
+                                "Choose your VWP country passport for ESTA application",
+                                "Use the same passport for the entire trip (application and travel)",
+                                "Don't switch passports between ESTA application and travel",
+                                "If you have both VWP and non-VWP passports, always use VWP passport for U.S. travel",
+                                "Be aware of dual nationality restrictions for certain countries"
+                            ]
+                        },
+                        {
+                            type: "warning",
+                            title: "Passport Number Changes",
+                            text: "Some countries change passport numbers when renewing even if all other information stays the same. A new passport number requires a new ESTA application. Never try to use an ESTA issued for one passport number with a different passport."
+                        }
+                    ]
+                }
+            ],
+            faqs: [
+                {
+                    question: "How do I know if my passport is an e-passport?",
+                    answer: "Look for the international e-passport symbol on the front cover - a rectangular icon with a circle and horizontal lines. This symbol indicates your passport contains an electronic chip. If your passport was issued after 2006 by a VWP country, it's almost certainly an e-passport. You can also check with your passport issuing authority."
+                },
+                {
+                    question: "Can I use ESTA if my passport doesn't have a chip?",
+                    answer: "No. All ESTA applicants must have an e-passport (electronic passport with a chip). If your passport doesn't have a chip, you are not eligible for ESTA and must apply for a B-1/B-2 visitor visa at a U.S. embassy or consulate. You should also consider renewing your passport as most countries now only issue e-passports."
+                },
+                {
+                    question: "Does my passport need to be valid for six months beyond my trip?",
+                    answer: "It depends on your country. Most VWP countries are part of the 'Six-Month Club,' meaning your passport only needs to be valid for the duration of your U.S. stay, not six months beyond. However, countries not in this club do need six months validity. Check the CBP website for your specific country, or plan for six months validity to be safe."
+                },
+                {
+                    question: "What happens to my ESTA when I renew my passport?",
+                    answer: "Your ESTA becomes invalid when you renew your passport, even if the ESTA hasn't expired. You must apply for a new ESTA using your new passport information and pay the $21 fee again. The old ESTA cannot be transferred to a new passport number. Apply for your new ESTA after receiving your new passport."
+                },
+                {
+                    question: "My passport photo looks very different from how I look now. Is this a problem?",
+                    answer: "It can be. While your passport remains legally valid until its expiration date, significant appearance changes may lead to additional questioning at immigration or even denied boarding by airlines. If your appearance has changed dramatically (major weight change, different hair color, facial surgery, aging), consider renewing your passport to avoid potential issues."
+                },
+                {
+                    question: "Can I use an emergency or temporary passport for ESTA?",
+                    answer: "No. Emergency passports and temporary travel documents are not eligible for ESTA, even if issued by a VWP country. These documents typically don't contain an electronic chip and have short validity periods. If you have an emergency passport, you must apply for a B-1/B-2 visa to travel to the United States."
+                },
+                {
+                    question: "What if my passport chip is damaged?",
+                    answer: "A damaged chip can cause significant problems. While you may technically still be able to enter the U.S., you'll likely face long delays as officers manually verify your information. Airlines may deny boarding if they cannot read your chip. If your chip is damaged, it's strongly recommended to renew your passport before traveling."
+                },
+                {
+                    question: "I have dual citizenship - which passport should I use for ESTA?",
+                    answer: "Use your Visa Waiver Program country passport for both the ESTA application and your U.S. travel. If you hold passports from both a VWP and non-VWP country, use your VWP passport. However, if one of your citizenships is from Iraq, Syria, Iran, Sudan, Libya, Somalia, or Yemen, you are not eligible for ESTA and must apply for a visa."
+                },
+                {
+                    question: "Do I need a new ESTA if my name changes but my passport number stays the same?",
+                    answer: "Yes. Any change to your biographical information requires a new ESTA. First, update your passport with your new name through your passport issuing authority. Some countries issue a new passport with a new number, while others may endorse the change in your existing passport. Either way, you'll need to apply for a new ESTA with the updated information."
+                }
+            ]
+        },
+        {
+            slug: "esta-denied-what-to-do",
+            title: "ESTA Denied: What to Do When Travel Not Authorized",
+            description: "Common reasons for ESTA denial and what to do if your ESTA is rejected. Next steps after denial.",
+            category: "status",
+            priority: 0.8,
+            keywords: [
+                "ESTA denied",
+                "ESTA rejected",
+                "travel not authorized",
+                "ESTA denial reasons",
+                "what to do ESTA denied",
+                "visa after ESTA denial"
+            ],
+            estimatedReadTime: 11,
+            lastUpdated: "2025-01-15",
+            relatedGuides: [
+                "what-is-esta",
+                "how-to-apply-esta",
+                "check-esta-status",
+                "passport-requirements-esta"
+            ],
+            sections: [
+                {
+                    id: "understanding-esta-denial",
+                    title: "Understanding 'Travel Not Authorized'",
+                    content: [
+                        "When your ESTA application is denied, the status will show as 'Travel Not Authorized' in the ESTA system. This is a disappointing outcome, but it's important to understand what it means and that you still have options for U.S. travel.",
+                        "A 'Travel Not Authorized' status means you cannot travel to the United States under the Visa Waiver Program. You are not banned from the U.S., but you cannot use the streamlined ESTA process. Instead, you must apply for a traditional visa through a U.S. embassy or consulate.",
+                        {
+                            type: "callout",
+                            title: "Important Distinction",
+                            text: "An ESTA denial is NOT the same as a visa denial. Being denied ESTA does not mean you'll be denied a visa. Many people who are ineligible for ESTA successfully obtain visitor visas. The visa application process is more thorough and allows you to provide documentation and attend an interview to demonstrate your eligibility."
+                        },
+                        "Key facts about ESTA denial:",
+                        {
+                            type: "list",
+                            items: [
+                                "You cannot appeal an ESTA denial",
+                                "You will not receive a detailed explanation for the denial",
+                                "You cannot reapply for ESTA if denied (with rare exceptions)",
+                                "The $4 processing fee is not refunded, but you won't be charged the $17 authorization fee",
+                                "Your denial is recorded in the system permanently",
+                                "You must apply for a B-1/B-2 visa to travel to the U.S."
+                            ]
+                        },
+                        "ESTA denials are relatively uncommon. According to U.S. Customs and Border Protection, the approval rate for ESTA applications is over 99%. If you've been denied, it's usually for a specific reason related to your eligibility, travel history, or answers to security questions."
+                    ]
+                },
+                {
+                    id: "common-denial-reasons",
+                    title: "Common Reasons for ESTA Denial",
+                    content: [
+                        "While the ESTA system doesn't provide specific reasons for denial, certain factors commonly result in 'Travel Not Authorized' status. Understanding these can help you identify why you were denied and prepare for your visa application.",
+                        "Most common reasons for ESTA denial:",
+                        {
+                            type: "list",
+                            items: [
+                                "Previous visa denial or refusal to the United States",
+                                "Previous overstay in the U.S. or another country",
+                                "Previous deportation or removal from the United States",
+                                "Criminal history, including arrests even without conviction",
+                                "Travel to restricted countries (Iran, Iraq, Syria, North Korea, Sudan, Libya, Somalia, Yemen) since March 2011",
+                                "Dual nationality with restricted countries",
+                                "Communicable disease or health condition",
+                                "Previous immigration violations in the U.S. or other countries",
+                                "Answering 'Yes' to any of the eligibility questions"
+                            ]
+                        },
+                        {
+                            type: "warning",
+                            title: "Honesty is Critical",
+                            text: "Never lie on your ESTA application. If you answer questions dishonestly and are later discovered, you could be permanently barred from the United States. Even if the truth might lead to ESTA denial, being honest allows you to apply for a visa and explain your situation. Fraud or misrepresentation carries far more serious consequences."
+                        },
+                        "Technical reasons for denial:",
+                        {
+                            type: "list",
+                            items: [
+                                "Passport doesn't meet requirements (not an e-passport, damaged chip)",
+                                "Errors or discrepancies in application information",
+                                "Multiple ESTA applications submitted simultaneously",
+                                "Passport from non-VWP country or invalid passport type",
+                                "Previous ESTA was revoked or canceled"
+                            ]
+                        },
+                        "If you believe your denial was due to an error in your application (wrong passport number, name misspelling, incorrect answer), you may be able to submit a new application. However, if the denial is based on your actual travel history or circumstances, reapplying won't help and you should proceed directly to visa application."
+                    ]
+                },
+                {
+                    id: "immediate-steps-after-denial",
+                    title: "Immediate Steps After ESTA Denial",
+                    content: [
+                        "Receiving an ESTA denial can be stressful, especially if you have upcoming travel plans. Take the following steps immediately to understand your options and begin the visa application process.",
+                        "What to do immediately after denial:",
+                        {
+                            type: "list",
+                            items: [
+                                "Don't panic - ESTA denial doesn't mean you can't travel to the U.S.",
+                                "Do not attempt to board a flight to the U.S. with denied ESTA",
+                                "Review your application for any errors or incorrect information",
+                                "Check if you answered any questions incorrectly",
+                                "Document all your application details (confirmation number, dates, answers)",
+                                "Begin researching the B-1/B-2 visa application process",
+                                "Contact the nearest U.S. embassy or consulate",
+                                "If you have non-refundable tickets or reservations, contact travel insurance"
+                            ]
+                        },
+                        {
+                            type: "callout",
+                            title: "Travel Plans",
+                            text: "If you have upcoming U.S. travel booked, contact your airline immediately about your situation. Explain that your ESTA was denied and you're applying for a visa instead. Many airlines will allow you to change your flight dates without a fee if you're waiting for visa processing, especially if you have travel insurance."
+                        },
+                        "Determine if reapplication makes sense:",
+                        {
+                            type: "list",
+                            items: [
+                                "Clear application error (wrong passport number, typo in name): Reapply with correct information",
+                                "Incorrect answer to eligibility question (clicked wrong box accidentally): Reapply with correct answer",
+                                "Legitimate eligibility issue (previous overstay, criminal history, restricted country travel): Do NOT reapply; apply for visa instead",
+                                "Unclear reason for denial: Contact CBP Information Center or proceed to visa application"
+                            ]
+                        },
+                        "The CBP Information Center can provide limited assistance. Call 1-202-344-3710 (international) or visit the official ESTA website's contact page. However, they typically cannot provide specific reasons for denial or guarantee that reapplication will succeed."
+                    ]
+                },
+                {
+                    id: "applying-for-visa-after-denial",
+                    title: "Applying for a U.S. Visa After ESTA Denial",
+                    content: [
+                        "The most reliable path to U.S. travel after ESTA denial is applying for a B-1/B-2 visitor visa. This is a more comprehensive process than ESTA, but it allows you to present documentation and explain your circumstances in an interview.",
+                        "B-1/B-2 visa application process overview:",
+                        {
+                            type: "list",
+                            items: [
+                                "Complete the DS-160 online visa application form",
+                                "Pay the visa application fee ($185 USD, non-refundable)",
+                                "Schedule a visa interview at the U.S. embassy or consulate in your country",
+                                "Gather supporting documentation (financial statements, employment letter, property ownership, etc.)",
+                                "Attend the visa interview in person",
+                                "Provide biometric data (fingerprints and photo)",
+                                "Wait for visa processing (typically 3-10 business days after interview)",
+                                "If approved, receive your passport with visa stamp"
+                            ]
+                        },
+                        {
+                            type: "callout",
+                            title: "Processing Time",
+                            text: "Visa processing typically takes 2-4 weeks from application to interview, plus 3-10 business days for the visa to be issued after a successful interview. In some countries, wait times for interview appointments can be several months. Apply as early as possible if you have upcoming travel plans."
+                        },
+                        "At your visa interview, you'll need to demonstrate:",
+                        {
+                            type: "list",
+                            items: [
+                                "Strong ties to your home country (job, family, property, financial assets)",
+                                "Legitimate purpose for U.S. travel (tourism, business, medical treatment)",
+                                "Sufficient financial resources to support your trip",
+                                "Intent to return home after your visit",
+                                "No intention to overstay or immigrate",
+                                "Explanation for ESTA denial if asked (be honest and concise)"
+                            ]
+                        },
+                        "The visa approval rate varies by country and individual circumstances, but many people who are denied ESTA successfully obtain visitor visas. The interview allows you to provide context and documentation that the ESTA application doesn't accommodate.",
+                        {
+                            type: "warning",
+                            title: "ESTA Denial Disclosure",
+                            text: "You must disclose your ESTA denial on your visa application. The DS-160 form asks if you've ever been denied a U.S. visa or entry authorization. Answer 'Yes' and include ESTA denial. Failing to disclose this is fraud and will result in permanent visa ineligibility."
+                        }
+                    ]
+                },
+                {
+                    id: "documentation-for-visa",
+                    title: "Preparing Documentation for Your Visa Interview",
+                    content: [
+                        "Strong documentation is key to a successful visa interview after ESTA denial. Consular officers need to see evidence that you qualify for a visitor visa and will return home after your trip.",
+                        "Essential documents to bring to your visa interview:",
+                        {
+                            type: "list",
+                            items: [
+                                "Valid passport (must be valid for at least 6 months beyond your intended stay)",
+                                "DS-160 confirmation page with barcode",
+                                "Visa fee payment receipt",
+                                "Interview appointment confirmation",
+                                "Passport-style photo (if not uploaded with DS-160)",
+                                "Evidence of ties to home country (explained below)",
+                                "Travel itinerary and purpose of visit documentation",
+                                "Financial documentation showing ability to pay for trip"
+                            ]
+                        },
+                        "Evidence of strong ties to your home country:",
+                        {
+                            type: "list",
+                            items: [
+                                "Employment: Letter from employer stating position, salary, approved leave",
+                                "Business ownership: Business registration, tax returns, financial statements",
+                                "Property ownership: Deeds, mortgage statements, rental agreements",
+                                "Family ties: Marriage certificate, children's birth certificates, family photos",
+                                "Educational enrollment: Letter from university, student ID, class schedule",
+                                "Financial assets: Bank statements (last 3-6 months), investment accounts, pension statements"
+                            ]
+                        },
+                        {
+                            type: "callout",
+                            title: "Purpose of Visit Documentation",
+                            text: "Bring documentation specific to your trip purpose: hotel reservations, tour bookings, invitation letters from U.S. contacts, business meeting confirmations, medical appointment letters, event tickets, etc. Concrete plans demonstrate legitimate travel intent."
+                        },
+                        "If your ESTA was denied due to specific issues, bring documentation addressing those concerns:",
+                        {
+                            type: "list",
+                            items: [
+                                "Previous overstay: Evidence of extenuating circumstances, proof you've complied with immigration laws since",
+                                "Criminal history: Court records showing case disposition, evidence of rehabilitation",
+                                "Dual nationality concerns: Explanation of your citizenship status and ties to VWP country",
+                                "Travel to restricted countries: Documentation of travel purpose (work, family, humanitarian)"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    id: "visa-interview-tips",
+                    title: "Visa Interview Tips After ESTA Denial",
+                    content: [
+                        "The visa interview is your opportunity to demonstrate why you should be granted a visa despite your ESTA denial. Preparation and honesty are essential for success.",
+                        "Interview preparation strategies:",
+                        {
+                            type: "list",
+                            items: [
+                                "Arrive early (at least 30 minutes before your appointment)",
+                                "Dress professionally and conservatively",
+                                "Bring all documents organized in a folder or binder",
+                                "Review your DS-160 answers before the interview",
+                                "Prepare a brief, honest explanation of your ESTA denial if asked",
+                                "Practice answering common interview questions",
+                                "Be ready to explain your ties to your home country",
+                                "Have specific details about your trip ready (dates, places, people you'll visit)"
+                            ]
+                        },
+                        {
+                            type: "callout",
+                            title: "Common Interview Questions",
+                            text: "Why do you want to visit the U.S.? How long will you stay? What do you do for work? Who will you visit? What ties do you have to your home country? Why was your ESTA denied? Have you been to the U.S. before? Who is paying for your trip? When will you return?"
+                        },
+                        "How to discuss your ESTA denial:",
+                        {
+                            type: "list",
+                            items: [
+                                "Be honest and direct - don't try to hide or minimize it",
+                                "Keep explanation brief and factual",
+                                "If denial was due to an error, explain what happened",
+                                "If due to eligibility issue, acknowledge it and explain context if relevant",
+                                "Don't blame the system or argue about the denial",
+                                "Focus on why you qualify for a visa despite the ESTA denial",
+                                "Emphasize your intent to comply with visa conditions and return home"
+                            ]
+                        },
+                        {
+                            type: "warning",
+                            title: "Don't Argue or Become Defensive",
+                            text: "Consular officers make quick decisions based on interviews and documentation. Arguing, becoming emotional, or being defensive will hurt your chances. Answer questions politely and directly. If denied, ask if there's anything you can provide for reconsideration, but accept the decision professionally."
+                        },
+                        "After the interview, the officer will typically tell you whether you're approved, denied, or if your application needs administrative processing (additional review). If approved, your passport will be returned with your visa in 3-10 business days. If denied, you can reapply, but address the reasons for denial first."
+                    ]
+                },
+                {
+                    id: "preventing-future-denials",
+                    title: "Preventing Future ESTA Denials",
+                    content: [
+                        "If you were denied ESTA due to an error or misunderstanding, understanding how to avoid future denials is important. If you eventually obtain a new passport or your circumstances change, you may be able to apply for ESTA again.",
+                        "Tips for successful future ESTA applications:",
+                        {
+                            type: "list",
+                            items: [
+                                "Double-check all information before submitting - passport number, name spelling, dates",
+                                "Read each eligibility question carefully before answering",
+                                "If unsure about a question, research or seek clarification before answering",
+                                "Don't rush through the application - take your time",
+                                "Have your passport, previous U.S. visa information, and travel details ready",
+                                "Use official ESTA website only (esta.cbp.dhs.gov)",
+                                "Avoid third-party websites that charge excessive fees or may submit incorrect information",
+                                "Keep records of your application details and confirmation number"
+                            ]
+                        },
+                        {
+                            type: "callout",
+                            title: "When You Can Reapply for ESTA",
+                            text: "Generally, once denied, you should apply for a visa rather than ESTA. However, if you obtain a new passport number OR if significant time has passed and your circumstances have materially changed (e.g., criminal record was expunged, you're no longer a dual national of a restricted country), you may attempt ESTA again. Consult with an immigration attorney first."
+                        },
+                        "Understanding eligibility questions:",
+                        {
+                            type: "list",
+                            items: [
+                                "Communicable disease: TB, Ebola, etc. Common illnesses like flu or COVID don't count",
+                                "Physical or mental disorder: Only if it poses danger to yourself or others",
+                                "Drug abuse or addiction: Past or current issues with illegal drugs",
+                                "Arrest or conviction: Any arrest, even without conviction, including expunged records",
+                                "Visa denial or refusal: Any U.S. visa denial or entry refusal, including ESTA",
+                                "Overstay: Stayed beyond authorized period in any country",
+                                "Work without authorization: Worked illegally in the U.S. or violated visa terms"
+                            ]
+                        },
+                        {
+                            type: "warning",
+                            title: "Avoid Application Errors",
+                            text: "Common errors that lead to denial: selecting wrong passport type, entering wrong passport number, misspelling name, entering wrong date of birth, accidentally clicking 'Yes' to eligibility questions. These simple mistakes can result in denial, so review everything carefully before submission."
+                        }
+                    ]
+                },
+                {
+                    id: "alternative-travel-options",
+                    title: "Alternative Options After ESTA Denial",
+                    content: [
+                        "While the B-1/B-2 visa is the most common solution after ESTA denial, other options may be available depending on your circumstances and travel purpose.",
+                        "Alternative visa types to consider:",
+                        {
+                            type: "list",
+                            items: [
+                                "F-1 Student Visa: If you're planning to study in the U.S.",
+                                "J-1 Exchange Visitor Visa: For approved exchange programs, internships, or cultural exchanges",
+                                "H-1B Work Visa: If you have a job offer from a U.S. employer",
+                                "L-1 Intracompany Transfer Visa: If your company is transferring you to a U.S. office",
+                                "E-2 Investor Visa: If you're investing in a U.S. business",
+                                "O-1 Visa: For individuals with extraordinary ability in sciences, arts, education, business, or athletics"
+                            ]
+                        },
+                        "Each visa type has specific requirements, processing times, and fees. If your U.S. travel is for work, study, or another specific purpose beyond tourism, investigate whether a specialized visa better fits your situation.",
+                        {
+                            type: "callout",
+                            title: "Canadian Border Entry",
+                            text: "VWP citizens who are denied ESTA but need to visit the U.S. urgently sometimes consider entering through the Canadian or Mexican land border. Be aware that even though you don't need ESTA for land border entry, you'll still undergo full inspection by CBP officers. If you're ineligible for ESTA, you may also be deemed inadmissible at the land border. A visa is the safest option."
+                        },
+                        "If you absolutely cannot obtain a visa in time for critical travel (medical emergency, family funeral, urgent business), contact the U.S. embassy or consulate to request an emergency appointment. They sometimes accommodate genuine emergencies with expedited interview scheduling.",
+                        "Long-term solutions if permanently ineligible for ESTA:",
+                        {
+                            type: "list",
+                            items: [
+                                "Maintain a valid B-1/B-2 visa (typically valid for 10 years with multiple entries)",
+                                "Work with immigration attorney to address underlying inadmissibility issues",
+                                "If criminal record is the issue, seek expungement or pardon if available in your country",
+                                "If dual nationality is the issue, consider whether renouncing one citizenship is worthwhile (major decision)"
+                            ]
+                        }
+                    ]
+                }
+            ],
+            faqs: [
+                {
+                    question: "Why was my ESTA denied?",
+                    answer: "The ESTA system doesn't provide specific denial reasons, but common causes include: previous visa denial or overstay, travel to restricted countries (Iran, Iraq, Syria, etc.), dual nationality with restricted countries, criminal history, answering 'Yes' to any eligibility questions, or passport issues. Review your application carefully to identify potential causes."
+                },
+                {
+                    question: "Can I appeal an ESTA denial?",
+                    answer: "No, there is no appeals process for ESTA denials. The Department of Homeland Security's decision is final. However, you can apply for a B-1/B-2 visitor visa through a U.S. embassy or consulate, which includes an interview where you can present documentation and explain your circumstances."
+                },
+                {
+                    question: "Can I reapply for ESTA after being denied?",
+                    answer: "Generally, no. If you were legitimately denied due to eligibility issues, reapplying won't change the outcome and wastes the $21 fee. Only reapply if your denial was clearly due to an application error (wrong passport number, typo, accidentally clicked wrong answer). Otherwise, apply for a visa instead."
+                },
+                {
+                    question: "How long does it take to get a visa after ESTA denial?",
+                    answer: "Visa processing typically takes 2-4 weeks to schedule an interview appointment (longer in some countries), followed by 3-10 business days after your interview for visa issuance if approved. Total timeline is usually 3-8 weeks, but can be several months in countries with high demand. Apply as early as possible."
+                },
+                {
+                    question: "Does ESTA denial mean I can never visit the United States?",
+                    answer: "No. ESTA denial only means you cannot use the Visa Waiver Program. You can still apply for a visitor visa (B-1/B-2) and many people who are denied ESTA successfully obtain visas. The visa process is more thorough and allows you to present documentation and attend an interview to demonstrate your eligibility."
+                },
+                {
+                    question: "Will I get my ESTA fee refunded if denied?",
+                    answer: "Partially. The $4 processing fee is non-refundable whether approved or denied. However, you will not be charged the $17 authorization fee if your ESTA is denied. So you'll only lose $4, not the full $21."
+                },
+                {
+                    question: "Should I disclose my ESTA denial when applying for a visa?",
+                    answer: "Yes, absolutely. The DS-160 visa application form asks if you've ever been denied a U.S. visa or entry authorization. You must answer 'Yes' and include your ESTA denial. Failing to disclose this is fraud and will result in permanent visa ineligibility. Always be honest on visa applications."
+                },
+                {
+                    question: "Can I enter the U.S. through Canada or Mexico without ESTA?",
+                    answer: "While you don't technically need ESTA for land border entry, you'll still undergo full inspection by CBP officers. If you're ineligible for ESTA due to overstay, criminal history, or other serious issues, you'll likely be deemed inadmissible at the land border as well. The safest and most reliable option is obtaining a proper visa."
+                },
+                {
+                    question: "What should I tell the visa officer about my ESTA denial?",
+                    answer: "Be brief, honest, and factual. If you know why you were denied, explain it directly: 'I was denied ESTA because I previously overstayed by two weeks in 2018. I have complied with all immigration laws since then.' If you don't know why, say so: 'I'm not certain why I was denied, but I'm happy to provide any documentation you need.' Don't argue or blame the system."
+                },
+                {
+                    question: "Can an immigration lawyer help me after ESTA denial?",
+                    answer: "Yes, particularly if your denial was due to complex issues like criminal history, previous immigration violations, or dual nationality concerns. An immigration attorney can review your situation, advise whether you're likely to obtain a visa, help prepare your application and documentation, and coach you for your interview. This is especially valuable for complicated cases."
+                }
+            ]
+        }
+    ];
+}
+function getGuideBySlug(slug) {
+    return ESTA_GUIDES.find((guide)=>guide.slug === slug);
+}
+function getAllGuideSlugs() {
+    return ESTA_GUIDES.map((guide)=>guide.slug);
+}
+function getGuidesByCategory(category) {
+    return ESTA_GUIDES.filter((guide)=>guide.category === category);
+}
+function searchGuides(query) {
+    const lowerQuery = query.toLowerCase();
+    return ESTA_GUIDES.filter((guide)=>guide.title.toLowerCase().includes(lowerQuery) || guide.description.toLowerCase().includes(lowerQuery) || guide.keywords.some((keyword)=>keyword.toLowerCase().includes(lowerQuery)));
+}
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
+}
+}),
+"[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>GuideContent
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Self /esta/frontend/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$app$2f$lib$2f$data$2f$guides$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Self /esta/frontend/app/lib/data/guides.ts [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Self /esta/frontend/node_modules/next/dist/client/app-dir/link.js [app-client] (ecmascript)");
+"use client";
+;
+;
+;
+function GuideContent({ guide }) {
+    // Parse sections from guide content (assuming content has ## headings as section markers)
+    const sections = guide.sections || [];
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("article", {
+        className: "prose prose-lg max-w-none",
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                id: "introduction",
+                className: "scroll-mt-24",
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "text-lg md:text-xl leading-relaxed text-gray-700 mb-8",
+                    children: guide.description
+                }, void 0, false, {
+                    fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                    lineNumber: 20,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                lineNumber: 19,
+                columnNumber: 7
+            }, this),
+            sections.map((section, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    id: section.id || `section-${idx}`,
+                    className: "scroll-mt-24 mb-12",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                            className: "text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-6 mt-12 border-l-4 border-blue-600 pl-6",
+                            children: section.title
+                        }, void 0, false, {
+                            fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                            lineNumber: 32,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "text-base md:text-lg leading-relaxed text-gray-700 space-y-6",
+                            children: section.content.map((paragraph, pIdx)=>{
+                                // Handle different content types
+                                if (typeof paragraph === "string") {
+                                    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                        className: "mb-6",
+                                        children: paragraph
+                                    }, pIdx, false, {
+                                        fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                        lineNumber: 41,
+                                        columnNumber: 19
+                                    }, this);
+                                }
+                                // Handle lists
+                                if (paragraph.type === "list") {
+                                    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
+                                        className: "space-y-3 ml-6 mb-6",
+                                        children: paragraph.items?.map((item, itemIdx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                className: "flex items-start gap-3 text-gray-700",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                        className: "text-blue-600 mt-1.5 flex-shrink-0",
+                                                        children: "✓"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                                        lineNumber: 56,
+                                                        columnNumber: 25
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                        children: item
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                                        lineNumber: 59,
+                                                        columnNumber: 25
+                                                    }, this)
+                                                ]
+                                            }, itemIdx, true, {
+                                                fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                                lineNumber: 52,
+                                                columnNumber: 23
+                                            }, this))
+                                    }, pIdx, false, {
+                                        fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                        lineNumber: 50,
+                                        columnNumber: 19
+                                    }, this);
+                                }
+                                // Handle callouts/alerts
+                                if (paragraph.type === "callout") {
+                                    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-lg mb-6",
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "flex items-start gap-4",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    className: "text-2xl flex-shrink-0",
+                                                    children: "💡"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                                    lineNumber: 74,
+                                                    columnNumber: 23
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                            className: "font-semibold text-blue-900 mb-2",
+                                                            children: paragraph.title || "Important"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                                            lineNumber: 76,
+                                                            columnNumber: 25
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                            className: "text-gray-700",
+                                                            children: paragraph.text
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                                            lineNumber: 79,
+                                                            columnNumber: 25
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                                    lineNumber: 75,
+                                                    columnNumber: 23
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                            lineNumber: 73,
+                                            columnNumber: 21
+                                        }, this)
+                                    }, pIdx, false, {
+                                        fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                        lineNumber: 69,
+                                        columnNumber: 19
+                                    }, this);
+                                }
+                                // Handle warning boxes
+                                if (paragraph.type === "warning") {
+                                    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded-r-lg mb-6",
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "flex items-start gap-4",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    className: "text-2xl flex-shrink-0",
+                                                    children: "⚠️"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                                    lineNumber: 94,
+                                                    columnNumber: 23
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                            className: "font-semibold text-yellow-900 mb-2",
+                                                            children: paragraph.title || "Warning"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                                            lineNumber: 96,
+                                                            columnNumber: 25
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                            className: "text-gray-700",
+                                                            children: paragraph.text
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                                            lineNumber: 99,
+                                                            columnNumber: 25
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                                    lineNumber: 95,
+                                                    columnNumber: 23
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                            lineNumber: 93,
+                                            columnNumber: 21
+                                        }, this)
+                                    }, pIdx, false, {
+                                        fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                        lineNumber: 89,
+                                        columnNumber: 19
+                                    }, this);
+                                }
+                                return null;
+                            })
+                        }, void 0, false, {
+                            fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                            lineNumber: 36,
+                            columnNumber: 11
+                        }, this),
+                        idx > 0 && (idx + 1) % 3 === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "my-12 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-2xl p-8 text-center shadow-xl",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                    className: "text-2xl md:text-3xl font-bold mb-4",
+                                    children: "Ready to Get Started?"
+                                }, void 0, false, {
+                                    fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                    lineNumber: 113,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    className: "text-lg text-blue-100 mb-6 max-w-2xl mx-auto",
+                                    children: "Complete your ESTA application in minutes with our expert guidance and 99% approval rate"
+                                }, void 0, false, {
+                                    fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                    lineNumber: 116,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                    href: "/apply",
+                                    className: "inline-block bg-white text-blue-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-50 transition-colors shadow-lg",
+                                    children: "Start Your Application →"
+                                }, void 0, false, {
+                                    fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                    lineNumber: 120,
+                                    columnNumber: 15
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                            lineNumber: 112,
+                            columnNumber: 13
+                        }, this)
+                    ]
+                }, idx, true, {
+                    fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                    lineNumber: 27,
+                    columnNumber: 9
+                }, this)),
+            guide.faqs && guide.faqs.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                id: "faqs",
+                className: "scroll-mt-24 mt-16",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                        className: "text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-8 border-l-4 border-blue-600 pl-6",
+                        children: "Frequently Asked Questions"
+                    }, void 0, false, {
+                        fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                        lineNumber: 134,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "space-y-6",
+                        children: guide.faqs.map((faq, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "border-2 border-gray-200 rounded-xl p-6 hover:border-blue-600 transition-colors",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                        className: "text-lg md:text-xl font-bold text-gray-900 mb-3 flex items-start gap-3",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "text-blue-600 flex-shrink-0",
+                                                children: "Q:"
+                                            }, void 0, false, {
+                                                fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                                lineNumber: 145,
+                                                columnNumber: 19
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                children: faq.question
+                                            }, void 0, false, {
+                                                fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                                lineNumber: 146,
+                                                columnNumber: 19
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                        lineNumber: 144,
+                                        columnNumber: 17
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "text-base md:text-lg text-gray-700 ml-8",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "font-semibold text-blue-600",
+                                                children: "A:"
+                                            }, void 0, false, {
+                                                fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                                lineNumber: 149,
+                                                columnNumber: 19
+                                            }, this),
+                                            " ",
+                                            faq.answer
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                        lineNumber: 148,
+                                        columnNumber: 17
+                                    }, this)
+                                ]
+                            }, idx, true, {
+                                fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                lineNumber: 140,
+                                columnNumber: 15
+                            }, this))
+                    }, void 0, false, {
+                        fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                        lineNumber: 138,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                lineNumber: 133,
+                columnNumber: 9
+            }, this),
+            guide.relatedGuides && guide.relatedGuides.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                id: "related",
+                className: "scroll-mt-24 mt-16 pt-12 border-t-2 border-gray-200",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                        className: "text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-8",
+                        children: "Related Guides"
+                    }, void 0, false, {
+                        fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                        lineNumber: 164,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "grid md:grid-cols-2 gap-6",
+                        children: guide.relatedGuides.map((guide)=>{
+                            const relatedGuide = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$app$2f$lib$2f$data$2f$guides$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getGuideBySlug"])(guide);
+                            if (!relatedGuide) return;
+                            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                href: `/guides/${relatedGuide.slug}`,
+                                className: "block border-2 border-gray-200 rounded-xl p-6 hover:border-blue-600 hover:shadow-xl transition-all group",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "mb-3",
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                            className: "inline-block bg-gray-100 text-gray-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide",
+                                            children: relatedGuide.category
+                                        }, void 0, false, {
+                                            fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                            lineNumber: 179,
+                                            columnNumber: 21
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                        lineNumber: 178,
+                                        columnNumber: 19
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                        className: "text-lg font-bold mb-2 text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2",
+                                        children: relatedGuide.title
+                                    }, void 0, false, {
+                                        fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                        lineNumber: 183,
+                                        columnNumber: 19
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                        className: "text-gray-600 text-sm line-clamp-3 mb-3",
+                                        children: relatedGuide.description
+                                    }, void 0, false, {
+                                        fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                        lineNumber: 186,
+                                        columnNumber: 19
+                                    }, this),
+                                    relatedGuide.estimatedReadTime && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                        className: "text-xs text-gray-500 flex items-center gap-1",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                className: "w-4 h-4",
+                                                fill: "none",
+                                                stroke: "currentColor",
+                                                viewBox: "0 0 24 24",
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                    strokeLinecap: "round",
+                                                    strokeLinejoin: "round",
+                                                    strokeWidth: 2,
+                                                    d: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                                    lineNumber: 197,
+                                                    columnNumber: 25
+                                                }, this)
+                                            }, void 0, false, {
+                                                fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                                lineNumber: 191,
+                                                columnNumber: 23
+                                            }, this),
+                                            relatedGuide.estimatedReadTime,
+                                            " min read"
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                        lineNumber: 190,
+                                        columnNumber: 21
+                                    }, this)
+                                ]
+                            }, relatedGuide.slug, true, {
+                                fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                lineNumber: 173,
+                                columnNumber: 17
+                            }, this);
+                        })
+                    }, void 0, false, {
+                        fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                        lineNumber: 168,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                lineNumber: 160,
+                columnNumber: 9
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "mt-16 bg-gradient-to-br from-blue-900 to-blue-800 text-white rounded-2xl p-8 md:p-12 text-center shadow-2xl",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                        className: "text-3xl md:text-4xl font-bold mb-4",
+                        children: "Apply for Your ESTA Today"
+                    }, void 0, false, {
+                        fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                        lineNumber: 216,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        className: "text-xl text-blue-100 mb-8 max-w-2xl mx-auto",
+                        children: "Join thousands of satisfied travelers. Our expert team will guide you through every step of the application process."
+                    }, void 0, false, {
+                        fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                        lineNumber: 219,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "flex flex-col sm:flex-row gap-4 justify-center mb-8",
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                            href: "/apply",
+                            className: "inline-block bg-white text-blue-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-50 transition-colors shadow-lg",
+                            children: "Start Application Now"
+                        }, void 0, false, {
+                            fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                            lineNumber: 224,
+                            columnNumber: 11
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                        lineNumber: 223,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "flex flex-wrap justify-center gap-6 text-sm text-blue-100",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                className: "flex items-center gap-2",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                        className: "w-5 h-5",
+                                        fill: "currentColor",
+                                        viewBox: "0 0 20 20",
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                            fillRule: "evenodd",
+                                            d: "M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z",
+                                            clipRule: "evenodd"
+                                        }, void 0, false, {
+                                            fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                            lineNumber: 234,
+                                            columnNumber: 15
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                        lineNumber: 233,
+                                        columnNumber: 13
+                                    }, this),
+                                    "99% approval rate"
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                lineNumber: 232,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                className: "flex items-center gap-2",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                        className: "w-5 h-5",
+                                        fill: "currentColor",
+                                        viewBox: "0 0 20 20",
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                            fillRule: "evenodd",
+                                            d: "M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z",
+                                            clipRule: "evenodd"
+                                        }, void 0, false, {
+                                            fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                            lineNumber: 244,
+                                            columnNumber: 15
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                        lineNumber: 243,
+                                        columnNumber: 13
+                                    }, this),
+                                    "24/7 expert support"
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                lineNumber: 242,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                className: "flex items-center gap-2",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                        className: "w-5 h-5",
+                                        fill: "currentColor",
+                                        viewBox: "0 0 20 20",
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                            fillRule: "evenodd",
+                                            d: "M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z",
+                                            clipRule: "evenodd"
+                                        }, void 0, false, {
+                                            fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                            lineNumber: 254,
+                                            columnNumber: 15
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                        lineNumber: 253,
+                                        columnNumber: 13
+                                    }, this),
+                                    "Money-back guarantee"
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                                lineNumber: 252,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                        lineNumber: 231,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+                lineNumber: 215,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideContent.tsx",
+        lineNumber: 17,
+        columnNumber: 5
+    }, this);
+}
+_c = GuideContent;
+var _c;
+__turbopack_context__.k.register(_c, "GuideContent");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
+}
+}),
+"[project]/Documents/Self /esta/frontend/app/components/content/GuideSidebar.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
+"use strict";
+
+__turbopack_context__.s([
+    "default",
+    ()=>GuideSidebar
+]);
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Self /esta/frontend/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Self /esta/frontend/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Self /esta/frontend/node_modules/next/dist/client/app-dir/link.js [app-client] (ecmascript)");
+;
+var _s = __turbopack_context__.k.signature();
+"use client";
+;
+;
+function GuideSidebar({ sections }) {
+    _s();
+    const [activeSection, setActiveSection] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "GuideSidebar.useEffect": ()=>{
+            const observer = new IntersectionObserver({
+                "GuideSidebar.useEffect": (entries)=>{
+                    entries.forEach({
+                        "GuideSidebar.useEffect": (entry)=>{
+                            if (entry.isIntersecting) {
+                                setActiveSection(entry.target.id);
+                            }
+                        }
+                    }["GuideSidebar.useEffect"]);
+                }
+            }["GuideSidebar.useEffect"], {
+                rootMargin: "-20% 0px -35% 0px",
+                threshold: 0
+            });
+            // Observe all section elements
+            sections.forEach({
+                "GuideSidebar.useEffect": (section)=>{
+                    const element = document.getElementById(section.id);
+                    if (element) {
+                        observer.observe(element);
+                    }
+                }
+            }["GuideSidebar.useEffect"]);
+            return ({
+                "GuideSidebar.useEffect": ()=>observer.disconnect()
+            })["GuideSidebar.useEffect"];
+        }
+    }["GuideSidebar.useEffect"], [
+        sections
+    ]);
+    if (!sections || sections.length === 0) {
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "sticky top-24",
+            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "bg-gray-50 border-2 border-gray-200 rounded-xl p-6",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                        className: "text-lg font-bold mb-4 text-gray-900",
+                        children: "On This Page"
+                    }, void 0, false, {
+                        fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideSidebar.tsx",
+                        lineNumber: 44,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
+                        className: "space-y-2 text-sm",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                href: "#content",
+                                className: "block text-gray-600 hover:text-blue-600 font-medium transition-colors",
+                                children: "Overview"
+                            }, void 0, false, {
+                                fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideSidebar.tsx",
+                                lineNumber: 46,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                href: "#faqs",
+                                className: "block text-gray-600 hover:text-blue-600 font-medium transition-colors",
+                                children: "FAQs"
+                            }, void 0, false, {
+                                fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideSidebar.tsx",
+                                lineNumber: 52,
+                                columnNumber: 13
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideSidebar.tsx",
+                        lineNumber: 45,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "mt-6 pt-6 border-t border-gray-300",
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                            href: "/apply",
+                            className: "block bg-blue-600 text-white text-center px-4 py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors",
+                            children: "Apply Now"
+                        }, void 0, false, {
+                            fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideSidebar.tsx",
+                            lineNumber: 60,
+                            columnNumber: 13
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideSidebar.tsx",
+                        lineNumber: 59,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideSidebar.tsx",
+                lineNumber: 43,
+                columnNumber: 9
+            }, this)
+        }, void 0, false, {
+            fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideSidebar.tsx",
+            lineNumber: 42,
+            columnNumber: 7
+        }, this);
+    }
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        className: "sticky top-24",
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "bg-gray-50 border-2 border-gray-200 rounded-xl p-6",
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                    className: "text-lg font-bold mb-4 text-gray-900",
+                    children: "On This Page"
+                }, void 0, false, {
+                    fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideSidebar.tsx",
+                    lineNumber: 75,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
+                    className: "space-y-2 text-sm",
+                    children: [
+                        sections.map((section)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                href: `#${section.id}`,
+                                className: `block font-medium transition-colors ${activeSection === section.id ? "text-blue-600 font-bold" : "text-gray-600 hover:text-blue-600"}`,
+                                children: section.title
+                            }, section.id, false, {
+                                fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideSidebar.tsx",
+                                lineNumber: 78,
+                                columnNumber: 13
+                            }, this)),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                            href: "#faqs",
+                            className: `block font-medium transition-colors ${activeSection === "faqs" ? "text-blue-600 font-bold" : "text-gray-600 hover:text-blue-600"}`,
+                            children: "FAQs"
+                        }, void 0, false, {
+                            fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideSidebar.tsx",
+                            lineNumber: 90,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideSidebar.tsx",
+                    lineNumber: 76,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "mt-6 pt-6 border-t border-gray-300",
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                        href: "/apply",
+                        className: "block bg-blue-600 text-white text-center px-4 py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors",
+                        children: "Apply Now"
+                    }, void 0, false, {
+                        fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideSidebar.tsx",
+                        lineNumber: 102,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
+                    fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideSidebar.tsx",
+                    lineNumber: 101,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideSidebar.tsx",
+            lineNumber: 74,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "[project]/Documents/Self /esta/frontend/app/components/content/GuideSidebar.tsx",
+        lineNumber: 73,
+        columnNumber: 5
+    }, this);
+}
+_s(GuideSidebar, "BvDfEq4UxDchLX+guimWRaeMS3w=");
+_c = GuideSidebar;
+var _c;
+__turbopack_context__.k.register(_c, "GuideSidebar");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
+}
+}),
+]);
+
+//# sourceMappingURL=Documents_Self%20_esta_frontend_app_b1375466._.js.map

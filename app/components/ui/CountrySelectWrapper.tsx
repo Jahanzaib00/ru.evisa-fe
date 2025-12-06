@@ -1,5 +1,5 @@
-import { forwardRef } from 'react';
-import CountrySelect from './CountrySelect';
+import { forwardRef } from "react";
+import CountrySelect from "./CountrySelect";
 
 interface CountrySelectWrapperProps {
   label?: string;
@@ -14,19 +14,22 @@ interface CountrySelectWrapperProps {
   placeholder?: string;
 }
 
-const CountrySelectWrapper = forwardRef<HTMLButtonElement, CountrySelectWrapperProps>(
-  ({ onChange, value, ...props }, ref) => {
-    return (
-      <CountrySelect
-        ref={ref}
-        value={value || ''}
-        onChange={(val) => onChange?.(val)}
-        {...props}
-      />
-    );
-  }
-);
+const CountrySelectWrapper = forwardRef<
+  HTMLButtonElement,
+  CountrySelectWrapperProps
+>(({ onChange, value, ...props }, ref) => {
+  return (
+    <CountrySelect
+      ref={ref}
+      value={value || ""}
+      onChange={(val) => {
+        if (onChange) onChange(val);
+      }}
+      {...props}
+    />
+  );
+});
 
-CountrySelectWrapper.displayName = 'CountrySelectWrapper';
+CountrySelectWrapper.displayName = "CountrySelectWrapper";
 
 export default CountrySelectWrapper;
