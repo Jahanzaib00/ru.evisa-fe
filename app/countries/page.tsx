@@ -114,7 +114,7 @@ export default function CountriesPage() {
               </p>
               <Link
                 href="/apply"
-                className="inline-block bg-white text-blue-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 transition-colors shadow-lg"
+                className="inline-block bg-white text-primary px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 transition-colors shadow-lg"
               >
                 Start ESTA Application →
               </Link>
