@@ -8,7 +8,7 @@ import { Metadata } from "next";
 
 const SITE_NAME = "ESTA Visa Portal";
 const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.com";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.online";
 const DEFAULT_IMAGE = `${SITE_URL}/images/og-image.jpg`;
 const TWITTER_HANDLE = "@ESTAVisaPortal"; // Update with actual handle
 

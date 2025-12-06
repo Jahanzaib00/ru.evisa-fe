@@ -4,19 +4,19 @@
 4:I[53260,["/_next/static/chunks/d81609aa702c7cb6.js","/_next/static/chunks/d359e25d207138ba.js"],"default"]
 b:I[62523,[],"default"]
 :HL["/_next/static/chunks/fda9dad7ed74c365.css","style"]
-5:Te29,{
+5:Te35,{
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "ESTA Visa Portal",
   "url": "https://www.visaportal.online",
   "logo": "https://www.visaportal.online/images/logo.png",
   "description": "Expert ESTA visa application assistance service for U.S. travel authorization. Fast, secure, and reliable ESTA processing with 24/7 support.",
-  "email": "support@visaportal.online",
+  "email": "visaportal.online@gmail.com",
   "foundingDate": "2024",
   "contactPoint": {
     "@type": "ContactPoint",
     "contactType": "Customer Service",
-    "email": "support@visaportal.online",
+    "email": "visaportal.online@gmail.com",
     "availableLanguage": [
       "English"
     ],
@@ -74,7 +74,7 @@ b:I[62523,[],"default"]
     "serviceUrl": "https://www.visaportal.online/apply",
     "servicePhone": {
       "@type": "ContactPoint",
-      "email": "support@visaportal.online"
+      "email": "visaportal.online@gmail.com"
     },
     "availableLanguage": [
       "English"
@@ -100,7 +100,7 @@ b:I[62523,[],"default"]
   "@type": "HowTo",
   "name": "How to Apply for ESTA",
   "description": "Complete guide to applying for U.S. ESTA travel authorization in 3 simple steps",
-  "url": "https://www.visaportal.com",
+  "url": "https://www.visaportal.online",
   "totalTime": "PT10M",
   "step": [
     {
@@ -108,7 +108,7 @@ b:I[62523,[],"default"]
       "position": 1,
       "name": "Fill Out Application",
       "text": "Complete the online ESTA application form with your passport and travel information. Takes about 5 minutes.",
-      "url": "https://www.visaportal.com/apply"
+      "url": "https://www.visaportal.online/apply"
     },
     {
       "@type": "HowToStep",
@@ -123,7 +123,7 @@ b:I[62523,[],"default"]
       "text": "Get your ESTA approval via email within 24-72 hours. Most applications are approved within 24 hours."
     }
   ]
-}0:{"P":null,"b":"v6fXW8KLGQdY-8_LFl5AQ","c":["",""],"q":"","i":false,"f":[[["",{"children":["__PAGE__",{}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/fda9dad7ed74c365.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/1dcdf4169ba38048.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","className":"scroll-smooth","children":[["$","head",null,{"children":[["$","script",null,{"async":true,"src":"https://www.googletagmanager.com/gtag/js?id=G-L8ZTZHMWRZ"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n              window.dataLayer = window.dataLayer || [];\n              function gtag(){dataLayer.push(arguments);}\n              gtag('js', new Date());\n              gtag('config', 'G-L8ZTZHMWRZ');\n            "}}]]}],["$","body",null,{"className":"antialiased","children":["$","$L2",null,{"children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}]]}],{"children":[["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$5"}}],"$L6"],["$L7","$L8"],"$L9"]}],{},null,false,false]},null,false,false],"$La",false]],"m":"$undefined","G":["$b",[]],"S":true}
+}0:{"P":null,"b":"QJT3SdT8o5D28qbmRjtDI","c":["",""],"q":"","i":false,"f":[[["",{"children":["__PAGE__",{}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/fda9dad7ed74c365.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/1dcdf4169ba38048.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","className":"scroll-smooth","children":[["$","head",null,{"children":[["$","script",null,{"async":true,"src":"https://www.googletagmanager.com/gtag/js?id=G-L8ZTZHMWRZ"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n              window.dataLayer = window.dataLayer || [];\n              function gtag(){dataLayer.push(arguments);}\n              gtag('js', new Date());\n              gtag('config', 'G-L8ZTZHMWRZ');\n            "}}]]}],["$","body",null,{"className":"antialiased","children":["$","$L2",null,{"children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}]]}],{"children":[["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$5"}}],"$L6"],["$L7","$L8"],"$L9"]}],{},null,false,false]},null,false,false],"$La",false]],"m":"$undefined","G":["$b",[]],"S":true}
 c:I[86055,["/_next/static/chunks/1dcdf4169ba38048.js","/_next/static/chunks/36b739bdbe8a3af8.js","/_next/static/chunks/468226e0408f921a.js"],"default"]
 d:I[87129,["/_next/static/chunks/1dcdf4169ba38048.js","/_next/static/chunks/36b739bdbe8a3af8.js","/_next/static/chunks/468226e0408f921a.js"],"default"]
 18:I[1505,["/_next/static/chunks/d81609aa702c7cb6.js","/_next/static/chunks/d359e25d207138ba.js"],"OutletBoundary"]

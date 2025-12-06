@@ -8,19 +8,19 @@
 1a:I[19715,["/_next/static/chunks/1dcdf4169ba38048.js","/_next/static/chunks/36b739bdbe8a3af8.js","/_next/static/chunks/468226e0408f921a.js"],"default"]
 20:I[60179,["/_next/static/chunks/1dcdf4169ba38048.js","/_next/static/chunks/36b739bdbe8a3af8.js","/_next/static/chunks/468226e0408f921a.js"],"default"]
 21:I[29042,["/_next/static/chunks/1dcdf4169ba38048.js","/_next/static/chunks/36b739bdbe8a3af8.js","/_next/static/chunks/468226e0408f921a.js"],"default"]
-2:Te29,{
+2:Te35,{
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "ESTA Visa Portal",
   "url": "https://www.visaportal.online",
   "logo": "https://www.visaportal.online/images/logo.png",
   "description": "Expert ESTA visa application assistance service for U.S. travel authorization. Fast, secure, and reliable ESTA processing with 24/7 support.",
-  "email": "support@visaportal.online",
+  "email": "visaportal.online@gmail.com",
   "foundingDate": "2024",
   "contactPoint": {
     "@type": "ContactPoint",
     "contactType": "Customer Service",
-    "email": "support@visaportal.online",
+    "email": "visaportal.online@gmail.com",
     "availableLanguage": [
       "English"
     ],
@@ -78,7 +78,7 @@
     "serviceUrl": "https://www.visaportal.online/apply",
     "servicePhone": {
       "@type": "ContactPoint",
-      "email": "support@visaportal.online"
+      "email": "visaportal.online@gmail.com"
     },
     "availableLanguage": [
       "English"
@@ -104,7 +104,7 @@
   "@type": "HowTo",
   "name": "How to Apply for ESTA",
   "description": "Complete guide to applying for U.S. ESTA travel authorization in 3 simple steps",
-  "url": "https://www.visaportal.com",
+  "url": "https://www.visaportal.online",
   "totalTime": "PT10M",
   "step": [
     {
@@ -112,7 +112,7 @@
       "position": 1,
       "name": "Fill Out Application",
       "text": "Complete the online ESTA application form with your passport and travel information. Takes about 5 minutes.",
-      "url": "https://www.visaportal.com/apply"
+      "url": "https://www.visaportal.online/apply"
     },
     {
       "@type": "HowToStep",
@@ -127,7 +127,7 @@
       "text": "Get your ESTA approval via email within 24-72 hours. Most applications are approved within 24 hours."
     }
   ]
-}0:{"buildId":"v6fXW8KLGQdY-8_LFl5AQ","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],"$L3"],["$L4","$L5"],"$L6"]}],"loading":null,"isPartial":false}
+}0:{"buildId":"QJT3SdT8o5D28qbmRjtDI","rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"$2"}}],"$L3"],["$L4","$L5"],"$L6"]}],"loading":null,"isPartial":false}
 3:["$","main",null,{"className":"landing-page","children":[["$","$L7",null,{}],["$","$L8",null,{}],["$","section",null,{"id":"trust-bar","className":"bg-gray-lightest py-12 md:py-16 ","children":["$","div",null,{"className":"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ","children":[["$","div",null,{"className":"grid grid-cols-2 md:grid-cols-4 gap-8","children":[["$","div","0",{"className":"flex flex-col items-center text-center group","children":[["$","div",null,{"className":"text-(--color-primary) mb-3 transition-transform group-hover:scale-110","children":["$","svg",null,{"className":"w-8 h-8","fill":"none","stroke":"currentColor","viewBox":"0 0 24 24","children":["$","path",null,{"strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":2,"d":"M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"}]}]}],["$","div",null,{"className":"text-3xl md:text-4xl font-bold text-(--color-gray-dark) mb-2","children":"70,000+"}],["$","div",null,{"className":"text-sm md:text-base text-(--color-gray)","children":"Applications Processed"}]]}],["$","div","1",{"className":"flex flex-col items-center text-center group","children":[["$","div",null,{"className":"text-(--color-primary) mb-3 transition-transform group-hover:scale-110","children":["$","svg",null,{"className":"w-8 h-8","fill":"none","stroke":"currentColor","viewBox":"0 0 24 24","children":["$","path",null,{"strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":2,"d":"M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"}]}]}],["$","div",null,{"className":"text-3xl md:text-4xl font-bold text-(--color-gray-dark) mb-2","children":"99%"}],["$","div",null,{"className":"text-sm md:text-base text-(--color-gray)","children":"Approval Rate"}]]}],["$","div","2",{"className":"flex flex-col items-center text-center group","children":[["$","div",null,{"className":"text-(--color-primary) mb-3 transition-transform group-hover:scale-110","children":["$","svg",null,{"className":"w-8 h-8","fill":"none","stroke":"currentColor","viewBox":"0 0 24 24","children":["$","path",null,{"strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":2,"d":"M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"}]}]}],["$","div",null,{"className":"text-3xl md:text-4xl font-bold text-(--color-gray-dark) mb-2","children":"24/7"}],["$","div",null,{"className":"text-sm md:text-base text-(--color-gray)","children":"Expert Support"}]]}],["$","div","3",{"className":"flex flex-col items-center text-center group","children":[["$","div",null,{"className":"text-(--color-primary) mb-3 transition-transform group-hover:scale-110","children":["$","svg",null,{"className":"w-8 h-8","fill":"none","stroke":"currentColor","viewBox":"0 0 24 24","children":["$","path",null,{"strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":2,"d":"M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"}]}]}],["$","div",null,{"className":"text-3xl md:text-4xl font-bold text-(--color-gray-dark) mb-2","children":"24 Hours"}],["$","div",null,{"className":"text-sm md:text-base text-(--color-gray)","children":"Average Processing"}]]}]]}],["$","div",null,{"className":"flex flex-wrap items-center justify-center gap-8 mt-12 pt-8 border-t border-(--color-gray-light)","children":[["$","div",null,{"className":"flex items-center gap-2 text-(--color-gray)","children":[["$","svg",null,{"className":"w-6 h-6 text-(--color-success)","fill":"currentColor","viewBox":"0 0 20 20","children":["$","path",null,{"fillRule":"evenodd","d":"M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z","clipRule":"evenodd"}]}],["$","span",null,{"className":"font-semibold","children":"SSL Secured"}]]}],["$","div",null,{"className":"flex items-center gap-2 text-(--color-gray)","children":[["$","svg",null,{"className":"w-6 h-6 text-(--color-success)","fill":"currentColor","viewBox":"0 0 20 20","children":["$","path",null,{"fillRule":"evenodd","d":"M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z","clipRule":"evenodd"}]}],"$L9"]}],"$La"]}]]}]}],"$Lb","$Lc","$Ld","$Le","$Lf","$L10","$L11","$L12"]}]
 4:["$","script","script-0",{"src":"/_next/static/chunks/36b739bdbe8a3af8.js","async":true}]
 5:["$","script","script-1",{"src":"/_next/static/chunks/468226e0408f921a.js","async":true}]

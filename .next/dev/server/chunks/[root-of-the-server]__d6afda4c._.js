@@ -54,7 +54,7 @@ module.exports = mod;
     "api",
     ()=>api
 ]);
-const API_BASE_URL = ("TURBOPACK compile-time value", "http://localhost:3001") || "http://localhost:3001";
+const API_BASE_URL = ("TURBOPACK compile-time value", "https://api.visaportal.online") || "http://localhost:3001";
 class APIError extends Error {
     status;
     constructor(status, message){
@@ -107,6 +107,12 @@ const api = {
     put: (endpoint, data, options)=>fetchAPI(endpoint, {
             ...options,
             method: "PUT",
+            body: JSON.stringify(data)
+        }),
+    // PATCH request
+    patch: (endpoint, data, options)=>fetchAPI(endpoint, {
+            ...options,
+            method: "PATCH",
             body: JSON.stringify(data)
         }),
     // DELETE request
@@ -198,7 +204,7 @@ const applicationsService = {
         return __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$app$2f$lib$2f$api$2f$client$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["api"].post(`/applications/${id}/draft`, data);
     },
     async submit (id) {
-        return __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$app$2f$lib$2f$api$2f$client$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["api"].post(`/applications/${id}/submit`);
+        return __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$app$2f$lib$2f$api$2f$client$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["api"].post(`/applications/${id}/submit`, {});
     },
     async updateStatus (id, status, adminNotes) {
         return __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$app$2f$lib$2f$api$2f$client$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["api"].patch(`/applications/${id}/status`, {
@@ -211,6 +217,126 @@ const applicationsService = {
     },
     async saveTravelers (id, travelers) {
         return __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$app$2f$lib$2f$api$2f$client$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["api"].post(`/applications/${id}/travelers`, travelers);
+    },
+    // Post-payment unified progress endpoint
+    async saveProgress (id, data) {
+        return __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$app$2f$lib$2f$api$2f$client$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["api"].patch(`/applications/${id}/progress`, data);
+    },
+    // Helper methods for convenience (wrapper around saveProgress)
+    async updateUsContact (id, data) {
+        return this.saveProgress(id, {
+            application: data
+        });
+    },
+    async updateUsStay (id, data) {
+        return this.saveProgress(id, {
+            application: data
+        });
+    },
+    async updateTravelDetails (id, data) {
+        return this.saveProgress(id, {
+            application: data
+        });
+    },
+    async updateTravelerPersonal (id, travelerId, data) {
+        return this.saveProgress(id, {
+            travelers: [
+                {
+                    id: travelerId,
+                    ...data
+                }
+            ]
+        });
+    },
+    async updateTravelerParents (id, travelerId, data) {
+        return this.saveProgress(id, {
+            travelers: [
+                {
+                    id: travelerId,
+                    ...data
+                }
+            ]
+        });
+    },
+    async updateTravelerContact (id, travelerId, data) {
+        return this.saveProgress(id, {
+            travelers: [
+                {
+                    id: travelerId,
+                    ...data
+                }
+            ]
+        });
+    },
+    async updateTravelerPassport (id, travelerId, data) {
+        return this.saveProgress(id, {
+            travelers: [
+                {
+                    id: travelerId,
+                    ...data
+                }
+            ]
+        });
+    },
+    async updateTravelerCitizenship (id, travelerId, data) {
+        return this.saveProgress(id, {
+            travelers: [
+                {
+                    id: travelerId,
+                    ...data
+                }
+            ]
+        });
+    },
+    async updateTravelerEmployment (id, travelerId, data) {
+        return this.saveProgress(id, {
+            travelers: [
+                {
+                    id: travelerId,
+                    ...data
+                }
+            ]
+        });
+    },
+    async updateTravelerEmergencyContact (id, travelerId, data) {
+        return this.saveProgress(id, {
+            travelers: [
+                {
+                    id: travelerId,
+                    ...data
+                }
+            ]
+        });
+    },
+    async updateTravelerGlobalEntry (id, travelerId, data) {
+        return this.saveProgress(id, {
+            travelers: [
+                {
+                    id: travelerId,
+                    ...data
+                }
+            ]
+        });
+    },
+    async updateTravelerSocialMedia (id, travelerId, data) {
+        return this.saveProgress(id, {
+            travelers: [
+                {
+                    id: travelerId,
+                    ...data
+                }
+            ]
+        });
+    },
+    async updateTravelerEligibility (id, travelerId, data) {
+        return this.saveProgress(id, {
+            travelers: [
+                {
+                    id: travelerId,
+                    ...data
+                }
+            ]
+        });
     }
 };
 }),
@@ -284,10 +410,10 @@ const usersService = {
         return __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$app$2f$lib$2f$api$2f$client$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["api"].put(`/users/${id}`, data);
     },
     async deactivateUser (id) {
-        return __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$app$2f$lib$2f$api$2f$client$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["api"].patch(`/users/${id}/deactivate`);
+        return __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$app$2f$lib$2f$api$2f$client$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["api"].patch(`/users/${id}/deactivate`, {});
     },
     async activateUser (id) {
-        return __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$app$2f$lib$2f$api$2f$client$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["api"].patch(`/users/${id}/activate`);
+        return __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$app$2f$lib$2f$api$2f$client$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["api"].patch(`/users/${id}/activate`, {});
     },
     async getUserApplications (id) {
         return __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$app$2f$lib$2f$api$2f$client$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["api"].get(`/users/${id}/applications`);
@@ -349,6 +475,14 @@ const contentService = {
         });
         // Filter out current content and limit results
         return data.filter((item)=>item.slug !== slug).slice(0, limit);
+    },
+    // Get categories (backend handles filtering)
+    async getCategories (type) {
+        return __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$app$2f$lib$2f$api$2f$client$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["api"].get("/content/public/categories", {
+            params: type ? {
+                type
+            } : undefined
+        });
     }
 };
 }),
@@ -384,7 +518,6 @@ var ApplicationStatus = /*#__PURE__*/ function(ApplicationStatus) {
     ApplicationStatus["PROCESSING"] = "PROCESSING";
     ApplicationStatus["APPROVED"] = "APPROVED";
     ApplicationStatus["DENIED"] = "DENIED";
-    ApplicationStatus["EXPIRED"] = "EXPIRED";
     return ApplicationStatus;
 }({});
 var PaymentStatus = /*#__PURE__*/ function(PaymentStatus) {
@@ -432,7 +565,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$
 var __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$app$2f$lib$2f$api$2f$services$2f$content$2e$service$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Documents/Self /esta/frontend/app/lib/api/services/content.service.ts [app-route] (ecmascript)");
 ;
 async function sitemap() {
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://visaportal.online';
+    const baseUrl = ("TURBOPACK compile-time value", "https://www.visaportal.online") || "https://www.visaportal.online";
     try {
         // Fetch all blog posts (up to 50K limit)
         const response = await __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$Self__$2f$esta$2f$frontend$2f$app$2f$lib$2f$api$2f$services$2f$content$2e$service$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["contentService"].getBlogPosts({
@@ -442,11 +575,11 @@ async function sitemap() {
         return posts.map((post)=>({
                 url: `${baseUrl}/blog/${post.slug}`,
                 lastModified: new Date(post.updatedAt),
-                changeFrequency: 'monthly',
+                changeFrequency: "monthly",
                 priority: 0.7
             }));
     } catch (error) {
-        console.error('Error generating blog sitemap:', error);
+        console.error("Error generating blog sitemap:", error);
         // Return empty array on error (Next.js will handle gracefully)
         return [];
     }

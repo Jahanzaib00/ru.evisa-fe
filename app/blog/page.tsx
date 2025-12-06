@@ -52,7 +52,7 @@ export async function generateMetadata({
 
   // Build canonical URL
   const baseUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.com";
+    process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.online";
   let canonicalUrl = `${baseUrl}/blog`;
   if (category && !searchQuery && currentPage === 1) {
     canonicalUrl = `${baseUrl}/blog?category=${category}`;

@@ -19,7 +19,7 @@ import { MetadataRoute } from "next";
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.com";
+    process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.online";
   const now = new Date();
 
   return [

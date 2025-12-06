@@ -20,7 +20,7 @@ import { ESTA_GUIDES } from "@/app/lib/data/guides";
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.com";
+    process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.online";
 
   return ESTA_GUIDES.map((guide) => ({
     url: `${baseUrl}/guides/${guide.slug}`,

@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
 
     const baseUrl =
-      process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.com";
+      process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.online";
     const canonicalUrl = `${baseUrl}/blog/${post.slug}`;
 
     const metadata = generateBlogMetadata(
@@ -127,7 +127,7 @@ export default async function BlogPostPage({ params }: Props) {
     title: post.title,
     description: post.metaDescription || post.excerpt || "",
     url: `${
-      process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.com"
+      process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.online"
     }/blog/${post.slug}`,
     datePublished: post.createdAt || new Date().toISOString(),
     dateModified: post.updatedAt,

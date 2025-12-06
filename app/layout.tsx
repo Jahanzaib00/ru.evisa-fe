@@ -7,7 +7,7 @@ import { generateHomeMetadata } from "./lib/seo/metadata";
 export const metadata: Metadata = {
   ...generateHomeMetadata(),
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.com"
+    process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.online"
   ),
   icons: {
     icon: [{ url: "/icon.png", type: "image/png" }],

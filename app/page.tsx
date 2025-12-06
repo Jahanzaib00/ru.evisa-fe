@@ -36,13 +36,13 @@ export default function Home() {
     name: "How to Apply for ESTA",
     description:
       "Complete guide to applying for U.S. ESTA travel authorization in 3 simple steps",
-    url: "https://www.visaportal.com",
+    url: "https://www.visaportal.online",
     totalTime: "PT10M",
     steps: [
       {
         name: "Fill Out Application",
         text: "Complete the online ESTA application form with your passport and travel information. Takes about 5 minutes.",
-        url: "https://www.visaportal.com/apply",
+        url: "https://www.visaportal.online/apply",
       },
       {
         name: "Review and Pay",

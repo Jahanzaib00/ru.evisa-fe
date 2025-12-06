@@ -30,7 +30,7 @@ export const metadata: Metadata = generateSEOMetadata({
     "ESTA nationality requirements",
   ],
   canonicalUrl: `${
-    process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.com"
+    process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.online"
   }/countries`,
 });
 
@@ -59,7 +59,7 @@ export default function CountriesPage() {
                 name: "Home",
                 item:
                   process.env.NEXT_PUBLIC_SITE_URL ||
-                  "https://www.visaportal.com",
+                  "https://www.visaportal.online",
               },
               {
                 "@type": "ListItem",
@@ -67,7 +67,7 @@ export default function CountriesPage() {
                 name: "ESTA Countries",
                 item: `${
                   process.env.NEXT_PUBLIC_SITE_URL ||
-                  "https://www.visaportal.com"
+                  "https://www.visaportal.online"
                 }/countries`,
               },
             ],
@@ -86,7 +86,8 @@ export default function CountriesPage() {
             description:
               "Complete ESTA guides for all 41 Visa Waiver Program countries",
             url: `${
-              process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.com"
+              process.env.NEXT_PUBLIC_SITE_URL ||
+              "https://www.visaportal.online"
             }/countries`,
             numberOfItems: VWP_COUNTRIES.length,
           }),

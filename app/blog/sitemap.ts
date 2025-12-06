@@ -23,7 +23,7 @@ import { contentService } from "@/app/lib/api";
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.com";
+    process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.online";
 
   try {
     // Fetch all blog posts (up to 50K limit)

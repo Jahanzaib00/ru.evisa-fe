@@ -21,7 +21,7 @@ import { VWP_COUNTRIES } from "@/app/lib/data/countries";
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.com";
+    process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.online";
 
   return VWP_COUNTRIES.map((country) => ({
     url: `${baseUrl}/countries/${country.slug}`,

@@ -47,7 +47,7 @@ export const metadata: Metadata = generateSEOMetadata({
     "ESTA requirements",
   ],
   canonicalUrl: `${
-    process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.com"
+    process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.online"
   }/guides`,
 });
 
@@ -149,7 +149,7 @@ export default function GuidesPage() {
                 name: "Home",
                 item:
                   process.env.NEXT_PUBLIC_SITE_URL ||
-                  "https://www.visaportal.com",
+                  "https://www.visaportal.online",
               },
               {
                 "@type": "ListItem",
@@ -157,7 +157,7 @@ export default function GuidesPage() {
                 name: "ESTA Guides",
                 item: `${
                   process.env.NEXT_PUBLIC_SITE_URL ||
-                  "https://www.visaportal.com"
+                  "https://www.visaportal.online"
                 }/guides`,
               },
             ],

@@ -87,7 +87,7 @@ export default async function GuidePage({
     title: guide.title,
     description: guide.description,
     url: `${
-      process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.com"
+      process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.online"
     }/guides/${guide.slug}`,
     datePublished: guide.lastUpdated || currentDate,
     dateModified: guide.lastUpdated || currentDate,
@@ -99,25 +99,26 @@ export default async function GuidePage({
     title: guide.title,
     description: guide.description,
     url: `${
-      process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.com"
+      process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.online"
     }/guides/${guide.slug}`,
     datePublished: guide.lastUpdated || currentDate,
     dateModified: guide.lastUpdated || currentDate,
     breadcrumbs: [
       {
         name: "Home",
-        url: process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.com",
+        url:
+          process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.online",
       },
       {
         name: "Guides",
         url: `${
-          process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.com"
+          process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.online"
         }/guides`,
       },
       {
         name: guide.title,
         url: `${
-          process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.com"
+          process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.online"
         }/guides/${guide.slug}`,
       },
     ],
