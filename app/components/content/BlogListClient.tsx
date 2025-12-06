@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Button from "../ui/Button";
 import { Content } from "@/app/lib/api/services/content.service";
+import { ArrowLeft, ArrowRight, ArrowRightSquare } from "lucide-react";
 
 interface BlogListClientProps {
   posts: Content[];
@@ -390,26 +391,95 @@ export default function BlogListClient({
 
       {/* Pagination */}
       {totalPages > 1 && (
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-gray-light">
-          <p className="text-sm text-gray">
-            Page {currentPage} of {totalPages}
-          </p>
-          <div className="flex gap-2">
+        <div className="flex flex-col items-center gap-4 pt-8 border-t border-gray-light">
+          <div className="flex flex-wrap items-center justify-center gap-2">
+            {/* Previous Button */}
             <Button
               variant="secondary"
               size="sm"
               onClick={() => handlePageChange(currentPage - 1)}
               disabled={currentPage === 1}
+              className="px-2"
             >
-              ← Previous
+              <ArrowLeft />
             </Button>
+
+            {/* Page Numbers */}
+            {(() => {
+              const pages: (number | string)[] = [];
+              const showEllipsis = totalPages > 7;
+
+              if (!showEllipsis) {
+                // Show all pages if 7 or fewer
+                for (let i = 1; i <= totalPages; i++) {
+                  pages.push(i);
+                }
+              } else {
+                // Always show first page
+                pages.push(1);
+
+                if (currentPage > 3) {
+                  pages.push("...");
+                }
+
+                // Show pages around current page
+                const start = Math.max(2, currentPage - 1);
+                const end = Math.min(totalPages - 1, currentPage + 1);
+
+                for (let i = start; i <= end; i++) {
+                  pages.push(i);
+                }
+
+                if (currentPage < totalPages - 2) {
+                  pages.push("...");
+                }
+
+                // Always show last page
+                pages.push(totalPages);
+              }
+
+              return pages.map((page, index) => {
+                if (page === "...") {
+                  return (
+                    <span
+                      key={`ellipsis-${index}`}
+                      className="px-3 py-2 text-gray"
+                    >
+                      ...
+                    </span>
+                  );
+                }
+
+                const pageNum = page as number;
+                const isActive = pageNum === currentPage;
+
+                return (
+                  <button
+                    key={pageNum}
+                    onClick={() => handlePageChange(pageNum)}
+                    className={`min-w-[40px] px-3 py-2 rounded-lg font-semibold text-sm transition-all ${
+                      isActive
+                        ? "bg-primary text-white shadow-md"
+                        : "bg-white text-gray-dark border border-gray-light hover:border-primary hover:text-primary"
+                    }`}
+                    aria-label={`Go to page ${pageNum}`}
+                    aria-current={isActive ? "page" : undefined}
+                  >
+                    {pageNum}
+                  </button>
+                );
+              });
+            })()}
+
+            {/* Next Button */}
             <Button
               variant="secondary"
               size="sm"
               onClick={() => handlePageChange(currentPage + 1)}
               disabled={currentPage === totalPages}
+              className="px-2"
             >
-              Next →
+              <ArrowRight />
             </Button>
           </div>
         </div>

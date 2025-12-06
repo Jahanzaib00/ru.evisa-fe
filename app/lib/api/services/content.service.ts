@@ -2,21 +2,18 @@ import { api } from "../client";
 
 export interface Content {
   id: string;
-  type: "BLOG" | "GUIDE" | "COUNTRY" | "FAQ";
-  category?: string;
+  type: "BLOG";
+  category: string;
   title: string;
   slug: string;
   content: string;
-  excerpt?: string;
-  metaTitle?: string;
-  metaDescription?: string;
-  keywords?: string[];
-  featuredImage?: string;
-  metadata?: any;
-  aiGenerated: boolean;
+  excerpt: string;
+  metaTitle: string;
+  metaDescription: string;
+  keywords: string[];
   status: string;
   views: number;
-  createdAt?: string;
+  createdAt: string;
   updatedAt: string;
 }
 
@@ -65,24 +62,6 @@ export const contentService = {
     offset?: number;
   }): Promise<ContentListResponse> {
     return this.getPublicContent({ ...params, type: "BLOG" });
-  },
-
-  // Get country content
-  async getCountryContent(params?: {
-    limit?: number;
-    offset?: number;
-  }): Promise<ContentListResponse> {
-    return this.getPublicContent({ ...params, type: "COUNTRY" });
-  },
-
-  // Get guides
-  async getGuides(params?: {
-    category?: string;
-    search?: string;
-    limit?: number;
-    offset?: number;
-  }): Promise<ContentListResponse> {
-    return this.getPublicContent({ ...params, type: "GUIDE" });
   },
 
   // Get related content
