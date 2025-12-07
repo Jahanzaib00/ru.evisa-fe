@@ -209,9 +209,9 @@ export default function Step2PassportPage({
               </div>
 
               <div>
-                <h3 className="text-md font-medium text-gray-800 mb-2">
+                <p className="text-md font-semibold text-gray-900">
                   Issue Date
-                </h3>
+                </p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <Input
                     label="Day"
@@ -243,9 +243,9 @@ export default function Step2PassportPage({
               </div>
 
               <div>
-                <h3 className="text-md font-medium text-gray-800 mb-2">
+                <p className="text-md font-semibold text-gray-900">
                   Expiry Date
-                </h3>
+                </p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <Input
                     label="Day"

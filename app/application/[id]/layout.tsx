@@ -41,10 +41,12 @@ function checkStepCompleted(stepId: string, application: any): boolean {
 
   switch (stepId) {
     case "step-1-personal":
-      return travelers.every((t: any) => t.firstName && t.lastName && t.email);
+      return travelers.every(
+        (t: any) => t.firstName && t.lastName && t.email && t.photoUrl
+      );
     case "step-2-passport":
       return travelers.every(
-        (t: any) => t.passportNumber && t.nationalityOnPassport
+        (t: any) => t.passportNumber && t.nationalityOnPassport && t.passportUrl
       );
     case "step-3-us-travel":
       return !!application.purposeOfVisit;
