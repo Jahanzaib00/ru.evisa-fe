@@ -2,7 +2,7 @@
 
 import { use, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   step3USTravelSchema,
@@ -10,9 +10,11 @@ import {
 } from "@/app/lib/validation/application";
 import { useApplication } from "@/app/lib/store/postPaymentStore";
 import { usePostPaymentApplication } from "@/app/lib/hooks/usePostPaymentApplication";
+import { useFormSubmit } from "@/app/lib/hooks/useFormSubmit";
 import Input from "@/app/components/ui/Input";
 import Select from "@/app/components/ui/Select";
 import Button from "@/app/components/ui/Button";
+import RadioGroup from "@/app/components/ui/RadioGroup";
 
 export default function Step3USTravelPage({
   params: paramsPromise,
@@ -22,17 +24,14 @@ export default function Step3USTravelPage({
   const router = useRouter();
   const params = use(paramsPromise);
   const application = useApplication();
-  const {
-    updateUsContact,
-    updateUsStay,
-    updateTravelDetails,
-    isLoading,
-    error,
-  } = usePostPaymentApplication();
+  const { saveStep, isLoading, error } = usePostPaymentApplication();
 
   const {
     register,
+    control,
     handleSubmit,
+    reset,
+    setError: setFormError,
     setValue,
     watch,
     formState: { errors },
@@ -44,121 +43,31 @@ export default function Step3USTravelPage({
 
   useEffect(() => {
     if (application) {
-      // Load US Contact data
-      setValue(
-        "usPointOfContactType",
-        application.usPointOfContactType as "PERSON" | "HOTEL" | "COMPANY"
-      );
-      setValue("usPointOfContactName", application.usPointOfContactName || "");
-      setValue(
-        "usContactAddressLine1",
-        application.usContactAddressLine1 || ""
-      );
-      setValue(
-        "usContactAddressLine2",
-        application.usContactAddressLine2 || ""
-      );
-      setValue("usContactCity", application.usContactCity || "");
-      setValue("usContactState", application.usContactState || "");
-      setValue("usContactZipCode", application.usContactZipCode || "");
-      setValue("usContactPhone", application.usContactPhone || "");
-
-      // Load US Stay data
-      setValue("usStayAddressLine1", application.usStayAddressLine1 || "");
-      setValue("usStayAddressLine2", application.usStayAddressLine2 || "");
-      setValue("usStayCity", application.usStayCity || "");
-      setValue("usStayState", application.usStayState || "");
-      setValue("usStayZipCode", application.usStayZipCode || "");
-
-      // Load Travel Details data
-      setValue("isTransiting", application.isTransiting || false);
-      setValue("transitDestination", application.transitDestination || "");
-      setValue("pointOfEntry", application.pointOfEntry || "");
-      setValue("arrivalDate", application.arrivalDate || "");
-      setValue("flightVesselNumber", application.flightVesselNumber || "");
-      setValue("purposeOfVisit", application.purposeOfVisit as any);
+      reset({
+        isTransiting: application.isTransiting || false,
+        transitDestination: application.transitDestination || "",
+        pointOfEntry: application.pointOfEntry || "",
+        arrivalDate: application.arrivalDate || "",
+        flightVesselNumber: application.flightVesselNumber || "",
+        purposeOfVisit:
+          (application.purposeOfVisit as "TOURISM" | "BUSINESS" | "TRANSIT") ||
+          undefined,
+      });
     }
-  }, [application]);
+  }, [application, reset]);
 
-  const onSubmit = async (data: Step3USTravelFormData) => {
-    // Split into three sections
-    const {
-      usPointOfContactType,
-      usPointOfContactName,
-      usContactAddressLine1,
-      usContactAddressLine2,
-      usContactCity,
-      usContactState,
-      usContactZipCode,
-      usContactPhone,
-      usStayAddressLine1,
-      usStayAddressLine2,
-      usStayCity,
-      usStayState,
-      usStayZipCode,
-      isTransiting,
-      transitDestination,
-      pointOfEntry,
-      arrivalDate,
-      flightVesselNumber,
-      purposeOfVisit,
-    } = data;
+  const onSubmit = useFormSubmit(
+    setFormError,
+    async (data: Step3USTravelFormData) => {
+      // Save all application-level data in one call
+      const success = await saveStep(undefined, data);
+      if (!success)
+        throw new Error(error || "Failed to save US travel information");
 
-    const usContactData = {
-      usPointOfContactType,
-      usPointOfContactName,
-      usContactAddressLine1,
-      usContactAddressLine2,
-      usContactCity,
-      usContactState,
-      usContactZipCode,
-      usContactPhone,
-    };
-
-    const usStayData = {
-      usStayAddressLine1,
-      usStayAddressLine2,
-      usStayCity,
-      usStayState,
-      usStayZipCode,
-    };
-
-    const travelDetailsData = {
-      isTransiting,
-      transitDestination,
-      pointOfEntry,
-      arrivalDate,
-      flightVesselNumber,
-      purposeOfVisit,
-    };
-
-    // Update all three sections
-    const contactSuccess = await updateUsContact(usContactData);
-    if (!contactSuccess) return;
-
-    const staySuccess = await updateUsStay(usStayData);
-    if (!staySuccess) return;
-
-    const travelSuccess = await updateTravelDetails(travelDetailsData);
-    if (!travelSuccess) return;
-
-    // Navigate to next step
-    router.push(`/application/${params.id}/step-4-contact`);
-  };
-
-  const copyContactToStay = () => {
-    const contactLine1 = watch("usContactAddressLine1");
-    const contactLine2 = watch("usContactAddressLine2");
-    const contactCity = watch("usContactCity");
-    const contactState = watch("usContactState");
-    const contactZip = watch("usContactZipCode");
-
-    setValue("usStayAddressLine1", contactLine1);
-    setValue("usStayAddressLine2", contactLine2 || "");
-    setValue("usStayCity", contactCity);
-    setValue("usStayState", contactState);
-    setValue("usStayZipCode", contactZip);
-  };
+      // Navigate to next step
+      router.push(`/application/${params.id}/step-4-contact`);
+    }
+  );
 
   return (
     <div className="max-w-4xl mx-auto">
@@ -180,7 +89,7 @@ export default function Step3USTravelPage({
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
         {/* U.S. Point of Contact Section */}
-        <section className="space-y-4">
+        {/* <section className="space-y-4">
           <h2 className="text-lg font-semibold text-gray-900">
             U.S. Point of Contact
           </h2>
@@ -256,10 +165,10 @@ export default function Step3USTravelPage({
             required
             {...register("usContactPhone")}
           />
-        </section>
+        </section> */}
 
         {/* U.S. Stay Address Section */}
-        <section className="space-y-4 pt-6 border-t border-gray-200">
+        {/* <section className="space-y-4 pt-6 border-t border-gray-200">
           <div className="flex justify-between items-start">
             <div>
               <h2 className="text-lg font-semibold text-gray-900">
@@ -318,7 +227,7 @@ export default function Step3USTravelPage({
               {...register("usStayZipCode")}
             />
           </div>
-        </section>
+        </section> */}
 
         {/* Travel Details Section */}
         <section className="space-y-4 pt-6 border-t border-gray-200">
@@ -326,37 +235,22 @@ export default function Step3USTravelPage({
             Travel Information
           </h2>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Are you transiting through the U.S. to another country?
-            </label>
-            <div className="flex space-x-6">
-              <label className="flex items-center">
-                <input
-                  type="radio"
-                  value="false"
-                  checked={!watchIsTransiting}
-                  {...register("isTransiting", {
-                    setValueAs: (v) => v === "true",
-                  })}
-                  className="mr-2"
-                />
-                No
-              </label>
-              <label className="flex items-center">
-                <input
-                  type="radio"
-                  value="true"
-                  checked={watchIsTransiting}
-                  {...register("isTransiting", {
-                    setValueAs: (v) => v === "true",
-                  })}
-                  className="mr-2"
-                />
-                Yes
-              </label>
-            </div>
-          </div>
+          <Controller
+            name="isTransiting"
+            control={control}
+            render={({ field }) => (
+              <RadioGroup
+                label="Are you transiting through the U.S. to another country?"
+                options={[
+                  { value: "false", label: "No" },
+                  { value: "true", label: "Yes" },
+                ]}
+                value={field.value ? "true" : "false"}
+                onChange={(val) => field.onChange(val === "true")}
+                onBlur={field.onBlur}
+              />
+            )}
+          />
 
           {watchIsTransiting && (
             <Input
@@ -372,7 +266,6 @@ export default function Step3USTravelPage({
             label="Point of Entry"
             placeholder="e.g., New York JFK, Los Angeles LAX"
             error={errors.pointOfEntry?.message}
-            required
             {...register("pointOfEntry")}
           />
 
@@ -380,7 +273,6 @@ export default function Step3USTravelPage({
             label="Arrival Date"
             type="date"
             error={errors.arrivalDate?.message}
-            required
             {...register("arrivalDate")}
           />
 
@@ -388,7 +280,6 @@ export default function Step3USTravelPage({
             label="Flight/Vessel Number"
             placeholder="e.g., AA123"
             error={errors.flightVesselNumber?.message}
-            required
             {...register("flightVesselNumber")}
           />
 

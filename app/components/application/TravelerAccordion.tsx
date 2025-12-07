@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { ChevronDown, User, Check } from "lucide-react";
 
 interface Traveler {
@@ -27,7 +27,12 @@ export default function TravelerAccordion({
     activeTravelerId || travelers[0]?.id
   );
 
-  console.log("Active Traveler ID:", activeTravelerId);
+  // Sync local state with prop when it changes
+  useEffect(() => {
+    if (activeTravelerId) {
+      setOpenTravelerId(activeTravelerId);
+    }
+  }, [activeTravelerId]);
 
   const handleToggle = (travelerId: string) => {
     setOpenTravelerId(openTravelerId === travelerId ? "" : travelerId);

@@ -2,7 +2,7 @@
 
 import { use, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   step2PassportSchema,
@@ -10,12 +10,14 @@ import {
 } from "@/app/lib/validation/application";
 import { useTravelers } from "@/app/lib/store/postPaymentStore";
 import { usePostPaymentApplication } from "@/app/lib/hooks/usePostPaymentApplication";
+import { useFormSubmit } from "@/app/lib/hooks/useFormSubmit";
 import Input from "@/app/components/ui/Input";
 import Select from "@/app/components/ui/Select";
 import Button from "@/app/components/ui/Button";
 import TravelerAccordion from "@/app/components/application/TravelerAccordion";
-import CountrySelect from "@/app/components/ui/CountrySelectWrapper";
+import CountrySelect from "@/app/components/ui/CountrySelect";
 import FileUpload from "@/app/components/ui/FileUpload";
+import RadioGroup from "@/app/components/ui/RadioGroup";
 
 interface Traveler {
   id: string;
@@ -41,7 +43,7 @@ interface Traveler {
   otherPassportDetails?: any;
   isGlobalEntryMember?: boolean;
   globalEntryPassId?: string;
-  passportScanUrl?: string;
+  passportUrl?: string; // Database field is passportUrl, not passportScanUrl
 }
 
 export default function Step2PassportPage({
@@ -53,19 +55,16 @@ export default function Step2PassportPage({
   const params = use(paramsPromise);
   const [currentTravelerId, setCurrentTravelerId] = useState<string>("");
   const travelers = useTravelers();
-  const {
-    updateTravelerPassport,
-    updateTravelerCitizenship,
-    updateTravelerGlobalEntry,
-    isLoading,
-    error,
-  } = usePostPaymentApplication();
+  const { saveStep, isLoading, error } = usePostPaymentApplication();
 
   const {
     register,
+    control,
     handleSubmit,
     setValue,
     watch,
+    reset,
+    setError: setFormError,
     formState: { errors },
   } = useForm<Step2PassportFormData>({
     resolver: zodResolver(step2PassportSchema),
@@ -73,42 +72,43 @@ export default function Step2PassportPage({
 
   const watchNationalityOnPassport = watch("nationalityOnPassport");
   const watchHasOtherCitizenship = watch("hasOtherCitizenship");
-  const watchHasOtherPassports = watch("hasOtherPassports");
   const watchIsGlobalEntryMember = watch("isGlobalEntryMember");
 
+  // Initialize with first traveler on mount only
   useEffect(() => {
     if (travelers.length > 0 && !currentTravelerId) {
       setCurrentTravelerId(travelers[0].id);
       loadTravelerData(travelers[0]);
     }
-  }, [travelers]);
+  }, []);
 
   const loadTravelerData = (traveler: Traveler) => {
-    // Passport fields
-    setValue("passportNumber", traveler.passportNumber || "");
-    setValue("passportType", traveler.passportType as any);
-    setValue("passportIssueDay", traveler.passportIssueDay || 1);
-    setValue("passportIssueMonth", traveler.passportIssueMonth || 1);
-    setValue("passportIssueYear", traveler.passportIssueYear || 2020);
-    setValue("passportExpiryDay", traveler.passportExpiryDay || 1);
-    setValue("passportExpiryMonth", traveler.passportExpiryMonth || 1);
-    setValue("passportExpiryYear", traveler.passportExpiryYear || 2030);
-    setValue("nationalityOnPassport", traveler.nationalityOnPassport || "");
-    setValue("isEPassport", traveler.isEPassport || false);
-    setValue("nationalIdNumber", traveler.nationalIdNumber || "");
-    setValue("countryOfResidence", traveler.countryOfResidence || "");
-
-    // Citizenship fields
-    setValue("hasOtherCitizenship", traveler.hasOtherCitizenship || false);
-    setValue("otherCitizenshipCountry", traveler.otherCitizenshipCountry || "");
-    setValue("citizenshipAcquisition", traveler.citizenshipAcquisition as any);
-    setValue("previousCitizenship", traveler.previousCitizenship || "");
-    setValue("hasOtherPassports", traveler.hasOtherPassports || false);
-    setValue("otherPassportDetails", traveler.otherPassportDetails);
-
-    // Global Entry fields
-    setValue("isGlobalEntryMember", traveler.isGlobalEntryMember || false);
-    setValue("globalEntryPassId", traveler.globalEntryPassId || "");
+    // Use reset() to properly reset form state including submission state
+    reset({
+      // Passport fields
+      passportNumber: traveler.passportNumber || "",
+      passportType: traveler.passportType as any,
+      passportIssueDay: traveler.passportIssueDay || 1,
+      passportIssueMonth: traveler.passportIssueMonth || 1,
+      passportIssueYear: traveler.passportIssueYear || 2020,
+      passportExpiryDay: traveler.passportExpiryDay || 1,
+      passportExpiryMonth: traveler.passportExpiryMonth || 1,
+      passportExpiryYear: traveler.passportExpiryYear || 2030,
+      nationalityOnPassport: traveler.nationalityOnPassport || "",
+      isEPassport: traveler.isEPassport || false,
+      nationalIdNumber: traveler.nationalIdNumber || "",
+      countryOfResidence: traveler.countryOfResidence || "",
+      // Citizenship fields
+      hasOtherCitizenship: traveler.hasOtherCitizenship || false,
+      otherCitizenshipCountry: traveler.otherCitizenshipCountry || "",
+      citizenshipAcquisition: traveler.citizenshipAcquisition as any,
+      previousCitizenship: traveler.previousCitizenship || "",
+      hasOtherPassports: traveler.hasOtherPassports || false,
+      otherPassportDetails: traveler.otherPassportDetails,
+      // Global Entry fields
+      isGlobalEntryMember: traveler.isGlobalEntryMember || false,
+      globalEntryPassId: traveler.globalEntryPassId || "",
+    });
   };
 
   const handleTravelerChange = (travelerId: string) => {
@@ -121,94 +121,39 @@ export default function Step2PassportPage({
 
   const handlePassportScanUpload = async (url: string) => {
     if (!currentTravelerId) return;
-    await updateTravelerPassport(currentTravelerId, { passportUrl: url });
+    await saveStep({ id: currentTravelerId, passportUrl: url });
   };
 
-  const onSubmit = async (data: Step2PassportFormData) => {
-    if (!currentTravelerId) return;
+  const onSubmit = useFormSubmit(
+    setFormError,
+    async (data: Step2PassportFormData) => {
+      if (!currentTravelerId) throw new Error("No traveler selected");
 
-    // Split into passport, citizenship, and global entry data
-    const {
-      passportNumber,
-      passportType,
-      passportIssueDay,
-      passportIssueMonth,
-      passportIssueYear,
-      passportExpiryDay,
-      passportExpiryMonth,
-      passportExpiryYear,
-      nationalityOnPassport,
-      isEPassport,
-      nationalIdNumber,
-      countryOfResidence,
-      hasOtherCitizenship,
-      otherCitizenshipCountry,
-      citizenshipAcquisition,
-      previousCitizenship,
-      hasOtherPassports,
-      otherPassportDetails,
-      isGlobalEntryMember,
-      globalEntryPassId,
-    } = data;
+      const travelerData = {
+        id: currentTravelerId,
+        ...data,
+      };
 
-    const passportData = {
-      passportNumber,
-      passportType,
-      passportIssueDay,
-      passportIssueMonth,
-      passportIssueYear,
-      passportExpiryDay,
-      passportExpiryMonth,
-      passportExpiryYear,
-      nationalityOnPassport,
-      isEPassport,
-      nationalIdNumber,
-      countryOfResidence,
-    };
+      // Save all data in one call
+      const success = await saveStep(travelerData);
+      if (!success)
+        throw new Error(
+          error || "Failed to save passport and citizenship information"
+        );
 
-    const citizenshipData = {
-      hasOtherCitizenship,
-      otherCitizenshipCountry,
-      citizenshipAcquisition,
-      previousCitizenship,
-      hasOtherPassports,
-      otherPassportDetails,
-    };
-
-    const globalEntryData = {
-      isGlobalEntryMember,
-      globalEntryPassId,
-    };
-
-    // Update all three sections
-    const passportSuccess = await updateTravelerPassport(
-      currentTravelerId,
-      passportData
-    );
-    if (!passportSuccess) return;
-
-    const citizenshipSuccess = await updateTravelerCitizenship(
-      currentTravelerId,
-      citizenshipData
-    );
-    if (!citizenshipSuccess) return;
-
-    const globalEntrySuccess = await updateTravelerGlobalEntry(
-      currentTravelerId,
-      globalEntryData
-    );
-    if (!globalEntrySuccess) return;
-
-    // Move to next traveler or next step
-    const currentIndex = travelers.findIndex((t) => t.id === currentTravelerId);
-    if (currentIndex < travelers.length - 1) {
-      const nextTraveler = travelers[currentIndex + 1];
-      setCurrentTravelerId(nextTraveler.id);
-      loadTravelerData(nextTraveler);
-    } else {
-      router.push(`/application/${params.id}/step-3-us-travel`);
+      // Move to next traveler or next step
+      const currentIndex = travelers.findIndex(
+        (t) => t.id === currentTravelerId
+      );
+      if (currentIndex < travelers.length - 1) {
+        // Switch to next traveler
+        handleTravelerChange(travelers[currentIndex + 1].id);
+      } else {
+        // All travelers done, move to next step
+        router.push(`/application/${params.id}/step-3-us-travel`);
+      }
     }
-  };
+  );
 
   return (
     <div>
@@ -333,11 +278,20 @@ export default function Step2PassportPage({
                 </div>
               </div>
 
-              <CountrySelect
-                label="Nationality on Passport"
-                error={errors.nationalityOnPassport?.message}
-                required
-                {...register("nationalityOnPassport")}
+              <Controller
+                name="nationalityOnPassport"
+                control={control}
+                render={({ field }) => (
+                  <CountrySelect
+                    label="Nationality on Passport"
+                    error={errors.nationalityOnPassport?.message}
+                    required
+                    value={field.value}
+                    onChange={field.onChange}
+                    onBlur={field.onBlur}
+                    valueType="name"
+                  />
+                )}
               />
 
               <div className="flex items-center space-x-2">
@@ -362,11 +316,20 @@ export default function Step2PassportPage({
                 />
               )}
 
-              <CountrySelect
-                label="Country of Residence"
-                error={errors.countryOfResidence?.message}
-                required
-                {...register("countryOfResidence")}
+              <Controller
+                name="countryOfResidence"
+                control={control}
+                render={({ field }) => (
+                  <CountrySelect
+                    label="Country of Residence"
+                    error={errors.countryOfResidence?.message}
+                    required
+                    value={field.value}
+                    onChange={field.onChange}
+                    onBlur={field.onBlur}
+                    valueType="name"
+                  />
+                )}
               />
             </section>
 
@@ -375,47 +338,6 @@ export default function Step2PassportPage({
               <h2 className="text-lg font-semibold text-gray-900">
                 Citizenship Information
               </h2>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Do you hold any other citizenship?
-                </label>
-                <div className="flex space-x-6">
-                  <label className="flex items-center">
-                    <input
-                      type="radio"
-                      value="false"
-                      checked={!watchHasOtherCitizenship}
-                      {...register("hasOtherCitizenship", {
-                        setValueAs: (v) => v === "true",
-                      })}
-                      className="mr-2"
-                    />
-                    No
-                  </label>
-                  <label className="flex items-center">
-                    <input
-                      type="radio"
-                      value="true"
-                      checked={watchHasOtherCitizenship}
-                      {...register("hasOtherCitizenship", {
-                        setValueAs: (v) => v === "true",
-                      })}
-                      className="mr-2"
-                    />
-                    Yes
-                  </label>
-                </div>
-              </div>
-
-              {watchHasOtherCitizenship && (
-                <CountrySelect
-                  label="Other Citizenship Country"
-                  error={errors.otherCitizenshipCountry?.message}
-                  required
-                  {...register("otherCitizenshipCountry")}
-                />
-              )}
 
               <Select
                 label="How did you acquire citizenship?"
@@ -436,37 +358,57 @@ export default function Step2PassportPage({
                 {...register("previousCitizenship")}
               />
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Do you hold any other valid passports?
-                </label>
-                <div className="flex space-x-6">
-                  <label className="flex items-center">
-                    <input
-                      type="radio"
-                      value="false"
-                      checked={!watchHasOtherPassports}
-                      {...register("hasOtherPassports", {
-                        setValueAs: (v) => v === "true",
-                      })}
-                      className="mr-2"
+              <Controller
+                name="hasOtherCitizenship"
+                control={control}
+                render={({ field }) => (
+                  <RadioGroup
+                    label="Do you hold any other citizenship?"
+                    options={[
+                      { value: "false", label: "No" },
+                      { value: "true", label: "Yes" },
+                    ]}
+                    value={field.value ? "true" : "false"}
+                    onChange={(val) => field.onChange(val === "true")}
+                    onBlur={field.onBlur}
+                  />
+                )}
+              />
+
+              {watchHasOtherCitizenship && (
+                <Controller
+                  name="otherCitizenshipCountry"
+                  control={control}
+                  render={({ field }) => (
+                    <CountrySelect
+                      label="Other Citizenship Country"
+                      error={errors.otherCitizenshipCountry?.message}
+                      required
+                      value={field.value}
+                      onChange={field.onChange}
+                      onBlur={field.onBlur}
+                      valueType="name"
                     />
-                    No
-                  </label>
-                  <label className="flex items-center">
-                    <input
-                      type="radio"
-                      value="true"
-                      checked={watchHasOtherPassports}
-                      {...register("hasOtherPassports", {
-                        setValueAs: (v) => v === "true",
-                      })}
-                      className="mr-2"
-                    />
-                    Yes
-                  </label>
-                </div>
-              </div>
+                  )}
+                />
+              )}
+
+              <Controller
+                name="hasOtherPassports"
+                control={control}
+                render={({ field }) => (
+                  <RadioGroup
+                    label="Do you hold any other valid passports?"
+                    options={[
+                      { value: "false", label: "No" },
+                      { value: "true", label: "Yes" },
+                    ]}
+                    value={field.value ? "true" : "false"}
+                    onChange={(val) => field.onChange(val === "true")}
+                    onBlur={field.onBlur}
+                  />
+                )}
+              />
             </section>
 
             {/* Global Entry Section */}
@@ -475,37 +417,22 @@ export default function Step2PassportPage({
                 Global Entry
               </h2>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Are you a Global Entry member?
-                </label>
-                <div className="flex space-x-6">
-                  <label className="flex items-center">
-                    <input
-                      type="radio"
-                      value="false"
-                      checked={!watchIsGlobalEntryMember}
-                      {...register("isGlobalEntryMember", {
-                        setValueAs: (v) => v === "true",
-                      })}
-                      className="mr-2"
-                    />
-                    No
-                  </label>
-                  <label className="flex items-center">
-                    <input
-                      type="radio"
-                      value="true"
-                      checked={watchIsGlobalEntryMember}
-                      {...register("isGlobalEntryMember", {
-                        setValueAs: (v) => v === "true",
-                      })}
-                      className="mr-2"
-                    />
-                    Yes
-                  </label>
-                </div>
-              </div>
+              <Controller
+                name="isGlobalEntryMember"
+                control={control}
+                render={({ field }) => (
+                  <RadioGroup
+                    label="Are you a Global Entry member?"
+                    options={[
+                      { value: "false", label: "No" },
+                      { value: "true", label: "Yes" },
+                    ]}
+                    value={field.value ? "true" : "false"}
+                    onChange={(val) => field.onChange(val === "true")}
+                    onBlur={field.onBlur}
+                  />
+                )}
+              />
 
               {watchIsGlobalEntryMember && (
                 <Input

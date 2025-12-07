@@ -144,4 +144,22 @@ export const applicationsService = {
   async updateTravelerEligibility(id: string, travelerId: string, data: any): Promise<Application> {
     return this.saveProgress(id, { travelers: [{ id: travelerId, ...data }] });
   },
+
+  async getTrackingInfo(id: string): Promise<{
+    id: string;
+    status: string;
+    processingType: string;
+    totalApplicants: number;
+    travelers: Array<{
+      id: string;
+      firstName: string;
+      lastName: string;
+    }>;
+    paymentStatus: string;
+    submittedAt: string | null;
+    createdAt: string;
+    updatedAt: string;
+  }> {
+    return api.get(`/applications/${id}/track`);
+  },
 };

@@ -4,6 +4,7 @@ import { use, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useApplication, useTravelers } from "@/app/lib/store/postPaymentStore";
 import { usePostPaymentApplication } from "@/app/lib/hooks/usePostPaymentApplication";
+import { applicationsService } from "@/app/lib/api/services/applications.service";
 import Button from "@/app/components/ui/Button";
 import TravelerAccordion from "@/app/components/application/TravelerAccordion";
 
@@ -18,6 +19,8 @@ export default function Step7ReviewPage({
   const travelers = useTravelers();
   const [agreedToTerms, setAgreedToTerms] = useState(false);
   const [currentTravelerId, setCurrentTravelerId] = useState<string>("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const { isLoading, error } = usePostPaymentApplication();
 
   useEffect(() => {
@@ -30,16 +33,36 @@ export default function Step7ReviewPage({
     setCurrentTravelerId(travelerId);
   };
 
+  const submitApplication = async (applicationId: string): Promise<boolean> => {
+    try {
+      setIsSubmitting(true);
+      setSubmitError(null);
+
+      // Call the backend API to submit the application
+      const response = await applicationsService.submit(applicationId);
+
+      return true;
+    } catch (err: any) {
+      const errorMessage = err.response?.data?.message || err.message || "Failed to submit application";
+      setSubmitError(errorMessage);
+      console.error("Error submitting application:", err);
+      return false;
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const handleSubmit = async () => {
     if (!agreedToTerms) {
       alert("Please agree to the terms and conditions before submitting.");
       return;
     }
 
-    // const success = await submitApplication(params.id);
-    // if (success) {
-    router.push(`/application/${params.id}/confirmation`);
-    // }
+    const success = await submitApplication(params.id);
+    if (success) {
+      // Redirect to track page instead of confirmation page
+      router.push(`/track/${params.id}`);
+    }
   };
 
   const currentTraveler = travelers.find((t) => t.id === currentTravelerId);
@@ -56,14 +79,14 @@ export default function Step7ReviewPage({
         </p>
       </div>
 
-      {error && (
+      {(error || submitError) && (
         <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg mb-6">
-          {error}
+          {submitError || error}
         </div>
       )}
 
       {/* Application-Level Information */}
-      <div className="mb-8 bg-white border border-gray-200 rounded-lg p-6">
+      {/* <div className="mb-8 bg-white border border-gray-200 rounded-lg p-6">
         <div className="flex justify-between items-start mb-4">
           <h2 className="text-xl font-semibold text-gray-900">
             U.S. Travel Details
@@ -112,7 +135,7 @@ export default function Step7ReviewPage({
             <p className="font-medium">{application?.purposeOfVisit}</p>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Traveler-Specific Information */}
       <TravelerAccordion
@@ -413,10 +436,10 @@ export default function Step7ReviewPage({
         </Button>
         <Button
           onClick={handleSubmit}
-          disabled={!agreedToTerms || isLoading}
+          disabled={!agreedToTerms || isSubmitting || isLoading}
           className="min-w-[200px]"
         >
-          {isLoading ? "Submitting..." : "Submit Application"}
+          {isSubmitting ? "Submitting..." : "Submit Application"}
         </Button>
       </div>
     </div>

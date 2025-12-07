@@ -24,7 +24,7 @@ export const uploadsService = {
     uploadType: UploadType,
     fileExtension: string
   ): Promise<PresignedUrlResponse> {
-    const response = await api.post<{ success: boolean; data: PresignedUrlResponse }>(
+    return await api.post<PresignedUrlResponse>(
       `/applications/${applicationId}/uploads/presigned-url`,
       {
         travelerId,
@@ -32,7 +32,6 @@ export const uploadsService = {
         fileExtension,
       }
     );
-    return response.data;
   },
 
   /**
@@ -80,7 +79,7 @@ export const uploadsService = {
     uploadType: UploadType,
     fileKey: string
   ): Promise<SaveUploadResponse> {
-    const response = await api.post<{ success: boolean; data: SaveUploadResponse }>(
+    return await api.post<SaveUploadResponse>(
       `/applications/${applicationId}/uploads/save`,
       {
         travelerId,
@@ -88,7 +87,6 @@ export const uploadsService = {
         fileKey,
       }
     );
-    return response.data;
   },
 
   /**

@@ -5,8 +5,10 @@ import { Country, ELIGIBLE_COUNTRIES, getFlagEmoji } from "@/app/lib/countries";
 
 interface CountrySelectProps {
   label?: string;
-  value: string;
-  onChange: (value: string) => void;
+  value?: string;
+  onChange?: (value: string) => void;
+  onBlur?: () => void;
+  name?: string;
   error?: string;
   helperText?: string;
   required?: boolean;
@@ -19,8 +21,10 @@ const CountrySelect = forwardRef<HTMLButtonElement, CountrySelectProps>(
   (
     {
       label,
-      value,
+      value = "",
       onChange,
+      onBlur,
+      name,
       error,
       helperText,
       required = false,
@@ -69,7 +73,9 @@ const CountrySelect = forwardRef<HTMLButtonElement, CountrySelectProps>(
     }, [isOpen]);
 
     const handleSelect = (country: Country) => {
-      onChange(valueType === "code" ? country.code : country.name);
+      const newValue = valueType === "code" ? country.code : country.name;
+      onChange?.(newValue);
+      onBlur?.();
       setIsOpen(false);
       setSearchTerm("");
     };
@@ -141,11 +147,12 @@ const CountrySelect = forwardRef<HTMLButtonElement, CountrySelectProps>(
         {/* Dropdown Panel */}
         {isOpen && (
           <div
-            className="fixed z-9999 mt-1 bg-white border border-gray-light rounded-md shadow-lg max-h-80 overflow-hidden"
+            className="fixed mt-1 bg-white border border-gray-light rounded-md shadow-lg max-h-80 overflow-hidden"
             style={{
               width: dropdownRef.current?.offsetWidth,
               top: dropdownRef.current?.getBoundingClientRect().bottom,
               left: dropdownRef.current?.getBoundingClientRect().left,
+              zIndex: 9999,
             }}
           >
             {/* Search Input */}

@@ -2,9 +2,23 @@
 
 import { use, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import axios from "axios";
+import { applicationsService } from "@/app/lib/api/services/applications.service";
+import { extractErrorMessage, logError } from "@/app/lib/utils/errorHandler";
 import Header from "@/app/components/layout/Header";
 import { Spinner } from "@/app/components/ui/Loader";
+import {
+  FileEdit,
+  Send,
+  Search,
+  CheckCircle,
+  XCircle,
+  Clock,
+  CreditCard,
+  Calendar,
+  Users,
+  AlertCircle,
+  ArrowLeft,
+} from "lucide-react";
 
 interface TrackingInfo {
   id: string;
@@ -23,40 +37,34 @@ interface TrackingInfo {
 }
 
 const STATUS_INFO = {
-  PENDING_PAYMENT: {
-    label: "Pending Payment",
-    color: "bg-yellow-50 text-yellow-800 border-yellow-200",
-    icon: "⏳",
-    description: "Awaiting payment completion",
-  },
   DRAFT: {
     label: "Draft",
     color: "bg-gray-50 text-gray-800 border-gray-200",
-    icon: "📝",
+    icon: FileEdit,
     description: "Application not yet submitted",
   },
   SUBMITTED: {
     label: "Submitted",
     color: "bg-blue-50 text-blue-800 border-blue-200",
-    icon: "📤",
+    icon: Send,
     description: "Application submitted and under review",
   },
   UNDER_REVIEW: {
     label: "Under Review",
     color: "bg-purple-50 text-purple-800 border-purple-200",
-    icon: "🔍",
+    icon: Search,
     description: "Being reviewed by authorities",
   },
   APPROVED: {
     label: "Approved",
     color: "bg-green-50 text-green-800 border-green-200",
-    icon: "✅",
+    icon: CheckCircle,
     description: "ESTA approved - ready to travel",
   },
   DENIED: {
     label: "Denied",
     color: "bg-red-50 text-red-800 border-red-200",
-    icon: "❌",
+    icon: XCircle,
     description: "Application denied - contact support",
   },
 };
@@ -75,15 +83,15 @@ export default function TrackStatusPage({
   useEffect(() => {
     const fetchTracking = async () => {
       try {
-        const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/applications/${params.id}/track`
-        );
-        setTracking(response.data);
+        const data = await applicationsService.getTrackingInfo(params.id);
+        setTracking(data);
       } catch (err: any) {
-        setError(
-          err.response?.data?.message ||
-            "Failed to load tracking information. Please check your application ID."
+        logError(err, "Fetching tracking info");
+        const errorMsg = extractErrorMessage(
+          err,
+          "Failed to load tracking information. Please check your application ID."
         );
+        setError(errorMsg);
       } finally {
         setLoading(false);
       }
@@ -118,17 +126,7 @@ export default function TrackStatusPage({
         {error && (
           <div className="bg-red-50 border border-red-200 text-red-800 px-6 py-4 rounded-lg">
             <div className="flex items-start gap-3">
-              <svg
-                className="w-6 h-6 shrink-0 mt-0.5"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
-                  clipRule="evenodd"
-                />
-              </svg>
+              <AlertCircle className="w-6 h-6 shrink-0 mt-0.5" />
               <div>
                 <p className="font-semibold">Error</p>
                 <p className="mt-1">{error}</p>
@@ -141,9 +139,11 @@ export default function TrackStatusPage({
           <div className="space-y-6">
             {/* Status Card */}
             <div className="bg-white rounded-lg shadow-sm p-6 md:p-8">
-              <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
-                  <div className="text-5xl">{statusInfo.icon}</div>
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary/10 to-primary/20 flex items-center justify-center">
+                    <statusInfo.icon className="w-8 h-8 text-primary" />
+                  </div>
                   <div>
                     <h2 className="text-2xl font-bold text-gray-900">
                       {statusInfo.label}
@@ -154,13 +154,6 @@ export default function TrackStatusPage({
                   </div>
                 </div>
               </div>
-
-              {/* Status Badge */}
-              <div
-                className={`inline-block px-4 py-2 rounded-full border font-medium ${statusInfo.color}`}
-              >
-                {statusInfo.label}
-              </div>
             </div>
 
             {/* Application Details */}
@@ -170,55 +163,78 @@ export default function TrackStatusPage({
               </h3>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <p className="text-sm text-gray-600 mb-1">Processing Type</p>
-                  <p className="font-semibold text-gray-900">
-                    {tracking.processingType}
-                  </p>
+                <div className="flex items-start gap-3">
+                  <Clock className="w-5 h-5 text-gray-400 mt-0.5" />
+                  <div>
+                    <p className="text-sm text-gray-600 mb-1">
+                      Processing Type
+                    </p>
+                    <p className="font-semibold text-gray-900">
+                      {tracking.processingType}
+                    </p>
+                  </div>
                 </div>
 
-                <div>
-                  <p className="text-sm text-gray-600 mb-1">Total Applicants</p>
-                  <p className="font-semibold text-gray-900">
-                    {tracking.totalApplicants}
-                  </p>
+                <div className="flex items-start gap-3">
+                  <Users className="w-5 h-5 text-gray-400 mt-0.5" />
+                  <div>
+                    <p className="text-sm text-gray-600 mb-1">
+                      Total Applicants
+                    </p>
+                    <p className="font-semibold text-gray-900">
+                      {tracking.totalApplicants}
+                    </p>
+                  </div>
                 </div>
 
-                <div>
-                  <p className="text-sm text-gray-600 mb-1">Payment Status</p>
-                  <p className="font-semibold text-gray-900">
-                    {tracking.paymentStatus}
-                  </p>
+                <div className="flex items-start gap-3">
+                  <CreditCard className="w-5 h-5 text-gray-400 mt-0.5" />
+                  <div>
+                    <p className="text-sm text-gray-600 mb-1">Payment Status</p>
+                    <p className="font-semibold text-gray-900">
+                      {tracking.paymentStatus}
+                    </p>
+                  </div>
                 </div>
 
                 {tracking.submittedAt && (
-                  <div>
-                    <p className="text-sm text-gray-600 mb-1">Submitted At</p>
-                    <p className="font-semibold text-gray-900">
-                      {new Date(tracking.submittedAt).toLocaleString()}
-                    </p>
+                  <div className="flex items-start gap-3">
+                    <Calendar className="w-5 h-5 text-gray-400 mt-0.5" />
+                    <div>
+                      <p className="text-sm text-gray-600 mb-1">Submitted At</p>
+                      <p className="font-semibold text-gray-900">
+                        {new Date(tracking.submittedAt).toLocaleString()}
+                      </p>
+                    </div>
                   </div>
                 )}
 
-                <div>
-                  <p className="text-sm text-gray-600 mb-1">Created At</p>
-                  <p className="font-semibold text-gray-900">
-                    {new Date(tracking.createdAt).toLocaleString()}
-                  </p>
+                <div className="flex items-start gap-3">
+                  <Calendar className="w-5 h-5 text-gray-400 mt-0.5" />
+                  <div>
+                    <p className="text-sm text-gray-600 mb-1">Created At</p>
+                    <p className="font-semibold text-gray-900">
+                      {new Date(tracking.createdAt).toLocaleString()}
+                    </p>
+                  </div>
                 </div>
 
-                <div>
-                  <p className="text-sm text-gray-600 mb-1">Last Updated</p>
-                  <p className="font-semibold text-gray-900">
-                    {new Date(tracking.updatedAt).toLocaleString()}
-                  </p>
+                <div className="flex items-start gap-3">
+                  <Calendar className="w-5 h-5 text-gray-400 mt-0.5" />
+                  <div>
+                    <p className="text-sm text-gray-600 mb-1">Last Updated</p>
+                    <p className="font-semibold text-gray-900">
+                      {new Date(tracking.updatedAt).toLocaleString()}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* Travelers */}
             <div className="bg-white rounded-lg shadow-sm p-6 md:p-8">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                <Users className="w-5 h-5" />
                 Travelers ({tracking.travelers.length})
               </h3>
               <div className="space-y-3">
@@ -243,31 +259,21 @@ export default function TrackStatusPage({
             {/* Actions */}
             {tracking.status === "DRAFT" && (
               <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-                <p className="text-blue-800 mb-4">
-                  Your application is incomplete. Continue filling out your
-                  application to submit it.
-                </p>
+                <div className="flex items-start gap-3 mb-4">
+                  <FileEdit className="w-5 h-5 text-blue-600 mt-0.5" />
+                  <p className="text-blue-800">
+                    Your application is incomplete. Continue filling out your
+                    application to submit it.
+                  </p>
+                </div>
                 <button
                   onClick={() =>
                     router.push(`/application/${params.id}/step-1-personal`)
                   }
-                  className="bg-primary text-white font-semibold px-6 py-3 rounded-lg hover:bg-primary-light transition-colors"
+                  className="bg-primary text-white font-semibold px-6 py-3 rounded-lg hover:bg-primary-light transition-colors inline-flex items-center gap-2"
                 >
                   Continue Application
-                </button>
-              </div>
-            )}
-
-            {tracking.status === "PENDING_PAYMENT" && (
-              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
-                <p className="text-yellow-800 mb-4">
-                  Payment is required to process your application.
-                </p>
-                <button
-                  onClick={() => router.push("/apply/review")}
-                  className="bg-primary text-white font-semibold px-6 py-3 rounded-lg hover:bg-primary-light transition-colors"
-                >
-                  Complete Payment
+                  <ArrowLeft className="w-4 h-4 rotate-180" />
                 </button>
               </div>
             )}
@@ -276,9 +282,10 @@ export default function TrackStatusPage({
             <div className="flex justify-center pt-6">
               <button
                 onClick={() => router.push("/")}
-                className="text-primary hover:text-primary-light font-medium transition-colors"
+                className="text-primary hover:text-primary-light font-medium transition-colors inline-flex items-center gap-2"
               >
-                ← Back to Home
+                <ArrowLeft className="w-4 h-4" />
+                Back to Home
               </button>
             </div>
           </div>

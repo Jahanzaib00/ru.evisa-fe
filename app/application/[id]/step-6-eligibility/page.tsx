@@ -2,7 +2,7 @@
 
 import { use, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   step6EligibilitySchema,
@@ -10,9 +10,11 @@ import {
 } from "@/app/lib/validation/application";
 import { useTravelers } from "@/app/lib/store/postPaymentStore";
 import { usePostPaymentApplication } from "@/app/lib/hooks/usePostPaymentApplication";
+import { useFormSubmit } from "@/app/lib/hooks/useFormSubmit";
 import Input from "@/app/components/ui/Input";
 import Button from "@/app/components/ui/Button";
 import TravelerAccordion from "@/app/components/application/TravelerAccordion";
+import RadioGroup from "@/app/components/ui/RadioGroup";
 
 interface Traveler {
   id: string;
@@ -92,41 +94,54 @@ export default function Step6EligibilityPage({
   const [currentTravelerId, setCurrentTravelerId] = useState<string>("");
   const [selectedPlatforms, setSelectedPlatforms] = useState<string[]>([]);
   const travelers = useTravelers();
-  const { updateTravelerEligibility, updateTravelerSocialMedia, isLoading, error } =
-    usePostPaymentApplication();
+  const { saveStep, isLoading, error } = usePostPaymentApplication();
 
   const {
     register,
+    control,
     handleSubmit,
+    reset,
+    setError: setFormError,
     setValue,
+    watch,
     formState: { errors },
   } = useForm<Step6EligibilityFormData>({
     resolver: zodResolver(step6EligibilitySchema),
   });
 
+  // Log errors to see what's failing
+  useEffect(() => {
+    if (Object.keys(errors).length > 0) {
+      console.log("❌ FORM VALIDATION ERRORS:", errors);
+    }
+  }, [errors]);
+
+  // Initialize with first traveler on mount only
   useEffect(() => {
     if (travelers.length > 0 && !currentTravelerId) {
       setCurrentTravelerId(travelers[0].id);
       loadTravelerData(travelers[0]);
     }
-  }, [travelers]);
+  }, []);
 
   const loadTravelerData = (traveler: Traveler) => {
-    // Eligibility questions
-    setValue("eligibilityQ1", traveler.eligibilityQ1 || false);
-    setValue("eligibilityQ2", traveler.eligibilityQ2 || false);
-    setValue("eligibilityQ3", traveler.eligibilityQ3 || false);
-    setValue("eligibilityQ4", traveler.eligibilityQ4 || false);
-    setValue("eligibilityQ5", traveler.eligibilityQ5 || false);
-    setValue("eligibilityQ6", traveler.eligibilityQ6 || false);
-    setValue("eligibilityQ7", traveler.eligibilityQ7 || false);
-    setValue("eligibilityQ8", traveler.eligibilityQ8 || false);
-    setValue("eligibilityQ9", traveler.eligibilityQ9 || false);
-
-    // Social media
+    // Update selected platforms state
     setSelectedPlatforms(traveler.socialMediaPlatforms || []);
-    setValue("socialMediaPlatforms", traveler.socialMediaPlatforms || []);
-    setValue("socialMediaHandles", traveler.socialMediaHandles || {});
+
+    // Reset form with all data
+    reset({
+      eligibilityQ1: traveler.eligibilityQ1 || false,
+      eligibilityQ2: traveler.eligibilityQ2 || false,
+      eligibilityQ3: traveler.eligibilityQ3 || false,
+      eligibilityQ4: traveler.eligibilityQ4 || false,
+      eligibilityQ5: traveler.eligibilityQ5 || false,
+      eligibilityQ6: traveler.eligibilityQ6 || false,
+      eligibilityQ7: traveler.eligibilityQ7 || false,
+      eligibilityQ8: traveler.eligibilityQ8 || false,
+      eligibilityQ9: traveler.eligibilityQ9 || false,
+      socialMediaPlatforms: traveler.socialMediaPlatforms || [],
+      socialMediaHandles: traveler.socialMediaHandles || {},
+    });
   };
 
   const handleTravelerChange = (travelerId: string) => {
@@ -146,64 +161,45 @@ export default function Step6EligibilityPage({
     setValue("socialMediaPlatforms", newPlatforms);
   };
 
-  const onSubmit = async (data: Step6EligibilityFormData) => {
-    if (!currentTravelerId) return;
+  const onSubmit = useFormSubmit(
+    setFormError,
+    async (data: Step6EligibilityFormData) => {
+      console.log("💾 SUBMITTING FORM DATA:", data);
 
-    // Split into eligibility and social media data
-    const {
-      eligibilityQ1,
-      eligibilityQ2,
-      eligibilityQ3,
-      eligibilityQ4,
-      eligibilityQ5,
-      eligibilityQ6,
-      eligibilityQ7,
-      eligibilityQ8,
-      eligibilityQ9,
-      socialMediaPlatforms,
-      socialMediaHandles,
-    } = data;
+      if (!currentTravelerId) throw new Error("No traveler selected");
 
-    const eligibilityData = {
-      eligibilityQ1,
-      eligibilityQ2,
-      eligibilityQ3,
-      eligibilityQ4,
-      eligibilityQ5,
-      eligibilityQ6,
-      eligibilityQ7,
-      eligibilityQ8,
-      eligibilityQ9,
-    };
+      const travelerData = {
+        id: currentTravelerId,
+        ...data,
+      };
 
-    const socialMediaData = {
-      socialMediaPlatforms,
-      socialMediaHandles,
-    };
+      console.log("📤 SENDING TO BACKEND:", travelerData);
 
-    // Update eligibility
-    const eligibilitySuccess = await updateTravelerEligibility(
-      currentTravelerId,
-      eligibilityData
-    );
-    if (!eligibilitySuccess) return;
+      // Save all data in one call
+      const success = await saveStep(travelerData);
+      if (!success)
+        throw new Error(
+          error || "Failed to save eligibility and social media information"
+        );
 
-    // Update social media
-    const socialSuccess = await updateTravelerSocialMedia(
-      currentTravelerId,
-      socialMediaData
-    );
-    if (!socialSuccess) return;
-
-    // Move to next traveler or next step
-    const currentIndex = travelers.findIndex((t) => t.id === currentTravelerId);
-    if (currentIndex < travelers.length - 1) {
-      const nextTraveler = travelers[currentIndex + 1];
-      setCurrentTravelerId(nextTraveler.id);
-      loadTravelerData(nextTraveler);
-    } else {
-      router.push(`/application/${params.id}/step-7-review`);
+      // Move to next traveler or next step
+      const currentIndex = travelers.findIndex(
+        (t) => t.id === currentTravelerId
+      );
+      if (currentIndex < travelers.length - 1) {
+        // Switch to next traveler
+        handleTravelerChange(travelers[currentIndex + 1].id);
+      } else {
+        // All travelers done, move to next step
+        router.push(`/application/${params.id}/step-7-review`);
+      }
     }
+  );
+
+  // Add handler to log when form submit is attempted
+  const handleFormSubmit = (e: React.FormEvent) => {
+    console.log("🔘 FORM SUBMIT CLICKED");
+    handleSubmit(onSubmit)(e);
   };
 
   return (
@@ -213,7 +209,8 @@ export default function Step6EligibilityPage({
           Eligibility & Security Questions
         </h1>
         <p className="text-gray-600">
-          Please answer all questions truthfully. These are required by U.S. Customs.
+          Please answer all questions truthfully. These are required by U.S.
+          Customs.
         </p>
       </div>
 
@@ -228,13 +225,12 @@ export default function Step6EligibilityPage({
         activeTravelerId={currentTravelerId}
         onTravelerChange={handleTravelerChange}
         renderContent={() => (
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
+          <form onSubmit={handleFormSubmit} className="space-y-8">
             {/* Eligibility Questions Section */}
             <section className="space-y-6">
-              <h2 className="text-lg font-semibold text-gray-900">Security Questions</h2>
-              <p className="text-sm text-gray-600">
-                For most travelers, the answer to all questions is <strong>No</strong>.
-              </p>
+              <h2 className="text-lg font-semibold text-gray-900">
+                Security Questions
+              </h2>
 
               {ELIGIBILITY_QUESTIONS.map((question, index) => (
                 <div
@@ -246,33 +242,23 @@ export default function Step6EligibilityPage({
                       {index + 1}
                     </div>
                     <div className="flex-1">
-                      <p className="text-sm font-medium text-gray-900 mb-3">
-                        {question.text}
-                      </p>
-                      <div className="flex space-x-6">
-                        <label className="flex items-center">
-                          <input
-                            type="radio"
-                            value="false"
-                            {...register(question.id as any, {
-                              setValueAs: (v) => v === "true",
-                            })}
-                            className="mr-2"
+                      <Controller
+                        name={question.id as any}
+                        control={control}
+                        render={({ field }) => (
+                          <RadioGroup
+                            label={question.text}
+                            options={[
+                              { value: "false", label: "No" },
+                              { value: "true", label: "Yes" },
+                            ]}
+                            value={field.value ? "true" : "false"}
+                            onChange={(val) => field.onChange(val === "true")}
+                            onBlur={field.onBlur}
+                            layout="horizontal"
                           />
-                          No
-                        </label>
-                        <label className="flex items-center">
-                          <input
-                            type="radio"
-                            value="true"
-                            {...register(question.id as any, {
-                              setValueAs: (v) => v === "true",
-                            })}
-                            className="mr-2"
-                          />
-                          Yes
-                        </label>
-                      </div>
+                        )}
+                      />
                     </div>
                   </div>
                 </div>
@@ -281,7 +267,9 @@ export default function Step6EligibilityPage({
 
             {/* Social Media Section */}
             <section className="space-y-4 pt-6 border-t border-gray-200">
-              <h2 className="text-lg font-semibold text-gray-900">Social Media</h2>
+              <h2 className="text-lg font-semibold text-gray-900">
+                Social Media
+              </h2>
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">

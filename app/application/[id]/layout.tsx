@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { ReactNode, use, useState, useEffect } from "react";
+import { ReactNode, use, useState, useEffect, useMemo } from "react";
 import {
   Menu,
   X,
@@ -30,6 +30,38 @@ interface Step {
   icon: ReactNode;
   description?: string;
   completed?: boolean;
+}
+
+// Check if a step has required data completed
+function checkStepCompleted(stepId: string, application: any): boolean {
+  if (!application) return false;
+
+  const travelers = application.travelers || [];
+  if (travelers.length === 0) return false;
+
+  switch (stepId) {
+    case "step-1-personal":
+      return travelers.every((t: any) => t.firstName && t.lastName && t.email);
+    case "step-2-passport":
+      return travelers.every(
+        (t: any) => t.passportNumber && t.nationalityOnPassport
+      );
+    case "step-3-us-travel":
+      return !!application.purposeOfVisit;
+    case "step-4-contact":
+      return travelers.every((t: any) => t.phoneNumber && t.addressLine1);
+    case "step-5-employment":
+      return travelers.every((t: any) => t.isEmployed !== undefined);
+    case "step-6-eligibility":
+      return travelers.every(
+        (t: any) =>
+          t.eligibilityQ1 !== undefined && t.eligibilityQ2 !== undefined
+      );
+    case "step-7-review":
+      return false; // Review is never "completed"
+    default:
+      return false;
+  }
 }
 
 const STEPS: Step[] = [
@@ -108,10 +140,13 @@ export default function ApplicationLayout({
     pathname.includes(step.href)
   );
   const currentStep = STEPS[currentStepIndex];
-  const progressPercentage =
-    currentStepIndex >= 0
-      ? Math.round(((currentStepIndex + 1) / STEPS.length) * 100)
-      : 0;
+
+  const stepCompletionStatus = useMemo(
+    () => STEPS.map((step) => checkStepCompleted(step.id, application)),
+    [application]
+  );
+  const completedCount = stepCompletionStatus.filter(Boolean).length;
+  const progressPercentage = Math.round((completedCount / STEPS.length) * 100);
 
   // Load application data once on mount
   useEffect(() => {
@@ -260,7 +295,7 @@ export default function ApplicationLayout({
                 />
               </div>
               <p className="text-xs text-gray-500 mt-2">
-                {currentStepIndex + 1} of {STEPS.length} steps completed
+                {completedCount} of {STEPS.length} steps completed
               </p>
             </div>
 
@@ -269,27 +304,16 @@ export default function ApplicationLayout({
               <p className="px-3 mb-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">
                 Application Steps
               </p>
-              {STEPS.map((step, index) => {
+              {STEPS.map((step) => {
                 const isActive = pathname.includes(step.href);
-                const isCompleted = index < currentStepIndex;
-                const isCurrent = index === currentStepIndex;
-                const isAccessible = index <= currentStepIndex;
+                // Check if step is actually completed based on data
+                const isCompleted = checkStepCompleted(step.id, application);
 
                 return (
                   <Link
                     key={step.id}
-                    href={
-                      isAccessible
-                        ? `/application/${params?.id}${step.href}`
-                        : "#"
-                    }
-                    onClick={(e) => {
-                      if (!isAccessible) {
-                        e.preventDefault();
-                        return;
-                      }
-                      setSidebarOpen(false);
-                    }}
+                    href={`/application/${params?.id}${step.href}`}
+                    onClick={() => setSidebarOpen(false)}
                     className={`
                       group relative flex items-center gap-3 px-3 py-3 rounded-lg transition-all duration-200
                       ${
@@ -297,9 +321,7 @@ export default function ApplicationLayout({
                           ? "bg-primary text-white shadow-md"
                           : isCompleted
                           ? "bg-green-50 text-success hover:bg-green-100"
-                          : isAccessible
-                          ? "text-gray-700 hover:bg-gray-100"
-                          : "text-gray-400 cursor-not-allowed opacity-60"
+                          : "text-gray-700 hover:bg-gray-100"
                       }
                     `}
                   >
@@ -312,9 +334,7 @@ export default function ApplicationLayout({
                             ? "bg-white/20 text-white shadow-inner"
                             : isCompleted
                             ? "bg-success text-white"
-                            : isAccessible
-                            ? "bg-gray-200 text-gray-600"
-                            : "bg-gray-100 text-gray-400"
+                            : "bg-gray-200 text-gray-600"
                         }
                       `}
                     >

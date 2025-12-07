@@ -2,7 +2,7 @@
 
 import { use, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   travelerEmploymentSchema,
@@ -10,10 +10,12 @@ import {
 } from "@/app/lib/validation/application";
 import { useTravelers } from "@/app/lib/store/postPaymentStore";
 import { usePostPaymentApplication } from "@/app/lib/hooks/usePostPaymentApplication";
+import { useFormSubmit } from "@/app/lib/hooks/useFormSubmit";
 import Input from "@/app/components/ui/Input";
 import Button from "@/app/components/ui/Button";
 import TravelerAccordion from "@/app/components/application/TravelerAccordion";
-import CountrySelect from "@/app/components/ui/CountrySelectWrapper";
+import CountrySelect from "@/app/components/ui/CountrySelect";
+import RadioGroup from "@/app/components/ui/RadioGroup";
 
 interface Traveler {
   id: string;
@@ -39,13 +41,14 @@ export default function Step5EmploymentPage({
   const params = use(paramsPromise);
   const [currentTravelerId, setCurrentTravelerId] = useState<string>("");
   const travelers = useTravelers();
-  const { updateTravelerEmployment, isLoading, error } =
-    usePostPaymentApplication();
+  const { saveStep, isLoading, error } = usePostPaymentApplication();
 
   const {
     register,
+    control,
     handleSubmit,
-    setValue,
+    reset,
+    setError: setFormError,
     watch,
     formState: { errors },
   } = useForm<TravelerEmploymentFormData>({
@@ -54,23 +57,26 @@ export default function Step5EmploymentPage({
 
   const watchIsEmployed = watch("isEmployed");
 
+  // Initialize with first traveler on mount only
   useEffect(() => {
     if (travelers.length > 0 && !currentTravelerId) {
       setCurrentTravelerId(travelers[0].id);
       loadTravelerData(travelers[0]);
     }
-  }, [travelers]);
+  }, []);
 
   const loadTravelerData = (traveler: Traveler) => {
-    setValue("isEmployed", traveler.isEmployed || false);
-    setValue("jobTitle", traveler.jobTitle || "");
-    setValue("employerName", traveler.employerName || "");
-    setValue("employerAddressLine1", traveler.employerAddressLine1 || "");
-    setValue("employerAddressLine2", traveler.employerAddressLine2 || "");
-    setValue("employerCity", traveler.employerCity || "");
-    setValue("employerStateProvince", traveler.employerStateProvince || "");
-    setValue("employerCountry", traveler.employerCountry || "");
-    setValue("employerPhone", traveler.employerPhone || "");
+    reset({
+      isEmployed: traveler.isEmployed || false,
+      jobTitle: traveler.jobTitle || "",
+      employerName: traveler.employerName || "",
+      employerAddressLine1: traveler.employerAddressLine1 || "",
+      employerAddressLine2: traveler.employerAddressLine2 || "",
+      employerCity: traveler.employerCity || "",
+      employerStateProvince: traveler.employerStateProvince || "",
+      employerCountry: traveler.employerCountry || "",
+      employerPhone: traveler.employerPhone || "",
+    });
   };
 
   const handleTravelerChange = (travelerId: string) => {
@@ -81,22 +87,34 @@ export default function Step5EmploymentPage({
     }
   };
 
-  const onSubmit = async (data: TravelerEmploymentFormData) => {
-    if (!currentTravelerId) return;
+  const onSubmit = useFormSubmit(
+    setFormError,
+    async (data: TravelerEmploymentFormData) => {
+      if (!currentTravelerId) throw new Error("No traveler selected");
 
-    const success = await updateTravelerEmployment(currentTravelerId, data);
-    if (!success) return;
+      const travelerData = {
+        id: currentTravelerId,
+        ...data,
+      };
 
-    // Move to next traveler or next step
-    const currentIndex = travelers.findIndex((t) => t.id === currentTravelerId);
-    if (currentIndex < travelers.length - 1) {
-      const nextTraveler = travelers[currentIndex + 1];
-      setCurrentTravelerId(nextTraveler.id);
-      loadTravelerData(nextTraveler);
-    } else {
-      router.push(`/application/${params.id}/step-6-eligibility`);
+      // Save all data in one call
+      const success = await saveStep(travelerData);
+      if (!success)
+        throw new Error(error || "Failed to save employment information");
+
+      // Move to next traveler or next step
+      const currentIndex = travelers.findIndex(
+        (t) => t.id === currentTravelerId
+      );
+      if (currentIndex < travelers.length - 1) {
+        // Switch to next traveler
+        handleTravelerChange(travelers[currentIndex + 1].id);
+      } else {
+        // All travelers done, move to next step
+        router.push(`/application/${params.id}/step-6-eligibility`);
+      }
     }
-  };
+  );
 
   return (
     <div>
@@ -123,45 +141,34 @@ export default function Step5EmploymentPage({
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
             {/* Employment Status Section */}
             <section className="space-y-4">
-              <h2 className="text-lg font-semibold text-gray-900">Employment Status</h2>
+              <h2 className="text-lg font-semibold text-gray-900">
+                Employment Status
+              </h2>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Are you currently employed?
-                </label>
-                <div className="flex space-x-6">
-                  <label className="flex items-center">
-                    <input
-                      type="radio"
-                      value="false"
-                      checked={!watchIsEmployed}
-                      {...register("isEmployed", {
-                        setValueAs: (v) => v === "true",
-                      })}
-                      className="mr-2"
-                    />
-                    Not currently employed
-                  </label>
-                  <label className="flex items-center">
-                    <input
-                      type="radio"
-                      value="true"
-                      checked={watchIsEmployed}
-                      {...register("isEmployed", {
-                        setValueAs: (v) => v === "true",
-                      })}
-                      className="mr-2"
-                    />
-                    Currently employed
-                  </label>
-                </div>
-              </div>
+              <Controller
+                name="isEmployed"
+                control={control}
+                render={({ field }) => (
+                  <RadioGroup
+                    label="Are you currently employed?"
+                    options={[
+                      { value: "false", label: "Not currently employed" },
+                      { value: "true", label: "Currently employed" },
+                    ]}
+                    value={field.value ? "true" : "false"}
+                    onChange={(val) => field.onChange(val === "true")}
+                    onBlur={field.onBlur}
+                  />
+                )}
+              />
             </section>
 
             {/* Employer Details Section - Conditional */}
             {watchIsEmployed && (
               <section className="space-y-4 pt-6 border-t border-gray-200">
-                <h2 className="text-lg font-semibold text-gray-900">Employer Details</h2>
+                <h2 className="text-lg font-semibold text-gray-900">
+                  Employer Details
+                </h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <Input
@@ -211,11 +218,20 @@ export default function Step5EmploymentPage({
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <CountrySelect
-                    label="Employer Country"
-                    error={errors.employerCountry?.message}
-                    required={watchIsEmployed}
-                    {...register("employerCountry")}
+                  <Controller
+                    name="employerCountry"
+                    control={control}
+                    render={({ field }) => (
+                      <CountrySelect
+                        label="Employer Country"
+                        error={errors.employerCountry?.message}
+                        required={watchIsEmployed}
+                        value={field.value}
+                        onChange={field.onChange}
+                        onBlur={field.onBlur}
+                        valueType="name"
+                      />
+                    )}
                   />
 
                   <Input

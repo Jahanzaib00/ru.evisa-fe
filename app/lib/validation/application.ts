@@ -38,9 +38,9 @@ export const travelDetailsSchema = z
   .object({
     isTransiting: z.boolean(),
     transitDestination: z.string().optional(),
-    pointOfEntry: z.string().min(1, "Point of entry is required"),
-    arrivalDate: z.string().min(1, "Arrival date is required"),
-    flightVesselNumber: z.string().min(1, "Flight/Vessel number is required"),
+    pointOfEntry: z.string().optional(),
+    arrivalDate: z.string().optional(),
+    flightVesselNumber: z.string().optional(),
     purposeOfVisit: z.enum(["TOURISM", "BUSINESS", "TRANSIT"], {
       message: "Purpose of visit is required",
     }),
@@ -193,10 +193,10 @@ export type TravelerEmploymentFormData = z.infer<
 // TRAVELER EMERGENCY CONTACT
 // ============================================
 export const travelerEmergencyContactSchema = z.object({
-  emergencyContactFirstName: z.string().min(1, "First name is required"),
-  emergencyContactLastName: z.string().min(1, "Last name is required"),
-  emergencyContactEmail: z.string().email("Invalid email address"),
-  emergencyContactPhone: z.string().min(1, "Phone number is required"),
+  emergencyContactFirstName: z.string().optional(),
+  emergencyContactLastName: z.string().optional(),
+  emergencyContactEmail: z.string().optional(),
+  emergencyContactPhone: z.string().optional(),
 });
 
 export type TravelerEmergencyContactFormData = z.infer<
@@ -268,9 +268,9 @@ export const step2PassportSchema = travelerPassportSchema
 export type Step2PassportFormData = z.infer<typeof step2PassportSchema>;
 
 // STEP 3: US Contact + US Stay + Travel Details
-export const step3USTravelSchema = usContactSchema
-  .merge(usStaySchema)
-  .merge(travelDetailsSchema);
+// NOTE: US Contact and Stay sections are currently commented out in the form
+// Only validate travel details for now
+export const step3USTravelSchema = travelDetailsSchema;
 export type Step3USTravelFormData = z.infer<typeof step3USTravelSchema>;
 
 // STEP 4: Contact + Emergency Contact

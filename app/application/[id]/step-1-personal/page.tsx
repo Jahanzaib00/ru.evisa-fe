@@ -2,7 +2,7 @@
 
 import { use, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   step1PersonalSchema,
@@ -10,11 +10,12 @@ import {
 } from "@/app/lib/validation/application";
 import { useTravelers } from "@/app/lib/store/postPaymentStore";
 import { usePostPaymentApplication } from "@/app/lib/hooks/usePostPaymentApplication";
+import { useFormSubmit } from "@/app/lib/hooks/useFormSubmit";
 import Input from "@/app/components/ui/Input";
 import Select from "@/app/components/ui/Select";
 import Button from "@/app/components/ui/Button";
 import TravelerAccordion from "@/app/components/application/TravelerAccordion";
-import CountrySelect from "@/app/components/ui/CountrySelectWrapper";
+import CountrySelect from "@/app/components/ui/CountrySelect";
 import FileUpload from "@/app/components/ui/FileUpload";
 
 interface Traveler {
@@ -47,42 +48,46 @@ export default function Step1PersonalPage({
   const params = use(paramsPromise);
   const [currentTravelerId, setCurrentTravelerId] = useState<string>("");
   const travelers = useTravelers();
-  const { updateTravelerPersonal, updateTravelerParents, isLoading, error } =
-    usePostPaymentApplication();
+  const { saveStep, isLoading, error } = usePostPaymentApplication();
 
   const {
     register,
+    control,
     handleSubmit,
-    setValue,
+    reset,
+    setError: setFormError,
     formState: { errors },
   } = useForm<Step1PersonalFormData>({
     resolver: zodResolver(step1PersonalSchema),
   });
 
+  // Initialize with first traveler on mount only
   useEffect(() => {
     if (travelers.length > 0 && !currentTravelerId) {
       setCurrentTravelerId(travelers[0].id);
       loadTravelerData(travelers[0]);
     }
-  }, [travelers]);
+  }, []);
 
   const loadTravelerData = (traveler: Traveler) => {
-    setValue("firstName", traveler.firstName || "");
-    setValue("middleName", traveler.middleName || "");
-    setValue("lastName", traveler.lastName || "");
-    setValue("aliases", traveler.aliases || []);
-    setValue("gender", traveler.gender as "M" | "F" | "X");
-    setValue("birthDay", traveler.birthDay || 1);
-    setValue("birthMonth", traveler.birthMonth || 1);
-    setValue("birthYear", traveler.birthYear || 2000);
-    setValue("cityOfBirth", traveler.cityOfBirth || "");
-    setValue("countryOfBirth", traveler.countryOfBirth || "");
-    setValue("maritalStatus", traveler.maritalStatus as any);
-    setValue("email", traveler.email || "");
-    setValue("fatherFamilyName", traveler.fatherFamilyName || "");
-    setValue("fatherFirstName", traveler.fatherFirstName || "");
-    setValue("motherFamilyName", traveler.motherFamilyName || "");
-    setValue("motherFirstName", traveler.motherFirstName || "");
+    reset({
+      firstName: traveler.firstName || "",
+      middleName: traveler.middleName || "",
+      lastName: traveler.lastName || "",
+      aliases: traveler.aliases || [],
+      gender: traveler.gender as "M" | "F" | "X",
+      birthDay: traveler.birthDay || 1,
+      birthMonth: traveler.birthMonth || 1,
+      birthYear: traveler.birthYear || 2000,
+      cityOfBirth: traveler.cityOfBirth || "",
+      countryOfBirth: traveler.countryOfBirth || "",
+      maritalStatus: traveler.maritalStatus as any,
+      email: traveler.email || "",
+      fatherFamilyName: traveler.fatherFamilyName || "",
+      fatherFirstName: traveler.fatherFirstName || "",
+      motherFamilyName: traveler.motherFamilyName || "",
+      motherFirstName: traveler.motherFirstName || "",
+    });
   };
 
   const handleTravelerChange = (travelerId: string) => {
@@ -95,50 +100,37 @@ export default function Step1PersonalPage({
 
   const handlePhotoUpload = async (url: string) => {
     if (!currentTravelerId) return;
-    await updateTravelerPersonal(currentTravelerId, { photoUrl: url });
+    await saveStep({ id: currentTravelerId, photoUrl: url }, undefined);
   };
 
-  const onSubmit = async (data: Step1PersonalFormData) => {
-    if (!currentTravelerId) return;
+  const onSubmit = useFormSubmit(
+    setFormError,
+    async (data: Step1PersonalFormData) => {
+      if (!currentTravelerId) throw new Error("No traveler selected");
+      const travelerData = {
+        id: currentTravelerId,
+        ...data,
+      };
 
-    // Split into personal and parents data
-    const {
-      fatherFamilyName,
-      fatherFirstName,
-      motherFamilyName,
-      motherFirstName,
-      ...personalData
-    } = data;
-    const parentsData = {
-      fatherFamilyName,
-      fatherFirstName,
-      motherFamilyName,
-      motherFirstName,
-    };
+      const success = await saveStep(travelerData, undefined);
+      if (!success)
+        throw new Error(error || "Failed to save personal information");
 
-    // Update both personal and parents info
-    const personalSuccess = await updateTravelerPersonal(
-      currentTravelerId,
-      personalData
-    );
-    if (!personalSuccess) return;
+      // Move to next traveler or next step
+      const currentIndex = travelers.findIndex(
+        (t) => t.id === currentTravelerId
+      );
 
-    const parentsSuccess = await updateTravelerParents(
-      currentTravelerId,
-      parentsData
-    );
-    if (!parentsSuccess) return;
-
-    // Move to next traveler or next step
-    const currentIndex = travelers.findIndex((t) => t.id === currentTravelerId);
-    if (currentIndex < travelers.length - 1) {
-      const nextTraveler = travelers[currentIndex + 1];
-      setCurrentTravelerId(nextTraveler.id);
-      loadTravelerData(nextTraveler);
-    } else {
-      router.push(`/application/${params.id}/step-2-passport`);
+      if (currentIndex < travelers.length - 1) {
+        // Switch to next traveler
+        const nextTravelerId = travelers[currentIndex + 1].id;
+        handleTravelerChange(nextTravelerId);
+      } else {
+        // All travelers done, move to next step
+        router.push(`/application/${params.id}/step-2-passport`);
+      }
     }
-  };
+  );
 
   return (
     <div>
@@ -242,11 +234,20 @@ export default function Step1PersonalPage({
                   {...register("cityOfBirth")}
                 />
 
-                <CountrySelect
-                  label="Country of Birth"
-                  error={errors.countryOfBirth?.message}
-                  required
-                  {...register("countryOfBirth")}
+                <Controller
+                  name="countryOfBirth"
+                  control={control}
+                  render={({ field }) => (
+                    <CountrySelect
+                      label="Country of Birth"
+                      error={errors.countryOfBirth?.message}
+                      required
+                      value={field.value}
+                      onChange={field.onChange}
+                      onBlur={field.onBlur}
+                      valueType="name"
+                    />
+                  )}
                 />
               </div>
 
@@ -301,9 +302,6 @@ export default function Step1PersonalPage({
               </h2>
 
               <div className="space-y-4">
-                <h3 className="text-md font-medium text-gray-800">
-                  Father's Information
-                </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <Input
                     label="Father's First Name"
@@ -320,9 +318,6 @@ export default function Step1PersonalPage({
               </div>
 
               <div className="space-y-4">
-                <h3 className="text-md font-medium text-gray-800">
-                  Mother's Information
-                </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <Input
                     label="Mother's First Name"

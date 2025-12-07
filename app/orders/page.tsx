@@ -1,15 +1,16 @@
 "use client";
 
 import { useEffect } from "react";
-import { useAuth } from "../hooks/useAuth";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useAuth } from "../hooks/useAuth";
+import { useApplications } from "../hooks/useApplications";
+import { ApplicationStatus } from "../lib/api/types";
 import Header from "../components/layout/Header";
 import Alert from "../components/ui/Alert";
 import Badge, { getStatusBadgeVariant } from "../components/ui/Badge";
 import Button from "../components/ui/Button";
 import { LoadingSpinner } from "../components/ui/Loader";
-import { useApplications } from "../hooks/useApplications";
 
 export default function OrdersPage() {
   const { user, isLoading: authLoading } = useAuth();
@@ -30,6 +31,23 @@ export default function OrdersPage() {
       month: "long",
       day: "numeric",
     });
+  };
+
+  const handleApplicationClick = (
+    applicationId: string,
+    status: ApplicationStatus
+  ) => {
+    // DRAFT or PENDING_PAYMENT -> redirect to step-1-personal to complete form
+    if (
+      status === ApplicationStatus.DRAFT ||
+      status === ApplicationStatus.PENDING_PAYMENT
+    ) {
+      router.push(`/application/${applicationId}/step-1-personal`);
+      return;
+    }
+
+    // SUBMITTED, UNDER_REVIEW, APPROVED, DENIED -> redirect to track page
+    router.push(`/track/${applicationId}`);
   };
 
   if (authLoading || isLoading) {
@@ -157,20 +175,39 @@ export default function OrdersPage() {
                   </div>
 
                   <div className="mt-6 flex gap-3">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="flex-1 sm:flex-none"
-                    >
-                      View Details
-                    </Button>
-                    {application.status === "DRAFT" && (
+                    {(application.status === ApplicationStatus.DRAFT ||
+                      application.status ===
+                        ApplicationStatus.PENDING_PAYMENT) && (
                       <Button
                         variant="primary"
                         size="sm"
                         className="flex-1 sm:flex-none"
+                        onClick={() =>
+                          handleApplicationClick(
+                            application.id,
+                            application.status
+                          )
+                        }
                       >
                         Complete Application
+                      </Button>
+                    )}
+                    {(application.status === ApplicationStatus.SUBMITTED ||
+                      application.status === ApplicationStatus.UNDER_REVIEW ||
+                      application.status === ApplicationStatus.APPROVED ||
+                      application.status === ApplicationStatus.DENIED) && (
+                      <Button
+                        variant="primary"
+                        size="sm"
+                        className="flex-1 sm:flex-none"
+                        onClick={() =>
+                          handleApplicationClick(
+                            application.id,
+                            application.status
+                          )
+                        }
+                      >
+                        Track Status
                       </Button>
                     )}
                   </div>

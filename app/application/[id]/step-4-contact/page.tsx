@@ -2,7 +2,7 @@
 
 import { use, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   step4ContactSchema,
@@ -10,11 +10,12 @@ import {
 } from "@/app/lib/validation/application";
 import { useTravelers } from "@/app/lib/store/postPaymentStore";
 import { usePostPaymentApplication } from "@/app/lib/hooks/usePostPaymentApplication";
+import { useFormSubmit } from "@/app/lib/hooks/useFormSubmit";
 import Input from "@/app/components/ui/Input";
 import Select from "@/app/components/ui/Select";
 import Button from "@/app/components/ui/Button";
 import TravelerAccordion from "@/app/components/application/TravelerAccordion";
-import CountrySelect from "@/app/components/ui/CountrySelectWrapper";
+import CountrySelect from "@/app/components/ui/CountrySelect";
 
 interface Traveler {
   id: string;
@@ -43,51 +44,42 @@ export default function Step4ContactPage({
   const params = use(paramsPromise);
   const [currentTravelerId, setCurrentTravelerId] = useState<string>("");
   const travelers = useTravelers();
-  const {
-    updateTravelerContact,
-    updateTravelerEmergencyContact,
-    isLoading,
-    error,
-  } = usePostPaymentApplication();
+  const { saveStep, isLoading, error } = usePostPaymentApplication();
 
   const {
     register,
+    control,
     handleSubmit,
-    setValue,
+    reset,
+    setError: setFormError,
     formState: { errors },
   } = useForm<Step4ContactFormData>({
     resolver: zodResolver(step4ContactSchema),
   });
 
+  // Initialize with first traveler on mount only
   useEffect(() => {
     if (travelers.length > 0 && !currentTravelerId) {
       setCurrentTravelerId(travelers[0].id);
       loadTravelerData(travelers[0]);
     }
-  }, [travelers]);
+  }, []);
 
   const loadTravelerData = (traveler: Traveler) => {
-    // Contact fields
-    setValue("phoneNumber", traveler.phoneNumber || "");
-    setValue("phoneType", (traveler.phoneType as any) || "MOBILE");
-    setValue("addressLine1", traveler.addressLine1 || "");
-    setValue("addressLine2", traveler.addressLine2 || "");
-    setValue("city", traveler.city || "");
-    setValue("stateProvinceRegion", traveler.stateProvinceRegion || "");
-    setValue("postalCode", traveler.postalCode || "");
-    setValue("country", traveler.country || "");
-
-    // Emergency contact fields
-    setValue(
-      "emergencyContactFirstName",
-      traveler.emergencyContactFirstName || ""
-    );
-    setValue(
-      "emergencyContactLastName",
-      traveler.emergencyContactLastName || ""
-    );
-    setValue("emergencyContactEmail", traveler.emergencyContactEmail || "");
-    setValue("emergencyContactPhone", traveler.emergencyContactPhone || "");
+    reset({
+      phoneNumber: traveler.phoneNumber || "",
+      phoneType: (traveler.phoneType as any) || "MOBILE",
+      addressLine1: traveler.addressLine1 || "",
+      addressLine2: traveler.addressLine2 || "",
+      city: traveler.city || "",
+      stateProvinceRegion: traveler.stateProvinceRegion || "",
+      postalCode: traveler.postalCode || "",
+      country: traveler.country || "",
+      emergencyContactFirstName: traveler.emergencyContactFirstName || "",
+      emergencyContactLastName: traveler.emergencyContactLastName || "",
+      emergencyContactEmail: traveler.emergencyContactEmail || "",
+      emergencyContactPhone: traveler.emergencyContactPhone || "",
+    });
   };
 
   const handleTravelerChange = (travelerId: string) => {
@@ -98,67 +90,34 @@ export default function Step4ContactPage({
     }
   };
 
-  const onSubmit = async (data: Step4ContactFormData) => {
-    if (!currentTravelerId) return;
+  const onSubmit = useFormSubmit(
+    setFormError,
+    async (data: Step4ContactFormData) => {
+      if (!currentTravelerId) throw new Error("No traveler selected");
 
-    // Split into contact and emergency contact data
-    const {
-      phoneNumber,
-      phoneType,
-      addressLine1,
-      addressLine2,
-      city,
-      stateProvinceRegion,
-      postalCode,
-      country,
-      emergencyContactFirstName,
-      emergencyContactLastName,
-      emergencyContactEmail,
-      emergencyContactPhone,
-    } = data;
+      const travelerData = {
+        id: currentTravelerId,
+        ...data,
+      };
 
-    const contactData = {
-      phoneNumber,
-      phoneType,
-      addressLine1,
-      addressLine2,
-      city,
-      stateProvinceRegion,
-      postalCode,
-      country,
-    };
+      // Save all data in one call
+      const success = await saveStep(travelerData);
+      if (!success)
+        throw new Error(error || "Failed to save contact information");
 
-    const emergencyContactData = {
-      emergencyContactFirstName,
-      emergencyContactLastName,
-      emergencyContactEmail,
-      emergencyContactPhone,
-    };
-
-    // Update contact info
-    const contactSuccess = await updateTravelerContact(
-      currentTravelerId,
-      contactData
-    );
-    if (!contactSuccess) return;
-
-    // Update emergency contact
-    const emergencySuccess = await updateTravelerEmergencyContact(
-      currentTravelerId,
-      emergencyContactData
-    );
-    if (!emergencySuccess) return;
-
-    // Move to next traveler or next step
-    const currentIndex = travelers.findIndex((t) => t.id === currentTravelerId);
-    if (currentIndex < travelers.length - 1) {
-      const nextTraveler = travelers[currentIndex + 1];
-      setCurrentTravelerId(nextTraveler.id);
-      loadTravelerData(nextTraveler);
-    } else {
-      router.push(`/application/${params.id}/step-5-employment`);
+      // Move to next traveler or next step
+      const currentIndex = travelers.findIndex(
+        (t) => t.id === currentTravelerId
+      );
+      if (currentIndex < travelers.length - 1) {
+        // Switch to next traveler
+        handleTravelerChange(travelers[currentIndex + 1].id);
+      } else {
+        // All travelers done, move to next step
+        router.push(`/application/${params.id}/step-5-employment`);
+      }
     }
-  };
+  );
 
   return (
     <div>
@@ -249,11 +208,20 @@ export default function Step4ContactPage({
                   {...register("postalCode")}
                 />
 
-                <CountrySelect
-                  label="Country"
-                  error={errors.country?.message}
-                  required
-                  {...register("country")}
+                <Controller
+                  name="country"
+                  control={control}
+                  render={({ field }) => (
+                    <CountrySelect
+                      label="Country"
+                      error={errors.country?.message}
+                      required
+                      value={field.value}
+                      onChange={field.onChange}
+                      onBlur={field.onBlur}
+                      valueType="name"
+                    />
+                  )}
                 />
               </div>
             </section>

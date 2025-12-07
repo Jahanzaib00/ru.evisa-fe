@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, ChangeEvent } from "react";
+import { useState, useRef, ChangeEvent, useEffect } from "react";
 import {
   Upload,
   X,
@@ -47,6 +47,11 @@ export default function FileUpload({
   const [uploadError, setUploadError] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  // Update preview when currentFileUrl changes (e.g., when switching travelers or navigating back)
+  useEffect(() => {
+    setPreview(currentFileUrl || null);
+  }, [currentFileUrl]);
+
   const handleFileSelect = async (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -78,6 +83,10 @@ export default function FileUpload({
     } catch (err: any) {
       console.error("Upload error:", err);
       setUploadError(err.message || "Upload failed. Please try again.");
+      // Reset file input so user can retry with the same file
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
     } finally {
       setUploading(false);
       setProgress(0);

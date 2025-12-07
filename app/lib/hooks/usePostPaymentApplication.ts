@@ -13,37 +13,7 @@ interface UsePostPaymentApplicationReturn {
   // Data loading
   loadApplication: (id: string) => Promise<boolean>;
 
-  // Application-level updates
-  updateUsContact: (data: any) => Promise<boolean>;
-  updateUsStay: (data: any) => Promise<boolean>;
-  updateTravelDetails: (data: any) => Promise<boolean>;
-
-  // Traveler-level updates
-  updateTravelerPersonal: (travelerId: string, data: any) => Promise<boolean>;
-  updateTravelerParents: (travelerId: string, data: any) => Promise<boolean>;
-  updateTravelerContact: (travelerId: string, data: any) => Promise<boolean>;
-  updateTravelerPassport: (travelerId: string, data: any) => Promise<boolean>;
-  updateTravelerCitizenship: (
-    travelerId: string,
-    data: any
-  ) => Promise<boolean>;
-  updateTravelerEmployment: (travelerId: string, data: any) => Promise<boolean>;
-  updateTravelerEmergencyContact: (
-    travelerId: string,
-    data: any
-  ) => Promise<boolean>;
-  updateTravelerGlobalEntry: (
-    travelerId: string,
-    data: any
-  ) => Promise<boolean>;
-  updateTravelerSocialMedia: (
-    travelerId: string,
-    data: any
-  ) => Promise<boolean>;
-  updateTravelerEligibility: (
-    travelerId: string,
-    data: any
-  ) => Promise<boolean>;
+  saveStep: (travelerData?: any, applicationData?: any) => Promise<boolean>;
 
   // Utility
   setCurrentTraveler: (id: string) => void;
@@ -64,6 +34,68 @@ export function usePostPaymentApplication(): UsePostPaymentApplicationReturn {
     setCurrentTravelerId,
     setError: setStoreError,
   } = usePostPaymentStore();
+
+  /**
+   * UNIFIED SAVE FUNCTION - Use this for ALL steps
+   * Sends all data in a single API call to the backend's saveProgress endpoint
+   *
+   * IMPORTANT: travelerData MUST include the 'id' field of the traveler being updated
+   */
+  const saveStep = useCallback(
+    async (travelerData?: any, applicationData?: any): Promise<boolean> => {
+      if (!application?.id) return false;
+
+      setIsLoading(true);
+      setError(null);
+
+      try {
+        // Build the payload
+        const payload: any = {};
+
+        if (applicationData) {
+          payload.application = applicationData;
+        }
+
+        if (travelerData) {
+          // travelerData MUST have an 'id' field
+          if (!travelerData.id) {
+            throw new Error("Traveler data must include an 'id' field");
+          }
+          payload.travelers = [travelerData];
+        }
+
+        const updated = await applicationsService.saveProgress(
+          application.id,
+          payload
+        );
+
+        // DON'T replace entire application - merge the updated data to preserve order
+        if (travelerData && travelerData.id && application.travelers) {
+          // Update only the specific traveler
+          const updatedTraveler = updated.travelers?.find((ut: any) => ut.id === travelerData.id);
+          const updatedTravelers = application.travelers.map((t: any) =>
+            t.id === travelerData.id && updatedTraveler
+              ? { ...t, ...updatedTraveler }
+              : t
+          );
+          setApplication({ ...application, travelers: updatedTravelers });
+        } else if (applicationData) {
+          // Update application-level data only
+          setApplication({ ...application, ...updated });
+        }
+
+        setIsLoading(false);
+        return true;
+      } catch (err: any) {
+        logError(err, "Saving step");
+        const errorMsg = extractErrorMessage(err, "Failed to save.");
+        setError(errorMsg);
+        setIsLoading(false);
+        return false;
+      }
+    },
+    [application?.id, setApplication]
+  );
 
   /**
    * Load application data from server
@@ -102,433 +134,6 @@ export function usePostPaymentApplication(): UsePostPaymentApplicationReturn {
   );
 
   /**
-   * Update US contact information
-   */
-  const updateUsContact = useCallback(
-    async (data: any): Promise<boolean> => {
-      if (!application?.id) return false;
-
-      setIsLoading(true);
-      setError(null);
-
-      try {
-        const updated = await applicationsService.updateUsContact(
-          application.id,
-          data
-        );
-        setApplication(updated);
-        setIsLoading(false);
-        return true;
-      } catch (err: any) {
-        logError(err, "Updating US contact");
-        const errorMsg = extractErrorMessage(
-          err,
-          "Failed to save US contact information."
-        );
-        setError(errorMsg);
-        setIsLoading(false);
-        return false;
-      }
-    },
-    [application?.id, setApplication]
-  );
-
-  /**
-   * Update US stay address
-   */
-  const updateUsStay = useCallback(
-    async (data: any): Promise<boolean> => {
-      if (!application?.id) return false;
-
-      setIsLoading(true);
-      setError(null);
-
-      try {
-        const updated = await applicationsService.updateUsStay(
-          application.id,
-          data
-        );
-        setApplication(updated);
-        setIsLoading(false);
-        return true;
-      } catch (err: any) {
-        logError(err, "Updating US stay");
-        const errorMsg = extractErrorMessage(
-          err,
-          "Failed to save US stay address."
-        );
-        setError(errorMsg);
-        setIsLoading(false);
-        return false;
-      }
-    },
-    [application?.id, setApplication]
-  );
-
-  /**
-   * Update travel details
-   */
-  const updateTravelDetails = useCallback(
-    async (data: any): Promise<boolean> => {
-      if (!application?.id) return false;
-
-      setIsLoading(true);
-      setError(null);
-
-      try {
-        const updated = await applicationsService.updateTravelDetails(
-          application.id,
-          data
-        );
-        setApplication(updated);
-        setIsLoading(false);
-        return true;
-      } catch (err: any) {
-        logError(err, "Updating travel details");
-        const errorMsg = extractErrorMessage(
-          err,
-          "Failed to save travel details."
-        );
-        setError(errorMsg);
-        setIsLoading(false);
-        return false;
-      }
-    },
-    [application?.id, setApplication]
-  );
-
-  /**
-   * Update traveler personal information
-   */
-  const updateTravelerPersonal = useCallback(
-    async (travelerId: string, data: any): Promise<boolean> => {
-      if (!application?.id) return false;
-
-      setIsLoading(true);
-      setError(null);
-
-      try {
-        const updated = await applicationsService.updateTravelerPersonal(
-          application.id,
-          travelerId,
-          data
-        );
-        setApplication(updated);
-        setIsLoading(false);
-        return true;
-      } catch (err: any) {
-        logError(err, "Updating traveler personal info");
-        const errorMsg = extractErrorMessage(
-          err,
-          "Failed to save personal information."
-        );
-        setError(errorMsg);
-        setIsLoading(false);
-        return false;
-      }
-    },
-    [application?.id, setApplication]
-  );
-
-  /**
-   * Update traveler parents information
-   */
-  const updateTravelerParents = useCallback(
-    async (travelerId: string, data: any): Promise<boolean> => {
-      if (!application?.id) return false;
-
-      setIsLoading(true);
-      setError(null);
-
-      try {
-        const updated = await applicationsService.updateTravelerParents(
-          application.id,
-          travelerId,
-          data
-        );
-        setApplication(updated);
-        setIsLoading(false);
-        return true;
-      } catch (err: any) {
-        logError(err, "Updating traveler parents");
-        const errorMsg = extractErrorMessage(
-          err,
-          "Failed to save parents information."
-        );
-        setError(errorMsg);
-        setIsLoading(false);
-        return false;
-      }
-    },
-    [application?.id, setApplication]
-  );
-
-  /**
-   * Update traveler contact information
-   */
-  const updateTravelerContact = useCallback(
-    async (travelerId: string, data: any): Promise<boolean> => {
-      if (!application?.id) return false;
-
-      setIsLoading(true);
-      setError(null);
-
-      try {
-        const updated = await applicationsService.updateTravelerContact(
-          application.id,
-          travelerId,
-          data
-        );
-        setApplication(updated);
-        setIsLoading(false);
-        return true;
-      } catch (err: any) {
-        logError(err, "Updating traveler contact");
-        const errorMsg = extractErrorMessage(
-          err,
-          "Failed to save contact information."
-        );
-        setError(errorMsg);
-        setIsLoading(false);
-        return false;
-      }
-    },
-    [application?.id, setApplication]
-  );
-
-  /**
-   * Update traveler passport information
-   */
-  const updateTravelerPassport = useCallback(
-    async (travelerId: string, data: any): Promise<boolean> => {
-      if (!application?.id) return false;
-
-      setIsLoading(true);
-      setError(null);
-
-      try {
-        const updated = await applicationsService.updateTravelerPassport(
-          application.id,
-          travelerId,
-          data
-        );
-        setApplication(updated);
-        setIsLoading(false);
-        return true;
-      } catch (err: any) {
-        logError(err, "Updating traveler passport");
-        const errorMsg = extractErrorMessage(
-          err,
-          "Failed to save passport information."
-        );
-        setError(errorMsg);
-        setIsLoading(false);
-        return false;
-      }
-    },
-    [application?.id, setApplication]
-  );
-
-  /**
-   * Update traveler citizenship information
-   */
-  const updateTravelerCitizenship = useCallback(
-    async (travelerId: string, data: any): Promise<boolean> => {
-      if (!application?.id) return false;
-
-      setIsLoading(true);
-      setError(null);
-
-      try {
-        const updated = await applicationsService.updateTravelerCitizenship(
-          application.id,
-          travelerId,
-          data
-        );
-        setApplication(updated);
-        setIsLoading(false);
-        return true;
-      } catch (err: any) {
-        logError(err, "Updating traveler citizenship");
-        const errorMsg = extractErrorMessage(
-          err,
-          "Failed to save citizenship information."
-        );
-        setError(errorMsg);
-        setIsLoading(false);
-        return false;
-      }
-    },
-    [application?.id, setApplication]
-  );
-
-  /**
-   * Update traveler employment information
-   */
-  const updateTravelerEmployment = useCallback(
-    async (travelerId: string, data: any): Promise<boolean> => {
-      if (!application?.id) return false;
-
-      setIsLoading(true);
-      setError(null);
-
-      try {
-        const updated = await applicationsService.updateTravelerEmployment(
-          application.id,
-          travelerId,
-          data
-        );
-        setApplication(updated);
-        setIsLoading(false);
-        return true;
-      } catch (err: any) {
-        logError(err, "Updating traveler employment");
-        const errorMsg = extractErrorMessage(
-          err,
-          "Failed to save employment information."
-        );
-        setError(errorMsg);
-        setIsLoading(false);
-        return false;
-      }
-    },
-    [application?.id, setApplication]
-  );
-
-  /**
-   * Update traveler emergency contact
-   */
-  const updateTravelerEmergencyContact = useCallback(
-    async (travelerId: string, data: any): Promise<boolean> => {
-      if (!application?.id) return false;
-
-      setIsLoading(true);
-      setError(null);
-
-      try {
-        const updated =
-          await applicationsService.updateTravelerEmergencyContact(
-            application.id,
-            travelerId,
-            data
-          );
-        setApplication(updated);
-        setIsLoading(false);
-        return true;
-      } catch (err: any) {
-        logError(err, "Updating emergency contact");
-        const errorMsg = extractErrorMessage(
-          err,
-          "Failed to save emergency contact."
-        );
-        setError(errorMsg);
-        setIsLoading(false);
-        return false;
-      }
-    },
-    [application?.id, setApplication]
-  );
-
-  /**
-   * Update traveler global entry information
-   */
-  const updateTravelerGlobalEntry = useCallback(
-    async (travelerId: string, data: any): Promise<boolean> => {
-      if (!application?.id) return false;
-
-      setIsLoading(true);
-      setError(null);
-
-      try {
-        const updated = await applicationsService.updateTravelerGlobalEntry(
-          application.id,
-          travelerId,
-          data
-        );
-        setApplication(updated);
-        setIsLoading(false);
-        return true;
-      } catch (err: any) {
-        logError(err, "Updating global entry");
-        const errorMsg = extractErrorMessage(
-          err,
-          "Failed to save Global Entry information."
-        );
-        setError(errorMsg);
-        setIsLoading(false);
-        return false;
-      }
-    },
-    [application?.id, setApplication]
-  );
-
-  /**
-   * Update traveler social media information
-   */
-  const updateTravelerSocialMedia = useCallback(
-    async (travelerId: string, data: any): Promise<boolean> => {
-      if (!application?.id) return false;
-
-      setIsLoading(true);
-      setError(null);
-
-      try {
-        const updated = await applicationsService.updateTravelerSocialMedia(
-          application.id,
-          travelerId,
-          data
-        );
-        setApplication(updated);
-        setIsLoading(false);
-        return true;
-      } catch (err: any) {
-        logError(err, "Updating social media");
-        const errorMsg = extractErrorMessage(
-          err,
-          "Failed to save social media information."
-        );
-        setError(errorMsg);
-        setIsLoading(false);
-        return false;
-      }
-    },
-    [application?.id, setApplication]
-  );
-
-  /**
-   * Update traveler eligibility questions
-   */
-  const updateTravelerEligibility = useCallback(
-    async (travelerId: string, data: any): Promise<boolean> => {
-      if (!application?.id) return false;
-
-      setIsLoading(true);
-      setError(null);
-
-      try {
-        const updated = await applicationsService.updateTravelerEligibility(
-          application.id,
-          travelerId,
-          data
-        );
-        setApplication(updated);
-        setIsLoading(false);
-        return true;
-      } catch (err: any) {
-        logError(err, "Updating eligibility");
-        const errorMsg = extractErrorMessage(
-          err,
-          "Failed to save eligibility information."
-        );
-        setError(errorMsg);
-        setIsLoading(false);
-        return false;
-      }
-    },
-    [application?.id, setApplication]
-  );
-
-  /**
    * Set current traveler being edited
    */
   const setCurrentTraveler = useCallback(
@@ -545,19 +150,7 @@ export function usePostPaymentApplication(): UsePostPaymentApplicationReturn {
     travelers: application?.travelers || [],
     currentTravelerId,
     loadApplication,
-    updateUsContact,
-    updateUsStay,
-    updateTravelDetails,
-    updateTravelerPersonal,
-    updateTravelerParents,
-    updateTravelerContact,
-    updateTravelerPassport,
-    updateTravelerCitizenship,
-    updateTravelerEmployment,
-    updateTravelerEmergencyContact,
-    updateTravelerGlobalEntry,
-    updateTravelerSocialMedia,
-    updateTravelerEligibility,
+    saveStep,
     setCurrentTraveler,
   };
 }

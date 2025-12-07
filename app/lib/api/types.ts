@@ -65,7 +65,8 @@ export enum TravelPurpose {
 export enum ApplicationStatus {
   DRAFT = "DRAFT",
   PENDING_PAYMENT = "PENDING_PAYMENT",
-  PROCESSING = "PROCESSING",
+  SUBMITTED = "SUBMITTED",
+  UNDER_REVIEW = "UNDER_REVIEW",
   APPROVED = "APPROVED",
   DENIED = "DENIED",
 }
