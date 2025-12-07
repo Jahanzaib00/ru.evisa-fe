@@ -57,8 +57,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       post.createdAt || new Date().toISOString(),
       post.updatedAt,
       "ESTA Visa Portal Team",
-      post.keywords,
-      post.featuredImage || undefined
+      post.keywords
     );
 
     // Ensure canonical URL is set
@@ -70,24 +69,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     // Ensure Open Graph image is set
     if (!metadata.openGraph) {
       metadata.openGraph = {};
-    }
-    if (post.featuredImage && !metadata.openGraph.images) {
-      metadata.openGraph.images = [
-        {
-          url: post.featuredImage,
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-      ];
-    }
-
-    // Twitter card
-    if (post.featuredImage) {
-      metadata.twitter = {
-        card: "summary_large_image",
-        images: [post.featuredImage],
-      };
     }
 
     return metadata;
@@ -132,7 +113,6 @@ export default async function BlogPostPage({ params }: Props) {
     datePublished: post.createdAt || new Date().toISOString(),
     dateModified: post.updatedAt,
     author: "ESTA Visa Portal Team",
-    image: post.featuredImage,
     keywords: post.keywords,
   });
 

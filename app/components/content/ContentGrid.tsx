@@ -39,10 +39,6 @@ export default function ContentGrid({
     switch (item.type) {
       case "BLOG":
         return `/blog/${item.slug}`;
-      case "GUIDE":
-        return `/guides/${item.slug}`;
-      case "COUNTRY":
-        return `/countries/${item.slug}`;
       default:
         return `/${item.slug}`;
     }
