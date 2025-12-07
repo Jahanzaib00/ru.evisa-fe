@@ -83,6 +83,7 @@ export async function generateMetadata({
   return metadata;
 }
 
+export const dynamic = "force-dynamic"; // Force dynamic rendering (no build-time fetch)
 export const revalidate = 3600; // Revalidate every hour
 
 const POSTS_PER_PAGE = 12;
