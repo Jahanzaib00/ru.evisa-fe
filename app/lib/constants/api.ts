@@ -16,7 +16,6 @@ export const RETRY_DELAY = 1000; // 1 second
 // Storage keys
 export const STORAGE_KEYS = {
   ACCESS_TOKEN: 'access_token',
-  REFRESH_TOKEN: 'refresh_token',
   USER: 'user',
   APPLICATION: 'esta-application-storage',
 } as const;

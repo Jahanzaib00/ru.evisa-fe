@@ -46,16 +46,22 @@ async function fetchAPI<T>(
     }
   }
 
+  // Get auth token from localStorage
+  const token = typeof window !== 'undefined' ? localStorage.getItem('access_token') : null;
+
   const response = await fetch(url, {
     ...options,
     headers: {
       "Content-Type": "application/json",
+      ...(token && { Authorization: `Bearer ${token}` }),
       ...options.headers,
     },
   });
 
   if (!response.ok) {
-    throw Error(`API Error: ${response.statusText}`);
+    const errorData = await response.json().catch(() => ({}));
+    const message = errorData.message || errorData.error || response.statusText;
+    throw new APIError(response.status, message);
   }
 
   const result: BackendResponse<T> = await response.json();

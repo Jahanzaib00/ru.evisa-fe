@@ -13,10 +13,9 @@ export const authService = {
       data
     );
 
-    // Store tokens and user in localStorage
+    // Store token and user in localStorage
     if (typeof window !== "undefined" && response) {
       localStorage.setItem("access_token", response.access_token);
-      localStorage.setItem("refresh_token", response.refresh_token);
       localStorage.setItem("user", JSON.stringify(response.user));
     }
 
@@ -29,10 +28,9 @@ export const authService = {
       data
     );
 
-    // Store tokens and user in localStorage
+    // Store token and user in localStorage
     if (typeof window !== "undefined" && response) {
       localStorage.setItem("access_token", response.access_token);
-      localStorage.setItem("refresh_token", response.refresh_token);
       localStorage.setItem("user", JSON.stringify(response.user));
     }
 
@@ -41,23 +39,6 @@ export const authService = {
 
   async getProfile(): Promise<{ user: User }> {
     return api.get<{ user: User }>("/auth/me");
-  },
-
-  async refreshToken(
-    refreshToken: string
-  ): Promise<{ access_token: string; refresh_token: string }> {
-    const response = await api.post<{ access_token: string; refresh_token: string }>(
-      "/auth/refresh",
-      { refresh_token: refreshToken }
-    );
-
-    // Update tokens in localStorage
-    if (typeof window !== "undefined" && response) {
-      localStorage.setItem("access_token", response.access_token);
-      localStorage.setItem("refresh_token", response.refresh_token);
-    }
-
-    return response;
   },
 
   isAuthenticated(): boolean {

@@ -56,7 +56,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     } catch (error) {
       console.error("Error fetching user profile:", error);
       localStorage.removeItem("access_token");
-      localStorage.removeItem("refresh_token");
       localStorage.removeItem("user");
     } finally {
       setIsLoading(false);
@@ -70,9 +69,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       router.push("/orders");
     } catch (error: any) {
       console.error("Login error:", error);
-      throw new Error(
-        error.response?.data?.message || error.message || "Login failed"
-      );
+      throw error;
     }
   };
 
@@ -83,19 +80,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       router.push("/orders");
     } catch (error: any) {
       console.error("Registration error:", error);
-      throw new Error(
-        error.response?.data?.message || error.message || "Registration failed"
-      );
+      throw error;
     }
   };
 
-  const logout = async () => {
+  const logout = () => {
+    // Clear user state
     setUser(null);
-    // try {
-    // await authService.logout();
-    // } finally {
-    //   router.push("/");
-    // }
+
+    // Clear localStorage
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("user");
   };
 
   const setAuthFromPayment = (token: string) => {

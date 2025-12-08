@@ -144,13 +144,16 @@ export default function OrdersPage() {
                     <div>
                       <p className="text-xs text-gray font-medium">Email</p>
                       <p className="text-sm text-gray-dark">
-                        {application.email}
+                        {application.travelers &&
+                          application.travelers[0]?.email}
                       </p>
                     </div>
                     <div>
-                      <p className="text-xs text-gray font-medium">Submitted</p>
+                      <p className="text-xs text-gray font-medium">
+                        Number of Travelers
+                      </p>
                       <p className="text-sm text-gray-dark">
-                        {formatDate(application.createdAt)}
+                        {application.travelers && application.travelers.length}
                       </p>
                     </div>
                     <div>

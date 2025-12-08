@@ -49,7 +49,7 @@ export default function Header() {
               <div className="relative">
                 <button
                   onClick={toggleUserMenu}
-                  className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 focus:outline-none"
+                  className="flex items-center space-x-2 text-gray-700 hover:text-primary-light font-medium transition-colors duration-200 focus:outline-none"
                 >
                   <div className="w-9 h-9 bg-linear-to-r from-blue-600 to-indigo-600 rounded-full flex items-center justify-center text-white font-semibold text-sm">
                     {user.firstName[0]}
@@ -86,14 +86,14 @@ export default function Header() {
                     </div>
                     <Link
                       href="/orders"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-150"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-primary-light transition-colors duration-150"
                       onClick={() => setIsUserMenuOpen(false)}
                     >
                       My Applications
                     </Link>
                     {/* <Link
                       href="/profile"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-150"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-primary-light transition-colors duration-150"
                       onClick={() => setIsUserMenuOpen(false)}
                     >
                       Account Settings
@@ -111,7 +111,7 @@ export default function Header() {
               <div className="flex items-center space-x-4">
                 <Link
                   href="/login"
-                  className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200"
+                  className="text-gray-700 hover:text-primary-light font-medium transition-colors duration-200"
                 >
                   Sign In
                 </Link>
@@ -186,14 +186,14 @@ export default function Header() {
               <>
                 <Link
                   href="/orders"
-                  className="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-150"
+                  className="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-primary-light hover:bg-blue-50 transition-colors duration-150"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   My Applications
                 </Link>
                 {/* <Link
                   href="/profile"
-                  className="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-150"
+                  className="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-primary-light hover:bg-blue-50 transition-colors duration-150"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Account Settings
@@ -209,7 +209,7 @@ export default function Header() {
               <div className="space-y-2 mt-2">
                 <Link
                   href="/login"
-                  className="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-150"
+                  className="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-primary-light hover:bg-blue-50 transition-colors duration-150"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Sign In
