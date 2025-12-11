@@ -279,7 +279,7 @@ export default function Step2PassportPage({
               </div>
 
               <Controller
-                name="nationalityOnPassport"
+              name="nationalityOnPassport"
                 control={control}
                 render={({ field }) => (
                   <CountrySelect
