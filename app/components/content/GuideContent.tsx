@@ -110,7 +110,7 @@ export default function GuideContent({ guide }: GuideContentProps) {
           {/* Inject CTA after every 2-3 sections */}
           {idx > 0 && (idx + 1) % 3 === 0 && (
             <div className="my-12 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-2xl p-8 text-center shadow-xl">
-              <h3 className="text-2xl md:text-3xl font-bold mb-4">
+              <h3 className="text-2xl md:text-3xl font-bold m-4 text-white">
                 Ready to Get Started?
               </h3>
               <p className="text-lg text-blue-100 mb-6 max-w-2xl mx-auto">
@@ -213,7 +213,7 @@ export default function GuideContent({ guide }: GuideContentProps) {
 
       {/* Bottom CTA */}
       <div className="mt-16 bg-gradient-to-br from-blue-900 to-blue-800 text-white rounded-2xl p-8 md:p-12 text-center shadow-2xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+        <h2 className="text-3xl md:text-4xl font-bold m-4 text-white">
           Apply for Your ESTA Today
         </h2>
         <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
