@@ -162,14 +162,14 @@ export default function GuidePage({
               {
                 "@type": "ListItem",
                 position: 2,
-                name: service.name,
-                item: `${SITE_URL}/${destination}`,
+                name: service.slug.toUpperCase(),
+                item: `${SITE_URL}/services/${service.slug}`,
               },
               {
                 "@type": "ListItem",
                 position: 3,
-                name: "Guides",
-                item: `${SITE_URL}/${destination}/guides`,
+                name: "Guide",
+                item: `${SITE_URL}/${destination}/guide`,
               },
               {
                 "@type": "ListItem",
@@ -205,6 +205,27 @@ export default function GuidePage({
 
       <Header />
 
+      <div className="fixed bottom-0 left-0 right-0 bg-blue-900 text-white shadow-2xl border-t-4 border-blue-600 z-50 transform translate-y-full animate-slide-up">
+        <div className="container mx-auto px-4 py-4 max-w-5xl">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="text-center sm:text-left">
+              <h3 className="text-lg font-bold">
+                Ready to Apply for {service.name}?
+              </h3>
+              <p className="text-sm text-blue-100">
+                Expert assistance • 99% approval rate • 24/7 support
+              </p>
+            </div>
+            <Link
+              href={`/${destination}/apply`}
+              className="bg-white text-blue-900 px-8 py-3 rounded-lg font-bold hover:bg-blue-50 transition-colors shadow-lg whitespace-nowrap"
+            >
+              Start Application →
+            </Link>
+          </div>
+        </div>
+      </div>
+
       <main className="min-h-screen bg-white">
         {/* Breadcrumb Navigation */}
         <section className="bg-gray-50 border-b border-gray-200 py-4">
@@ -215,17 +236,17 @@ export default function GuidePage({
               </Link>
               <ChevronRight className="w-4 h-4" />
               <Link
-                href={`/${destination}`}
+                href={`/services/${service.slug}`}
                 className="hover:text-blue-600 transition-colors"
               >
-                {service.name}
+                {service.slug.toUpperCase()}
               </Link>
               <ChevronRight className="w-4 h-4" />
               <Link
-                href={`/${destination}/guides`}
+                href={`/${destination}/guide`}
                 className="hover:text-blue-600 transition-colors"
               >
-                Guides
+                Guide
               </Link>
               <ChevronRight className="w-4 h-4" />
               <span className="text-gray-900 font-medium">{guide.title}</span>

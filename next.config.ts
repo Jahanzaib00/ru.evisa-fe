@@ -87,6 +87,18 @@ const nextConfig: NextConfig = {
         destination: "/united-states/guide",
         permanent: true,
       },
+      // Blog redirects - destination-based routing
+      {
+        source: "/blog",
+        destination: "/blog/united-states",
+        permanent: true,
+      },
+      // Legacy blog posts without destination → default to US (excluding destination slugs)
+      {
+        source: "/blog/:slug",
+        destination: "/blog/united-states/:slug",
+        permanent: true,
+      },
     ];
   },
 };
