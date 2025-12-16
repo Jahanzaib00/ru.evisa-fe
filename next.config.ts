@@ -19,84 +19,72 @@ const nextConfig: NextConfig = {
         destination: "/united-states/countries/esta-for-:country",
         permanent: true,
       },
-      // Old service-based routes to new destination-based routes
-      {
-        source: "/esta/apply",
-        destination: "/united-states/apply",
-        permanent: true,
-      },
-      {
-        source: "/uk-eta/apply",
-        destination: "/united-kingdom/apply",
-        permanent: true,
-      },
-      // Old global guides routes to service-specific guides
       // ESTA guides (contain "esta" in slug)
       {
-        source: "/guide/what-is-esta",
+        source: "/guides/what-is-esta",
         destination: "/united-states/guide/what-is-esta",
         permanent: true,
       },
       {
-        source: "/guide/esta-:slug",
+        source: "/guides/esta-:slug",
         destination: "/united-states/guide/esta-:slug",
         permanent: true,
       },
       {
-        source: "/guide/how-to-apply-esta",
+        source: "/guides/how-to-apply-esta",
         destination: "/united-states/guide/how-to-apply-esta",
         permanent: true,
       },
       {
-        source: "/guide/check-esta-status",
+        source: "/guides/check-esta-status",
         destination: "/united-states/guide/check-esta-status",
         permanent: true,
       },
       {
-        source: "/guide/renew-esta",
+        source: "/guides/renew-esta",
         destination: "/united-states/guide/renew-esta",
         permanent: true,
       },
       {
-        source: "/guide/passport-requirements-esta",
+        source: "/guides/passport-requirements-esta",
         destination: "/united-states/guide/passport-requirements-esta",
         permanent: true,
       },
       // UK ETA guides (contain "uk-eta" or "uk eta" in slug)
       {
-        source: "/guide/what-is-uk-eta",
+        source: "/guides/what-is-uk-eta",
         destination: "/united-kingdom/guide/what-is-uk-eta",
         permanent: true,
       },
       {
-        source: "/guide/uk-eta-:slug",
+        source: "/guides/uk-eta-:slug",
         destination: "/united-kingdom/guide/uk-eta-:slug",
         permanent: true,
       },
       {
-        source: "/guide/how-to-apply-uk-eta",
+        source: "/guides/how-to-apply-uk-eta",
         destination: "/united-kingdom/guide/how-to-apply-uk-eta",
         permanent: true,
       },
       {
-        source: "/guide/check-uk-eta-status",
+        source: "/guides/check-uk-eta-status",
         destination: "/united-kingdom/guide/check-uk-eta-status",
         permanent: true,
       },
       {
-        source: "/guide/renew-uk-eta",
+        source: "/guides/renew-uk-eta",
         destination: "/united-kingdom/guide/renew-uk-eta",
         permanent: true,
       },
       {
-        source: "/guide/passport-requirements-uk-eta",
+        source: "/guides/passport-requirements-uk-eta",
         destination: "/united-kingdom/guide/passport-requirements-uk-eta",
         permanent: true,
       },
       // Global /guides index → redirect to homepage or US guides as default
       {
         source: "/guides",
-        destination: "/united-states/guides",
+        destination: "/united-states/guide",
         permanent: true,
       },
     ];
