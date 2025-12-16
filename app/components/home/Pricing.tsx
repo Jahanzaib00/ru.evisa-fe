@@ -4,18 +4,21 @@ import Button from "../ui/Button";
 import Container from "../ui/Container";
 import Section from "../ui/Section";
 import { trackCTAClick } from "@/app/lib/analytics";
-import {
-  GOVERNMENT_FEE,
-  SERVICE_FEE,
-  BASE_TOTAL_FEE,
-  INCLUDED_SERVICES,
-} from "@/app/lib/constants";
+import { SERVICES, ServiceType, getCurrencySymbol } from "@/app/lib/config/services";
 
 export default function Pricing() {
   const handleCTAClick = () => {
     trackCTAClick("pricing");
     window.location.href = "/apply";
   };
+
+  // Use US ESTA as the featured service for homepage (most common)
+  const featuredService = SERVICES[ServiceType.US_ESTA];
+  const governmentFee = featuredService.pricing.government;
+  const serviceFee = featuredService.pricing.service;
+  const totalFee = governmentFee + serviceFee;
+  const currency = featuredService.pricing.currency;
+  const currencySymbol = getCurrencySymbol(currency);
 
   return (
     <Section id="pricing" background="gray" padding="xl">
@@ -35,8 +38,13 @@ export default function Pricing() {
           <div className="grid md:grid-cols-5 gap-8">
             {/* Price Breakdown */}
             <div className="md:col-span-3">
+              <div className="mb-4">
+                <span className="text-sm font-semibold text-primary bg-primary-light px-3 py-1 rounded-full">
+                  {featuredService.name}
+                </span>
+              </div>
               <h3 className="text-3xl font-bold text-primary mb-6">
-                Total: ${BASE_TOTAL_FEE.toFixed(2)} USD
+                Total: {currencySymbol}{totalFee.toFixed(2)} {currency.toUpperCase()}
               </h3>
 
               <table className="w-full mb-6">
@@ -44,13 +52,13 @@ export default function Pricing() {
                   <tr>
                     <td className="py-4 text-gray">Government Fee</td>
                     <td className="py-4 text-right font-semibold text-gray-dark">
-                      ${GOVERNMENT_FEE.toFixed(2)}
+                      {currencySymbol}{governmentFee.toFixed(2)}
                     </td>
                   </tr>
                   <tr>
                     <td className="py-4 text-gray">Services Fee</td>
                     <td className="py-4 text-right font-semibold text-gray-dark">
-                      ${SERVICE_FEE.toFixed(2)}
+                      {currencySymbol}{serviceFee.toFixed(2)}
                     </td>
                   </tr>
                   <tr className="bg-gray-lightest">
@@ -58,7 +66,7 @@ export default function Pricing() {
                       Total <span className="text-xs"> (per applicant) </span>
                     </td>
                     <td className="py-4 text-right font-bold text-2xl text-primary">
-                      ${BASE_TOTAL_FEE.toFixed(2)}
+                      {currencySymbol}{totalFee.toFixed(2)}
                     </td>
                   </tr>
                 </tbody>
@@ -83,7 +91,7 @@ export default function Pricing() {
               </h4>
 
               <ul className="space-y-3">
-                {INCLUDED_SERVICES.map((service, index) => (
+                {featuredService.includedServices.map((service, index) => (
                   <li
                     key={index}
                     className="flex items-start gap-2 text-sm text-gray"
@@ -114,7 +122,7 @@ export default function Pricing() {
               fullWidth
               onClick={handleCTAClick}
             >
-              Start Your Application – ${BASE_TOTAL_FEE.toFixed(2)}
+              Start Your Application – {currencySymbol}{totalFee.toFixed(2)}
             </Button>
           </div>
         </div>

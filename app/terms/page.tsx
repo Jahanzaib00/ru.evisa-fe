@@ -97,10 +97,10 @@ export default function TermsPage() {
               </h2>
 
               <h3 className="text-xl font-bold text-gray-dark mb-3">
-                3.1 Service Fees
+                3.1 processing fees
               </h3>
               <p className="text-gray mb-4">
-                Our total service fee is $45.00 USD per applicant, which
+                Our total processing fee is $45.00 USD per applicant, which
                 includes:
               </p>
               <ul className="list-disc pl-6 space-y-2 text-gray mb-4">
@@ -111,7 +111,7 @@ export default function TermsPage() {
                   Customs and Border Protection.
                 </li>
                 <li>
-                  <strong>Our Service Fee: $5.00</strong> - This covers our
+                  <strong>Our processing fee: $5.00</strong> - This covers our
                   application assistance services including form review, error
                   checking, status monitoring, and 24/7 support.
                 </li>
@@ -123,7 +123,7 @@ export default function TermsPage() {
               <p className="text-gray mb-4">
                 Denial Protection is available for $17.99 per applicant. If
                 purchased and your ESTA is denied, we will provide a full refund
-                of our service fee ($5.00) and the denial protection fee
+                of our processing fee ($5.00) and the denial protection fee
                 ($17.99). The government fee ($40.00) is non-refundable under
                 all circumstances.
               </p>
@@ -146,10 +146,10 @@ export default function TermsPage() {
               </h2>
 
               <h3 className="text-xl font-bold text-gray-dark mb-3">
-                4.1 Service Fee Refunds
+                4.1 processing fee Refunds
               </h3>
               <p className="text-gray mb-4">
-                You may request a refund of our service fee ($5.00) under the
+                You may request a refund of our processing fee ($5.00) under the
                 following conditions:
               </p>
               <ul className="list-disc pl-6 space-y-2 text-gray mb-4">
@@ -179,7 +179,7 @@ export default function TermsPage() {
                   application outcome
                 </li>
                 <li>
-                  Our service fee after your application has been submitted
+                  Our processing fee after your application has been submitted
                   (unless Denial Protection was purchased and application is
                   denied)
                 </li>
@@ -253,7 +253,7 @@ export default function TermsPage() {
                 <li>
                   Our total liability to you for any claim arising from our
                   services shall not exceed the amount you paid us for our
-                  service fee
+                  processing fee
                 </li>
                 <li>
                   We are not liable for indirect, incidental, consequential, or

@@ -1,7 +1,6 @@
 "use client";
 
-import { Guide } from "@/app/lib/data/guides";
-import { getGuideBySlug } from "@/app/lib/data/guides";
+import { Guide, getGuideBySlug } from "@/app/lib/data/guides";
 import Link from "next/link";
 
 interface GuideContentProps {
@@ -172,7 +171,7 @@ export default function GuideContent({ guide }: GuideContentProps) {
               return (
                 <Link
                   key={relatedGuide.slug} // unique key
-                  href={`/guides/${relatedGuide.slug}`}
+                  href={`/guide/${relatedGuide.slug}`}
                   className="block border-2 border-gray-200 rounded-xl p-6 hover:border-blue-600 hover:shadow-xl transition-all group"
                 >
                   <div className="mb-3">

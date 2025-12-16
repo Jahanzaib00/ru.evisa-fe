@@ -6,9 +6,10 @@ import { Country } from "@/app/lib/data/countries";
 
 interface SearchCountriesProps {
   countries: Country[];
+  basePath?: string; // Optional base path for links (e.g., "/esta/countries" or "/uk-eta/countries")
 }
 
-export default function SearchCountries({ countries }: SearchCountriesProps) {
+export default function SearchCountries({ countries, basePath = "/countries" }: SearchCountriesProps) {
   const [searchQuery, setSearchQuery] = useState("");
 
   // Filter countries based on search query
@@ -56,32 +57,40 @@ export default function SearchCountries({ countries }: SearchCountriesProps) {
         <div className="absolute z-50 w-full mt-2 bg-white border-2 border-gray-200 rounded-xl shadow-2xl max-h-96 overflow-y-auto">
           {filteredCountries.length > 0 ? (
             <div className="p-2">
-              {filteredCountries.map((country) => (
-                <Link
-                  key={country.slug}
-                  href={`/countries/${country.slug}`}
-                  className="block p-4 hover:bg-blue-50 rounded-lg transition-colors"
-                  onClick={() => setSearchQuery("")}
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="flex-shrink-0 text-4xl">
-                      {country.flagEmoji || "🌍"}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="font-semibold text-gray-900 mb-1">
-                        {country.name}
-                      </h3>
-                      <div className="flex items-center gap-4 text-xs text-gray-500">
-                        <span className="bg-gray-100 px-2 py-1 rounded uppercase font-semibold">
-                          {country.code}
-                        </span>
-                        <span>{country.region}</span>
-                        <span>Since {country.joinedYear}</span>
+              {filteredCountries.map((country) => {
+                const joinedInfo = country.vwpJoinedYear
+                  ? `Since ${country.vwpJoinedYear}`
+                  : country.etaPhase
+                  ? `Phase ${country.etaPhase}`
+                  : "Eligible";
+
+                return (
+                  <Link
+                    key={country.slug}
+                    href={`${basePath}/${country.slug}`}
+                    className="block p-4 hover:bg-blue-50 rounded-lg transition-colors"
+                    onClick={() => setSearchQuery("")}
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className="flex-shrink-0 text-4xl">
+                        {country.flagEmoji || "🌍"}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-semibold text-gray-900 mb-1">
+                          {country.name}
+                        </h3>
+                        <div className="flex items-center gap-4 text-xs text-gray-500">
+                          <span className="bg-gray-100 px-2 py-1 rounded uppercase font-semibold">
+                            {country.code}
+                          </span>
+                          <span>{country.region}</span>
+                          <span>{joinedInfo}</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </Link>
-              ))}
+                  </Link>
+                );
+              })}
             </div>
           ) : (
             <div className="p-8 text-center text-gray-500">

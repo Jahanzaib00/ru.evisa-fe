@@ -8,7 +8,8 @@ import { trackCTAClick } from "@/app/lib/analytics";
 export default function FinalCTA() {
   const handleCTAClick = () => {
     trackCTAClick("final-cta");
-    window.location.href = "/apply";
+    // Scroll to popular services section to let user choose
+    document.getElementById('popular-services')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -16,11 +17,11 @@ export default function FinalCTA() {
       <Container>
         <div className="text-center text-white">
           <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white">
-            Ready to Apply for Your ESTA?
+            Ready to Get Your Travel Authorization?
           </h2>
 
           <p className="text-xl md:text-2xl mb-8 opacity-90 mx-auto text-white">
-            Join 70,000+ travelers who trusted us with their ESTA application
+            Join 500,000+ travelers who trusted us with their applications
           </p>
 
           <div className="flex flex-col items-center gap-4">

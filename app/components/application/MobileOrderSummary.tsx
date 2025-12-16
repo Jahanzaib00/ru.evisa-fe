@@ -1,27 +1,30 @@
 "use client";
 
 import { useState } from "react";
+import { useApplicationStore } from "@/app/lib/store/applicationStore";
+import { getService, getCurrencySymbol } from "@/app/lib/config/services";
 
 interface MobileOrderSummaryProps {
-  totalApplicants: number;
-  governmentFee: number;
-  serviceFee: number;
   denialProtection?: boolean;
-  denialProtectionFee?: number;
   showDenialProtectionToggle?: boolean;
   onDenialProtectionChange?: (enabled: boolean) => void;
 }
 
 export default function MobileOrderSummary({
-  totalApplicants,
-  governmentFee,
-  serviceFee,
   denialProtection = false,
-  denialProtectionFee = 17.99,
   showDenialProtectionToggle = false,
   onDenialProtectionChange,
 }: MobileOrderSummaryProps) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const { totalApplicants, serviceType } = useApplicationStore();
+
+  // Get pricing from service config
+  const service = serviceType ? getService(serviceType) : null;
+  const governmentFee = service?.pricing.government || 0;
+  const serviceFee = service?.pricing.service || 0;
+  const denialProtectionFee = service?.pricing.denialProtection || 0;
+  const currency = service?.pricing.currency || "USD";
+  const currencySymbol = getCurrencySymbol(currency);
 
   const baseTotal = (governmentFee + serviceFee) * totalApplicants;
   const protectionCost = denialProtection
@@ -66,7 +69,7 @@ export default function MobileOrderSummary({
 
           {!isExpanded && (
             <p className="text-xl font-bold text-gray-dark">
-              ${grandTotal.toFixed(2)}
+              {currencySymbol}{grandTotal.toFixed(2)}
             </p>
           )}
         </div>
@@ -82,11 +85,11 @@ export default function MobileOrderSummary({
               <div className="text-right">
                 {isMultipleTravelers && (
                   <p className="text-xs text-gray mb-0.5">
-                    ${governmentFee.toFixed(2)} × {totalApplicants}
+                    {currencySymbol}{governmentFee.toFixed(2)} × {totalApplicants}
                   </p>
                 )}
                 <span className="font-semibold text-gray-dark">
-                  ${(governmentFee * totalApplicants).toFixed(2)}
+                  {currencySymbol}{(governmentFee * totalApplicants).toFixed(2)}
                 </span>
               </div>
             </div>
@@ -96,11 +99,11 @@ export default function MobileOrderSummary({
               <div className="text-right">
                 {isMultipleTravelers && (
                   <p className="text-xs text-gray mb-0.5">
-                    ${serviceFee.toFixed(2)} × {totalApplicants}
+                    {currencySymbol}{serviceFee.toFixed(2)} × {totalApplicants}
                   </p>
                 )}
                 <span className="font-semibold text-gray-dark">
-                  ${(serviceFee * totalApplicants).toFixed(2)}
+                  {currencySymbol}{(serviceFee * totalApplicants).toFixed(2)}
                 </span>
               </div>
             </div>
@@ -111,11 +114,11 @@ export default function MobileOrderSummary({
                 <div className="text-right">
                   {isMultipleTravelers && (
                     <p className="text-xs text-gray mb-0.5">
-                      ${denialProtectionFee.toFixed(2)} × {totalApplicants}
+                      {currencySymbol}{denialProtectionFee.toFixed(2)} × {totalApplicants}
                     </p>
                   )}
                   <span className="font-semibold text-gray-dark">
-                    ${protectionCost.toFixed(2)}
+                    {currencySymbol}{protectionCost.toFixed(2)}
                   </span>
                 </div>
               </div>
@@ -131,7 +134,7 @@ export default function MobileOrderSummary({
                   <p className="text-xs text-gray mb-1">For all travelers</p>
                 )}
                 <p className="text-2xl font-bold text-gray-dark">
-                  USD ${grandTotal.toFixed(2)}
+                  {currencySymbol}{grandTotal.toFixed(2)} {currency.toUpperCase()}
                 </p>
               </div>
             </div>

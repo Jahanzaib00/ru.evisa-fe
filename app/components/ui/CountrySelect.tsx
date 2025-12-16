@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, forwardRef } from "react";
-import { Country, ELIGIBLE_COUNTRIES, getFlagEmoji } from "@/app/lib/countries";
+import { Country, ALL_COUNTRIES, getFlagEmoji } from "@/app/lib/countries";
 
 interface CountrySelectProps {
   label?: string;
@@ -15,6 +15,7 @@ interface CountrySelectProps {
   disabled?: boolean;
   placeholder?: string;
   valueType?: "name" | "code"; // Whether value is country name or code
+  countries?: Country[]; // Optional custom country list, defaults to ALL_COUNTRIES
 }
 
 const CountrySelect = forwardRef<HTMLButtonElement, CountrySelectProps>(
@@ -31,6 +32,7 @@ const CountrySelect = forwardRef<HTMLButtonElement, CountrySelectProps>(
       disabled = false,
       placeholder = "Select a country",
       valueType = "name",
+      countries = ALL_COUNTRIES,
     },
     ref
   ) => {
@@ -40,12 +42,12 @@ const CountrySelect = forwardRef<HTMLButtonElement, CountrySelectProps>(
     const searchInputRef = useRef<HTMLInputElement>(null);
 
     // Find selected country
-    const selectedCountry = ELIGIBLE_COUNTRIES.find((country) =>
+    const selectedCountry = countries.find((country) =>
       valueType === "code" ? country.code === value : country.name === value
     );
 
     // Filter countries based on search
-    const filteredCountries = ELIGIBLE_COUNTRIES.filter((country) =>
+    const filteredCountries = countries.filter((country) =>
       country.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 

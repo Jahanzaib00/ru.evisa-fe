@@ -5,6 +5,7 @@ import Link from "next/link";
 import Button from "../ui/Button";
 import { Content } from "@/app/lib/api/services/content.service";
 import { ArrowLeft, ArrowRight, ArrowRightSquare } from "lucide-react";
+import InlineCTA from "./InlineCTA";
 
 interface BlogListClientProps {
   posts: Content[];
@@ -14,6 +15,7 @@ interface BlogListClientProps {
   selectedCategory?: string;
   searchQuery?: string;
   totalPosts: number;
+  destination?: string; // "united-states", "united-kingdom", "canada"
 }
 
 /**
@@ -34,8 +36,12 @@ export default function BlogListClient({
   selectedCategory,
   searchQuery,
   totalPosts,
+  destination,
 }: BlogListClientProps) {
   const router = useRouter();
+
+  // Base URL changes based on destination
+  const baseUrl = destination ? `/blog/${destination}` : "/blog";
 
   const handleCategoryChange = (category: string) => {
     const params = new URLSearchParams();
@@ -46,7 +52,7 @@ export default function BlogListClient({
       params.set("search", searchQuery);
     }
     const query = params.toString();
-    router.push(`/blog${query ? `?${query}` : ""}`);
+    router.push(`${baseUrl}${query ? `?${query}` : ""}`);
   };
 
   const handleSearch = (search: string) => {
@@ -58,7 +64,7 @@ export default function BlogListClient({
       params.set("search", search);
     }
     const query = params.toString();
-    router.push(`/blog${query ? `?${query}` : ""}`);
+    router.push(`${baseUrl}${query ? `?${query}` : ""}`);
   };
 
   const handlePageChange = (page: number) => {
@@ -73,7 +79,7 @@ export default function BlogListClient({
       params.set("page", page.toString());
     }
     const query = params.toString();
-    router.push(`/blog${query ? `?${query}` : ""}`);
+    router.push(`${baseUrl}${query ? `?${query}` : ""}`);
   };
 
   // Featured post (first post on first page only)
@@ -108,7 +114,11 @@ export default function BlogListClient({
             </span>
           </div>
           <Link
-            href={`/blog/${featuredPost.slug}`}
+            href={
+              destination
+                ? `/blog/${destination}/${featuredPost.slug}`
+                : `/blog/${featuredPost.slug}`
+            }
             className="group block bg-white border-2 border-primary rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300"
           >
             <div className="grid md:grid-cols-2 gap-6 md:gap-8 p-6 md:p-8">
@@ -308,7 +318,11 @@ export default function BlogListClient({
           {displayPosts.map((post) => (
             <Link
               key={post.id}
-              href={`/blog/${post.slug}`}
+              href={
+                destination
+                  ? `/blog/${destination}/${post.slug}`
+                  : `/blog/${post.slug}`
+              }
               className="group bg-white border border-gray-light rounded-lg hover:border-primary hover:shadow-lg transition-all duration-300 overflow-hidden"
             >
               <div className="p-6">
@@ -486,24 +500,7 @@ export default function BlogListClient({
       )}
 
       {/* CTA Section */}
-      <div className="mt-16 bg-primary text-white rounded-lg p-8 text-center">
-        <h3 className="text-2xl md:text-3xl font-bold mb-4 text-white">
-          Ready to Apply for Your ESTA?
-        </h3>
-        <p className="text-lg md:text-xl text-blue-100 mb-6">
-          Join thousands of travelers who trust us. 99% approval rate, 24/7
-          support.
-        </p>
-        <Link href="/apply">
-          <Button
-            variant="primary"
-            size="lg"
-            className="bg-white hover:text-primary hover:bg-gray-lightest"
-          >
-            Start Your Application
-          </Button>
-        </Link>
-      </div>
+      <InlineCTA variant="box" position="center" destination={destination} />
     </div>
   );
 }

@@ -1,0 +1,384 @@
+import { Guide } from "../types";
+import { ServiceType } from "@/app/lib/config/services";
+
+export const estaProcessingTime: Guide = {
+  slug: "esta-processing-time",
+  title: "ESTA Processing Time: How Long Does Approval Take? 2025 Guide",
+  description:
+    "Average ESTA processing times, what to expect after submitting your application, factors affecting processing speed, and what to do if your application takes longer than expected.",
+  serviceType: ServiceType.US_ESTA,
+  category: "questions",
+  pillarTopic: "application",
+  clusterOf: "how-to-apply-esta",
+  priority: 0.8,
+  keywords: [
+    "ESTA processing time",
+    "how long ESTA",
+    "ESTA approval time",
+    "ESTA processing speed",
+    "how fast ESTA",
+    "ESTA waiting time",
+    "ESTA decision time",
+  ],
+  estimatedReadTime: 8,
+  lastUpdated: "2025-01-15",
+  sections: [
+    {
+      id: "introduction",
+      title: "Understanding ESTA Processing Time",
+      content: [
+        "One of the biggest advantages of ESTA (Electronic System for Travel Authorization) is its fast processing time. Unlike traditional visa applications that can take weeks or months, most ESTA applications are processed almost instantly. However, processing times can vary, and it is important to understand what to expect.",
+        {
+          type: "callout",
+          title: "Quick Answer",
+          text: "The majority of ESTA applications (95%+) are approved within minutes of submission. However, U.S. Customs and Border Protection (CBP) recommends applying at least 72 hours before your departure to allow for any unexpected delays or additional processing.",
+        },
+      ],
+    },
+    {
+      id: "typical-processing-times",
+      title: "Typical ESTA Processing Times",
+      content: [
+        "Here is what you can expect for ESTA processing times in 2025:",
+        "Instant Approval (Most Common):",
+        {
+          type: "list",
+          items: [
+            "Time: Within seconds to 5 minutes",
+            "Percentage: Approximately 70-80% of applications",
+            "What it means: Your application passed automated background checks immediately",
+            "Next step: You receive 'Authorization Approved' status right away",
+          ],
+        },
+        "Fast Approval (Common):",
+        {
+          type: "list",
+          items: [
+            "Time: Within 1-4 hours",
+            "Percentage: Approximately 15-20% of applications",
+            "What it means: Your application requires slightly more processing time",
+            "Next step: Check status periodically; approval typically comes within hours",
+          ],
+        },
+        "Pending Status (Less Common):",
+        {
+          type: "list",
+          items: [
+            "Time: Up to 72 hours",
+            "Percentage: Approximately 3-5% of applications",
+            "What it means: Your application requires manual review or additional security checks",
+            "Next step: Wait up to 72 hours before checking status again",
+          ],
+        },
+        {
+          type: "callout",
+          title: "Official Guidance",
+          text: "The U.S. Department of Homeland Security officially states that ESTA applications can take up to 72 hours to process. This is the maximum timeframe, not the typical timeframe.",
+        },
+      ],
+    },
+    {
+      id: "factors-affecting-processing",
+      title: "Factors That Affect Processing Speed",
+      content: [
+        "Several factors can influence how quickly your ESTA application is processed:",
+        "1. Application Accuracy:",
+        {
+          type: "list",
+          items: [
+            "Clean applications with no errors process faster",
+            "Typos or inconsistencies may trigger additional review",
+            "Passport information that matches databases exactly speeds up approval",
+          ],
+        },
+        "2. Background Check Complexity:",
+        {
+          type: "list",
+          items: [
+            "Applicants with common names may require additional verification",
+            "Previous travel to sensitive countries may extend processing",
+            "Any criminal record or visa violations trigger manual review",
+          ],
+        },
+        "3. System Load:",
+        {
+          type: "list",
+          items: [
+            "Peak travel seasons (summer, holidays) may have slightly slower processing",
+            "Off-peak times typically see faster approvals",
+            "Time of day generally does not affect processing speed (system operates 24/7)",
+          ],
+        },
+        "4. Type of Application:",
+        {
+          type: "list",
+          items: [
+            "First-time ESTA applications may take slightly longer than renewals",
+            "Group applications are processed individually (each has own timeline)",
+            "Updated applications (corrections) may process faster than new ones",
+          ],
+        },
+        {
+          type: "warning",
+          title: "Cannot Expedite",
+          text: "There is NO expedited or rush processing option for ESTA. All applications are processed in the order received and according to automated security protocols. Be wary of third-party websites claiming to offer faster processing - they cannot.",
+        },
+      ],
+    },
+    {
+      id: "timeline-breakdown",
+      title: "What Happens During Processing",
+      content: [
+        "Understanding what happens behind the scenes during ESTA processing:",
+        "Immediate (Within Seconds):",
+        {
+          type: "list",
+          items: [
+            "Your application is submitted to the ESTA system",
+            "Payment is processed and verified",
+            "Application number is generated and displayed",
+            "Initial data validation begins (passport format, eligibility criteria)",
+          ],
+        },
+        "Within Minutes:",
+        {
+          type: "list",
+          items: [
+            "Automated background checks run against multiple databases",
+            "Security screenings conducted (no-fly lists, law enforcement databases)",
+            "Passport validity and e-passport chip data verified",
+            "Eligibility question responses analyzed",
+          ],
+        },
+        "If Pending (Up to 72 Hours):",
+        {
+          type: "list",
+          items: [
+            "Manual review by CBP officers if automated checks flag concerns",
+            "Additional cross-referencing with international databases",
+            "Verification of travel history or previous U.S. entries",
+            "Resolution of any name matches or identity verification issues",
+          ],
+        },
+        {
+          type: "callout",
+          text: "The entire ESTA process is automated and designed for speed. Most delays are due to security checks, not administrative backlog.",
+        },
+      ],
+    },
+    {
+      id: "when-to-apply",
+      title: "When Should You Apply for ESTA?",
+      content: [
+        "Timing your ESTA application correctly is important:",
+        "Recommended Timeline:",
+        {
+          type: "list",
+          items: [
+            "Ideal: Apply 2-4 weeks before your trip (gives plenty of buffer time)",
+            "Minimum: Apply at least 72 hours (3 days) before departure",
+            "Acceptable: Can apply months in advance (up to 2 years before travel)",
+            "Not recommended: Applying less than 72 hours before flight (risky if delays occur)",
+          ],
+        },
+        {
+          type: "callout",
+          title: "Best Practice",
+          text: "Apply for ESTA as soon as you decide to travel to the U.S., even before booking flights. This ensures your ESTA is approved before you make non-refundable travel arrangements.",
+        },
+        "You CAN apply for ESTA:",
+        {
+          type: "list",
+          items: [
+            "Before you have specific travel plans",
+            "Without flight or hotel bookings",
+            "Up to 2 years before your trip (ESTA is valid for 2 years)",
+            "Even if your travel dates are uncertain",
+          ],
+        },
+      ],
+    },
+    {
+      id: "checking-status-timeline",
+      title: "When and How to Check Your Application Status",
+      content: [
+        "After submitting your ESTA, here is when to check your status:",
+        "Immediately After Submission:",
+        {
+          type: "list",
+          items: [
+            "Most applications show approval status right away",
+            "Save your application number immediately",
+            "If status is 'pending', note the time",
+          ],
+        },
+        "After 1 Hour:",
+        {
+          type: "list",
+          items: [
+            "If still pending, check status again",
+            "Many pending applications are approved within 1-4 hours",
+          ],
+        },
+        "After 24 Hours:",
+        {
+          type: "list",
+          items: [
+            "Check status if still pending",
+            "Most pending applications are resolved by this point",
+          ],
+        },
+        "After 72 Hours:",
+        {
+          type: "list",
+          items: [
+            "If still pending after 72 hours, contact CBP help desk",
+            "Call +1-202-344-3710 or use the online contact form",
+            "Have your application number ready",
+          ],
+        },
+        "How to check your status:",
+        {
+          type: "list",
+          items: [
+            "Go to esta.cbp.dhs.gov",
+            'Click "Check ESTA Status"',
+            "Enter your application number and date of birth",
+            "Status will display immediately (Approved, Pending, or Travel Not Authorized)",
+          ],
+        },
+      ],
+    },
+    {
+      id: "delayed-applications",
+      title: "What to Do If Your Application Is Delayed",
+      content: [
+        "If your ESTA application is taking longer than expected:",
+        "If Pending for 24-48 Hours:",
+        {
+          type: "list",
+          items: [
+            "This is normal - wait the full 72 hours before contacting CBP",
+            "Do NOT submit a duplicate application (this can cause more delays)",
+            "Continue checking status every 12-24 hours",
+            "Avoid making final travel plans until approved",
+          ],
+        },
+        "If Pending for 72+ Hours:",
+        {
+          type: "list",
+          items: [
+            "Contact CBP Customer Service: +1-202-344-3710",
+            "Available 24 hours a day, 7 days a week",
+            "Have your application number, passport number, and date of birth ready",
+            "CBP can provide information about the delay and expected resolution time",
+          ],
+        },
+        {
+          type: "warning",
+          title: "Important",
+          text: "Do NOT book flights or make non-refundable travel plans if your ESTA is still pending. Wait for approval confirmation before finalizing travel arrangements.",
+        },
+        "Alternative Contact Methods:",
+        {
+          type: "list",
+          items: [
+            "Email: esta@dhs.gov (response time: 1-3 business days)",
+            "Online contact form: Available on esta.cbp.dhs.gov",
+            "Do not use third-party services - contact CBP directly",
+          ],
+        },
+      ],
+    },
+    {
+      id: "urgent-travel",
+      title: "Urgent Travel Situations",
+      content: [
+        "What to do if you need to travel urgently:",
+        {
+          type: "warning",
+          title: "No Emergency Processing",
+          text: "CBP does NOT offer emergency or expedited ESTA processing under any circumstances. There is no way to speed up the process, even for urgent travel, medical emergencies, or last-minute business trips.",
+        },
+        "If you need to travel within 72 hours:",
+        {
+          type: "list",
+          items: [
+            "Apply for ESTA immediately - many applications are approved within minutes",
+            "If your ESTA is approved instantly, you can travel right away",
+            "If your ESTA shows 'pending' status, you have two options:",
+            "Option 1: Wait for ESTA approval (up to 72 hours)",
+            "Option 2: Contact nearest U.S. embassy/consulate about emergency visa options",
+          ],
+        },
+        {
+          type: "callout",
+          title: "Last-Minute Travel Tip",
+          text: "If traveling urgently, apply for ESTA and monitor status closely. If approved within hours, you are cleared to travel. If still pending after 24 hours and departure is imminent, contact the U.S. embassy about emergency visa alternatives.",
+        },
+      ],
+    },
+  ],
+  faqs: [
+    {
+      question: "How long does ESTA approval usually take?",
+      answer:
+        "Most ESTA applications (70-80%) are approved instantly within seconds to 5 minutes. Another 15-20% are approved within 1-4 hours. Only 3-5% of applications require up to the full 72 hours. While CBP officially states processing can take up to 72 hours, the vast majority of applicants receive approval much faster.",
+    },
+    {
+      question: "Can I travel immediately after ESTA is approved?",
+      answer:
+        "Yes, once your ESTA shows 'Authorization Approved' status, you are cleared to travel to the United States immediately. There is no waiting period. Your ESTA is electronically linked to your passport and airlines can verify it instantly.",
+    },
+    {
+      question: "Why is my ESTA taking longer than expected?",
+      answer:
+        "ESTA applications may take longer due to: manual security review, common name requiring additional verification, previous travel to sensitive countries, minor inconsistencies in application data, or high system volume during peak travel seasons. If pending beyond 72 hours, contact CBP at +1-202-344-3710.",
+    },
+    {
+      question:
+        "Is there a way to expedite my ESTA application for urgent travel?",
+      answer:
+        "No, there is NO expedited or rush processing for ESTA under any circumstances. All applications are processed according to the same automated security protocols. Beware of third-party websites claiming to offer faster processing - they cannot actually expedite your application. If you need urgent travel and ESTA is pending, consider emergency visa options.",
+    },
+    {
+      question: "How long before my trip should I apply for ESTA?",
+      answer:
+        "CBP recommends applying at least 72 hours (3 days) before departure. However, best practice is to apply 2-4 weeks in advance to avoid any last-minute issues. You can apply as early as 2 years before your trip. It is better to apply early rather than wait until close to your travel date.",
+    },
+    {
+      question:
+        "What does 'Authorization Pending' status mean and how long will it last?",
+      answer:
+        "'Authorization Pending' means your application requires additional processing time, typically for manual review or additional security checks. This status should resolve within 72 hours. Check your status periodically. If still pending after 72 hours, contact CBP help desk for assistance.",
+    },
+    {
+      question:
+        "Can I submit a new ESTA application if mine is taking too long?",
+      answer:
+        "No, do NOT submit a duplicate application. This can cause more delays and confusion in the system. Each person should only have one active ESTA application. If your application has been pending for more than 72 hours, contact CBP instead of reapplying.",
+    },
+    {
+      question: "Does applying during certain times of day process faster?",
+      answer:
+        "No, ESTA processing times are generally consistent regardless of time of day. The ESTA system operates 24/7 with automated processing. However, peak travel seasons (summer, December holidays) may see slightly higher volumes, though this rarely affects individual processing times significantly.",
+    },
+    {
+      question: "How will I know when my ESTA is approved if it is pending?",
+      answer:
+        "If you provided an email address, you should receive a notification email when your ESTA status changes. However, email delivery is not guaranteed, so it is recommended to check your status manually at esta.cbp.dhs.gov using your application number. You can check status as often as you like.",
+    },
+    {
+      question: "Can I contact CBP to check on my pending ESTA application?",
+      answer:
+        "Yes, if your ESTA has been pending for more than 72 hours, you can contact CBP help desk at +1-202-344-3710 (available 24/7). Have your application number, passport number, and date of birth ready. For applications pending less than 72 hours, CBP recommends waiting the full processing time before calling.",
+    },
+  ],
+  relatedGuides: [
+    "how-to-apply-esta",
+    "check-esta-status",
+    "esta-requirements",
+    "esta-denied-what-to-do",
+    "esta-validity-period",
+  ],
+};

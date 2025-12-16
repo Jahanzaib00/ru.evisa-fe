@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { GuideSection } from "@/app/lib/data/guides";
+import { GuideSection } from "@/app/lib/data/guides/types";
 
 interface GuideSidebarProps {
   sections: GuideSection[];

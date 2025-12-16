@@ -4,6 +4,7 @@ export interface Content {
   id: string;
   type: "BLOG";
   category: string;
+  destination: string; // "united-states", "united-kingdom", "canada"
   title: string;
   slug: string;
   content: string;
@@ -37,6 +38,7 @@ export const contentService = {
   async getPublicContent(params?: {
     type?: string;
     category?: string;
+    destination?: string;
     search?: string;
     limit?: number;
     offset?: number;
@@ -57,6 +59,7 @@ export const contentService = {
   // Get blog posts
   async getBlogPosts(params?: {
     category?: string;
+    destination?: string;
     search?: string;
     limit?: number;
     offset?: number;
@@ -70,6 +73,7 @@ export const contentService = {
     const { data } = await this.getPublicContent({
       type: current.type,
       category: current.category,
+      destination: current.destination, // Same destination posts
       limit: limit + 1,
     });
 
@@ -78,9 +82,12 @@ export const contentService = {
   },
 
   // Get categories (backend handles filtering)
-  async getCategories(type?: string): Promise<string[]> {
+  async getCategories(type?: string, destination?: string): Promise<string[]> {
     return api.get<string[]>("/content/public/categories", {
-      params: type ? { type } : undefined,
+      params: {
+        ...(type && { type }),
+        ...(destination && { destination })
+      },
     });
   },
 };

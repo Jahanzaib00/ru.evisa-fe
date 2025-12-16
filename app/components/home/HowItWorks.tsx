@@ -5,6 +5,7 @@ import Container from "../ui/Container";
 import Section from "../ui/Section";
 import { JSX } from "react";
 import { trackCTAClick } from "@/app/lib/analytics";
+import { FileText, Eye, Mail } from "lucide-react";
 
 interface Step {
   number: number;
@@ -19,76 +20,29 @@ const steps: Step[] = [
     title: "Complete Application",
     description:
       "Fill out our simplified form with your passport and travel details. Takes about 10 minutes.",
-    icon: (
-      <svg
-        className="w-8 h-8"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-        />
-      </svg>
-    ),
+    icon: <FileText className="w-8 h-8" />,
   },
   {
     number: 2,
-    title: "We Submit & Monitor",
+    title: "We Review & Submit",
     description:
-      "We review for errors, submit to U.S. authorities, and track your application status in real-time.",
-    icon: (
-      <svg
-        className="w-8 h-8"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-        />
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-        />
-      </svg>
-    ),
+      "Our experts review for errors, submit to the relevant authorities, and track your application status in real-time.",
+    icon: <Eye className="w-8 h-8" />,
   },
   {
     number: 3,
-    title: "Receive Approval",
+    title: "Receive Authorization",
     description:
-      "Get your ESTA approval via email (usually within 24 hours). Valid for 2 years, multiple entries.",
-    icon: (
-      <svg
-        className="w-8 h-8"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M3 19v-8.93a2 2 0 01.89-1.664l7-4.666a2 2 0 012.22 0l7 4.666A2 2 0 0121 10.07V19M3 19a2 2 0 002 2h14a2 2 0 002-2M3 19l6.75-4.5M21 19l-6.75-4.5M3 10l6.75 4.5M21 10l-6.75 4.5m0 0l-1.14.76a2 2 0 01-2.22 0l-1.14-.76"
-        />
-      </svg>
-    ),
+      "Get your approved travel authorization via email. Most applications are approved within 24-72 hours.",
+    icon: <Mail className="w-8 h-8" />,
   },
 ];
 
 export default function HowItWorks() {
   const handleCTAClick = () => {
     trackCTAClick("how-it-works");
-    window.location.href = "/apply";
+    // Scroll to popular services to let user choose
+    document.getElementById('popular-services')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -97,11 +51,10 @@ export default function HowItWorks() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4">
-            Get Your ESTA in 3 Easy Steps
+            How It Works
           </h2>
-          <p className="text-lg text-gray mx-auto">
-            Our streamlined process makes getting your travel authorization
-            simple and fast
+          <p className="text-lg text-gray max-w-2xl mx-auto">
+            Our streamlined process makes getting your travel authorization simple and fast
           </p>
         </div>
 
@@ -143,7 +96,7 @@ export default function HowItWorks() {
         {/* CTA */}
         <div className="flex justify-center mt-12">
           <Button variant="secondary" size="md" onClick={handleCTAClick}>
-            Start Application Now
+            Start Your Application
           </Button>
         </div>
       </Container>

@@ -1,12 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { ApplicationStatus } from "../api/types";
-import {
-  GOVERNMENT_FEE,
-  SERVICE_FEE,
-  DENIAL_PROTECTION_FEE,
-  BASE_TOTAL_FEE,
-} from "../constants";
+import { ApplicationStatus, ServiceType } from "../api/types";
+import { getService } from "../config/services";
 
 interface Traveler {
   firstName: string;
@@ -57,6 +52,8 @@ interface EligibilityAnswers {
 interface ApplicationState {
   // Basic Info
   nationality: string;
+  destination: string;
+  serviceType: ServiceType | null;
   totalApplicants: number;
 
   // Application Management
@@ -73,10 +70,7 @@ interface ApplicationState {
   travelInfo: TravelInfo | null;
   eligibility: EligibilityAnswers | null;
 
-  // Pricing
-  governmentFee: number;
-  serviceFee: number;
-  denialProtection: number;
+  // Pricing (optional denial protection toggle)
   denialProtectionEnabled: boolean;
 
   // Payment
@@ -84,6 +78,8 @@ interface ApplicationState {
 
   // Actions
   setNationality: (nationality: string) => void;
+  setDestination: (destination: string) => void;
+  setServiceType: (serviceType: ServiceType | null) => void;
   setTotalApplicants: (count: number) => void;
   setApplicationId: (id: string | null) => void;
   setApplicationStatus: (status: ApplicationStatus | null) => void;
@@ -109,6 +105,8 @@ export const useApplicationStore = create<ApplicationState>()(
     (set, get) => ({
       // Initial State
       nationality: "",
+      destination: "",
+      serviceType: null,
       totalApplicants: 1,
       applicationId: null,
       applicationStatus: null,
@@ -118,14 +116,15 @@ export const useApplicationStore = create<ApplicationState>()(
       travelers: [],
       travelInfo: null,
       eligibility: null,
-      governmentFee: GOVERNMENT_FEE,
-      serviceFee: SERVICE_FEE,
-      denialProtection: DENIAL_PROTECTION_FEE,
       denialProtectionEnabled: false,
       orderId: null,
 
       // Actions
       setNationality: (nationality) => set({ nationality }),
+
+      setDestination: (destination) => set({ destination }),
+
+      setServiceType: (serviceType) => set({ serviceType }),
 
       setTotalApplicants: (count) =>
         set({
@@ -190,6 +189,8 @@ export const useApplicationStore = create<ApplicationState>()(
       reset: () =>
         set({
           nationality: "",
+          destination: "",
+          serviceType: null,
           totalApplicants: 1,
           applicationId: null,
           applicationStatus: null,
@@ -206,8 +207,18 @@ export const useApplicationStore = create<ApplicationState>()(
       // Computed Values
       getTotalAmount: () => {
         const state = get();
-        const base = BASE_TOTAL_FEE * state.totalApplicants;
-        return parseFloat(base.toFixed(2));
+        if (!state.serviceType) return 0;
+
+        try {
+          const service = getService(state.serviceType);
+          const baseFee = (service.pricing.government + service.pricing.service) * state.totalApplicants;
+          const protectionFee = state.denialProtectionEnabled && service.pricing.denialProtection
+            ? service.pricing.denialProtection * state.totalApplicants
+            : 0;
+          return parseFloat((baseFee + protectionFee).toFixed(2));
+        } catch {
+          return 0;
+        }
       },
 
       canUpdateApplication: () => {
@@ -222,6 +233,8 @@ export const useApplicationStore = create<ApplicationState>()(
       name: "esta-application-storage",
       partialize: (state) => ({
         nationality: state.nationality,
+        destination: state.destination,
+        serviceType: state.serviceType,
         totalApplicants: state.totalApplicants,
         applicationId: state.applicationId,
         applicationStatus: state.applicationStatus,

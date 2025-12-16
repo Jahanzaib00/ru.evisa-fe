@@ -192,7 +192,7 @@ export default function GuidesListClient({
           {guides.map((guide) => (
             <Link
               key={guide.id}
-              href={`/guides/${guide.slug}`}
+              href={`/guide/${guide.slug}`}
               className="group bg-white border border-gray-light rounded-lg hover:border-primary hover:shadow-lg transition-all duration-300 overflow-hidden"
             >
               <div className="p-6">

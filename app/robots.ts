@@ -54,7 +54,7 @@ export default function robots(): MetadataRoute.Robots {
     sitemap: [
       `${baseUrl}/sitemap.xml`,
       `${baseUrl}/blog/sitemap.xml`,
-      `${baseUrl}/guides/sitemap.xml`,
+      `${baseUrl}/guide/sitemap.xml`,
       `${baseUrl}/countries/sitemap.xml`,
     ],
     // Add host for Google (optional but recommended)

@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
-import { Guide } from "@/app/lib/data/guides";
+import { Guide } from "@/app/lib/data/guides/types";
 
 interface SearchGuidesProps {
   guides: Guide[];
@@ -61,7 +61,7 @@ export default function SearchGuides({ guides }: SearchGuidesProps) {
               {filteredGuides.map((guide) => (
                 <Link
                   key={guide.slug}
-                  href={`/guides/${guide.slug}`}
+                  href={`/guide/${guide.slug}`}
                   className="block p-4 hover:bg-blue-50 rounded-lg transition-colors"
                   onClick={() => setSearchQuery("")}
                 >

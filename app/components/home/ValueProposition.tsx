@@ -98,10 +98,10 @@ export default function ValueProposition() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4">
-            Why Choose Us for Your ESTA?
+            Why Choose Our Service?
           </h2>
           <p className="text-lg text-gray mx-auto">
-            We make the ESTA application process simple, secure, and stress-free
+            We make travel authorization applications simple, secure, and stress-free
           </p>
         </div>
 

@@ -54,6 +54,13 @@ export enum ApplicationType {
   GROUP = "GROUP",
 }
 
+// Service Types (matches backend Prisma enum)
+export enum ServiceType {
+  US_ESTA = "US_ESTA",
+  UK_ETA = "UK_ETA",
+  CANADA_ETA = "CANADA_ETA",
+}
+
 export enum TravelPurpose {
   TOURISM = "TOURISM",
   BUSINESS = "BUSINESS",
@@ -75,6 +82,9 @@ export interface Application {
   userId: string;
   status: ApplicationStatus;
   applicationType: ApplicationType;
+  serviceType: ServiceType;
+  destination?: string;
+  currency?: string;
   firstName: string;
   lastName: string;
   middleName?: string;
@@ -119,6 +129,8 @@ export interface Application {
 
 export interface CreateApplicationRequest {
   applicationType: ApplicationType;
+  serviceType: ServiceType;
+  destination?: string;
   firstName: string;
   lastName: string;
   middleName?: string;

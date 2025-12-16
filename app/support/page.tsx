@@ -26,7 +26,7 @@ const faqs: FAQItem[] = [
     category: "General",
     question: "How is your service different from the government website?",
     answer:
-      "While you can apply directly through the government website (esta.cbp.dhs.gov) for $40, our service provides additional value through expert form review, error checking, simplified application process, 24/7 multilingual support, real-time status monitoring, and resubmission assistance. We charge a $5 service fee in addition to the $40 government fee for these professional services.",
+      "While you can apply directly through the government website (esta.cbp.dhs.gov) for $40, our service provides additional value through expert form review, error checking, simplified application process, 24/7 multilingual support, real-time status monitoring, and resubmission assistance. We charge a $5 processing fee in addition to the $40 government fee for these professional services.",
   },
   {
     category: "Application Process",
@@ -56,7 +56,7 @@ const faqs: FAQItem[] = [
     category: "Pricing & Payment",
     question: "How much does ESTA cost?",
     answer:
-      "Our total fee is $45.00 USD per applicant, which includes the $40 U.S. government fee and our $5 service fee for application assistance, form review, and 24/7 support. Optional Denial Protection is available for $17.99 per applicant.",
+      "Our total fee is $45.00 USD per applicant, which includes the $40 U.S. government fee and our $5 processing fee for application assistance, form review, and 24/7 support. Optional Denial Protection is available for $17.99 per applicant.",
   },
   {
     category: "Pricing & Payment",
@@ -68,13 +68,13 @@ const faqs: FAQItem[] = [
     category: "Pricing & Payment",
     question: "What is Denial Protection?",
     answer:
-      "Denial Protection is an optional service for $17.99 per applicant. If your ESTA application is denied and you purchased this protection, we will refund our service fee ($5) and the denial protection fee ($17.99). Please note that the government fee ($40) is non-refundable under all circumstances as it's paid directly to the U.S. government.",
+      "Denial Protection is an optional service for $17.99 per applicant. If your ESTA application is denied and you purchased this protection, we will refund our processing fee ($5) and the denial protection fee ($17.99). Please note that the government fee ($40) is non-refundable under all circumstances as it's paid directly to the U.S. government.",
   },
   {
     category: "Pricing & Payment",
     question: "Can I get a refund?",
     answer:
-      "You can request a refund of our service fee ($5) before your application is submitted. Once submitted, our service fee is non-refundable unless you purchased Denial Protection and your application is denied. The government fee ($40) is never refundable as it's paid directly to U.S. Customs and Border Protection.",
+      "You can request a refund of our processing fee ($5) before your application is submitted. Once submitted, our processing fee is non-refundable unless you purchased Denial Protection and your application is denied. The government fee ($40) is never refundable as it's paid directly to U.S. Customs and Border Protection.",
   },
   {
     category: "After Submission",

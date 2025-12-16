@@ -34,9 +34,9 @@ const footerColumns: FooterColumn[] = [
   {
     title: "Resources",
     links: [
-      { text: "ESTA Guides", href: "/guides" },
-      { text: "Eligible Countries", href: "/countries" },
-      { text: "Blog & News", href: "/blog" },
+      // { text: "Travel Guides", href: "/guides" },
+      // { text: "Eligible Countries", href: "/countries" },
+      // { text: "Blog & News", href: "/blog" },
       { text: "FAQ", href: "/support#faq" },
     ],
   },
@@ -57,10 +57,11 @@ export default function Footer() {
           <div className="grid md:grid-cols-4 gap-8">
             {/* Brand Column */}
             <div>
-              <h3 className="text-2xl font-bold mb-4">ESTA Visa Portal</h3>
+              <h3 className="text-2xl font-bold mb-4">eVisa Portal</h3>
               <p className="text-sm text-gray-300 leading-relaxed">
-                Expert assistance with U.S. Electronic System for Travel
-                Authorization applications. Fast, secure, and reliable.
+                Expert assistance with travel authorization applications
+                worldwide. Fast, secure, and reliable service for all your
+                travel documents.
               </p>
             </div>
 
@@ -111,9 +112,7 @@ export default function Footer() {
         <div className="border-t border-gray-600 py-8">
           {/* Copyright */}
           <div className="text-center text-sm text-gray-400 space-y-2">
-            <p>
-              &copy; {currentYear} ESTA Visa Portal. All rights reserved.
-            </p>
+            <p>&copy; {currentYear} eVisa Portal. All rights reserved.</p>
           </div>
         </div>
       </Container>

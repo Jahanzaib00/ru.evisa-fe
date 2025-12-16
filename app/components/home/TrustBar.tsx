@@ -67,7 +67,7 @@ const stats: Stat[] = [
     ),
   },
   {
-    value: "24 Hours",
+    value: "1 Hour",
     label: "Average Processing",
     icon: (
       <svg

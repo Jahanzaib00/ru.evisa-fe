@@ -13,7 +13,7 @@ const testimonials: Testimonial[] = [
     name: "Sarah M.",
     location: "London, UK",
     rating: 5,
-    text: "Fast and easy process. Got my ESTA approved in 12 hours. Excellent support team helped me with photo requirements. Highly recommend!",
+    text: "Fast and easy process. Got my travel authorization approved in 12 hours. Excellent support team helped me with photo requirements. Highly recommend!",
   },
   {
     name: "Michael Chen",
@@ -58,7 +58,7 @@ export default function Testimonials() {
             What Our Customers Say
           </h2>
           <p className="text-lg text-gray">
-            Join thousands of satisfied travelers who trusted us with their ESTA
+            Join thousands of satisfied travelers who trusted us with their travel documents
           </p>
         </div>
 

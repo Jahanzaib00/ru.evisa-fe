@@ -5,20 +5,28 @@ import { usePathname } from "next/navigation";
 interface Step {
   number: number;
   label: string;
-  path: string;
+  pathPattern: string; // pattern like "/apply" to match against pathname
 }
 
 const steps: Step[] = [
-  { number: 1, label: "Trip details", path: "/apply" },
-  { number: 2, label: "Your info", path: "/apply/personal-details" },
-  { number: 3, label: "Passport", path: "/apply/passport-details" },
-  { number: 4, label: "Checkout", path: "/apply/review" },
+  { number: 1, label: "Trip details", pathPattern: "/apply" },
+  { number: 2, label: "Your info", pathPattern: "/apply/personal-details" },
+  { number: 3, label: "Passport", pathPattern: "/apply/passport-details" },
+  { number: 4, label: "Checkout", pathPattern: "/apply/review" },
 ];
 
 export default function StepProgress() {
   const pathname = usePathname();
 
-  const currentStepIndex = steps.findIndex((step) => pathname === step.path);
+  // Extract destination from pathname (e.g., /united-states/apply -> united-states)
+  const pathParts = pathname.split('/').filter(Boolean);
+  const destination = pathParts.length > 0 ? pathParts[0] : '';
+
+  // Match current step by checking if pathname ends with the step pattern
+  const currentStepIndex = steps.findIndex((step) =>
+    pathname === `/${destination}${step.pathPattern}` ||
+    pathname.endsWith(step.pathPattern)
+  );
   const currentStep = currentStepIndex >= 0 ? currentStepIndex + 1 : 1;
 
   return (

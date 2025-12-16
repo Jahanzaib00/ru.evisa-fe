@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useApplicationStore } from "../store/applicationStore";
 import { applicationsService } from "../api/services/applications.service";
-import { ApplicationStatus } from "../api/types";
+import { ApplicationStatus, ServiceType } from "../api/types";
 import { extractErrorMessage, logError } from "../utils/errorHandler";
 import { validateApplicationState } from "../utils/applicationStateValidator";
+import { getService } from "../config/services";
 
 interface SaveTravelersData {
   travelers: Array<{
@@ -26,7 +27,7 @@ interface SaveTravelersData {
 interface UseApplicationReturn {
   isLoading: boolean;
   error: string | null;
-  createOrGetApplication: () => Promise<string | null>;
+  createOrGetApplication: (serviceType: ServiceType) => Promise<string | null>;
   verifyApplicationState: () => Promise<boolean>;
   saveTravelers: (data: SaveTravelersData) => Promise<boolean>;
   submitApplication: () => Promise<boolean>;
@@ -49,9 +50,6 @@ export function useApplication(): UseApplicationReturn {
     nationality,
     totalApplicants,
     getTotalAmount,
-    denialProtectionEnabled,
-    travelers,
-    travelInfo,
     setApplicationId,
     setApplicationStatus,
   } = useApplicationStore();
@@ -61,7 +59,7 @@ export function useApplication(): UseApplicationReturn {
    * Silently handles invalid states (paid, submitted, etc.) by creating new application
    * Called when user clicks "Start Application" on apply page
    */
-  const createOrGetApplication = async (): Promise<string | null> => {
+  const createOrGetApplication = async (serviceType: ServiceType): Promise<string | null> => {
     setIsLoading(true);
     setError(null);
 
@@ -75,8 +73,13 @@ export function useApplication(): UseApplicationReturn {
         return validation.applicationId;
       }
 
+      // Get service configuration for destination and currency
+      const serviceConfig = getService(serviceType);
+
       // Create new application (either no existing or invalid state)
       const response = await applicationsService.create({
+        serviceType,
+        destination: serviceConfig.destinationCode,
         nationality,
         totalApplicants,
         totalAmount: getTotalAmount(),

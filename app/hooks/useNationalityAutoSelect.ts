@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { ELIGIBLE_COUNTRIES } from "@/app/lib/countries";
+import { ALL_COUNTRIES } from "@/app/lib/countries";
 import { autoSelectNationality } from "@/app/lib/ipGeolocation";
 
 /**
@@ -14,10 +14,10 @@ export function useNationalityAutoSelect(
     // Only auto-select if nationality is not already set
     if (!currentNationality) {
       const autoSelect = async () => {
-        const eligibleCodes = ELIGIBLE_COUNTRIES.map((c) => c.code);
+        const eligibleCodes = ALL_COUNTRIES.map((c) => c.code);
         const countryCode = await autoSelectNationality(eligibleCodes);
 
-        const country = ELIGIBLE_COUNTRIES.find(
+        const country = ALL_COUNTRIES.find(
           (c) => c.code.toUpperCase() === countryCode.toUpperCase()
         );
 

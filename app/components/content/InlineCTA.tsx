@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Button from "../ui/Button";
 import { trackCTAClick } from "@/app/lib/analytics";
+import { ServiceConfig } from "@/app/lib/config/services";
 
 interface InlineCTAProps {
   variant?: "box" | "banner" | "sticky" | "minimal";
@@ -11,12 +12,15 @@ interface InlineCTAProps {
   description?: string;
   buttonText?: string;
   buttonHref?: string;
+  destination?: string; // "united-states", "united-kingdom", "canada"
+  service?: ServiceConfig; // Optional service config for auto-messaging
 }
 
 /**
- * InlineCTA
+ * InlineCTA - Destination-Aware
  *
  * Conversion-focused CTA component for content pages
+ * Automatically adjusts messaging based on destination/service
  * Multiple variants for different placement strategies
  *
  * Best Practices:
@@ -27,27 +31,45 @@ interface InlineCTAProps {
 export default function InlineCTA({
   variant = "box",
   position = "mid-content",
-  title = "Ready to Apply for Your ESTA?",
-  description = "Get expert assistance with your ESTA application. 99% approval rate, 24/7 support.",
-  buttonText = "Start Your Application",
-  buttonHref = "/apply",
+  title,
+  description,
+  buttonText,
+  buttonHref,
+  destination,
+  service,
 }: InlineCTAProps) {
+  // Auto-generate messaging if service provided
+  const finalTitle =
+    title ||
+    (service
+      ? `Ready to Apply for Your ${service.name}?`
+      : "Ready to Apply for Your Travel Authorization?");
+  const finalDescription =
+    description ||
+    (service
+      ? `Get expert assistance with your ${service.name} application. 99% approval rate, 24/7 support.`
+      : "Get expert assistance with your travel authorization application. 99% approval rate, 24/7 support.");
+  const finalButtonText = buttonText || "Start Your Application";
+  const finalButtonHref =
+    buttonHref || (destination ? `/${destination}/apply` : "/apply");
   const handleClick = () => {
-    trackCTAClick(`content-${variant}-${position}`);
+    trackCTAClick(`content-${variant}-${position}-${destination || "generic"}`);
   };
 
   if (variant === "sticky") {
     return (
-      <div className="fixed bottom-0 left-0 right-0 bg-blue-900 text-white shadow-2xl border-t-4 border-blue-600 z-40 animate-slide-up">
+      <div className="fixed bottom-0 left-0 right-0 bg-blue-900 text-white shadow-2xl border-t-4 border-primary z-40 animate-slide-up">
         <div className="container mx-auto px-4 py-4 max-w-5xl">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="text-center sm:text-left">
-              <h3 className="text-lg font-bold text-white mb-1">{title}</h3>
-              <p className="text-sm text-blue-100">{description}</p>
+              <h3 className="text-lg font-bold text-white mb-1">
+                {finalTitle}
+              </h3>
+              <p className="text-sm text-blue-100">{finalDescription}</p>
             </div>
-            <Link href={buttonHref} onClick={handleClick}>
+            <Link href={finalButtonHref} onClick={handleClick}>
               <Button variant="primary" size="md">
-                {buttonText} →
+                {finalButtonText} →
               </Button>
             </Link>
           </div>
@@ -61,12 +83,12 @@ export default function InlineCTA({
       <div className="bg-gradient-to-r from-blue-900 to-blue-700 text-white rounded-lg p-6 my-8 shadow-lg">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex-1 text-center md:text-left">
-            <h3 className="text-2xl font-bold mb-2 text-white">{title}</h3>
-            <p className="text-blue-100 text-lg">{description}</p>
+            <h3 className="text-2xl font-bold mb-2 text-white">{finalTitle}</h3>
+            <p className="text-blue-100 text-lg">{finalDescription}</p>
           </div>
-          <Link href={buttonHref} onClick={handleClick}>
+          <Link href={finalButtonHref} onClick={handleClick}>
             <Button variant="primary" size="lg">
-              {buttonText} →
+              {finalButtonText} →
             </Button>
           </Link>
         </div>
@@ -76,11 +98,11 @@ export default function InlineCTA({
 
   if (variant === "minimal") {
     return (
-      <div className="bg-blue-50 border-l-4 border-blue-600 p-6 my-8 rounded-r-lg">
+      <div className="bg-blue-50 border-l-4 border-primary p-6 my-8 rounded-r-lg">
         <div className="flex items-start gap-4">
           <div className="flex-shrink-0">
             <svg
-              className="w-6 h-6 text-blue-600"
+              className="w-6 h-6 text-primary"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -95,12 +117,12 @@ export default function InlineCTA({
           </div>
           <div className="flex-1">
             <h4 className="text-lg font-semibold text-gray-900 mb-2">
-              {title}
+              {finalTitle}
             </h4>
-            <p className="text-gray-700 mb-4">{description}</p>
-            <Link href={buttonHref} onClick={handleClick}>
-              <span className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700">
-                {buttonText}
+            <p className="text-gray-700 mb-4">{finalDescription}</p>
+            <Link href={finalButtonHref} onClick={handleClick}>
+              <span className="inline-flex items-center text-primary font-semibold hover:text-blue-700">
+                {finalButtonText}
                 <svg
                   className="w-5 h-5 ml-2"
                   fill="none"
@@ -124,13 +146,13 @@ export default function InlineCTA({
 
   // Default: box variant
   return (
-    <div className="bg-blue-900 text-white rounded-xl p-8 my-12 text-center shadow-xl">
+    <div className="bg-primary text-white rounded-xl p-8 my-12 text-center shadow-xl">
       <div className="max-w-2xl mx-auto">
-        <h3 className="text-3xl font-bold mb-4 text-white">{title}</h3>
-        <p className="text-xl text-blue-100 mb-6">{description}</p>
-        <Link href={buttonHref} onClick={handleClick}>
+        <h3 className="text-3xl font-bold mb-4 text-white">{finalTitle}</h3>
+        <p className="text-xl text-blue-100 mb-6">{finalDescription}</p>
+        <Link href={finalButtonHref} onClick={handleClick}>
           <Button variant="primary" size="lg">
-            {buttonText} →
+            {finalButtonText} →
           </Button>
         </Link>
         <div className="flex flex-wrap items-center justify-center gap-6 text-sm mt-6 text-blue-100">

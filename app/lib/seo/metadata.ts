@@ -5,6 +5,8 @@
  */
 
 import { Metadata } from "next";
+import { ServiceConfig } from "@/app/lib/config/services";
+import { Country } from "@/app/lib/data/countries";
 
 const SITE_NAME = "ESTA Visa Portal";
 const SITE_URL =
@@ -192,7 +194,7 @@ export function generateGuideMetadata(
       "USA travel requirements",
       ...keywords,
     ],
-    canonicalUrl: `${SITE_URL}/guides/${guideSlug}`,
+    canonicalUrl: `${SITE_URL}/guide/${guideSlug}`,
     ogType: "article",
     author: "ESTA Visa Portal Team",
   });
@@ -221,5 +223,90 @@ export function generateBlogMetadata(
     publishedTime: createdAt,
     modifiedTime: updatedAt,
     author,
+  });
+}
+
+/**
+ * Service-specific content templates
+ */
+interface ServiceTemplate {
+  programName: string;
+  validity: string;
+  maxStay: string;
+  processingTime: string;
+}
+
+const SERVICE_TEMPLATES: Record<string, ServiceTemplate> = {
+  US_ESTA: {
+    programName: "Visa Waiver Program",
+    validity: "2 years validity",
+    maxStay: "90 days max stay",
+    processingTime: "24-72 hours processing",
+  },
+  UK_ETA: {
+    programName: "Electronic Travel Authorisation",
+    validity: "2 years validity",
+    maxStay: "6 months max stay",
+    processingTime: "Usually instant",
+  },
+  CANADA_ETA: {
+    programName: "Electronic Travel Authorization",
+    validity: "5 years validity",
+    maxStay: "6 months max stay",
+    processingTime: "Minutes to hours",
+  },
+};
+
+/**
+ * Generate metadata for countries index page (all countries for a service)
+ */
+export function generateCountriesIndexMetadata(
+  service: ServiceConfig
+): Metadata {
+  const template = SERVICE_TEMPLATES[service.type];
+
+  return generateMetadata({
+    title: `${service.name} - Eligible Countries`,
+    description: `Complete list of countries eligible for ${service.name}. ${template.validity}, ${template.maxStay}. Apply online with expert assistance and ${template.processingTime}.`,
+    keywords: [
+      `${service.slug} countries`,
+      `${service.destination} eligible countries`,
+      `${service.slug} application`,
+      service.slug,
+      `${service.destination} travel authorization`,
+      `${template.programName}`,
+      `eligible nationalities ${service.slug}`,
+      `who can apply ${service.slug}`,
+    ],
+    canonicalUrl: `${SITE_URL}/${service.slug}/countries`,
+  });
+}
+
+/**
+ * Generate metadata for individual country page
+ */
+export function generateCountryPageMetadata(
+  country: Country,
+  service: ServiceConfig
+): Metadata {
+  const template = SERVICE_TEMPLATES[service.type];
+
+  return generateMetadata({
+    title: `${service.name} for ${country.name} Citizens`,
+    description: `Complete guide to ${service.name} for ${country.name} citizens. ${template.validity}, ${template.maxStay}, ${template.processingTime}. Requirements, application process, and fees for ${country.name} nationals traveling to ${service.destination}. Apply now with expert assistance.`,
+    keywords: [
+      `${service.slug} ${country.name}`,
+      `${country.name} ${service.slug} application`,
+      `${country.name} ${service.destination} travel`,
+      `${country.name} travel authorization`,
+      `${service.slug} for ${country.name} citizens`,
+      `${country.name} ${template.programName}`,
+      `${country.name} to ${service.destination}`,
+      `${service.destination} visa ${country.name}`,
+    ],
+    canonicalUrl: `${SITE_URL}/${service.slug}/countries/${country.slug}`,
+    ogImage: `${SITE_URL}/images/countries/${country.code.toLowerCase()}-${
+      service.slug
+    }.jpg`,
   });
 }

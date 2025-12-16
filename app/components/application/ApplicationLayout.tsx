@@ -6,6 +6,7 @@ import StepProgress from "./StepProgress";
 import PricingSidebar from "./PricingSidebar";
 import { Spinner } from "../ui/Loader";
 import { useApplicationStore } from "@/app/lib/store/applicationStore";
+import { getService, getCurrencySymbol } from "@/app/lib/config/services";
 
 interface ApplicationLayoutProps {
   children: ReactNode;
@@ -42,7 +43,11 @@ export default function ApplicationLayout({
   showTotalAmount = false,
   onPreviousClick,
 }: ApplicationLayoutProps) {
-  const { getTotalAmount } = useApplicationStore();
+  const { getTotalAmount, serviceType } = useApplicationStore();
+
+  const service = serviceType ? getService(serviceType) : null;
+  const currency = service?.pricing.currency || "USD";
+  const currencySymbol = getCurrencySymbol(currency);
 
   return (
     <div className="min-h-screen bg-white">
@@ -107,7 +112,7 @@ export default function ApplicationLayout({
               suppressHydrationWarning
             >
               {showTotalAmount
-                ? `USD $${getTotalAmount().toFixed(2)}`
+                ? `${currencySymbol}${getTotalAmount().toFixed(2)} ${currency.toUpperCase()}`
                 : "Calculated at checkout"}
             </span>
           </div>

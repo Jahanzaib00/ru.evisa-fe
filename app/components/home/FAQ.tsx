@@ -12,29 +12,24 @@ interface FAQItem {
 
 const faqs: FAQItem[] = [
   {
-    question: "How long does ESTA take to process?",
+    question: "How long does processing take?",
     answer:
-      "Most ESTA applications are approved within 24 hours. We recommend applying at least 48 hours before your flight, though you can apply up to 2 years before travel. We monitor your application status and notify you immediately upon approval.",
+      "Processing times vary by service. US ESTA applications are typically approved within 24-72 hours, while UK ETA applications are often approved instantly. We recommend applying at least 3 days before your flight. We monitor your application status and notify you immediately upon approval.",
   },
   {
-    question: "How long is ESTA valid?",
+    question: "How long are travel authorizations valid?",
     answer:
-      "Your ESTA is valid for 2 years from approval date, or until your passport expires (whichever comes first). You can make multiple trips to the U.S. during this period, with each stay limited to 90 days.",
+      "Validity depends on the service. US ESTA is valid for 2 years with 90-day stays, while UK ETA is valid for 2 years with 180-day stays. All authorizations expire when your passport expires, whichever comes first.",
   },
   {
-    question: "What if my ESTA is denied?",
+    question: "What if my application is denied?",
     answer:
-      "If denied, you'll need to apply for a B1/B2 visa at the U.S. embassy. We provide full support and guidance if this occurs. ESTA denials are rare (less than 1% of applications) and usually happen due to previous immigration violations or criminal history.",
+      "If denied, you'll need to apply for a traditional visa at the embassy. We provide full support and guidance if this occurs. Denials are rare (less than 1% of applications) and usually happen due to previous immigration violations or ineligibility criteria.",
   },
   {
-    question: "Is this the official government website?",
+    question: "Can I edit my application after submission?",
     answer:
-      "No, we are a private service that assists with ESTA applications. The official government site is esta.cbp.dhs.gov. We offer additional services like form checking, multilingual support, and status monitoring for convenience. Our service fee is clearly disclosed in addition to the government fee.",
-  },
-  {
-    question: "Can I edit my ESTA after submission?",
-    answer:
-      "Once submitted, you cannot edit most fields. However, you can update your U.S. contact information and travel details. If you made a critical error, you may need to submit a new application. Contact our support team for guidance on your specific situation.",
+      "Once submitted, you cannot edit most fields. However, some services allow updates to contact information and travel details. If you made a critical error, you may need to submit a new application. Contact our support team for guidance on your specific situation.",
   },
 ];
 
@@ -84,7 +79,8 @@ export default function FAQ() {
               Frequently Asked Questions
             </h2>
             <p className="text-lg text-gray">
-              Get answers to common questions about ESTA applications
+              Get answers to common questions about travel authorization
+              applications
             </p>
           </div>
 

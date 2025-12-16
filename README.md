@@ -80,7 +80,7 @@ Edit `app/components/sections/Pricing.tsx`:
 
 ```typescript
 const OFFICIAL_ESTA_FEE = 40.0; // Official U.S. fee
-const SERVICE_FEE = 49.0; // Your service fee
+const SERVICE_FEE = 49.0; // Your processing fee
 ```
 
 ### 3. Add Images
@@ -278,7 +278,7 @@ Works on any Node.js host:
 
 - [Next.js Documentation](https://nextjs.org/docs)
 - [Tailwind CSS 4](https://tailwindcss.com/docs)
-- [Google Analytics 4](https://developers.google.com/analytics/devguides/collection/ga4)
+- [Google Analytics 4](https://developers.google.com/analytics/devguide/collection/ga4)
 
 ## 📄 License
 
