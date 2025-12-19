@@ -22,6 +22,7 @@ import {
   ServiceConfig,
 } from "@/app/lib/config/services";
 import { generateCountryPageMetadata } from "@/app/lib/seo/metadata";
+import InlineCTA from "../../components/content/InlineCTA";
 import {
   generateCountryPageSchema,
   generateCountryFAQSchema,
@@ -190,11 +191,7 @@ export default function CountryPage({
             <TravelTips country={country} service={service} />
 
             {/* CTA Section */}
-            <CTASection
-              country={country}
-              service={service}
-              destination={destination}
-            />
+            <InlineCTA service={service} destination={destination} />
 
             {/* FAQs */}
             <CountryFAQSection country={country} service={service} />
@@ -468,7 +465,7 @@ function ApplicationSteps({
         <p className="text-sm text-gray-500 mt-4">
           Join{" "}
           {country.population
-            ? `${(country.population / 1000000).toFixed(1)} million`
+            ? `${((country.population * 0.02) / 1000000).toFixed(1)} million`
             : "thousands of"}{" "}
           {country.name} citizens traveling to {service.destination}
         </p>
@@ -821,79 +818,6 @@ function TravelTips({
             </li>
           </ul>
         </div>
-      </div>
-    </div>
-  );
-}
-
-/**
- * CTA Section Component
- */
-function CTASection({
-  country,
-  service,
-  destination,
-}: {
-  country: Country;
-  service: ServiceConfig;
-  destination: string;
-}) {
-  return (
-    <div className="bg-gradient-to-br from-blue-900 to-blue-800 text-white rounded-2xl p-8 md:p-12 my-16 text-center shadow-2xl">
-      <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Apply?</h2>
-      <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-        Join{" "}
-        {country.population
-          ? `${(country.population / 1000000).toFixed(1)} million`
-          : "thousands of"}{" "}
-        {country.name} travelers who have successfully obtained their{" "}
-        {service.name} with our expert assistance
-      </p>
-      <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-        <Link
-          href={`/${destination}/apply`}
-          className="inline-block bg-white text-blue-900 px-10 py-5 rounded-xl font-bold text-xl hover:bg-blue-50 transition-colors shadow-xl"
-        >
-          Start Application Now →
-        </Link>
-        <Link
-          href="/support"
-          className="inline-block bg-blue-700 text-white px-10 py-5 rounded-xl font-bold text-xl hover:bg-blue-600 transition-colors border-2 border-blue-500"
-        >
-          Contact Support
-        </Link>
-      </div>
-      <div className="flex flex-wrap justify-center gap-6 text-sm text-blue-100">
-        <span className="flex items-center gap-2">
-          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-            <path
-              fillRule="evenodd"
-              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-              clipRule="evenodd"
-            />
-          </svg>
-          99% approval rate
-        </span>
-        <span className="flex items-center gap-2">
-          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-            <path
-              fillRule="evenodd"
-              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-              clipRule="evenodd"
-            />
-          </svg>
-          24/7 expert support
-        </span>
-        <span className="flex items-center gap-2">
-          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-            <path
-              fillRule="evenodd"
-              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-              clipRule="evenodd"
-            />
-          </svg>
-          Money-back guarantee
-        </span>
       </div>
     </div>
   );

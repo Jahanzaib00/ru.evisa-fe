@@ -20,7 +20,19 @@ import {
   getServiceByDestination,
   ServiceType,
 } from "@/app/lib/config/services";
-import { Book, ArrowRight, ChevronRight, Clock, Calendar } from "lucide-react";
+import {
+  Book,
+  ArrowRight,
+  ChevronRight,
+  Clock,
+  Calendar,
+  CheckCircle,
+} from "lucide-react";
+import InlineCTA from "@/app/components/content/InlineCTA";
+import ReadingProgress from "@/app/components/content/ReadingProgress";
+import TableOfContents from "@/app/components/content/TableOfContents";
+import FAQAccordion from "@/app/components/content/FAQAccordion";
+import BackToTop from "@/app/components/content/BackToTop";
 
 /**
  * Generate metadata for individual guide page
@@ -114,6 +126,9 @@ export default function GuidePage({
 
   return (
     <>
+      <ReadingProgress />
+      <BackToTop />
+
       {/* Structured Data - Article */}
       <script
         type="application/ld+json"
@@ -127,11 +142,11 @@ export default function GuidePage({
             dateModified: guide.lastUpdated || new Date().toISOString(),
             author: {
               "@type": "Organization",
-              name: "VisaPortal",
+              name: "eVisa Portal",
             },
             publisher: {
               "@type": "Organization",
-              name: "VisaPortal",
+              name: "eVisa Portal",
               logo: {
                 "@type": "ImageObject",
                 url: `${SITE_URL}/logo.png`,
@@ -205,31 +220,20 @@ export default function GuidePage({
 
       <Header />
 
-      <div className="fixed bottom-0 left-0 right-0 bg-blue-900 text-white shadow-2xl border-t-4 border-blue-600 z-50 transform translate-y-full animate-slide-up">
-        <div className="container mx-auto px-4 py-4 max-w-5xl">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="text-center sm:text-left">
-              <h3 className="text-lg font-bold">
-                Ready to Apply for {service.name}?
-              </h3>
-              <p className="text-sm text-blue-100">
-                Expert assistance • 99% approval rate • 24/7 support
-              </p>
-            </div>
-            <Link
-              href={`/${destination}/apply`}
-              className="bg-white text-blue-900 px-8 py-3 rounded-lg font-bold hover:bg-blue-50 transition-colors shadow-lg whitespace-nowrap"
-            >
-              Start Application →
-            </Link>
-          </div>
-        </div>
-      </div>
+      <InlineCTA
+        variant="sticky"
+        position="bottom"
+        title={`Ready to Apply for ${service.name}`}
+        description={`Expert assistance • 99% approval rate • 24/7 support`}
+        buttonText="Start Application"
+        destination={destination}
+        service={service}
+      />
 
-      <main className="min-h-screen bg-white">
+      <main className="min-h-screen bg-white scroll-smooth">
         {/* Breadcrumb Navigation */}
         <section className="bg-gray-50 border-b border-gray-200 py-4">
-          <div className="container mx-auto px-4 max-w-4xl">
+          <div className="container mx-auto px-4 max-w-6xl">
             <nav className="flex items-center gap-2 text-sm text-gray-600">
               <Link href="/" className="hover:text-blue-600 transition-colors">
                 Home
@@ -256,7 +260,7 @@ export default function GuidePage({
 
         {/* Hero Section */}
         <section className="bg-primary text-white py-12 md:py-16">
-          <div className="container mx-auto px-4 max-w-4xl">
+          <div className="container mx-auto px-4 max-w-5xl">
             <div className="flex items-center gap-3 mb-4">
               <Book className="w-8 h-8 text-blue-300" />
               <span className="text-blue-200 text-sm md:text-base font-medium">
@@ -288,76 +292,114 @@ export default function GuidePage({
 
         {/* Main Content */}
         <section className="py-12">
-          <div className="container mx-auto px-4 max-w-4xl">
+          <div className="container mx-auto px-4 max-w-5xl">
             <div className="grid lg:grid-cols-4 gap-8">
               {/* Main Content Column */}
               <div className="lg:col-span-3">
+                {/* What You'll Learn */}
+                {guide.sections && guide.sections.length > 0 && (
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-10">
+                    <h3 className="text-xl font-bold text-gray-900 mb-4">
+                      What You&apos;ll Learn
+                    </h3>
+                    <ul className="space-y-2">
+                      {guide.sections.slice(0, 4).map((section, idx) => (
+                        <li
+                          key={idx}
+                          className="flex items-start gap-2 text-gray-800"
+                        >
+                          <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                          <span>{section.title}</span>
+                        </li>
+                      ))}
+                      {guide.sections.length > 4 && (
+                        <li className="text-gray-600 text-sm ml-7">
+                          ...and {guide.sections.length - 4} more topics
+                        </li>
+                      )}
+                    </ul>
+                  </div>
+                )}
+
                 {/* Guide Sections */}
                 {guide.sections && guide.sections.length > 0 && (
-                  <div className="prose prose-lg max-w-none mb-12">
+                  <div className="mb-12">
                     {guide.sections.map((section, idx) => (
-                      <div key={idx} id={section.id} className="mb-8">
+                      <div
+                        key={idx}
+                        id={section.id}
+                        className="mb-8 scroll-mt-24"
+                      >
                         <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900">
                           {section.title}
                         </h2>
-                        {section.content.map((item, itemIdx) => {
-                          if (typeof item === "string") {
-                            return (
-                              <p key={itemIdx} className="text-gray-700 mb-4">
-                                {item}
-                              </p>
-                            );
-                          }
+                        <div className="prose prose-lg max-w-none">
+                          {section.content.map((item, itemIdx) => {
+                            if (typeof item === "string") {
+                              return (
+                                <p
+                                  key={itemIdx}
+                                  className="text-gray-700 mb-4 leading-relaxed"
+                                >
+                                  {item}
+                                </p>
+                              );
+                            }
 
-                          if ("type" in item && item.type === "list") {
-                            return (
-                              <ul
-                                key={itemIdx}
-                                className="list-disc pl-6 mb-4 space-y-2"
-                              >
-                                {item.items.map((listItem, listIdx) => (
-                                  <li key={listIdx} className="text-gray-700">
-                                    {listItem}
-                                  </li>
-                                ))}
-                              </ul>
-                            );
-                          }
+                            if ("type" in item && item.type === "list") {
+                              return (
+                                <ul
+                                  key={itemIdx}
+                                  className="space-y-2 mb-4"
+                                >
+                                  {item.items.map((listItem, listIdx) => (
+                                    <li
+                                      key={listIdx}
+                                      className="flex items-start gap-2 text-gray-700"
+                                    >
+                                      <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                                      <span>{listItem}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              );
+                            }
 
-                          if ("type" in item && item.type === "callout") {
-                            return (
-                              <div
-                                key={itemIdx}
-                                className="bg-blue-50 border-l-4 border-blue-600 p-6 mb-4 rounded-r-lg"
-                              >
-                                {item.title && (
-                                  <h4 className="font-bold text-blue-900 mb-2">
-                                    {item.title}
-                                  </h4>
-                                )}
-                                <p className="text-blue-800">{item.text}</p>
-                              </div>
-                            );
-                          }
+                            if ("type" in item && item.type === "callout") {
+                              return (
+                                <div
+                                  key={itemIdx}
+                                  className="bg-blue-50 border-l-4 border-blue-600 p-6 mb-4 rounded-r-lg"
+                                >
+                                  {item.title && (
+                                    <h4 className="font-bold text-blue-900 mb-2">
+                                      {item.title}
+                                    </h4>
+                                  )}
+                                  <p className="text-blue-800">{item.text}</p>
+                                </div>
+                              );
+                            }
 
-                          if ("type" in item && item.type === "warning") {
-                            return (
-                              <div
-                                key={itemIdx}
-                                className="bg-yellow-50 border-l-4 border-yellow-600 p-6 mb-4 rounded-r-lg"
-                              >
-                                {item.title && (
-                                  <h4 className="font-bold text-yellow-900 mb-2">
-                                    {item.title}
-                                  </h4>
-                                )}
-                                <p className="text-yellow-800">{item.text}</p>
-                              </div>
-                            );
-                          }
+                            if ("type" in item && item.type === "warning") {
+                              return (
+                                <div
+                                  key={itemIdx}
+                                  className="bg-yellow-50 border-l-4 border-yellow-600 p-6 mb-4 rounded-r-lg"
+                                >
+                                  {item.title && (
+                                    <h4 className="font-bold text-yellow-900 mb-2">
+                                      {item.title}
+                                    </h4>
+                                  )}
+                                  <p className="text-yellow-800">{item.text}</p>
+                                </div>
+                              );
+                            }
 
-                          return null;
-                        })}
+                            return null;
+                          })}
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -365,23 +407,21 @@ export default function GuidePage({
 
                 {/* FAQs Section */}
                 {guide.faqs && guide.faqs.length > 0 && (
-                  <div className="mb-12">
-                    <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900">
+                  <div id="faqs" className="mb-12 scroll-mt-24">
+                    <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900">
                       Frequently Asked Questions
                     </h2>
-                    <div className="space-y-6">
-                      {guide.faqs.map((faq, idx) => (
-                        <div
-                          key={idx}
-                          className="bg-gray-50 rounded-lg p-6 border border-gray-200"
-                        >
-                          <h3 className="text-lg md:text-xl font-bold mb-3 text-gray-900">
-                            {faq.question}
-                          </h3>
-                          <p className="text-gray-700">{faq.answer}</p>
-                        </div>
-                      ))}
-                    </div>
+                    <p className="text-gray-600 mb-6">
+                      Have more questions?{" "}
+                      <Link
+                        href="/support"
+                        className="text-blue-600 hover:text-blue-700 font-semibold"
+                      >
+                        Contact our support team
+                      </Link>
+                      .
+                    </p>
+                    <FAQAccordion faqs={guide.faqs} defaultOpen={0} />
                   </div>
                 )}
 
@@ -444,74 +484,56 @@ export default function GuidePage({
                 )}
 
                 {/* CTA Box */}
-                <div className="bg-gradient-to-br from-blue-900 to-blue-800 text-white rounded-2xl p-8 text-center">
-                  <h3 className="text-2xl md:text-3xl font-bold mb-3">
-                    Ready to Apply?
-                  </h3>
-                  <p className="text-lg text-blue-100 mb-6">
-                    Start your {service.name} application now with our simple
-                    online process
-                  </p>
-                  <Link
-                    href={`/${destination}/apply`}
-                    className="inline-block bg-white text-blue-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-50 transition-colors shadow-lg"
-                  >
-                    Start Application →
-                  </Link>
-                </div>
+                <InlineCTA
+                  title="Ready to Apply?"
+                  description={`Start your ${service.name} application now with our simple
+                    online process`}
+                  buttonText={`Start Application`}
+                  destination={destination}
+                  service={service}
+                />
               </div>
 
               {/* Sidebar */}
               <div className="lg:col-span-1">
-                {/* Table of Contents */}
+                {/* Table of Contents - Sticky */}
                 {guide.sections && guide.sections.length > 0 && (
-                  <div className="bg-gray-50 rounded-lg p-6 mb-6 sticky top-24">
-                    <h3 className="text-lg font-bold mb-4 text-gray-900">
-                      On This Page
-                    </h3>
-                    <ul className="space-y-2">
-                      {guide.sections.map((section, idx) => (
-                        <li key={idx}>
-                          <a
-                            href={`#${section.id}`}
-                            className="text-sm text-gray-600 hover:text-blue-600 transition-colors block"
-                          >
-                            {section.title}
-                          </a>
-                        </li>
-                      ))}
-                      {guide.faqs && guide.faqs.length > 0 && (
-                        <li>
-                          <a
-                            href="#faqs"
-                            className="text-sm text-gray-600 hover:text-blue-600 transition-colors block"
-                          >
-                            FAQs
-                          </a>
-                        </li>
-                      )}
-                    </ul>
+                  <div className="lg:sticky lg:top-24 mb-6">
+                    <TableOfContents
+                      sections={guide.sections}
+                      includeFAQs={guide.faqs && guide.faqs.length > 0}
+                    />
                   </div>
                 )}
 
-                {/* Pillar Pages Navigation */}
+                {/* Essential Guides - NOT sticky, scrolls away */}
                 {pillarPages.length > 0 && (
-                  <div className="bg-blue-50 rounded-lg p-6">
-                    <h3 className="text-lg font-bold mb-4 text-gray-900">
-                      Essential Guides
-                    </h3>
-                    <ul className="space-y-3">
+                  <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                    <div className="flex items-center gap-2 mb-4">
+                      <Book className="w-5 h-5 text-blue-600" />
+                      <h3 className="text-lg font-bold text-gray-900">
+                        Essential Guides
+                      </h3>
+                    </div>
+                    <ul className="space-y-2">
                       {pillarPages.map((pillar) => (
                         <li key={pillar.slug}>
                           <Link
                             href={`/${destination}/guide/${pillar.slug}`}
-                            className={`text-sm block transition-colors ${
+                            className={`flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm transition-colors ${
                               pillar.slug === guideSlug
-                                ? "text-blue-600 font-semibold"
-                                : "text-gray-700 hover:text-blue-600"
+                                ? "bg-blue-600 text-white font-semibold"
+                                : "text-gray-700 hover:bg-gray-100 hover:text-blue-600"
                             }`}
                           >
-                            {pillar.title}
+                            <ChevronRight
+                              className={`w-4 h-4 ${
+                                pillar.slug === guideSlug
+                                  ? "text-white"
+                                  : "text-gray-400"
+                              }`}
+                            />
+                            <span className="line-clamp-2">{pillar.title}</span>
                           </Link>
                         </li>
                       ))}

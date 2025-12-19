@@ -24,9 +24,10 @@ export async function generateMetadata(): Promise<Metadata> {
   const baseUrl =
     process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.online";
 
+  const currentYear = new Date().getFullYear();
   return generateSEOMetadata({
-    title: US_ESTA_CONFIG.meta.title,
-    description: US_ESTA_CONFIG.meta.description,
+    title: `${US_ESTA_CONFIG.meta.title} ${currentYear} - Fast 72hr Approval | eVisa Portal`,
+    description: `${US_ESTA_CONFIG.meta.description} Trusted by 50,000+ travelers worldwide. Apply with eVisa Portal for expert assistance.`,
     keywords: US_ESTA_CONFIG.meta.keywords,
     canonicalUrl: `${baseUrl}/services/esta`,
   });
@@ -40,7 +41,7 @@ export default function ESTAServicePage() {
   const structuredData = generateServiceSchema({
     name: US_ESTA_CONFIG.name,
     description: US_ESTA_CONFIG.meta.description,
-    provider: "Visa Portal",
+    provider: "eVisa Portal",
     areaServed: "Worldwide",
     price: pricing.perApplicant.toString(),
     priceCurrency: US_ESTA_CONFIG.pricing.currency,

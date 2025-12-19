@@ -20,7 +20,7 @@ import { CONTACT_EMAIL } from "../constants";
 import { ServiceConfig } from "@/app/lib/config/services";
 import { Country } from "@/app/lib/data/countries";
 
-const SITE_NAME = "ESTA Visa Portal";
+const SITE_NAME = "eVisa Portal";
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.online";
 const LOGO_URL = `${SITE_URL}/images/logo.png`;
@@ -37,7 +37,7 @@ export function generateOrganizationSchema(): WithContext<Organization> {
     url: SITE_URL,
     logo: LOGO_URL,
     description:
-      "Expert ESTA visa application assistance service for U.S. travel authorization. Fast, secure, and reliable ESTA processing with 24/7 support.",
+      "Expert eVisa application service for ESTA, UK ETA, and travel authorizations worldwide. Fast, secure, and reliable processing with 24/7 support. Trusted by 50,000+ travelers.",
     email: CONTACT_EMAIL,
     foundingDate: "2024",
     contactPoint: {
@@ -53,13 +53,6 @@ export function generateOrganizationSchema(): WithContext<Organization> {
       // 'https://twitter.com/estavisaportal',
       // 'https://linkedin.com/company/estavisaportal',
     ],
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.8",
-      reviewCount: "1247",
-      bestRating: "5",
-      worstRating: "1",
-    },
   };
 }
 
@@ -84,7 +77,7 @@ export function generateWebSiteSchema(): WithContext<WebSite> {
     name: SITE_NAME,
     url: SITE_URL,
     description:
-      "Fast and reliable ESTA visa application service for U.S. travel authorization",
+      "Fast and reliable eVisa application service for ESTA, UK ETA, and travel authorizations worldwide",
     publisher: {
       "@type": "Organization",
       name: SITE_NAME,
@@ -253,7 +246,7 @@ export function generateServiceSchema(config?: {
   const {
     name = "ESTA Application Service",
     description = "Expert assistance with U.S. ESTA (Electronic System for Travel Authorization) applications. Fast processing, 99% approval rate, 24/7 support.",
-    provider = "Visa Portal",
+    provider = "eVisa Portal",
     areaServed = "Worldwide",
     price = "45.00",
     priceCurrency = "USD",
@@ -291,13 +284,6 @@ export function generateServiceSchema(config?: {
       priceCurrency,
       description: `Complete ${name} application service including government fee and processing fee`,
       availability: "https://schema.org/InStock",
-    },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.9",
-      reviewCount: "50000",
-      bestRating: "5",
-      worstRating: "1",
     },
   };
 }
@@ -504,7 +490,9 @@ export function generateCountriesIndexSchema(
 export function generateCountryPageSchema(
   country: Country,
   service: ServiceConfig
-): Array<WithContext<WebPage> | WithContext<Service> | WithContext<BreadcrumbList>> {
+): Array<
+  WithContext<WebPage> | WithContext<Service> | WithContext<BreadcrumbList>
+> {
   const template = SERVICE_TEMPLATES[service.type];
   const url = `${SITE_URL}/${service.slug}/countries/${country.slug}`;
 
@@ -575,7 +563,9 @@ export function generateCountryPageSchema(
       },
       offers: {
         "@type": "Offer",
-        price: (service.pricing.government + service.pricing.service).toString(),
+        price: (
+          service.pricing.government + service.pricing.service
+        ).toString(),
         priceCurrency: service.pricing.currency,
         description: `Complete ${service.name} application service including government fee and processing fee`,
         availability: "https://schema.org/InStock",
@@ -630,7 +620,9 @@ export function generateCountryFAQSchema(
       answer: `${service.name} is an ${template.programName} that allows ${country.name} citizens to travel to ${service.destination} for tourism or business. It is valid for ${template.validity} and allows stays of up to ${template.maxStay}.`,
     },
     {
-      question: `How long does ${service.slug.toUpperCase()} processing take for ${country.name} citizens?`,
+      question: `How long does ${service.slug.toUpperCase()} processing take for ${
+        country.name
+      } citizens?`,
       answer: `${template.processingTime}. We provide expert assistance to ensure your application is completed correctly and submitted promptly. Most ${country.name} applicants receive approval quickly when all information is accurate.`,
     },
     {
@@ -639,7 +631,13 @@ export function generateCountryFAQSchema(
     },
     {
       question: `How much does ${service.name} cost for ${country.name} citizens?`,
-      answer: `The total cost is ${service.pricing.currency} ${service.pricing.government + service.pricing.service}, which includes the government fee (${service.pricing.currency} ${service.pricing.government}) and our service fee (${service.pricing.currency} ${service.pricing.service}) for expert application assistance.`,
+      answer: `The total cost is ${service.pricing.currency} ${
+        service.pricing.government + service.pricing.service
+      }, which includes the government fee (${service.pricing.currency} ${
+        service.pricing.government
+      }) and our service fee (${service.pricing.currency} ${
+        service.pricing.service
+      }) for expert application assistance.`,
     },
     {
       question: `Can ${country.name} citizens apply for ${service.name} online?`,

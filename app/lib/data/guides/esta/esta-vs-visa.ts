@@ -140,7 +140,7 @@ export const estaVsVisa: Guide = {
       title: "Cost Comparison",
       content: [
         "The cost difference between ESTA and B-2 visa is significant:",
-        "ESTA Cost: $45 $40 fee ($5 processing + $40 authorization fee). One-time payment online. Valid for 2 years.",
+        "ESTA Cost: $45 fee ($5 processing + $40 authorization fee). One-time payment online. Valid for 2 years.",
         "B-2 Visa Cost: $185 MRV (Machine Readable Visa) fee. Paid before interview. Valid for up to 10 years depending on nationality.",
         {
           type: "callout",

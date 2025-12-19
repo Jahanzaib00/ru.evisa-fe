@@ -9,8 +9,8 @@ export const LEGAL_EMAIL = "visaportal.online@gmail.com";
 export const PRIVACY_EMAIL = "visaportal.online@gmail.com";
 
 // Company Information
-export const COMPANY_NAME = "ESTA Visa Portal";
-export const COMPANY_LEGAL_NAME = "ESTA Visa Portal";
+export const COMPANY_NAME = "eVisa Portal";
+export const COMPANY_LEGAL_NAME = "eVisa Portal";
 
 // Contact Details
 export const CONTACT_PHONE = "+92 3096809637";

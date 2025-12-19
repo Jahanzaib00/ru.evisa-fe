@@ -119,13 +119,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
 
     // Service-specific guides index page
-    // URL format: /{destination}/guides
-    // Example: /united-states/guides
+    // URL format: /{destination}/guide
+    // Example: /united-states/guide
     urls.push({
-      url: `${baseUrl}/${destinationSlug}/guides`,
+      url: `${baseUrl}/${destinationSlug}/guide`,
       lastModified: now,
       changeFrequency: "weekly",
-      priority: 0.85,
+      priority: 0.9, // Hub page - high priority
+    });
+
+    // Service-specific countries index page (NEW - CRITICAL FOR SEO)
+    // URL format: /{destination}/countries
+    // Example: /united-states/countries
+    urls.push({
+      url: `${baseUrl}/${destinationSlug}/countries`,
+      lastModified: now,
+      changeFrequency: "monthly", // Countries list changes infrequently
+      priority: 0.9, // Hub page - high priority for "{service} eligible countries" queries
     });
 
     // All individual guide pages for this service
@@ -145,15 +155,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
 
     // All country pages for this service
-    // URL format: /{destination}/{service}-for-{country}
-    // Example: /united-states/esta-for-france
+    // URL format: /{destination}/{country-slug}
+    // Example: /united-states/france
     const countries = getCountriesByService(type);
     countries.forEach((country) => {
       urls.push({
-        url: `${baseUrl}/${destinationSlug}/${serviceSlug}-for-${country.slug}`,
+        url: `${baseUrl}/${destinationSlug}/${country.slug}`,
         lastModified: now,
         changeFrequency: "monthly",
-        priority: 0.8,
+        priority: 0.7, // Slightly lower than hub pages (was 0.8)
       });
     });
   });

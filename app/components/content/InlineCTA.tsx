@@ -58,7 +58,7 @@ export default function InlineCTA({
 
   if (variant === "sticky") {
     return (
-      <div className="fixed bottom-0 left-0 right-0 bg-blue-900 text-white shadow-2xl border-t-4 border-primary z-40 animate-slide-up">
+      <div className="fixed bottom-0 left-0 right-0 bg-primary text-white shadow-2xl border-t-4 border-primary-light z-40 animate-slide-up">
         <div className="container mx-auto px-4 py-4 max-w-5xl">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="text-center sm:text-left">
@@ -80,7 +80,7 @@ export default function InlineCTA({
 
   if (variant === "banner") {
     return (
-      <div className="bg-gradient-to-r from-blue-900 to-blue-700 text-white rounded-lg p-6 my-8 shadow-lg">
+      <div className="bg-primary text-white rounded-lg p-6 my-8 shadow-lg">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex-1 text-center md:text-left">
             <h3 className="text-2xl font-bold mb-2 text-white">{finalTitle}</h3>

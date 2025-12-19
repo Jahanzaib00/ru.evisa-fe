@@ -34,10 +34,19 @@ const footerColumns: FooterColumn[] = [
   {
     title: "Resources",
     links: [
-      // { text: "Travel Guides", href: "/guides" },
-      // { text: "Eligible Countries", href: "/countries" },
-      // { text: "Blog & News", href: "/blog" },
+      { text: "ESTA Guides", href: "/united-states/guide" },
+      { text: "UK ETA Guides", href: "/united-kingdom/guide" },
+      { text: "Blog & News", href: "/blog" },
       { text: "FAQ", href: "/support#faq" },
+    ],
+  },
+  {
+    title: "Services",
+    links: [
+      { text: "US ESTA", href: "/services/esta" },
+      { text: "UK ETA", href: "/services/uk-eta" },
+      { text: "ESTA Countries", href: "/united-states/countries" },
+      { text: "UK ETA Countries", href: "/united-kingdom/countries" },
     ],
   },
 ];

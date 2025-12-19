@@ -1,6 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { ChevronRight, Book } from "lucide-react";
+
+interface Section {
+  id: string;
+  title: string;
+}
 
 interface TOCItem {
   id: string;
@@ -9,23 +15,33 @@ interface TOCItem {
 }
 
 interface TableOfContentsProps {
-  contentRef?: React.RefObject<HTMLDivElement>;
+  sections?: Section[]; // Optional - if not provided, auto-generates from DOM
+  includeFAQs?: boolean;
+  contentRef?: React.RefObject<HTMLDivElement>; // For auto-generation mode
 }
 
 /**
- * TableOfContents
+ * Interactive Table of Contents with Scroll Spy
+ * Highlights current section as user scrolls
+ * Smooth scroll to sections on click
+ * Sticky positioning for easy navigation
  *
- * Automatically generates TOC from h2/h3 headings in content
- * - Improves user experience and engagement
- * - Reduces bounce rate
- * - Helps with SEO (longer time on page)
+ * Two modes:
+ * 1. Explicit sections: Pass sections prop
+ * 2. Auto-generate: Don't pass sections, will auto-detect h2/h3 headings
  */
-export default function TableOfContents({ contentRef }: TableOfContentsProps) {
-  const [headings, setHeadings] = useState<TOCItem[]>([]);
-  const [activeId, setActiveId] = useState<string>("");
+export default function TableOfContents({
+  sections,
+  includeFAQs = false,
+  contentRef,
+}: TableOfContentsProps) {
+  const [activeSection, setActiveSection] = useState<string>("");
+  const [autoSections, setAutoSections] = useState<TOCItem[]>([]);
 
+  // Auto-generate sections from DOM if not explicitly provided
   useEffect(() => {
-    // Get all h2 and h3 elements from content
+    if (sections) return; // Skip auto-generation if explicit sections provided
+
     const content = contentRef?.current || document.querySelector("article");
     if (!content) return;
 
@@ -49,37 +65,51 @@ export default function TableOfContents({ contentRef }: TableOfContentsProps) {
       items.push({ id, text, level });
     });
 
-    setHeadings(items);
+    setAutoSections(items);
+  }, [sections, contentRef]);
 
-    // Intersection Observer for active section highlighting
+  useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
+            setActiveSection(entry.target.id);
           }
         });
       },
       {
-        rootMargin: "-100px 0px -66% 0px",
+        rootMargin: "-20% 0px -80% 0px",
       }
     );
 
-    headingElements.forEach((heading) => observer.observe(heading));
+    // Observe explicit sections if provided
+    if (sections) {
+      sections.forEach((section) => {
+        const element = document.getElementById(section.id);
+        if (element) observer.observe(element);
+      });
 
-    return () => {
-      headingElements.forEach((heading) => observer.unobserve(heading));
-    };
-  }, [contentRef]);
+      if (includeFAQs) {
+        const faqSection = document.getElementById("faqs");
+        if (faqSection) observer.observe(faqSection);
+      }
+    } else {
+      // Observe auto-generated sections
+      autoSections.forEach((section) => {
+        const element = document.getElementById(section.id);
+        if (element) observer.observe(element);
+      });
+    }
 
-  if (headings.length === 0) return null;
+    return () => observer.disconnect();
+  }, [sections, includeFAQs, autoSections]);
 
-  const scrollToHeading = (id: string) => {
+  const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      const offset = 100;
+      const offset = 100; // Account for fixed header
       const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      const offsetPosition = elementPosition + window.scrollY - offset;
 
       window.scrollTo({
         top: offsetPosition,
@@ -88,43 +118,52 @@ export default function TableOfContents({ contentRef }: TableOfContentsProps) {
     }
   };
 
+  // Use explicit sections if provided, otherwise use auto-generated
+  const displaySections =
+    sections || autoSections.map((s) => ({ id: s.id, title: s.text }));
+
+  if (displaySections.length === 0) return null;
+
   return (
-    <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 sticky top-24">
-      <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-        <svg
-          className="w-5 h-5 text-blue-600"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M4 6h16M4 12h16M4 18h16"
-          />
-        </svg>
-        Table of Contents
-      </h3>
+    <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 md:block hidden">
+      <div className="flex items-center gap-2 mb-4">
+        <Book className="w-5 h-5 text-blue-600" />
+        <h3 className="text-lg font-bold text-gray-900">On This Page</h3>
+      </div>
       <nav>
-        <ul className="space-y-2">
-          {headings.map((heading) => (
-            <li
-              key={heading.id}
-              className={heading.level === 3 ? "ml-4" : ""}
-            >
+        <ul className="space-y-1">
+          {displaySections.map((section) => {
+            const isH3 =
+              autoSections.find((s) => s.id === section.id)?.level === 3;
+            return (
+              <li key={section.id} className={isH3 ? "ml-4" : ""}>
+                <button
+                  onClick={() => scrollToSection(section.id)}
+                  className={`w-full text-left px-3 py-2.5 rounded-lg text-sm transition-colors ${
+                    activeSection === section.id
+                      ? "bg-blue-600 text-white font-semibold"
+                      : "text-gray-700 hover:bg-gray-100 hover:text-blue-600"
+                  }`}
+                >
+                  <span className="line-clamp-2">{section.title}</span>
+                </button>
+              </li>
+            );
+          })}
+          {includeFAQs && (
+            <li>
               <button
-                onClick={() => scrollToHeading(heading.id)}
-                className={`text-left w-full text-sm hover:text-blue-600 transition-colors ${
-                  activeId === heading.id
-                    ? "text-blue-600 font-semibold"
-                    : "text-gray-700"
+                onClick={() => scrollToSection("faqs")}
+                className={`w-full text-left px-3 py-2.5 rounded-lg text-sm transition-colors ${
+                  activeSection === "faqs"
+                    ? "bg-blue-600 text-white font-semibold"
+                    : "text-gray-700 hover:bg-gray-100 hover:text-blue-600"
                 }`}
               >
-                {heading.text}
+                <span>FAQs</span>
               </button>
             </li>
-          ))}
+          )}
         </ul>
       </nav>
     </div>

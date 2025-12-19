@@ -324,8 +324,14 @@ export default function GuidesIndexPage({
                   Start Application
                 </Link>
                 <Link
-                  href="/support"
+                  href={`/${destination}/countries`}
                   className="inline-block bg-blue-700 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-600 transition-colors border-2 border-blue-500"
+                >
+                  View Eligible Countries
+                </Link>
+                <Link
+                  href="/support"
+                  className="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-500 transition-colors border-2 border-blue-400"
                 >
                   Contact Support
                 </Link>

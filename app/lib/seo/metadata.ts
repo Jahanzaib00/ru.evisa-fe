@@ -8,11 +8,12 @@ import { Metadata } from "next";
 import { ServiceConfig } from "@/app/lib/config/services";
 import { Country } from "@/app/lib/data/countries";
 
-const SITE_NAME = "ESTA Visa Portal";
+const SITE_NAME = "eVisa Portal";
+const SITE_TAGLINE = "ESTA, UK ETA & eVisa Services";
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.online";
 const DEFAULT_IMAGE = `${SITE_URL}/images/og-image.jpg`;
-const TWITTER_HANDLE = "@ESTAVisaPortal"; // Update with actual handle
+const TWITTER_HANDLE = "@eVisaPortal"; // Update with actual handle
 
 export interface SEOConfig {
   title: string;
@@ -129,26 +130,30 @@ export function generateMetadata(config: SEOConfig): Metadata {
 
 /**
  * Generate metadata for home page
+ * Updated for multi-service eVisa Portal
  */
 export function generateHomeMetadata(): Metadata {
+  const currentYear = new Date().getFullYear();
   return generateMetadata({
-    title: "ESTA Visa Portal",
+    title: `eVisa Portal ${currentYear} - ESTA, UK ETA & Travel Authorization`,
     description:
-      "Apply for U.S. ESTA in 3 easy steps. Expert assistance, 99% approval rate, 24/7 support. Get approved within 24 hours. Fast, secure, and reliable ESTA application service.",
+      "Apply for US ESTA, UK ETA, and eVisa services online. Expert assistance, 99% approval rate, 24/7 support. Fast processing for all travel authorizations. Trusted by 50,000+ travelers worldwide.",
     keywords: [
+      "eVisa application",
       "ESTA application",
+      "UK ETA application",
       "US ESTA",
+      "UK ETA",
       "travel authorization",
       "visa waiver program",
-      "ESTA online",
-      "apply ESTA",
-      "USA travel permit",
       "electronic travel authorization",
-      "ESTA assistance",
-      "fast ESTA approval",
-      "US Visa",
-      "US Tourist Visa",
-      "US Business Visa",
+      "evisa online",
+      "apply ESTA",
+      "apply UK ETA",
+      "USA travel permit",
+      "UK travel authorization",
+      "eVisa assistance",
+      "fast evisa approval",
     ],
   });
 }
@@ -196,7 +201,7 @@ export function generateGuideMetadata(
     ],
     canonicalUrl: `${SITE_URL}/guide/${guideSlug}`,
     ogType: "article",
-    author: "ESTA Visa Portal Team",
+    author: "eVisa Portal Team",
   });
 }
 
