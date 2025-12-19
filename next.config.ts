@@ -16,7 +16,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/countries/:country",
-        destination: "/united-states/countries/esta-for-:country",
+        destination: "/united-states/esta-for-:country",
         permanent: true,
       },
       // ESTA guides (contain "esta" in slug)
@@ -50,53 +50,10 @@ const nextConfig: NextConfig = {
         destination: "/united-states/guide/passport-requirements-esta",
         permanent: true,
       },
-      // UK ETA guides (contain "uk-eta" or "uk eta" in slug)
-      {
-        source: "/guides/what-is-uk-eta",
-        destination: "/united-kingdom/guide/what-is-uk-eta",
-        permanent: true,
-      },
-      {
-        source: "/guides/uk-eta-:slug",
-        destination: "/united-kingdom/guide/uk-eta-:slug",
-        permanent: true,
-      },
-      {
-        source: "/guides/how-to-apply-uk-eta",
-        destination: "/united-kingdom/guide/how-to-apply-uk-eta",
-        permanent: true,
-      },
-      {
-        source: "/guides/check-uk-eta-status",
-        destination: "/united-kingdom/guide/check-uk-eta-status",
-        permanent: true,
-      },
-      {
-        source: "/guides/renew-uk-eta",
-        destination: "/united-kingdom/guide/renew-uk-eta",
-        permanent: true,
-      },
-      {
-        source: "/guides/passport-requirements-uk-eta",
-        destination: "/united-kingdom/guide/passport-requirements-uk-eta",
-        permanent: true,
-      },
       // Global /guides index → redirect to homepage or US guides as default
       {
         source: "/guides",
         destination: "/united-states/guide",
-        permanent: true,
-      },
-      // Blog redirects - destination-based routing
-      {
-        source: "/blog",
-        destination: "/blog/united-states",
-        permanent: true,
-      },
-      // Legacy blog posts without destination → default to US (excluding destination slugs)
-      {
-        source: "/blog/:slug",
-        destination: "/blog/united-states/:slug",
         permanent: true,
       },
     ];

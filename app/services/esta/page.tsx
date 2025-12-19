@@ -187,7 +187,9 @@ export default function ESTAServicePage() {
           <Container maxWidth="lg">
             <div className="flex flex-wrap items-center justify-center gap-8 text-center">
               <div>
-                <div className="text-3xl font-bold text-primary-light">50K+</div>
+                <div className="text-3xl font-bold text-primary-light">
+                  50K+
+                </div>
                 <div className="text-sm text-gray-600">
                   Applications Processed
                 </div>
@@ -199,12 +201,16 @@ export default function ESTAServicePage() {
               </div>
               <div className="hidden md:block w-px h-12 bg-gray-300"></div>
               <div>
-                <div className="text-3xl font-bold text-primary-light">4.9/5</div>
+                <div className="text-3xl font-bold text-primary-light">
+                  4.9/5
+                </div>
                 <div className="text-sm text-gray-600">Customer Rating</div>
               </div>
               <div className="hidden md:block w-px h-12 bg-gray-300"></div>
               <div>
-                <div className="text-3xl font-bold text-primary-light">24/7</div>
+                <div className="text-3xl font-bold text-primary-light">
+                  24/7
+                </div>
                 <div className="text-sm text-gray-600">Support Available</div>
               </div>
             </div>
@@ -479,7 +485,7 @@ export default function ESTAServicePage() {
 
             <div className="mt-8 text-center">
               <Link
-                href="/blog/united-states"
+                href="/united-states/guide"
                 className="inline-flex items-center text-primary-light font-semibold hover:text-blue-700"
               >
                 View all ESTA guides →

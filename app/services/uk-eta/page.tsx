@@ -488,7 +488,7 @@ export default function UKETAServicePage() {
 
             <div className="mt-8 text-center">
               <Link
-                href="/blog/united-kingdom"
+                href="/united-kingdom/guide"
                 className="inline-flex items-center text-primary-light font-semibold hover:text-blue-700"
               >
                 View all UK ETA guides →

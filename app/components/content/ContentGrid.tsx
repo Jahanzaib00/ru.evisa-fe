@@ -38,7 +38,7 @@ export default function ContentGrid({
   const getContentUrl = (item: Content) => {
     switch (item.type) {
       case "BLOG":
-        return `/blog/${item.slug}`;
+        return `/blog/${item.destination}/${item.slug}`;
       default:
         return `/${item.slug}`;
     }

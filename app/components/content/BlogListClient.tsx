@@ -114,11 +114,7 @@ export default function BlogListClient({
             </span>
           </div>
           <Link
-            href={
-              destination
-                ? `/blog/${destination}/${featuredPost.slug}`
-                : `/blog/${featuredPost.slug}`
-            }
+            href={`/blog/${featuredPost.destination}/${featuredPost.slug}`}
             className="group block bg-white border-2 border-primary rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300"
           >
             <div className="grid md:grid-cols-2 gap-6 md:gap-8 p-6 md:p-8">
@@ -318,11 +314,7 @@ export default function BlogListClient({
           {displayPosts.map((post) => (
             <Link
               key={post.id}
-              href={
-                destination
-                  ? `/blog/${destination}/${post.slug}`
-                  : `/blog/${post.slug}`
-              }
+              href={`/blog/${post.destination}/${post.slug}`}
               className="group bg-white border border-gray-light rounded-lg hover:border-primary hover:shadow-lg transition-all duration-300 overflow-hidden"
             >
               <div className="p-6">
