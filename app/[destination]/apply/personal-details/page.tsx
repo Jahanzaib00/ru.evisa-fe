@@ -12,6 +12,7 @@ import Input from "@/app/components/ui/Input";
 import DatePicker from "@/app/components/ui/DatePicker";
 import { LoadingSpinner } from "@/app/components/ui/Loader";
 import { trackEvent } from "@/app/lib/analytics";
+import { getServiceByDestination } from "@/app/lib/config/services";
 
 interface Props {
   params: Promise<{
@@ -28,6 +29,7 @@ export default function PersonalDetailsPage({ params }: Props) {
   const { verifyApplicationState, saveTravelers, isLoading, error } =
     useApplication();
 
+  const service = getServiceByDestination(destination);
   const [isVerifying, setIsVerifying] = useState(true);
 
   const defaultTravelers =
@@ -276,7 +278,7 @@ export default function PersonalDetailsPage({ params }: Props) {
                       placeholder="john.smith@example.com"
                       required
                       {...register(`travelers.${index}.email` as const)}
-                      helperText="Your approved United States ESTA will be sent to this email address."
+                      helperText={`Your approved ${service?.name} will be sent to this email address.`}
                       error={
                         errors.travelers?.[index]?.email?.message as string
                       }

@@ -84,7 +84,7 @@ export const US_ESTA_CONFIG: ServiceConfig = {
   type: ServiceType.US_ESTA,
   slug: "esta",
   name: "United States ESTA",
-  destination: "United States",
+  destination: "united-states",
   destinationCode: "US",
 
   eligibleNationalities: [
@@ -236,7 +236,7 @@ export const UK_ETA_CONFIG: ServiceConfig = {
   type: ServiceType.UK_ETA,
   slug: "uk-eta",
   name: "United Kingdom ETA",
-  destination: "United Kingdom",
+  destination: "united-kingdom",
   destinationCode: "GB",
 
   eligibleNationalities: [

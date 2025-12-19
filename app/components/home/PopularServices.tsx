@@ -29,7 +29,7 @@ function ServiceCard({ serviceType, available }: ServiceCardProps) {
     const service = getService(serviceType);
     setServiceType(serviceType);
     trackCTAClick(`popular_service_${serviceType}`);
-    router.push(`/${service.slug}/apply`);
+    router.push(`/${service.destination}/apply`);
   };
 
   const handleNotify = () => {

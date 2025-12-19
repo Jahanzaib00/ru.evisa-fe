@@ -465,7 +465,7 @@ export default function AboutPage() {
                   </li>
                   <li>
                     <strong>24/7 Multilingual Support:</strong> Our support team
-                    is available around the clock in English and Urdu to answer
+                    is available around the clock to answer
                     questions and provide guidance.
                   </li>
                   <li>

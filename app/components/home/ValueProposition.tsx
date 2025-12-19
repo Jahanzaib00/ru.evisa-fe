@@ -87,7 +87,7 @@ const benefits: Benefit[] = [
     ),
     title: "Expert Support",
     description:
-      "24/7 live support in English and Urdu. Our team helps with any questions throughout the process.",
+      "24/7 live support. Our team helps with any questions throughout the process.",
   },
 ];
 
