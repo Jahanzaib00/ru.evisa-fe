@@ -24,6 +24,13 @@ const footerColumns: FooterColumn[] = [
     ],
   },
   {
+    title: "Services",
+    links: [
+      { text: "US ESTA", href: "/services/esta" },
+      { text: "UK ETA", href: "/services/uk-eta" },
+    ],
+  },
+  {
     title: "Legal",
     links: [
       { text: "Privacy Policy", href: "/privacy" },
@@ -34,19 +41,11 @@ const footerColumns: FooterColumn[] = [
   {
     title: "Resources",
     links: [
+      { text: "ESTA Countries", href: "/united-states/countries" },
       { text: "ESTA Guides", href: "/united-states/guide" },
+      { text: "UK ETA Countries", href: "/united-kingdom/countries" },
       { text: "UK ETA Guides", href: "/united-kingdom/guide" },
       { text: "Blog & News", href: "/blog" },
-      { text: "FAQ", href: "/support#faq" },
-    ],
-  },
-  {
-    title: "Services",
-    links: [
-      { text: "US ESTA", href: "/services/esta" },
-      { text: "UK ETA", href: "/services/uk-eta" },
-      { text: "ESTA Countries", href: "/united-states/countries" },
-      { text: "UK ETA Countries", href: "/united-kingdom/countries" },
     ],
   },
 ];
@@ -63,7 +62,7 @@ export default function Footer() {
       <Container>
         {/* Main Footer Content */}
         <div className="py-12 md:py-16">
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-5 gap-8">
             {/* Brand Column */}
             <div>
               <h3 className="text-2xl font-bold mb-4">eVisa Portal</h3>
