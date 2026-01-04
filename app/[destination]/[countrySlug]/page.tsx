@@ -20,6 +20,7 @@ import {
   getServiceByDestination,
   ServiceType,
   ServiceConfig,
+  getDefaultProcessingTier,
 } from "@/app/lib/config/services";
 import { generateCountryPageMetadata } from "@/app/lib/seo/metadata";
 import InlineCTA from "../../components/content/InlineCTA";
@@ -407,7 +408,7 @@ function ApplicationSteps({
                 <span className="mt-1">✓</span>
                 <span>
                   Secure payment: {service.pricing.currency}{" "}
-                  {service.pricing.government + service.pricing.service}
+                  {service.pricing.government + getDefaultProcessingTier(service.type).serviceFee}
                 </span>
               </li>
               <li className="flex items-start gap-2">
@@ -666,7 +667,7 @@ function ComparisonTable({
               <td className="p-4 text-center bg-green-50">
                 <span className="text-green-700 font-bold">
                   {service.pricing.currency}{" "}
-                  {service.pricing.government + service.pricing.service}
+                  {service.pricing.government + getDefaultProcessingTier(service.type).serviceFee}
                 </span>
               </td>
               <td className="p-4 text-center bg-red-50">
@@ -846,11 +847,11 @@ function CountryFAQSection({
     {
       question: `How much does ${service.name} cost for ${country.name} travelers?`,
       answer: `The total cost is ${service.pricing.currency} ${
-        service.pricing.government + service.pricing.service
+        service.pricing.government + getDefaultProcessingTier(service.type).serviceFee
       }, which includes the government fee of ${service.pricing.currency} ${
         service.pricing.government
       } and our processing fee of ${service.pricing.currency} ${
-        service.pricing.service
+        getDefaultProcessingTier(service.type).serviceFee
       }. Our service provides expert assistance, application review, and 24/7 support to ensure your application is approved correctly.`,
     },
     {

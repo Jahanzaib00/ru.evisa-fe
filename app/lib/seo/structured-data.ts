@@ -17,7 +17,7 @@ import {
   CollectionPage,
 } from "schema-dts";
 import { CONTACT_EMAIL } from "../constants";
-import { ServiceConfig } from "@/app/lib/config/services";
+import { ServiceConfig, getDefaultProcessingTier } from "@/app/lib/config/services";
 import { Country } from "@/app/lib/data/countries";
 
 const SITE_NAME = "eVisa Portal";
@@ -564,7 +564,7 @@ export function generateCountryPageSchema(
       offers: {
         "@type": "Offer",
         price: (
-          service.pricing.government + service.pricing.service
+          service.pricing.government + getDefaultProcessingTier(service.type).serviceFee
         ).toString(),
         priceCurrency: service.pricing.currency,
         description: `Complete ${service.name} application service including government fee and processing fee`,
@@ -632,11 +632,11 @@ export function generateCountryFAQSchema(
     {
       question: `How much does ${service.name} cost for ${country.name} citizens?`,
       answer: `The total cost is ${service.pricing.currency} ${
-        service.pricing.government + service.pricing.service
+        service.pricing.government + getDefaultProcessingTier(service.type).serviceFee
       }, which includes the government fee (${service.pricing.currency} ${
         service.pricing.government
       }) and our service fee (${service.pricing.currency} ${
-        service.pricing.service
+        getDefaultProcessingTier(service.type).serviceFee
       }) for expert application assistance.`,
     },
     {

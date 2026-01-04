@@ -41,14 +41,34 @@ interface ESTAUSTravelStepProps {
 }
 
 export default function ESTAUSTravelStep({ applicationId, onNext, onBack }: ESTAUSTravelStepProps) {
-  const { saveStep, isLoading, error } = usePostPaymentApplication();
+  const { saveStep, isLoading, error, application } = usePostPaymentApplication();
   const { register, handleSubmit, setError: setFormError, control, formState: { errors } } = useForm<ESTATravelFormData>({
     resolver: zodResolver(estaTravelSchema),
+    defaultValues: {
+      isTransiting: application?.isTransiting ?? false,
+      transitDestination: application?.transitDestination || "",
+      pointOfEntry: application?.pointOfEntry || "",
+      arrivalDate: application?.arrivalDate || "",
+      flightVesselNumber: application?.flightVesselNumber || "",
+      purposeOfVisit: application?.purposeOfVisit || "",
+      usStayAddressLine1: application?.usStayAddressLine1 || "",
+      usStayAddressLine2: application?.usStayAddressLine2 || "",
+      usStayCity: application?.usStayCity || "",
+      usStayState: application?.usStayState || "",
+      usStayZipCode: application?.usStayZipCode || "",
+      usPointOfContactType: application?.usPointOfContactType || "",
+      usPointOfContactName: application?.usPointOfContactName || "",
+      usContactAddressLine1: application?.usContactAddressLine1 || "",
+      usContactCity: application?.usContactCity || "",
+      usContactState: application?.usContactState || "",
+      usContactZipCode: application?.usContactZipCode || "",
+      usContactPhone: application?.usContactPhone || "",
+    },
   });
 
   const onSubmit = useFormSubmit(setFormError, async (data: ESTATravelFormData) => {
     // Save to application (not traveler) since it's application-level data
-    const success = await saveStep(data, applicationId);
+    const success = await saveStep(undefined, data);
     if (!success) throw new Error(error || "Failed to save travel information");
     onNext();
   });

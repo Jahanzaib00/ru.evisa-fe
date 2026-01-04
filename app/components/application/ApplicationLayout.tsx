@@ -23,6 +23,8 @@ interface ApplicationLayoutProps {
   showPrevious?: boolean;
   showPricing?: boolean;
   showTotalAmount?: boolean;
+  showProcessingFee?: boolean;
+  showProgressBar?: boolean;
   onPreviousClick?: () => void;
 }
 
@@ -41,6 +43,8 @@ export default function ApplicationLayout({
   showPrevious = true,
   showPricing = true,
   showTotalAmount = false,
+  showProcessingFee = false,
+  showProgressBar = true,
   onPreviousClick,
 }: ApplicationLayoutProps) {
   const { getTotalAmount, serviceType } = useApplicationStore();
@@ -53,15 +57,13 @@ export default function ApplicationLayout({
     <div className="min-h-screen bg-white">
       {/* Header */}
       <Header />
-
       {/* Progress Bar */}
-      <StepProgress />
-
+      {showProgressBar && <StepProgress />}
       {/* Main Content */}
       <div
         className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${
-          showMobileCTA ? "pb-32 md:pb-12" : ""
-        }`}
+          !showProgressBar && "py-6 pt-8 lg:py-12"
+        } ${showMobileCTA ? "pb-32 md:pb-12" : ""}`}
       >
         <h1 className="text-2xl sm:text-3xl font-bold text-gray-dark mb-2">
           {title}
@@ -92,14 +94,14 @@ export default function ApplicationLayout({
                 onButtonClick={onSidebarButtonClick}
                 showPrevious={showPrevious}
                 showPricing={showPricing}
-                showTotalAmount={true}
+                showTotalAmount={showTotalAmount}
+                showProcessingFee={showProcessingFee}
                 onPreviousClick={onPreviousClick}
               />
             </div>
           )}
         </div>
       </div>
-
       {/* Sticky Bottom CTA (Mobile Only) */}
       {showMobileCTA && onMobileButtonClick && (
         <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-light p-4 shadow-lg z-40">
@@ -112,7 +114,9 @@ export default function ApplicationLayout({
               suppressHydrationWarning
             >
               {showTotalAmount
-                ? `${currencySymbol}${getTotalAmount().toFixed(2)} ${currency.toUpperCase()}`
+                ? `${currencySymbol}${getTotalAmount().toFixed(
+                    2
+                  )} ${currency.toUpperCase()}`
                 : "Calculated at checkout"}
             </span>
           </div>

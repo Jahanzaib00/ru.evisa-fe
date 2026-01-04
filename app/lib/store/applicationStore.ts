@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { ApplicationStatus, ServiceType } from "../api/types";
-import { getService } from "../config/services";
+import { getService, ProcessingTierType, getProcessingTier, getDefaultProcessingTier } from "../config/services";
 
 interface Traveler {
   firstName: string;
@@ -72,6 +72,7 @@ interface ApplicationState {
 
   // Pricing (optional denial protection toggle)
   denialProtectionEnabled: boolean;
+  processingTier: ProcessingTierType | null;
 
   // Payment
   orderId: string | null;
@@ -80,6 +81,7 @@ interface ApplicationState {
   setNationality: (nationality: string) => void;
   setDestination: (destination: string) => void;
   setServiceType: (serviceType: ServiceType | null) => void;
+  setProcessingTier: (tier: ProcessingTierType) => void;
   setTotalApplicants: (count: number) => void;
   setApplicationId: (id: string | null) => void;
   setApplicationStatus: (status: ApplicationStatus | null) => void;
@@ -117,6 +119,7 @@ export const useApplicationStore = create<ApplicationState>()(
       travelInfo: null,
       eligibility: null,
       denialProtectionEnabled: false,
+      processingTier: null,
       orderId: null,
 
       // Actions
@@ -125,6 +128,8 @@ export const useApplicationStore = create<ApplicationState>()(
       setDestination: (destination) => set({ destination }),
 
       setServiceType: (serviceType) => set({ serviceType }),
+
+      setProcessingTier: (tier) => set({ processingTier: tier }),
 
       setTotalApplicants: (count) =>
         set({
@@ -201,6 +206,7 @@ export const useApplicationStore = create<ApplicationState>()(
           travelInfo: null,
           eligibility: null,
           denialProtectionEnabled: true,
+          processingTier: null,
           orderId: null,
         }),
 
@@ -211,7 +217,13 @@ export const useApplicationStore = create<ApplicationState>()(
 
         try {
           const service = getService(state.serviceType);
-          const baseFee = (service.pricing.government + service.pricing.service) * state.totalApplicants;
+
+          // Get the processing tier (default if not set)
+          const tier = state.processingTier
+            ? getProcessingTier(state.serviceType, state.processingTier) || getDefaultProcessingTier(state.serviceType)
+            : getDefaultProcessingTier(state.serviceType);
+
+          const baseFee = (service.pricing.government + tier.serviceFee) * state.totalApplicants;
           const protectionFee = state.denialProtectionEnabled && service.pricing.denialProtection
             ? service.pricing.denialProtection * state.totalApplicants
             : 0;
@@ -245,6 +257,7 @@ export const useApplicationStore = create<ApplicationState>()(
         travelInfo: state.travelInfo,
         eligibility: state.eligibility,
         denialProtectionEnabled: state.denialProtectionEnabled,
+        processingTier: state.processingTier,
       }),
     }
   )

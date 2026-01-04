@@ -11,7 +11,18 @@ export enum ServiceType {
   CANADA_ETA = "CANADA_ETA",
 }
 
+export enum StepType {
+  PERSONAL = "PERSONAL",
+  PASSPORT = "PASSPORT",
+  TRAVEL = "TRAVEL",
+  CONTACT = "CONTACT",
+  EMPLOYMENT = "EMPLOYMENT",
+  ELIGIBILITY = "ELIGIBILITY",
+  REVIEW = "REVIEW",
+}
+
 export interface StepConfig {
+  type: StepType; // Step type for logic/UI mapping
   component: string; // Component name to render
   title: string; // Step title
   description?: string; // Optional description
@@ -21,6 +32,21 @@ export interface PrePaymentStepConfig {
   title: string;
   description?: string;
   emailHelperText?: string; // Custom helper text for email field
+}
+
+export enum ProcessingTierType {
+  STANDARD = "STANDARD",
+  RUSH = "RUSH",
+  SUPER_RUSH = "SUPER_RUSH",
+}
+
+export interface ProcessingTier {
+  type: ProcessingTierType;
+  label: string; // e.g., "Standard", "Rush", "Super Rush"
+  description: string; // e.g., "24 hour processing"
+  processingTime: string; // e.g., "24 hours"
+  serviceFee: number; // Our service fee for this tier (government fee is separate)
+  isDefault?: boolean; // Whether this is the default tier
 }
 
 export interface ServiceConfig {
@@ -36,11 +62,13 @@ export interface ServiceConfig {
 
   // Pricing
   pricing: {
-    government: number;
-    service: number;
+    government: number; // Government fee (constant)
     denialProtection?: number;
     currency: string; // USD, GBP, EUR, etc.
   };
+
+  // Processing Tiers - different service fees and processing times
+  processingTiers: ProcessingTier[];
 
   // Validity
   validity: {
@@ -49,7 +77,7 @@ export interface ServiceConfig {
     stays?: string; // e.g., "90 days per visit"
   };
 
-  // Processing times
+  // Processing times (deprecated - kept for backward compatibility)
   processing: {
     standard: string;
     rush?: string;
@@ -133,10 +161,34 @@ export const US_ESTA_CONFIG: ServiceConfig = {
 
   pricing: {
     government: 40,
-    service: 5,
     denialProtection: 17.99,
     currency: "USD",
   },
+
+  processingTiers: [
+    {
+      type: ProcessingTierType.STANDARD,
+      label: "Standard",
+      description: "72 hour processing",
+      processingTime: "72 hours",
+      serviceFee: 5,
+      isDefault: true,
+    },
+    {
+      type: ProcessingTierType.RUSH,
+      label: "Rush",
+      description: "24 hour processing",
+      processingTime: "24 hours",
+      serviceFee: 20,
+    },
+    {
+      type: ProcessingTierType.SUPER_RUSH,
+      label: "Super Rush",
+      description: "1 hour processing",
+      processingTime: "1 hour",
+      serviceFee: 45,
+    },
+  ],
 
   validity: {
     years: 2,
@@ -182,37 +234,44 @@ export const US_ESTA_CONFIG: ServiceConfig = {
 
   steps: [
     {
+      type: StepType.PERSONAL,
       component: "ESTAPersonalStep",
       title: "Personal Information",
       description:
         "Provide accurate personal details as they appear on your passport",
     },
     {
+      type: StepType.PASSPORT,
       component: "ESTAPassportStep",
       title: "Passport Information",
       description: "Enter your passport details and upload required documents",
     },
     {
+      type: StepType.TRAVEL,
       component: "ESTAUSTravelStep",
       title: "U.S. Travel Details",
       description: "Tell us about your travel plans to the United States",
     },
     {
+      type: StepType.CONTACT,
       component: "SharedContactStep",
       title: "Contact Information",
       description: "Provide your contact details and emergency contact",
     },
     {
+      type: StepType.EMPLOYMENT,
       component: "SharedEmploymentStep",
       title: "Employment Information",
       description: "Tell us about your current employment status",
     },
     {
+      type: StepType.ELIGIBILITY,
       component: "ESTAEligibilityStep",
       title: "Eligibility Questions",
       description: "Please answer all questions truthfully",
     },
     {
+      type: StepType.REVIEW,
       component: "SharedReviewStep",
       title: "Review & Submit",
       description: "Review all information before submission",
@@ -330,10 +389,34 @@ export const UK_ETA_CONFIG: ServiceConfig = {
 
   pricing: {
     government: 16,
-    service: 5,
     denialProtection: 12.99,
     currency: "GBP",
   },
+
+  processingTiers: [
+    {
+      type: ProcessingTierType.STANDARD,
+      label: "Standard",
+      description: "24 hour processing",
+      processingTime: "24 hours",
+      serviceFee: 5,
+      isDefault: true,
+    },
+    {
+      type: ProcessingTierType.RUSH,
+      label: "Rush",
+      description: "4 hour processing",
+      processingTime: "4 hours",
+      serviceFee: 15,
+    },
+    {
+      type: ProcessingTierType.SUPER_RUSH,
+      label: "Super Rush",
+      description: "1 hour processing",
+      processingTime: "1 hour",
+      serviceFee: 35,
+    },
+  ],
 
   validity: {
     years: 2,
@@ -378,31 +461,37 @@ export const UK_ETA_CONFIG: ServiceConfig = {
 
   steps: [
     {
+      type: StepType.PERSONAL,
       component: "UKETAPersonalStep",
       title: "Personal Information",
       description: "Provide your basic personal details",
     },
     {
+      type: StepType.PASSPORT,
       component: "UKETAPassportStep",
       title: "Passport Information",
       description: "Enter passport details and upload documents",
     },
     {
+      type: StepType.CONTACT,
       component: "SharedContactStep",
       title: "Contact Information",
       description: "Provide your contact details",
     },
     {
+      type: StepType.EMPLOYMENT,
       component: "UKETAEmploymentStep",
       title: "Employment Information",
       description: "Tell us about your occupation",
     },
     {
+      type: StepType.ELIGIBILITY,
       component: "UKETAEligibilityStep",
       title: "Suitability Questions",
       description: "Answer the eligibility questions",
     },
     {
+      type: StepType.REVIEW,
       component: "SharedReviewStep",
       title: "Review & Submit",
       description: "Review all information before submission",
@@ -528,15 +617,45 @@ export function getCurrencySymbol(currencyCode: string): string {
 }
 
 /**
- * Calculate total price for a service
+ * Get the default processing tier for a service
+ */
+export function getDefaultProcessingTier(
+  serviceType: ServiceType
+): ProcessingTier {
+  const service = getService(serviceType);
+  const defaultTier = service.processingTiers.find((tier) => tier.isDefault);
+  return defaultTier || service.processingTiers[0];
+}
+
+/**
+ * Get a specific processing tier by type
+ */
+export function getProcessingTier(
+  serviceType: ServiceType,
+  tierType: ProcessingTierType
+): ProcessingTier | undefined {
+  const service = getService(serviceType);
+  return service.processingTiers.find((tier) => tier.type === tierType);
+}
+
+/**
+ * Calculate total price for a service with processing tier
  */
 export function calculatePrice(
   serviceType: ServiceType,
   applicants: number = 1,
+  processingTierType?: ProcessingTierType,
   includeDenialProtection: boolean = false
 ): { subtotal: number; total: number; perApplicant: number; currency: string } {
   const service = getService(serviceType);
-  const perApplicant = service.pricing.government + service.pricing.service;
+
+  // Get the processing tier (default if not specified)
+  const tier = processingTierType
+    ? getProcessingTier(serviceType, processingTierType) ||
+      getDefaultProcessingTier(serviceType)
+    : getDefaultProcessingTier(serviceType);
+
+  const perApplicant = service.pricing.government + tier.serviceFee;
   const denialProtection =
     includeDenialProtection && service.pricing.denialProtection
       ? service.pricing.denialProtection * applicants

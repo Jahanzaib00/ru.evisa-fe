@@ -2,7 +2,12 @@
 
 import { Spinner } from "../ui/Loader";
 import { useApplicationStore } from "@/app/lib/store/applicationStore";
-import { getService, getCurrencySymbol } from "@/app/lib/config/services";
+import {
+  getService,
+  getCurrencySymbol,
+  getProcessingTier,
+  getDefaultProcessingTier,
+} from "@/app/lib/config/services";
 
 interface PricingSidebarProps {
   showButton?: boolean;
@@ -12,6 +17,7 @@ interface PricingSidebarProps {
   showPrevious?: boolean;
   showPricing?: boolean;
   showTotalAmount?: boolean;
+  showProcessingFee?: boolean;
   onPreviousClick?: () => void;
 }
 
@@ -23,9 +29,11 @@ export default function PricingSidebar({
   showPrevious = true,
   showPricing = true,
   showTotalAmount = false,
+  showProcessingFee = false,
   onPreviousClick,
 }: PricingSidebarProps) {
-  const { totalApplicants, serviceType, getTotalAmount } = useApplicationStore();
+  const { totalApplicants, serviceType, processingTier, getTotalAmount } =
+    useApplicationStore();
 
   const total = getTotalAmount();
   const isMultipleTravelers = totalApplicants > 1;
@@ -34,14 +42,29 @@ export default function PricingSidebar({
   const service = serviceType ? getService(serviceType) : null;
   const serviceName = service?.name || "Travel Authorization";
   const governmentFee = service?.pricing.government || 0;
-  const serviceFee = service?.pricing.service || 0;
+
+  // Get the processing tier (default if not set)
+  const tier =
+    serviceType && processingTier
+      ? getProcessingTier(serviceType, processingTier) ||
+        getDefaultProcessingTier(serviceType)
+      : serviceType
+      ? getDefaultProcessingTier(serviceType)
+      : null;
+  const serviceFee = tier?.serviceFee || 0;
+  const processingTimeLabel = tier?.label || "Standard";
+
   const currency = service?.pricing.currency || "USD";
   const currencySymbol = getCurrencySymbol(currency);
   const validity = service?.validity;
   const validityText = validity?.years
-    ? `${validity.years} ${validity.years === 1 ? "year" : "years"} after issued`
+    ? `${validity.years} ${
+        validity.years === 1 ? "year" : "years"
+      } after issued`
     : validity?.months
-    ? `${validity.months} ${validity.months === 1 ? "month" : "months"} after issued`
+    ? `${validity.months} ${
+        validity.months === 1 ? "month" : "months"
+      } after issued`
     : "N/A";
   const maxStay = validity?.stays || "N/A";
 
@@ -49,9 +72,7 @@ export default function PricingSidebar({
     <div className="bg-white rounded-lg border border-gray-light p-6 shadow-sm">
       {/* Service Info */}
       <div className="mb-6">
-        <h3 className="text-lg font-bold text-gray-dark mb-4">
-          {serviceName}
-        </h3>
+        <h3 className="text-lg font-bold text-gray-dark mb-4">{serviceName}</h3>
 
         <div className="space-y-3 text-sm">
           <div className="flex items-start gap-3">
@@ -128,28 +149,41 @@ export default function PricingSidebar({
                 <div className="text-right">
                   {isMultipleTravelers && (
                     <p className="text-xs text-gray mb-0.5">
-                      {currencySymbol}{governmentFee.toFixed(2)} × {totalApplicants}
+                      {currencySymbol}
+                      {governmentFee.toFixed(2)} × {totalApplicants}
                     </p>
                   )}
                   <span className="font-semibold text-gray-dark">
-                    {currencySymbol}{(governmentFee * totalApplicants).toFixed(2)}
+                    {currencySymbol}
+                    {(governmentFee * totalApplicants).toFixed(2)}
                   </span>
                 </div>
               </div>
 
-              <div className="flex justify-between items-baseline">
-                <span className="text-gray">Processing fee</span>
-                <div className="text-right">
-                  {isMultipleTravelers && (
-                    <p className="text-xs text-gray mb-0.5">
-                      {currencySymbol}{serviceFee.toFixed(2)} × {totalApplicants}
-                    </p>
-                  )}
-                  <span className="font-semibold text-gray-dark">
-                    {currencySymbol}{(serviceFee * totalApplicants).toFixed(2)}
-                  </span>
+              {showProcessingFee && (
+                <div className="flex justify-between items-baseline">
+                  <div>
+                    <span className="text-gray">Processing fee</span>
+                    {tier && (
+                      <p className="text-xs text-gray mt-0.5">
+                        {processingTimeLabel}
+                      </p>
+                    )}
+                  </div>
+                  <div className="text-right">
+                    {isMultipleTravelers && (
+                      <p className="text-xs text-gray mb-0.5">
+                        {currencySymbol}
+                        {serviceFee.toFixed(2)} × {totalApplicants}
+                      </p>
+                    )}
+                    <span className="font-semibold text-gray-dark">
+                      {currencySymbol}
+                      {(serviceFee * totalApplicants).toFixed(2)}
+                    </span>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
 
             <div className="border-t border-gray-light pt-4 mb-6">
@@ -166,7 +200,8 @@ export default function PricingSidebar({
                         </p>
                       )}
                       <p className="text-2xl font-bold text-gray-dark">
-                        {currencySymbol}{total.toFixed(2)} {currency.toUpperCase()}
+                        {currencySymbol}
+                        {total.toFixed(2)} {currency.toUpperCase()}
                       </p>
                     </>
                   ) : (

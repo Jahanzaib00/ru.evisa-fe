@@ -8,6 +8,7 @@ import {
   ServiceType,
   getService,
   getCurrencySymbol,
+  getDefaultProcessingTier,
 } from "@/app/lib/config/services";
 import { useApplicationStore } from "@/app/lib/store/applicationStore";
 import { trackCTAClick } from "@/app/lib/analytics";
@@ -66,7 +67,8 @@ function ServiceCard({ serviceType, available }: ServiceCardProps) {
   if (!service) return null;
 
   const currencySymbol = getCurrencySymbol(service.pricing.currency);
-  const totalPrice = service.pricing.government + service.pricing.service;
+  const defaultTier = getDefaultProcessingTier(serviceType);
+  const totalPrice = service.pricing.government + defaultTier.serviceFee;
   const eligibleCount = service.eligibleNationalities.length;
 
   return (

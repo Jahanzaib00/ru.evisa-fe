@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { ReactNode, use, useState, useEffect, useMemo } from "react";
+import { ReactNode, use, useState, useEffect, useMemo, useRef } from "react";
 import {
   Menu,
   X,
@@ -21,116 +21,114 @@ import {
 import { usePostPaymentApplication } from "@/app/lib/hooks/usePostPaymentApplication";
 import { LoadingSpinner } from "@/app/components/ui/Loader";
 import Image from "next/image";
+import { getService, StepType, StepConfig } from "@/app/lib/config/services";
 
 interface Step {
-  id: string;
-  label: string;
+  index: number; // 1-based step number
+  type: StepType; // Step type for logic
+  component: string; // Component name from config
+  title: string;
   shortLabel: string;
   href: string;
   icon: ReactNode;
   description?: string;
-  completed?: boolean;
 }
 
-// Check if a step has required data completed
-function checkStepCompleted(stepId: string, application: any): boolean {
+// Icon mapping based on step TYPES (fully scalable)
+const STEP_TYPE_ICONS: Record<StepType, ReactNode> = {
+  [StepType.PERSONAL]: <User className="w-5 h-5" />,
+  [StepType.PASSPORT]: <FileText className="w-5 h-5" />,
+  [StepType.TRAVEL]: <Plane className="w-5 h-5" />,
+  [StepType.CONTACT]: <Mail className="w-5 h-5" />,
+  [StepType.EMPLOYMENT]: <Briefcase className="w-5 h-5" />,
+  [StepType.ELIGIBILITY]: <Shield className="w-5 h-5" />,
+  [StepType.REVIEW]: <ClipboardCheck className="w-5 h-5" />,
+};
+
+// Generate short label from title (generic)
+function getShortLabel(title: string, type: StepType): string {
+  // Use type-based labels for consistency across services
+  switch (type) {
+    case StepType.PERSONAL:
+      return "Personal";
+    case StepType.PASSPORT:
+      return "Passport";
+    case StepType.TRAVEL:
+      return "Travel";
+    case StepType.CONTACT:
+      return "Contact";
+    case StepType.EMPLOYMENT:
+      return "Employment";
+    case StepType.ELIGIBILITY:
+      return "Eligibility";
+    case StepType.REVIEW:
+      return "Review";
+    default:
+      return title;
+  }
+}
+
+// Generate steps from service configuration (fully dynamic)
+function generateSteps(stepConfigs: StepConfig[]): Step[] {
+  return stepConfigs.map((stepConfig, index) => ({
+    index: index + 1, // 1-based
+    type: stepConfig.type,
+    component: stepConfig.component,
+    title: stepConfig.title,
+    shortLabel: getShortLabel(stepConfig.title, stepConfig.type),
+    href: `/${index + 1}`, // Use numeric index
+    icon: STEP_TYPE_ICONS[stepConfig.type] || <FileText className="w-5 h-5" />,
+    description: stepConfig.description,
+  }));
+}
+
+// Check if a step has required data completed based on step TYPE (fully scalable)
+function checkStepCompleted(stepType: StepType, application: any): boolean {
   if (!application) return false;
 
   const travelers = application.travelers || [];
   if (travelers.length === 0) return false;
 
-  switch (stepId) {
-    case "step-1-personal":
+  switch (stepType) {
+    case StepType.PERSONAL:
       return travelers.every(
         (t: any) => t.firstName && t.lastName && t.email && t.photoUrl
       );
-    case "step-2-passport":
+
+    case StepType.PASSPORT:
       return travelers.every(
         (t: any) => t.passportNumber && t.nationalityOnPassport && t.passportUrl
       );
-    case "step-3-us-travel":
+
+    case StepType.TRAVEL:
       return !!application.purposeOfVisit;
-    case "step-4-contact":
+
+    case StepType.CONTACT:
       return travelers.every((t: any) => t.phoneNumber && t.addressLine1);
-    case "step-5-employment":
+
+    case StepType.EMPLOYMENT:
       return travelers.every((t: any) => t.isEmployed !== undefined);
-    case "step-6-eligibility":
+
+    case StepType.ELIGIBILITY:
       return travelers.every(
         (t: any) =>
           t.eligibilityQ1 !== undefined && t.eligibilityQ2 !== undefined
       );
-    case "step-7-review":
+
+    case StepType.REVIEW:
       return false; // Review is never "completed"
+
     default:
       return false;
   }
 }
-
-const STEPS: Step[] = [
-  {
-    id: "step-1-personal",
-    label: "Personal Information",
-    shortLabel: "Personal",
-    href: "/step-1-personal",
-    icon: <User className="w-5 h-5" />,
-    description: "Your details",
-  },
-  {
-    id: "step-2-passport",
-    label: "Passport Details",
-    shortLabel: "Passport",
-    href: "/step-2-passport",
-    icon: <FileText className="w-5 h-5" />,
-    description: "Document info",
-  },
-  {
-    id: "step-3-us-travel",
-    label: "U.S. Travel Details",
-    shortLabel: "Travel",
-    href: "/step-3-us-travel",
-    icon: <Plane className="w-5 h-5" />,
-    description: "Trip information",
-  },
-  {
-    id: "step-4-contact",
-    label: "Contact Information",
-    shortLabel: "Contact",
-    href: "/step-4-contact",
-    icon: <Mail className="w-5 h-5" />,
-    description: "Address & phone",
-  },
-  {
-    id: "step-5-employment",
-    label: "Employment Details",
-    shortLabel: "Employment",
-    href: "/step-5-employment",
-    icon: <Briefcase className="w-5 h-5" />,
-    description: "Work information",
-  },
-  {
-    id: "step-6-eligibility",
-    label: "Eligibility Questions",
-    shortLabel: "Eligibility",
-    href: "/step-6-eligibility",
-    icon: <Shield className="w-5 h-5" />,
-    description: "Security questions",
-  },
-  {
-    id: "step-7-review",
-    label: "Review & Submit",
-    shortLabel: "Review",
-    href: "/step-7-review",
-    icon: <ClipboardCheck className="w-5 h-5" />,
-    description: "Final check",
-  },
-];
 
 export default function ApplicationLayout({
   children,
   params: paramsPromise,
 }: {
   children: ReactNode;
-  params: Promise<{ id: string }>;
+  params: Promise<{ id: string; destination: string }>;
 }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const pathname = usePathname();
@@ -138,24 +136,45 @@ export default function ApplicationLayout({
   const { loadApplication, isLoading, error, application } =
     usePostPaymentApplication();
 
-  const currentStepIndex = STEPS.findIndex((step) =>
-    pathname.includes(step.href)
-  );
+  // Track if we've loaded this application to prevent infinite loops
+  const loadedApplicationId = useRef<string | null>(null);
+
+  // Generate steps dynamically from service configuration
+  const STEPS = useMemo(() => {
+    if (!application) return [];
+    const service = getService(application.serviceType);
+    return generateSteps(service.steps);
+  }, [application?.serviceType]);
+
+  // Find current step from pathname (extract step number from URL)
+  const currentStepIndex = useMemo(() => {
+    const match = pathname.match(/\/(\d+)$/);
+    if (match) {
+      const stepNum = parseInt(match[1], 10);
+      return STEPS.findIndex((s) => s.index === stepNum);
+    }
+    return 0;
+  }, [pathname, STEPS]);
+
   const currentStep = STEPS[currentStepIndex];
 
   const stepCompletionStatus = useMemo(
-    () => STEPS.map((step) => checkStepCompleted(step.id, application)),
-    [application]
+    () => STEPS.map((step) => checkStepCompleted(step.type, application)),
+    [STEPS, application]
   );
   const completedCount = stepCompletionStatus.filter(Boolean).length;
-  const progressPercentage = Math.round((completedCount / STEPS.length) * 100);
+  const progressPercentage = STEPS.length > 0
+    ? Math.round((completedCount / STEPS.length) * 100)
+    : 0;
 
-  // Load application data once on mount
+  // Load application data ONCE on mount or when ID changes
   useEffect(() => {
-    if (params.id) {
+    if (params.id && loadedApplicationId.current !== params.id) {
+      loadedApplicationId.current = params.id;
       loadApplication(params.id);
     }
-  }, [params.id, loadApplication]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [params.id]);
 
   // Show loading state while fetching application
   if (isLoading) {
@@ -306,15 +325,15 @@ export default function ApplicationLayout({
               <p className="px-3 mb-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">
                 Application Steps
               </p>
-              {STEPS.map((step) => {
+              {STEPS.map((step, index) => {
                 const isActive = pathname.includes(step.href);
                 // Check if step is actually completed based on data
-                const isCompleted = checkStepCompleted(step.id, application);
+                const isCompleted = stepCompletionStatus[index];
 
                 return (
                   <Link
-                    key={step.id}
-                    href={`/application/${params?.id}${step.href}`}
+                    key={step.index}
+                    href={`/${params.destination}/application/${params.id}${step.href}`}
                     onClick={() => setSidebarOpen(false)}
                     className={`
                       group relative flex items-center gap-3 px-3 py-3 rounded-lg transition-all duration-200

@@ -67,23 +67,34 @@ export function useApplication(): UseApplicationReturn {
       // Validate existing application from localStorage
       const validation = await validateApplicationState(applicationId);
 
-      // If valid, continue with existing application
+      // Check if existing application matches the requested serviceType
       if (validation.isValid && validation.applicationId) {
-        setIsLoading(false);
-        return validation.applicationId;
+        const existingApp = await applicationsService.getById(validation.applicationId);
+
+        // Only reuse if serviceType matches
+        if (existingApp.serviceType === serviceType) {
+          setIsLoading(false);
+          return validation.applicationId;
+        }
+
+        // Different service type - clear old application and create new one
+        setApplicationId(null);
+        setApplicationStatus(null);
       }
 
       // Get service configuration for destination and currency
       const serviceConfig = getService(serviceType);
 
-      // Create new application (either no existing or invalid state)
-      const response = await applicationsService.create({
+      const createPayload = {
         serviceType,
         destination: serviceConfig.destinationCode,
         nationality,
         totalApplicants,
         totalAmount: getTotalAmount(),
-      });
+      };
+
+      // Create new application (either no existing or invalid state)
+      const response = await applicationsService.create(createPayload);
 
       setApplicationId(response.id);
       setApplicationStatus(response.status);

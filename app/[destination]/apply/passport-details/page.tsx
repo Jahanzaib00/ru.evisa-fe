@@ -123,8 +123,8 @@ export default function PassportDetailsPage({ params }: Props) {
       label: "passport_details",
     });
 
-    // Navigate to next step
-    router.push(`/${destination}/apply/review`);
+    // Navigate to processing options
+    router.push(`/${destination}/apply/processing-options`);
   };
 
   const handleContinue = () => {

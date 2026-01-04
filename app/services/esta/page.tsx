@@ -34,7 +34,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default function ESTAServicePage() {
-  const pricing = calculatePrice(US_ESTA_CONFIG.type, 1, false);
+  const pricing = calculatePrice(US_ESTA_CONFIG.type, 1);
   const currency = getCurrencySymbol(US_ESTA_CONFIG.pricing.currency);
 
   // Generate structured data for Google

@@ -15,6 +15,13 @@
     --color-gray-dark: #323a45;
     --color-success: #2e8540;
     --color-warning: #fdb81e;
+
+    /* Callout background colors (light tints) */
+    --color-red-50: #fef2f2;
+    --color-blue-50: #eff6ff;
+    --color-green-50: #f0fdf4;
+    --color-gray-50: #f9fafb;
+    --color-yellow-50: #fefce8;
   }
 }
 
@@ -93,6 +100,23 @@
   }
   .bg-accent {
     background-color: #cd2026;
+  }
+
+  /* Callout background colors */
+  .bg-red-50 {
+    background-color: var(--color-red-50);
+  }
+  .bg-blue-50 {
+    background-color: var(--color-blue-50);
+  }
+  .bg-green-50 {
+    background-color: var(--color-green-50);
+  }
+  .bg-gray-50 {
+    background-color: var(--color-gray-50);
+  }
+  .bg-yellow-50 {
+    background-color: var(--color-yellow-50);
   }
 
   /* Border colors */

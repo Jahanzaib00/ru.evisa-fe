@@ -12,20 +12,21 @@ const steps: Step[] = [
   { number: 1, label: "Trip details", pathPattern: "/apply" },
   { number: 2, label: "Your info", pathPattern: "/apply/personal-details" },
   { number: 3, label: "Passport", pathPattern: "/apply/passport-details" },
-  { number: 4, label: "Checkout", pathPattern: "/apply/review" },
+  { number: 4, label: "Checkout", pathPattern: "/apply/processing-options" },
 ];
 
 export default function StepProgress() {
   const pathname = usePathname();
 
   // Extract destination from pathname (e.g., /united-states/apply -> united-states)
-  const pathParts = pathname.split('/').filter(Boolean);
-  const destination = pathParts.length > 0 ? pathParts[0] : '';
+  const pathParts = pathname.split("/").filter(Boolean);
+  const destination = pathParts.length > 0 ? pathParts[0] : "";
 
   // Match current step by checking if pathname ends with the step pattern
-  const currentStepIndex = steps.findIndex((step) =>
-    pathname === `/${destination}${step.pathPattern}` ||
-    pathname.endsWith(step.pathPattern)
+  const currentStepIndex = steps.findIndex(
+    (step) =>
+      pathname === `/${destination}${step.pathPattern}` ||
+      pathname.endsWith(step.pathPattern)
   );
   const currentStep = currentStepIndex >= 0 ? currentStepIndex + 1 : 1;
 
@@ -35,7 +36,6 @@ export default function StepProgress() {
         {steps.map((step, index) => {
           const isCompleted = step.number < currentStep;
           const isCurrent = step.number === currentStep;
-          const isUpcoming = step.number > currentStep;
 
           return (
             <div key={step.number} className="flex items-center flex-1">

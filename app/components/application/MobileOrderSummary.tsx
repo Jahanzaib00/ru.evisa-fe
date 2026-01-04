@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useApplicationStore } from "@/app/lib/store/applicationStore";
-import { getService, getCurrencySymbol } from "@/app/lib/config/services";
+import { getService, getCurrencySymbol, getProcessingTier, getDefaultProcessingTier } from "@/app/lib/config/services";
 
 interface MobileOrderSummaryProps {
   denialProtection?: boolean;
@@ -16,12 +16,21 @@ export default function MobileOrderSummary({
   onDenialProtectionChange,
 }: MobileOrderSummaryProps) {
   const [isExpanded, setIsExpanded] = useState(false);
-  const { totalApplicants, serviceType } = useApplicationStore();
+  const { totalApplicants, serviceType, processingTier } = useApplicationStore();
 
   // Get pricing from service config
   const service = serviceType ? getService(serviceType) : null;
   const governmentFee = service?.pricing.government || 0;
-  const serviceFee = service?.pricing.service || 0;
+
+  // Get the processing tier (default if not set)
+  const tier = serviceType && processingTier
+    ? getProcessingTier(serviceType, processingTier) || getDefaultProcessingTier(serviceType)
+    : serviceType
+    ? getDefaultProcessingTier(serviceType)
+    : null;
+  const serviceFee = tier?.serviceFee || 0;
+  const processingTimeLabel = tier?.label || "Standard";
+
   const denialProtectionFee = service?.pricing.denialProtection || 0;
   const currency = service?.pricing.currency || "USD";
   const currencySymbol = getCurrencySymbol(currency);
@@ -95,7 +104,14 @@ export default function MobileOrderSummary({
             </div>
 
             <div className="flex justify-between items-baseline">
-              <span className="text-gray">Processing fee</span>
+              <div>
+                <span className="text-gray">Processing fee</span>
+                {tier && (
+                  <p className="text-xs text-gray mt-0.5">
+                    {processingTimeLabel}
+                  </p>
+                )}
+              </div>
               <div className="text-right">
                 {isMultipleTravelers && (
                   <p className="text-xs text-gray mb-0.5">

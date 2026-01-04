@@ -139,11 +139,9 @@ export default function ReviewPage({ params }: Props) {
     setShowPaymentModal(false);
     setClientSecret(null);
 
-    // Redirect to first step of post-payment flow
+    // Redirect to first step of post-payment flow (dynamic routing)
     if (applicationId) {
-      router.replace(
-        `/${destination}/application/${applicationId}/step-1-personal`
-      );
+      router.replace(`/${destination}/application/${applicationId}/1`);
     } else {
       router.replace("/");
     }
@@ -179,6 +177,8 @@ export default function ReviewPage({ params }: Props) {
         sidebarButtonDisabled={isProcessing}
         showPrevious={false}
         showTotalAmount={true}
+        showProcessingFee={true}
+        showProgressBar={false}
         onPreviousClick={handlePrevious}
       >
         <div className="space-y-6">

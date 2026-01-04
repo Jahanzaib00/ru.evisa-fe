@@ -5,7 +5,7 @@
  */
 
 import { Country } from "@/app/lib/data/countries";
-import { ServiceConfig, ServiceType } from "@/app/lib/config/services";
+import { ServiceConfig, ServiceType, getDefaultProcessingTier } from "@/app/lib/config/services";
 import {
   generateFAQPageSchema,
   renderStructuredData,
@@ -50,8 +50,8 @@ export default function CountryFAQSection({
 
     const maxStay = service.validity.stays || "90 days per visit";
     const processingTime = service.processing.standard;
-    const totalCost =
-      service.pricing.government + service.pricing.service;
+    const defaultTier = getDefaultProcessingTier(service.type);
+    const totalCost = service.pricing.government + defaultTier.serviceFee;
     const currency = service.pricing.currency;
 
     return [
@@ -89,7 +89,7 @@ export default function CountryFAQSection({
       },
       {
         question: `How much does ${shortServiceName} cost for ${country.name} travelers?`,
-        answer: `The total cost is ${currency === "USD" ? "$" : currency === "GBP" ? "£" : "€"}${totalCost} ${currency}, which includes the government fee of ${currency === "USD" ? "$" : currency === "GBP" ? "£" : "€"}${service.pricing.government} and our processing fee of ${currency === "USD" ? "$" : currency === "GBP" ? "£" : "€"}${service.pricing.service}. Our service provides expert assistance, application review, and 24/7 support to ensure your ${shortServiceName} is approved correctly.`,
+        answer: `The total cost is ${currency === "USD" ? "$" : currency === "GBP" ? "£" : "€"}${totalCost} ${currency}, which includes the government fee of ${currency === "USD" ? "$" : currency === "GBP" ? "£" : "€"}${service.pricing.government} and our processing fee of ${currency === "USD" ? "$" : currency === "GBP" ? "£" : "€"}${defaultTier.serviceFee}. Our service provides expert assistance, application review, and 24/7 support to ensure your ${shortServiceName} is approved correctly.`,
       },
       {
         question: `How long is ${shortServiceName} valid for ${country.name} citizens?`,

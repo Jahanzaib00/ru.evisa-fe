@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import { ServiceType } from "@/app/lib/config/services";
 
 interface Traveler {
   id: string;
@@ -75,6 +76,7 @@ interface Traveler {
 interface Application {
   id: string;
   status: string;
+  serviceType: ServiceType; // Required for dynamic step rendering
   nationality?: string;
   totalApplicants?: number;
   totalAmount?: number;

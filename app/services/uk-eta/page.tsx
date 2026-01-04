@@ -33,7 +33,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default function UKETAServicePage() {
-  const pricing = calculatePrice(UK_ETA_CONFIG.type, 1, false);
+  const pricing = calculatePrice(UK_ETA_CONFIG.type, 1);
   const currency = getCurrencySymbol(UK_ETA_CONFIG.pricing.currency);
 
   // Generate structured data for Google

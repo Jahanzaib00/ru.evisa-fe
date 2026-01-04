@@ -4,7 +4,7 @@ import Button from "../ui/Button";
 import Container from "../ui/Container";
 import Section from "../ui/Section";
 import { trackCTAClick } from "@/app/lib/analytics";
-import { SERVICES, ServiceType, getCurrencySymbol } from "@/app/lib/config/services";
+import { SERVICES, ServiceType, getCurrencySymbol, getDefaultProcessingTier } from "@/app/lib/config/services";
 
 export default function Pricing() {
   const handleCTAClick = () => {
@@ -15,7 +15,8 @@ export default function Pricing() {
   // Use US ESTA as the featured service for homepage (most common)
   const featuredService = SERVICES[ServiceType.US_ESTA];
   const governmentFee = featuredService.pricing.government;
-  const serviceFee = featuredService.pricing.service;
+  const defaultTier = getDefaultProcessingTier(ServiceType.US_ESTA);
+  const serviceFee = defaultTier.serviceFee;
   const totalFee = governmentFee + serviceFee;
   const currency = featuredService.pricing.currency;
   const currencySymbol = getCurrencySymbol(currency);

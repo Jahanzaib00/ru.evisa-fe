@@ -60,6 +60,7 @@ export default function ESTAEligibilityStep({ applicationId, onNext, onBack }: E
   }, []);
 
   const loadTravelerData = (traveler: any) => {
+    // Backend stores eligibility as JSON object
     const answers = traveler.eligibilityAnswers || {};
     reset({
       eligibilityQ1: answers.q1 || false,
@@ -84,21 +85,20 @@ export default function ESTAEligibilityStep({ applicationId, onNext, onBack }: E
 
   const onSubmit = useFormSubmit(setFormError, async (data: ESTAEligibilityFormData) => {
     if (!currentTravelerId) throw new Error("No traveler selected");
-    
-    // Save answers as JSON
-    const eligibilityAnswers = {
-      q1: data.eligibilityQ1,
-      q2: data.eligibilityQ2,
-      q3: data.eligibilityQ3,
-      q4: data.eligibilityQ4,
-      q5: data.eligibilityQ5,
-      q6: data.eligibilityQ6,
-      q7: data.eligibilityQ7,
-      q8: data.eligibilityQ8,
-      q9: data.eligibilityQ9,
-    };
 
-    const success = await saveStep({ id: currentTravelerId, eligibilityAnswers });
+    // Send individual boolean fields (backend expects this format)
+    const success = await saveStep({
+      id: currentTravelerId,
+      eligibilityQ1: data.eligibilityQ1,
+      eligibilityQ2: data.eligibilityQ2,
+      eligibilityQ3: data.eligibilityQ3,
+      eligibilityQ4: data.eligibilityQ4,
+      eligibilityQ5: data.eligibilityQ5,
+      eligibilityQ6: data.eligibilityQ6,
+      eligibilityQ7: data.eligibilityQ7,
+      eligibilityQ8: data.eligibilityQ8,
+      eligibilityQ9: data.eligibilityQ9,
+    });
     if (!success) throw new Error(error || "Failed to save eligibility information");
 
     const currentIndex = travelers.findIndex((t) => t.id === currentTravelerId);

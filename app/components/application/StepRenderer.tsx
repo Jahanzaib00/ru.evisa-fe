@@ -63,7 +63,10 @@ export default function StepRenderer({ serviceType, currentStep, applicationId, 
   if (!stepConfig) {
     return (
       <div className="text-center py-12">
-        <p className="text-red-600">Invalid step: {currentStep}</p>
+        <p className="text-red-600">Invalid step: {currentStep + 1}</p>
+        <p className="text-sm text-gray-500 mt-2">
+          Service: {serviceConfig.name} has {serviceConfig.steps.length} steps
+        </p>
       </div>
     );
   }
