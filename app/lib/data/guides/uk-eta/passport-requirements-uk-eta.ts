@@ -17,7 +17,7 @@ export const passportRequirementsUkEta: Guide = {
     "biometric passport UK ETA",
   ],
   estimatedReadTime: 8,
-  lastUpdated: "2025-12-12",
+  lastUpdated: "2026-01-01",
   sections: [
     {
       id: "e-passport-requirement",

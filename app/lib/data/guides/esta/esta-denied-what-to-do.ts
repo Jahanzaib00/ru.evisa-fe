@@ -20,7 +20,7 @@ export const estaDeniedWhatToDo: Guide = {
     "visa after ESTA denial",
   ],
   estimatedReadTime: 11,
-  lastUpdated: "2025-01-15",
+  lastUpdated: "2026-01-01",
   relatedGuides: [
     "what-is-esta",
     "how-to-apply-esta",

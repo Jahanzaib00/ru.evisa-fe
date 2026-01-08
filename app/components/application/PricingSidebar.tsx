@@ -163,10 +163,9 @@ export default function PricingSidebar({
               {showProcessingFee && (
                 <div className="flex justify-between items-baseline">
                   <div>
-                    <span className="text-gray">Processing fee</span>
                     {tier && (
-                      <p className="text-xs text-gray mt-0.5">
-                        {processingTimeLabel}
+                      <p className="text-sm text-gray mt-0.5">
+                        {processingTimeLabel}, {tier.processingTime}
                       </p>
                     )}
                   </div>

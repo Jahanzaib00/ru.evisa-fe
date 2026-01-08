@@ -3,7 +3,7 @@ import { ServiceType } from "@/app/lib/config/services";
 
 export const ukEtaRequirements: Guide = {
   slug: "uk-eta-requirements",
-  title: "UK ETA Requirements: Complete Eligibility Guide for 2025",
+  title: "UK ETA Requirements: Complete Eligibility Guide for 2026",
   description:
     "Comprehensive guide to UK Electronic Travel Authorization (ETA) requirements including eligible nationalities, passport criteria, travel purposes, criminal record implications, and immigration history restrictions.",
   serviceType: ServiceType.UK_ETA,
@@ -20,7 +20,7 @@ export const ukEtaRequirements: Guide = {
     "uk eta criminal record",
   ],
   estimatedReadTime: 10,
-  lastUpdated: "2025-12-12",
+  lastUpdated: "2026-01-01",
   sections: [
     {
       id: "introduction",

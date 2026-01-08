@@ -3,7 +3,7 @@
  * Lists all eligible countries for a specific service (ESTA, UK ETA, etc.)
  * Route: /[destination]/countries (e.g., /united-states/countries, /united-kingdom/countries)
  *
- * SEO OPTIMIZED FOR 2025:
+ * SEO OPTIMIZED FOR 2026:
  * - Targets "ESTA eligible countries", "UK ETA countries list"
  * - Complete internal linking hub for all country pages
  * - Schema.org CollectionPage + ItemList + FAQPage

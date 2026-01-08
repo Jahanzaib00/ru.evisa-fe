@@ -13,7 +13,7 @@ export const ukEtaDenied: Guide = {
   priority: 0.75,
   keywords: ["UK ETA denied", "UK ETA refused", "UK ETA rejection"],
   estimatedReadTime: 12,
-  lastUpdated: "2025-12-12",
+  lastUpdated: "2026-01-01",
   sections: [
     {
       id: "understanding-refusal",

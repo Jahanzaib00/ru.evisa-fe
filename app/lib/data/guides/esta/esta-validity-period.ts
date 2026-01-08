@@ -5,7 +5,7 @@ export const estaValidityPeriod: Guide = {
   slug: "esta-validity-period",
   title: "ESTA Validity Period: How Long is ESTA Valid?",
   description:
-    "Learn how long ESTA is valid, when it expires, and when you need to renew. Complete guide to ESTA validity duration, passport expiration rules, and multiple entry requirements for 2025.",
+    "Learn how long ESTA is valid, when it expires, and when you need to renew. Complete guide to ESTA validity duration, passport expiration rules, and multiple entry requirements for 2026.",
   serviceType: ServiceType.US_ESTA,
   category: "main",
   pillarTopic: "status-management",
@@ -22,7 +22,7 @@ export const estaValidityPeriod: Guide = {
     "ESTA passport expiration",
   ],
   estimatedReadTime: 9,
-  lastUpdated: "2025-01-15",
+  lastUpdated: "2026-01-01",
   sections: [
     {
       id: "introduction",
@@ -54,7 +54,7 @@ export const estaValidityPeriod: Guide = {
         {
           type: "callout",
           title: "Example: 2-Year Validity",
-          text: "If your ESTA is approved on February 15, 2025, it will remain valid until February 15, 2027. You can travel to the U.S. as many times as you want between these dates.",
+          text: "If your ESTA is approved on February 15, 2026, it will remain valid until February 15, 2028. You can travel to the U.S. as many times as you want between these dates.",
         },
       ],
     },
@@ -71,7 +71,7 @@ export const estaValidityPeriod: Guide = {
         {
           type: "callout",
           title: "Example: Passport Expiration Scenario",
-          text: "ESTA approved: March 1, 2025 (normally valid until March 1, 2027). Passport expires: October 15, 2025. Your ESTA will expire: October 15, 2025 (when your passport expires), NOT March 1, 2027.",
+          text: "ESTA approved: March 1, 2026 (normally valid until March 1, 2028). Passport expires: October 15, 2026. Your ESTA will expire: October 15, 2026 (when your passport expires), NOT March 1, 2028.",
         },
         "This is because your ESTA is electronically linked to your specific passport number. When you get a new passport, even if your ESTA has not expired, you MUST apply for a new ESTA with your new passport information.",
       ],
@@ -165,10 +165,10 @@ export const estaValidityPeriod: Guide = {
       title: "Common ESTA Validity Scenarios",
       content: [
         "Here are real-world scenarios to help you understand ESTA validity:",
-        "Scenario 1 - Standard 2-Year Validity: ESTA approved January 1, 2025. Passport expires December 1, 2027. ESTA valid until: January 1, 2027 (full 2 years).",
-        "Scenario 2 - Passport Expires First: ESTA approved January 1, 2025. Passport expires June 1, 2026. ESTA valid until: June 1, 2026 (18 months, when passport expires).",
-        "Scenario 3 - New Passport Obtained: ESTA approved and valid until December 2026. New passport issued in March 2025. ESTA valid until: Invalid immediately. Must apply for new ESTA with new passport.",
-        "Scenario 4 - Multiple Trips: ESTA approved January 2025, valid until January 2027. Trips: March 2025 (20 days), July 2025 (30 days), December 2025 (15 days), May 2026 (25 days). All trips allowed under same ESTA as long as each is ≤90 days.",
+        "Scenario 1 - Standard 2-Year Validity: ESTA approved January 1, 2026. Passport expires December 1, 2028. ESTA valid until: January 1, 2028 (full 2 years).",
+        "Scenario 2 - Passport Expires First: ESTA approved January 1, 2026. Passport expires June 1, 2026. ESTA valid until: June 1, 2026 (18 months, when passport expires).",
+        "Scenario 3 - New Passport Obtained: ESTA approved and valid until December 2026. New passport issued in March 2026. ESTA valid until: Invalid immediately. Must apply for new ESTA with new passport.",
+        "Scenario 4 - Multiple Trips: ESTA approved January 2026, valid until January 2028. Trips: March 2026 (20 days), July 2026 (30 days), December 2026 (15 days), May 2026 (25 days). All trips allowed under same ESTA as long as each is ≤90 days.",
       ],
     },
   ],

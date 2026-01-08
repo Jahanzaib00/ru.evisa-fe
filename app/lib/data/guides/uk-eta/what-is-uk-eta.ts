@@ -20,7 +20,7 @@ export const whatIsUkEta: Guide = {
     "what does UK ETA stand for",
   ],
   estimatedReadTime: 8,
-  lastUpdated: "2025-12-12",
+  lastUpdated: "2026-01-01",
   sections: [
     {
       id: "introduction",

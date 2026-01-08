@@ -3,7 +3,7 @@ import { ServiceType } from "@/app/lib/config/services";
 
 export const checkEstaStatus: Guide = {
   slug: "check-esta-status",
-  title: "How to Check ESTA Status Online - Complete Lookup Guide 2025",
+  title: "How to Check ESTA Status Online - Complete Lookup Guide",
   description:
     "Check your ESTA application status online using the official CBP website. Complete step-by-step guide to tracking your application, understanding status types, and what to do if you lost your application number.",
   serviceType: ServiceType.US_ESTA,
@@ -22,7 +22,7 @@ export const checkEstaStatus: Guide = {
     "ESTA status online",
   ],
   estimatedReadTime: 9,
-  lastUpdated: "2025-01-15",
+  lastUpdated: "2026-01-01",
   sections: [
     {
       id: "introduction",

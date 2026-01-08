@@ -3,9 +3,9 @@ import { ServiceType } from "@/app/lib/config/services";
 
 export const estaApplicationFees: Guide = {
   slug: "esta-application-fees",
-  title: "ESTA Fees 2025: Complete Cost Breakdown & Payment Guide",
+  title: "ESTA Fees 2026: Complete Cost Breakdown & Payment Guide",
   description:
-    "Official ESTA application fees, payment methods, what you are paying for, and how to avoid third-party scams. Complete cost breakdown and refund policy for 2025.",
+    "Official ESTA application fees, payment methods, what you are paying for, and how to avoid third-party scams. Complete cost breakdown and refund policy for 2026.",
   serviceType: ServiceType.US_ESTA,
   category: "process",
   pillarTopic: "application",
@@ -17,11 +17,11 @@ export const estaApplicationFees: Guide = {
     "how much ESTA",
     "ESTA price",
     "ESTA payment",
-    "ESTA fee 2025",
+    "ESTA fee 2026",
     "ESTA application cost",
   ],
   estimatedReadTime: 8,
-  lastUpdated: "2025-01-15",
+  lastUpdated: "2026-01-01",
   sections: [
     {
       id: "introduction",

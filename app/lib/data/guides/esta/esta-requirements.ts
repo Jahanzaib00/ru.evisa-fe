@@ -3,7 +3,7 @@ import { ServiceType } from "@/app/lib/config/services";
 
 export const estaRequirements: Guide = {
   slug: "esta-requirements",
-  title: "ESTA Requirements 2025: Complete Eligibility Guide",
+  title: "ESTA Requirements 2026: Complete Eligibility Guide",
   description:
     "Complete list of ESTA requirements including passport requirements, eligibility criteria, and what you need to qualify for U.S. travel authorization under the Visa Waiver Program.",
   serviceType: ServiceType.US_ESTA,
@@ -20,7 +20,7 @@ export const estaRequirements: Guide = {
     "passport requirements ESTA",
   ],
   estimatedReadTime: 10,
-  lastUpdated: "2025-01-15",
+  lastUpdated: "2026-01-01",
   sections: [
     {
       id: "introduction",

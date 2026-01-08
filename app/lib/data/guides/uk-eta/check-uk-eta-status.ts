@@ -3,7 +3,7 @@ import { ServiceType } from "@/app/lib/config/services";
 
 export const checkUkEtaStatus: Guide = {
   slug: "check-uk-eta-status",
-  title: "How to Check UK ETA Status Online - Complete Guide 2025",
+  title: "How to Check UK ETA Status Online - Complete Guide",
   description:
     "Check your UK ETA application status online at gov.uk/check-eta. Learn how to track your application and understand decision types.",
   serviceType: ServiceType.UK_ETA,
@@ -18,7 +18,7 @@ export const checkUkEtaStatus: Guide = {
     "UK ETA lookup",
   ],
   estimatedReadTime: 9,
-  lastUpdated: "2025-12-12",
+  lastUpdated: "2026-01-01",
   sections: [
     {
       id: "introduction",

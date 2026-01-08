@@ -13,7 +13,7 @@ export const ukEtaForMinors: Guide = {
   priority: 0.75,
   keywords: ["UK ETA for children", "UK ETA for minors", "UK ETA for babies"],
   estimatedReadTime: 8,
-  lastUpdated: "2025-12-12",
+  lastUpdated: "2026-01-01",
   sections: [
     {
       id: "do-children-need",

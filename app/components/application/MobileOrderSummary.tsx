@@ -2,7 +2,12 @@
 
 import { useState } from "react";
 import { useApplicationStore } from "@/app/lib/store/applicationStore";
-import { getService, getCurrencySymbol, getProcessingTier, getDefaultProcessingTier } from "@/app/lib/config/services";
+import {
+  getService,
+  getCurrencySymbol,
+  getProcessingTier,
+  getDefaultProcessingTier,
+} from "@/app/lib/config/services";
 
 interface MobileOrderSummaryProps {
   denialProtection?: boolean;
@@ -16,18 +21,21 @@ export default function MobileOrderSummary({
   onDenialProtectionChange,
 }: MobileOrderSummaryProps) {
   const [isExpanded, setIsExpanded] = useState(false);
-  const { totalApplicants, serviceType, processingTier } = useApplicationStore();
+  const { totalApplicants, serviceType, processingTier } =
+    useApplicationStore();
 
   // Get pricing from service config
   const service = serviceType ? getService(serviceType) : null;
   const governmentFee = service?.pricing.government || 0;
 
   // Get the processing tier (default if not set)
-  const tier = serviceType && processingTier
-    ? getProcessingTier(serviceType, processingTier) || getDefaultProcessingTier(serviceType)
-    : serviceType
-    ? getDefaultProcessingTier(serviceType)
-    : null;
+  const tier =
+    serviceType && processingTier
+      ? getProcessingTier(serviceType, processingTier) ||
+        getDefaultProcessingTier(serviceType)
+      : serviceType
+      ? getDefaultProcessingTier(serviceType)
+      : null;
   const serviceFee = tier?.serviceFee || 0;
   const processingTimeLabel = tier?.label || "Standard";
 
@@ -78,7 +86,8 @@ export default function MobileOrderSummary({
 
           {!isExpanded && (
             <p className="text-xl font-bold text-gray-dark">
-              {currencySymbol}{grandTotal.toFixed(2)}
+              {currencySymbol}
+              {grandTotal.toFixed(2)}
             </p>
           )}
         </div>
@@ -94,32 +103,35 @@ export default function MobileOrderSummary({
               <div className="text-right">
                 {isMultipleTravelers && (
                   <p className="text-xs text-gray mb-0.5">
-                    {currencySymbol}{governmentFee.toFixed(2)} × {totalApplicants}
+                    {currencySymbol}
+                    {governmentFee.toFixed(2)} × {totalApplicants}
                   </p>
                 )}
                 <span className="font-semibold text-gray-dark">
-                  {currencySymbol}{(governmentFee * totalApplicants).toFixed(2)}
+                  {currencySymbol}
+                  {(governmentFee * totalApplicants).toFixed(2)}
                 </span>
               </div>
             </div>
 
             <div className="flex justify-between items-baseline">
               <div>
-                <span className="text-gray">Processing fee</span>
                 {tier && (
-                  <p className="text-xs text-gray mt-0.5">
-                    {processingTimeLabel}
+                  <p className="text-sm text-gray mt-0.5">
+                    {processingTimeLabel}, {tier.processingTime}
                   </p>
                 )}
               </div>
               <div className="text-right">
                 {isMultipleTravelers && (
                   <p className="text-xs text-gray mb-0.5">
-                    {currencySymbol}{serviceFee.toFixed(2)} × {totalApplicants}
+                    {currencySymbol}
+                    {serviceFee.toFixed(2)} × {totalApplicants}
                   </p>
                 )}
                 <span className="font-semibold text-gray-dark">
-                  {currencySymbol}{(serviceFee * totalApplicants).toFixed(2)}
+                  {currencySymbol}
+                  {(serviceFee * totalApplicants).toFixed(2)}
                 </span>
               </div>
             </div>
@@ -130,11 +142,13 @@ export default function MobileOrderSummary({
                 <div className="text-right">
                   {isMultipleTravelers && (
                     <p className="text-xs text-gray mb-0.5">
-                      {currencySymbol}{denialProtectionFee.toFixed(2)} × {totalApplicants}
+                      {currencySymbol}
+                      {denialProtectionFee.toFixed(2)} × {totalApplicants}
                     </p>
                   )}
                   <span className="font-semibold text-gray-dark">
-                    {currencySymbol}{protectionCost.toFixed(2)}
+                    {currencySymbol}
+                    {protectionCost.toFixed(2)}
                   </span>
                 </div>
               </div>
@@ -150,7 +164,8 @@ export default function MobileOrderSummary({
                   <p className="text-xs text-gray mb-1">For all travelers</p>
                 )}
                 <p className="text-2xl font-bold text-gray-dark">
-                  {currencySymbol}{grandTotal.toFixed(2)} {currency.toUpperCase()}
+                  {currencySymbol}
+                  {grandTotal.toFixed(2)} {currency.toUpperCase()}
                 </p>
               </div>
             </div>

@@ -20,7 +20,7 @@ export const estaForMinors: Guide = {
     "children traveling to USA",
   ],
   estimatedReadTime: 9,
-  lastUpdated: "2025-01-15",
+  lastUpdated: "2026-01-01",
   relatedGuides: [
     "what-is-esta",
     "how-to-apply-esta",

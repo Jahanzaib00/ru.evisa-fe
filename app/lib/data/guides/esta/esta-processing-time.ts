@@ -3,7 +3,7 @@ import { ServiceType } from "@/app/lib/config/services";
 
 export const estaProcessingTime: Guide = {
   slug: "esta-processing-time",
-  title: "ESTA Processing Time: How Long Does Approval Take? 2025 Guide",
+  title: "ESTA Processing Time: How Long Does Approval Take?",
   description:
     "Average ESTA processing times, what to expect after submitting your application, factors affecting processing speed, and what to do if your application takes longer than expected.",
   serviceType: ServiceType.US_ESTA,
@@ -21,7 +21,7 @@ export const estaProcessingTime: Guide = {
     "ESTA decision time",
   ],
   estimatedReadTime: 8,
-  lastUpdated: "2025-01-15",
+  lastUpdated: "2026-01-01",
   sections: [
     {
       id: "introduction",
@@ -39,7 +39,7 @@ export const estaProcessingTime: Guide = {
       id: "typical-processing-times",
       title: "Typical ESTA Processing Times",
       content: [
-        "Here is what you can expect for ESTA processing times in 2025:",
+        "Here is what you can expect for ESTA processing times in 2026:",
         "Instant Approval (Most Common):",
         {
           type: "list",

@@ -3,7 +3,7 @@ import { ServiceType } from "@/app/lib/config/services";
 
 export const ukEtaVsVisa: Guide = {
   slug: "uk-eta-vs-visa",
-  title: "UK ETA vs Visa: Complete Comparison Guide 2025",
+  title: "UK ETA vs Visa: Complete Comparison Guide",
   description:
     "Comprehensive comparison of UK ETA vs UK visa: cost, processing time, validity, and when you need a visa instead of ETA.",
   serviceType: ServiceType.UK_ETA,
@@ -13,7 +13,7 @@ export const ukEtaVsVisa: Guide = {
   priority: 0.8,
   keywords: ["UK ETA vs visa", "UK ETA or visa", "difference UK ETA visa"],
   estimatedReadTime: 12,
-  lastUpdated: "2025-12-12",
+  lastUpdated: "2026-01-01",
   sections: [
     {
       id: "key-differences",

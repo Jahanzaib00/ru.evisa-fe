@@ -3,7 +3,7 @@ import { ServiceType } from "@/app/lib/config/services";
 
 export const renewEsta: Guide = {
   slug: "renew-esta",
-  title: "How to Renew ESTA: Complete Renewal Guide 2025",
+  title: "How to Renew ESTA: Complete Renewal Guide",
   description:
     "Complete guide to renewing your expired ESTA. Learn when to renew, the step-by-step renewal process, what information you need, and important differences between renewal and new applications.",
   serviceType: ServiceType.US_ESTA,
@@ -20,7 +20,7 @@ export const renewEsta: Guide = {
     "ESTA renewal process",
   ],
   estimatedReadTime: 9,
-  lastUpdated: "2025-01-15",
+  lastUpdated: "2026-01-01",
   sections: [
     {
       id: "introduction",
@@ -222,7 +222,7 @@ export const renewEsta: Guide = {
         {
           type: "callout",
           title: "Validity Example",
-          text: "If your new ESTA is approved on March 1, 2025, it will be valid until March 1, 2027, unless your passport expires before then. If your passport expires on January 15, 2026, your ESTA will also expire on that date.",
+          text: "If your new ESTA is approved on March 1, 2026, it will be valid until March 1, 2028, unless your passport expires before then. If your passport expires on January 15, 2026, your ESTA will also expire on that date.",
         },
       ],
     },

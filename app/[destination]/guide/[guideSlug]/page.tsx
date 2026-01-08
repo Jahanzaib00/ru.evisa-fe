@@ -17,6 +17,7 @@ import {
   getClusterContent,
 } from "@/app/lib/data/guides";
 import {
+  getCurrencySymbol,
   getServiceByDestination,
   ServiceType,
 } from "@/app/lib/config/services";
@@ -223,8 +224,12 @@ export default function GuidePage({
       <InlineCTA
         variant="sticky"
         position="bottom"
-        title={`Ready to Apply for ${service.name}?`}
-        description={`Expert assistance • 99% approval rate • 24/7 support`}
+        title={`Apply now for ${service.name} in ${getCurrencySymbol(
+          service.pricing.currency
+        )}${
+          service.pricing.government + service.processingTiers[0].serviceFee
+        }`}
+        description={`Fast-Track your ${service.name} Application`}
         buttonText="Start Application"
         destination={destination}
         service={service}
@@ -348,10 +353,7 @@ export default function GuidePage({
 
                             if ("type" in item && item.type === "list") {
                               return (
-                                <ul
-                                  key={itemIdx}
-                                  className="space-y-2 mb-4"
-                                >
+                                <ul key={itemIdx} className="space-y-2 mb-4">
                                   {item.items.map((listItem, listIdx) => (
                                     <li
                                       key={listIdx}

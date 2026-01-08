@@ -98,7 +98,7 @@ export default function Hero() {
               disabled={!nationality}
               className="px-2 text-lg md:text-xl"
             >
-              Check My Eligibility
+              Get started!
               <ArrowRight className="ml-2" />
             </Button>
           </div>

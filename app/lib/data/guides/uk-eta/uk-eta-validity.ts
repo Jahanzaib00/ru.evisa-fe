@@ -18,7 +18,7 @@ export const ukEtaValidity: Guide = {
     "UK ETA duration",
   ],
   estimatedReadTime: 9,
-  lastUpdated: "2025-12-12",
+  lastUpdated: "2026-01-01",
   sections: [
     {
       id: "introduction",

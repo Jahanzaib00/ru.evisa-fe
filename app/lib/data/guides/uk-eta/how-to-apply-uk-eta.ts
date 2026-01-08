@@ -3,7 +3,7 @@ import { ServiceType } from "@/app/lib/config/services";
 
 export const howToApplyUkEta: Guide = {
   slug: "how-to-apply-uk-eta",
-  title: "How to Apply for UK ETA: Complete Step-by-Step Guide 2025",
+  title: "How to Apply for UK ETA: Complete Step-by-Step Guide",
   description:
     "Complete step-by-step instructions for applying for UK ETA online or via the mobile app. Learn what information you need and what to expect during the approval process.",
   serviceType: ServiceType.UK_ETA,
@@ -19,7 +19,7 @@ export const howToApplyUkEta: Guide = {
     "UK ETA application steps",
   ],
   estimatedReadTime: 12,
-  lastUpdated: "2025-12-12",
+  lastUpdated: "2026-01-01",
   sections: [
     {
       id: "introduction",

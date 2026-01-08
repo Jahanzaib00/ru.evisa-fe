@@ -297,8 +297,7 @@ export default function GuidesListClient({
           Ready to Apply for Your ESTA?
         </h3>
         <p className="text-lg md:text-xl text-blue-100 mb-6">
-          Get expert assistance with your ESTA application. 99% approval rate,
-          24/7 support.
+          Get US ESTA in $45 with our fast and easy application process.
         </p>
         <Link href="/apply">
           <Button

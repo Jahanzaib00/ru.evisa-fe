@@ -20,7 +20,7 @@ export const passportRequirementsEsta: Guide = {
     "VWP passport requirements",
   ],
   estimatedReadTime: 10,
-  lastUpdated: "2025-01-15",
+  lastUpdated: "2026-01-01",
   relatedGuides: [
     "what-is-esta",
     "how-to-apply-esta",
@@ -119,7 +119,7 @@ export const passportRequirementsEsta: Guide = {
       title: "Visa Waiver Program Country Requirement",
       content: [
         "To be eligible for ESTA, you must be a citizen of one of the 42 countries participating in the Visa Waiver Program (VWP). Your passport must be issued by one of these countries.",
-        "Current Visa Waiver Program countries (as of 2025):",
+        "Current Visa Waiver Program countries (as of 2026):",
         {
           type: "list",
           items: [

@@ -3,7 +3,7 @@ import { ServiceType } from "@/app/lib/config/services";
 
 export const ukEtaFees: Guide = {
   slug: "uk-eta-fees",
-  title: "UK ETA Fees: Complete Cost Guide for 2025",
+  title: "UK ETA Fees: Complete Cost Guide",
   description:
     "Complete guide to UK ETA fees including the £16 application cost, payment methods, refund policy, and comparison with UK visa fees.",
   serviceType: ServiceType.UK_ETA,
@@ -19,7 +19,7 @@ export const ukEtaFees: Guide = {
     "eta payment methods",
   ],
   estimatedReadTime: 7,
-  lastUpdated: "2025-12-12",
+  lastUpdated: "2026-01-01",
   sections: [
     {
       id: "fee-overview",

@@ -3,7 +3,7 @@ import { ServiceType } from "@/app/lib/config/services";
 
 export const estaHowToApply: Guide = {
   slug: "how-to-apply-esta",
-  title: "How to Apply for ESTA: Complete Step-by-Step Guide 2025",
+  title: "How to Apply for ESTA: Complete Step-by-Step Guide",
   description:
     "Complete step-by-step instructions for applying for ESTA online. Learn exactly what information you need, how to fill out the form correctly, and what to expect during the application process.",
   serviceType: ServiceType.US_ESTA,
@@ -20,7 +20,7 @@ export const estaHowToApply: Guide = {
     "complete ESTA application",
   ],
   estimatedReadTime: 12,
-  lastUpdated: "2025-01-15",
+  lastUpdated: "2026-01-01",
   sections: [
     {
       id: "introduction",

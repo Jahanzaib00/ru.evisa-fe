@@ -5,7 +5,7 @@ export const estaVsVisa: Guide = {
   slug: "esta-vs-visa",
   title: "ESTA vs U.S. Visa: Which One Do You Need?",
   description:
-    "Compare ESTA and U.S. B-2 tourist visa. Complete comparison of differences, requirements, costs, processing time, validity, and which option is right for your travel needs in 2025.",
+    "Compare ESTA and U.S. B-2 tourist visa. Complete comparison of differences, requirements, costs, processing time, validity, and which option is right for your travel needs in 2026.",
   serviceType: ServiceType.US_ESTA,
   category: "comparison",
   pillarTopic: "comparison",
@@ -21,7 +21,7 @@ export const estaVsVisa: Guide = {
     "visitor visa vs ESTA",
   ],
   estimatedReadTime: 11,
-  lastUpdated: "2025-01-15",
+  lastUpdated: "2026-01-01",
   sections: [
     {
       id: "introduction",

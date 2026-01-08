@@ -3,7 +3,7 @@ import { ServiceType } from "@/app/lib/config/services";
 
 export const ukEtaProcessingTime: Guide = {
   slug: "uk-eta-processing-time",
-  title: "UK ETA Processing Time: How Long Does Approval Take? [2025]",
+  title: "UK ETA Processing Time: How Long Does Approval Take?",
   description:
     "UK ETA processing usually takes minutes, but can take up to 3 working days. Learn factors affecting delays and when to apply.",
   serviceType: ServiceType.UK_ETA,
@@ -17,7 +17,7 @@ export const ukEtaProcessingTime: Guide = {
     "UK ETA approval time",
   ],
   estimatedReadTime: 7,
-  lastUpdated: "2025-12-12",
+  lastUpdated: "2026-01-01",
   sections: [
     {
       id: "standard-processing",
