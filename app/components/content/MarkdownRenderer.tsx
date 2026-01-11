@@ -1,54 +1,135 @@
 "use client";
 
 import ReactMarkdown, { Components } from "react-markdown";
-import InlineCTA from "./InlineCTA";
 import { ReactNode } from "react";
+import {
+  RequiredMarker,
+  DisqualifierMarker,
+  StepMarker,
+  WarningCallout,
+  TipCallout,
+  TakeawayCallout,
+  FailureCallout,
+  detectMarker,
+  stripMarker,
+} from "./markers";
+import {
+  ComparisonTable,
+  Flowchart,
+  Checklist,
+  Timeline,
+  Steps,
+  Scenario,
+  ProsCons,
+  CostBreakdown,
+  Alert,
+} from "./components";
 
 interface MarkdownRendererProps {
   content: string;
-  injectCTAs?: boolean;
-  ctaFrequency?: number;
+}
+
+interface ComponentBlock {
+  type: string;
+  content: string;
+  index: number;
 }
 
 /**
- * Helper function to extract text content from React children
+ * Extract component markers from content
+ * Returns array of {type, content, index} and cleaned content
+ */
+function extractComponentMarkers(content: string): { components: ComponentBlock[]; cleanedContent: string } {
+  const components: ComponentBlock[] = [];
+  const componentPatterns = [
+    'COMPARISON',
+    'FLOWCHART',
+    'CHECKLIST',
+    'TIMELINE',
+    'STEPS',
+    'SCENARIO',
+    'PROSCONS',
+    'COST_BREAKDOWN',
+    'ALERT',
+  ];
+
+  let cleanedContent = content;
+  let componentIndex = 0;
+
+  // Extract each component type
+  for (const componentType of componentPatterns) {
+    const openTag = `[${componentType}]`;
+    const closeTag = `[/${componentType}]`;
+    const regex = new RegExp(`\\[${componentType}\\]([\\s\\S]*?)\\[\\/${componentType}\\]`, 'gi');
+
+    cleanedContent = cleanedContent.replace(regex, (match, componentContent) => {
+      const placeholder = `{{COMPONENT:${componentIndex}}}`;
+      components.push({
+        type: componentType,
+        content: componentContent.trim(),
+        index: componentIndex,
+      });
+      componentIndex++;
+      return placeholder;
+    });
+  }
+
+  return { components, cleanedContent };
+}
+
+/**
+ * Render a component based on type
+ */
+function renderComponent(component: ComponentBlock): ReactNode {
+  switch (component.type) {
+    case 'COMPARISON':
+      return <ComparisonTable key={component.index} content={component.content} />;
+    case 'FLOWCHART':
+      return <Flowchart key={component.index} content={component.content} />;
+    case 'CHECKLIST':
+      return <Checklist key={component.index} content={component.content} />;
+    case 'TIMELINE':
+      return <Timeline key={component.index} content={component.content} />;
+    case 'STEPS':
+      return <Steps key={component.index} content={component.content} />;
+    case 'SCENARIO':
+      return <Scenario key={component.index} content={component.content} />;
+    case 'PROSCONS':
+      return <ProsCons key={component.index} content={component.content} />;
+    case 'COST_BREAKDOWN':
+      return <CostBreakdown key={component.index} content={component.content} />;
+    case 'ALERT':
+      return <Alert key={component.index} content={component.content} />;
+    default:
+      return null;
+  }
+}
+
+/**
+ * Extract text content from React children
  */
 function extractTextFromChildren(children: ReactNode): string {
-  if (typeof children === "string") {
-    return children;
-  }
-
-  if (Array.isArray(children)) {
-    return children.map(extractTextFromChildren).join("");
-  }
-
+  if (typeof children === "string") return children;
+  if (Array.isArray(children)) return children.map(extractTextFromChildren).join("");
   if (children && typeof children === "object" && "props" in children) {
     return extractTextFromChildren((children as any).props.children);
   }
-
   return "";
 }
 
 /**
- * Helper to extract text and remove semantic markers
- * Returns plain text without the marker
- */
-function removeMarker(children: ReactNode, marker: string): string {
-  const text = extractTextFromChildren(children);
-  return text.replace(marker, "").trim();
-}
-
-/**
- * MarkdownRenderer - Professional Content Rendering
- *
- * Uses semantic markers from AI to render professional, accessible content:
- * - [WARNING], [TIP], [TAKEAWAY], [FAILURE] → Styled callout cards with Heroicons
- * - Links → External link icons, proper hover states
- * - Strong/Em → Proper visual weight and distinction
- * - Government-inspired design system
+ * MarkdownRenderer - Clean, scalable markdown rendering with marker support
  */
 export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
-  // Custom component overrides for react-markdown
+  // Extract component markers first
+  const { components: extractedComponents, cleanedContent } = extractComponentMarkers(content);
+
+  // Create a map of component placeholders
+  const componentMap = new Map<string, ComponentBlock>();
+  extractedComponents.forEach(comp => {
+    componentMap.set(`{{COMPONENT:${comp.index}}}`, comp);
+  });
+
   const components: Components = {
     // Headings
     h1: ({ children }) => (
@@ -66,159 +147,118 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
         {children}
       </h3>
     ),
-    h4: ({ children }) => (
-      <h4 className="text-lg md:text-xl lg:text-2xl font-semibold text-gray-dark mb-4 mt-6">
-        {children}
-      </h4>
-    ),
-    h5: ({ children }) => (
-      <h5 className="text-base md:text-lg lg:text-xl font-semibold text-gray-dark mb-3 mt-6">
-        {children}
-      </h5>
-    ),
-    h6: ({ children }) => (
-      <h6 className="text-sm md:text-base lg:text-lg font-semibold text-gray-dark mb-3 mt-4">
-        {children}
-      </h6>
-    ),
 
-    // Paragraphs
-    p: ({ children }) => (
-      <p className="text-base md:text-lg text-gray leading-relaxed mb-6">
-        {children}
-      </p>
-    ),
+    // Paragraphs (with component placeholder detection)
+    p: ({ children }) => {
+      const text = extractTextFromChildren(children).trim();
 
-    // Lists
+      // Check if this is a component placeholder
+      const placeholderMatch = text.match(/^\{\{COMPONENT:(\d+)\}\}$/);
+      if (placeholderMatch) {
+        const component = componentMap.get(text);
+        if (component) {
+          return renderComponent(component);
+        }
+      }
+
+      return (
+        <p className="text-base md:text-lg text-gray leading-relaxed mb-6">
+          {children}
+        </p>
+      );
+    },
+
+    // Lists with marker support
     ul: ({ children }) => (
       <ul className="list-disc list-outside ml-4 md:ml-6 text-gray space-y-2 md:space-y-3 mb-6">
         {children}
       </ul>
     ),
     ol: ({ children }) => (
-      <ol className="list-decimal list-outside ml-4 md:ml-6 text-gray space-y-2 md:space-y-3 mb-6">
+      <ol className="list-decimal list-outside ml-4 md:ml-6 text-gray space-y-3 md:space-y-4 mb-6">
         {children}
       </ol>
     ),
-    li: ({ children }) => (
-      <li className="text-base md:text-lg text-gray leading-relaxed pl-2">
-        {children}
-      </li>
-    ),
 
-    // Blockquotes - Semantic marker detection with professional icons
+    li: ({ children }) => {
+      const childText = extractTextFromChildren(children);
+      const marker = detectMarker(childText, 'list');
+
+      if (marker === 'REQUIRED') {
+        return <RequiredMarker>{stripMarker(childText, marker)}</RequiredMarker>;
+      }
+      if (marker === 'DISQUALIFIER') {
+        return <DisqualifierMarker>{stripMarker(childText, marker)}</DisqualifierMarker>;
+      }
+      if (marker === 'STEP') {
+        return <StepMarker>{stripMarker(childText, marker)}</StepMarker>;
+      }
+
+      // Checkbox support (backward compat)
+      const checkboxMatch = childText.match(/^(\[\s?\]|\[x\])\s*/i);
+      if (checkboxMatch) {
+        const isChecked = /\[x\]/i.test(checkboxMatch[0]);
+        const textWithoutCheckbox = childText.replace(/^(\[\s?\]|\[x\])\s*/i, '');
+        return (
+          <li className="flex items-start gap-3 text-base md:text-lg leading-relaxed list-none ml-0">
+            <span className={`flex-shrink-0 w-5 h-5 md:w-6 md:h-6 rounded border-2 flex items-center justify-center mt-1 ${
+              isChecked ? 'bg-success border-success' : 'bg-white border-primary'
+            }`}>
+              {isChecked && (
+                <svg className="w-3 h-3 md:w-4 md:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                </svg>
+              )}
+            </span>
+            <span className={`flex-1 ${isChecked ? 'line-through text-gray' : 'text-gray-dark'}`}>
+              {textWithoutCheckbox}
+            </span>
+          </li>
+        );
+      }
+
+      return (
+        <li className="text-base md:text-lg text-gray leading-relaxed pl-2">
+          {children}
+        </li>
+      );
+    },
+
+    // Blockquotes with callout marker support
     blockquote: ({ children }) => {
       const childText = extractTextFromChildren(children);
+      const marker = detectMarker(childText, 'blockquote');
 
-      // [WARNING] marker - Yellow/Orange alert card (distinct from red FAILURE)
-      if (childText.includes("[WARNING]")) {
-        const cleanedChildren = removeMarker(children, "[WARNING]");
+      if (marker === 'WARNING') {
+        return <WarningCallout>{stripMarker(childText, marker)}</WarningCallout>;
+      }
+      if (marker === 'TIP') {
+        return <TipCallout>{stripMarker(childText, marker)}</TipCallout>;
+      }
+      if (marker === 'TAKEAWAY') {
+        return <TakeawayCallout>{stripMarker(childText, marker)}</TakeawayCallout>;
+      }
+      if (marker === 'FAILURE') {
+        return <FailureCallout>{stripMarker(childText, marker)}</FailureCallout>;
+      }
+
+      // Decision flowchart detection
+      if (childText.includes('→') && (childText.includes('YES:') || childText.includes('NO:'))) {
         return (
-          <div className="border-l-4 border-warning bg-yellow-50 p-4 md:p-6 my-6 rounded-r-lg shadow-sm">
+          <div className="border-2 border-primary bg-gradient-to-br from-blue-50 to-white p-4 md:p-6 my-6 rounded-lg shadow-md">
             <div className="flex items-start gap-3">
-              <svg
-                className="w-6 h-6 text-warning flex-shrink-0 mt-0.5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-                />
+              <svg className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <div className="text-sm md:text-base text-gray-dark font-medium flex-1">
-                {cleanedChildren}
+              <div className="text-sm md:text-base text-gray-dark flex-1 leading-relaxed">
+                {children}
               </div>
             </div>
           </div>
         );
       }
 
-      // [TIP] marker - Blue tip card
-      if (childText.includes("[TIP]")) {
-        const cleanedChildren = removeMarker(children, "[TIP]");
-        return (
-          <div className="border-l-4 border-primary-light bg-blue-50 p-4 md:p-6 my-6 rounded-r-lg shadow-sm">
-            <div className="flex items-start gap-3">
-              <svg
-                className="w-6 h-6 text-primary-light flex-shrink-0 mt-0.5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
-                />
-              </svg>
-              <div className="text-sm md:text-base text-gray-dark font-medium flex-1">
-                {cleanedChildren}
-              </div>
-            </div>
-          </div>
-        );
-      }
-
-      // [TAKEAWAY] marker - Green success card
-      if (childText.includes("[TAKEAWAY]")) {
-        const cleanedChildren = removeMarker(children, "[TAKEAWAY]");
-        return (
-          <div className="border-l-4 border-success bg-green-50 p-4 md:p-6 my-6 rounded-r-lg shadow-sm">
-            <div className="flex items-start gap-3">
-              <svg
-                className="w-6 h-6 text-success flex-shrink-0 mt-0.5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-              <div className="text-sm md:text-base text-gray-dark font-medium flex-1">
-                {cleanedChildren}
-              </div>
-            </div>
-          </div>
-        );
-      }
-
-      // [FAILURE] marker - Red error card with X icon
-      if (childText.includes("[FAILURE]")) {
-        const cleanedChildren = removeMarker(children, "[FAILURE]");
-        return (
-          <div className="border-l-4 border-accent bg-red-50 p-4 md:p-6 my-6 rounded-r-lg shadow-md">
-            <div className="flex items-start gap-3">
-              <svg
-                className="w-6 h-6 text-accent flex-shrink-0 mt-0.5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-              <div className="text-sm md:text-base text-gray-dark font-semibold flex-1">
-                {cleanedChildren}
-              </div>
-            </div>
-          </div>
-        );
-      }
-
-      // Default blockquote style
+      // Default blockquote
       return (
         <blockquote className="border-l-4 border-primary bg-gray-lightest p-4 md:p-6 my-6 rounded-r-lg">
           <div className="text-sm md:text-base text-gray-dark italic">
@@ -228,7 +268,41 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
       );
     },
 
-    // Code blocks
+    // Tables
+    table: ({ children }) => (
+      <div className="overflow-x-auto my-6 md:my-8 -mx-4 md:mx-0 shadow-md rounded-lg border border-gray-light">
+        <table className="min-w-full border-collapse bg-white">
+          {children}
+        </table>
+      </div>
+    ),
+    thead: ({ children }) => (
+      <thead className="bg-gradient-to-r from-primary to-primary-light text-white">
+        {children}
+      </thead>
+    ),
+    tbody: ({ children }) => (
+      <tbody className="bg-white divide-y divide-gray-light">
+        {children}
+      </tbody>
+    ),
+    tr: ({ children }) => (
+      <tr className="hover:bg-blue-50 transition-colors">
+        {children}
+      </tr>
+    ),
+    th: ({ children }) => (
+      <th className="px-4 md:px-6 py-3 md:py-4 text-left text-xs md:text-sm font-bold uppercase tracking-wider border-b-2 border-white/20">
+        {children}
+      </th>
+    ),
+    td: ({ children }) => (
+      <td className="px-4 md:px-6 py-3 md:py-4 text-sm md:text-base text-gray-dark">
+        {children}
+      </td>
+    ),
+
+    // Code
     code: ({ inline, children, ...props }: any) => {
       if (inline) {
         return (
@@ -238,10 +312,7 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
         );
       }
       return (
-        <code
-          className="block bg-gray-dark text-gray-lightest p-4 rounded-lg overflow-x-auto my-6 text-sm font-mono leading-relaxed"
-          {...props}
-        >
+        <code className="block bg-gray-dark text-gray-lightest p-4 rounded-lg overflow-x-auto my-6 text-sm font-mono leading-relaxed" {...props}>
           {children}
         </code>
       );
@@ -252,10 +323,9 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
       </pre>
     ),
 
-    // Links - Enhanced with external link icons and better styling
+    // Links
     a: ({ href, children }) => {
       const isExternal = href?.startsWith("http");
-
       return (
         <a
           href={href}
@@ -265,71 +335,29 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
         >
           {children}
           {isExternal && (
-            <svg
-              className="w-4 h-4 inline-block opacity-70 group-hover:opacity-100 transition-opacity"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-              />
+            <svg className="w-4 h-4 inline-block opacity-70 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
             </svg>
           )}
         </a>
       );
     },
 
-    // Strong/Bold - Prominent styling
+    // Text formatting
     strong: ({ children }) => (
       <strong className="font-bold text-gray-dark">{children}</strong>
     ),
-
-    // Emphasis/Italic - Clear distinction with underline
     em: ({ children }) => (
       <em className="italic text-gray-dark font-medium border-b border-dotted border-gray-light pb-0.5">
         {children}
       </em>
     ),
-
-    // Horizontal rule
     hr: () => <hr className="border-t-2 border-gray-light my-8 md:my-12" />,
-
-    // Tables - responsive
-    table: ({ children }) => (
-      <div className="overflow-x-auto my-6 md:my-8 -mx-4 md:mx-0 shadow-sm rounded-lg">
-        <table className="min-w-full border-collapse border border-gray-light">
-          {children}
-        </table>
-      </div>
-    ),
-    thead: ({ children }) => (
-      <thead className="bg-primary text-white">{children}</thead>
-    ),
-    tbody: ({ children }) => <tbody className="bg-white">{children}</tbody>,
-    tr: ({ children }) => (
-      <tr className="border-b border-gray-light hover:bg-gray-lightest transition-colors">
-        {children}
-      </tr>
-    ),
-    th: ({ children }) => (
-      <th className="px-4 md:px-6 py-3 md:py-4 text-left text-sm md:text-base font-bold uppercase tracking-wide">
-        {children}
-      </th>
-    ),
-    td: ({ children }) => (
-      <td className="px-4 md:px-6 py-3 md:py-4 text-sm md:text-base text-gray font-medium">
-        {children}
-      </td>
-    ),
   };
 
   return (
     <div className="markdown-content">
-      <ReactMarkdown components={components}>{content}</ReactMarkdown>
+      <ReactMarkdown components={components}>{cleanedContent}</ReactMarkdown>
     </div>
   );
 }
