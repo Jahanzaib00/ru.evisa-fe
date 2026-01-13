@@ -17,7 +17,6 @@ import {
   getClusterContent,
 } from "@/app/lib/data/guides";
 import {
-  getCurrencySymbol,
   getServiceByDestination,
   ServiceType,
 } from "@/app/lib/config/services";
@@ -224,12 +223,8 @@ export default function GuidePage({
       <InlineCTA
         variant="sticky"
         position="bottom"
-        title={`Apply now for ${service.name} in ${getCurrencySymbol(
-          service.pricing.currency
-        )}${
-          service.pricing.government + service.processingTiers[0].serviceFee
-        }`}
-        description={`Fast-Track your ${service.name} Application`}
+        title={`Ready to apply for ${service.name}?`}
+        description={`Fast-Track your ${service.slug} approval now`}
         buttonText="Start Application"
         destination={destination}
         service={service}
