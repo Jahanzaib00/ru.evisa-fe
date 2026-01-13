@@ -10,18 +10,21 @@ export const PRIVACY_EMAIL = "visaportal.online@gmail.com";
 
 // Company Information
 export const COMPANY_NAME = "eVisa Portal";
-export const COMPANY_LEGAL_NAME = "eVisa Portal";
+export const COMPANY_LEGAL_NAME = "NSD Consulting AB";
+export const COMPANY_TRADE_NAME = "www.visaportal.online";
+export const COMPANY_ORG_NUMBER = "559155-7607";
+export const COMPANY_JURISDICTION = "Sweden";
 
 // Contact Details
 export const CONTACT_PHONE = "+92 3096809637";
 
-// Company Address
+// Company Address (Registered Office)
 export const COMPANY_ADDRESS = {
-  line1: "126 C Block, Floor Civic Ctr St 1",
-  line2: "Civic Center Bahria Town Phase 4",
-  city: "Islamabad",
-  postalCode: "44000",
-  country: "Pakistan",
+  line1: "MYSTÄNGEN 10",
+  line2: "",
+  city: "Hisings Kärra",
+  postalCode: "425 65",
+  country: "Sweden",
 } as const;
 
 // External Links

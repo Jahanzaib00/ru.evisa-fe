@@ -7,13 +7,17 @@ import {
   CONTACT_EMAIL,
   CONTACT_PHONE,
   COMPANY_ADDRESS,
+  COMPANY_LEGAL_NAME,
+  COMPANY_NAME,
+  COMPANY_ORG_NUMBER,
+  COMPANY_JURISDICTION,
   EXTERNAL_LINKS,
 } from "@/app/lib/constants";
 
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Learn about ESTA Visa Portal - your trusted partner for U.S. travel authorization applications. Expert assistance, transparent pricing, and 24/7 support.",
+    "Learn about eVisa Portal - your trusted partner for international travel authorization applications. Expert assistance for US ESTA, UK ETA, and more. Professional service with 24/7 support.",
 };
 
 export default function AboutPage() {
@@ -26,11 +30,11 @@ export default function AboutPage() {
         <Container>
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-dark mb-6">
-              About ESTA Visa Portal
+              About {COMPANY_NAME}
             </h1>
             <p className="text-xl text-gray leading-relaxed">
-              We&apos;re dedicated to making U.S. travel authorization simple,
-              secure, and stress-free for travelers worldwide.
+              We&apos;re dedicated to making international travel authorization
+              simple, secure, and stress-free for travelers worldwide.
             </p>
           </div>
         </Container>
@@ -47,19 +51,29 @@ export default function AboutPage() {
               </h2>
               <div className="prose prose-lg text-gray space-y-4">
                 <p>
-                  ESTA Visa Portal is a specialized application assistance
-                  service that helps travelers navigate the U.S. Electronic
-                  System for Travel Authorization (ESTA) process. Since our
-                  founding, we&apos;ve assisted thousands of travelers in
-                  obtaining their travel authorization efficiently and
-                  accurately.
+                  {COMPANY_NAME} is a proprietary online platform and
+                  commercial project of {COMPANY_LEGAL_NAME}, a company
+                  incorporated under the laws of {COMPANY_JURISDICTION}. We are
+                  a specialized travel authorization assistance service that
+                  helps travelers navigate electronic travel authorization
+                  systems worldwide, including the U.S. Electronic System for
+                  Travel Authorization (ESTA) and the UK Electronic Travel
+                  Authorization (ETA).
+                </p>
+                <p>
+                  Since our founding, we&apos;ve assisted thousands of
+                  travelers in obtaining their travel authorizations efficiently
+                  and accurately. Our expanding service portfolio reflects our
+                  commitment to becoming a comprehensive global travel
+                  authorization platform, serving travelers heading to multiple
+                  destinations around the world.
                 </p>
                 <p>
                   Our team of experienced professionals understands the
                   complexities of travel documentation and immigration
-                  processes. We&apos;ve built our service to simplify the ESTA
-                  application process, reduce errors, and provide peace of mind
-                  to travelers preparing for their U.S. journey.
+                  processes. We&apos;ve built our services to simplify
+                  application processes, reduce errors, and provide peace of
+                  mind to travelers preparing for their international journeys.
                 </p>
               </div>
             </div>
@@ -307,16 +321,42 @@ export default function AboutPage() {
               </div>
 
               <div className="space-y-6">
+                <div className="bg-gray-50 rounded-lg p-6">
+                  <h3 className="text-lg font-bold text-gray-dark mb-4">
+                    Company Details
+                  </h3>
+                  <div className="space-y-2 text-gray">
+                    <p>
+                      <strong className="text-gray-dark">Legal Name:</strong>{" "}
+                      {COMPANY_LEGAL_NAME}
+                    </p>
+                    <p>
+                      <strong className="text-gray-dark">
+                        Organization Number:
+                      </strong>{" "}
+                      {COMPANY_ORG_NUMBER}
+                    </p>
+                    <p>
+                      <strong className="text-gray-dark">Jurisdiction:</strong>{" "}
+                      Incorporated under the laws of {COMPANY_JURISDICTION}
+                    </p>
+                    <p>
+                      <strong className="text-gray-dark">Trade Name:</strong>{" "}
+                      {COMPANY_NAME} (www.visaportal.online)
+                    </p>
+                  </div>
+                </div>
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-gray-50 rounded-lg p-6">
                     <h3 className="text-lg font-bold text-gray-dark mb-4">
-                      Mailing Address
+                      Registered Office
                     </h3>
                     <address className="not-italic text-gray space-y-1">
                       <p>{COMPANY_ADDRESS.line1}</p>
-                      <p>{COMPANY_ADDRESS.line2}</p>
+                      {COMPANY_ADDRESS.line2 && <p>{COMPANY_ADDRESS.line2}</p>}
                       <p>
-                        {COMPANY_ADDRESS.city}, {COMPANY_ADDRESS.postalCode}
+                        {COMPANY_ADDRESS.postalCode} {COMPANY_ADDRESS.city}
                       </p>
                       <p>{COMPANY_ADDRESS.country}</p>
                     </address>
@@ -327,14 +367,21 @@ export default function AboutPage() {
                       Contact Details
                     </h3>
                     <address className="not-italic text-gray space-y-2">
-                      <p className="pt-3">
+                      <p>
                         <strong className="text-gray-dark">Email:</strong>{" "}
                         {CONTACT_EMAIL}
                       </p>
-                      {/* <p>
-                        <strong className="text-gray-dark">Phone:</strong>{" "}
-                        {CONTACT_PHONE}
-                      </p> */}
+                      <p>
+                        <strong className="text-gray-dark">
+                          Support Center:
+                        </strong>{" "}
+                        <a
+                          href="/support"
+                          className="text-blue-600 hover:text-blue-700 underline"
+                        >
+                          Visit Support
+                        </a>
+                      </p>
                     </address>
                   </div>
                 </div>
@@ -344,7 +391,7 @@ export default function AboutPage() {
                     Regulatory Compliance
                   </h3>
                   <p className="text-gray mb-4">
-                    ESTA Visa Portal operates in full compliance with:
+                    {COMPANY_NAME} operates in full compliance with:
                   </p>
                   <ul className="space-y-2 text-gray">
                     <li className="flex items-start gap-2">
@@ -359,7 +406,8 @@ export default function AboutPage() {
                           clipRule="evenodd"
                         />
                       </svg>
-                      Australian Privacy Act 1988 and Privacy Principles
+                      General Data Protection Regulation (GDPR) for European
+                      users
                     </li>
                     <li className="flex items-start gap-2">
                       <svg
@@ -373,7 +421,7 @@ export default function AboutPage() {
                           clipRule="evenodd"
                         />
                       </svg>
-                      Migration Act 1958 (for Australian visa services)
+                      Australian Privacy Act 1988 and Privacy Principles
                     </li>
                     <li className="flex items-start gap-2">
                       <svg
@@ -401,6 +449,20 @@ export default function AboutPage() {
                           clipRule="evenodd"
                         />
                       </svg>
+                      Swedish Data Protection Act and EU data protection laws
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <svg
+                        className="w-5 h-5 text-blue-600 mt-0.5 shrink-0"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
                       Consumer Protection Laws and Fair Trading Regulations
                     </li>
                     <li className="flex items-start gap-2">
@@ -415,7 +477,8 @@ export default function AboutPage() {
                           clipRule="evenodd"
                         />
                       </svg>
-                      PCI-DSS Level 1 Compliance for Payment Processing
+                      PCI-DSS Level 1 Compliance for Payment Processing (via
+                      Stripe)
                     </li>
                   </ul>
                 </div>
@@ -442,41 +505,56 @@ export default function AboutPage() {
               </h2>
               <div className="prose prose-lg text-gray space-y-4">
                 <p>
-                  We provide professional application assistance for ESTA
-                  applications. Our service includes:
+                  We provide professional application assistance for electronic
+                  travel authorizations across multiple countries. Our services
+                  include:
                 </p>
                 <ul className="list-disc pl-6 space-y-2">
+                  <li>
+                    <strong>US ESTA Applications:</strong> Expert assistance
+                    with U.S. Electronic System for Travel Authorization
+                    applications for Visa Waiver Program travelers
+                  </li>
+                  <li>
+                    <strong>UK ETA Applications:</strong> Professional support
+                    for United Kingdom Electronic Travel Authorization
+                    applications
+                  </li>
                   <li>
                     <strong>Form Review & Error Checking:</strong> We carefully
                     review your application for common mistakes and
                     inconsistencies before submission, significantly reducing
-                    the chance of delays or denials.
+                    the chance of delays or denials
                   </li>
                   <li>
                     <strong>Simplified Application Process:</strong> Our
-                    user-friendly interface makes completing your ESTA
-                    application straightforward and less time-consuming than the
-                    government website.
+                    user-friendly interface makes completing your travel
+                    authorization application straightforward and less
+                    time-consuming than government websites
                   </li>
                   <li>
                     <strong>Real-time Status Monitoring:</strong> We track your
                     application status and notify you immediately when there are
-                    updates.
+                    updates
                   </li>
                   <li>
                     <strong>24/7 Multilingual Support:</strong> Our support team
-                    is available around the clock to answer
-                    questions and provide guidance.
+                    is available around the clock to answer questions and
+                    provide guidance
                   </li>
                   <li>
                     <strong>Document Guidance:</strong> We help you understand
                     exactly what information is needed and how to present it
-                    correctly.
+                    correctly
+                  </li>
+                  <li>
+                    <strong>Multiple Processing Tiers:</strong> Choose from
+                    standard, rush, or super rush processing based on your
+                    travel timeline
                   </li>
                   <li>
                     <strong>Resubmission Assistance:</strong> If needed, we
-                    assist with corrections and resubmissions at no additional
-                    charge.
+                    assist with corrections and resubmissions
                   </li>
                 </ul>
               </div>

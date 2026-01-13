@@ -35,7 +35,8 @@ const footerColumns: FooterColumn[] = [
     links: [
       { text: "Privacy Policy", href: "/privacy" },
       { text: "Terms of Service", href: "/terms" },
-      { text: "Refund Policy", href: "/terms#refund-policy" },
+      { text: "Refund Policy", href: "/refund-policy" },
+      { text: "Cookie Policy", href: "/cookies" },
     ],
   },
   {

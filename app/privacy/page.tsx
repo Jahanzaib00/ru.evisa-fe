@@ -3,16 +3,23 @@ import Header from "../components/layout/Header";
 import Footer from "../components/home/Footer";
 import Container from "../components/ui/Container";
 import Section from "../components/ui/Section";
-import { PRIVACY_EMAIL } from "@/app/lib/constants";
+import {
+  PRIVACY_EMAIL,
+  COMPANY_NAME,
+  COMPANY_LEGAL_NAME,
+  COMPANY_ORG_NUMBER,
+  COMPANY_JURISDICTION,
+  COMPANY_ADDRESS,
+} from "@/app/lib/constants";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "Privacy Policy for ESTA Visa Portal. Learn how we collect, use, and protect your personal information.",
+    "Privacy Policy for eVisa Portal. Learn how we collect, use, and protect your personal information in compliance with GDPR and international data protection laws.",
 };
 
 export default function PrivacyPage() {
-  const lastUpdated = "November 19, 2025";
+  const lastUpdated = "January 13, 2026";
 
   return (
     <main>
@@ -37,10 +44,17 @@ export default function PrivacyPage() {
             {/* Introduction */}
             <div className="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-lg mb-8">
               <p className="text-gray mb-2">
-                At ESTA Visa Portal, we take your privacy seriously. This
-                Privacy Policy explains how we collect, use, disclose, and
-                safeguard your personal information when you use our ESTA
-                application assistance service.
+                At {COMPANY_NAME}, we take your privacy seriously. This Privacy
+                Policy explains how we collect, use, disclose, and safeguard
+                your personal information when you use our travel authorization
+                application assistance services.
+              </p>
+              <p className="text-gray mb-2">
+                <strong>Data Controller:</strong> {COMPANY_LEGAL_NAME}, a
+                company incorporated under the laws of {COMPANY_JURISDICTION}{" "}
+                (Organization Number: {COMPANY_ORG_NUMBER}), operating{" "}
+                {COMPANY_NAME} (www.visaportal.online), is the data controller
+                responsible for your personal information.
               </p>
               <p className="text-gray mb-0">
                 By using our service, you consent to the data practices
@@ -59,7 +73,8 @@ export default function PrivacyPage() {
                 1.1 Personal Information You Provide
               </h3>
               <p className="text-gray mb-4">
-                When you use our service to apply for ESTA, we collect personal
+                When you use our service to apply for travel authorizations (US
+                ESTA, UK ETA, or other services), we collect personal
                 information that you voluntarily provide, including:
               </p>
               <ul className="list-disc pl-6 space-y-2 text-gray mb-4">
@@ -69,24 +84,31 @@ export default function PrivacyPage() {
                 </li>
                 <li>
                   <strong>Travel Information:</strong> Passport details, travel
-                  dates, destination address in the U.S.
+                  dates, destination addresses
                 </li>
                 <li>
                   <strong>Biographical Information:</strong> Date of birth,
-                  place of birth, gender, citizenship, employment details
+                  place of birth, gender, citizenship, nationality, employment
+                  details
                 </li>
                 <li>
                   <strong>Emergency Contact:</strong> Emergency contact name and
-                  phone number
+                  phone number (where required)
                 </li>
                 <li>
-                  <strong>Eligibility Information:</strong> Responses to ESTA
-                  eligibility questions regarding health, criminal history, and
-                  previous visa denials
+                  <strong>Eligibility Information:</strong> Responses to
+                  eligibility questions regarding health, criminal history,
+                  previous visa denials, and immigration history (as required by
+                  each destination country)
                 </li>
                 <li>
                   <strong>Payment Information:</strong> Billing address and
-                  payment details (processed securely through Stripe)
+                  payment details (processed securely through Stripe - we do not
+                  store full payment card details)
+                </li>
+                <li>
+                  <strong>Documents:</strong> Passport scans, photographs, and
+                  other supporting documents as required
                 </li>
               </ul>
 
@@ -97,22 +119,45 @@ export default function PrivacyPage() {
                 We automatically collect certain information when you visit our
                 website:
               </p>
-              <ul className="list-disc pl-6 space-y-2 text-gray">
+              <ul className="list-disc pl-6 space-y-2 text-gray mb-4">
                 <li>
                   <strong>Usage Data:</strong> IP address, browser type,
                   operating system, pages viewed, time spent on pages, access
-                  times
+                  times, referring website
                 </li>
                 <li>
                   <strong>Device Information:</strong> Device type, unique
-                  device identifiers, mobile network information
+                  device identifiers, screen resolution, language preferences
                 </li>
                 <li>
-                  <strong>Cookies and Tracking:</strong> We use cookies and
-                  similar tracking technologies to enhance your experience and
-                  analyze website usage
+                  <strong>Analytics Data:</strong> We use Google Analytics (GA4)
+                  to collect anonymized usage statistics and improve our
+                  services
+                </li>
+                <li>
+                  <strong>Cookies and Tracking Technologies:</strong> We use
+                  cookies, local storage, and session storage to enhance your
+                  experience, save application progress, and analyze website
+                  usage. For details, see our{" "}
+                  <a
+                    href="/cookies"
+                    className="text-blue-600 hover:text-blue-700 underline font-semibold"
+                  >
+                    Cookie Policy
+                  </a>
+                  .
                 </li>
               </ul>
+
+              <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg">
+                <p className="text-gray mb-0">
+                  <strong>Note:</strong> We use localStorage and sessionStorage
+                  to save your application progress locally on your device. This
+                  allows you to resume your application if you close your
+                  browser. This data remains on your device and is only
+                  transmitted to our servers when you submit your application.
+                </p>
+              </div>
             </section>
 
             {/* Section 2 */}
@@ -129,17 +174,26 @@ export default function PrivacyPage() {
               </h3>
               <ul className="list-disc pl-6 space-y-2 text-gray mb-4">
                 <li>
-                  To process and submit your ESTA application to U.S. Customs
-                  and Border Protection
+                  To process and submit your travel authorization applications
+                  to relevant government authorities (e.g., U.S. Customs and
+                  Border Protection for ESTA, UK Home Office for UK ETA)
                 </li>
                 <li>
-                  To review your application for errors and inconsistencies
+                  To review your application for errors, inconsistencies, and
+                  completeness
                 </li>
-                <li>To communicate with you about your application status</li>
+                <li>
+                  To communicate with you about your application status and
+                  updates
+                </li>
                 <li>
                   To provide customer support and respond to your inquiries
                 </li>
-                <li>To process payments and prevent fraud</li>
+                <li>To process payments securely and prevent fraud</li>
+                <li>
+                  To maintain records as required by law and for business
+                  purposes
+                </li>
               </ul>
 
               <h3 className="text-xl font-bold text-gray-dark mb-3">
@@ -187,13 +241,31 @@ export default function PrivacyPage() {
               </p>
 
               <h3 className="text-xl font-bold text-gray-dark mb-3">
-                3.1 U.S. Government Authorities
+                3.1 Government Authorities
               </h3>
               <p className="text-gray mb-4">
-                Your ESTA application information is submitted to U.S. Customs
-                and Border Protection and may be shared with other U.S.
-                government agencies for the purpose of processing your travel
-                authorization.
+                Your travel authorization application information is submitted
+                to the relevant government authorities of your destination
+                country:
+              </p>
+              <ul className="list-disc pl-6 space-y-2 text-gray mb-4">
+                <li>
+                  <strong>United States:</strong> U.S. Customs and Border
+                  Protection and related DHS agencies
+                </li>
+                <li>
+                  <strong>United Kingdom:</strong> UK Home Office and
+                  immigration authorities
+                </li>
+                <li>
+                  <strong>Other Destinations:</strong> Respective immigration
+                  and border control authorities
+                </li>
+              </ul>
+              <p className="text-gray">
+                These authorities may share your information with other
+                government agencies as permitted or required by their respective
+                laws.
               </p>
 
               <h3 className="text-xl font-bold text-gray-dark mb-3">
@@ -441,15 +513,71 @@ export default function PrivacyPage() {
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
                 9. International Data Transfers
               </h2>
-              <p className="text-gray">
-                Your information may be transferred to and processed in the
-                United States or other countries where our service providers
-                operate. These countries may have data protection laws that are
-                different from your country. By using our service, you consent
-                to the transfer of your information to these countries. We
-                ensure appropriate safeguards are in place to protect your
-                information in accordance with this Privacy Policy.
+              <p className="text-gray mb-4">
+                As {COMPANY_NAME} is operated by {COMPANY_LEGAL_NAME}, a company
+                based in {COMPANY_JURISDICTION}, and we process travel
+                authorizations for multiple countries, your information may be
+                transferred internationally.
               </p>
+
+              <h3 className="text-xl font-bold text-gray-dark mb-3">
+                9.1 Transfers Within the EU/EEA
+              </h3>
+              <p className="text-gray mb-4">
+                Our servers and primary data processing occur within the
+                European Economic Area (EEA), ensuring GDPR compliance for
+                European users.
+              </p>
+
+              <h3 className="text-xl font-bold text-gray-dark mb-3">
+                9.2 Transfers Outside the EU/EEA
+              </h3>
+              <p className="text-gray mb-4">
+                Your information may be transferred to and processed outside the
+                EEA, including:
+              </p>
+              <ul className="list-disc pl-6 space-y-2 text-gray mb-4">
+                <li>
+                  <strong>United States:</strong> When submitting ESTA
+                  applications to U.S. Customs and Border Protection
+                </li>
+                <li>
+                  <strong>United Kingdom:</strong> When submitting ETA
+                  applications to UK authorities (UK maintains data adequacy
+                  status with the EU)
+                </li>
+                <li>
+                  <strong>Service Providers:</strong> Third-party providers like
+                  Stripe (payment processing) and Google (analytics) may process
+                  data in multiple jurisdictions
+                </li>
+              </ul>
+
+              <h3 className="text-xl font-bold text-gray-dark mb-3">
+                9.3 Safeguards for International Transfers
+              </h3>
+              <p className="text-gray">
+                We ensure appropriate safeguards are in place for all
+                international data transfers, including:
+              </p>
+              <ul className="list-disc pl-6 space-y-2 text-gray">
+                <li>
+                  Use of Standard Contractual Clauses (SCCs) approved by the
+                  European Commission
+                </li>
+                <li>
+                  Transferring data only to countries with adequacy decisions
+                  from the EU Commission
+                </li>
+                <li>
+                  Ensuring service providers comply with GDPR and maintain
+                  appropriate technical and organizational security measures
+                </li>
+                <li>
+                  Implementing data processing agreements with all third-party
+                  processors
+                </li>
+              </ul>
             </section>
 
             {/* Section 10 */}
@@ -514,22 +642,51 @@ export default function PrivacyPage() {
             {/* Section 13 */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
-                13. Data Protection Officer
+                13. Data Protection Officer & Contact
               </h2>
-              <p className="text-gray">
+              <p className="text-gray mb-4">
                 For questions or concerns about our privacy practices or to
                 exercise your privacy rights, you can contact our Data
-                Protection Officer at:
+                Protection Officer:
               </p>
-              <div className="bg-blue-50 rounded-lg p-6 mt-4">
+              <div className="bg-blue-50 rounded-lg p-6 mb-4">
                 <ul className="space-y-2 text-gray">
                   <li>
                     <strong>Email:</strong> {PRIVACY_EMAIL}
                   </li>
                   <li>
-                    <strong>Subject Line:</strong> Privacy Request
+                    <strong>Subject Line:</strong> Privacy Request / Data
+                    Protection
+                  </li>
+                  <li>
+                    <strong>Response Time:</strong> We will respond within 30
+                    days
                   </li>
                 </ul>
+              </div>
+
+              <h3 className="text-xl font-bold text-gray-dark mb-3">
+                13.1 Data Controller Information
+              </h3>
+              <div className="bg-gray-50 rounded-lg p-6">
+                <p className="text-gray mb-2">
+                  <strong>Legal Name:</strong> {COMPANY_LEGAL_NAME}
+                </p>
+                <p className="text-gray mb-2">
+                  <strong>Organization Number:</strong> {COMPANY_ORG_NUMBER}
+                </p>
+                <p className="text-gray mb-2">
+                  <strong>Jurisdiction:</strong> {COMPANY_JURISDICTION}
+                </p>
+                <p className="text-gray mb-2">
+                  <strong>Registered Office:</strong> {COMPANY_ADDRESS.line1},{" "}
+                  {COMPANY_ADDRESS.postalCode} {COMPANY_ADDRESS.city},{" "}
+                  {COMPANY_ADDRESS.country}
+                </p>
+                <p className="text-gray mb-0">
+                  <strong>Trading As:</strong> {COMPANY_NAME} (
+                  www.visaportal.online)
+                </p>
               </div>
             </section>
 
