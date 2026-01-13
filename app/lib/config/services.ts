@@ -169,24 +169,24 @@ export const US_ESTA_CONFIG: ServiceConfig = {
     {
       type: ProcessingTierType.STANDARD,
       label: "Standard",
-      description: "72 hour processing",
-      processingTime: "72 hours",
+      description: "24 hour processing",
+      processingTime: "24 hours",
       serviceFee: 5,
       isDefault: true,
     },
     {
       type: ProcessingTierType.RUSH,
       label: "Rush",
-      description: "24 hour processing",
-      processingTime: "24 hours",
-      serviceFee: 20,
+      description: "4 hour processing",
+      processingTime: "4 hours",
+      serviceFee: 15,
     },
     {
       type: ProcessingTierType.SUPER_RUSH,
       label: "Super Rush",
       description: "1 hour processing",
       processingTime: "1 hour",
-      serviceFee: 45,
+      serviceFee: 30,
     },
   ],
 
@@ -196,9 +196,9 @@ export const US_ESTA_CONFIG: ServiceConfig = {
   },
 
   processing: {
-    standard: "72 hours",
-    rush: "24 hours",
-    superRush: "5 hours",
+    standard: "24 hours",
+    rush: "4 hours",
+    superRush: "1 hour",
   },
 
   meta: {
