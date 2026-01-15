@@ -155,12 +155,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
 
     // All country pages for this service
-    // URL format: /{destination}/{country-slug}
-    // Example: /united-states/france
+    // URL format: /{destination}/{service}-for-{country}
+    // Example: /united-states/esta-for-france
     const countries = getCountriesByService(type);
     countries.forEach((country) => {
       urls.push({
-        url: `${baseUrl}/${destinationSlug}/${country.slug}`,
+        url: `${baseUrl}/${destinationSlug}/${serviceSlug}-for-${country.slug}`,
         lastModified: now,
         changeFrequency: "monthly",
         priority: 0.7, // Slightly lower than hub pages (was 0.8)

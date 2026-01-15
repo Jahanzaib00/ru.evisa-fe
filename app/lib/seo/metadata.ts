@@ -159,34 +159,14 @@ export function generateHomeMetadata(): Metadata {
 }
 
 /**
- * Generate metadata for country-specific pages
- */
-export function generateCountryMetadata(
-  countryName: string,
-  countrySlug: string
-): Metadata {
-  return generateMetadata({
-    title: `ESTA for ${countryName} Citizens`,
-    description: `Complete guide to ESTA application for ${countryName} citizens. Requirements, process, fees, and tips for ${countryName} nationals traveling to the United States. Apply now with expert assistance.`,
-    keywords: [
-      `ESTA ${countryName}`,
-      `${countryName} ESTA application`,
-      `${countryName} USA travel`,
-      `${countryName} visa waiver`,
-      `ESTA for ${countryName} citizens`,
-      `${countryName} travel authorization`,
-    ],
-    canonicalUrl: `${SITE_URL}/countries/${countrySlug}`,
-  });
-}
-
-/**
  * Generate metadata for guide pages
+ * @param destination - The destination slug (e.g., "united-states")
  */
 export function generateGuideMetadata(
   guideTitle: string,
   guideDescription: string,
   guideSlug: string,
+  destination: string = "united-states",
   keywords: string[] = []
 ): Metadata {
   return generateMetadata({
@@ -199,7 +179,7 @@ export function generateGuideMetadata(
       "USA travel requirements",
       ...keywords,
     ],
-    canonicalUrl: `${SITE_URL}/guide/${guideSlug}`,
+    canonicalUrl: `${SITE_URL}/${destination}/guide/${guideSlug}`,
     ogType: "article",
     author: "eVisa Portal Team",
   });
@@ -207,6 +187,7 @@ export function generateGuideMetadata(
 
 /**
  * Generate metadata for blog posts
+ * @param slug - Must be in format "destination/slug" (e.g., "united-states/esta-guide")
  */
 export function generateBlogMetadata(
   title: string,
@@ -221,7 +202,7 @@ export function generateBlogMetadata(
   return generateMetadata({
     title,
     description,
-    keywords: ["ESTA Apply", "US travel", "ESTA information", ...keywords],
+    keywords: ["travel authorization", "visa guide", "travel requirements", ...keywords],
     canonicalUrl: `${SITE_URL}/blog/${slug}`,
     ogImage: featuredImage || DEFAULT_IMAGE,
     ogType: "article",
@@ -263,31 +244,6 @@ const SERVICE_TEMPLATES: Record<string, ServiceTemplate> = {
 };
 
 /**
- * Generate metadata for countries index page (all countries for a service)
- */
-export function generateCountriesIndexMetadata(
-  service: ServiceConfig
-): Metadata {
-  const template = SERVICE_TEMPLATES[service.type];
-
-  return generateMetadata({
-    title: `${service.name} - Eligible Countries`,
-    description: `Complete list of countries eligible for ${service.name}. ${template.validity}, ${template.maxStay}. Apply online with expert assistance and ${template.processingTime}.`,
-    keywords: [
-      `${service.slug} countries`,
-      `${service.destination} eligible countries`,
-      `${service.slug} application`,
-      service.slug,
-      `${service.destination} travel authorization`,
-      `${template.programName}`,
-      `eligible nationalities ${service.slug}`,
-      `who can apply ${service.slug}`,
-    ],
-    canonicalUrl: `${SITE_URL}/${service.slug}/countries`,
-  });
-}
-
-/**
  * Generate metadata for individual country page
  */
 export function generateCountryPageMetadata(
@@ -309,7 +265,7 @@ export function generateCountryPageMetadata(
       `${country.name} to ${service.destination}`,
       `${service.destination} visa ${country.name}`,
     ],
-    canonicalUrl: `${SITE_URL}/${service.slug}/countries/${country.slug}`,
+    canonicalUrl: `${SITE_URL}/${service.destination.toLowerCase().replace(/ /g, "-")}/${service.slug}-for-${country.slug}`,
     ogImage: `${SITE_URL}/images/countries/${country.code.toLowerCase()}-${
       service.slug
     }.jpg`,

@@ -43,6 +43,9 @@ export async function generateMetadata({
     return { title: "Guides Not Found" };
   }
 
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.online";
+  const canonicalUrl = `${baseUrl}/${destination}/guide`;
+
   return {
     title: `${
       service.name
@@ -56,6 +59,15 @@ export async function generateMetadata({
       `travel authorization guides`,
       `${service.name} application guide`,
     ],
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title: `${service.name} Guides & Resources`,
+      description: `Complete collection of ${service.name} guides and resources`,
+      type: "website",
+      url: canonicalUrl,
+    },
   };
 }
 

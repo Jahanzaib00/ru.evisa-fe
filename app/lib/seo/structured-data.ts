@@ -14,7 +14,6 @@ import {
   BreadcrumbList,
   Service,
   HowTo,
-  CollectionPage,
 } from "schema-dts";
 import { CONTACT_EMAIL } from "../constants";
 import { ServiceConfig, getDefaultProcessingTier } from "@/app/lib/config/services";
@@ -395,96 +394,6 @@ const SERVICE_TEMPLATES: Record<string, ServiceTemplate> = {
 };
 
 /**
- * Generate CollectionPage schema for countries index
- */
-export function generateCountriesIndexSchema(
-  service: ServiceConfig,
-  countries: Country[]
-): Array<WithContext<CollectionPage> | WithContext<BreadcrumbList>> {
-  const template = SERVICE_TEMPLATES[service.type];
-  const url = `${SITE_URL}/${service.slug}/countries`;
-
-  return [
-    {
-      "@context": "https://schema.org",
-      "@type": "CollectionPage",
-      name: `${service.name} - Eligible Countries`,
-      description: `Complete list of ${countries.length} countries eligible for ${service.name}. ${template.description}`,
-      url,
-      mainEntity: {
-        "@type": "ItemList",
-        name: `Countries Eligible for ${service.name}`,
-        description: `All ${countries.length} countries that can apply for ${service.name}`,
-        numberOfItems: countries.length,
-        itemListElement: countries.map((country, index) => ({
-          "@type": "ListItem",
-          position: index + 1,
-          name: country.name,
-          url: `${SITE_URL}/${service.slug}/countries/${country.slug}`,
-          item: {
-            "@type": "Place",
-            name: country.name,
-            ...(country.capitalCity && {
-              containsPlace: {
-                "@type": "City",
-                name: country.capitalCity,
-              },
-            }),
-          },
-        })),
-      },
-      breadcrumb: {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          {
-            "@type": "ListItem",
-            position: 1,
-            name: "Home",
-            item: SITE_URL,
-          },
-          {
-            "@type": "ListItem",
-            position: 2,
-            name: service.name,
-            item: `${SITE_URL}/${service.slug}`,
-          },
-          {
-            "@type": "ListItem",
-            position: 3,
-            name: "Countries",
-            item: url,
-          },
-        ],
-      },
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        {
-          "@type": "ListItem",
-          position: 1,
-          name: "Home",
-          item: SITE_URL,
-        },
-        {
-          "@type": "ListItem",
-          position: 2,
-          name: service.name,
-          item: `${SITE_URL}/${service.slug}`,
-        },
-        {
-          "@type": "ListItem",
-          position: 3,
-          name: "Countries",
-          item: url,
-        },
-      ],
-    },
-  ];
-}
-
-/**
  * Generate WebPage + Service schema for individual country pages
  */
 export function generateCountryPageSchema(
@@ -494,7 +403,8 @@ export function generateCountryPageSchema(
   WithContext<WebPage> | WithContext<Service> | WithContext<BreadcrumbList>
 > {
   const template = SERVICE_TEMPLATES[service.type];
-  const url = `${SITE_URL}/${service.slug}/countries/${country.slug}`;
+  const destinationSlug = service.destination.toLowerCase().replace(/ /g, "-");
+  const url = `${SITE_URL}/${destinationSlug}/${service.slug}-for-${country.slug}`;
 
   return [
     {
@@ -516,13 +426,13 @@ export function generateCountryPageSchema(
             "@type": "ListItem",
             position: 2,
             name: service.name,
-            item: `${SITE_URL}/${service.slug}`,
+            item: `${SITE_URL}/services/${service.slug}`,
           },
           {
             "@type": "ListItem",
             position: 3,
             name: "Countries",
-            item: `${SITE_URL}/${service.slug}/countries`,
+            item: `${SITE_URL}/${destinationSlug}/countries`,
           },
           {
             "@type": "ListItem",
@@ -558,7 +468,7 @@ export function generateCountryPageSchema(
       },
       availableChannel: {
         "@type": "ServiceChannel",
-        serviceUrl: `${SITE_URL}/${service.slug}/apply`,
+        serviceUrl: `${SITE_URL}/${destinationSlug}/apply`,
         availableLanguage: ["English"],
       },
       offers: {
@@ -585,13 +495,13 @@ export function generateCountryPageSchema(
           "@type": "ListItem",
           position: 2,
           name: service.name,
-          item: `${SITE_URL}/${service.slug}`,
+          item: `${SITE_URL}/services/${service.slug}`,
         },
         {
           "@type": "ListItem",
           position: 3,
           name: "Countries",
-          item: `${SITE_URL}/${service.slug}/countries`,
+          item: `${SITE_URL}/${destinationSlug}/countries`,
         },
         {
           "@type": "ListItem",

@@ -39,10 +39,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       };
     }
 
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.online";
-    const canonicalUrl = `${baseUrl}/blog/${destination}/${slug}`;
-
-    const metadata = generateBlogMetadata(
+    return generateBlogMetadata(
       post.metaTitle || post.title,
       post.metaDescription || post.excerpt || "",
       `${destination}/${slug}`,
@@ -51,11 +48,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       "Travel Authorization Experts",
       post.keywords
     );
-
-    if (!metadata.alternates) metadata.alternates = {};
-    metadata.alternates.canonical = canonicalUrl;
-
-    return metadata;
   } catch (error) {
     return {
       title: "Blog Post Not Found",

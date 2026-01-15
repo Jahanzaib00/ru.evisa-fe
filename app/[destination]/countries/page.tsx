@@ -76,6 +76,9 @@ export async function generateMetadata({
         ]
       : [];
 
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.online";
+  const canonicalUrl = `${baseUrl}/${destination}/countries`;
+
   return {
     title: `${service.name} Eligible Countries ${currentYear} - Complete List of ${countries.length} Countries`,
     description: `Complete list of ${countries.length} countries eligible for ${service.name}. Check if your nationality qualifies for ${service.destination} travel authorization. Official eligibility guide updated for ${currentYear} with requirements and application process.`,
@@ -89,15 +92,17 @@ export async function generateMetadata({
       `${service.slug} participating countries`,
       ...serviceKeywords,
     ],
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
       title: `${countries.length} Countries Eligible for ${service.name} ${currentYear}`,
       description: `Check if your country qualifies for ${service.name}. Complete eligibility list with requirements and application guide.`,
       type: "website",
+      url: canonicalUrl,
       images: [
         {
-          url: `${
-            process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.online"
-          }/images/og-countries-${service.slug}.jpg`,
+          url: `${baseUrl}/images/og-countries-${service.slug}.jpg`,
           width: 1200,
           height: 630,
           alt: `${service.name} Eligible Countries`,

@@ -55,14 +55,21 @@ export async function generateMetadata({
     return { title: "Guide Not Found" };
   }
 
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.online";
+  const canonicalUrl = `${baseUrl}/${destination}/guide/${guideSlug}`;
+
   return {
     title: `${guide.title} - ${service.name} Guide ${new Date().getFullYear()}`,
     description: guide.description,
     keywords: guide.keywords,
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
       title: guide.title,
       description: guide.description,
       type: "article",
+      url: canonicalUrl,
       publishedTime: guide.lastUpdated,
     },
   };
