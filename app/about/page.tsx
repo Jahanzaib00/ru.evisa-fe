@@ -51,19 +51,18 @@ export default function AboutPage() {
               </h2>
               <div className="prose prose-lg text-gray space-y-4">
                 <p>
-                  {COMPANY_NAME} is a proprietary online platform and
-                  commercial project of {COMPANY_LEGAL_NAME}, a company
-                  incorporated under the laws of {COMPANY_JURISDICTION}. We are
-                  a specialized travel authorization assistance service that
-                  helps travelers navigate electronic travel authorization
-                  systems worldwide, including the U.S. Electronic System for
-                  Travel Authorization (ESTA) and the UK Electronic Travel
-                  Authorization (ETA).
+                  {COMPANY_NAME} is a proprietary online platform and commercial
+                  project of {COMPANY_LEGAL_NAME}, a company incorporated under
+                  the laws of {COMPANY_JURISDICTION}. We are a specialized
+                  travel authorization assistance service that helps travelers
+                  navigate electronic travel authorization systems worldwide,
+                  including the U.S. Electronic System for Travel Authorization
+                  (ESTA) and the UK Electronic Travel Authorization (ETA).
                 </p>
                 <p>
-                  Since our founding, we&apos;ve assisted thousands of
-                  travelers in obtaining their travel authorizations efficiently
-                  and accurately. Our expanding service portfolio reflects our
+                  Since our founding, we&apos;ve assisted thousands of travelers
+                  in obtaining their travel authorizations efficiently and
+                  accurately. Our expanding service portfolio reflects our
                   commitment to becoming a comprehensive global travel
                   authorization platform, serving travelers heading to multiple
                   destinations around the world.
@@ -79,7 +78,7 @@ export default function AboutPage() {
             </div>
 
             {/* Direct Government Accreditations */}
-            <div className="bg-white border-2 border-blue-600 rounded-lg p-8">
+            {/*<div className="bg-white border-2 border-blue-600 rounded-lg p-8">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
                   <svg
@@ -123,7 +122,6 @@ export default function AboutPage() {
                     (MARA), the official Australian government body that
                     regulates migration advice under the Migration Act 1958.
                   </p>
-                  {/* 
                   <div className="bg-white rounded-lg p-4 border border-blue-200">
                     <table className="w-full">
                       <thead>
@@ -175,13 +173,13 @@ export default function AboutPage() {
                       MARA Code of Conduct, ensuring professional and ethical
                       service delivery.
                     </p>
-                  </div> */}
+                  </div> 
                 </div>
               </div>
-            </div>
+            </div> */}
 
             {/* Partner Government Accreditations */}
-            <div className="bg-white border-2 border-purple-600 rounded-lg p-8">
+            {/* <div className="bg-white border-2 border-purple-600 rounded-lg p-8">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
                   <svg
@@ -295,7 +293,7 @@ export default function AboutPage() {
                   </ul>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             {/* Legal Information */}
             <div className="bg-white border-2 border-gray-300 rounded-lg p-8">
