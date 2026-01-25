@@ -384,7 +384,7 @@ export default function AboutPage() {
                   </div>
                 </div>
 
-                <div className="bg-blue-50 rounded-lg p-6 border-l-4 border-blue-600">
+                {/* <div className="bg-blue-50 rounded-lg p-6 border-l-4 border-blue-600">
                   <h3 className="text-lg font-bold text-gray-dark mb-3">
                     Regulatory Compliance
                   </h3>
@@ -492,7 +492,7 @@ export default function AboutPage() {
                     insurance covers all services provided by our registered
                     migration agents.
                   </p>
-                </div>
+                </div> */}
               </div>
             </div>
 
