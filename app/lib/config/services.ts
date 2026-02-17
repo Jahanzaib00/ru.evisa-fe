@@ -171,7 +171,7 @@ export const US_ESTA_CONFIG: ServiceConfig = {
       label: "Standard",
       description: "24 hour processing",
       processingTime: "24 hours",
-      serviceFee: 5,
+      serviceFee: 19.95,
       isDefault: true,
     },
     {
@@ -179,14 +179,14 @@ export const US_ESTA_CONFIG: ServiceConfig = {
       label: "Rush",
       description: "4 hour processing",
       processingTime: "4 hours",
-      serviceFee: 15,
+      serviceFee: 29.95,
     },
     {
       type: ProcessingTierType.SUPER_RUSH,
       label: "Super Rush",
       description: "1 hour processing",
       processingTime: "1 hour",
-      serviceFee: 30,
+      serviceFee: 39.95,
     },
   ],
 
@@ -399,7 +399,7 @@ export const UK_ETA_CONFIG: ServiceConfig = {
       label: "Standard",
       description: "24 hour processing",
       processingTime: "24 hours",
-      serviceFee: 5,
+      serviceFee: 14.95,
       isDefault: true,
     },
     {
@@ -407,14 +407,14 @@ export const UK_ETA_CONFIG: ServiceConfig = {
       label: "Rush",
       description: "4 hour processing",
       processingTime: "4 hours",
-      serviceFee: 15,
+      serviceFee: 23.95,
     },
     {
       type: ProcessingTierType.SUPER_RUSH,
       label: "Super Rush",
       description: "1 hour processing",
       processingTime: "1 hour",
-      serviceFee: 35,
+      serviceFee: 31.95,
     },
   ],
 

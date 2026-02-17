@@ -82,10 +82,13 @@ export default function ReviewPage({ params }: Props) {
       const amountInCents = Math.round(total * 100);
       const guestEmail = travelers[0]?.email; // First traveler's email for guest users
 
+      // Get currency from service config
+      const currency = service?.pricing.currency.toLowerCase() || "usd";
+
       const response = await paymentsService.createPaymentIntent({
         applicationId,
         amount: amountInCents,
-        currency: "usd",
+        currency,
         guestEmail,
       });
 
