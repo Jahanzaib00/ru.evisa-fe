@@ -41,6 +41,26 @@ export const authService = {
     return api.get<{ user: User }>("/auth/me");
   },
 
+  async forgotPassword(email: string): Promise<{ message: string }> {
+    return api.post<{ message: string }>("/auth/forgot-password", { email });
+  },
+
+  async verifyOtp(email: string, otp: string): Promise<{ valid: boolean }> {
+    return api.post<{ valid: boolean }>("/auth/verify-otp", { email, otp });
+  },
+
+  async resetPassword(
+    email: string,
+    otp: string,
+    newPassword: string,
+  ): Promise<{ message: string }> {
+    return api.post<{ message: string }>("/auth/reset-password", {
+      email,
+      otp,
+      newPassword,
+    });
+  },
+
   isAuthenticated(): boolean {
     if (typeof window === "undefined") return false;
     return !!localStorage.getItem("access_token");

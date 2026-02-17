@@ -59,7 +59,7 @@ const STATUS_INFO = {
     label: "Approved",
     color: "bg-green-50 text-green-800 border-green-200",
     icon: CheckCircle,
-    description: "ESTA approved - ready to travel",
+    description: "ETA approved - ready to travel",
   },
   DENIED: {
     label: "Denied",

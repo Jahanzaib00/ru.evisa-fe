@@ -21,18 +21,19 @@ import {
 import { usePostPaymentApplication } from "@/app/lib/hooks/usePostPaymentApplication";
 import { LoadingSpinner } from "@/app/components/ui/Loader";
 import Image from "next/image";
-import { getService, StepType, StepConfig, StepCompletionConfig } from "@/app/lib/config/services";
+import { getService, StepType, StepConfig, StepField } from "@/app/lib/config/services";
 
 interface Step {
   index: number; // 1-based step number
-  type: StepType; // Step type for logic
-  component: string; // Component name from config
+  type: StepType;
+  component: string;
   title: string;
   shortLabel: string;
   href: string;
   icon: ReactNode;
   description?: string;
-  completion?: StepCompletionConfig; // Drives progress tracking
+  neverComplete?: boolean;
+  fields?: StepField[];
 }
 
 // Icon mapping based on step TYPES (fully scalable)
@@ -69,10 +70,10 @@ function getShortLabel(title: string, type: StepType): string {
   }
 }
 
-// Generate steps from service configuration — passes completion config through
+// Generate steps from service configuration
 function generateSteps(stepConfigs: StepConfig[]): Step[] {
   return stepConfigs.map((stepConfig, index) => ({
-    index: index + 1, // 1-based
+    index: index + 1,
     type: stepConfig.type,
     component: stepConfig.component,
     title: stepConfig.title,
@@ -80,29 +81,43 @@ function generateSteps(stepConfigs: StepConfig[]): Step[] {
     href: `/${index + 1}`,
     icon: STEP_TYPE_ICONS[stepConfig.type] || <FileText className="w-5 h-5" />,
     description: stepConfig.description,
-    completion: stepConfig.completion,
+    neverComplete: stepConfig.neverComplete,
+    fields: stepConfig.fields,
   }));
 }
 
-// Config-driven completion check — no hardcoded field logic here
-function checkStepCompleted(completion: StepCompletionConfig | undefined, application: any): boolean {
-  if (!application || !completion) return false;
-  if (completion.neverComplete) return false;
+/** Extract the keys that must be non-null for a StepField to pass its completion check. */
+function getRequiredKeys(field: StepField): string[] {
+  if (!field.required) return [];
+  if (Array.isArray(field.required)) return field.required;
+  // required: true — auto-detect primary keys from the field format
+  if (field.key) return [field.key];
+  if (field.date) return [field.date.day, field.date.month, field.date.year];
+  if (field.boolean) return [field.boolean.key];
+  if (field.map) return [field.map.key];
+  if (field.concat) return [field.concat[0]]; // first key is the required one
+  return [];
+}
+
+/** Config-driven completion check — zero hardcoded field logic. */
+function checkStepCompleted(step: Step, application: any): boolean {
+  if (step.neverComplete || !application) return false;
+
+  const requiredFields = (step.fields ?? []).filter((f) => f.required);
+  if (!requiredFields.length) return false;
 
   const travelers: any[] = application.travelers ?? [];
 
-  if (completion.applicationFields?.length) {
-    const allPresent = completion.applicationFields.every(
-      (f) => application[f] != null && application[f] !== ""
-    );
-    if (!allPresent) return false;
-  }
+  for (const field of requiredFields) {
+    const keys = getRequiredKeys(field);
+    if (!keys.length) continue;
 
-  if (completion.travelerFields?.length && travelers.length > 0) {
-    const allTravelersComplete = travelers.every((t) =>
-      completion.travelerFields!.every((f) => t[f] != null && t[f] !== "")
-    );
-    if (!allTravelersComplete) return false;
+    if (field.source === "application") {
+      if (!keys.every((k) => application[k] != null && application[k] !== "")) return false;
+    } else {
+      if (travelers.length === 0) return false;
+      if (!travelers.every((t) => keys.every((k) => t[k] != null && t[k] !== ""))) return false;
+    }
   }
 
   return true;
@@ -144,7 +159,7 @@ export default function ApplicationLayout({
   const currentStep = STEPS[currentStepIndex];
 
   const stepCompletionStatus = useMemo(
-    () => STEPS.map((step) => checkStepCompleted(step.completion, application)),
+    () => STEPS.map((step) => checkStepCompleted(step, application)),
     [STEPS, application]
   );
   const completedCount = stepCompletionStatus.filter(Boolean).length;

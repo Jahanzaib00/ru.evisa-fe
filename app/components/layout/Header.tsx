@@ -38,13 +38,11 @@ export default function Header() {
       name: "US ESTA",
       href: "/services/esta",
       description: "Travel authorization for the United States",
-      price: "$45",
     },
     {
       name: "UK ETA",
       href: "/services/uk-eta",
       description: "Electronic Travel Authorization for UK",
-      price: "£21",
     },
   ];
 
@@ -115,9 +113,6 @@ export default function Header() {
                           <div className="text-sm text-gray-600 mt-0.5">
                             {service.description}
                           </div>
-                        </div>
-                        <div className="text-sm font-bold text-primary-light ml-4">
-                          {service.price}
                         </div>
                       </div>
                     </Link>
@@ -278,9 +273,6 @@ export default function Header() {
                       <div className="text-xs text-gray-600">
                         {service.description}
                       </div>
-                    </div>
-                    <div className="text-sm font-bold text-primary-light">
-                      {service.price}
                     </div>
                   </div>
                 </Link>

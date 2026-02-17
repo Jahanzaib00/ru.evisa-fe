@@ -22,24 +22,52 @@ export enum StepType {
 }
 
 /**
- * Defines what data must be present for a step to be considered complete.
- * Drives progress tracking in the layout — no hardcoded field logic needed.
+ * A single field definition that drives BOTH step completion checking AND review display.
+ *
+ * For completion: fields with `required` set are checked against traveler/application data.
+ * For review:     fields with a `label` are rendered in the review step.
+ *
+ * One config, two purposes — no duplication.
  */
-export interface StepCompletionConfig {
-  /** These fields must be non-null on every traveler */
-  travelerFields?: string[];
-  /** These fields must be non-null on the application object */
-  applicationFields?: string[];
-  /** Set true for steps that are never "done" (e.g. Review) */
-  neverComplete?: boolean;
+export interface StepField {
+  /** Display label shown in the review. Omit to use the field for completion only (not rendered). */
+  label?: string;
+  /** Where to read the value from. Defaults to "traveler". */
+  source?: "traveler" | "application";
+  /**
+   * Which keys must be non-null for the step to be considered complete.
+   * - true  → auto-detect from the field format (key / date keys / boolean key / map key / first concat key)
+   * - string[] → explicitly list the keys to check
+   * - omit  → not a completion requirement
+   */
+  required?: boolean | string[];
+
+  // ── Value resolution (choose one) ──────────────────────────────────────────
+  /** Single field key. */
+  key?: string;
+  /** Join multiple field keys into one string. */
+  concat?: string[];
+  /** Separator for concat. Defaults to " ". */
+  separator?: string;
+  /** Render three date-part keys as DD/MM/YYYY. */
+  date?: { day: string; month: string; year: string };
+  /** Render a boolean field with custom labels. */
+  boolean?: { key: string; trueLabel: string; falseLabel: string };
+  /** Map a raw value to a display string. */
+  map?: { key: string; values: Record<string, string> };
+  /** Static summary text (e.g. "All questions answered"). No completion check. */
+  summary?: string;
 }
 
 export interface StepConfig {
-  type: StepType; // Step type for logic/UI mapping
-  component: string; // Component name to render
-  title: string; // Step title
-  description?: string; // Optional description
-  completion?: StepCompletionConfig; // What proves this step is complete
+  type: StepType;
+  component: string;
+  title: string;
+  description?: string;
+  /** Set true for steps that are never "done" (e.g. Review). */
+  neverComplete?: boolean;
+  /** Unified field definitions — drives both completion checking and review display. */
+  fields?: StepField[];
 }
 
 export interface PrePaymentStepConfig {
@@ -252,49 +280,93 @@ export const US_ESTA_CONFIG: ServiceConfig = {
       component: "ESTAPersonalStep",
       title: "Personal Information",
       description: "Provide accurate personal details as they appear on your passport",
-      completion: { travelerFields: ["firstName", "lastName", "email"] },
+      fields: [
+        { label: "Full Name", concat: ["firstName", "middleName", "lastName"], required: ["firstName", "lastName"] },
+        { label: "Date of Birth", date: { day: "birthDay", month: "birthMonth", year: "birthYear" } },
+        { label: "Gender", map: { key: "gender", values: { M: "Male", F: "Female", X: "Other" } } },
+        { label: "City of Birth", key: "cityOfBirth" },
+        { label: "Country of Birth", key: "countryOfBirth" },
+        { label: "Marital Status", key: "maritalStatus" },
+        { label: "Email", key: "email", required: true },
+        { label: "Father's Name", concat: ["fatherFirstName", "fatherFamilyName"] },
+        { label: "Mother's Name", concat: ["motherFirstName", "motherFamilyName"] },
+      ],
     },
     {
       type: StepType.PASSPORT,
       component: "ESTAPassportStep",
       title: "Passport Information",
       description: "Enter your passport details and upload required documents",
-      completion: { travelerFields: ["passportNumber", "nationalityOnPassport", "passportUrl"] },
+      fields: [
+        { label: "Passport Number", key: "passportNumber", required: true },
+        { label: "Passport Type", key: "passportType" },
+        { label: "Issue Date", date: { day: "passportIssueDay", month: "passportIssueMonth", year: "passportIssueYear" } },
+        { label: "Expiry Date", date: { day: "passportExpiryDay", month: "passportExpiryMonth", year: "passportExpiryYear" } },
+        { label: "Nationality", key: "nationalityOnPassport", required: true },
+        { label: "e-Passport", boolean: { key: "isEPassport", trueLabel: "Yes", falseLabel: "No" } },
+        { label: "Country of Residence", key: "countryOfResidence" },
+        { label: "National ID Number", key: "nationalIdNumber" },
+        { key: "passportUrl", required: true }, // completion check only — raw URL not shown
+      ],
     },
     {
       type: StepType.TRAVEL,
       component: "ESTAUSTravelStep",
       title: "U.S. Travel Details",
       description: "Tell us about your travel plans to the United States",
-      completion: { applicationFields: ["purposeOfVisit"] },
+      fields: [
+        { label: "Purpose of Visit", key: "purposeOfVisit", source: "application", required: true },
+        { label: "Transiting", boolean: { key: "isTransiting", trueLabel: "Yes", falseLabel: "No" }, source: "application" },
+        { label: "Arrival Date", key: "arrivalDate", source: "application" },
+        { label: "Flight / Vessel Number", key: "flightVesselNumber", source: "application" },
+        { label: "Point of Entry", key: "pointOfEntry", source: "application" },
+        { label: "US Stay Address", concat: ["usStayAddressLine1", "usStayCity", "usStayState"], separator: ", ", source: "application" },
+        { label: "US Point of Contact", key: "usPointOfContactName", source: "application" },
+      ],
     },
     {
       type: StepType.CONTACT,
       component: "ESTAContactStep",
       title: "Contact Information",
       description: "Provide your contact details and emergency contact",
-      completion: { travelerFields: ["phoneNumber", "addressLine1"] },
+      fields: [
+        { label: "Phone Number", key: "phoneNumber", required: true },
+        { label: "Phone Type", key: "phoneType" },
+        { label: "Home Address", concat: ["addressLine1", "addressLine2", "city", "stateProvinceRegion", "postalCode", "country"], separator: ", ", required: ["addressLine1"] },
+        { label: "Emergency Contact", concat: ["emergencyContactFirstName", "emergencyContactLastName"] },
+        { label: "Emergency Email", key: "emergencyContactEmail" },
+        { label: "Emergency Phone", key: "emergencyContactPhone" },
+      ],
     },
     {
       type: StepType.EMPLOYMENT,
       component: "ESTAEmploymentStep",
       title: "Employment Information",
       description: "Tell us about your current employment status",
-      completion: { travelerFields: ["isEmployed"] },
+      fields: [
+        { label: "Employment Status", boolean: { key: "isEmployed", trueLabel: "Employed", falseLabel: "Not Employed" }, required: true },
+        { label: "Job Title", key: "jobTitle" },
+        { label: "Employer", key: "employerName" },
+        { label: "Employer City", key: "employerCity" },
+        { label: "Employer Country", key: "employerCountry" },
+      ],
     },
     {
       type: StepType.ELIGIBILITY,
       component: "ESTAEligibilityStep",
       title: "Eligibility Questions",
       description: "Please answer all questions truthfully",
-      completion: { travelerFields: ["eligibilityQ1"] },
+      fields: [
+        { key: "eligibilityQ1", required: true }, // completion check only
+        { label: "Status", summary: "All 9 eligibility questions have been answered." },
+      ],
     },
     {
       type: StepType.REVIEW,
       component: "SharedReviewStep",
       title: "Review & Submit",
       description: "Review all information before submission",
-      completion: { neverComplete: true },
+      neverComplete: true,
     },
   ],
 
@@ -485,34 +557,39 @@ export const UK_ETA_CONFIG: ServiceConfig = {
       component: "UKETAPersonalStep",
       title: "Personal Information",
       description: "Provide your basic personal details",
-      completion: { travelerFields: ["firstName", "lastName", "email"] },
+      fields: [
+        { label: "Full Name", concat: ["firstName", "lastName"], required: ["firstName", "lastName"] },
+        { label: "Date of Birth", date: { day: "birthDay", month: "birthMonth", year: "birthYear" } },
+        { label: "Gender", map: { key: "gender", values: { M: "Male", F: "Female", X: "Other" } } },
+        { label: "Email", key: "email", required: true },
+      ],
     },
     {
       type: StepType.PASSPORT,
       component: "UKETAPassportStep",
       title: "Passport Information",
       description: "Enter passport details and upload documents",
-      completion: {
-        travelerFields: [
-          "passportNumber",
-          "nationalityOnPassport",
-          "passportUrl",
-        ],
-      },
+      fields: [
+        { label: "Passport Number", key: "passportNumber", required: true },
+        { label: "Expiry Date", date: { day: "passportExpiryDay", month: "passportExpiryMonth", year: "passportExpiryYear" } },
+        { key: "passportUrl", required: true }, // completion check only
+      ],
     },
     {
       type: StepType.EMPLOYMENT,
       component: "UKETAEmploymentStep",
       title: "Employment Information",
       description: "Tell us about your occupation",
-      completion: { travelerFields: ["jobTitle"] },
+      fields: [
+        { label: "Current Occupation", key: "jobTitle", required: true },
+      ],
     },
     {
       type: StepType.REVIEW,
       component: "SharedReviewStep",
       title: "Review & Submit",
       description: "Review all information before submission",
-      completion: { neverComplete: true },
+      neverComplete: true,
     },
   ],
 

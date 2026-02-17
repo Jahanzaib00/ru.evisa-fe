@@ -68,7 +68,7 @@ export default function SignupPage() {
           <Link href="/" className="inline-block">
             <Image
               src="/images/logo.png"
-              alt="ESTA Logo"
+              alt="EVISA Logo"
               width={200}
               height={40}
               className="mx-auto mb-4"

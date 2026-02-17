@@ -8,6 +8,7 @@ import Alert from "../components/ui/Alert";
 import Button from "../components/ui/Button";
 import Input from "../components/ui/Input";
 import { Spinner } from "../components/ui/Loader";
+import { COMPANY_NAME } from "../lib/constants/company";
 
 export default function LoginPage() {
   const { login } = useAuth();
@@ -75,30 +76,13 @@ export default function LoginPage() {
               placeholder="Enter your password"
             />
 
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <input
-                  id="remember-me"
-                  name="remember-me"
-                  type="checkbox"
-                  className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-                />
-                <label
-                  htmlFor="remember-me"
-                  className="ml-2 block text-sm text-gray-900"
-                >
-                  Remember me
-                </label>
-              </div>
-
-              <div className="text-sm">
-                <Link
-                  href="/forgot-password"
-                  className="font-medium text-primary-light hover:text-primary transition duration-150 ease-in-out"
-                >
-                  Forgot password?
-                </Link>
-              </div>
+            <div className="flex justify-end text-sm">
+              <Link
+                href="/forgot-password"
+                className="font-medium text-primary-light hover:text-primary transition duration-150 ease-in-out"
+              >
+                Forgot password?
+              </Link>
             </div>
 
             <Button
@@ -122,7 +106,7 @@ export default function LoginPage() {
               </div>
               <div className="relative flex justify-center text-sm">
                 <span className="px-2 bg-white text-gray-500">
-                  New to ESTA?
+                  New to {COMPANY_NAME}?
                 </span>
               </div>
             </div>
