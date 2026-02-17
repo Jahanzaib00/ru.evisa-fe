@@ -21,7 +21,7 @@ import {
 import { usePostPaymentApplication } from "@/app/lib/hooks/usePostPaymentApplication";
 import { LoadingSpinner } from "@/app/components/ui/Loader";
 import Image from "next/image";
-import { getService, StepType, StepConfig } from "@/app/lib/config/services";
+import { getService, StepType, StepConfig, StepCompletionConfig } from "@/app/lib/config/services";
 
 interface Step {
   index: number; // 1-based step number
@@ -32,6 +32,7 @@ interface Step {
   href: string;
   icon: ReactNode;
   description?: string;
+  completion?: StepCompletionConfig; // Drives progress tracking
 }
 
 // Icon mapping based on step TYPES (fully scalable)
@@ -68,7 +69,7 @@ function getShortLabel(title: string, type: StepType): string {
   }
 }
 
-// Generate steps from service configuration (fully dynamic)
+// Generate steps from service configuration — passes completion config through
 function generateSteps(stepConfigs: StepConfig[]): Step[] {
   return stepConfigs.map((stepConfig, index) => ({
     index: index + 1, // 1-based
@@ -76,51 +77,35 @@ function generateSteps(stepConfigs: StepConfig[]): Step[] {
     component: stepConfig.component,
     title: stepConfig.title,
     shortLabel: getShortLabel(stepConfig.title, stepConfig.type),
-    href: `/${index + 1}`, // Use numeric index
+    href: `/${index + 1}`,
     icon: STEP_TYPE_ICONS[stepConfig.type] || <FileText className="w-5 h-5" />,
     description: stepConfig.description,
+    completion: stepConfig.completion,
   }));
 }
 
-// Check if a step has required data completed based on step TYPE (fully scalable)
-function checkStepCompleted(stepType: StepType, application: any): boolean {
-  if (!application) return false;
+// Config-driven completion check — no hardcoded field logic here
+function checkStepCompleted(completion: StepCompletionConfig | undefined, application: any): boolean {
+  if (!application || !completion) return false;
+  if (completion.neverComplete) return false;
 
-  const travelers = application.travelers || [];
-  if (travelers.length === 0) return false;
+  const travelers: any[] = application.travelers ?? [];
 
-  switch (stepType) {
-    case StepType.PERSONAL:
-      return travelers.every(
-        (t: any) => t.firstName && t.lastName && t.email && t.photoUrl
-      );
-
-    case StepType.PASSPORT:
-      return travelers.every(
-        (t: any) => t.passportNumber && t.nationalityOnPassport && t.passportUrl
-      );
-
-    case StepType.TRAVEL:
-      return !!application.purposeOfVisit;
-
-    case StepType.CONTACT:
-      return travelers.every((t: any) => t.phoneNumber && t.addressLine1);
-
-    case StepType.EMPLOYMENT:
-      return travelers.every((t: any) => t.isEmployed !== undefined);
-
-    case StepType.ELIGIBILITY:
-      return travelers.every(
-        (t: any) =>
-          t.eligibilityQ1 !== undefined && t.eligibilityQ2 !== undefined
-      );
-
-    case StepType.REVIEW:
-      return false; // Review is never "completed"
-
-    default:
-      return false;
+  if (completion.applicationFields?.length) {
+    const allPresent = completion.applicationFields.every(
+      (f) => application[f] != null && application[f] !== ""
+    );
+    if (!allPresent) return false;
   }
+
+  if (completion.travelerFields?.length && travelers.length > 0) {
+    const allTravelersComplete = travelers.every((t) =>
+      completion.travelerFields!.every((f) => t[f] != null && t[f] !== "")
+    );
+    if (!allTravelersComplete) return false;
+  }
+
+  return true;
 }
 
 export default function ApplicationLayout({
@@ -159,7 +144,7 @@ export default function ApplicationLayout({
   const currentStep = STEPS[currentStepIndex];
 
   const stepCompletionStatus = useMemo(
-    () => STEPS.map((step) => checkStepCompleted(step.type, application)),
+    () => STEPS.map((step) => checkStepCompleted(step.completion, application)),
     [STEPS, application]
   );
   const completedCount = stepCompletionStatus.filter(Boolean).length;

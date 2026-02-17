@@ -21,11 +21,25 @@ export enum StepType {
   REVIEW = "REVIEW",
 }
 
+/**
+ * Defines what data must be present for a step to be considered complete.
+ * Drives progress tracking in the layout — no hardcoded field logic needed.
+ */
+export interface StepCompletionConfig {
+  /** These fields must be non-null on every traveler */
+  travelerFields?: string[];
+  /** These fields must be non-null on the application object */
+  applicationFields?: string[];
+  /** Set true for steps that are never "done" (e.g. Review) */
+  neverComplete?: boolean;
+}
+
 export interface StepConfig {
   type: StepType; // Step type for logic/UI mapping
   component: string; // Component name to render
   title: string; // Step title
   description?: string; // Optional description
+  completion?: StepCompletionConfig; // What proves this step is complete
 }
 
 export interface PrePaymentStepConfig {
@@ -237,44 +251,50 @@ export const US_ESTA_CONFIG: ServiceConfig = {
       type: StepType.PERSONAL,
       component: "ESTAPersonalStep",
       title: "Personal Information",
-      description:
-        "Provide accurate personal details as they appear on your passport",
+      description: "Provide accurate personal details as they appear on your passport",
+      completion: { travelerFields: ["firstName", "lastName", "email"] },
     },
     {
       type: StepType.PASSPORT,
       component: "ESTAPassportStep",
       title: "Passport Information",
       description: "Enter your passport details and upload required documents",
+      completion: { travelerFields: ["passportNumber", "nationalityOnPassport", "passportUrl"] },
     },
     {
       type: StepType.TRAVEL,
       component: "ESTAUSTravelStep",
       title: "U.S. Travel Details",
       description: "Tell us about your travel plans to the United States",
+      completion: { applicationFields: ["purposeOfVisit"] },
     },
     {
       type: StepType.CONTACT,
-      component: "SharedContactStep",
+      component: "ESTAContactStep",
       title: "Contact Information",
       description: "Provide your contact details and emergency contact",
+      completion: { travelerFields: ["phoneNumber", "addressLine1"] },
     },
     {
       type: StepType.EMPLOYMENT,
-      component: "SharedEmploymentStep",
+      component: "ESTAEmploymentStep",
       title: "Employment Information",
       description: "Tell us about your current employment status",
+      completion: { travelerFields: ["isEmployed"] },
     },
     {
       type: StepType.ELIGIBILITY,
       component: "ESTAEligibilityStep",
       title: "Eligibility Questions",
       description: "Please answer all questions truthfully",
+      completion: { travelerFields: ["eligibilityQ1"] },
     },
     {
       type: StepType.REVIEW,
       component: "SharedReviewStep",
       title: "Review & Submit",
       description: "Review all information before submission",
+      completion: { neverComplete: true },
     },
   ],
 
@@ -465,36 +485,34 @@ export const UK_ETA_CONFIG: ServiceConfig = {
       component: "UKETAPersonalStep",
       title: "Personal Information",
       description: "Provide your basic personal details",
+      completion: { travelerFields: ["firstName", "lastName", "email"] },
     },
     {
       type: StepType.PASSPORT,
       component: "UKETAPassportStep",
       title: "Passport Information",
       description: "Enter passport details and upload documents",
-    },
-    {
-      type: StepType.CONTACT,
-      component: "SharedContactStep",
-      title: "Contact Information",
-      description: "Provide your contact details",
+      completion: {
+        travelerFields: [
+          "passportNumber",
+          "nationalityOnPassport",
+          "passportUrl",
+        ],
+      },
     },
     {
       type: StepType.EMPLOYMENT,
       component: "UKETAEmploymentStep",
       title: "Employment Information",
       description: "Tell us about your occupation",
-    },
-    {
-      type: StepType.ELIGIBILITY,
-      component: "UKETAEligibilityStep",
-      title: "Suitability Questions",
-      description: "Answer the eligibility questions",
+      completion: { travelerFields: ["jobTitle"] },
     },
     {
       type: StepType.REVIEW,
       component: "SharedReviewStep",
       title: "Review & Submit",
       description: "Review all information before submission",
+      completion: { neverComplete: true },
     },
   ],
 

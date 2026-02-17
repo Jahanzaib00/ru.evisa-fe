@@ -31,17 +31,17 @@ interface Traveler {
   employerPhone?: string;
 }
 
-interface SharedEmploymentStepProps {
+interface ESTAEmploymentStepProps {
   applicationId: string;
   onNext: () => void;
   onBack: () => void;
 }
 
-export default function SharedEmploymentStep({
+export default function ESTAEmploymentStep({
   applicationId,
   onNext,
   onBack,
-}: SharedEmploymentStepProps) {
+}: ESTAEmploymentStepProps) {
   const [currentTravelerId, setCurrentTravelerId] = useState<string>("");
   const travelers = useTravelers();
   const { saveStep, isLoading, error } = usePostPaymentApplication();

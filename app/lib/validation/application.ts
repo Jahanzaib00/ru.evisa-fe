@@ -4,9 +4,7 @@ import { z } from "zod";
 // U.S. CONTACT INFORMATION
 // ============================================
 export const usContactSchema = z.object({
-  usPointOfContactType: z.enum(["PERSON", "HOTEL", "COMPANY"], {
-    message: "Please select a contact type",
-  }),
+  usPointOfContactType: z.string().optional(),
   usPointOfContactName: z.string().min(1, "Contact name is required"),
   usContactAddressLine1: z.string().min(1, "Address is required"),
   usContactAddressLine2: z.string().optional(),
@@ -137,7 +135,7 @@ export const travelerCitizenshipSchema = z
       ["BIRTH", "PARENTS", "NATURALIZATION", "OTHER"],
       {
         message: "Citizenship acquisition is required",
-      }
+      },
     ),
     previousCitizenship: z.string().optional(),
     hasOtherPassports: z.boolean(),
@@ -182,7 +180,7 @@ export const travelerEmploymentSchema = z
     {
       message: "Employment details are required when employed",
       path: ["jobTitle"],
-    }
+    },
   );
 
 export type TravelerEmploymentFormData = z.infer<
@@ -257,7 +255,7 @@ export type TravelerEligibilityFormData = z.infer<
 
 // STEP 1: Personal + Parents
 export const step1PersonalSchema = travelerPersonalSchema.merge(
-  travelerParentsSchema
+  travelerParentsSchema,
 );
 export type Step1PersonalFormData = z.infer<typeof step1PersonalSchema>;
 
@@ -275,7 +273,7 @@ export type Step3USTravelFormData = z.infer<typeof step3USTravelSchema>;
 
 // STEP 4: Contact + Emergency Contact
 export const step4ContactSchema = travelerContactSchema.merge(
-  travelerEmergencyContactSchema.partial()
+  travelerEmergencyContactSchema.partial(),
 );
 export type Step4ContactFormData = z.infer<typeof step4ContactSchema>;
 
@@ -284,6 +282,6 @@ export type Step5EmploymentFormData = TravelerEmploymentFormData;
 
 // STEP 6: Eligibility + Social Media
 export const step6EligibilitySchema = travelerEligibilitySchema.merge(
-  travelerSocialMediaSchema
+  travelerSocialMediaSchema,
 );
 export type Step6EligibilityFormData = z.infer<typeof step6EligibilitySchema>;

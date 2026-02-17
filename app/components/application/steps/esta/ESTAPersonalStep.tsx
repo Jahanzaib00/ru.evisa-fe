@@ -41,6 +41,38 @@ interface ESTAPersonalStepProps {
   onBack: () => void;
 }
 
+import { type ReviewSnapshotProps, ReviewGrid, ReviewField } from "@/app/components/application/steps/shared/ReviewComponents";
+
+export function ESTAPersonalReview({ traveler: t }: ReviewSnapshotProps) {
+  const dob =
+    t.birthDay && t.birthMonth && t.birthYear
+      ? `${t.birthDay}/${t.birthMonth}/${t.birthYear}`
+      : null;
+  const gender =
+    t.gender === "M" ? "Male" : t.gender === "F" ? "Female" : t.gender || null;
+  const fatherName =
+    [t.fatherFirstName, t.fatherFamilyName].filter(Boolean).join(" ") || null;
+  const motherName =
+    [t.motherFirstName, t.motherFamilyName].filter(Boolean).join(" ") || null;
+
+  return (
+    <ReviewGrid>
+      <ReviewField
+        label="Full Name"
+        value={[t.firstName, t.middleName, t.lastName].filter(Boolean).join(" ")}
+      />
+      <ReviewField label="Date of Birth" value={dob} />
+      <ReviewField label="Gender" value={gender} />
+      <ReviewField label="City of Birth" value={t.cityOfBirth} />
+      <ReviewField label="Country of Birth" value={t.countryOfBirth} />
+      <ReviewField label="Marital Status" value={t.maritalStatus} />
+      <ReviewField label="Email" value={t.email} />
+      <ReviewField label="Father's Name" value={fatherName} />
+      <ReviewField label="Mother's Name" value={motherName} />
+    </ReviewGrid>
+  );
+}
+
 export default function ESTAPersonalStep({ applicationId, onNext, onBack }: ESTAPersonalStepProps) {
   const [currentTravelerId, setCurrentTravelerId] = useState<string>("");
   const travelers = useTravelers();

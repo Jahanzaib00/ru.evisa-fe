@@ -107,12 +107,9 @@ export function usePostPaymentApplication(): UsePostPaymentApplicationReturn {
       setError(null);
 
       try {
-        console.log("Loading application with ID:", id);
         const data = await applicationsService.getById(id);
 
         setApplication(data);
-
-        console.log("Application loaded with serviceType:", data.serviceType);
 
         // Set first traveler as current if exists
         if (data.travelers && data.travelers.length > 0) {

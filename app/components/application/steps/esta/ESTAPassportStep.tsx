@@ -173,7 +173,7 @@ export default function ESTAPassportStep({ applicationId, onNext, onBack }: ESTA
             <section className="space-y-4 pt-6 border-t border-gray-200">
               <h2 className="text-lg font-semibold text-gray-900">Passport Upload</h2>
               <FileUpload
-                label="Passport Bio Page"
+                label="Passport Photo"
                 uploadType="passport"
                 applicationId={applicationId}
                 travelerId={currentTravelerId}

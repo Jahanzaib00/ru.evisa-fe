@@ -21,7 +21,6 @@ const uketaPersonalSchema = z.object({
   birthDay: z.number().min(1).max(31),
   birthMonth: z.number().min(1).max(12),
   birthYear: z.number().min(1900),
-  nationality: z.string().min(1, "Nationality is required"),
   email: z.string().email("Invalid email"),
 });
 
@@ -57,7 +56,6 @@ export default function UKETAPersonalStep({ applicationId, onNext, onBack }: UKE
       birthDay: traveler.birthDay || 1,
       birthMonth: traveler.birthMonth || 1,
       birthYear: traveler.birthYear || 2000,
-      nationality: traveler.nationality || "",
       email: traveler.email || "",
     });
   };
@@ -122,10 +120,6 @@ export default function UKETAPersonalStep({ applicationId, onNext, onBack }: UKE
                   <Input label="Year" type="number" min={1900} max={new Date().getFullYear()} error={errors.birthYear?.message} required {...register("birthYear", { valueAsNumber: true })} />
                 </div>
               </div>
-
-              <Controller name="nationality" control={control} render={({ field }) => (
-                <CountrySelect label="Nationality" error={errors.nationality?.message} required value={field.value} onChange={field.onChange} onBlur={field.onBlur} valueType="name" />
-              )} />
 
               <Input label="Email Address" type="email" error={errors.email?.message} required {...register("email")} />
             </section>

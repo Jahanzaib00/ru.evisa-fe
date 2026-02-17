@@ -16,12 +16,9 @@ import FileUpload from "@/app/components/ui/FileUpload";
 
 const uketaPassportSchema = z.object({
   passportNumber: z.string().min(1, "Passport number is required"),
-  passportType: z.string().min(1, "Passport type is required"),
   passportExpiryDay: z.number().min(1).max(31),
   passportExpiryMonth: z.number().min(1).max(12),
   passportExpiryYear: z.number().min(1900),
-  issuingCountry: z.string().min(1, "Issuing country is required"),
-  nationalityOnPassport: z.string().min(1, "Nationality is required"),
 });
 
 type UKETAPassportFormData = z.infer<typeof uketaPassportSchema>;
@@ -32,12 +29,23 @@ interface UKETAPassportStepProps {
   onBack: () => void;
 }
 
-export default function UKETAPassportStep({ applicationId, onNext, onBack }: UKETAPassportStepProps) {
+export default function UKETAPassportStep({
+  applicationId,
+  onNext,
+  onBack,
+}: UKETAPassportStepProps) {
   const [currentTravelerId, setCurrentTravelerId] = useState<string>("");
   const travelers = useTravelers();
   const { saveStep, isLoading, error } = usePostPaymentApplication();
 
-  const { register, control, handleSubmit, reset, setError: setFormError, formState: { errors } } = useForm<UKETAPassportFormData>({
+  const {
+    register,
+    control,
+    handleSubmit,
+    reset,
+    setError: setFormError,
+    formState: { errors },
+  } = useForm<UKETAPassportFormData>({
     resolver: zodResolver(uketaPassportSchema),
   });
 
@@ -51,12 +59,9 @@ export default function UKETAPassportStep({ applicationId, onNext, onBack }: UKE
   const loadTravelerData = (traveler: any) => {
     reset({
       passportNumber: traveler.passportNumber || "",
-      passportType: traveler.passportType || "REGULAR",
       passportExpiryDay: traveler.passportExpiryDay || 1,
       passportExpiryMonth: traveler.passportExpiryMonth || 1,
       passportExpiryYear: traveler.passportExpiryYear || 2030,
-      issuingCountry: traveler.issuingCountry || "",
-      nationalityOnPassport: traveler.nationalityOnPassport || "",
     });
   };
 
@@ -78,29 +83,41 @@ export default function UKETAPassportStep({ applicationId, onNext, onBack }: UKE
     await saveStep({ id: currentTravelerId, photoUrl: url });
   };
 
-  const onSubmit = useFormSubmit(setFormError, async (data: UKETAPassportFormData) => {
-    if (!currentTravelerId) throw new Error("No traveler selected");
+  const onSubmit = useFormSubmit(
+    setFormError,
+    async (data: UKETAPassportFormData) => {
+      if (!currentTravelerId) throw new Error("No traveler selected");
 
-    const success = await saveStep({ id: currentTravelerId, ...data });
-    if (!success) throw new Error(error || "Failed to save passport information");
+      const success = await saveStep({ id: currentTravelerId, ...data });
+      if (!success)
+        throw new Error(error || "Failed to save passport information");
 
-    const currentIndex = travelers.findIndex((t) => t.id === currentTravelerId);
-    if (currentIndex < travelers.length - 1) {
-      handleTravelerChange(travelers[currentIndex + 1].id);
-    } else {
-      onNext();
-    }
-  });
+      const currentIndex = travelers.findIndex(
+        (t) => t.id === currentTravelerId,
+      );
+      if (currentIndex < travelers.length - 1) {
+        handleTravelerChange(travelers[currentIndex + 1].id);
+      } else {
+        onNext();
+      }
+    },
+  );
 
   return (
     <div>
       <div className="mb-8">
-        <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Passport Information</h1>
-        <p className="text-gray-600">Enter your passport details and upload required documents.</p>
+        <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+          Passport Information
+        </h1>
+        <p className="text-gray-600">
+          Enter your passport details and upload required documents.
+        </p>
       </div>
 
       {error && (
-        <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg mb-6">{error}</div>
+        <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg mb-6">
+          {error}
+        </div>
       )}
 
       <TravelerAccordion
@@ -110,41 +127,60 @@ export default function UKETAPassportStep({ applicationId, onNext, onBack }: UKE
         renderContent={() => (
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
             <section className="space-y-4">
-              <Input label="Passport Number" error={errors.passportNumber?.message} required {...register("passportNumber")} />
-
-              <Select label="Passport Type" error={errors.passportType?.message} required {...register("passportType")}>
-                <option value="">Select type</option>
-                <option value="REGULAR">Regular</option>
-                <option value="OFFICIAL">Official</option>
-                <option value="DIPLOMATIC">Diplomatic</option>
-              </Select>
+              <Input
+                label="Passport Number"
+                error={errors.passportNumber?.message}
+                required
+                {...register("passportNumber")}
+              />
 
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">Passport Expiry Date *</label>
+                <label className="block text-sm font-medium text-gray-700">
+                  Passport Expiry Date *
+                </label>
                 <div className="grid grid-cols-3 gap-4">
-                  <Input label="Day" type="number" min={1} max={31} {...register("passportExpiryDay", { valueAsNumber: true })} />
-                  <Input label="Month" type="number" min={1} max={12} {...register("passportExpiryMonth", { valueAsNumber: true })} />
-                  <Input label="Year" type="number" min={1900} {...register("passportExpiryYear", { valueAsNumber: true })} />
+                  <Input
+                    label="Day"
+                    type="number"
+                    min={1}
+                    max={31}
+                    {...register("passportExpiryDay", { valueAsNumber: true })}
+                  />
+                  <Input
+                    label="Month"
+                    type="number"
+                    min={1}
+                    max={12}
+                    {...register("passportExpiryMonth", {
+                      valueAsNumber: true,
+                    })}
+                  />
+                  <Input
+                    label="Year"
+                    type="number"
+                    min={1900}
+                    {...register("passportExpiryYear", { valueAsNumber: true })}
+                  />
                 </div>
               </div>
-
-              <Controller name="issuingCountry" control={control} render={({ field }) => (
-                <CountrySelect label="Issuing Country" error={errors.issuingCountry?.message} required value={field.value} onChange={field.onChange} onBlur={field.onBlur} valueType="name" />
-              )} />
-
-              <Input label="Nationality on Passport" error={errors.nationalityOnPassport?.message} required {...register("nationalityOnPassport")} />
             </section>
 
             <section className="space-y-4 pt-6 border-t border-gray-200">
-              <h2 className="text-lg font-semibold text-gray-900">Document Uploads</h2>
-              <p className="text-sm text-gray-600">Upload your passport bio page and a recent photo.</p>
+              <h2 className="text-lg font-semibold text-gray-900">
+                Document Uploads
+              </h2>
+              <p className="text-sm text-gray-600">
+                Upload your passport bio page and a recent photo.
+              </p>
 
               <FileUpload
-                label="Passport Bio Page"
+                label="Passport Photo"
                 uploadType="passport"
                 applicationId={applicationId}
                 travelerId={currentTravelerId}
-                currentFileUrl={travelers.find((t) => t.id === currentTravelerId)?.passportUrl}
+                currentFileUrl={
+                  travelers.find((t) => t.id === currentTravelerId)?.passportUrl
+                }
                 onUploadComplete={handlePassportUpload}
                 required
               />
@@ -154,15 +190,23 @@ export default function UKETAPassportStep({ applicationId, onNext, onBack }: UKE
                 uploadType="photo"
                 applicationId={applicationId}
                 travelerId={currentTravelerId}
-                currentFileUrl={travelers.find((t) => t.id === currentTravelerId)?.photoUrl}
+                currentFileUrl={
+                  travelers.find((t) => t.id === currentTravelerId)?.photoUrl
+                }
                 onUploadComplete={handlePhotoUpload}
                 required
               />
             </section>
 
             <div className="flex justify-between pt-6">
-              <Button type="button" variant="outline" onClick={onBack}>Back</Button>
-              <Button type="submit" disabled={isLoading} className="min-w-[200px]">
+              <Button type="button" variant="outline" onClick={onBack}>
+                Back
+              </Button>
+              <Button
+                type="submit"
+                disabled={isLoading}
+                className="min-w-[200px]"
+              >
                 {isLoading ? "Saving..." : "Save & Continue"}
               </Button>
             </div>

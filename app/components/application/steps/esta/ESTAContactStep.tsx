@@ -34,17 +34,17 @@ interface Traveler {
   emergencyContactPhone?: string;
 }
 
-interface SharedContactStepProps {
+interface ESTAContactStepProps {
   applicationId: string;
   onNext: () => void;
   onBack: () => void;
 }
 
-export default function SharedContactStep({
+export default function ESTAContactStep({
   applicationId,
   onNext,
   onBack,
-}: SharedContactStepProps) {
+}: ESTAContactStepProps) {
   const [currentTravelerId, setCurrentTravelerId] = useState<string>("");
   const travelers = useTravelers();
   const { saveStep, isLoading, error } = usePostPaymentApplication();

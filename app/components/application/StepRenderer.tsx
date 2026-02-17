@@ -3,40 +3,41 @@
 import { ServiceType, getService } from "@/app/lib/config/services";
 
 // Import all shared step components
-import SharedContactStep from "./steps/shared/SharedContactStep";
-import SharedEmploymentStep from "./steps/shared/SharedEmploymentStep";
+import ESTAEmploymentStep from "./steps/esta/ESTAEmploymentStep";
 import SharedReviewStep from "./steps/shared/SharedReviewStep";
 
 // Import all ESTA step components
 import ESTAPersonalStep from "./steps/esta/ESTAPersonalStep";
 import ESTAPassportStep from "./steps/esta/ESTAPassportStep";
 import ESTAUSTravelStep from "./steps/esta/ESTAUSTravelStep";
+import ESTAContactStep from "./steps/esta/ESTAContactStep";
 import ESTAEligibilityStep from "./steps/esta/ESTAEligibilityStep";
 
 // Import all UK ETA step components
 import UKETAPersonalStep from "./steps/uk-eta/UKETAPersonalStep";
 import UKETAPassportStep from "./steps/uk-eta/UKETAPassportStep";
 import UKETAEmploymentStep from "./steps/uk-eta/UKETAEmploymentStep";
-import UKETAEligibilityStep from "./steps/uk-eta/UKETAEligibilityStep";
 
 // Component registry: maps component names (from service config) to actual components
-const COMPONENT_REGISTRY: Record<string, React.ComponentType<StepComponentProps>> = {
+const COMPONENT_REGISTRY: Record<
+  string,
+  React.ComponentType<StepComponentProps>
+> = {
   // Shared components
-  SharedContactStep,
-  SharedEmploymentStep,
+  ESTAEmploymentStep,
   SharedReviewStep,
 
   // ESTA components
   ESTAPersonalStep,
   ESTAPassportStep,
   ESTAUSTravelStep,
+  ESTAContactStep,
   ESTAEligibilityStep,
 
   // UK ETA components
   UKETAPersonalStep,
   UKETAPassportStep,
   UKETAEmploymentStep,
-  UKETAEligibilityStep,
 };
 
 export interface StepComponentProps {
