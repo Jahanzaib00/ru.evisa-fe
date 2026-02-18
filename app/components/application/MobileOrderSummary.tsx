@@ -118,7 +118,7 @@ export default function MobileOrderSummary({
               <div>
                 {tier && (
                   <p className="text-sm text-gray mt-0.5">
-                    {processingTimeLabel}, {tier.processingTime}
+                    {processingTimeLabel}, {tier.processingTime} hour
                   </p>
                 )}
               </div>

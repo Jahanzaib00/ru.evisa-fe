@@ -86,7 +86,7 @@ export interface ProcessingTier {
   type: ProcessingTierType;
   label: string; // e.g., "Standard", "Rush", "Super Rush"
   description: string; // e.g., "24 hour processing"
-  processingTime: string; // e.g., "24 hours"
+  processingTime: number; // in hours
   serviceFee: number; // Our service fee for this tier (government fee is separate)
   isDefault?: boolean; // Whether this is the default tier
 }
@@ -212,7 +212,7 @@ export const US_ESTA_CONFIG: ServiceConfig = {
       type: ProcessingTierType.STANDARD,
       label: "Standard",
       description: "24 hour processing",
-      processingTime: "24 hours",
+      processingTime: 24, // in hours for calculation
       serviceFee: 19.95,
       isDefault: true,
     },
@@ -220,14 +220,14 @@ export const US_ESTA_CONFIG: ServiceConfig = {
       type: ProcessingTierType.RUSH,
       label: "Rush",
       description: "4 hour processing",
-      processingTime: "4 hours",
+      processingTime: 4,
       serviceFee: 29.95,
     },
     {
       type: ProcessingTierType.SUPER_RUSH,
       label: "Super Rush",
       description: "1 hour processing",
-      processingTime: "1 hour",
+      processingTime: 1,
       serviceFee: 39.95,
     },
   ],
@@ -279,17 +279,37 @@ export const US_ESTA_CONFIG: ServiceConfig = {
       type: StepType.PERSONAL,
       component: "ESTAPersonalStep",
       title: "Personal Information",
-      description: "Provide accurate personal details as they appear on your passport",
+      description:
+        "Provide accurate personal details as they appear on your passport",
       fields: [
-        { label: "Full Name", concat: ["firstName", "middleName", "lastName"], required: ["firstName", "lastName"] },
-        { label: "Date of Birth", date: { day: "birthDay", month: "birthMonth", year: "birthYear" } },
-        { label: "Gender", map: { key: "gender", values: { M: "Male", F: "Female", X: "Other" } } },
+        {
+          label: "Full Name",
+          concat: ["firstName", "middleName", "lastName"],
+          required: ["firstName", "lastName"],
+        },
+        {
+          label: "Date of Birth",
+          date: { day: "birthDay", month: "birthMonth", year: "birthYear" },
+        },
+        {
+          label: "Gender",
+          map: {
+            key: "gender",
+            values: { M: "Male", F: "Female", X: "Other" },
+          },
+        },
         { label: "City of Birth", key: "cityOfBirth" },
         { label: "Country of Birth", key: "countryOfBirth" },
         { label: "Marital Status", key: "maritalStatus" },
         { label: "Email", key: "email", required: true },
-        { label: "Father's Name", concat: ["fatherFirstName", "fatherFamilyName"] },
-        { label: "Mother's Name", concat: ["motherFirstName", "motherFamilyName"] },
+        {
+          label: "Father's Name",
+          concat: ["fatherFirstName", "fatherFamilyName"],
+        },
+        {
+          label: "Mother's Name",
+          concat: ["motherFirstName", "motherFamilyName"],
+        },
       ],
     },
     {
@@ -300,10 +320,27 @@ export const US_ESTA_CONFIG: ServiceConfig = {
       fields: [
         { label: "Passport Number", key: "passportNumber", required: true },
         { label: "Passport Type", key: "passportType" },
-        { label: "Issue Date", date: { day: "passportIssueDay", month: "passportIssueMonth", year: "passportIssueYear" } },
-        { label: "Expiry Date", date: { day: "passportExpiryDay", month: "passportExpiryMonth", year: "passportExpiryYear" } },
+        {
+          label: "Issue Date",
+          date: {
+            day: "passportIssueDay",
+            month: "passportIssueMonth",
+            year: "passportIssueYear",
+          },
+        },
+        {
+          label: "Expiry Date",
+          date: {
+            day: "passportExpiryDay",
+            month: "passportExpiryMonth",
+            year: "passportExpiryYear",
+          },
+        },
         { label: "Nationality", key: "nationalityOnPassport", required: true },
-        { label: "e-Passport", boolean: { key: "isEPassport", trueLabel: "Yes", falseLabel: "No" } },
+        {
+          label: "e-Passport",
+          boolean: { key: "isEPassport", trueLabel: "Yes", falseLabel: "No" },
+        },
         { label: "Country of Residence", key: "countryOfResidence" },
         { label: "National ID Number", key: "nationalIdNumber" },
         { key: "passportUrl", required: true }, // completion check only — raw URL not shown
@@ -315,13 +352,35 @@ export const US_ESTA_CONFIG: ServiceConfig = {
       title: "U.S. Travel Details",
       description: "Tell us about your travel plans to the United States",
       fields: [
-        { label: "Purpose of Visit", key: "purposeOfVisit", source: "application", required: true },
-        { label: "Transiting", boolean: { key: "isTransiting", trueLabel: "Yes", falseLabel: "No" }, source: "application" },
+        {
+          label: "Purpose of Visit",
+          key: "purposeOfVisit",
+          source: "application",
+          required: true,
+        },
+        {
+          label: "Transiting",
+          boolean: { key: "isTransiting", trueLabel: "Yes", falseLabel: "No" },
+          source: "application",
+        },
         { label: "Arrival Date", key: "arrivalDate", source: "application" },
-        { label: "Flight / Vessel Number", key: "flightVesselNumber", source: "application" },
+        {
+          label: "Flight / Vessel Number",
+          key: "flightVesselNumber",
+          source: "application",
+        },
         { label: "Point of Entry", key: "pointOfEntry", source: "application" },
-        { label: "US Stay Address", concat: ["usStayAddressLine1", "usStayCity", "usStayState"], separator: ", ", source: "application" },
-        { label: "US Point of Contact", key: "usPointOfContactName", source: "application" },
+        {
+          label: "US Stay Address",
+          concat: ["usStayAddressLine1", "usStayCity", "usStayState"],
+          separator: ", ",
+          source: "application",
+        },
+        {
+          label: "US Point of Contact",
+          key: "usPointOfContactName",
+          source: "application",
+        },
       ],
     },
     {
@@ -332,8 +391,23 @@ export const US_ESTA_CONFIG: ServiceConfig = {
       fields: [
         { label: "Phone Number", key: "phoneNumber", required: true },
         { label: "Phone Type", key: "phoneType" },
-        { label: "Home Address", concat: ["addressLine1", "addressLine2", "city", "stateProvinceRegion", "postalCode", "country"], separator: ", ", required: ["addressLine1"] },
-        { label: "Emergency Contact", concat: ["emergencyContactFirstName", "emergencyContactLastName"] },
+        {
+          label: "Home Address",
+          concat: [
+            "addressLine1",
+            "addressLine2",
+            "city",
+            "stateProvinceRegion",
+            "postalCode",
+            "country",
+          ],
+          separator: ", ",
+          required: ["addressLine1"],
+        },
+        {
+          label: "Emergency Contact",
+          concat: ["emergencyContactFirstName", "emergencyContactLastName"],
+        },
         { label: "Emergency Email", key: "emergencyContactEmail" },
         { label: "Emergency Phone", key: "emergencyContactPhone" },
       ],
@@ -344,7 +418,15 @@ export const US_ESTA_CONFIG: ServiceConfig = {
       title: "Employment Information",
       description: "Tell us about your current employment status",
       fields: [
-        { label: "Employment Status", boolean: { key: "isEmployed", trueLabel: "Employed", falseLabel: "Not Employed" }, required: true },
+        {
+          label: "Employment Status",
+          boolean: {
+            key: "isEmployed",
+            trueLabel: "Employed",
+            falseLabel: "Not Employed",
+          },
+          required: true,
+        },
         { label: "Job Title", key: "jobTitle" },
         { label: "Employer", key: "employerName" },
         { label: "Employer City", key: "employerCity" },
@@ -358,7 +440,10 @@ export const US_ESTA_CONFIG: ServiceConfig = {
       description: "Please answer all questions truthfully",
       fields: [
         { key: "eligibilityQ1", required: true }, // completion check only
-        { label: "Status", summary: "All 9 eligibility questions have been answered." },
+        {
+          label: "Status",
+          summary: "All 9 eligibility questions have been answered.",
+        },
       ],
     },
     {
@@ -490,7 +575,7 @@ export const UK_ETA_CONFIG: ServiceConfig = {
       type: ProcessingTierType.STANDARD,
       label: "Standard",
       description: "24 hour processing",
-      processingTime: "24 hours",
+      processingTime: 24,
       serviceFee: 14.95,
       isDefault: true,
     },
@@ -498,14 +583,14 @@ export const UK_ETA_CONFIG: ServiceConfig = {
       type: ProcessingTierType.RUSH,
       label: "Rush",
       description: "4 hour processing",
-      processingTime: "4 hours",
+      processingTime: 4,
       serviceFee: 23.95,
     },
     {
       type: ProcessingTierType.SUPER_RUSH,
       label: "Super Rush",
       description: "1 hour processing",
-      processingTime: "1 hour",
+      processingTime: 1,
       serviceFee: 31.95,
     },
   ],
@@ -558,9 +643,22 @@ export const UK_ETA_CONFIG: ServiceConfig = {
       title: "Personal Information",
       description: "Provide your basic personal details",
       fields: [
-        { label: "Full Name", concat: ["firstName", "lastName"], required: ["firstName", "lastName"] },
-        { label: "Date of Birth", date: { day: "birthDay", month: "birthMonth", year: "birthYear" } },
-        { label: "Gender", map: { key: "gender", values: { M: "Male", F: "Female", X: "Other" } } },
+        {
+          label: "Full Name",
+          concat: ["firstName", "lastName"],
+          required: ["firstName", "lastName"],
+        },
+        {
+          label: "Date of Birth",
+          date: { day: "birthDay", month: "birthMonth", year: "birthYear" },
+        },
+        {
+          label: "Gender",
+          map: {
+            key: "gender",
+            values: { M: "Male", F: "Female", X: "Other" },
+          },
+        },
         { label: "Email", key: "email", required: true },
       ],
     },
@@ -571,7 +669,14 @@ export const UK_ETA_CONFIG: ServiceConfig = {
       description: "Enter passport details and upload documents",
       fields: [
         { label: "Passport Number", key: "passportNumber", required: true },
-        { label: "Expiry Date", date: { day: "passportExpiryDay", month: "passportExpiryMonth", year: "passportExpiryYear" } },
+        {
+          label: "Expiry Date",
+          date: {
+            day: "passportExpiryDay",
+            month: "passportExpiryMonth",
+            year: "passportExpiryYear",
+          },
+        },
         { key: "passportUrl", required: true }, // completion check only
       ],
     },
@@ -632,7 +737,7 @@ export function getService(type: ServiceType): ServiceConfig {
  * Used by [destination] routes for backward compatibility
  */
 export function getServiceByDestination(
-  destination: string
+  destination: string,
 ): ServiceConfig | undefined {
   const destinationMap: Record<string, ServiceType> = {
     "united-states": ServiceType.US_ESTA,
@@ -671,7 +776,7 @@ export function getServiceBySlug(slug: string): ServiceConfig | undefined {
  */
 export function isEligible(
   serviceType: ServiceType,
-  nationalityCode: string
+  nationalityCode: string,
 ): boolean {
   const service = getService(serviceType);
   return service.eligibleNationalities.includes(nationalityCode);
@@ -682,7 +787,7 @@ export function isEligible(
  */
 export function getEligibleServices(
   passportCountry: string,
-  destinationCountry: string
+  destinationCountry: string,
 ): ServiceConfig[] {
   return Object.values(SERVICES).filter((service) => {
     // Skip unimplemented services
@@ -715,7 +820,7 @@ export function getCurrencySymbol(currencyCode: string): string {
  * Get the default processing tier for a service
  */
 export function getDefaultProcessingTier(
-  serviceType: ServiceType
+  serviceType: ServiceType,
 ): ProcessingTier {
   const service = getService(serviceType);
   const defaultTier = service.processingTiers.find((tier) => tier.isDefault);
@@ -727,7 +832,7 @@ export function getDefaultProcessingTier(
  */
 export function getProcessingTier(
   serviceType: ServiceType,
-  tierType: ProcessingTierType
+  tierType: ProcessingTierType,
 ): ProcessingTier | undefined {
   const service = getService(serviceType);
   return service.processingTiers.find((tier) => tier.type === tierType);
@@ -740,7 +845,7 @@ export function calculatePrice(
   serviceType: ServiceType,
   applicants: number = 1,
   processingTierType?: ProcessingTierType,
-  includeDenialProtection: boolean = false
+  includeDenialProtection: boolean = false,
 ): { subtotal: number; total: number; perApplicant: number; currency: string } {
   const service = getService(serviceType);
 

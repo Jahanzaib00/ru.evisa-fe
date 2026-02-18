@@ -14,8 +14,10 @@ import {
   isErrorType,
   logError,
 } from "@/app/lib/utils/errorHandler";
-import { EXPECTED_DELIVERY_HOURS } from "@/app/lib/constants";
-import { getServiceByDestination } from "@/app/lib/config/services";
+import {
+  getProcessingTier,
+  getServiceByDestination,
+} from "@/app/lib/config/services";
 
 interface Props {
   params: Promise<{
@@ -30,7 +32,18 @@ export default function ReviewPage({ params }: Props) {
   // Get service config
   const service = getServiceByDestination(destination);
 
-  const { travelers, getTotalAmount, applicationId } = useApplicationStore();
+  const {
+    travelers,
+    getTotalAmount,
+    applicationId,
+    processingTier,
+    serviceType,
+  } = useApplicationStore();
+
+  if (!serviceType || !processingTier) {
+    router.push(`/${destination}/apply`);
+    return;
+  }
 
   const [denialProtection, setDenialProtection] = useState(false);
   const [showPaymentModal, setShowPaymentModal] = useState(false);
@@ -44,7 +57,11 @@ export default function ReviewPage({ params }: Props) {
   const getExpectedDeliveryTime = () => {
     const now = new Date();
     const deliveryTime = new Date(
-      now.getTime() + EXPECTED_DELIVERY_HOURS * 60 * 60 * 1000
+      now.getTime() +
+        getProcessingTier(serviceType, processingTier)?.processingTime! *
+          60 *
+          60 *
+          1000,
     );
 
     const isToday = deliveryTime.toDateString() === now.toDateString();
@@ -119,7 +136,7 @@ export default function ReviewPage({ params }: Props) {
       // Extract and display error message
       const errorMessage = extractErrorMessage(
         err,
-        "Failed to initialize payment. Please try again."
+        "Failed to initialize payment. Please try again.",
       );
       setError(errorMessage);
 
