@@ -87,7 +87,7 @@ export function useApplication(): UseApplicationReturn {
 
       const createPayload = {
         serviceType,
-        destination: serviceConfig.destinationCode,
+        destination: serviceConfig.destination,
         nationality,
         totalApplicants,
         totalAmount: getTotalAmount(),
