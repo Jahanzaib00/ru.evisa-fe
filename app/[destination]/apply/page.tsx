@@ -302,17 +302,17 @@ function resolveResumeStep(app: any, destination: string): string {
     return base;
   }
 
-  const t = travelers[0];
+  // const t = travelers[0];
 
   // Passport details complete → go to processing options
-  if (t.passportNumber) {
-    return `${base}/processing-options`;
-  }
+  // if (t.passportNumber) {
+  //   return `${base}/processing-options`;
+  // }
 
   // Personal details complete (email is captured here) → go to passport
-  if (t.email) {
-    return `${base}/passport-details`;
-  }
+  // if (t.email) {
+  //   return `${base}/passport-details`;
+  // }
 
   // Traveler record exists (name/DOB) but email not yet filled → personal details
   return `${base}/personal-details`;
