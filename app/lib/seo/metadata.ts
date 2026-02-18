@@ -135,7 +135,7 @@ export function generateMetadata(config: SEOConfig): Metadata {
 export function generateHomeMetadata(): Metadata {
   const currentYear = new Date().getFullYear();
   return generateMetadata({
-    title: `eVisa Portal ${currentYear} - ESTA, UK ETA & Travel Authorization`,
+    title: `EVISA Portal`,
     description:
       "Apply for US ESTA, UK ETA, and eVisa services online. Expert assistance, 99% approval rate, 24/7 support. Fast processing for all travel authorizations. Trusted by 50,000+ travelers worldwide.",
     keywords: [
