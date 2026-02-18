@@ -19,7 +19,7 @@ export interface SEOConfig {
   title: string;
   description: string;
   keywords?: string[];
-  canonicalUrl?: string;
+canonicalUrl?: string;
   ogImage?: string;
   ogType?: "website" | "article";
   publishedTime?: string;
@@ -48,7 +48,7 @@ export function generateMetadata(config: SEOConfig): Metadata {
     nofollow = false,
   } = config;
 
-  const fullTitle = `${title} | ${SITE_NAME}`;
+  const fullTitle = `${title}`;
   const canonical = canonicalUrl || SITE_URL;
 
   // Base metadata
