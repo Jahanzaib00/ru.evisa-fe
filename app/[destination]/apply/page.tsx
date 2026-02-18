@@ -106,7 +106,7 @@ function TripDetailsContent({ destination }: { destination: string }) {
 
         // Determine the furthest completed step and route there
         const nextStep = resolveResumeStep(app, destination);
-        router.replace(nextStep);
+        router.push(nextStep);
       })
       .catch(() => {
         setResumeError("We couldn't load your application. Please try again.");
