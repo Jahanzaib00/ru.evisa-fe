@@ -103,8 +103,7 @@ export default function PassportDetailsPage({ params }: Props) {
       countryOfResidence: data.travelers[index].countryOfResidence,
     }));
 
-    // Save to localStorage (optimistic update)
-    updateTravelersPassport(data.travelers);
+    updateTravelersPassport(mergedTravelers);
 
     // Save complete traveler data to server
     const success = await saveTravelers({ travelers: mergedTravelers });

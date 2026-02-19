@@ -93,11 +93,18 @@ export default function PersonalDetailsPage({ params }: Props) {
   }, [errors.travelers]);
 
   const onSubmit = async (data: any) => {
-    // Save to localStorage (optimistic update)
-    updateTravelers(data.travelers);
+    // Merge personal fields into existing travelers so passport data is preserved
+    // Drive the merge from form data (always has correct length), spread store entry as fallback
+    const mergedTravelers = data.travelers.map((formData: any, index: number) => ({
+      ...(travelers[index] ?? {}),
+      ...formData,
+    }));
 
-    // Save to server
-    const success = await saveTravelers({ travelers: data.travelers });
+    // Save to store (optimistic update) — preserves passport fields
+    updateTravelers(mergedTravelers);
+
+    // Save to server — sends full traveler payload including any existing passport data
+    const success = await saveTravelers({ travelers: mergedTravelers });
 
     if (!success) {
       // Error is already set in hook

@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useState } from "react";
+import { use, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useApplicationStore } from "@/app/lib/store/applicationStore";
 import ApplicationLayout from "@/app/components/application/ApplicationLayout";
@@ -40,18 +40,24 @@ export default function ReviewPage({ params }: Props) {
     serviceType,
   } = useApplicationStore();
 
-  if (!serviceType || !processingTier) {
-    router.push(`/${destination}/apply`);
-    return;
-  }
-
+  // useState must be declared unconditionally (Rules of Hooks)
   const [denialProtection, setDenialProtection] = useState(false);
   const [showPaymentModal, setShowPaymentModal] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [clientSecret, setClientSecret] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
+  useEffect(() => {
+    if (!serviceType || !processingTier) {
+      router.push(`/${destination}/apply`);
+    }
+  }, [serviceType, processingTier, router, destination]);
+
   const total = getTotalAmount();
+
+  if (!serviceType || !processingTier) {
+    return null;
+  }
 
   // Calculate expected delivery time
   const getExpectedDeliveryTime = () => {

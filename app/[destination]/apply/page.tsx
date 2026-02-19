@@ -306,7 +306,7 @@ function resolveResumeStep(app: any, destination: string): string {
 
   // Passport details complete → go to processing options
   if (t.passportNumber) {
-    return `${base}/processing-options`;
+    return `${base}/review`;
   }
 
   // Personal details complete (email is captured here) → go to passport

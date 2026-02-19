@@ -165,7 +165,7 @@ export default function PricingSidebar({
                   <div>
                     {tier && (
                       <p className="text-sm text-gray mt-0.5">
-                        {processingTimeLabel}, {tier.processingTime} hour
+                        {tier.label} processing fee
                       </p>
                     )}
                   </div>
