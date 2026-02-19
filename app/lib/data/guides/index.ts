@@ -7,6 +7,7 @@ import { Guide } from "./types";
 import { ServiceType } from "@/app/lib/config/services";
 import { ESTA_GUIDES } from "./esta";
 import { UK_ETA_GUIDES } from "./uk-eta";
+import { CANADA_ETA_GUIDES } from "./canada-eta";
 
 // Export types
 export type {  Guide, GuideSection, GuideFAQ, PillarTopic } from "./types";
@@ -14,9 +15,10 @@ export type {  Guide, GuideSection, GuideFAQ, PillarTopic } from "./types";
 // Export service-specific guide arrays
 export { ESTA_GUIDES } from "./esta";
 export { UK_ETA_GUIDES } from "./uk-eta";
+export { CANADA_ETA_GUIDES } from "./canada-eta";
 
 // Combined guides array (all services)
-export const ALL_GUIDES: Guide[] = [...ESTA_GUIDES, ...UK_ETA_GUIDES];
+export const ALL_GUIDES: Guide[] = [...ESTA_GUIDES, ...UK_ETA_GUIDES, ...CANADA_ETA_GUIDES];
 
 /**
  * Get all guides for a specific service

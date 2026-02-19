@@ -147,7 +147,7 @@ export default function PopularServices() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <ServiceCard serviceType={ServiceType.US_ESTA} available={true} />
           <ServiceCard serviceType={ServiceType.UK_ETA} available={true} />
-          <ServiceCard serviceType={ServiceType.CANADA_ETA} available={false} />
+          <ServiceCard serviceType={ServiceType.CANADA_ETA} available={true} />
         </div>
       </Container>
     </Section>

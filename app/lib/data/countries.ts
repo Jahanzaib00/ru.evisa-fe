@@ -1324,67 +1324,67 @@ export const UK_ETA_COUNTRIES: Country[] = [
 /**
  * Canada ETA - Electronic Travel Authorization Countries (50+ visa-exempt countries)
  */
-// export const CANADA_ETA_COUNTRIES: Country[] = [
-//   // European countries eligible for Canada ETA
-//   { name: 'Andorra', slug: 'andorra', code: 'AD', region: 'Europe', canadaEtaEligible: true, flagEmoji: '🇦🇩', population: 77000 },
-//   { name: 'Austria', slug: 'austria', code: 'AT', region: 'Europe', canadaEtaEligible: true, flagEmoji: '🇦🇹', capitalCity: 'Vienna', population: 9000000 },
-//   { name: 'Belgium', slug: 'belgium', code: 'BE', region: 'Europe', canadaEtaEligible: true, flagEmoji: '🇧🇪', capitalCity: 'Brussels', population: 11500000 },
-//   { name: 'Croatia', slug: 'croatia', code: 'HR', region: 'Europe', canadaEtaEligible: true, flagEmoji: '🇭🇷', capitalCity: 'Zagreb', population: 4000000 },
-//   { name: 'Cyprus', slug: 'cyprus', code: 'CY', region: 'Europe', canadaEtaEligible: true, flagEmoji: '🇨🇾', capitalCity: 'Nicosia', population: 1200000 },
-//   { name: 'Czech Republic', slug: 'czech-republic', code: 'CZ', region: 'Europe', canadaEtaEligible: true, flagEmoji: '🇨🇿', capitalCity: 'Prague', population: 10700000 },
-//   { name: 'Denmark', slug: 'denmark', code: 'DK', region: 'Europe', canadaEtaEligible: true, flagEmoji: '🇩🇰', capitalCity: 'Copenhagen', population: 5800000 },
-//   { name: 'Estonia', slug: 'estonia', code: 'EE', region: 'Europe', canadaEtaEligible: true, flagEmoji: '🇪🇪', capitalCity: 'Tallinn', population: 1300000 },
-//   { name: 'Finland', slug: 'finland', code: 'FI', region: 'Europe', canadaEtaEligible: true, flagEmoji: '🇫🇮', capitalCity: 'Helsinki', population: 5500000 },
-//   { name: 'France', slug: 'france', code: 'FR', region: 'Europe', canadaEtaEligible: true, flagEmoji: '🇫🇷', capitalCity: 'Paris', population: 67000000 },
-//   { name: 'Germany', slug: 'germany', code: 'DE', region: 'Europe', canadaEtaEligible: true, flagEmoji: '🇩🇪', capitalCity: 'Berlin', population: 83000000 },
-//   { name: 'Greece', slug: 'greece', code: 'GR', region: 'Europe', canadaEtaEligible: true, flagEmoji: '🇬🇷', capitalCity: 'Athens', population: 10700000 },
-//   { name: 'Hungary', slug: 'hungary', code: 'HU', region: 'Europe', canadaEtaEligible: true, flagEmoji: '🇭🇺', capitalCity: 'Budapest', population: 9700000 },
-//   { name: 'Iceland', slug: 'iceland', code: 'IS', region: 'Europe', canadaEtaEligible: true, flagEmoji: '🇮🇸', capitalCity: 'Reykjavik', population: 370000 },
-//   { name: 'Ireland', slug: 'ireland', code: 'IE', region: 'Europe', canadaEtaEligible: true, flagEmoji: '🇮🇪', capitalCity: 'Dublin', population: 5000000 },
-//   { name: 'Italy', slug: 'italy', code: 'IT', region: 'Europe', canadaEtaEligible: true, flagEmoji: '🇮🇹', capitalCity: 'Rome', population: 60000000 },
-//   { name: 'Latvia', slug: 'latvia', code: 'LV', region: 'Europe', canadaEtaEligible: true, flagEmoji: '🇱🇻', capitalCity: 'Riga', population: 1900000 },
-//   { name: 'Liechtenstein', slug: 'liechtenstein', code: 'LI', region: 'Europe', canadaEtaEligible: true, flagEmoji: '🇱🇮', population: 38000 },
-//   { name: 'Lithuania', slug: 'lithuania', code: 'LT', region: 'Europe', canadaEtaEligible: true, flagEmoji: '🇱🇹', capitalCity: 'Vilnius', population: 2800000 },
-//   { name: 'Luxembourg', slug: 'luxembourg', code: 'LU', region: 'Europe', canadaEtaEligible: true, flagEmoji: '🇱🇺', capitalCity: 'Luxembourg City', population: 630000 },
-//   { name: 'Malta', slug: 'malta', code: 'MT', region: 'Europe', canadaEtaEligible: true, flagEmoji: '🇲🇹', capitalCity: 'Valletta', population: 515000 },
-//   { name: 'Monaco', slug: 'monaco', code: 'MC', region: 'Europe', canadaEtaEligible: true, flagEmoji: '🇲🇨', population: 39000 },
-//   { name: 'Netherlands', slug: 'netherlands', code: 'NL', region: 'Europe', canadaEtaEligible: true, flagEmoji: '🇳🇱', capitalCity: 'Amsterdam', population: 17500000 },
-//   { name: 'Norway', slug: 'norway', code: 'NO', region: 'Europe', canadaEtaEligible: true, flagEmoji: '🇳🇴', capitalCity: 'Oslo', population: 5400000 },
-//   { name: 'Poland', slug: 'poland', code: 'PL', region: 'Europe', canadaEtaEligible: true, flagEmoji: '🇵🇱', capitalCity: 'Warsaw', population: 38000000 },
-//   { name: 'Portugal', slug: 'portugal', code: 'PT', region: 'Europe', canadaEtaEligible: true, flagEmoji: '🇵🇹', capitalCity: 'Lisbon', population: 10300000 },
-//   { name: 'San Marino', slug: 'san-marino', code: 'SM', region: 'Europe', canadaEtaEligible: true, flagEmoji: '🇸🇲', population: 34000 },
-//   { name: 'Slovakia', slug: 'slovakia', code: 'SK', region: 'Europe', canadaEtaEligible: true, flagEmoji: '🇸🇰', capitalCity: 'Bratislava', population: 5500000 },
-//   { name: 'Slovenia', slug: 'slovenia', code: 'SI', region: 'Europe', canadaEtaEligible: true, flagEmoji: '🇸🇮', capitalCity: 'Ljubljana', population: 2100000 },
-//   { name: 'Spain', slug: 'spain', code: 'ES', region: 'Europe', canadaEtaEligible: true, flagEmoji: '🇪🇸', capitalCity: 'Madrid', population: 47000000 },
-//   { name: 'Sweden', slug: 'sweden', code: 'SE', region: 'Europe', canadaEtaEligible: true, flagEmoji: '🇸🇪', capitalCity: 'Stockholm', population: 10400000 },
-//   { name: 'Switzerland', slug: 'switzerland', code: 'CH', region: 'Europe', canadaEtaEligible: true, flagEmoji: '🇨🇭', capitalCity: 'Bern', population: 8700000 },
-//   { name: 'United Kingdom', slug: 'united-kingdom', code: 'GB', region: 'Europe', canadaEtaEligible: true, flagEmoji: '🇬🇧', capitalCity: 'London', population: 67000000 },
-//   { name: 'Vatican City', slug: 'vatican-city', code: 'VA', region: 'Europe', canadaEtaEligible: true, flagEmoji: '🇻🇦', population: 800 },
+export const CANADA_ETA_COUNTRIES: Country[] = [
+  // European countries eligible for Canada ETA
+  { name: 'Andorra', slug: 'andorra', code: 'AD', region: 'Europe', flagEmoji: '🇦🇩', population: 77000 },
+  { name: 'Austria', slug: 'austria', code: 'AT', region: 'Europe', flagEmoji: '🇦🇹', capitalCity: 'Vienna', population: 9000000 },
+  { name: 'Belgium', slug: 'belgium', code: 'BE', region: 'Europe', flagEmoji: '🇧🇪', capitalCity: 'Brussels', population: 11500000 },
+  { name: 'Croatia', slug: 'croatia', code: 'HR', region: 'Europe', flagEmoji: '🇭🇷', capitalCity: 'Zagreb', population: 4000000 },
+  { name: 'Cyprus', slug: 'cyprus', code: 'CY', region: 'Europe', flagEmoji: '🇨🇾', capitalCity: 'Nicosia', population: 1200000 },
+  { name: 'Czech Republic', slug: 'czech-republic', code: 'CZ', region: 'Europe', flagEmoji: '🇨🇿', capitalCity: 'Prague', population: 10700000 },
+  { name: 'Denmark', slug: 'denmark', code: 'DK', region: 'Europe', flagEmoji: '🇩🇰', capitalCity: 'Copenhagen', population: 5800000 },
+  { name: 'Estonia', slug: 'estonia', code: 'EE', region: 'Europe', flagEmoji: '🇪🇪', capitalCity: 'Tallinn', population: 1300000 },
+  { name: 'Finland', slug: 'finland', code: 'FI', region: 'Europe', flagEmoji: '🇫🇮', capitalCity: 'Helsinki', population: 5500000 },
+  { name: 'France', slug: 'france', code: 'FR', region: 'Europe', flagEmoji: '🇫🇷', capitalCity: 'Paris', population: 67000000 },
+  { name: 'Germany', slug: 'germany', code: 'DE', region: 'Europe', flagEmoji: '🇩🇪', capitalCity: 'Berlin', population: 83000000 },
+  { name: 'Greece', slug: 'greece', code: 'GR', region: 'Europe', flagEmoji: '🇬🇷', capitalCity: 'Athens', population: 10700000 },
+  { name: 'Hungary', slug: 'hungary', code: 'HU', region: 'Europe', flagEmoji: '🇭🇺', capitalCity: 'Budapest', population: 9700000 },
+  { name: 'Iceland', slug: 'iceland', code: 'IS', region: 'Europe', flagEmoji: '🇮🇸', capitalCity: 'Reykjavik', population: 370000 },
+  { name: 'Ireland', slug: 'ireland', code: 'IE', region: 'Europe', flagEmoji: '🇮🇪', capitalCity: 'Dublin', population: 5000000 },
+  { name: 'Italy', slug: 'italy', code: 'IT', region: 'Europe', flagEmoji: '🇮🇹', capitalCity: 'Rome', population: 60000000 },
+  { name: 'Latvia', slug: 'latvia', code: 'LV', region: 'Europe', flagEmoji: '🇱🇻', capitalCity: 'Riga', population: 1900000 },
+  { name: 'Liechtenstein', slug: 'liechtenstein', code: 'LI', region: 'Europe', flagEmoji: '🇱🇮', population: 38000 },
+  { name: 'Lithuania', slug: 'lithuania', code: 'LT', region: 'Europe', flagEmoji: '🇱🇹', capitalCity: 'Vilnius', population: 2800000 },
+  { name: 'Luxembourg', slug: 'luxembourg', code: 'LU', region: 'Europe', flagEmoji: '🇱🇺', capitalCity: 'Luxembourg City', population: 630000 },
+  { name: 'Malta', slug: 'malta', code: 'MT', region: 'Europe', flagEmoji: '🇲🇹', capitalCity: 'Valletta', population: 515000 },
+  { name: 'Monaco', slug: 'monaco', code: 'MC', region: 'Europe', flagEmoji: '🇲🇨', population: 39000 },
+  { name: 'Netherlands', slug: 'netherlands', code: 'NL', region: 'Europe', flagEmoji: '🇳🇱', capitalCity: 'Amsterdam', population: 17500000 },
+  { name: 'Norway', slug: 'norway', code: 'NO', region: 'Europe', flagEmoji: '🇳🇴', capitalCity: 'Oslo', population: 5400000 },
+  { name: 'Poland', slug: 'poland', code: 'PL', region: 'Europe', flagEmoji: '🇵🇱', capitalCity: 'Warsaw', population: 38000000 },
+  { name: 'Portugal', slug: 'portugal', code: 'PT', region: 'Europe', flagEmoji: '🇵🇹', capitalCity: 'Lisbon', population: 10300000 },
+  { name: 'San Marino', slug: 'san-marino', code: 'SM', region: 'Europe', flagEmoji: '🇸🇲', population: 34000 },
+  { name: 'Slovakia', slug: 'slovakia', code: 'SK', region: 'Europe', flagEmoji: '🇸🇰', capitalCity: 'Bratislava', population: 5500000 },
+  { name: 'Slovenia', slug: 'slovenia', code: 'SI', region: 'Europe', flagEmoji: '🇸🇮', capitalCity: 'Ljubljana', population: 2100000 },
+  { name: 'Spain', slug: 'spain', code: 'ES', region: 'Europe', flagEmoji: '🇪🇸', capitalCity: 'Madrid', population: 47000000 },
+  { name: 'Sweden', slug: 'sweden', code: 'SE', region: 'Europe', flagEmoji: '🇸🇪', capitalCity: 'Stockholm', population: 10400000 },
+  { name: 'Switzerland', slug: 'switzerland', code: 'CH', region: 'Europe', flagEmoji: '🇨🇭', capitalCity: 'Bern', population: 8700000 },
+  { name: 'United Kingdom', slug: 'united-kingdom', code: 'GB', region: 'Europe', flagEmoji: '🇬🇧', capitalCity: 'London', population: 67000000 },
+  { name: 'Vatican City', slug: 'vatican-city', code: 'VA', region: 'Europe', flagEmoji: '🇻🇦', population: 800 },
 
-//   // Asia-Pacific
-//   { name: 'Australia', slug: 'australia', code: 'AU', region: 'Asia-Pacific', canadaEtaEligible: true, flagEmoji: '🇦🇺', capitalCity: 'Canberra', population: 26000000 },
-//   { name: 'Brunei', slug: 'brunei', code: 'BN', region: 'Asia-Pacific', canadaEtaEligible: true, flagEmoji: '🇧🇳', capitalCity: 'Bandar Seri Begawan', population: 440000 },
-//   { name: 'Hong Kong', slug: 'hong-kong', code: 'HK', region: 'Asia-Pacific', canadaEtaEligible: true, flagEmoji: '🇭🇰', capitalCity: 'Hong Kong', population: 7500000 },
-//   { name: 'Israel', slug: 'israel', code: 'IL', region: 'Middle East', canadaEtaEligible: true, flagEmoji: '🇮🇱', capitalCity: 'Jerusalem', population: 9500000 },
-//   { name: 'Japan', slug: 'japan', code: 'JP', region: 'Asia-Pacific', canadaEtaEligible: true, flagEmoji: '🇯🇵', capitalCity: 'Tokyo', population: 125000000 },
-//   { name: 'New Zealand', slug: 'new-zealand', code: 'NZ', region: 'Asia-Pacific', canadaEtaEligible: true, flagEmoji: '🇳🇿', capitalCity: 'Wellington', population: 5100000 },
-//   { name: 'Singapore', slug: 'singapore', code: 'SG', region: 'Asia-Pacific', canadaEtaEligible: true, flagEmoji: '🇸🇬', capitalCity: 'Singapore', population: 5700000 },
-//   { name: 'South Korea', slug: 'south-korea', code: 'KR', region: 'Asia-Pacific', canadaEtaEligible: true, flagEmoji: '🇰🇷', capitalCity: 'Seoul', population: 51000000 },
-//   { name: 'Taiwan', slug: 'taiwan', code: 'TW', region: 'Asia-Pacific', canadaEtaEligible: true, flagEmoji: '🇹🇼', capitalCity: 'Taipei', population: 23500000 },
+  // Asia-Pacific
+  { name: 'Australia', slug: 'australia', code: 'AU', region: 'Asia-Pacific', flagEmoji: '🇦🇺', capitalCity: 'Canberra', population: 26000000 },
+  { name: 'Brunei', slug: 'brunei', code: 'BN', region: 'Asia-Pacific', flagEmoji: '🇧🇳', capitalCity: 'Bandar Seri Begawan', population: 440000 },
+  { name: 'Hong Kong', slug: 'hong-kong', code: 'HK', region: 'Asia-Pacific', flagEmoji: '🇭🇰', capitalCity: 'Hong Kong', population: 7500000 },
+  { name: 'Israel', slug: 'israel', code: 'IL', region: 'Middle East', flagEmoji: '🇮🇱', capitalCity: 'Jerusalem', population: 9500000 },
+  { name: 'Japan', slug: 'japan', code: 'JP', region: 'Asia-Pacific', flagEmoji: '🇯🇵', capitalCity: 'Tokyo', population: 125000000 },
+  { name: 'New Zealand', slug: 'new-zealand', code: 'NZ', region: 'Asia-Pacific', flagEmoji: '🇳🇿', capitalCity: 'Wellington', population: 5100000 },
+  { name: 'Singapore', slug: 'singapore', code: 'SG', region: 'Asia-Pacific', flagEmoji: '🇸🇬', capitalCity: 'Singapore', population: 5700000 },
+  { name: 'South Korea', slug: 'south-korea', code: 'KR', region: 'Asia-Pacific', flagEmoji: '🇰🇷', capitalCity: 'Seoul', population: 51000000 },
+  { name: 'Taiwan', slug: 'taiwan', code: 'TW', region: 'Asia-Pacific', flagEmoji: '🇹🇼', capitalCity: 'Taipei', population: 23500000 },
 
-//   // Americas
-//   { name: 'Antigua and Barbuda', slug: 'antigua-and-barbuda', code: 'AG', region: 'Americas', canadaEtaEligible: true, flagEmoji: '🇦🇬', population: 98000 },
-//   { name: 'Bahamas', slug: 'the-bahamas', code: 'BS', region: 'Americas', canadaEtaEligible: true, flagEmoji: '🇧🇸', capitalCity: 'Nassau', population: 390000 },
-//   { name: 'Barbados', slug: 'barbados', code: 'BB', region: 'Americas', canadaEtaEligible: true, flagEmoji: '🇧🇧', capitalCity: 'Bridgetown', population: 280000 },
-//   { name: 'Chile', slug: 'chile', code: 'CL', region: 'Americas', canadaEtaEligible: true, flagEmoji: '🇨🇱', capitalCity: 'Santiago', population: 19000000 },
-//   { name: 'Mexico', slug: 'mexico', code: 'MX', region: 'Americas', canadaEtaEligible: true, flagEmoji: '🇲🇽', capitalCity: 'Mexico City', population: 128000000 },
-//   { name: 'St Kitts and Nevis', slug: 'st-kitts-and-nevis', code: 'KN', region: 'Americas', canadaEtaEligible: true, flagEmoji: '🇰🇳', population: 53000 },
-//   { name: 'St Lucia', slug: 'st-lucia', code: 'LC', region: 'Americas', canadaEtaEligible: true, flagEmoji: '🇱🇨', population: 180000 },
-//   { name: 'St Vincent and the Grenadines', slug: 'st-vincent-and-the-grenadines', code: 'VC', region: 'Americas', canadaEtaEligible: true, flagEmoji: '🇻🇨', population: 111000 },
+  // Americas
+  { name: 'Antigua and Barbuda', slug: 'antigua-and-barbuda', code: 'AG', region: 'Americas', flagEmoji: '🇦🇬', population: 98000 },
+  { name: 'Bahamas', slug: 'the-bahamas', code: 'BS', region: 'Americas', flagEmoji: '🇧🇸', capitalCity: 'Nassau', population: 390000 },
+  { name: 'Barbados', slug: 'barbados', code: 'BB', region: 'Americas', flagEmoji: '🇧🇧', capitalCity: 'Bridgetown', population: 280000 },
+  { name: 'Chile', slug: 'chile', code: 'CL', region: 'Americas', flagEmoji: '🇨🇱', capitalCity: 'Santiago', population: 19000000 },
+  { name: 'Mexico', slug: 'mexico', code: 'MX', region: 'Americas', flagEmoji: '🇲🇽', capitalCity: 'Mexico City', population: 128000000 },
+  { name: 'St Kitts and Nevis', slug: 'st-kitts-and-nevis', code: 'KN', region: 'Americas', flagEmoji: '🇰🇳', population: 53000 },
+  { name: 'St Lucia', slug: 'st-lucia', code: 'LC', region: 'Americas', flagEmoji: '🇱🇨', population: 180000 },
+  { name: 'St Vincent and the Grenadines', slug: 'st-vincent-and-the-grenadines', code: 'VC', region: 'Americas', flagEmoji: '🇻🇨', population: 111000 },
 
-//   // Middle East
-//   { name: 'United Arab Emirates', slug: 'united-arab-emirates', code: 'AE', region: 'Middle East', canadaEtaEligible: true, flagEmoji: '🇦🇪', capitalCity: 'Abu Dhabi', population: 9900000 },
-// ];
+  // Middle East
+  { name: 'United Arab Emirates', slug: 'united-arab-emirates', code: 'AE', region: 'Middle East', flagEmoji: '🇦🇪', capitalCity: 'Abu Dhabi', population: 9900000 },
+];
 
 /**
  * Get countries for a specific service
@@ -1395,8 +1395,8 @@ export function getCountriesByService(serviceType: ServiceType): Country[] {
       return VWP_COUNTRIES;
     case ServiceType.UK_ETA:
       return UK_ETA_COUNTRIES;
-    // case ServiceType.CANADA_ETA:
-    //   return CANADA_ETA_COUNTRIES;
+    case ServiceType.CANADA_ETA:
+      return CANADA_ETA_COUNTRIES;
     default:
       return [];
   }

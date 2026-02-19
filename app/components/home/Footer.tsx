@@ -28,6 +28,7 @@ const footerColumns: FooterColumn[] = [
     links: [
       { text: "US ESTA", href: "/services/esta" },
       { text: "UK ETA", href: "/services/uk-eta" },
+      { text: "Canada eTA", href: "/services/canada-eta" },
     ],
   },
   {
@@ -46,6 +47,8 @@ const footerColumns: FooterColumn[] = [
       { text: "ESTA Guides", href: "/united-states/guide" },
       { text: "UK ETA Countries", href: "/united-kingdom/countries" },
       { text: "UK ETA Guides", href: "/united-kingdom/guide" },
+      { text: "Canada eTA Countries", href: "/canada/countries" },
+      { text: "Canada eTA Guides", href: "/canada/guide" },
       { text: "Blog & News", href: "/blog" },
     ],
   },

@@ -255,8 +255,7 @@ function CountryHero({
                   clipRule="evenodd"
                 />
               </svg>
-              {service.processing.rush || service.processing.standard}{" "}
-              Processing
+              {service.processing.superRush} Processing
             </span>
             <span className="flex items-center gap-2">
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -295,8 +294,8 @@ function QuickFacts({
   const joinedInfo = country.vwpJoinedYear
     ? country.vwpJoinedYear.toString()
     : country.etaPhase
-    ? `Phase ${country.etaPhase}`
-    : "Eligible";
+      ? `Phase ${country.etaPhase}`
+      : "Eligible";
 
   return (
     <div className="bg-blue-50 border-l-4 border-blue-600 p-8 mb-12 rounded-r-xl">
@@ -311,7 +310,7 @@ function QuickFacts({
         <div className="bg-white p-5 rounded-xl shadow-sm">
           <p className="text-gray-600 text-sm mb-2">Processing Time</p>
           <p className="text-2xl font-bold text-blue-900">
-            {service.processing.rush || service.processing.standard}
+            {service.processing.superRush}
           </p>
         </div>
         <div className="bg-white p-5 rounded-xl shadow-sm">
@@ -408,7 +407,8 @@ function ApplicationSteps({
                 <span className="mt-1">✓</span>
                 <span>
                   Secure payment: {service.pricing.currency}{" "}
-                  {service.pricing.government + getDefaultProcessingTier(service.type).serviceFee}
+                  {service.pricing.government +
+                    getDefaultProcessingTier(service.type).serviceFee}
                 </span>
               </li>
               <li className="flex items-start gap-2">
@@ -431,7 +431,7 @@ function ApplicationSteps({
             <h3 className="text-2xl font-bold mb-4">Get Approved</h3>
             <p className="text-purple-100 mb-6 flex-grow">
               Receive your {service.name} approval via email within{" "}
-              {service.processing.standard}. Valid for{" "}
+              {service.processing.superRush}. Valid for{" "}
               {service.validity.years || service.validity.months}{" "}
               {service.validity.years ? "years" : "months"} of travel.
             </p>
@@ -655,7 +655,7 @@ function ComparisonTable({
               <td className="p-4 font-semibold">Processing Time</td>
               <td className="p-4 text-center bg-green-50">
                 <span className="text-green-700 font-bold">
-                  {service.processing.rush || service.processing.standard}
+                  {service.processing.superRush}
                 </span>
               </td>
               <td className="p-4 text-center bg-red-50">
@@ -667,7 +667,8 @@ function ComparisonTable({
               <td className="p-4 text-center bg-green-50">
                 <span className="text-green-700 font-bold">
                   {service.pricing.currency}{" "}
-                  {service.pricing.government + getDefaultProcessingTier(service.type).serviceFee}
+                  {service.pricing.government +
+                    getDefaultProcessingTier(service.type).serviceFee}
                 </span>
               </td>
               <td className="p-4 text-center bg-red-50">
@@ -842,12 +843,13 @@ function CountryFAQSection({
     },
     {
       question: `How long does ${service.name} approval take for ${country.name} citizens?`,
-      answer: `Most ${service.name} applications for ${country.name} citizens are approved within ${service.processing.standard}. However, some applications may be processed faster. We recommend applying at least 72 hours before your departure to ensure you receive your approval in time.`,
+      answer: `Most ${service.name} applications for ${country.name} citizens are approved within ${service.processing.superRush}. However, some applications may be processed faster. We recommend applying at least 72 hours before your departure to ensure you receive your approval in time.`,
     },
     {
       question: `How much does ${service.name} cost for ${country.name} travelers?`,
       answer: `The total cost is ${service.pricing.currency} ${
-        service.pricing.government + getDefaultProcessingTier(service.type).serviceFee
+        service.pricing.government +
+        getDefaultProcessingTier(service.type).serviceFee
       }, which includes the government fee of ${service.pricing.currency} ${
         service.pricing.government
       } and our processing fee of ${service.pricing.currency} ${

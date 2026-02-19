@@ -73,7 +73,7 @@ export default function ESTAServicePage() {
                 <p className="text-xl md:text-2xl text-blue-100 mb-8 leading-relaxed">
                   Fast, secure, and hassle-free travel authorization for the
                   United States. Get approved in{" "}
-                  {US_ESTA_CONFIG.processing.standard}.
+                  {US_ESTA_CONFIG.processing.superRush}.
                 </p>
 
                 {/* Trust Signals */}
@@ -158,7 +158,7 @@ export default function ESTAServicePage() {
                       Processing Time
                     </span>
                     <span className="font-bold text-gray-900">
-                      {US_ESTA_CONFIG.processing.standard}
+                      {US_ESTA_CONFIG.processing.superRush}
                     </span>
                   </div>
                   <div className="flex items-center justify-between py-3">
@@ -319,7 +319,7 @@ export default function ESTAServicePage() {
                   </h3>
                   <p className="text-gray-600">
                     Get your approved ESTA via email within{" "}
-                    {US_ESTA_CONFIG.processing.standard}. No paperwork needed.
+                    {US_ESTA_CONFIG.processing.superRush}. No paperwork needed.
                   </p>
                 </div>
               </div>
@@ -460,7 +460,7 @@ export default function ESTAServicePage() {
               {[
                 {
                   q: "How long does ESTA approval take?",
-                  a: `Most applications are approved within ${US_ESTA_CONFIG.processing.standard}. We offer rush processing for urgent travel needs.`,
+                  a: `Most applications are approved within ${US_ESTA_CONFIG.processing.superRush}. We offer rush processing for urgent travel needs.`,
                 },
                 {
                   q: "How long is my ESTA valid?",

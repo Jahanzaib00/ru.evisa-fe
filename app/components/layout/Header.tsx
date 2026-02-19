@@ -44,6 +44,11 @@ export default function Header() {
       href: "/services/uk-eta",
       description: "Electronic Travel Authorization for UK",
     },
+    {
+      name: "Canada eTA",
+      href: "/services/canada-eta",
+      description: "Electronic Travel Authorization for Canada",
+    },
   ];
 
   return (

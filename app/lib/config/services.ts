@@ -709,12 +709,244 @@ export const UK_ETA_CONFIG: ServiceConfig = {
 };
 
 // ============================================
+// Canada eTA Configuration
+// ============================================
+export const CANADA_ETA_CONFIG: ServiceConfig = {
+  type: ServiceType.CANADA_ETA,
+  slug: "canada-eta",
+  name: "Canada eTA",
+  destination: "canada",
+  destinationCode: "CA",
+
+  // Citizens of these countries require an eTA to fly to/transit through Canada.
+  // US citizens are excluded — they enter on their passport only.
+  eligibleNationalities: [
+    "AD", // Andorra
+    "AG", // Antigua and Barbuda
+    "AU", // Australia
+    "AT", // Austria
+    "BS", // Bahamas
+    "BB", // Barbados
+    "BE", // Belgium
+    "BN", // Brunei
+    "BG", // Bulgaria
+    "CL", // Chile
+    "HR", // Croatia
+    "CY", // Cyprus
+    "CZ", // Czech Republic
+    "DK", // Denmark
+    "EE", // Estonia
+    "FI", // Finland
+    "FR", // France
+    "DE", // Germany
+    "GR", // Greece
+    "HU", // Hungary
+    "IS", // Iceland
+    "IE", // Ireland
+    "IT", // Italy
+    "JP", // Japan
+    "KR", // South Korea
+    "LV", // Latvia
+    "LI", // Liechtenstein
+    "LT", // Lithuania
+    "LU", // Luxembourg
+    "MT", // Malta
+    "MX", // Mexico
+    "MC", // Monaco
+    "NL", // Netherlands
+    "NZ", // New Zealand
+    "NO", // Norway
+    "PG", // Papua New Guinea
+    "PL", // Poland
+    "PT", // Portugal
+    "RO", // Romania
+    "WS", // Samoa
+    "SM", // San Marino
+    "SG", // Singapore
+    "SK", // Slovakia
+    "SI", // Slovenia
+    "SB", // Solomon Islands
+    "ES", // Spain
+    "SE", // Sweden
+    "CH", // Switzerland
+    "TW", // Taiwan
+    "TL", // Timor-Leste
+    "GB", // United Kingdom
+  ],
+
+  pricing: {
+    government: 7, // CAD $7 — official IRCC government fee
+    denialProtection: 14.99,
+    currency: "CAD",
+  },
+
+  processingTiers: [
+    {
+      type: ProcessingTierType.STANDARD,
+      label: "Standard",
+      description: "24 hour processing",
+      processingTime: 24,
+      serviceFee: 24.95,
+      isDefault: true,
+    },
+    {
+      type: ProcessingTierType.RUSH,
+      label: "Rush",
+      description: "4 hour processing",
+      processingTime: 4,
+      serviceFee: 39.95,
+    },
+    {
+      type: ProcessingTierType.SUPER_RUSH,
+      label: "Super Rush",
+      description: "1 hour processing",
+      processingTime: 1,
+      serviceFee: 44.95,
+    },
+  ],
+
+  validity: {
+    years: 5,
+    stays: "6 months per visit",
+  },
+
+  processing: {
+    standard: "24 hours",
+    rush: "4 hours",
+    superRush: "1 hour",
+  },
+
+  meta: {
+    title: "Canada eTA Application | Fast Electronic Travel Authorization",
+    description:
+      "Apply for your Canada eTA online. Fast processing, 24/7 support, and quick approval for eligible travelers.",
+    keywords: [
+      "canada eta",
+      "canada travel authorization",
+      "canadian eta",
+      "eta canada",
+      "canada visa waiver",
+      "apply for canada eta",
+    ],
+  },
+
+  prePaymentSteps: {
+    tripDetails: {
+      title: "Start Application for your Canada eTA",
+      description:
+        "The Canada eTA is mandatory for {nationality} passport holders planning to enter {destination}",
+    },
+    personalDetails: {
+      title: "Your personal details",
+      description: "Enter the details as they appear on your passport.",
+      emailHelperText:
+        "Your approved Canada eTA will be sent to this email address.",
+    },
+    passportDetails: {
+      title: "Passport details",
+      description: "Enter your passport information.",
+    },
+  },
+
+  // Post-payment form steps — UI components implemented in the post-payment flow
+  steps: [
+    {
+      type: StepType.PERSONAL,
+      component: "CanadaETAPersonalStep",
+      title: "Personal Information",
+      description: "Provide your personal details as they appear on your passport",
+      fields: [
+        {
+          label: "Full Name",
+          concat: ["firstName", "lastName"],
+          required: ["firstName", "lastName"],
+        },
+        {
+          label: "Date of Birth",
+          date: { day: "birthDay", month: "birthMonth", year: "birthYear" },
+        },
+        {
+          label: "Gender",
+          map: {
+            key: "gender",
+            values: { M: "Male", F: "Female", X: "Other" },
+          },
+        },
+        { label: "Marital Status", key: "maritalStatus" },
+        { label: "Email", key: "email", required: true },
+      ],
+    },
+    {
+      type: StepType.PASSPORT,
+      component: "CanadaETAPassportStep",
+      title: "Passport Information",
+      description: "Enter your passport details and upload required documents",
+      fields: [
+        { label: "Passport Number", key: "passportNumber", required: true },
+        {
+          label: "Issue Date",
+          date: {
+            day: "passportIssueDay",
+            month: "passportIssueMonth",
+            year: "passportIssueYear",
+          },
+        },
+        {
+          label: "Expiry Date",
+          date: {
+            day: "passportExpiryDay",
+            month: "passportExpiryMonth",
+            year: "passportExpiryYear",
+          },
+        },
+        { label: "Nationality", key: "nationalityOnPassport", required: true },
+        {
+          label: "e-Passport",
+          boolean: { key: "isEPassport", trueLabel: "Yes", falseLabel: "No" },
+        },
+        { label: "Country of Residence", key: "countryOfResidence" },
+        { key: "passportUrl", required: true }, // completion check only
+      ],
+    },
+    {
+      type: StepType.ELIGIBILITY,
+      component: "CanadaETAEligibilityStep",
+      title: "Eligibility Questions",
+      description: "Please answer all questions truthfully",
+      fields: [
+        { key: "eligibilityQ1", required: true }, // completion check only
+        {
+          label: "Status",
+          summary: "All eligibility questions have been answered.",
+        },
+      ],
+    },
+    {
+      type: StepType.REVIEW,
+      component: "SharedReviewStep",
+      title: "Review & Submit",
+      description: "Review all information before submission",
+      neverComplete: true,
+    },
+  ],
+
+  includedServices: [
+    "Application review & validation",
+    "Real-time application tracking",
+    "Email & SMS notifications",
+    "24/7 multilingual support",
+    "Secure document storage",
+    "Resubmission assistance (if needed)",
+  ],
+};
+
+// ============================================
 // Service Registry
 // ============================================
 export const SERVICES: Record<ServiceType, ServiceConfig> = {
   [ServiceType.US_ESTA]: US_ESTA_CONFIG,
   [ServiceType.UK_ETA]: UK_ETA_CONFIG,
-  [ServiceType.CANADA_ETA]: {} as ServiceConfig, // TODO: Implement when needed
+  [ServiceType.CANADA_ETA]: CANADA_ETA_CONFIG,
 };
 
 // ============================================
@@ -812,6 +1044,8 @@ export function getCurrencySymbol(currencyCode: string): string {
     gbp: "£",
     EUR: "€",
     eur: "€",
+    CAD: "CA$",
+    cad: "CA$",
   };
   return symbols[currencyCode] || "$";
 }

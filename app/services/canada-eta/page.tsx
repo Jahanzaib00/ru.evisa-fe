@@ -1,13 +1,13 @@
 /**
- * UK ETA Service Hub Page - PRODUCTION QUALITY
- * /services/uk-eta
+ * Canada eTA Service Hub Page
+ * /services/canada-eta
  *
  * CONVERSION-OPTIMIZED | SEO-OPTIMIZED | PROFESSIONAL
  */
 
 import { Metadata } from "next";
 import {
-  UK_ETA_CONFIG,
+  CANADA_ETA_CONFIG,
   calculatePrice,
   getCurrencySymbol,
 } from "@/app/lib/config/services";
@@ -25,28 +25,27 @@ export async function generateMetadata(): Promise<Metadata> {
     process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.online";
 
   return generateSEOMetadata({
-    title: UK_ETA_CONFIG.meta.title,
-    description: UK_ETA_CONFIG.meta.description,
-    keywords: UK_ETA_CONFIG.meta.keywords,
-    canonicalUrl: `${baseUrl}/services/uk-eta`,
+    title: CANADA_ETA_CONFIG.meta.title,
+    description: CANADA_ETA_CONFIG.meta.description,
+    keywords: CANADA_ETA_CONFIG.meta.keywords,
+    canonicalUrl: `${baseUrl}/services/canada-eta`,
   });
 }
 
-export default function UKETAServicePage() {
-  const pricing = calculatePrice(UK_ETA_CONFIG.type, 1);
-  const currency = getCurrencySymbol(UK_ETA_CONFIG.pricing.currency);
+export default function CanadaETAServicePage() {
+  const pricing = calculatePrice(CANADA_ETA_CONFIG.type, 1);
+  const currency = getCurrencySymbol(CANADA_ETA_CONFIG.pricing.currency);
 
-  // Generate structured data for Google
   const structuredData = generateServiceSchema({
-    name: UK_ETA_CONFIG.name,
-    description: UK_ETA_CONFIG.meta.description,
+    name: CANADA_ETA_CONFIG.name,
+    description: CANADA_ETA_CONFIG.meta.description,
     provider: "Visa Portal",
     areaServed: "Worldwide",
     price: pricing.perApplicant.toString(),
-    priceCurrency: UK_ETA_CONFIG.pricing.currency,
+    priceCurrency: CANADA_ETA_CONFIG.pricing.currency,
     url: `${
       process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.online"
-    }/services/uk-eta`,
+    }/services/canada-eta`,
   });
 
   return (
@@ -60,70 +59,50 @@ export default function UKETAServicePage() {
       <Header />
 
       <main>
-        {/* Hero Section - Above the Fold Conversion */}
+        {/* Hero Section */}
         <Section id="hero" background="primary" padding="xl">
           <Container maxWidth="lg">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               {/* Left: Value Proposition */}
               <div>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-                  {UK_ETA_CONFIG.name}
+                  {CANADA_ETA_CONFIG.name}
                 </h1>
                 <p className="text-xl md:text-2xl text-blue-100 mb-8 leading-relaxed">
-                  Fast and secure Electronic Travel Authorization for visiting
-                  the United Kingdom. Typically approved{" "}
-                  {UK_ETA_CONFIG.processing.superRush}.
+                  Fast and secure Electronic Travel Authorization for flying to
+                  or transiting through Canada. Typically approved within{" "}
+                  {CANADA_ETA_CONFIG.processing.superRush}.
                 </p>
 
                 {/* Trust Signals */}
                 <div className="flex flex-wrap gap-6 mb-8">
-                  <div className="flex items-center gap-2 text-white">
-                    <svg
-                      className="w-6 h-6 text-green-400"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
+                  {[
+                    "99% Approval Rate",
+                    "24/7 Support",
+                    "Instant Processing",
+                  ].map((signal) => (
+                    <div
+                      key={signal}
+                      className="flex items-center gap-2 text-white"
                     >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    <span className="font-semibold">99% Approval Rate</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-white">
-                    <svg
-                      className="w-6 h-6 text-green-400"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    <span className="font-semibold">24/7 Support</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-white">
-                    <svg
-                      className="w-6 h-6 text-green-400"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    <span className="font-semibold">Instant Processing</span>
-                  </div>
+                      <svg
+                        className="w-6 h-6 text-green-400"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                      <span className="font-semibold">{signal}</span>
+                    </div>
+                  ))}
                 </div>
 
-                {/* primary-light CTA */}
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Link href="/united-kingdom/apply">
+                  <Link href="/canada/apply">
                     <Button size="lg" variant="primary">
                       Start Application →
                     </Button>
@@ -143,13 +122,14 @@ export default function UKETAServicePage() {
                     {currency}
                     {pricing.perApplicant}
                   </div>
+                  <p className="text-sm text-gray-500">per person</p>
                 </div>
 
                 <div className="space-y-4 mb-6">
                   <div className="flex items-center justify-between py-3 border-b border-gray-100">
                     <span className="text-gray-700 font-medium">Validity</span>
                     <span className="font-bold text-gray-900">
-                      {UK_ETA_CONFIG.validity.years} Years
+                      {CANADA_ETA_CONFIG.validity.years} Years
                     </span>
                   </div>
                   <div className="flex items-center justify-between py-3 border-b border-gray-100">
@@ -157,25 +137,29 @@ export default function UKETAServicePage() {
                       Processing Time
                     </span>
                     <span className="font-bold text-gray-900">
-                      {UK_ETA_CONFIG.processing.superRush}
+                      {CANADA_ETA_CONFIG.processing.superRush}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between py-3 border-b border-gray-100">
+                    <span className="text-gray-700 font-medium">Max Stay</span>
+                    <span className="font-bold text-gray-900">
+                      {CANADA_ETA_CONFIG.validity.stays}
                     </span>
                   </div>
                   <div className="flex items-center justify-between py-3">
-                    <span className="text-gray-700 font-medium">Max Stay</span>
-                    <span className="font-bold text-gray-900">
-                      {UK_ETA_CONFIG.validity.stays}
-                    </span>
+                    <span className="text-gray-700 font-medium">Entries</span>
+                    <span className="font-bold text-gray-900">Multiple</span>
                   </div>
                 </div>
 
-                <Link href="/united-kingdom/apply" className="w-full">
+                <Link href="/canada/apply" className="w-full">
                   <Button size="lg" variant="primary" className="w-full">
                     Apply Now
                   </Button>
                 </Link>
 
                 <p className="text-xs text-gray-500 text-center mt-4">
-                  ✓ Instant Approval
+                  ✓ Fast Approval · ✓ Secure Payment
                 </p>
               </div>
             </div>
@@ -186,31 +170,24 @@ export default function UKETAServicePage() {
         <Section id="social-proof" background="white" padding="sm">
           <Container maxWidth="lg">
             <div className="flex flex-wrap items-center justify-center gap-8 text-center">
-              <div>
-                <div className="text-3xl font-bold text-primary-light">
-                  25K+
+              {[
+                { value: "30K+", label: "eTAs Processed" },
+                { value: "99%", label: "Approval Rate" },
+                { value: "4.9/5", label: "Customer Rating" },
+                { value: "24/7", label: "Support Available" },
+              ].map((stat, idx, arr) => (
+                <div key={stat.label} className="flex items-center gap-8">
+                  <div>
+                    <div className="text-3xl font-bold text-primary-light">
+                      {stat.value}
+                    </div>
+                    <div className="text-sm text-gray-600">{stat.label}</div>
+                  </div>
+                  {idx < arr.length - 1 && (
+                    <div className="hidden md:block w-px h-12 bg-gray-300" />
+                  )}
                 </div>
-                <div className="text-sm text-gray-600">ETAs Processed</div>
-              </div>
-              <div className="hidden md:block w-px h-12 bg-gray-300"></div>
-              <div>
-                <div className="text-3xl font-bold text-primary-light">99%</div>
-                <div className="text-sm text-gray-600">Approval Rate</div>
-              </div>
-              <div className="hidden md:block w-px h-12 bg-gray-300"></div>
-              <div>
-                <div className="text-3xl font-bold text-primary-light">
-                  4.9/5
-                </div>
-                <div className="text-sm text-gray-600">Customer Rating</div>
-              </div>
-              <div className="hidden md:block w-px h-12 bg-gray-300"></div>
-              <div>
-                <div className="text-3xl font-bold text-primary-light">
-                  24/7
-                </div>
-                <div className="text-sm text-gray-600">Support Available</div>
-              </div>
+              ))}
             </div>
           </Container>
         </Section>
@@ -223,13 +200,13 @@ export default function UKETAServicePage() {
                 What's Included in Our Service
               </h2>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                Professional assistance to ensure your UK ETA application is
+                Professional assistance to ensure your Canada eTA application is
                 accurate and complete
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {UK_ETA_CONFIG.includedServices.map((service, idx) => (
+              {CANADA_ETA_CONFIG.includedServices.map((service, idx) => (
                 <div
                   key={idx}
                   className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow"
@@ -267,62 +244,42 @@ export default function UKETAServicePage() {
                 Simple 3-Step Process
               </h2>
               <p className="text-xl text-gray-600">
-                Get your UK ETA approved instantly with our streamlined process
+                Get your Canada eTA approved quickly with our streamlined process
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8 relative">
-              {/* Step 1 */}
-              <div className="relative">
-                <div className="bg-primary-light text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg">
-                  1
-                </div>
-                <div className="text-center">
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                {
+                  step: 1,
+                  title: "Complete Application",
+                  desc: "Fill out our simplified form with your passport and personal details. Takes just 5 minutes.",
+                },
+                {
+                  step: 2,
+                  title: "Secure Payment",
+                  desc: "Pay securely with your credit card. All transactions are SSL encrypted and fully protected.",
+                },
+                {
+                  step: 3,
+                  title: "Receive eTA",
+                  desc: `Get your approved Canada eTA via email within ${CANADA_ETA_CONFIG.processing.superRush}. Ready to travel!`,
+                },
+              ].map(({ step, title, desc }) => (
+                <div key={step} className="relative text-center">
+                  <div className="bg-primary-light text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg">
+                    {step}
+                  </div>
                   <h3 className="text-xl font-bold mb-3 text-gray-900">
-                    Complete Application
+                    {title}
                   </h3>
-                  <p className="text-gray-600">
-                    Fill out our simplified form with your passport and personal
-                    details. Takes just 5 minutes.
-                  </p>
+                  <p className="text-gray-600">{desc}</p>
                 </div>
-              </div>
-
-              {/* Step 2 */}
-              <div className="relative">
-                <div className="bg-primary-light text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg">
-                  2
-                </div>
-                <div className="text-center">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900">
-                    Secure Payment
-                  </h3>
-                  <p className="text-gray-600">
-                    Pay securely with your credit card. All transactions are SSL
-                    encrypted and fully protected.
-                  </p>
-                </div>
-              </div>
-
-              {/* Step 3 */}
-              <div className="relative">
-                <div className="bg-primary-light text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg">
-                  3
-                </div>
-                <div className="text-center">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900">
-                    Receive ETA
-                  </h3>
-                  <p className="text-gray-600">
-                    Get your approved UK ETA via email{" "}
-                    {UK_ETA_CONFIG.processing.superRush}. Ready to travel!
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
 
             <div className="text-center mt-12">
-              <Link href="/united-kingdom/apply">
+              <Link href="/canada/apply">
                 <Button size="lg" variant="primary">
                   Start Your Application Now →
                 </Button>
@@ -336,7 +293,7 @@ export default function UKETAServicePage() {
           <Container maxWidth="lg">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                UK ETA Requirements
+                Canada eTA Requirements
               </h2>
               <p className="text-xl text-gray-600">
                 Check you meet these requirements before applying
@@ -364,10 +321,11 @@ export default function UKETAServicePage() {
                 </h3>
                 <ul className="space-y-4">
                   {[
-                    "Citizen of a visa-exempt country",
-                    "Traveling for tourism, business, or transit",
-                    "Staying up to 180 days in the UK",
-                    "Valid biometric passport",
+                    "Citizen of a visa-exempt country (not a US citizen)",
+                    "Traveling by air to or through Canada",
+                    "Staying up to 6 months per visit",
+                    "Valid biometric (e-passport) with chip",
+                    "Not a Canadian citizen or permanent resident",
                   ].map((item, idx) => (
                     <li key={idx} className="flex items-start gap-3">
                       <svg
@@ -407,10 +365,10 @@ export default function UKETAServicePage() {
                 </h3>
                 <ul className="space-y-4">
                   {[
-                    "Valid passport (valid for duration of stay)",
-                    "Digital passport photo",
+                    "Valid biometric passport (e-passport)",
                     "Valid email address",
                     "Payment method (credit/debit card)",
+                    "Travel plans (approximate dates)",
                   ].map((item, idx) => (
                     <li key={idx} className="flex items-start gap-3">
                       <svg
@@ -430,20 +388,10 @@ export default function UKETAServicePage() {
                 </ul>
               </div>
             </div>
-
-            <div className="mt-8 text-center">
-              <Link
-                href="/united-kingdom/guide/uk-eta-requirements"
-                target="_blank"
-                className="inline-flex items-center text-primary-light font-semibold hover:text-blue-700"
-              >
-                Read full requirements guide →
-              </Link>
-            </div>
           </Container>
         </Section>
 
-        {/* FAQ Section */}
+        {/* FAQ */}
         <Section id="faq" background="white" padding="xl">
           <Container maxWidth="md">
             <div className="text-center mb-12">
@@ -455,26 +403,28 @@ export default function UKETAServicePage() {
             <div className="space-y-6">
               {[
                 {
-                  q: "How quickly is UK ETA approved?",
-                  a:
-                    "Most applications are approved " +
-                    UK_ETA_CONFIG.processing.superRush +
-                    ". Some may take up to 3 working days.",
+                  q: "Who needs a Canada eTA?",
+                  a: "Citizens of visa-exempt countries (excluding US citizens) who fly to or transit through Canada need an eTA. US citizens can enter Canada with just their passport — no eTA required.",
                 },
                 {
-                  q: "How long is my UK ETA valid?",
-                  a:
-                    "Your ETA is valid for " +
-                    UK_ETA_CONFIG.validity.years +
-                    " years from approval, or until your passport expires.",
+                  q: "How quickly is a Canada eTA approved?",
+                  a: `Most applications are approved within ${CANADA_ETA_CONFIG.processing.superRush}. Some may take a few days if additional review is needed. Apply well before your travel date.`,
                 },
                 {
-                  q: "Can I work with a UK ETA?",
-                  a: "No, the UK ETA is only for tourism, business visits, and transit. You cannot work or study long-term with an ETA.",
+                  q: "How long is my Canada eTA valid?",
+                  a: `Your eTA is valid for ${CANADA_ETA_CONFIG.validity.years} years from the date of issue, or until your passport expires — whichever comes first. You can make multiple trips during this period.`,
                 },
                 {
-                  q: "Do children need a UK ETA?",
-                  a: "Yes, all travelers including children and infants need their own UK ETA to enter the United Kingdom.",
+                  q: "Do I need a Canada eTA for land or sea entry?",
+                  a: "No. The eTA is only required for air travel. If you're entering Canada by land (e.g. from the US) or sea, you do not need an eTA — though you still need a valid passport.",
+                },
+                {
+                  q: "Do children need a Canada eTA?",
+                  a: "Yes, all travelers including children and infants need their own eTA if traveling by air to or through Canada. A parent or guardian can apply on their behalf.",
+                },
+                {
+                  q: "Can I work in Canada with an eTA?",
+                  a: "No. The Canada eTA is only for tourism, business visits, and transit. To work in Canada, you need a work permit or visa.",
                 },
               ].map((faq, idx) => (
                 <div key={idx} className="bg-gray-50 p-6 rounded-lg">
@@ -488,10 +438,10 @@ export default function UKETAServicePage() {
 
             <div className="mt-8 text-center">
               <Link
-                href="/united-kingdom/guide"
+                href="/canada/guide"
                 className="inline-flex items-center text-primary-light font-semibold hover:text-blue-700"
               >
-                View all UK ETA guides →
+                View all Canada eTA guides →
               </Link>
             </div>
           </Container>
@@ -502,20 +452,20 @@ export default function UKETAServicePage() {
           <Container maxWidth="md">
             <div className="text-center">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                Ready to Apply for Your UK ETA?
+                Ready to Apply for Your Canada eTA?
               </h2>
               <p className="text-xl text-blue-100 mb-8">
-                Join thousands of travelers who trust us with their UK travel
+                Join thousands of travelers who trust us with their Canada travel
                 authorization
               </p>
-              <Link href="/united-kingdom/apply">
+              <Link href="/canada/apply">
                 <Button size="lg" variant="primary">
-                  Apply Now - Only {currency}
+                  Apply Now — Only {currency}
                   {pricing.perApplicant} →
                 </Button>
               </Link>
               <p className="text-sm text-blue-100 mt-4">
-                ✓ Instant approval | ✓ Money-back guarantee | ✓ 24/7 support
+                ✓ Fast approval · ✓ Money-back guarantee · ✓ 24/7 support
               </p>
             </div>
           </Container>

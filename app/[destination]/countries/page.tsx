@@ -68,15 +68,16 @@ export async function generateMetadata({
           "ESTA participating countries",
         ]
       : service.type === ServiceType.UK_ETA
-      ? [
-          "UK ETA eligible countries",
-          "UK visa waiver countries",
-          "UK ETA nationalities",
-          "UK electronic travel authorization countries",
-        ]
-      : [];
+        ? [
+            "UK ETA eligible countries",
+            "UK visa waiver countries",
+            "UK ETA nationalities",
+            "UK electronic travel authorization countries",
+          ]
+        : [];
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.online";
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.online";
   const canonicalUrl = `${baseUrl}/${destination}/countries`;
 
   return {
@@ -163,7 +164,7 @@ export default function CountriesIndexPage({
           programName: "Visa Waiver Program (VWP)",
           validity: "2 years",
           maxStay: "90 days",
-          processing: "5 hours",
+          processing: "1 hours",
           intro:
             "Citizens of the following countries can travel to the United States for tourism or business under the Visa Waiver Program by obtaining an ESTA (Electronic System for Travel Authorization).",
         };
@@ -179,9 +180,9 @@ export default function CountriesIndexPage({
       default:
         return {
           programName: "Travel Authorization",
-          validity: "varies",
-          maxStay: "varies",
-          processing: "varies",
+          validity: "5 years",
+          maxStay: "6 months",
+          processing: "1 hour",
           intro: `Check if your country is eligible for ${service.name}.`,
         };
     }
@@ -512,7 +513,7 @@ export default function CountriesIndexPage({
                   }, spanning ${
                     regions.length
                   } world regions including ${regions.join(
-                    ", "
+                    ", ",
                   )}. Use the search function above to quickly check if your country qualifies.`,
                 },
                 {

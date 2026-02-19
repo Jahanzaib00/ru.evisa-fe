@@ -12,10 +12,7 @@ import Header from "@/app/components/layout/Header";
 import Footer from "@/app/components/home/Footer";
 import SearchGuides from "@/app/components/content/SearchGuides";
 import { getGuidesByService, getGuidesByCategory } from "@/app/lib/data/guides";
-import {
-  getServiceByDestination,
-  ServiceType,
-} from "@/app/lib/config/services";
+import { getServiceByDestination } from "@/app/lib/config/services";
 import {
   Book,
   FileText,
@@ -43,7 +40,8 @@ export async function generateMetadata({
     return { title: "Guides Not Found" };
   }
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.online";
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.online";
   const canonicalUrl = `${baseUrl}/${destination}/guide`;
 
   return {
@@ -78,7 +76,7 @@ export async function generateStaticParams() {
   return [
     { destination: "united-states" },
     { destination: "united-kingdom" },
-    // Add more as services are implemented
+    { destination: "canada" },
   ];
 }
 
