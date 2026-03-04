@@ -316,8 +316,7 @@ function QuickFacts({
         <div className="bg-white p-5 rounded-xl shadow-sm">
           <p className="text-gray-600 text-sm mb-2">Validity Period</p>
           <p className="text-2xl font-bold text-blue-900">
-            {service.validity.years || service.validity.months}{" "}
-            {service.validity.years ? "Years" : "Months"}
+            {service.validity.duration}
           </p>
         </div>
         <div className="bg-white p-5 rounded-xl shadow-sm">
@@ -432,8 +431,7 @@ function ApplicationSteps({
             <p className="text-purple-100 mb-6 flex-grow">
               Receive your {service.name} approval via email within{" "}
               {service.processing.superRush}. Valid for{" "}
-              {service.validity.years || service.validity.months}{" "}
-              {service.validity.years ? "years" : "months"} of travel.
+              {service.validity.duration} of travel.
             </p>
             <ul className="text-left space-y-2 text-sm text-purple-100">
               <li className="flex items-start gap-2">
@@ -443,8 +441,7 @@ function ApplicationSteps({
               <li className="flex items-start gap-2">
                 <span className="mt-1">✓</span>
                 <span>
-                  Valid for {service.validity.years || service.validity.months}{" "}
-                  {service.validity.years ? "years" : "months"}
+                  Valid for {service.validity.duration}
                 </span>
               </li>
               <li className="flex items-start gap-2">
@@ -681,8 +678,7 @@ function ComparisonTable({
               <td className="p-4 font-semibold">Validity</td>
               <td className="p-4 text-center bg-green-50">
                 <span className="text-green-700 font-bold">
-                  {service.validity.years || service.validity.months}{" "}
-                  {service.validity.years ? "years" : "months"}
+                  {service.validity.duration}
                 </span>
               </td>
               <td className="p-4 text-center bg-yellow-50">
@@ -858,13 +854,7 @@ function CountryFAQSection({
     },
     {
       question: `How long is ${service.name} valid for ${country.name} citizens?`,
-      answer: `An approved ${service.name} is valid for ${
-        service.validity.years || service.validity.months
-      } ${
-        service.validity.years ? "years" : "months"
-      } from the date of approval, or until your passport expires, whichever comes first. During this time, you can make multiple trips to ${
-        service.destination
-      }, with each stay limited to ${service.validity.stays}.`,
+      answer: `An approved ${service.name} is valid for ${service.validity.duration} from the date of approval, or until your passport expires, whichever comes first. During this time, you can make ${service.validity.multipleEntry ? "multiple trips" : "a single trip"} to ${service.destination}, with each stay limited to ${service.validity.stays}.`,
     },
     {
       question: `Can ${country.name} citizens work in ${service.destination} with ${service.name}?`,

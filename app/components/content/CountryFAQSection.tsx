@@ -42,11 +42,7 @@ export default function CountryFAQSection({
           : "eTA";
 
     const destination = service.destination;
-    const validityText = service.validity.years
-      ? `${service.validity.years} year${service.validity.years > 1 ? "s" : ""}`
-      : service.validity.months
-        ? `${service.validity.months} month${service.validity.months > 1 ? "s" : ""}`
-        : "2 years";
+    const validityText = service.validity.duration;
 
     const maxStay = service.validity.stays || "90 days per visit";
     const processingTime = service.processing.standard;

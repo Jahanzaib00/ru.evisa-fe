@@ -14,6 +14,7 @@ import CountrySelect from "@/app/components/ui/CountrySelect";
 import Checkbox from "@/app/components/ui/Checkbox";
 import { LoadingSpinner } from "@/app/components/ui/Loader";
 import { trackEvent } from "@/app/lib/analytics";
+import { getServiceByDestination } from "@/app/lib/config/services";
 
 interface Props {
   params: Promise<{
@@ -122,8 +123,13 @@ export default function PassportDetailsPage({ params }: Props) {
       label: "passport_details",
     });
 
-    // Navigate to processing options
-    router.push(`/${destination}/apply/processing-options`);
+    // Navigate to next step: skip processing-options for flat-fee services
+    const service = getServiceByDestination(destination);
+    if (service?.skipProcessingOptions) {
+      router.push(`/${destination}/apply/review`);
+    } else {
+      router.push(`/${destination}/apply/processing-options`);
+    }
   };
 
   const handleContinue = () => {

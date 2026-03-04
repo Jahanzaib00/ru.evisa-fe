@@ -1,34 +1,59 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import { useApplicationStore } from "@/app/lib/store/applicationStore";
+import { getService } from "@/app/lib/config/services";
 
 interface Step {
   number: number;
   label: string;
-  pathPattern: string; // pattern like "/apply" to match against pathname
+  pathPattern: string;
 }
 
-const steps: Step[] = [
+const BASE_STEPS: Step[] = [
   { number: 1, label: "Trip details", pathPattern: "/apply" },
   { number: 2, label: "Your info", pathPattern: "/apply/personal-details" },
   { number: 3, label: "Passport", pathPattern: "/apply/passport-details" },
-  { number: 4, label: "Checkout", pathPattern: "/apply/processing-options" },
 ];
+
+const PROCESSING_STEP: Step = {
+  number: 4,
+  label: "Processing",
+  pathPattern: "/apply/processing-options",
+};
+
+const CHECKOUT_LABEL = "Checkout";
 
 export default function StepProgress() {
   const pathname = usePathname();
+  const { serviceType } = useApplicationStore();
 
-  // Extract destination from pathname (e.g., /united-states/apply -> united-states)
+  const service = serviceType ? getService(serviceType) : null;
+  const skipProcessing = service?.skipProcessingOptions ?? false;
+
+  // Build steps dynamically based on service config
+  const steps: Step[] = skipProcessing
+    ? [
+        ...BASE_STEPS,
+        { number: 4, label: CHECKOUT_LABEL, pathPattern: "/apply/review" },
+      ]
+    : [
+        ...BASE_STEPS,
+        PROCESSING_STEP,
+        { number: 5, label: CHECKOUT_LABEL, pathPattern: "/apply/review" },
+      ];
+
+  // Extract destination from pathname
   const pathParts = pathname.split("/").filter(Boolean);
   const destination = pathParts.length > 0 ? pathParts[0] : "";
 
-  // Match current step by checking if pathname ends with the step pattern
+  // Match current step
   const currentStepIndex = steps.findIndex(
     (step) =>
       pathname === `/${destination}${step.pathPattern}` ||
       pathname.endsWith(step.pathPattern)
   );
-  const currentStep = currentStepIndex >= 0 ? currentStepIndex + 1 : 1;
+  const currentStep = currentStepIndex >= 0 ? steps[currentStepIndex].number : 1;
 
   return (
     <div className="w-full bg-white max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 pt-8 lg:py-12">

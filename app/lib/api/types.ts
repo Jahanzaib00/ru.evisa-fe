@@ -59,6 +59,7 @@ export enum ServiceType {
   US_ESTA = "US_ESTA",
   UK_ETA = "UK_ETA",
   CANADA_ETA = "CANADA_ETA",
+  THAILAND_TDAC = "THAILAND_TDAC",
 }
 
 export enum TravelPurpose {

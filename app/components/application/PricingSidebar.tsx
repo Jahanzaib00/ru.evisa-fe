@@ -49,24 +49,16 @@ export default function PricingSidebar({
       ? getProcessingTier(serviceType, processingTier) ||
         getDefaultProcessingTier(serviceType)
       : serviceType
-      ? getDefaultProcessingTier(serviceType)
-      : null;
+        ? getDefaultProcessingTier(serviceType)
+        : null;
   const serviceFee = tier?.serviceFee || 0;
-  const processingTimeLabel = tier?.label || "Standard";
 
   const currency = service?.pricing.currency || "USD";
   const currencySymbol = getCurrencySymbol(currency);
   const validity = service?.validity;
-  const validityText = validity?.years
-    ? `${validity.years} ${
-        validity.years === 1 ? "year" : "years"
-      } after issued`
-    : validity?.months
-    ? `${validity.months} ${
-        validity.months === 1 ? "month" : "months"
-      } after issued`
-    : "N/A";
+  const validityText = validity?.duration || "N/A";
   const maxStay = validity?.stays || "N/A";
+  const isMultipleEntry = validity?.multipleEntry ?? true;
 
   return (
     <div className="bg-white rounded-lg border border-gray-light p-6 shadow-sm">
@@ -103,7 +95,9 @@ export default function PricingSidebar({
             </svg>
             <div>
               <p className="font-medium text-gray-dark">Number of entries</p>
-              <p className="text-gray">Multiple entry</p>
+              <p className="text-gray">
+                {isMultipleEntry ? "Multiple entry" : "Single entry"}
+              </p>
             </div>
           </div>
 
@@ -144,21 +138,23 @@ export default function PricingSidebar({
                 </div>
               </div>
 
-              <div className="flex justify-between items-baseline">
-                <span className="text-gray">Government fees</span>
-                <div className="text-right">
-                  {isMultipleTravelers && (
-                    <p className="text-xs text-gray mb-0.5">
+              {governmentFee > 0 && (
+                <div className="flex justify-between items-baseline">
+                  <span className="text-gray">Government fees</span>
+                  <div className="text-right">
+                    {isMultipleTravelers && (
+                      <p className="text-xs text-gray mb-0.5">
+                        {currencySymbol}
+                        {governmentFee.toFixed(2)} × {totalApplicants}
+                      </p>
+                    )}
+                    <span className="font-semibold text-gray-dark">
                       {currencySymbol}
-                      {governmentFee.toFixed(2)} × {totalApplicants}
-                    </p>
-                  )}
-                  <span className="font-semibold text-gray-dark">
-                    {currencySymbol}
-                    {(governmentFee * totalApplicants).toFixed(2)}
-                  </span>
+                      {(governmentFee * totalApplicants).toFixed(2)}
+                    </span>
+                  </div>
                 </div>
-              </div>
+              )}
 
               {showProcessingFee && (
                 <div className="flex justify-between items-baseline">

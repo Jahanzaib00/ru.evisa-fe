@@ -1,5 +1,5 @@
 import { ServiceType } from "../config/services";
-export const destinations = ["united-states", "united-kingdom", "canada"];
+export const destinations = ["united-states", "united-kingdom", "canada", "thailand"];
 export const services = [
   {
     type: ServiceType.US_ESTA,
@@ -18,5 +18,11 @@ export const services = [
     serviceSlug: "canada-eta",
     destinationSlug: "canada",
     name: "Canada eTA",
-  }
+  },
+  {
+    type: ServiceType.THAILAND_TDAC,
+    serviceSlug: "thailand-tdac",
+    destinationSlug: "thailand",
+    name: "Thailand TDAC",
+  },
 ];

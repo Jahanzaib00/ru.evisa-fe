@@ -298,23 +298,24 @@ function resolveResumeStep(app: any, destination: string): string {
   const travelers: any[] = app.travelers ?? [];
 
   if (travelers.length === 0) {
-    // No traveler data yet — start from the beginning
     return base;
   }
 
   const t = travelers[0];
 
-  // Passport details complete → go to processing options
+  // Passport details complete → go to review (flat-fee) or processing options
   if (t.passportNumber) {
-    return `${base}/review`;
+    const service = getServiceByDestination(destination);
+    if (service?.skipProcessingOptions) {
+      return `${base}/review`;
+    }
+    return `${base}/processing-options`;
   }
 
-  // Personal details complete (email is captured here) → go to passport
   if (t.email) {
     return `${base}/passport-details`;
   }
 
-  // Traveler record exists (name/DOB) but email not yet filled → personal details
   return `${base}/personal-details`;
 }
 

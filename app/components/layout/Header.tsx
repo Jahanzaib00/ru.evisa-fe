@@ -49,6 +49,11 @@ export default function Header() {
       href: "/services/canada-eta",
       description: "Electronic Travel Authorization for Canada",
     },
+    {
+      name: "Thailand TDAC",
+      href: "/services/thailand-tdac",
+      description: "Digital Arrival Card for Thailand",
+    },
   ];
 
   return (

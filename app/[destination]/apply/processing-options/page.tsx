@@ -48,6 +48,18 @@ export default function ProcessingOptionsPage({ params }: Props) {
     }
   }, [service, processingTier, setProcessingTier]);
 
+  // Skip this page for flat-fee services (auto-select default tier and redirect)
+  useEffect(() => {
+    if (service?.skipProcessingOptions) {
+      const defaultTier = service.processingTiers.find((t) => t.isDefault);
+      if (defaultTier) {
+        setProcessingTier(defaultTier.type);
+      }
+      completeStep(4);
+      router.replace(`/${destination}/apply/review`);
+    }
+  }, [service, destination, router, setProcessingTier, completeStep]);
+
   // Verify application state on mount
   useEffect(() => {
     const verify = async () => {

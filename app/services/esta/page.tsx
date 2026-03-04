@@ -150,7 +150,7 @@ export default function ESTAServicePage() {
                   <div className="flex items-center justify-between py-3 border-b border-gray-100">
                     <span className="text-gray-700 font-medium">Validity</span>
                     <span className="font-bold text-gray-900">
-                      {US_ESTA_CONFIG.validity.years} Years
+                      {US_ESTA_CONFIG.validity.duration}
                     </span>
                   </div>
                   <div className="flex items-center justify-between py-3 border-b border-gray-100">
@@ -464,7 +464,7 @@ export default function ESTAServicePage() {
                 },
                 {
                   q: "How long is my ESTA valid?",
-                  a: `Your ESTA is valid for ${US_ESTA_CONFIG.validity.years} years from the date of approval, or until your passport expires, whichever comes first.`,
+                  a: `Your ESTA is valid for ${US_ESTA_CONFIG.validity.duration} from the date of approval, or until your passport expires, whichever comes first.`,
                 },
                 {
                   q: "Can I extend my ESTA?",

@@ -16,6 +16,7 @@ import {
 } from "@/app/lib/utils/errorHandler";
 import {
   getProcessingTier,
+  getDefaultProcessingTier,
   getServiceByDestination,
 } from "@/app/lib/config/services";
 
@@ -47,15 +48,30 @@ export default function ReviewPage({ params }: Props) {
   const [clientSecret, setClientSecret] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
+  // Auto-set default processing tier for flat-fee services arriving at review directly
   useEffect(() => {
-    if (!serviceType || !processingTier) {
+    if (serviceType && !processingTier && service?.skipProcessingOptions) {
+      const { setProcessingTier } = useApplicationStore.getState();
+      const defaultTier = service.processingTiers.find((t: any) => t.isDefault);
+      if (defaultTier) {
+        setProcessingTier(defaultTier.type);
+      }
+    }
+  }, [serviceType, processingTier, service]);
+
+  useEffect(() => {
+    if (!serviceType) {
       router.push(`/${destination}/apply`);
     }
-  }, [serviceType, processingTier, router, destination]);
+    // For non-flat-fee services, require processing tier selection
+    if (serviceType && !processingTier && !service?.skipProcessingOptions) {
+      router.push(`/${destination}/apply`);
+    }
+  }, [serviceType, processingTier, router, destination, service]);
 
   const total = getTotalAmount();
 
-  if (!serviceType || !processingTier) {
+  if (!serviceType || (!processingTier && !service?.skipProcessingOptions)) {
     return null;
   }
 
@@ -64,7 +80,8 @@ export default function ReviewPage({ params }: Props) {
     const now = new Date();
     const deliveryTime = new Date(
       now.getTime() +
-        getProcessingTier(serviceType, processingTier)?.processingTime! *
+        ((processingTier && getProcessingTier(serviceType, processingTier)?.processingTime) ||
+          getDefaultProcessingTier(serviceType).processingTime) *
           60 *
           60 *
           1000,
@@ -243,10 +260,7 @@ export default function ReviewPage({ params }: Props) {
                       <span className="font-medium text-gray-dark">
                         Valid for:
                       </span>{" "}
-                      {service.validity.years
-                        ? `${service.validity.years} years`
-                        : `${service.validity.months} months`}{" "}
-                      after issued
+                      {service.validity.duration}
                     </div>
                     <div>
                       <span className="font-medium text-gray-dark">
@@ -258,7 +272,7 @@ export default function ReviewPage({ params }: Props) {
                       <span className="font-medium text-gray-dark">
                         Number of entries:
                       </span>{" "}
-                      Multiple
+                      {service.validity.multipleEntry ? "Multiple" : "Single"}
                     </div>
                   </div>
                 </div>

@@ -1,13 +1,13 @@
 /**
- * UK ETA Service Hub Page - PRODUCTION QUALITY
- * /services/uk-eta
+ * Thailand TDAC Service Hub Page
+ * /services/thailand-tdac
  *
  * CONVERSION-OPTIMIZED | SEO-OPTIMIZED | PROFESSIONAL
  */
 
 import { Metadata } from "next";
 import {
-  UK_ETA_CONFIG,
+  THAILAND_TDAC_CONFIG,
   calculatePrice,
   getCurrencySymbol,
 } from "@/app/lib/config/services";
@@ -25,28 +25,27 @@ export async function generateMetadata(): Promise<Metadata> {
     process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.online";
 
   return generateSEOMetadata({
-    title: UK_ETA_CONFIG.meta.title,
-    description: UK_ETA_CONFIG.meta.description,
-    keywords: UK_ETA_CONFIG.meta.keywords,
-    canonicalUrl: `${baseUrl}/services/uk-eta`,
+    title: THAILAND_TDAC_CONFIG.meta.title,
+    description: THAILAND_TDAC_CONFIG.meta.description,
+    keywords: THAILAND_TDAC_CONFIG.meta.keywords,
+    canonicalUrl: `${baseUrl}/services/thailand-tdac`,
   });
 }
 
-export default function UKETAServicePage() {
-  const pricing = calculatePrice(UK_ETA_CONFIG.type, 1);
-  const currency = getCurrencySymbol(UK_ETA_CONFIG.pricing.currency);
+export default function ThailandTDACServicePage() {
+  const pricing = calculatePrice(THAILAND_TDAC_CONFIG.type, 1);
+  const currency = getCurrencySymbol(THAILAND_TDAC_CONFIG.pricing.currency);
 
-  // Generate structured data for Google
   const structuredData = generateServiceSchema({
-    name: UK_ETA_CONFIG.name,
-    description: UK_ETA_CONFIG.meta.description,
+    name: THAILAND_TDAC_CONFIG.name,
+    description: THAILAND_TDAC_CONFIG.meta.description,
     provider: "Visa Portal",
     areaServed: "Worldwide",
     price: pricing.perApplicant.toString(),
-    priceCurrency: UK_ETA_CONFIG.pricing.currency,
+    priceCurrency: THAILAND_TDAC_CONFIG.pricing.currency,
     url: `${
       process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.online"
-    }/services/uk-eta`,
+    }/services/thailand-tdac`,
   });
 
   return (
@@ -60,70 +59,50 @@ export default function UKETAServicePage() {
       <Header />
 
       <main>
-        {/* Hero Section - Above the Fold Conversion */}
+        {/* Hero Section */}
         <Section id="hero" background="primary" padding="xl">
           <Container maxWidth="lg">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               {/* Left: Value Proposition */}
               <div>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-                  {UK_ETA_CONFIG.name}
+                  Thailand Digital Arrival Card
                 </h1>
                 <p className="text-xl md:text-2xl text-blue-100 mb-8 leading-relaxed">
-                  Fast and secure Electronic Travel Authorization for visiting
-                  the United Kingdom. Typically approved{" "}
-                  {UK_ETA_CONFIG.processing.superRush}.
+                  Complete your mandatory Thailand TDAC hassle-free before you
+                  travel. Expert review ensures an error-free submission with
+                  same-day processing.
                 </p>
 
                 {/* Trust Signals */}
                 <div className="flex flex-wrap gap-6 mb-8">
-                  <div className="flex items-center gap-2 text-white">
-                    <svg
-                      className="w-6 h-6 text-green-400"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
+                  {[
+                    "Error-Free Guarantee",
+                    "24/7 Support",
+                    "Same-Day Processing",
+                  ].map((signal) => (
+                    <div
+                      key={signal}
+                      className="flex items-center gap-2 text-white"
                     >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    <span className="font-semibold">99% Approval Rate</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-white">
-                    <svg
-                      className="w-6 h-6 text-green-400"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    <span className="font-semibold">24/7 Support</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-white">
-                    <svg
-                      className="w-6 h-6 text-green-400"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    <span className="font-semibold">Instant Processing</span>
-                  </div>
+                      <svg
+                        className="w-6 h-6 text-green-400"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                      <span className="font-semibold">{signal}</span>
+                    </div>
+                  ))}
                 </div>
 
-                {/* primary-light CTA */}
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Link href="/united-kingdom/apply">
+                  <Link href="/thailand/apply">
                     <Button size="lg" variant="primary">
                       Start Application →
                     </Button>
@@ -143,39 +122,50 @@ export default function UKETAServicePage() {
                     {currency}
                     {pricing.perApplicant}
                   </div>
+                  <p className="text-sm text-gray-500">per person</p>
                 </div>
 
                 <div className="space-y-4 mb-6">
                   <div className="flex items-center justify-between py-3 border-b border-gray-100">
-                    <span className="text-gray-700 font-medium">Validity</span>
+                    <span className="text-gray-700 font-medium">
+                      Required For
+                    </span>
                     <span className="font-bold text-gray-900">
-                      {UK_ETA_CONFIG.validity.duration}
+                      All Foreign Nationals
                     </span>
                   </div>
                   <div className="flex items-center justify-between py-3 border-b border-gray-100">
                     <span className="text-gray-700 font-medium">
                       Processing Time
                     </span>
+                    <span className="font-bold text-gray-900">Same Day</span>
+                  </div>
+                  <div className="flex items-center justify-between py-3 border-b border-gray-100">
+                    <span className="text-gray-700 font-medium">
+                      Entry Type
+                    </span>
                     <span className="font-bold text-gray-900">
-                      {UK_ETA_CONFIG.processing.superRush}
+                      Single Entry
                     </span>
                   </div>
                   <div className="flex items-center justify-between py-3">
-                    <span className="text-gray-700 font-medium">Max Stay</span>
+                    <span className="text-gray-700 font-medium">
+                      Entry Methods
+                    </span>
                     <span className="font-bold text-gray-900">
-                      {UK_ETA_CONFIG.validity.stays}
+                      Air, Land & Sea
                     </span>
                   </div>
                 </div>
 
-                <Link href="/united-kingdom/apply" className="w-full">
+                <Link href="/thailand/apply" className="w-full">
                   <Button size="lg" variant="primary" className="w-full">
                     Apply Now
                   </Button>
                 </Link>
 
                 <p className="text-xs text-gray-500 text-center mt-4">
-                  ✓ Instant Approval
+                  ✓ Expert Review · ✓ Secure Payment
                 </p>
               </div>
             </div>
@@ -186,31 +176,24 @@ export default function UKETAServicePage() {
         <Section id="social-proof" background="white" padding="sm">
           <Container maxWidth="lg">
             <div className="flex flex-wrap items-center justify-center gap-8 text-center">
-              <div>
-                <div className="text-3xl font-bold text-primary-light">
-                  25K+
+              {[
+                { value: "50K+", label: "Applications Processed" },
+                { value: "100%", label: "Submission Success" },
+                { value: "4.9/5", label: "Customer Rating" },
+                { value: "24/7", label: "Support Available" },
+              ].map((stat, idx, arr) => (
+                <div key={stat.label} className="flex items-center gap-8">
+                  <div>
+                    <div className="text-3xl font-bold text-primary-light">
+                      {stat.value}
+                    </div>
+                    <div className="text-sm text-gray-600">{stat.label}</div>
+                  </div>
+                  {idx < arr.length - 1 && (
+                    <div className="hidden md:block w-px h-12 bg-gray-300" />
+                  )}
                 </div>
-                <div className="text-sm text-gray-600">ETAs Processed</div>
-              </div>
-              <div className="hidden md:block w-px h-12 bg-gray-300"></div>
-              <div>
-                <div className="text-3xl font-bold text-primary-light">99%</div>
-                <div className="text-sm text-gray-600">Approval Rate</div>
-              </div>
-              <div className="hidden md:block w-px h-12 bg-gray-300"></div>
-              <div>
-                <div className="text-3xl font-bold text-primary-light">
-                  4.9/5
-                </div>
-                <div className="text-sm text-gray-600">Customer Rating</div>
-              </div>
-              <div className="hidden md:block w-px h-12 bg-gray-300"></div>
-              <div>
-                <div className="text-3xl font-bold text-primary-light">
-                  24/7
-                </div>
-                <div className="text-sm text-gray-600">Support Available</div>
-              </div>
+              ))}
             </div>
           </Container>
         </Section>
@@ -223,13 +206,13 @@ export default function UKETAServicePage() {
                 What's Included in Our Service
               </h2>
               <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                Professional assistance to ensure your UK ETA application is
-                accurate and complete
+                Professional assistance to ensure your Thailand TDAC is
+                completed correctly the first time
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {UK_ETA_CONFIG.includedServices.map((service, idx) => (
+              {THAILAND_TDAC_CONFIG.includedServices.map((service, idx) => (
                 <div
                   key={idx}
                   className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow"
@@ -267,62 +250,43 @@ export default function UKETAServicePage() {
                 Simple 3-Step Process
               </h2>
               <p className="text-xl text-gray-600">
-                Get your UK ETA approved instantly with our streamlined process
+                Get your Thailand TDAC completed quickly with our streamlined
+                process
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8 relative">
-              {/* Step 1 */}
-              <div className="relative">
-                <div className="bg-primary-light text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg">
-                  1
-                </div>
-                <div className="text-center">
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                {
+                  step: 1,
+                  title: "Complete Application",
+                  desc: "Fill out our simplified form with your passport, travel, and accommodation details. Takes just 5 minutes.",
+                },
+                {
+                  step: 2,
+                  title: "Expert Review & Payment",
+                  desc: "Our team reviews your application for errors. Pay securely with your credit card. All transactions are SSL encrypted.",
+                },
+                {
+                  step: 3,
+                  title: "Receive Your TDAC",
+                  desc: "Get your completed Thailand Digital Arrival Card with QR code via email. Ready for your trip!",
+                },
+              ].map(({ step, title, desc }) => (
+                <div key={step} className="relative text-center">
+                  <div className="bg-primary-light text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg">
+                    {step}
+                  </div>
                   <h3 className="text-xl font-bold mb-3 text-gray-900">
-                    Complete Application
+                    {title}
                   </h3>
-                  <p className="text-gray-600">
-                    Fill out our simplified form with your passport and personal
-                    details. Takes just 5 minutes.
-                  </p>
+                  <p className="text-gray-600">{desc}</p>
                 </div>
-              </div>
-
-              {/* Step 2 */}
-              <div className="relative">
-                <div className="bg-primary-light text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg">
-                  2
-                </div>
-                <div className="text-center">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900">
-                    Secure Payment
-                  </h3>
-                  <p className="text-gray-600">
-                    Pay securely with your credit card. All transactions are SSL
-                    encrypted and fully protected.
-                  </p>
-                </div>
-              </div>
-
-              {/* Step 3 */}
-              <div className="relative">
-                <div className="bg-primary-light text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg">
-                  3
-                </div>
-                <div className="text-center">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900">
-                    Receive ETA
-                  </h3>
-                  <p className="text-gray-600">
-                    Get your approved UK ETA via email{" "}
-                    {UK_ETA_CONFIG.processing.superRush}. Ready to travel!
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
 
             <div className="text-center mt-12">
-              <Link href="/united-kingdom/apply">
+              <Link href="/thailand/apply">
                 <Button size="lg" variant="primary">
                   Start Your Application Now →
                 </Button>
@@ -336,10 +300,10 @@ export default function UKETAServicePage() {
           <Container maxWidth="lg">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                UK ETA Requirements
+                Thailand TDAC Requirements
               </h2>
               <p className="text-xl text-gray-600">
-                Check you meet these requirements before applying
+                Everything you need to know before applying
               </p>
             </div>
 
@@ -360,14 +324,15 @@ export default function UKETAServicePage() {
                       d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                     />
                   </svg>
-                  Eligibility Criteria
+                  Who Needs a TDAC?
                 </h3>
                 <ul className="space-y-4">
                   {[
-                    "Citizen of a visa-exempt country",
-                    "Traveling for tourism, business, or transit",
-                    "Staying up to 180 days in the UK",
-                    "Valid biometric passport",
+                    "All non-Thai nationals entering Thailand",
+                    "Required for air, land, and sea entry",
+                    "Applies regardless of visa type or nationality",
+                    "Children and infants included",
+                    "New TDAC required for each entry into Thailand",
                   ].map((item, idx) => (
                     <li key={idx} className="flex items-start gap-3">
                       <svg
@@ -403,13 +368,14 @@ export default function UKETAServicePage() {
                       d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                     />
                   </svg>
-                  Required Documents
+                  Required Information
                 </h3>
                 <ul className="space-y-4">
                   {[
-                    "Valid passport (valid for duration of stay)",
-                    "Digital passport photo",
-                    "Valid email address",
+                    "Valid passport (name, number, nationality, DOB)",
+                    "Travel booking (flight number, arrival date)",
+                    "Accommodation details (hotel name, address, province)",
+                    "Valid email address (for QR code confirmation)",
                     "Payment method (credit/debit card)",
                   ].map((item, idx) => (
                     <li key={idx} className="flex items-start gap-3">
@@ -430,20 +396,10 @@ export default function UKETAServicePage() {
                 </ul>
               </div>
             </div>
-
-            <div className="mt-8 text-center">
-              <Link
-                href="/united-kingdom/guide/uk-eta-requirements"
-                target="_blank"
-                className="inline-flex items-center text-primary-light font-semibold hover:text-blue-700"
-              >
-                Read full requirements guide →
-              </Link>
-            </div>
           </Container>
         </Section>
 
-        {/* FAQ Section */}
+        {/* FAQ */}
         <Section id="faq" background="white" padding="xl">
           <Container maxWidth="md">
             <div className="text-center mb-12">
@@ -455,26 +411,28 @@ export default function UKETAServicePage() {
             <div className="space-y-6">
               {[
                 {
-                  q: "How quickly is UK ETA approved?",
-                  a:
-                    "Most applications are approved " +
-                    UK_ETA_CONFIG.processing.superRush +
-                    ". Some may take up to 3 working days.",
+                  q: "What is the Thailand TDAC?",
+                  a: "The Thailand Digital Arrival Card (TDAC) is a mandatory online form that replaced the old paper TM6 arrival/departure card. All non-Thai nationals must complete it before entering Thailand.",
                 },
                 {
-                  q: "How long is my UK ETA valid?",
-                  a:
-                    "Your ETA is valid for " +
-                    UK_ETA_CONFIG.validity.duration +
-                    " from approval, or until your passport expires.",
+                  q: "When should I complete the TDAC?",
+                  a: "The TDAC can be submitted up to 72 hours (3 days) before your arrival in Thailand, including the day of arrival. We recommend completing it as early as possible to avoid delays at the airport.",
                 },
                 {
-                  q: "Can I work with a UK ETA?",
-                  a: "No, the UK ETA is only for tourism, business visits, and transit. You cannot work or study long-term with an ETA.",
+                  q: "What happens if I don't complete the TDAC before arrival?",
+                  a: "You will be required to fill it out at a kiosk at the airport before immigration processing, which causes significant delays. Completing it beforehand ensures a smooth arrival experience.",
                 },
                 {
-                  q: "Do children need a UK ETA?",
-                  a: "Yes, all travelers including children and infants need their own UK ETA to enter the United Kingdom.",
+                  q: "Is the TDAC free on the official website?",
+                  a: "Yes, the official TDAC portal is free. Our service provides expert form review, error checking, dedicated support, and guaranteed correct submission — saving you time and ensuring no mistakes.",
+                },
+                {
+                  q: "Do I need a new TDAC for every trip to Thailand?",
+                  a: "Yes. A new TDAC must be submitted for each entry into Thailand. It is not valid for multiple entries.",
+                },
+                {
+                  q: "Can I update my TDAC after submission?",
+                  a: "Some fields can be updated (flight number, hotel, dates), but immutable fields like name, passport number, nationality, and date of birth cannot be changed — you'd need to submit a new one.",
                 },
               ].map((faq, idx) => (
                 <div key={idx} className="bg-gray-50 p-6 rounded-lg">
@@ -488,10 +446,10 @@ export default function UKETAServicePage() {
 
             <div className="mt-8 text-center">
               <Link
-                href="/united-kingdom/guide"
+                href="/thailand/guide"
                 className="inline-flex items-center text-primary-light font-semibold hover:text-blue-700"
               >
-                View all UK ETA guides →
+                View all Thailand TDAC guides →
               </Link>
             </div>
           </Container>
@@ -502,20 +460,20 @@ export default function UKETAServicePage() {
           <Container maxWidth="md">
             <div className="text-center">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                Ready to Apply for Your UK ETA?
+                Ready to Complete Your Thailand TDAC?
               </h2>
               <p className="text-xl text-blue-100 mb-8">
-                Join thousands of travelers who trust us with their UK travel
-                authorization
+                Skip the airport queues. Complete your Digital Arrival Card
+                online with expert assistance.
               </p>
-              <Link href="/united-kingdom/apply">
+              <Link href="/thailand/apply">
                 <Button size="lg" variant="primary">
-                  Apply Now - Only {currency}
+                  Apply Now — Only {currency}
                   {pricing.perApplicant} →
                 </Button>
               </Link>
               <p className="text-sm text-blue-100 mt-4">
-                ✓ Instant approval | ✓ Money-back guarantee | ✓ 24/7 support
+                ✓ Same-day processing · ✓ Error-free guarantee · ✓ 24/7 support
               </p>
             </div>
           </Container>

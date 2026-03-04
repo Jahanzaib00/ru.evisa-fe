@@ -34,8 +34,8 @@ export default function MobileOrderSummary({
       ? getProcessingTier(serviceType, processingTier) ||
         getDefaultProcessingTier(serviceType)
       : serviceType
-      ? getDefaultProcessingTier(serviceType)
-      : null;
+        ? getDefaultProcessingTier(serviceType)
+        : null;
   const serviceFee = tier?.serviceFee || 0;
   const processingTimeLabel = tier?.label || "Standard";
 
@@ -98,21 +98,23 @@ export default function MobileOrderSummary({
         <div className="border border-t-0 border-gray-light rounded-b-lg bg-white px-4 pb-4 -mt-1">
           {/* Pricing Breakdown */}
           <div className="pt-4 space-y-3 text-sm">
-            <div className="flex justify-between items-baseline">
-              <span className="text-gray">Government fees</span>
-              <div className="text-right">
-                {isMultipleTravelers && (
-                  <p className="text-xs text-gray mb-0.5">
+            {governmentFee > 0 && (
+              <div className="flex justify-between items-baseline">
+                <span className="text-gray">Government fees</span>
+                <div className="text-right">
+                  {isMultipleTravelers && (
+                    <p className="text-xs text-gray mb-0.5">
+                      {currencySymbol}
+                      {governmentFee.toFixed(2)} × {totalApplicants}
+                    </p>
+                  )}
+                  <span className="font-semibold text-gray-dark">
                     {currencySymbol}
-                    {governmentFee.toFixed(2)} × {totalApplicants}
-                  </p>
-                )}
-                <span className="font-semibold text-gray-dark">
-                  {currencySymbol}
-                  {(governmentFee * totalApplicants).toFixed(2)}
-                </span>
+                    {(governmentFee * totalApplicants).toFixed(2)}
+                  </span>
+                </div>
               </div>
-            </div>
+            )}
 
             <div className="flex justify-between items-baseline">
               <div>

@@ -10,24 +10,35 @@ import { useApplicationStore } from "@/app/lib/store/applicationStore";
 import { useNationalityAutoSelect } from "@/app/hooks/useNationalityAutoSelect";
 import { ArrowRight } from "lucide-react";
 import CountrySelect from "../ui/CountrySelect";
+import type { Country } from "@/app/lib/countries";
 
-// Destination options
-const DESTINATIONS = [
-  { code: "US", name: "United States", slug: "united-states", flag: "🇺🇸" },
-  { code: "UK", name: "United Kingdom", slug: "united-kingdom", flag: "🇬🇧" },
+// Destination options — uses CountrySelect's Country type
+const DESTINATION_COUNTRIES: Country[] = [
+  { code: "US", name: "United States" },
+  { code: "GB", name: "United Kingdom" },
+  { code: "CA", name: "Canada" },
+  { code: "TH", name: "Thailand" },
 ];
+
+// Map country code → destination slug for routing
+const DESTINATION_SLUG_MAP: Record<string, string> = {
+  US: "united-states",
+  GB: "united-kingdom",
+  CA: "canada",
+  TH: "thailand",
+};
 
 export default function Hero() {
   const router = useRouter();
   const { nationality, setNationality } = useApplicationStore();
-  const [destination, setDestination] = useState(DESTINATIONS[0].slug);
+  const [destinationCode, setDestinationCode] = useState("US");
 
-  // Auto-select nationality based on IP using custom hook
   useNationalityAutoSelect(nationality, setNationality);
 
   const handleApplyNow = () => {
     trackCTAClick("hero");
-    router.push(`/${destination}/apply`);
+    const slug = DESTINATION_SLUG_MAP[destinationCode] || "united-states";
+    router.push(`/${slug}/apply`);
   };
 
   return (
@@ -35,51 +46,29 @@ export default function Hero() {
       <Container maxWidth="lg" className="text-center">
         {/* Main Headline */}
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-dark leading-tight mb-6">
-          Apply for Your Travel Authorization
+          Your Travel Documents,{" "}
+          <span className="text-primary-light">Simplified</span>
         </h1>
 
         {/* Subheadline */}
-        <p className="text-lg md:text-xl text-gray-700 mb-10 leading-relaxed">
-          Electronic Travel Authorization for visa-free travel to the{" "}
-          <span className="font-semibold text-gray-dark">United Kingdom</span>{" "}
-          and{" "}
-          <span className="font-semibold text-gray-dark">United States</span>
-          <br />
+        <p className="text-lg md:text-xl text-gray-700 mb-10 leading-relaxed max-w-2xl mx-auto">
+          Expert assistance with ETAs, ESTAs, and Digital Arrival Cards.
+          <br className="hidden md:block" />
+          Apply online in minutes with guided support and fast processing.
         </p>
 
         {/* Country Selection Form */}
         <div className="bg-white border-2 border-gray-100 rounded-lg p-6 md:p-8 mb-6 shadow-sm max-w-3xl mx-auto text-start">
           <div className="space-y-5">
-            {/* Destination Selector */}
-            <div>
-              <label className="block text-sm font-medium text-gray-dark mb-2">
-                Where are you traveling to?
-              </label>
-              <div className="grid grid-cols-2 gap-3">
-                {DESTINATIONS.map((dest) => (
-                  <button
-                    key={dest.code}
-                    onClick={() => setDestination(dest.slug)}
-                    className={`
-                      flex items-center gap-3 p-4 rounded-lg border-2 transition-all
-                      ${
-                        destination === dest.slug
-                          ? "border-primary bg-primary-light/10"
-                          : "border-gray-200 hover:border-gray-300"
-                      }
-                    `}
-                  >
-                    <span className="text-3xl">{dest.flag}</span>
-                    <span className="hidden md:block font-semibold text-gray-dark">
-                      {dest.name}
-                    </span>
-                    <span className="block md:hidden font-semibold text-gray-dark">
-                      {dest.code}
-                    </span>
-                  </button>
-                ))}
-              </div>
-            </div>
+            {/* Destination Selector — reuses CountrySelect */}
+            <CountrySelect
+              label="Where are you traveling to?"
+              value={destinationCode}
+              onChange={setDestinationCode}
+              placeholder="Choose your destination"
+              valueType="code"
+              countries={DESTINATION_COUNTRIES}
+            />
 
             {/* Nationality Selector */}
             <CountrySelect

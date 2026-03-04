@@ -92,11 +92,11 @@ function ServiceCard({ serviceType, available }: ServiceCardProps) {
       <div className="space-y-3 mb-6">
         <div className="flex items-center gap-2 text-sm text-gray-700">
           <Clock className="w-4 h-4 text-primary flex-shrink-0" />
-          <span>Processed in {service.processing.superRush}</span>
+          <span>Processed in {service.processing.superRush || service.processing.standard}</span>
         </div>
         <div className="flex items-center gap-2 text-sm text-gray-700">
           <Shield className="w-4 h-4 text-primary flex-shrink-0" />
-          <span>Valid for {service.validity.years} years</span>
+          <span>Valid for {service.validity.duration}</span>
         </div>
         <div className="flex items-center gap-2 text-sm text-gray-700">
           <Globe2 className="w-4 h-4 text-primary flex-shrink-0" />
@@ -144,10 +144,11 @@ export default function PopularServices() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <ServiceCard serviceType={ServiceType.US_ESTA} available={true} />
           <ServiceCard serviceType={ServiceType.UK_ETA} available={true} />
           <ServiceCard serviceType={ServiceType.CANADA_ETA} available={true} />
+          <ServiceCard serviceType={ServiceType.THAILAND_TDAC} available={true} />
         </div>
       </Container>
     </Section>

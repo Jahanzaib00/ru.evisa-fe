@@ -9,6 +9,7 @@ export enum ServiceType {
   US_ESTA = "US_ESTA",
   UK_ETA = "UK_ETA",
   CANADA_ETA = "CANADA_ETA",
+  THAILAND_TDAC = "THAILAND_TDAC",
 }
 
 export enum StepType {
@@ -114,9 +115,9 @@ export interface ServiceConfig {
 
   // Validity
   validity: {
-    years?: number;
-    months?: number;
-    stays?: string; // e.g., "90 days per visit"
+    duration: string; // e.g., "2 years", "30 days", "Single use"
+    stays: string; // e.g., "90 days per visit", "30 days per entry"
+    multipleEntry: boolean; // Whether the authorization allows multiple entries
   };
 
   // Processing times (deprecated - kept for backward compatibility)
@@ -139,6 +140,10 @@ export interface ServiceConfig {
     personalDetails: PrePaymentStepConfig;
     passportDetails: PrePaymentStepConfig;
   };
+
+  // Pre-payment flow options
+  /** Skip the processing-options step (flat-fee services). Defaults to false. */
+  skipProcessingOptions?: boolean;
 
   // Post-payment form steps (after payment)
   steps: StepConfig[];
@@ -233,8 +238,9 @@ export const US_ESTA_CONFIG: ServiceConfig = {
   ],
 
   validity: {
-    years: 2,
+    duration: "2 years",
     stays: "90 days per visit",
+    multipleEntry: true,
   },
 
   processing: {
@@ -596,8 +602,9 @@ export const UK_ETA_CONFIG: ServiceConfig = {
   ],
 
   validity: {
-    years: 2,
+    duration: "2 years",
     stays: "180 days per visit",
+    multipleEntry: true,
   },
 
   processing: {
@@ -806,8 +813,9 @@ export const CANADA_ETA_CONFIG: ServiceConfig = {
   ],
 
   validity: {
-    years: 5,
+    duration: "5 years",
     stays: "6 months per visit",
+    multipleEntry: true,
   },
 
   processing: {
@@ -854,7 +862,8 @@ export const CANADA_ETA_CONFIG: ServiceConfig = {
       type: StepType.PERSONAL,
       component: "CanadaETAPersonalStep",
       title: "Personal Information",
-      description: "Provide your personal details as they appear on your passport",
+      description:
+        "Provide your personal details as they appear on your passport",
       fields: [
         {
           label: "Full Name",
@@ -941,12 +950,395 @@ export const CANADA_ETA_CONFIG: ServiceConfig = {
 };
 
 // ============================================
+// Thailand TDAC Configuration
+// ============================================
+export const THAILAND_TDAC_CONFIG: ServiceConfig = {
+  type: ServiceType.THAILAND_TDAC,
+  slug: "thailand-tdac",
+  name: "Thailand Digital Arrival Card",
+  destination: "thailand",
+  destinationCode: "TH",
+
+  // All non-Thai nationals are required to complete TDAC
+  eligibleNationalities: [
+    "AD",
+    "AE",
+    "AF",
+    "AG",
+    "AL",
+    "AM",
+    "AO",
+    "AR",
+    "AT",
+    "AU",
+    "AZ",
+    "BA",
+    "BB",
+    "BD",
+    "BE",
+    "BF",
+    "BG",
+    "BH",
+    "BI",
+    "BJ",
+    "BN",
+    "BO",
+    "BR",
+    "BS",
+    "BT",
+    "BW",
+    "BY",
+    "BZ",
+    "CA",
+    "CD",
+    "CF",
+    "CG",
+    "CH",
+    "CI",
+    "CL",
+    "CM",
+    "CN",
+    "CO",
+    "CR",
+    "CU",
+    "CV",
+    "CY",
+    "CZ",
+    "DE",
+    "DJ",
+    "DK",
+    "DM",
+    "DO",
+    "DZ",
+    "EC",
+    "EE",
+    "EG",
+    "ER",
+    "ES",
+    "ET",
+    "FI",
+    "FJ",
+    "FM",
+    "FR",
+    "GA",
+    "GB",
+    "GD",
+    "GE",
+    "GH",
+    "GM",
+    "GN",
+    "GQ",
+    "GR",
+    "GT",
+    "GW",
+    "GY",
+    "HK",
+    "HN",
+    "HR",
+    "HT",
+    "HU",
+    "ID",
+    "IE",
+    "IL",
+    "IN",
+    "IQ",
+    "IR",
+    "IS",
+    "IT",
+    "JM",
+    "JO",
+    "JP",
+    "KE",
+    "KG",
+    "KH",
+    "KI",
+    "KM",
+    "KN",
+    "KP",
+    "KR",
+    "KW",
+    "KZ",
+    "LA",
+    "LB",
+    "LC",
+    "LI",
+    "LK",
+    "LR",
+    "LS",
+    "LT",
+    "LU",
+    "LV",
+    "LY",
+    "MA",
+    "MC",
+    "MD",
+    "ME",
+    "MG",
+    "MH",
+    "MK",
+    "ML",
+    "MM",
+    "MN",
+    "MO",
+    "MR",
+    "MT",
+    "MU",
+    "MV",
+    "MW",
+    "MX",
+    "MY",
+    "MZ",
+    "NA",
+    "NE",
+    "NG",
+    "NI",
+    "NL",
+    "NO",
+    "NP",
+    "NR",
+    "NZ",
+    "OM",
+    "PA",
+    "PE",
+    "PG",
+    "PH",
+    "PK",
+    "PL",
+    "PT",
+    "PW",
+    "PY",
+    "QA",
+    "RO",
+    "RS",
+    "RU",
+    "RW",
+    "SA",
+    "SB",
+    "SC",
+    "SD",
+    "SE",
+    "SG",
+    "SI",
+    "SK",
+    "SL",
+    "SM",
+    "SN",
+    "SO",
+    "SR",
+    "SS",
+    "ST",
+    "SV",
+    "SY",
+    "SZ",
+    "TD",
+    "TG",
+    "TJ",
+    "TL",
+    "TM",
+    "TN",
+    "TO",
+    "TR",
+    "TT",
+    "TV",
+    "TW",
+    "TZ",
+    "UA",
+    "UG",
+    "US",
+    "UY",
+    "UZ",
+    "VA",
+    "VC",
+    "VE",
+    "VN",
+    "VU",
+    "WS",
+    "YE",
+    "ZA",
+    "ZM",
+    "ZW",
+  ],
+
+  pricing: {
+    government: 0, 
+    denialProtection: 9.99,
+    currency: "USD",
+  },
+
+  // Flat-fee model — single tier. Can be expanded for AB testing later.
+  processingTiers: [
+    {
+      type: ProcessingTierType.STANDARD,
+      label: "Standard",
+      description: "Same-day processing",
+      processingTime: 1,
+      serviceFee: 4.99,
+      isDefault: true,
+    },
+  ],
+
+  // Skip the processing-options step since there's only one tier (flat fee)
+  skipProcessingOptions: true,
+
+  validity: {
+    duration: "30 days after arrival",
+    stays: "30 days per entry",
+    multipleEntry: false,
+  },
+
+  processing: {
+    standard: "Same day",
+  },
+
+  meta: {
+    title: "Thailand TDAC Application | Digital Arrival Card Online",
+    description:
+      "Apply for your Thailand Digital Arrival Card (TDAC) online. Fast, hassle-free processing with expert review and 24/7 support.",
+    keywords: [
+      "thailand tdac",
+      "thailand digital arrival card",
+      "tdac application",
+      "thailand arrival card",
+      "thailand travel",
+      "tdac online",
+    ],
+  },
+
+  prePaymentSteps: {
+    tripDetails: {
+      title: "Start Application for your Thailand Digital Arrival Card",
+      description:
+        "The Thailand Digital Arrival Card (TDAC) is mandatory for {nationality} passport holders planning to enter {destination}",
+    },
+    personalDetails: {
+      title: "Your personal details",
+      description: "Enter the details as they appear on your passport.",
+      emailHelperText:
+        "Your completed Thailand TDAC will be sent to this email address.",
+    },
+    passportDetails: {
+      title: "Passport details",
+      description: "Enter your passport information.",
+    },
+  },
+
+  steps: [
+    {
+      type: StepType.PERSONAL,
+      component: "TDACPersonalStep",
+      title: "Personal Information",
+      description:
+        "Provide your personal details as they appear on your passport",
+      fields: [
+        {
+          label: "Full Name",
+          concat: ["firstName", "middleName", "lastName"],
+          required: ["firstName", "lastName"],
+        },
+        {
+          label: "Date of Birth",
+          date: { day: "birthDay", month: "birthMonth", year: "birthYear" },
+        },
+        {
+          label: "Gender",
+          map: {
+            key: "gender",
+            values: { M: "Male", F: "Female", X: "Other" },
+          },
+        },
+        { label: "Occupation", key: "occupation" },
+        { label: "Country of Residence", key: "countryOfResidence" },
+        { label: "Phone Number", key: "phoneNumber" },
+        { label: "Email", key: "email", required: true },
+      ],
+    },
+    {
+      type: StepType.PASSPORT,
+      component: "TDACPassportStep",
+      title: "Passport Information",
+      description: "Enter your passport details and upload required documents",
+      fields: [
+        { label: "Passport Number", key: "passportNumber", required: true },
+        {
+          label: "Expiry Date",
+          date: {
+            day: "passportExpiryDay",
+            month: "passportExpiryMonth",
+            year: "passportExpiryYear",
+          },
+        },
+        { label: "Nationality", key: "nationalityOnPassport", required: true },
+        { label: "Country of Residence", key: "countryOfResidence" },
+        { key: "passportUrl", required: true },
+      ],
+    },
+    {
+      type: StepType.TRAVEL,
+      component: "TDACTravelStep",
+      title: "Thailand Travel Details",
+      description: "Tell us about your travel plans to Thailand",
+      fields: [
+        {
+          label: "Purpose of Visit",
+          key: "purposeOfVisit",
+          source: "application",
+          required: true,
+        },
+        { label: "Arrival Date", key: "arrivalDate", source: "application" },
+        {
+          label: "Mode of Travel",
+          key: "modeOfTravel",
+          source: "application",
+        },
+        {
+          label: "Flight / Vehicle Number",
+          key: "flightVesselNumber",
+          source: "application",
+        },
+        {
+          label: "Departure Date",
+          key: "departureDate",
+          source: "application",
+        },
+        {
+          label: "Accommodation Address",
+          concat: [
+            "accommodationName",
+            "accommodationAddress",
+            "accommodationProvince",
+          ],
+          separator: ", ",
+          source: "application",
+        },
+      ],
+    },
+    {
+      type: StepType.REVIEW,
+      component: "SharedReviewStep",
+      title: "Review & Submit",
+      description: "Review all information before submission",
+      neverComplete: true,
+    },
+  ],
+
+  includedServices: [
+    "Expert form review & validation",
+    "Real-time application tracking",
+    "Email & SMS notifications",
+    "24/7 multilingual support",
+    "Error-free submission guarantee",
+    "Dedicated support agent",
+  ],
+};
+
+// ============================================
 // Service Registry
 // ============================================
 export const SERVICES: Record<ServiceType, ServiceConfig> = {
   [ServiceType.US_ESTA]: US_ESTA_CONFIG,
   [ServiceType.UK_ETA]: UK_ETA_CONFIG,
   [ServiceType.CANADA_ETA]: CANADA_ETA_CONFIG,
+  [ServiceType.THAILAND_TDAC]: THAILAND_TDAC_CONFIG,
 };
 
 // ============================================
@@ -975,6 +1367,7 @@ export function getServiceByDestination(
     "united-states": ServiceType.US_ESTA,
     "united-kingdom": ServiceType.UK_ETA,
     canada: ServiceType.CANADA_ETA,
+    thailand: ServiceType.THAILAND_TDAC,
   };
 
   const serviceType = destinationMap[destination.toLowerCase()];

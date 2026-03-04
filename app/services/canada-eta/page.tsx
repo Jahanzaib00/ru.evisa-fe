@@ -129,7 +129,7 @@ export default function CanadaETAServicePage() {
                   <div className="flex items-center justify-between py-3 border-b border-gray-100">
                     <span className="text-gray-700 font-medium">Validity</span>
                     <span className="font-bold text-gray-900">
-                      {CANADA_ETA_CONFIG.validity.years} Years
+                      {CANADA_ETA_CONFIG.validity.duration}
                     </span>
                   </div>
                   <div className="flex items-center justify-between py-3 border-b border-gray-100">
@@ -412,7 +412,7 @@ export default function CanadaETAServicePage() {
                 },
                 {
                   q: "How long is my Canada eTA valid?",
-                  a: `Your eTA is valid for ${CANADA_ETA_CONFIG.validity.years} years from the date of issue, or until your passport expires — whichever comes first. You can make multiple trips during this period.`,
+                  a: `Your eTA is valid for ${CANADA_ETA_CONFIG.validity.duration} from the date of issue, or until your passport expires — whichever comes first. You can make multiple trips during this period.`,
                 },
                 {
                   q: "Do I need a Canada eTA for land or sea entry?",

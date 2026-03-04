@@ -1397,6 +1397,8 @@ export function getCountriesByService(serviceType: ServiceType): Country[] {
       return UK_ETA_COUNTRIES;
     case ServiceType.CANADA_ETA:
       return CANADA_ETA_COUNTRIES;
+    case ServiceType.THAILAND_TDAC:
+      return []; // TDAC applies to all non-Thai nationals — country pages can be added later
     default:
       return [];
   }
