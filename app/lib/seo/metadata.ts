@@ -12,14 +12,13 @@ const SITE_NAME = "eVisa Portal";
 const SITE_TAGLINE = "ESTA, UK ETA & eVisa Services";
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.online";
-const DEFAULT_IMAGE = `${SITE_URL}/images/og-image.jpg`;
 const TWITTER_HANDLE = "@eVisaPortal"; // Update with actual handle
 
 export interface SEOConfig {
   title: string;
   description: string;
   keywords?: string[];
-canonicalUrl?: string;
+  canonicalUrl?: string;
   ogImage?: string;
   ogType?: "website" | "article";
   publishedTime?: string;
@@ -39,7 +38,6 @@ export function generateMetadata(config: SEOConfig): Metadata {
     description,
     keywords = [],
     canonicalUrl,
-    ogImage = DEFAULT_IMAGE,
     ogType = "website",
     publishedTime,
     modifiedTime,
@@ -90,14 +88,6 @@ export function generateMetadata(config: SEOConfig): Metadata {
       title: fullTitle,
       description,
       siteName: SITE_NAME,
-      images: [
-        {
-          url: ogImage,
-          width: 1200,
-          height: 630,
-          alt: title,
-        },
-      ],
       ...(publishedTime && { publishedTime }),
       ...(modifiedTime && { modifiedTime }),
     },
@@ -107,7 +97,6 @@ export function generateMetadata(config: SEOConfig): Metadata {
       card: "summary_large_image",
       title: fullTitle,
       description,
-      images: [ogImage],
       creator: TWITTER_HANDLE,
       site: TWITTER_HANDLE,
     },
@@ -167,7 +156,7 @@ export function generateGuideMetadata(
   guideDescription: string,
   guideSlug: string,
   destination: string = "united-states",
-  keywords: string[] = []
+  keywords: string[] = [],
 ): Metadata {
   return generateMetadata({
     title: guideTitle,
@@ -197,14 +186,18 @@ export function generateBlogMetadata(
   updatedAt: string,
   author: string,
   keywords: string[] = [],
-  featuredImage?: string
+  featuredImage?: string,
 ): Metadata {
   return generateMetadata({
     title,
     description,
-    keywords: ["travel authorization", "visa guide", "travel requirements", ...keywords],
+    keywords: [
+      "travel authorization",
+      "visa guide",
+      "travel requirements",
+      ...keywords,
+    ],
     canonicalUrl: `${SITE_URL}/blog/${slug}`,
-    ogImage: featuredImage || DEFAULT_IMAGE,
     ogType: "article",
     publishedTime: createdAt,
     modifiedTime: updatedAt,
@@ -248,7 +241,7 @@ const SERVICE_TEMPLATES: Record<string, ServiceTemplate> = {
  */
 export function generateCountryPageMetadata(
   country: Country,
-  service: ServiceConfig
+  service: ServiceConfig,
 ): Metadata {
   const template = SERVICE_TEMPLATES[service.type];
 
