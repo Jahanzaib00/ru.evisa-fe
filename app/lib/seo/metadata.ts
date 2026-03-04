@@ -38,7 +38,6 @@ export function generateMetadata(config: SEOConfig): Metadata {
     description,
     keywords = [],
     canonicalUrl,
-    ogImage,
     ogType = "website",
     publishedTime,
     modifiedTime,
@@ -49,7 +48,6 @@ export function generateMetadata(config: SEOConfig): Metadata {
 
   const fullTitle = `${title}`;
   const canonical = canonicalUrl || SITE_URL;
-  const imageUrl = ogImage || `${SITE_URL}/images/og-image.jpg`;
 
   // Base metadata
   const metadata: Metadata = {
@@ -90,26 +88,17 @@ export function generateMetadata(config: SEOConfig): Metadata {
       title: fullTitle,
       description,
       siteName: SITE_NAME,
-      images: [
-        {
-          url: imageUrl,
-          width: 1200,
-          height: 630,
-          alt: fullTitle,
-        },
-      ],
       ...(publishedTime && { publishedTime }),
       ...(modifiedTime && { modifiedTime }),
     },
 
     // Twitter Card
     twitter: {
-      card: "summary_large_image",
+      card: "summary",
       title: fullTitle,
       description,
       creator: TWITTER_HANDLE,
       site: TWITTER_HANDLE,
-      images: [imageUrl],
     },
 
     // Additional meta tags
