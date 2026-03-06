@@ -9,8 +9,8 @@ import {
   COMPANY_ADDRESS,
   COMPANY_LEGAL_NAME,
   COMPANY_NAME,
-  COMPANY_ORG_NUMBER,
-  COMPANY_JURISDICTION,
+  // COMPANY_ORG_NUMBER,
+  // COMPANY_JURISDICTION,
   EXTERNAL_LINKS,
 } from "@/app/lib/constants";
 
@@ -52,12 +52,11 @@ export default function AboutPage() {
               <div className="prose prose-lg text-gray space-y-4">
                 <p>
                   {COMPANY_NAME} is a proprietary online platform and commercial
-                  project of {COMPANY_LEGAL_NAME}, a company incorporated under
-                  the laws of {COMPANY_JURISDICTION}. We are a specialized
-                  travel authorization assistance service that helps travelers
-                  navigate electronic travel authorization systems worldwide,
-                  including the U.S. Electronic System for Travel Authorization
-                  (ESTA) and the UK Electronic Travel Authorization (ETA).
+                  project of {COMPANY_LEGAL_NAME}. We are a specialized travel
+                  authorization assistance service that helps travelers navigate
+                  electronic travel authorization systems worldwide, including
+                  the U.S. Electronic System for Travel Authorization (ESTA) and
+                  the UK Electronic Travel Authorization (ETA).
                 </p>
                 <p>
                   Since our founding, we&apos;ve assisted thousands of travelers
@@ -320,15 +319,15 @@ export default function AboutPage() {
 
               <div className="space-y-6">
                 <div className="bg-gray-50 rounded-lg p-6">
-                  <h3 className="text-lg font-bold text-gray-dark mb-4">
-                    Company Details
-                  </h3>
+                  {/* <h3 className="text-lg font-bold text-gray-dark mb-4">
+                    Entrepreneur Details
+                  </h3> */}
                   <div className="space-y-2 text-gray">
                     <p>
                       <strong className="text-gray-dark">Legal Name:</strong>{" "}
                       {COMPANY_LEGAL_NAME}
                     </p>
-                    <p>
+                    {/* <p>
                       <strong className="text-gray-dark">
                         Organization Number:
                       </strong>{" "}
@@ -337,18 +336,18 @@ export default function AboutPage() {
                     <p>
                       <strong className="text-gray-dark">Jurisdiction:</strong>{" "}
                       Incorporated under the laws of {COMPANY_JURISDICTION}
-                    </p>
-                    <p>
+                    </p> */}
+                    {/* <p>
                       <strong className="text-gray-dark">Trade Name:</strong>{" "}
                       {COMPANY_NAME} (www.visaportal.online)
-                    </p>
+                    </p> */}
                   </div>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-gray-50 rounded-lg p-6">
                     <h3 className="text-lg font-bold text-gray-dark mb-4">
-                      Registered Office
+                      Mailing Address
                     </h3>
                     <address className="not-italic text-gray space-y-1">
                       <p>{COMPANY_ADDRESS.line1}</p>
@@ -368,6 +367,10 @@ export default function AboutPage() {
                       <p>
                         <strong className="text-gray-dark">Email:</strong>{" "}
                         {CONTACT_EMAIL}
+                      </p>
+                      <p>
+                        <strong className="text-gray-dark">Phone:</strong>{" "}
+                        {CONTACT_PHONE}
                       </p>
                       <p>
                         <strong className="text-gray-dark">

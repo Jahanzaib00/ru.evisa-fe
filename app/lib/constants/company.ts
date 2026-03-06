@@ -10,21 +10,21 @@ export const PRIVACY_EMAIL = "visaportal.online@gmail.com";
 
 // Company Information
 export const COMPANY_NAME = "eVisa Portal";
-export const COMPANY_LEGAL_NAME = "NSD Consulting AB";
+export const COMPANY_LEGAL_NAME = "Muhammad Jahanzaib Khursheed";
 export const COMPANY_TRADE_NAME = "www.visaportal.online";
-export const COMPANY_ORG_NUMBER = "559155-7607";
-export const COMPANY_JURISDICTION = "Sweden";
+// export const COMPANY_ORG_NUMBER = "559155-7607";
+// export const COMPANY_JURISDICTION = "Sweden";
 
 // Contact Details
 export const CONTACT_PHONE = "+92 3096809637";
 
 // Company Address (Registered Office)
 export const COMPANY_ADDRESS = {
-  line1: "MYSTÄNGEN 10",
+  line1: "23 B, Block Y",
   line2: "",
-  city: "Hisings Kärra",
-  postalCode: "425 65",
-  country: "Sweden",
+  city: "Bahawalpur",
+  postalCode: "63100",
+  country: "Pakistan",
 } as const;
 
 // External Links
