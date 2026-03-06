@@ -12,6 +12,7 @@ import {
   // COMPANY_ORG_NUMBER,
   // COMPANY_JURISDICTION,
   EXTERNAL_LINKS,
+  LEGAL_EMAIL,
 } from "@/app/lib/constants";
 
 export const metadata: Metadata = {
@@ -366,7 +367,7 @@ export default function AboutPage() {
                     <address className="not-italic text-gray space-y-2">
                       <p>
                         <strong className="text-gray-dark">Email:</strong>{" "}
-                        {CONTACT_EMAIL}
+                        {LEGAL_EMAIL}
                       </p>
                       <p>
                         <strong className="text-gray-dark">Phone:</strong>{" "}

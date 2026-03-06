@@ -5,7 +5,7 @@
 // Contact Emails
 export const CONTACT_EMAIL = "visaportal.online@gmail.com";
 export const SUPPORT_EMAIL = "visaportal.online@gmail.com";
-export const LEGAL_EMAIL = "visaportal.online@gmail.com";
+export const LEGAL_EMAIL = "jahanzaibkhursheed2002@gmail.com";
 export const PRIVACY_EMAIL = "visaportal.online@gmail.com";
 
 // Company Information
