@@ -7,8 +7,8 @@ import {
   PRIVACY_EMAIL,
   COMPANY_NAME,
   COMPANY_LEGAL_NAME,
-  COMPANY_ORG_NUMBER,
-  COMPANY_JURISDICTION,
+  // COMPANY_ORG_NUMBER,
+  // COMPANY_JURISDICTION,
   COMPANY_ADDRESS,
 } from "@/app/lib/constants";
 
@@ -49,13 +49,13 @@ export default function PrivacyPage() {
                 your personal information when you use our travel authorization
                 application assistance services.
               </p>
-              <p className="text-gray mb-2">
+              {/* <p className="text-gray mb-2">
                 <strong>Data Controller:</strong> {COMPANY_LEGAL_NAME}, a
                 company incorporated under the laws of {COMPANY_JURISDICTION}{" "}
                 (Organization Number: {COMPANY_ORG_NUMBER}), operating{" "}
                 {COMPANY_NAME} (www.visaportal.online), is the data controller
                 responsible for your personal information.
-              </p>
+              </p> */}
               <p className="text-gray mb-0">
                 By using our service, you consent to the data practices
                 described in this policy. If you do not agree with this policy,
@@ -513,12 +513,12 @@ export default function PrivacyPage() {
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
                 9. International Data Transfers
               </h2>
-              <p className="text-gray mb-4">
+              {/* <p className="text-gray mb-4">
                 As {COMPANY_NAME} is operated by {COMPANY_LEGAL_NAME}, a company
                 based in {COMPANY_JURISDICTION}, and we process travel
                 authorizations for multiple countries, your information may be
                 transferred internationally.
-              </p>
+              </p> */}
 
               <h3 className="text-xl font-bold text-gray-dark mb-3">
                 9.1 Transfers Within the EU/EEA
@@ -672,12 +672,12 @@ export default function PrivacyPage() {
                 <p className="text-gray mb-2">
                   <strong>Legal Name:</strong> {COMPANY_LEGAL_NAME}
                 </p>
-                <p className="text-gray mb-2">
+                {/* <p className="text-gray mb-2">
                   <strong>Organization Number:</strong> {COMPANY_ORG_NUMBER}
                 </p>
                 <p className="text-gray mb-2">
                   <strong>Jurisdiction:</strong> {COMPANY_JURISDICTION}
-                </p>
+                </p> */}
                 <p className="text-gray mb-2">
                   <strong>Registered Office:</strong> {COMPANY_ADDRESS.line1},{" "}
                   {COMPANY_ADDRESS.postalCode} {COMPANY_ADDRESS.city},{" "}

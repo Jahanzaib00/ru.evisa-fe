@@ -7,8 +7,8 @@ import {
   SUPPORT_EMAIL,
   COMPANY_NAME,
   COMPANY_LEGAL_NAME,
-  COMPANY_ORG_NUMBER,
-  COMPANY_JURISDICTION,
+  // COMPANY_ORG_NUMBER,
+  // COMPANY_JURISDICTION,
   COMPANY_ADDRESS,
 } from "@/app/lib/constants";
 
@@ -49,12 +49,12 @@ export default function TermsPage() {
                 agree to be bound by these terms. If you do not agree with any
                 part of these terms, you should not use our service.
               </p>
-              <p className="text-gray mb-0">
+              {/* <p className="text-gray mb-0">
                 <strong>Legal Entity:</strong> {COMPANY_NAME} is operated by{" "}
                 {COMPANY_LEGAL_NAME}, a company incorporated under the laws of{" "}
                 {COMPANY_JURISDICTION} (Organization Number: {COMPANY_ORG_NUMBER}
                 ).
-              </p>
+              </p> */}
             </div>
 
             {/* Section 1 */}
@@ -415,14 +415,14 @@ export default function TermsPage() {
               <h3 className="text-xl font-bold text-gray-dark mb-3">
                 10.1 Governing Law
               </h3>
-              <p className="text-gray mb-4">
+              {/* <p className="text-gray mb-4">
                 These Terms of Service are governed by and construed in
                 accordance with the laws of {COMPANY_JURISDICTION}. As{" "}
                 {COMPANY_NAME} is operated by {COMPANY_LEGAL_NAME}, a company
                 incorporated in {COMPANY_JURISDICTION} (Organization Number:{" "}
                 {COMPANY_ORG_NUMBER}), Swedish law applies to the contractual
                 relationship between you and {COMPANY_LEGAL_NAME}.
-              </p>
+              </p> */}
 
               <h3 className="text-xl font-bold text-gray-dark mb-3">
                 10.2 Dispute Resolution
@@ -505,12 +505,12 @@ export default function TermsPage() {
                 <p className="text-gray mb-2">
                   <strong>Legal Name:</strong> {COMPANY_LEGAL_NAME}
                 </p>
-                <p className="text-gray mb-2">
+                {/* <p className="text-gray mb-2">
                   <strong>Organization Number:</strong> {COMPANY_ORG_NUMBER}
                 </p>
                 <p className="text-gray mb-2">
                   <strong>Jurisdiction:</strong> {COMPANY_JURISDICTION}
-                </p>
+                </p> */}
                 <p className="text-gray mb-2">
                   <strong>Registered Office:</strong> {COMPANY_ADDRESS.line1},{" "}
                   {COMPANY_ADDRESS.postalCode} {COMPANY_ADDRESS.city},{" "}
