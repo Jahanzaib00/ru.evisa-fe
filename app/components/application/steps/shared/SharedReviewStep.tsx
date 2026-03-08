@@ -97,6 +97,7 @@ export default function SharedReviewStep({
 
   const [currentTravelerId, setCurrentTravelerId] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -121,7 +122,7 @@ export default function SharedReviewStep({
       setIsSubmitting(true);
       setSubmitError(null);
       await applicationsService.submit(applicationId);
-      onNext();
+      setIsSubmitted(true);
     } catch (err: any) {
       setSubmitError(
         err.response?.data?.message ||
@@ -134,6 +135,34 @@ export default function SharedReviewStep({
   };
 
   const currentTraveler = travelers.find((t) => t.id === currentTravelerId);
+  const shortRef = applicationId.split("-")[0].toUpperCase();
+
+  if (isSubmitted) {
+    return (
+      <div className="max-w-2xl mx-auto text-center py-12">
+        <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+          <svg className="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+          Application Submitted Successfully
+        </h1>
+        <p className="text-gray-600 mb-2">
+          Your application is being processed. You will receive a confirmation email shortly.
+        </p>
+        <p className="text-sm text-gray-500 mb-8">
+          Reference: <span className="font-mono font-semibold text-gray-700">{shortRef}</span>
+        </p>
+        <Button
+          onClick={() => router.push(`/track/${applicationId}`)}
+          className="min-w-[200px]"
+        >
+          Track Application
+        </Button>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-6xl mx-auto">
