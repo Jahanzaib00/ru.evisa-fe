@@ -34,7 +34,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <head>
         {/* Google Analytics - Add your GA4 Measurement ID */}
-        <script
+        {/* <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-L8ZTZHMWRZ"
         ></script>
@@ -47,9 +47,9 @@ export default function RootLayout({
               gtag('config', 'G-L8ZTZHMWRZ');
             `,
           }}
-        />
+        /> */}
         {/* Yandex.Metrika */}
-        <script
+        {/* <script
           dangerouslySetInnerHTML={{
             __html: `
               (function(m,e,t,r,i,k,a){
@@ -70,7 +70,7 @@ export default function RootLayout({
               alt=""
             />
           </div>
-        </noscript>
+        </noscript> */}
       </head>
       <body className="antialiased">
         <Providers>{children}</Providers>

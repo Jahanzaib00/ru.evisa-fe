@@ -18,6 +18,10 @@ import UKETAPersonalStep from "./steps/uk-eta/UKETAPersonalStep";
 import UKETAPassportStep from "./steps/uk-eta/UKETAPassportStep";
 import UKETAEmploymentStep from "./steps/uk-eta/UKETAEmploymentStep";
 
+// Import all TDAC step components
+import TDACTripDetailsStep from "./steps/tdac/TDACTripDetailsStep";
+import TDACPersonalDetailsStep from "./steps/tdac/TDACPersonalDetailsStep";
+
 // Component registry: maps component names (from service config) to actual components
 const COMPONENT_REGISTRY: Record<
   string,
@@ -38,6 +42,10 @@ const COMPONENT_REGISTRY: Record<
   UKETAPersonalStep,
   UKETAPassportStep,
   UKETAEmploymentStep,
+
+  // TDAC components
+  TDACTripDetailsStep,
+  TDACPersonalDetailsStep,
 };
 
 export interface StepComponentProps {

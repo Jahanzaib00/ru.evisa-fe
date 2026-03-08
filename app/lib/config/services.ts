@@ -1224,91 +1224,47 @@ export const THAILAND_TDAC_CONFIG: ServiceConfig = {
 
   steps: [
     {
-      type: StepType.PERSONAL,
-      component: "TDACPersonalStep",
-      title: "Personal Information",
-      description:
-        "Provide your personal details as they appear on your passport",
+      type: StepType.TRAVEL,
+      component: "TDACTripDetailsStep",
+      title: "Trip details",
+      description: "General details",
       fields: [
+        { label: "Phone Number", key: "phoneNumber", required: true },
+        { label: "Arrival Date", key: "arrivalDate", source: "application", required: true },
         {
-          label: "Full Name",
-          concat: ["firstName", "middleName", "lastName"],
-          required: ["firstName", "lastName"],
+          label: "Flight Number",
+          key: "flightVesselNumber",
+          source: "application",
         },
-        {
-          label: "Date of Birth",
-          date: { day: "birthDay", month: "birthMonth", year: "birthYear" },
-        },
+      ],
+    },
+    {
+      type: StepType.PERSONAL,
+      component: "TDACPersonalDetailsStep",
+      title: "Personal details",
+      description: "Basic personal information",
+      fields: [
         {
           label: "Gender",
           map: {
             key: "gender",
-            values: { M: "Male", F: "Female", X: "Other" },
+            values: { M: "Male", F: "Female" },
           },
-        },
-        { label: "Occupation", key: "occupation" },
-        { label: "Country of Residence", key: "countryOfResidence" },
-        { label: "Phone Number", key: "phoneNumber" },
-        { label: "Email", key: "email", required: true },
-      ],
-    },
-    {
-      type: StepType.PASSPORT,
-      component: "TDACPassportStep",
-      title: "Passport Information",
-      description: "Enter your passport details and upload required documents",
-      fields: [
-        { label: "Passport Number", key: "passportNumber", required: true },
-        {
-          label: "Expiry Date",
-          date: {
-            day: "passportExpiryDay",
-            month: "passportExpiryMonth",
-            year: "passportExpiryYear",
-          },
-        },
-        { label: "Nationality", key: "nationalityOnPassport", required: true },
-        { label: "Country of Residence", key: "countryOfResidence" },
-        { key: "passportUrl", required: true },
-      ],
-    },
-    {
-      type: StepType.TRAVEL,
-      component: "TDACTravelStep",
-      title: "Thailand Travel Details",
-      description: "Tell us about your travel plans to Thailand",
-      fields: [
-        {
-          label: "Purpose of Visit",
-          key: "purposeOfVisit",
-          source: "application",
           required: true,
         },
-        { label: "Arrival Date", key: "arrivalDate", source: "application" },
+        { label: "Country of Residence", key: "countryOfResidence", required: true },
         {
-          label: "Mode of Travel",
-          key: "modeOfTravel",
-          source: "application",
-        },
-        {
-          label: "Flight / Vehicle Number",
-          key: "flightVesselNumber",
-          source: "application",
-        },
-        {
-          label: "Departure Date",
-          key: "departureDate",
-          source: "application",
-        },
-        {
-          label: "Accommodation Address",
-          concat: [
-            "accommodationName",
-            "accommodationAddress",
-            "accommodationProvince",
-          ],
-          separator: ", ",
-          source: "application",
+          label: "Employment Status",
+          map: {
+            key: "jobTitle",
+            values: {
+              EMPLOYED: "Employed",
+              RETIRED: "Retired",
+              STUDENT: "Student",
+              UNEMPLOYED: "Unemployed",
+            },
+          },
+          required: true,
         },
       ],
     },

@@ -99,6 +99,7 @@ interface Application {
   arrivalDate?: string;
   flightVesselNumber?: string;
   purposeOfVisit?: string;
+  serviceExtras?: Record<string, any>;
   travelers?: Traveler[];
 }
 

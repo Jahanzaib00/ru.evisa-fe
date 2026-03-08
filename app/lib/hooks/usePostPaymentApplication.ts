@@ -69,20 +69,26 @@ export function usePostPaymentApplication(): UsePostPaymentApplicationReturn {
           payload
         );
 
-        // DON'T replace entire application - merge the updated data to preserve order
+        // Merge updated data back into store, preserving traveler order
+        let mergedApplication = { ...application };
+
+        // Merge application-level fields (exclude travelers to handle separately)
+        if (applicationData) {
+          const { travelers: _, ...appFields } = updated;
+          mergedApplication = { ...mergedApplication, ...appFields };
+        }
+
+        // Merge traveler-level fields
         if (travelerData && travelerData.id && application.travelers) {
-          // Update only the specific traveler
           const updatedTraveler = updated.travelers?.find((ut: any) => ut.id === travelerData.id);
-          const updatedTravelers = application.travelers.map((t: any) =>
+          mergedApplication.travelers = application.travelers.map((t: any) =>
             t.id === travelerData.id && updatedTraveler
               ? { ...t, ...updatedTraveler }
               : t
           );
-          setApplication({ ...application, travelers: updatedTravelers });
-        } else if (applicationData) {
-          // Update application-level data only
-          setApplication({ ...application, ...updated });
         }
+
+        setApplication(mergedApplication);
 
         setIsLoading(false);
         return true;
