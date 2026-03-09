@@ -31,7 +31,7 @@ const DESTINATION_SLUG_MAP: Record<string, string> = {
 export default function Hero() {
   const router = useRouter();
   const { nationality, setNationality } = useApplicationStore();
-  const [destinationCode, setDestinationCode] = useState("US");
+  const [destinationCode, setDestinationCode] = useState("TH");
 
   useNationalityAutoSelect(nationality, setNationality);
 
