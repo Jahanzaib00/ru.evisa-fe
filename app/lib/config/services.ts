@@ -1172,7 +1172,7 @@ export const THAILAND_TDAC_CONFIG: ServiceConfig = {
       label: "Standard",
       description: "1-hour processing",
       processingTime: 1,
-      serviceFee: 9.99,
+      serviceFee: 9.95,
       isDefault: true,
     },
   ],

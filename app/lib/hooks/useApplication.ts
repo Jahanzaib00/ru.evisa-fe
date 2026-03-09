@@ -59,7 +59,9 @@ export function useApplication(): UseApplicationReturn {
    * Silently handles invalid states (paid, submitted, etc.) by creating new application
    * Called when user clicks "Start Application" on apply page
    */
-  const createOrGetApplication = async (serviceType: ServiceType): Promise<string | null> => {
+  const createOrGetApplication = async (
+    serviceType: ServiceType,
+  ): Promise<string | null> => {
     setIsLoading(true);
     setError(null);
 
@@ -69,7 +71,9 @@ export function useApplication(): UseApplicationReturn {
 
       // Check if existing application matches the requested serviceType
       if (validation.isValid && validation.applicationId) {
-        const existingApp = await applicationsService.getById(validation.applicationId);
+        const existingApp = await applicationsService.getById(
+          validation.applicationId,
+        );
 
         // Only reuse if serviceType matches
         if (existingApp.serviceType === serviceType) {
@@ -139,7 +143,7 @@ export function useApplication(): UseApplicationReturn {
 
   /**
    * Saves traveler data to the server
-   * Called when user clicks "Save and Continue" on personal/passport details pages
+   * Called when user clicks "Save & Continue" on personal/passport details pages
    * Validates application state before saving
    */
   const saveTravelers = async (data: SaveTravelersData): Promise<boolean> => {
@@ -155,7 +159,7 @@ export function useApplication(): UseApplicationReturn {
       const validation = await validateApplicationState(applicationId);
       if (!validation.isValid) {
         setError(
-          "This application has been completed or is no longer valid. Please start a new application."
+          "This application has been completed or is no longer valid. Please start a new application.",
         );
         setApplicationId(null);
         setApplicationStatus(null);
@@ -191,7 +195,10 @@ export function useApplication(): UseApplicationReturn {
       return true;
     } catch (err: any) {
       logError(err, "Saving travelers");
-      const errorMessage = extractErrorMessage(err, "Failed to save travelers.");
+      const errorMessage = extractErrorMessage(
+        err,
+        "Failed to save travelers.",
+      );
 
       // Check if error is due to application being in wrong state
       if (
@@ -200,7 +207,7 @@ export function useApplication(): UseApplicationReturn {
         errorMessage.toLowerCase().includes("paid")
       ) {
         setError(
-          "This application has been completed. Please start a new application."
+          "This application has been completed. Please start a new application.",
         );
         setApplicationId(null);
         setApplicationStatus(null);

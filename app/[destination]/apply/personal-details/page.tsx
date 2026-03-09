@@ -83,7 +83,7 @@ export default function PersonalDetailsPage({ params }: Props) {
     if (errors.travelers && Array.isArray(errors.travelers)) {
       const firstErrorIndex = errors.travelers.findIndex(
         (travelerError) =>
-          travelerError && Object.keys(travelerError).length > 0
+          travelerError && Object.keys(travelerError).length > 0,
       );
 
       if (firstErrorIndex !== -1) {
@@ -95,10 +95,12 @@ export default function PersonalDetailsPage({ params }: Props) {
   const onSubmit = async (data: any) => {
     // Merge personal fields into existing travelers so passport data is preserved
     // Drive the merge from form data (always has correct length), spread store entry as fallback
-    const mergedTravelers = data.travelers.map((formData: any, index: number) => ({
-      ...(travelers[index] ?? {}),
-      ...formData,
-    }));
+    const mergedTravelers = data.travelers.map(
+      (formData: any, index: number) => ({
+        ...(travelers[index] ?? {}),
+        ...formData,
+      }),
+    );
 
     // Save to store (optimistic update) — preserves passport fields
     updateTravelers(mergedTravelers);
@@ -155,11 +157,11 @@ export default function PersonalDetailsPage({ params }: Props) {
       description="Enter the details as they appear on your passport."
       showSidebar={true}
       showMobileCTA={true}
-      mobileButtonText={isLoading ? "Saving..." : "Save and continue"}
+      mobileButtonText={isLoading ? "Saving..." : "Save & Continue"}
       mobileButtonDisabled={isLoading}
       onMobileButtonClick={handleContinue}
       onSidebarButtonClick={handleContinue}
-      sidebarButtonText={isLoading ? "Saving..." : "Save and continue"}
+      sidebarButtonText={isLoading ? "Saving..." : "Save & Continue"}
       sidebarButtonDisabled={isLoading}
       showPrevious={true}
       onPreviousClick={handlePrevious}

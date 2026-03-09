@@ -119,11 +119,11 @@ export default function ProcessingOptionsPage({ params }: Props) {
       title="Choose your processing time"
       showSidebar={true}
       showMobileCTA={true}
-      mobileButtonText="Save and continue"
+      mobileButtonText="Save & Continue"
       mobileButtonDisabled={!processingTier}
       onMobileButtonClick={handleContinue}
       onSidebarButtonClick={handleContinue}
-      sidebarButtonText="Save and continue"
+      sidebarButtonText="Save & Continue"
       sidebarButtonDisabled={!processingTier}
       showPrevious={true}
       showProcessingFee={true}

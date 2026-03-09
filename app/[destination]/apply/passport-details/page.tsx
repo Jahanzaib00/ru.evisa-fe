@@ -82,7 +82,7 @@ export default function PassportDetailsPage({ params }: Props) {
     if (errors.travelers && Array.isArray(errors.travelers)) {
       const firstErrorIndex = errors.travelers.findIndex(
         (travelerError) =>
-          travelerError && Object.keys(travelerError).length > 0
+          travelerError && Object.keys(travelerError).length > 0,
       );
 
       if (firstErrorIndex !== -1) {
@@ -159,11 +159,11 @@ export default function PassportDetailsPage({ params }: Props) {
       title="Passport details"
       showSidebar={true}
       showMobileCTA={true}
-      mobileButtonText={isLoading ? "Saving..." : "Save and continue"}
+      mobileButtonText={isLoading ? "Saving..." : "Save & Continue"}
       mobileButtonDisabled={isLoading}
       onMobileButtonClick={handleContinue}
       onSidebarButtonClick={handleContinue}
-      sidebarButtonText={isLoading ? "Saving..." : "Save and continue"}
+      sidebarButtonText={isLoading ? "Saving..." : "Save & Continue"}
       sidebarButtonDisabled={isLoading}
       showPrevious={true}
       onPreviousClick={handlePrevious}
@@ -267,7 +267,7 @@ export default function PassportDetailsPage({ params }: Props) {
                         maxLength={20}
                         className="uppercase"
                         {...register(
-                          `travelers.${index}.passportNumber` as const
+                          `travelers.${index}.passportNumber` as const,
                         )}
                         error={
                           errors.travelers?.[index]?.passportNumber

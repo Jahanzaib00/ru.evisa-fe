@@ -38,7 +38,7 @@ export default function ApplicationLayout({
   mobileButtonDisabled = false,
   onMobileButtonClick,
   onSidebarButtonClick,
-  sidebarButtonText = "Save and continue",
+  sidebarButtonText = "Save & Continue",
   sidebarButtonDisabled = false,
   showPrevious = true,
   showPricing = true,
@@ -115,7 +115,7 @@ export default function ApplicationLayout({
             >
               {showTotalAmount
                 ? `${currencySymbol}${getTotalAmount().toFixed(
-                    2
+                    2,
                   )} ${currency.toUpperCase()}`
                 : "Calculated at checkout"}
             </span>

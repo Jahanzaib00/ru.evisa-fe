@@ -23,7 +23,7 @@ interface PricingSidebarProps {
 
 export default function PricingSidebar({
   showButton = true,
-  buttonText = "Save and continue",
+  buttonText = "Save & Continue",
   buttonDisabled = false,
   onButtonClick,
   showPrevious = true,
