@@ -176,6 +176,7 @@ function TripDetailsContent({ destination }: { destination: string }) {
     <ApplicationLayout
       title={title}
       description={description || ""}
+      showProgressBar={false}
       showSidebar={true}
       showMobileCTA={true}
       mobileButtonText="Start Application"
@@ -260,6 +261,9 @@ function TripDetailsContent({ destination }: { destination: string }) {
               <Plus />
             </button>
           </div>
+          <p className="mt-10 text-sm text-gray">
+            Maximum {MAX_APPLICANTS} applicants per application
+          </p>
         </div>
       </div>
     </ApplicationLayout>

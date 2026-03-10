@@ -11,13 +11,12 @@ interface Step {
 }
 
 const BASE_STEPS: Step[] = [
-  { number: 1, label: "Trip details", pathPattern: "/apply" },
-  { number: 2, label: "Your info", pathPattern: "/apply/personal-details" },
-  { number: 3, label: "Passport", pathPattern: "/apply/passport-details" },
+  { number: 1, label: "Your info", pathPattern: "/apply/personal-details" },
+  { number: 2, label: "Passport", pathPattern: "/apply/passport-details" },
 ];
 
 const PROCESSING_STEP: Step = {
-  number: 4,
+  number: 3,
   label: "Processing",
   pathPattern: "/apply/processing-options",
 };
@@ -35,12 +34,12 @@ export default function StepProgress() {
   const steps: Step[] = skipProcessing
     ? [
         ...BASE_STEPS,
-        { number: 4, label: CHECKOUT_LABEL, pathPattern: "/apply/review" },
+        { number: 3, label: CHECKOUT_LABEL, pathPattern: "/apply/review" },
       ]
     : [
         ...BASE_STEPS,
         PROCESSING_STEP,
-        { number: 5, label: CHECKOUT_LABEL, pathPattern: "/apply/review" },
+        { number: 4, label: CHECKOUT_LABEL, pathPattern: "/apply/review" },
       ];
 
   // Extract destination from pathname

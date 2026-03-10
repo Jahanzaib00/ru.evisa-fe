@@ -265,7 +265,7 @@ export const US_ESTA_CONFIG: ServiceConfig = {
 
   prePaymentSteps: {
     tripDetails: {
-      title: "Start Application for your United States ESTA",
+      title: "Apply now for your United States ESTA",
       description:
         "The United States ESTA is mandatory for {nationality} passport holders planning to enter {destination}",
     },
@@ -628,7 +628,7 @@ export const UK_ETA_CONFIG: ServiceConfig = {
 
   prePaymentSteps: {
     tripDetails: {
-      title: "Start Application for your United Kingdom ETA",
+      title: "Apply now for your United Kingdom ETA",
       description:
         "The United Kingdom ETA is mandatory for {nationality} passport holders planning to enter {destination}",
     },
@@ -841,7 +841,7 @@ export const CANADA_ETA_CONFIG: ServiceConfig = {
 
   prePaymentSteps: {
     tripDetails: {
-      title: "Start Application for your Canada eTA",
+      title: "Apply now for your Canada eTA",
       description:
         "The Canada eTA is mandatory for {nationality} passport holders planning to enter {destination}",
     },
@@ -1207,7 +1207,7 @@ export const THAILAND_TDAC_CONFIG: ServiceConfig = {
 
   prePaymentSteps: {
     tripDetails: {
-      title: "Start Application for your Thailand Digital Arrival Card",
+      title: "Apply now for your Thailand Digital Arrival Card",
       description:
         "The Thailand Digital Arrival Card (TDAC) is mandatory for {nationality} passport holders planning to enter {destination}",
     },
@@ -1433,7 +1433,7 @@ export const INDONESIA_EVOA_CONFIG: ServiceConfig = {
 
   prePaymentSteps: {
     tripDetails: {
-      title: "Start Application for your Indonesia eVOA",
+      title: "Apply now for your Indonesia eVOA",
       description:
         "The Indonesia eVOA (Electronic Visa on Arrival) is required for {nationality} passport holders planning to enter {destination}",
     },
@@ -1617,7 +1617,7 @@ export const MALAYSIA_MDAC_CONFIG: ServiceConfig = {
 
   prePaymentSteps: {
     tripDetails: {
-      title: "Start Application for your Malaysia Digital Arrival Card",
+      title: "Apply now for your Malaysia Digital Arrival Card",
       description:
         "The Malaysia Digital Arrival Card (MDAC) is mandatory for {nationality} passport holders planning to enter {destination}",
     },
