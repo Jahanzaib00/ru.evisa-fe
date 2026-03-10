@@ -14,6 +14,7 @@ import { MIN_APPLICANTS, MAX_APPLICANTS } from "@/app/lib/constants";
 import { getServiceByDestination } from "@/app/lib/config/services";
 import { ALL_COUNTRIES } from "@/app/lib/countries";
 import { ServiceType as ApiServiceType } from "@/app/lib/api/types";
+import { useNationalityAutoSelect } from "@/app/hooks/useNationalityAutoSelect";
 
 interface Props {
   params: Promise<{ destination: string }>;
@@ -42,6 +43,7 @@ function TripDetailsContent({ destination }: { destination: string }) {
   } = useApplicationStore();
 
   const { createOrGetApplication, isLoading, error } = useApplication();
+  useNationalityAutoSelect(nationality, setNationality);
   const [isResuming, setIsResuming] = useState(false);
   const [resumeError, setResumeError] = useState<string | null>(null);
 

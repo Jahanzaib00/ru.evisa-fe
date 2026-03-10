@@ -32,10 +32,17 @@ const DESTINATION_SLUG_MAP: Record<string, string> = {
   MY: "malaysia",
 };
 
+// Reverse map: destination slug → country code
+const SLUG_TO_CODE: Record<string, string> = Object.fromEntries(
+  Object.entries(DESTINATION_SLUG_MAP).map(([code, slug]) => [slug, code]),
+);
+
 export default function Hero() {
   const router = useRouter();
-  const { nationality, setNationality } = useApplicationStore();
-  const [destinationCode, setDestinationCode] = useState("TH");
+  const { nationality, destination, setNationality } = useApplicationStore();
+  const [destinationCode, setDestinationCode] = useState(
+    (destination && SLUG_TO_CODE[destination]) || "TH",
+  );
 
   useNationalityAutoSelect(nationality, setNationality);
 
@@ -56,9 +63,9 @@ export default function Hero() {
 
         {/* Subheadline */}
         <p className="text-lg md:text-xl text-gray-700 mb-10 leading-relaxed max-w-2xl mx-auto">
-          Expert assistance with ETAs, ESTAs, and Digital Arrival Cards.
-          <br className="hidden md:block" />
-          Apply online in minutes with guided support and fast processing.
+          Expert assistance with ETAs, ESTAs, and Digital Arrival Cards.{}
+          <br className="hidden md:block" /> Apply online in minutes with guided
+          support and fast processing.
         </p>
 
         {/* Country Selection Form */}
