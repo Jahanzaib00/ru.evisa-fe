@@ -56,7 +56,7 @@ const faqs: FAQItem[] = [
     category: "Pricing & Payment",
     question: "How much does ESTA cost?",
     answer:
-      "Our total fee is $45.00 USD per applicant, which includes the $40 U.S. government fee and our $5 processing fee for application assistance, form review, and 24/7 support. Optional Denial Protection is available for $17.99 per applicant.",
+      "Our total fee is $45.00 USD per applicant, which includes the $40 U.S. government fee and our $5 processing fee for application assistance, form review, and 24/7 support.",
   },
   {
     category: "Pricing & Payment",
@@ -66,15 +66,9 @@ const faqs: FAQItem[] = [
   },
   {
     category: "Pricing & Payment",
-    question: "What is Denial Protection?",
-    answer:
-      "Denial Protection is an optional service for $17.99 per applicant. If your ESTA application is denied and you purchased this protection, we will refund our processing fee ($5) and the denial protection fee ($17.99). Please note that the government fee ($40) is non-refundable under all circumstances as it's paid directly to the U.S. government.",
-  },
-  {
-    category: "Pricing & Payment",
     question: "Can I get a refund?",
     answer:
-      "You can request a refund of our processing fee ($5) before your application is submitted. Once submitted, our processing fee is non-refundable unless you purchased Denial Protection and your application is denied. The government fee ($40) is never refundable as it's paid directly to U.S. Customs and Border Protection.",
+      "You can request a refund of our processing fee before your application is submitted. Once submitted, our processing fee is non-refundable. Government fees are never refundable as they are paid directly to the relevant government authority.",
   },
   {
     category: "After Submission",
@@ -92,7 +86,7 @@ const faqs: FAQItem[] = [
     category: "After Submission",
     question: "What if my ESTA is denied?",
     answer:
-      "If your ESTA is denied, we'll notify you immediately and provide guidance on next steps. You may need to apply for a traditional visa at a U.S. embassy or consulate. If you purchased Denial Protection, we'll process your refund according to our policy. The government fee is non-refundable in all cases.",
+      "If your ESTA is denied, we'll notify you immediately and provide guidance on next steps. You may need to apply for a traditional visa at a U.S. embassy or consulate. The government fee is non-refundable in all cases.",
   },
   {
     category: "After Submission",

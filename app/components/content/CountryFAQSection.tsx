@@ -32,14 +32,18 @@ export default function CountryFAQSection({
         ? "ESTA"
         : service.type === ServiceType.UK_ETA
           ? "UK ETA"
-          : "eTA";
+          : service.type === ServiceType.INDONESIA_EVOA
+            ? "eVOA"
+            : "eTA";
 
     const shortServiceName =
       service.type === ServiceType.US_ESTA
         ? "ESTA"
         : service.type === ServiceType.UK_ETA
           ? "ETA"
-          : "eTA";
+          : service.type === ServiceType.INDONESIA_EVOA
+            ? "eVOA"
+            : "eTA";
 
     const destination = service.destination;
     const validityText = service.validity.duration;
@@ -58,19 +62,25 @@ export default function CountryFAQSection({
             ? "Electronic System for Travel Authorization"
             : service.type === ServiceType.UK_ETA
               ? "Electronic Travel Authorisation"
-              : "Electronic Travel Authorization"
+              : service.type === ServiceType.INDONESIA_EVOA
+                ? "Electronic Visa on Arrival"
+                : "Electronic Travel Authorization"
         }) to visit ${destination} for ${
           service.type === ServiceType.US_ESTA
             ? "tourism or business stays of 90 days or less"
             : service.type === ServiceType.UK_ETA
               ? "tourism, business, or transit"
-              : "tourism or business purposes"
+              : service.type === ServiceType.INDONESIA_EVOA
+                ? "tourism, social, or business visits of up to 30 days"
+                : "tourism or business purposes"
         }. ${country.name} is ${
           service.type === ServiceType.US_ESTA
             ? "part of the Visa Waiver Program"
             : service.type === ServiceType.UK_ETA
               ? "eligible for the UK ETA scheme"
-              : "visa-exempt for Canada"
+              : service.type === ServiceType.INDONESIA_EVOA
+                ? "eligible for the Indonesia eVOA program"
+                : "visa-exempt for Canada"
         }, which allows eligible travelers to enter ${destination} without a visa if they have an approved ${shortServiceName}.`,
       },
       {
@@ -80,7 +90,9 @@ export default function CountryFAQSection({
             ? "However, it can take up to 72 hours in some cases. We recommend applying at least 72 hours before your departure to ensure you receive your approval in time."
             : service.type === ServiceType.UK_ETA
               ? "Many applications are approved instantly, though some may take up to 3 working days. We recommend applying before booking your travel."
-              : "Processing times vary, but most applications are approved quickly. We recommend applying as early as possible before your trip."
+              : service.type === ServiceType.INDONESIA_EVOA
+                ? "We recommend applying at least 48 hours before your departure. Super Rush processing is available for last-minute travelers."
+                : "Processing times vary, but most applications are approved quickly. We recommend applying as early as possible before your trip."
         }`,
       },
       {
@@ -98,7 +110,9 @@ export default function CountryFAQSection({
             ? "tourism, business meetings, conferences, or transit purposes"
             : service.type === ServiceType.UK_ETA
               ? "tourism, business visits, short-term study, and transit"
-              : "tourism, business, or transit purposes"
+              : service.type === ServiceType.INDONESIA_EVOA
+                ? "tourism, social visits, or business meetings"
+                : "tourism, business, or transit purposes"
         }. If you plan to work in ${destination}, you must apply for the appropriate work visa.`,
       },
     ];
@@ -127,7 +141,9 @@ export default function CountryFAQSection({
             ? "ESTA"
             : service.type === ServiceType.UK_ETA
               ? "UK ETA"
-              : "Canada eTA"}
+              : service.type === ServiceType.INDONESIA_EVOA
+                ? "Indonesia eVOA"
+                : "Canada eTA"}
         </p>
         <div className="space-y-6">
           {faqs.map((faq, index) => (

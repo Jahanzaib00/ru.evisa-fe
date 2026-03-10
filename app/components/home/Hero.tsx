@@ -18,6 +18,8 @@ const DESTINATION_COUNTRIES: Country[] = [
   { code: "GB", name: "United Kingdom" },
   { code: "CA", name: "Canada" },
   { code: "TH", name: "Thailand" },
+  { code: "ID", name: "Indonesia" },
+  { code: "MY", name: "Malaysia" },
 ];
 
 // Map country code → destination slug for routing
@@ -26,6 +28,8 @@ const DESTINATION_SLUG_MAP: Record<string, string> = {
   GB: "united-kingdom",
   CA: "canada",
   TH: "thailand",
+  ID: "indonesia",
+  MY: "malaysia",
 };
 
 export default function Hero() {

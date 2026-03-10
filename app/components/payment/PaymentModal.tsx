@@ -10,9 +10,10 @@ import {
 import { loadStripe } from "@stripe/stripe-js";
 import { Spinner } from "@/app/components/ui/Loader";
 import { extractErrorMessage, logError } from "@/app/lib/utils/errorHandler";
+import { COMPANY_NAME } from "@/app/lib/constants";
 
 const stripePromise = loadStripe(
-  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || ""
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "",
 );
 
 interface PaymentModalProps {
@@ -44,7 +45,7 @@ function PaymentForm({
 
     if (!stripe || !elements) {
       onError(
-        "Payment system is not ready. Please refresh the page and try again."
+        "Payment system is not ready. Please refresh the page and try again.",
       );
       return;
     }
@@ -67,7 +68,7 @@ function PaymentForm({
         // Extract and display user-friendly error message
         const errorMessage = extractErrorMessage(
           error,
-          "Payment failed. Please check your card details and try again."
+          "Payment failed. Please check your card details and try again.",
         );
         onError(errorMessage);
         setIsProcessing(false);
@@ -78,12 +79,12 @@ function PaymentForm({
         // Payment in unexpected state
         logError(
           new Error(
-            `Unexpected payment intent status: ${paymentIntent.status}`
+            `Unexpected payment intent status: ${paymentIntent.status}`,
           ),
-          "Payment status"
+          "Payment status",
         );
         onError(
-          "Payment is being processed. Please wait a moment and check your email for confirmation."
+          "Payment is being processed. Please wait a moment and check your email for confirmation.",
         );
         setIsProcessing(false);
       }
@@ -94,7 +95,7 @@ function PaymentForm({
       // Extract and display error message
       const errorMessage = extractErrorMessage(
         err,
-        "An unexpected error occurred during payment. Please try again."
+        "An unexpected error occurred during payment. Please try again.",
       );
       onError(errorMessage);
       setIsProcessing(false);
@@ -107,6 +108,17 @@ function PaymentForm({
       <PaymentElement
         options={{
           layout: "tabs",
+          wallets: {
+            applePay: "auto",
+            googlePay: "auto",
+          },
+          fields: {
+            billingDetails: {
+              address: {
+                country: "never",
+              },
+            },
+          },
         }}
       />
 
@@ -141,8 +153,8 @@ function PaymentForm({
       {/* Terms Acknowledgment */}
       <div className="text-xs text-center">
         <p>
-          By submitting payment I acknowledge that I have read and accept the
-          ESTA Visa Portal{" "}
+          By submitting payment I acknowledge that I have read and accept the{" "}
+          {COMPANY_NAME}{" "}
           <a
             href="/terms"
             target="_blank"
@@ -218,7 +230,7 @@ export default function PaymentModal({
         {/* Header */}
         <div className="bg-white border-b border-gray-light px-6 py-4 flex items-center justify-center">
           <h2 className="text-2xl font-bold text-gray-dark mb-0!">
-            Card information
+            Payment
           </h2>
         </div>
 

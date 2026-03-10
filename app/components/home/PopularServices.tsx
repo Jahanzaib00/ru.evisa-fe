@@ -149,6 +149,8 @@ export default function PopularServices() {
           <ServiceCard serviceType={ServiceType.UK_ETA} available={true} />
           <ServiceCard serviceType={ServiceType.CANADA_ETA} available={true} />
           <ServiceCard serviceType={ServiceType.THAILAND_TDAC} available={true} />
+          <ServiceCard serviceType={ServiceType.INDONESIA_EVOA} available={true} />
+          <ServiceCard serviceType={ServiceType.MALAYSIA_MDAC} available={true} />
         </div>
       </Container>
     </Section>

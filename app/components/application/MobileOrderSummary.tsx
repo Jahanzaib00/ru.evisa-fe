@@ -9,17 +9,7 @@ import {
   getDefaultProcessingTier,
 } from "@/app/lib/config/services";
 
-interface MobileOrderSummaryProps {
-  denialProtection?: boolean;
-  showDenialProtectionToggle?: boolean;
-  onDenialProtectionChange?: (enabled: boolean) => void;
-}
-
-export default function MobileOrderSummary({
-  denialProtection = false,
-  showDenialProtectionToggle = false,
-  onDenialProtectionChange,
-}: MobileOrderSummaryProps) {
+export default function MobileOrderSummary() {
   const [isExpanded, setIsExpanded] = useState(false);
   const { totalApplicants, serviceType, processingTier } =
     useApplicationStore();
@@ -39,15 +29,10 @@ export default function MobileOrderSummary({
   const serviceFee = tier?.serviceFee || 0;
   const processingTimeLabel = tier?.label || "Standard";
 
-  const denialProtectionFee = service?.pricing.denialProtection || 0;
   const currency = service?.pricing.currency || "USD";
   const currencySymbol = getCurrencySymbol(currency);
 
-  const baseTotal = (governmentFee + serviceFee) * totalApplicants;
-  const protectionCost = denialProtection
-    ? denialProtectionFee * totalApplicants
-    : 0;
-  const grandTotal = baseTotal + protectionCost;
+  const grandTotal = (governmentFee + serviceFee) * totalApplicants;
   const isMultipleTravelers = totalApplicants > 1;
 
   return (
@@ -138,23 +123,6 @@ export default function MobileOrderSummary({
               </div>
             </div>
 
-            {denialProtection && (
-              <div className="flex justify-between items-baseline">
-                <span className="text-gray">Denial protection</span>
-                <div className="text-right">
-                  {isMultipleTravelers && (
-                    <p className="text-xs text-gray mb-0.5">
-                      {currencySymbol}
-                      {denialProtectionFee.toFixed(2)} × {totalApplicants}
-                    </p>
-                  )}
-                  <span className="font-semibold text-gray-dark">
-                    {currencySymbol}
-                    {protectionCost.toFixed(2)}
-                  </span>
-                </div>
-              </div>
-            )}
           </div>
 
           {/* Total */}

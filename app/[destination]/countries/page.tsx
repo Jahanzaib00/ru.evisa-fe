@@ -177,6 +177,15 @@ export default function CountriesIndexPage({
           intro:
             "The UK ETA allows eligible nationals to visit the United Kingdom for tourism, business, or transit. The ETA is being rolled out in phases.",
         };
+      case ServiceType.INDONESIA_EVOA:
+        return {
+          programName: "Electronic Visa on Arrival (eVOA)",
+          validity: "30 days",
+          maxStay: "30 days",
+          processing: "1-24 hours",
+          intro:
+            "Citizens of the following countries can obtain an Indonesia eVOA (Electronic Visa on Arrival) online for tourism, social, or business visits of up to 30 days.",
+        };
       default:
         return {
           programName: "Travel Authorization",

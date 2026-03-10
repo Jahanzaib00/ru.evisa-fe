@@ -22,6 +22,14 @@ import UKETAEmploymentStep from "./steps/uk-eta/UKETAEmploymentStep";
 import TDACTripDetailsStep from "./steps/tdac/TDACTripDetailsStep";
 import TDACPersonalDetailsStep from "./steps/tdac/TDACPersonalDetailsStep";
 
+// Import all Indonesia eVOA step components
+import EVOATripDetailsStep from "./steps/indonesia-evoa/EVOATripDetailsStep";
+import EVOAPersonalDetailsStep from "./steps/indonesia-evoa/EVOAPersonalDetailsStep";
+
+// Import all Malaysia MDAC step components
+import MDACTripDetailsStep from "./steps/malaysia-mdac/MDACTripDetailsStep";
+import MDACPersonalDetailsStep from "./steps/malaysia-mdac/MDACPersonalDetailsStep";
+
 // Component registry: maps component names (from service config) to actual components
 const COMPONENT_REGISTRY: Record<
   string,
@@ -46,6 +54,14 @@ const COMPONENT_REGISTRY: Record<
   // TDAC components
   TDACTripDetailsStep,
   TDACPersonalDetailsStep,
+
+  // Indonesia eVOA components
+  EVOATripDetailsStep,
+  EVOAPersonalDetailsStep,
+
+  // Malaysia MDAC components
+  MDACTripDetailsStep,
+  MDACPersonalDetailsStep,
 };
 
 export interface StepComponentProps {

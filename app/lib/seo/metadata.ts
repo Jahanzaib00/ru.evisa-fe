@@ -245,6 +245,18 @@ const SERVICE_TEMPLATES: Record<string, ServiceTemplate> = {
     maxStay: "6 months max stay",
     processingTime: "Minutes to hours",
   },
+  THAILAND_TDAC: {
+    programName: "Digital Arrival Card",
+    validity: "Single use",
+    maxStay: "30 days per entry",
+    processingTime: "Same day processing",
+  },
+  INDONESIA_EVOA: {
+    programName: "Electronic Visa on Arrival",
+    validity: "30 days validity",
+    maxStay: "30 days max stay",
+    processingTime: "1-24 hours processing",
+  },
 };
 
 /**

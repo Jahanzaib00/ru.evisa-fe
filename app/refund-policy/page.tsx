@@ -143,8 +143,6 @@ export default function RefundPolicyPage() {
                   Once your application has been submitted to government
                   authorities, our service fee is generally non-refundable
                   because we have completed our service obligations.
-                  <strong> Exceptions apply if you purchased Denial Protection
-                  (see Section 3).</strong>
                 </p>
               </div>
 
@@ -182,70 +180,6 @@ export default function RefundPolicyPage() {
             {/* Section 3 */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
-                3. Denial Protection
-              </h2>
-
-              <div className="bg-blue-50 rounded-lg p-6 mb-4">
-                <h3 className="text-xl font-bold text-gray-dark mb-3">
-                  3.1 What is Denial Protection?
-                </h3>
-                <p className="text-gray mb-3">
-                  Denial Protection is an optional add-on service available at
-                  checkout. If purchased and your application is denied by
-                  government authorities, you receive:
-                </p>
-                <ul className="list-disc pl-6 space-y-2 text-gray mb-3">
-                  <li>
-                    <strong>Full refund of our service fee</strong>
-                  </li>
-                  <li>
-                    <strong>Full refund of the Denial Protection fee</strong>
-                  </li>
-                </ul>
-                <p className="text-gray mb-0">
-                  <strong>Note:</strong> Government fees remain non-refundable
-                  even with Denial Protection, as they are paid to government
-                  authorities regardless of outcome.
-                </p>
-              </div>
-
-              <h3 className="text-xl font-bold text-gray-dark mb-3">
-                3.2 Denial Protection Pricing
-              </h3>
-              <div className="bg-white border border-gray-200 rounded-lg p-6 mb-4">
-                <ul className="space-y-2 text-gray">
-                  <li>• US ESTA: $17.99 per applicant</li>
-                  <li>• UK ETA: £12.99 per applicant</li>
-                  <li>• Other services: As specified at checkout</li>
-                </ul>
-              </div>
-
-              <h3 className="text-xl font-bold text-gray-dark mb-3">
-                3.3 Denial Protection Requirements
-              </h3>
-              <p className="text-gray mb-4">
-                To receive a refund under Denial Protection:
-              </p>
-              <ul className="list-disc pl-6 space-y-2 text-gray">
-                <li>Denial Protection must have been purchased at checkout</li>
-                <li>
-                  Official denial notification from government authorities must
-                  be provided
-                </li>
-                <li>
-                  Refund request must be submitted within 30 days of receiving
-                  denial notification
-                </li>
-                <li>
-                  Application must have been submitted truthfully and accurately
-                  (fraudulent applications void Denial Protection)
-                </li>
-              </ul>
-            </section>
-
-            {/* Section 4 */}
-            <section className="mb-8">
-              <h2 className="text-2xl font-bold text-gray-dark mb-4">
                 4. Non-Refundable Circumstances
               </h2>
               <p className="text-gray mb-4">
@@ -261,8 +195,6 @@ export default function RefundPolicyPage() {
                   </li>
                   <li>
                     <strong>Change of mind:</strong> After application submission
-                    (unless Denial Protection was purchased and application is
-                    denied)
                   </li>
                   <li>
                     <strong>Ineligibility:</strong> If you were ineligible to
@@ -369,10 +301,6 @@ export default function RefundPolicyPage() {
                   <strong>After submission:</strong> Within 30 days of
                   application submission (only for eligible refund reasons)
                 </li>
-                <li>
-                  <strong>Denial Protection claims:</strong> Within 30 days of
-                  receiving denial notification
-                </li>
               </ul>
             </section>
 
@@ -472,7 +400,6 @@ export default function RefundPolicyPage() {
                   </h4>
                   <ul className="space-y-2 text-gray text-sm">
                     <li>• Service fee before submission</li>
-                    <li>• Service fee with Denial Protection (if denied)</li>
                     <li>• Service fee for our errors</li>
                     <li>• Service fee for duplicate applications</li>
                   </ul>
@@ -483,7 +410,7 @@ export default function RefundPolicyPage() {
                   </h4>
                   <ul className="space-y-2 text-gray text-sm">
                     <li>• Government fees (always)</li>
-                    <li>• Service fee after submission (without Denial Protection)</li>
+                    <li>• Service fee after submission</li>
                     <li>• Change of mind after submission</li>
                     <li>• Approved applications</li>
                   </ul>

@@ -10,6 +10,8 @@ export enum ServiceType {
   UK_ETA = "UK_ETA",
   CANADA_ETA = "CANADA_ETA",
   THAILAND_TDAC = "THAILAND_TDAC",
+  INDONESIA_EVOA = "INDONESIA_EVOA",
+  MALAYSIA_MDAC = "MALAYSIA_MDAC",
 }
 
 export enum StepType {
@@ -106,7 +108,6 @@ export interface ServiceConfig {
   // Pricing
   pricing: {
     government: number; // Government fee (constant)
-    denialProtection?: number;
     currency: string; // USD, GBP, EUR, etc.
   };
 
@@ -208,7 +209,7 @@ export const US_ESTA_CONFIG: ServiceConfig = {
 
   pricing: {
     government: 40,
-    denialProtection: 17.99,
+
     currency: "USD",
   },
 
@@ -572,7 +573,7 @@ export const UK_ETA_CONFIG: ServiceConfig = {
 
   pricing: {
     government: 16,
-    denialProtection: 12.99,
+
     currency: "GBP",
   },
 
@@ -783,7 +784,7 @@ export const CANADA_ETA_CONFIG: ServiceConfig = {
 
   pricing: {
     government: 7, // CAD $7 — official IRCC government fee
-    denialProtection: 14.99,
+
     currency: "CAD",
   },
 
@@ -1161,7 +1162,7 @@ export const THAILAND_TDAC_CONFIG: ServiceConfig = {
 
   pricing: {
     government: 0, 
-    denialProtection: 9.99,
+
     currency: "USD",
   },
 
@@ -1288,6 +1289,416 @@ export const THAILAND_TDAC_CONFIG: ServiceConfig = {
 };
 
 // ============================================
+// Indonesia eVOA Configuration
+// ============================================
+export const INDONESIA_EVOA_CONFIG: ServiceConfig = {
+  type: ServiceType.INDONESIA_EVOA,
+  slug: "indonesia-evoa",
+  name: "Indonesia eVOA",
+  destination: "indonesia",
+  destinationCode: "ID",
+
+  // Countries eligible for Indonesia eVOA (Visa on Arrival)
+  eligibleNationalities: [
+    "AE",
+    "AR",
+    "AT",
+    "AU",
+    "BA",
+    "BE",
+    "BG",
+    "BH",
+    "BR",
+    "CA",
+    "CH",
+    "CN",
+    "CY",
+    "CZ",
+    "DE",
+    "DK",
+    "EE",
+    "EG",
+    "ES",
+    "FI",
+    "FR",
+    "GB",
+    "GR",
+    "HK",
+    "HR",
+    "HU",
+    "IE",
+    "IN",
+    "IS",
+    "IT",
+    "JO",
+    "JP",
+    "KR",
+    "KW",
+    "LI",
+    "LT",
+    "LU",
+    "LV",
+    "MC",
+    "ME",
+    "MK",
+    "MT",
+    "MX",
+    "MY",
+    "NL",
+    "NO",
+    "NZ",
+    "OM",
+    "PA",
+    "PE",
+    "PH",
+    "PL",
+    "PT",
+    "QA",
+    "RO",
+    "RS",
+    "RU",
+    "SA",
+    "SE",
+    "SG",
+    "SI",
+    "SK",
+    "TH",
+    "TN",
+    "TR",
+    "TW",
+    "UA",
+    "US",
+    "VA",
+    "VN",
+    "ZA",
+  ],
+
+  pricing: {
+    government: 32.36,
+
+    currency: "USD",
+  },
+
+  processingTiers: [
+    {
+      type: ProcessingTierType.STANDARD,
+      label: "Standard",
+      description: "24 hour processing",
+      processingTime: 24,
+      serviceFee: 24.95,
+      isDefault: true,
+    },
+    {
+      type: ProcessingTierType.RUSH,
+      label: "Rush",
+      description: "4 hour processing",
+      processingTime: 4,
+      serviceFee: 34.95,
+    },
+    {
+      type: ProcessingTierType.SUPER_RUSH,
+      label: "Super Rush",
+      description: "1 hour processing",
+      processingTime: 1,
+      serviceFee: 39.95,
+    },
+  ],
+
+  validity: {
+    duration: "90 days after issued",
+    stays: "30 days",
+    multipleEntry: false,
+  },
+
+  processing: {
+    standard: "24 hours",
+    rush: "4 hours",
+    superRush: "1 hour",
+  },
+
+  meta: {
+    title: "Indonesia eVOA Application | Electronic Visa on Arrival Online",
+    description:
+      "Apply for your Indonesia eVOA (Electronic Visa on Arrival) online. Fast, hassle-free processing with expert review and 24/7 support.",
+    keywords: [
+      "indonesia evoa",
+      "indonesia visa on arrival",
+      "indonesia e-visa",
+      "evoa application",
+      "indonesia travel visa",
+      "bali visa",
+      "indonesia online visa",
+    ],
+  },
+
+  prePaymentSteps: {
+    tripDetails: {
+      title: "Start Application for your Indonesia eVOA",
+      description:
+        "The Indonesia eVOA (Electronic Visa on Arrival) is required for {nationality} passport holders planning to enter {destination}",
+    },
+    personalDetails: {
+      title: "Your personal details",
+      description: "Enter the details as they appear on your passport.",
+      emailHelperText:
+        "Your completed Indonesia eVOA will be sent to this email address.",
+    },
+    passportDetails: {
+      title: "Passport details",
+      description: "Enter your passport information.",
+    },
+  },
+
+  steps: [
+    {
+      type: StepType.TRAVEL,
+      component: "EVOATripDetailsStep",
+      title: "Trip details",
+      description: "General details",
+      fields: [
+        { label: "Phone Number", key: "phoneNumber", required: true },
+        {
+          label: "Arrival Date",
+          key: "arrivalDate",
+          source: "application",
+          required: true,
+        },
+        {
+          label: "Flight Number",
+          key: "flightVesselNumber",
+          source: "application",
+        },
+      ],
+    },
+    {
+      type: StepType.PERSONAL,
+      component: "EVOAPersonalDetailsStep",
+      title: "Personal details",
+      description: "Basic personal information",
+      fields: [
+        {
+          label: "Gender",
+          map: {
+            key: "gender",
+            values: { M: "Male", F: "Female" },
+          },
+          required: true,
+        },
+        {
+          label: "Country of Residence",
+          key: "countryOfResidence",
+          required: true,
+        },
+        {
+          label: "Employment Status",
+          map: {
+            key: "jobTitle",
+            values: {
+              EMPLOYED: "Employed",
+              RETIRED: "Retired",
+              STUDENT: "Student",
+              UNEMPLOYED: "Unemployed",
+            },
+          },
+          required: true,
+        },
+      ],
+    },
+    {
+      type: StepType.REVIEW,
+      component: "SharedReviewStep",
+      title: "Review & Submit",
+      description: "Review all information before submission",
+      neverComplete: true,
+    },
+  ],
+
+  includedServices: [
+    "Expert form review & validation",
+    "Real-time application tracking",
+    "Email & SMS notifications",
+    "24/7 multilingual support",
+    "Error-free submission guarantee",
+    "Dedicated support agent",
+  ],
+};
+
+// ============================================
+// Malaysia MDAC Configuration
+// ============================================
+export const MALAYSIA_MDAC_CONFIG: ServiceConfig = {
+  type: ServiceType.MALAYSIA_MDAC,
+  slug: "malaysia-mdac",
+  name: "Malaysia Digital Arrival Card",
+  destination: "malaysia",
+  destinationCode: "MY",
+
+  // All non-Malaysian nationals are required to complete MDAC
+  eligibleNationalities: [
+    "AD", "AE", "AF", "AG", "AL", "AM", "AO", "AR", "AT", "AU",
+    "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ",
+    "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD",
+    "CF", "CG", "CH", "CI", "CL", "CM", "CN", "CO", "CR", "CU",
+    "CV", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC",
+    "EE", "EG", "ER", "ES", "ET", "FI", "FJ", "FM", "FR", "GA",
+    "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW",
+    "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN",
+    "IQ", "IR", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH",
+    "KI", "KM", "KN", "KP", "KR", "KW", "KZ", "LA", "LB", "LC",
+    "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC",
+    "MD", "ME", "MG", "MH", "MK", "ML", "MM", "MN", "MO", "MR",
+    "MT", "MU", "MV", "MW", "MX", "MZ", "NA", "NE", "NG", "NI",
+    "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH",
+    "PK", "PL", "PT", "PW", "PY", "QA", "RO", "RS", "RU", "RW",
+    "SA", "SB", "SC", "SD", "SE", "SG", "SI", "SK", "SL", "SM",
+    "SN", "SO", "SR", "SS", "ST", "SV", "SY", "SZ", "TD", "TG",
+    "TH", "TJ", "TL", "TM", "TN", "TO", "TR", "TT", "TV", "TW",
+    "TZ", "UA", "UG", "US", "UY", "UZ", "VA", "VC", "VE", "VN",
+    "VU", "WS", "YE", "ZA", "ZM", "ZW",
+  ],
+
+  pricing: {
+    government: 0,
+
+    currency: "USD",
+  },
+
+  processingTiers: [
+    {
+      type: ProcessingTierType.STANDARD,
+      label: "Standard",
+      description: "24 hour processing",
+      processingTime: 24,
+      serviceFee: 9.95,
+      isDefault: true,
+    },
+    {
+      type: ProcessingTierType.RUSH,
+      label: "Rush",
+      description: "4 hour processing",
+      processingTime: 4,
+      serviceFee: 14.95,
+    },
+    {
+      type: ProcessingTierType.SUPER_RUSH,
+      label: "Super Rush",
+      description: "1 hour processing",
+      processingTime: 1,
+      serviceFee: 17.95,
+    },
+  ],
+
+  validity: {
+    duration: "Single use",
+    stays: "Per entry basis",
+    multipleEntry: false,
+  },
+
+  processing: {
+    standard: "24 hours",
+    rush: "4 hours",
+    superRush: "1 hour",
+  },
+
+  meta: {
+    title: "Malaysia MDAC Application | Digital Arrival Card Online",
+    description:
+      "Apply for your Malaysia Digital Arrival Card (MDAC) online. Fast, hassle-free processing with expert review and 24/7 support.",
+    keywords: [
+      "malaysia mdac",
+      "malaysia digital arrival card",
+      "mdac application",
+      "malaysia arrival card",
+      "malaysia travel",
+      "mdac online",
+      "malaysia entry card",
+    ],
+  },
+
+  prePaymentSteps: {
+    tripDetails: {
+      title: "Start Application for your Malaysia Digital Arrival Card",
+      description:
+        "The Malaysia Digital Arrival Card (MDAC) is mandatory for {nationality} passport holders planning to enter {destination}",
+    },
+    personalDetails: {
+      title: "Your personal details",
+      description: "Enter the details as they appear on your passport.",
+      emailHelperText:
+        "Your completed Malaysia MDAC will be sent to this email address.",
+    },
+    passportDetails: {
+      title: "Passport details",
+      description: "Enter your passport information.",
+    },
+  },
+
+  steps: [
+    {
+      type: StepType.TRAVEL,
+      component: "MDACTripDetailsStep",
+      title: "Trip details",
+      description: "General details",
+      fields: [
+        { label: "Phone Number", key: "phoneNumber", required: true },
+        { label: "Arrival Date", key: "arrivalDate", source: "application", required: true },
+        {
+          label: "Flight Number",
+          key: "flightVesselNumber",
+          source: "application",
+        },
+      ],
+    },
+    {
+      type: StepType.PERSONAL,
+      component: "MDACPersonalDetailsStep",
+      title: "Personal details",
+      description: "Basic personal information",
+      fields: [
+        {
+          label: "Gender",
+          map: {
+            key: "gender",
+            values: { M: "Male", F: "Female" },
+          },
+          required: true,
+        },
+        { label: "Country of Residence", key: "countryOfResidence", required: true },
+        {
+          label: "Employment Status",
+          map: {
+            key: "jobTitle",
+            values: {
+              EMPLOYED: "Employed",
+              RETIRED: "Retired",
+              STUDENT: "Student",
+              UNEMPLOYED: "Unemployed",
+            },
+          },
+          required: true,
+        },
+      ],
+    },
+    {
+      type: StepType.REVIEW,
+      component: "SharedReviewStep",
+      title: "Review & Submit",
+      description: "Review all information before submission",
+      neverComplete: true,
+    },
+  ],
+
+  includedServices: [
+    "Expert form review & validation",
+    "Real-time application tracking",
+    "Email & SMS notifications",
+    "24/7 multilingual support",
+    "Error-free submission guarantee",
+    "Dedicated support agent",
+  ],
+};
+
+// ============================================
 // Service Registry
 // ============================================
 export const SERVICES: Record<ServiceType, ServiceConfig> = {
@@ -1295,6 +1706,8 @@ export const SERVICES: Record<ServiceType, ServiceConfig> = {
   [ServiceType.UK_ETA]: UK_ETA_CONFIG,
   [ServiceType.CANADA_ETA]: CANADA_ETA_CONFIG,
   [ServiceType.THAILAND_TDAC]: THAILAND_TDAC_CONFIG,
+  [ServiceType.INDONESIA_EVOA]: INDONESIA_EVOA_CONFIG,
+  [ServiceType.MALAYSIA_MDAC]: MALAYSIA_MDAC_CONFIG,
 };
 
 // ============================================
@@ -1324,6 +1737,8 @@ export function getServiceByDestination(
     "united-kingdom": ServiceType.UK_ETA,
     canada: ServiceType.CANADA_ETA,
     thailand: ServiceType.THAILAND_TDAC,
+    indonesia: ServiceType.INDONESIA_EVOA,
+    malaysia: ServiceType.MALAYSIA_MDAC,
   };
 
   const serviceType = destinationMap[destination.toLowerCase()];
@@ -1428,7 +1843,6 @@ export function calculatePrice(
   serviceType: ServiceType,
   applicants: number = 1,
   processingTierType?: ProcessingTierType,
-  includeDenialProtection: boolean = false,
 ): { subtotal: number; total: number; perApplicant: number; currency: string } {
   const service = getService(serviceType);
 
@@ -1439,16 +1853,10 @@ export function calculatePrice(
     : getDefaultProcessingTier(serviceType);
 
   const perApplicant = service.pricing.government + tier.serviceFee;
-  const denialProtection =
-    includeDenialProtection && service.pricing.denialProtection
-      ? service.pricing.denialProtection * applicants
-      : 0;
-
-  const subtotal = perApplicant * applicants;
-  const total = subtotal + denialProtection;
+  const total = perApplicant * applicants;
 
   return {
-    subtotal,
+    subtotal: total,
     total,
     perApplicant,
     currency: service.pricing.currency,

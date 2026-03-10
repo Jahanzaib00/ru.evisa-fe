@@ -34,6 +34,8 @@ export default function CountryCard({
         return country.canadaEtaEligible
           ? "eTA eligible"
           : "eTA required";
+      case ServiceType.INDONESIA_EVOA:
+        return "eVOA eligible";
       default:
         return "Eligible";
     }

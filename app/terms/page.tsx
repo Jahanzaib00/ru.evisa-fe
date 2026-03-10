@@ -174,19 +174,7 @@ export default function TermsPage() {
               </div>
 
               <h3 className="text-xl font-bold text-gray-dark mb-3">
-                3.2 Optional Denial Protection
-              </h3>
-              <p className="text-gray mb-4">
-                Denial Protection is available for select services. If purchased
-                and your application is denied by government authorities, we
-                will provide a full refund of our service fee and the denial
-                protection fee. Government fees are non-refundable under all
-                circumstances as they are paid directly to government
-                authorities.
-              </p>
-
-              <h3 className="text-xl font-bold text-gray-dark mb-3">
-                3.3 Payment Processing
+                3.2 Payment Processing
               </h3>
               <p className="text-gray">
                 All payments are processed securely through Stripe, a certified
@@ -227,10 +215,6 @@ export default function TermsPage() {
                   government authorities
                 </li>
                 <li>
-                  If you purchased Denial Protection and your application is
-                  denied by government authorities
-                </li>
-                <li>
                   If we made a demonstrable error in processing your application
                 </li>
               </ul>
@@ -252,8 +236,6 @@ export default function TermsPage() {
                 <li>
                   <strong>Our Service Fee after Submission:</strong> Once your
                   application has been submitted to government authorities
-                  (unless Denial Protection was purchased and application is
-                  denied)
                 </li>
               </ul>
 

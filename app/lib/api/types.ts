@@ -60,6 +60,8 @@ export enum ServiceType {
   UK_ETA = "UK_ETA",
   CANADA_ETA = "CANADA_ETA",
   THAILAND_TDAC = "THAILAND_TDAC",
+  INDONESIA_EVOA = "INDONESIA_EVOA",
+  MALAYSIA_MDAC = "MALAYSIA_MDAC",
 }
 
 export enum TravelPurpose {

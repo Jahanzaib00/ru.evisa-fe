@@ -41,8 +41,6 @@ export default function ReviewPage({ params }: Props) {
     serviceType,
   } = useApplicationStore();
 
-  // useState must be declared unconditionally (Rules of Hooks)
-  const [denialProtection, setDenialProtection] = useState(false);
   const [showPaymentModal, setShowPaymentModal] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [clientSecret, setClientSecret] = useState<string | null>(null);
@@ -317,11 +315,7 @@ export default function ReviewPage({ params }: Props) {
           )}
 
           {/* Mobile Order Summary */}
-          <MobileOrderSummary
-            denialProtection={denialProtection}
-            showDenialProtectionToggle={true}
-            onDenialProtectionChange={setDenialProtection}
-          />
+          <MobileOrderSummary />
         </div>
       </ApplicationLayout>
 

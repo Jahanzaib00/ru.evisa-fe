@@ -70,8 +70,6 @@ interface ApplicationState {
   travelInfo: TravelInfo | null;
   eligibility: EligibilityAnswers | null;
 
-  // Pricing (optional denial protection toggle)
-  denialProtectionEnabled: boolean;
   processingTier: ProcessingTierType | null;
 
   // Payment
@@ -93,7 +91,6 @@ interface ApplicationState {
   updateTravelersPassport: (passportData: any[]) => void;
   updateTravelInfo: (info: TravelInfo) => void;
   updateEligibility: (answers: EligibilityAnswers) => void;
-  setDenialProtection: (enabled: boolean) => void;
   processPayment: (paymentData: any) => void;
   reset: () => void;
 
@@ -118,7 +115,6 @@ export const useApplicationStore = create<ApplicationState>()(
       travelers: [],
       travelInfo: null,
       eligibility: null,
-      denialProtectionEnabled: false,
       processingTier: null,
       orderId: null,
 
@@ -183,9 +179,6 @@ export const useApplicationStore = create<ApplicationState>()(
 
       updateEligibility: (answers) => set({ eligibility: answers }),
 
-      setDenialProtection: (enabled) =>
-        set({ denialProtectionEnabled: enabled }),
-
       processPayment: (paymentData) =>
         set({
           orderId: paymentData.transactionId,
@@ -205,7 +198,6 @@ export const useApplicationStore = create<ApplicationState>()(
           travelers: [],
           travelInfo: null,
           eligibility: null,
-          denialProtectionEnabled: true,
           processingTier: null,
           orderId: null,
         }),
@@ -224,10 +216,7 @@ export const useApplicationStore = create<ApplicationState>()(
             : getDefaultProcessingTier(state.serviceType);
 
           const baseFee = (service.pricing.government + tier.serviceFee) * state.totalApplicants;
-          const protectionFee = state.denialProtectionEnabled && service.pricing.denialProtection
-            ? service.pricing.denialProtection * state.totalApplicants
-            : 0;
-          return parseFloat((baseFee + protectionFee).toFixed(2));
+          return parseFloat(baseFee.toFixed(2));
         } catch {
           return 0;
         }
@@ -256,7 +245,6 @@ export const useApplicationStore = create<ApplicationState>()(
         travelers: state.travelers,
         travelInfo: state.travelInfo,
         eligibility: state.eligibility,
-        denialProtectionEnabled: state.denialProtectionEnabled,
         processingTier: state.processingTier,
       }),
     }

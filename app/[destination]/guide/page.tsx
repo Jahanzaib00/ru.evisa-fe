@@ -77,6 +77,8 @@ export async function generateStaticParams() {
     { destination: "united-states" },
     { destination: "united-kingdom" },
     { destination: "canada" },
+    { destination: "thailand" },
+    { destination: "indonesia" },
   ];
 }
 
