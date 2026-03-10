@@ -1589,8 +1589,8 @@ export const MALAYSIA_MDAC_CONFIG: ServiceConfig = {
   ],
 
   validity: {
-    duration: "Single use",
-    stays: "Per entry basis",
+    duration: "90 days after arrival",
+    stays: "90 days per entry",
     multipleEntry: false,
   },
 
