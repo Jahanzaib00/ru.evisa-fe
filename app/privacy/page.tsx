@@ -6,20 +6,27 @@ import Section from "../components/ui/Section";
 import {
   PRIVACY_EMAIL,
   COMPANY_NAME,
-  COMPANY_LEGAL_NAME,
-  // COMPANY_ORG_NUMBER,
-  // COMPANY_JURISDICTION,
   COMPANY_ADDRESS,
+  COMPANY_TRADE_NAME,
 } from "@/app/lib/constants";
+import { getAllServices } from "@/app/lib/helpers/legal-content";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description:
-    "Privacy Policy for eVisa Portal. Learn how we collect, use, and protect your personal information in compliance with GDPR and international data protection laws.",
+  description: `Privacy Policy for ${COMPANY_NAME}. Learn how we collect, use, and protect your personal information when using our travel authorization application services.`,
 };
 
-export default function PrivacyPage() {
-  const lastUpdated = "January 13, 2026";
+function formatDestination(slug: string): string {
+  return slug
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
+export default function PrivacyPolicyPage() {
+  const lastUpdated = "March 11, 2026";
+  const services = getAllServices();
+  const serviceNames = services.map((s) => s.name).join(", ");
 
   return (
     <main>
@@ -32,7 +39,9 @@ export default function PrivacyPage() {
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
               Privacy Policy
             </h1>
-            <p className="text-lg text-gray-300">Last Updated: {lastUpdated}</p>
+            <p className="text-lg text-gray-300">
+              Last Updated: {lastUpdated}
+            </p>
           </div>
         </Container>
       </Section>
@@ -44,281 +53,284 @@ export default function PrivacyPage() {
             {/* Introduction */}
             <div className="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-lg mb-8">
               <p className="text-gray mb-2">
-                At {COMPANY_NAME}, we take your privacy seriously. This Privacy
-                Policy explains how we collect, use, disclose, and safeguard
-                your personal information when you use our travel authorization
-                application assistance services.
+                {COMPANY_NAME} ({COMPANY_TRADE_NAME}) (&quot;we,&quot;
+                &quot;our,&quot; or &quot;us&quot;) is committed to protecting
+                your privacy. This Privacy Policy explains how we collect, use,
+                disclose, and safeguard your personal information when you use
+                our website and travel authorization application services,
+                including {serviceNames}.
               </p>
-              {/* <p className="text-gray mb-2">
-                <strong>Data Controller:</strong> {COMPANY_LEGAL_NAME}, a
-                company incorporated under the laws of {COMPANY_JURISDICTION}{" "}
-                (Organization Number: {COMPANY_ORG_NUMBER}), operating{" "}
-                {COMPANY_NAME} (www.visaportal.online), is the data controller
-                responsible for your personal information.
-              </p> */}
-              <p className="text-gray mb-0">
-                By using our service, you consent to the data practices
+              <p className="text-gray">
+                By using our services, you consent to the data practices
                 described in this policy. If you do not agree with this policy,
-                please do not use our service.
+                please do not use our services.
               </p>
             </div>
 
-            {/* Section 1 */}
+            {/* Section 1 - Information We Collect */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
                 1. Information We Collect
               </h2>
 
-              <h3 className="text-xl font-bold text-gray-dark mb-3">
+              <h3 className="text-xl font-semibold text-gray-dark mb-3">
                 1.1 Personal Information You Provide
               </h3>
               <p className="text-gray mb-4">
-                When you use our service to apply for travel authorizations (US
-                ESTA, UK ETA, or other services), we collect personal
-                information that you voluntarily provide, including:
+                When you use our services to apply for travel authorizations, we
+                collect the following categories of personal information:
               </p>
               <ul className="list-disc pl-6 space-y-2 text-gray mb-4">
                 <li>
-                  <strong>Contact Information:</strong> Name, email address,
-                  phone number, residential address
+                  <strong>Contact Information:</strong> Full name, email
+                  address, phone number, and mailing address.
                 </li>
                 <li>
-                  <strong>Travel Information:</strong> Passport details, travel
-                  dates, destination addresses
+                  <strong>Travel Information:</strong> Travel dates, flight
+                  details, accommodation addresses, purpose of travel, and
+                  itinerary information.
                 </li>
                 <li>
                   <strong>Biographical Information:</strong> Date of birth,
-                  place of birth, gender, citizenship, nationality, employment
-                  details
+                  place of birth, gender, nationality, and passport details
+                  (passport number, issue date, expiration date, issuing
+                  country).
                 </li>
                 <li>
-                  <strong>Emergency Contact:</strong> Emergency contact name and
-                  phone number (where required)
+                  <strong>Emergency Contact Information:</strong> Name, phone
+                  number, and relationship of your emergency contact.
                 </li>
                 <li>
                   <strong>Eligibility Information:</strong> Responses to
-                  eligibility questions regarding health, criminal history,
-                  previous visa denials, and immigration history (as required by
-                  each destination country)
+                  eligibility questions required by destination governments,
+                  including questions about criminal history, prior immigration
+                  violations, and health-related inquiries.
                 </li>
                 <li>
-                  <strong>Payment Information:</strong> Billing address and
-                  payment details (processed securely through Stripe - we do not
-                  store full payment card details)
+                  <strong>Payment Information:</strong> Payment is processed
+                  securely through Stripe. We do not store your full credit card
+                  number, CVV, or bank account details on our servers. Stripe
+                  collects and processes your payment details directly.
                 </li>
                 <li>
-                  <strong>Documents:</strong> Passport scans, photographs, and
-                  other supporting documents as required
+                  <strong>Documents:</strong> Passport photos, identification
+                  documents, and any supporting documents required for your
+                  application.
                 </li>
               </ul>
 
-              <h3 className="text-xl font-bold text-gray-dark mb-3">
-                1.2 Information Automatically Collected
+              <h3 className="text-xl font-semibold text-gray-dark mb-3">
+                1.2 Information Collected Automatically
               </h3>
               <p className="text-gray mb-4">
-                We automatically collect certain information when you visit our
-                website:
+                When you visit our website, we automatically collect certain
+                information:
               </p>
               <ul className="list-disc pl-6 space-y-2 text-gray mb-4">
                 <li>
-                  <strong>Usage Data:</strong> IP address, browser type,
-                  operating system, pages viewed, time spent on pages, access
-                  times, referring website
+                  <strong>Usage Data:</strong> Pages visited, time spent on
+                  pages, click patterns, referral sources, and navigation paths
+                  through our website.
                 </li>
                 <li>
-                  <strong>Device Information:</strong> Device type, unique
-                  device identifiers, screen resolution, language preferences
+                  <strong>Device Information:</strong> IP address, browser type
+                  and version, operating system, screen resolution, device type,
+                  and language preferences.
                 </li>
                 <li>
-                  <strong>Analytics Data:</strong> We use Google Analytics (GA4)
-                  to collect anonymized usage statistics and improve our
-                  services
+                  <strong>Analytics:</strong> We use Google Analytics 4 (GA4) to
+                  collect aggregated usage statistics to understand how visitors
+                  interact with our website and improve our services.
                 </li>
                 <li>
-                  <strong>Cookies and Tracking Technologies:</strong> We use
-                  cookies, local storage, and session storage to enhance your
-                  experience, save application progress, and analyze website
-                  usage. For details, see our{" "}
+                  <strong>Cookies and Storage:</strong> We use cookies,
+                  localStorage, and sessionStorage to maintain your session,
+                  remember preferences, and enhance your experience. See our{" "}
                   <a
                     href="/cookies"
-                    className="text-blue-600 hover:text-blue-700 underline font-semibold"
+                    className="text-blue-600 hover:text-blue-700 underline"
                   >
                     Cookie Policy
-                  </a>
-                  .
+                  </a>{" "}
+                  for more details.
                 </li>
               </ul>
-
-              <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg">
-                <p className="text-gray mb-0">
-                  <strong>Note:</strong> We use localStorage and sessionStorage
-                  to save your application progress locally on your device. This
-                  allows you to resume your application if you close your
-                  browser. This data remains on your device and is only
-                  transmitted to our servers when you submit your application.
-                </p>
-              </div>
             </section>
 
-            {/* Section 2 */}
+            {/* Section 2 - How We Use Your Information */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
                 2. How We Use Your Information
               </h2>
+
+              <h3 className="text-xl font-semibold text-gray-dark mb-3">
+                2.1 Primary Purposes
+              </h3>
               <p className="text-gray mb-4">
-                We use the information we collect for the following purposes:
+                We use your personal information for the following primary
+                purposes:
               </p>
-
-              <h3 className="text-xl font-bold text-gray-dark mb-3">
-                2.1 Primary Service Purposes
-              </h3>
               <ul className="list-disc pl-6 space-y-2 text-gray mb-4">
                 <li>
-                  To process and submit your travel authorization applications
-                  to relevant government authorities (e.g., U.S. Customs and
-                  Border Protection for ESTA, UK Home Office for UK ETA)
+                  <strong>Process Applications:</strong> To prepare and submit
+                  your travel authorization applications to the relevant
+                  government authorities.
                 </li>
                 <li>
-                  To review your application for errors, inconsistencies, and
-                  completeness
+                  <strong>Government Submissions:</strong> To submit your
+                  application data to the appropriate government immigration
+                  systems:
+                  <ul className="list-disc pl-6 space-y-1 mt-2">
+                    {services.map((service) => (
+                      <li key={service.type}>
+                        <strong>{service.name}:</strong>{" "}
+                        {formatDestination(service.destination)} immigration and
+                        border control authorities
+                      </li>
+                    ))}
+                  </ul>
                 </li>
                 <li>
-                  To communicate with you about your application status and
-                  updates
+                  <strong>Application Review:</strong> To review your
+                  application for accuracy and completeness before submission.
                 </li>
                 <li>
-                  To provide customer support and respond to your inquiries
+                  <strong>Communication:</strong> To send you application status
+                  updates, confirmations, and respond to your inquiries.
                 </li>
-                <li>To process payments securely and prevent fraud</li>
                 <li>
-                  To maintain records as required by law and for business
-                  purposes
+                  <strong>Payment Processing:</strong> To process your service
+                  fees securely through our payment provider, Stripe.
                 </li>
               </ul>
 
-              <h3 className="text-xl font-bold text-gray-dark mb-3">
-                2.2 Service Improvement and Analytics
+              <h3 className="text-xl font-semibold text-gray-dark mb-3">
+                2.2 Service Improvement
               </h3>
               <ul className="list-disc pl-6 space-y-2 text-gray mb-4">
-                <li>To improve our website and service offerings</li>
-                <li>To analyze usage patterns and optimize user experience</li>
-                <li>To detect and prevent technical issues</li>
-                <li>To conduct internal research and analytics</li>
+                <li>
+                  Analyze usage patterns and trends to improve our website and
+                  services.
+                </li>
+                <li>
+                  Optimize the user experience and application process based on
+                  aggregated analytics data.
+                </li>
               </ul>
 
-              <h3 className="text-xl font-bold text-gray-dark mb-3">
-                2.3 Legal and Security Purposes
+              <h3 className="text-xl font-semibold text-gray-dark mb-3">
+                2.3 Legal Purposes
               </h3>
-              <ul className="list-disc pl-6 space-y-2 text-gray">
+              <ul className="list-disc pl-6 space-y-2 text-gray mb-4">
                 <li>
-                  To comply with legal obligations and government requests
+                  Comply with applicable laws, regulations, and legal
+                  obligations.
                 </li>
-                <li>To enforce our Terms of Service</li>
-                <li>To protect our rights, privacy, safety, or property</li>
                 <li>
-                  To detect, prevent, and address fraud or security issues
+                  Enforce our{" "}
+                  <a
+                    href="/terms"
+                    className="text-blue-600 hover:text-blue-700 underline"
+                  >
+                    Terms of Service
+                  </a>{" "}
+                  and other agreements.
+                </li>
+                <li>
+                  Detect, prevent, and address fraud, security issues, and
+                  technical problems.
                 </li>
               </ul>
             </section>
 
-            {/* Section 3 */}
+            {/* Section 3 - How We Share Your Information */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
                 3. How We Share Your Information
               </h2>
-              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mb-4">
-                <p className="text-gray mb-0">
-                  <strong>
-                    We do not sell, rent, or trade your personal information to
-                    third parties for their marketing purposes.
-                  </strong>
+
+              <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg mb-6">
+                <p className="text-gray font-semibold">
+                  We do NOT sell, rent, or trade your personal information to
+                  third parties for marketing purposes.
                 </p>
               </div>
 
-              <p className="text-gray mb-4">
-                We may share your information only in the following
-                circumstances:
-              </p>
-
-              <h3 className="text-xl font-bold text-gray-dark mb-3">
+              <h3 className="text-xl font-semibold text-gray-dark mb-3">
                 3.1 Government Authorities
               </h3>
               <p className="text-gray mb-4">
-                Your travel authorization application information is submitted
-                to the relevant government authorities of your destination
-                country:
+                Your application data is submitted to the relevant government
+                immigration and border control authorities as required to
+                process your travel authorization:
               </p>
               <ul className="list-disc pl-6 space-y-2 text-gray mb-4">
-                <li>
-                  <strong>United States:</strong> U.S. Customs and Border
-                  Protection and related DHS agencies
-                </li>
-                <li>
-                  <strong>United Kingdom:</strong> UK Home Office and
-                  immigration authorities
-                </li>
-                <li>
-                  <strong>Other Destinations:</strong> Respective immigration
-                  and border control authorities
-                </li>
+                {services.map((service) => (
+                  <li key={service.type}>
+                    <strong>{service.name}:</strong> Submitted to{" "}
+                    {formatDestination(service.destination)} immigration and
+                    border control authorities
+                  </li>
+                ))}
               </ul>
-              <p className="text-gray">
-                These authorities may share your information with other
-                government agencies as permitted or required by their respective
-                laws.
-              </p>
 
-              <h3 className="text-xl font-bold text-gray-dark mb-3">
+              <h3 className="text-xl font-semibold text-gray-dark mb-3">
                 3.2 Service Providers
               </h3>
               <p className="text-gray mb-4">
                 We share information with trusted third-party service providers
-                who assist us in operating our website and providing our
-                services:
+                who assist us in operating our business:
               </p>
               <ul className="list-disc pl-6 space-y-2 text-gray mb-4">
                 <li>
-                  <strong>Payment Processor (Stripe):</strong> To process
-                  payments securely
+                  <strong>Stripe:</strong> Payment processing. Stripe is
+                  PCI-DSS Level 1 certified. See{" "}
+                  <a
+                    href="https://stripe.com/privacy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-700 underline"
+                  >
+                    Stripe&apos;s Privacy Policy
+                  </a>
+                  .
                 </li>
                 <li>
-                  <strong>Communication Services:</strong> To send emails and
-                  SMS notifications
+                  <strong>Communication Services:</strong> Email delivery and
+                  notification services to communicate application status and
+                  updates.
                 </li>
                 <li>
-                  <strong>Cloud Hosting:</strong> To host our website and store
-                  data securely
+                  <strong>Cloud Hosting:</strong> Secure cloud infrastructure
+                  providers for hosting our website and storing application
+                  data.
                 </li>
                 <li>
-                  <strong>Analytics Providers:</strong> To analyze website usage
-                  and performance
+                  <strong>Analytics:</strong> Google Analytics 4 for aggregated
+                  website usage analysis.
                 </li>
               </ul>
-              <p className="text-gray mb-4">
-                These service providers are contractually obligated to protect
-                your information and may only use it for the specific services
-                they provide to us.
-              </p>
 
-              <h3 className="text-xl font-bold text-gray-dark mb-3">
+              <h3 className="text-xl font-semibold text-gray-dark mb-3">
                 3.3 Legal Requirements
               </h3>
               <p className="text-gray mb-4">
                 We may disclose your information if required to do so by law or
-                in response to:
+                in response to valid requests by public authorities, including:
               </p>
-              <ul className="list-disc pl-6 space-y-2 text-gray">
-                <li>Court orders, subpoenas, or legal processes</li>
-                <li>Requests from law enforcement or government authorities</li>
-                <li>Protection of our legal rights or property</li>
+              <ul className="list-disc pl-6 space-y-2 text-gray mb-4">
+                <li>Court orders, subpoenas, or other legal processes.</li>
                 <li>
-                  Investigation of potential violations of our Terms of Service
+                  Requests from law enforcement or other government agencies.
                 </li>
-                <li>Prevention of harm to individuals or the public</li>
+                <li>
+                  To protect our rights, property, or safety, or that of our
+                  users or the public.
+                </li>
               </ul>
             </section>
 
-            {/* Section 4 */}
+            {/* Section 4 - Data Security */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
                 4. Data Security
@@ -329,61 +341,63 @@ export default function PrivacyPage() {
               </p>
               <ul className="list-disc pl-6 space-y-2 text-gray mb-4">
                 <li>
-                  <strong>Encryption:</strong> All data transmitted between your
-                  browser and our servers is encrypted using SSL/TLS technology
+                  <strong>Encryption in Transit:</strong> All data transmitted
+                  between your browser and our servers is encrypted using
+                  SSL/TLS protocols.
                 </li>
                 <li>
-                  <strong>Secure Storage:</strong> Personal information is
-                  stored on secure servers with restricted access
+                  <strong>Secure Storage:</strong> Personal data is stored in
+                  encrypted databases with restricted access controls.
                 </li>
                 <li>
-                  <strong>Payment Security:</strong> We use Stripe, a PCI-DSS
-                  Level 1 certified payment processor. We do not store credit
-                  card information on our servers
+                  <strong>Payment Security:</strong> All payment processing is
+                  handled by Stripe, which is PCI-DSS Level 1 certified -- the
+                  highest level of payment security certification.
                 </li>
                 <li>
-                  <strong>Access Controls:</strong> Only authorized personnel
-                  have access to personal information, and they are bound by
-                  confidentiality obligations
+                  <strong>Access Controls:</strong> Access to personal data is
+                  restricted to authorized personnel on a need-to-know basis.
                 </li>
                 <li>
-                  <strong>Regular Audits:</strong> We regularly review our
-                  security practices and update them as needed
+                  <strong>Regular Audits:</strong> We conduct regular security
+                  reviews and audits to identify and address potential
+                  vulnerabilities.
                 </li>
               </ul>
-              {/* <div className="bg-red-50 border-l-4 border-red-400 p-4 rounded-r-lg">
-                <p className="text-gray mb-0">
-                  <strong>Important:</strong> While we strive to protect your
-                  personal information, no method of transmission over the
-                  Internet or electronic storage is 100% secure. We cannot
-                  guarantee absolute security.
-                </p>
-              </div> */}
+              <p className="text-gray mb-4">
+                While we strive to protect your personal information, no method
+                of transmission over the Internet or electronic storage is 100%
+                secure. We cannot guarantee absolute security.
+              </p>
             </section>
 
-            {/* Section 5 */}
+            {/* Section 5 - Data Retention */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
                 5. Data Retention
               </h2>
               <p className="text-gray mb-4">
-                We retain your personal information for as long as necessary to:
+                We retain your personal information for up to{" "}
+                <strong>7 years</strong> from the date of your last application,
+                in order to:
               </p>
               <ul className="list-disc pl-6 space-y-2 text-gray mb-4">
-                <li>Provide our services and support your application</li>
-                <li>Comply with legal and regulatory requirements</li>
-                <li>Resolve disputes and enforce our agreements</li>
-                <li>Maintain business records</li>
+                <li>Comply with legal and regulatory requirements.</li>
+                <li>
+                  Resolve disputes and enforce our agreements.
+                </li>
+                <li>
+                  Provide you with records of your past applications if needed.
+                </li>
               </ul>
-              <p className="text-gray">
-                Typically, we retain application data for 7 years after
-                submission to comply with record-keeping requirements. After
-                this period, we securely delete or anonymize your information
-                unless we are legally required to retain it longer.
+              <p className="text-gray mb-4">
+                After the retention period, your personal data will be securely
+                deleted or anonymized so that it can no longer be associated
+                with you.
               </p>
             </section>
 
-            {/* Section 6 */}
+            {/* Section 6 - Your Privacy Rights */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
                 6. Your Privacy Rights
@@ -393,338 +407,289 @@ export default function PrivacyPage() {
                 regarding your personal information:
               </p>
 
-              <h3 className="text-xl font-bold text-gray-dark mb-3">
+              <h3 className="text-xl font-semibold text-gray-dark mb-3">
                 6.1 Access and Portability
               </h3>
               <p className="text-gray mb-4">
                 You have the right to request a copy of the personal information
-                we hold about you in a structured, commonly used format.
+                we hold about you in a structured, commonly used, and
+                machine-readable format.
               </p>
 
-              <h3 className="text-xl font-bold text-gray-dark mb-3">
+              <h3 className="text-xl font-semibold text-gray-dark mb-3">
                 6.2 Correction
               </h3>
               <p className="text-gray mb-4">
-                You have the right to request correction of inaccurate or
-                incomplete personal information. Note that once your application
-                is submitted to U.S. authorities, changes must be made through
-                official government channels.
+                You have the right to request that we correct any inaccurate or
+                incomplete personal information we hold about you.
               </p>
 
-              <h3 className="text-xl font-bold text-gray-dark mb-3">
+              <h3 className="text-xl font-semibold text-gray-dark mb-3">
                 6.3 Deletion
               </h3>
               <p className="text-gray mb-4">
-                You have the right to request deletion of your personal
-                information, subject to certain exceptions (e.g., legal
-                retention requirements, ongoing transactions, security
-                purposes).
+                You have the right to request that we delete your personal
+                information, subject to certain legal exceptions (such as
+                compliance with legal obligations or ongoing dispute
+                resolution).
               </p>
 
-              <h3 className="text-xl font-bold text-gray-dark mb-3">
+              <h3 className="text-xl font-semibold text-gray-dark mb-3">
                 6.4 Opt-Out of Marketing
               </h3>
               <p className="text-gray mb-4">
-                You can opt out of receiving promotional emails by clicking the
-                &quot;unsubscribe&quot; link in any marketing email. Note that
-                you will still receive transactional emails related to your
-                application.
+                You may opt out of receiving promotional communications from us
+                at any time by clicking the &quot;unsubscribe&quot; link in any
+                marketing email, or by contacting us at{" "}
+                <a
+                  href={`mailto:${PRIVACY_EMAIL}`}
+                  className="text-blue-600 hover:text-blue-700 underline"
+                >
+                  {PRIVACY_EMAIL}
+                </a>
+                .
               </p>
 
-              <h3 className="text-xl font-bold text-gray-dark mb-3">
+              <h3 className="text-xl font-semibold text-gray-dark mb-3">
                 6.5 GDPR Rights (European Users)
               </h3>
               <p className="text-gray mb-4">
-                If you are located in the European Economic Area (EEA), you have
-                additional rights under the General Data Protection Regulation
-                (GDPR), including:
+                If you are located in the European Economic Area (EEA) or the
+                United Kingdom, you have additional rights under the General
+                Data Protection Regulation (GDPR), including:
               </p>
-              <ul className="list-disc pl-6 space-y-2 text-gray">
-                <li>Right to object to processing</li>
-                <li>Right to restrict processing</li>
-                <li>Right to lodge a complaint with a supervisory authority</li>
+              <ul className="list-disc pl-6 space-y-2 text-gray mb-4">
+                <li>
+                  <strong>Right to Restrict Processing:</strong> You may request
+                  that we limit how we use your data.
+                </li>
+                <li>
+                  <strong>Right to Object:</strong> You may object to our
+                  processing of your data based on legitimate interests.
+                </li>
+                <li>
+                  <strong>Right to Withdraw Consent:</strong> Where processing
+                  is based on consent, you may withdraw your consent at any
+                  time.
+                </li>
+                <li>
+                  <strong>Right to Lodge a Complaint:</strong> You have the
+                  right to lodge a complaint with a supervisory authority in
+                  your jurisdiction.
+                </li>
               </ul>
-
-              <p className="text-gray mt-4">
-                To exercise any of these rights, contact us at
-                {PRIVACY_EMAIL}. We will respond to your request within 30 days.
+              <p className="text-gray mb-4">
+                To exercise any of these rights, please contact us at{" "}
+                <a
+                  href={`mailto:${PRIVACY_EMAIL}`}
+                  className="text-blue-600 hover:text-blue-700 underline"
+                >
+                  {PRIVACY_EMAIL}
+                </a>
+                . We will respond to your request within 30 days.
               </p>
             </section>
 
-            {/* Section 7 */}
+            {/* Section 7 - Cookies and Tracking */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
                 7. Cookies and Tracking Technologies
               </h2>
               <p className="text-gray mb-4">
                 We use cookies and similar tracking technologies to enhance your
-                experience on our website:
+                experience, analyze website usage, and assist in our marketing
+                efforts. Cookies are small text files stored on your device when
+                you visit our website.
               </p>
-
-              <h3 className="text-xl font-bold text-gray-dark mb-3">
-                7.1 Types of Cookies We Use
-              </h3>
-              <ul className="list-disc pl-6 space-y-2 text-gray mb-4">
-                <li>
-                  <strong>Essential Cookies:</strong> Required for the website
-                  to function properly (e.g., authentication, security)
-                </li>
-                <li>
-                  <strong>Functional Cookies:</strong> Remember your preferences
-                  and settings
-                </li>
-                <li>
-                  <strong>Analytics Cookies:</strong> Help us understand how
-                  visitors use our website
-                </li>
-                <li>
-                  <strong>Performance Cookies:</strong> Collect information
-                  about website performance
-                </li>
-              </ul>
-
-              <h3 className="text-xl font-bold text-gray-dark mb-3">
-                7.2 Managing Cookies
-              </h3>
-              <p className="text-gray">
-                Most web browsers automatically accept cookies, but you can
-                modify your browser settings to decline cookies if you prefer.
-                Please note that disabling cookies may affect the functionality
-                of our website.
+              <p className="text-gray mb-4">
+                For detailed information about the types of cookies we use, how
+                they work, and how to manage your cookie preferences, please
+                visit our{" "}
+                <a
+                  href="/cookies"
+                  className="text-blue-600 hover:text-blue-700 underline"
+                >
+                  Cookie Policy
+                </a>
+                .
               </p>
             </section>
 
-            {/* Section 8 */}
+            {/* Section 8 - Children's Privacy */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
                 8. Children&apos;s Privacy
               </h2>
-              <p className="text-gray">
-                Our service is not intended for children under 18 years of age
-                without parental consent. When processing ESTA applications for
-                minors, we require a parent or legal guardian to complete the
-                application on their behalf. We do not knowingly collect
-                personal information from children without parental consent.
+              <p className="text-gray mb-4">
+                Our services are not intended for use by individuals under the
+                age of 18 without the involvement of a parent or legal guardian.
+                We do not knowingly collect personal information from children
+                under 18 without parental consent.
+              </p>
+              <p className="text-gray mb-4">
+                Applications for minors must be submitted by a parent or legal
+                guardian who accepts this Privacy Policy on the minor&apos;s
+                behalf. If we learn that we have collected personal information
+                from a child under 18 without parental consent, we will take
+                steps to delete that information promptly.
               </p>
             </section>
 
-            {/* Section 9 */}
+            {/* Section 9 - International Data Transfers */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
                 9. International Data Transfers
               </h2>
-              {/* <p className="text-gray mb-4">
-                As {COMPANY_NAME} is operated by {COMPANY_LEGAL_NAME}, a company
-                based in {COMPANY_JURISDICTION}, and we process travel
-                authorizations for multiple countries, your information may be
-                transferred internationally.
-              </p> */}
-
-              <h3 className="text-xl font-bold text-gray-dark mb-3">
-                9.1 Transfers Within the EU/EEA
-              </h3>
               <p className="text-gray mb-4">
-                Our servers and primary data processing occur within the
-                European Economic Area (EEA), ensuring GDPR compliance for
-                European users.
+                By using our services, your personal information may be
+                transferred to and processed in countries outside your country
+                of residence. Specifically, your application data may be
+                transferred to the following destination countries as part of
+                the application process:
               </p>
-
-              <h3 className="text-xl font-bold text-gray-dark mb-3">
-                9.2 Transfers Outside the EU/EEA
-              </h3>
+              <ul className="list-disc pl-6 space-y-2 text-gray mb-4">
+                {services.map((service) => (
+                  <li key={service.type}>
+                    <strong>{formatDestination(service.destination)}</strong> (
+                    {service.name})
+                  </li>
+                ))}
+              </ul>
               <p className="text-gray mb-4">
-                Your information may be transferred to and processed outside the
-                EEA, including:
+                We implement appropriate safeguards for international data
+                transfers, including:
               </p>
               <ul className="list-disc pl-6 space-y-2 text-gray mb-4">
                 <li>
-                  <strong>United States:</strong> When submitting ESTA
-                  applications to U.S. Customs and Border Protection
+                  Standard Contractual Clauses (SCCs) approved by the European
+                  Commission.
                 </li>
                 <li>
-                  <strong>United Kingdom:</strong> When submitting ETA
-                  applications to UK authorities (UK maintains data adequacy
-                  status with the EU)
+                  Adequacy decisions where applicable, recognizing that certain
+                  countries provide an adequate level of data protection.
                 </li>
                 <li>
-                  <strong>Service Providers:</strong> Third-party providers like
-                  Stripe (payment processing) and Google (analytics) may process
-                  data in multiple jurisdictions
-                </li>
-              </ul>
-
-              <h3 className="text-xl font-bold text-gray-dark mb-3">
-                9.3 Safeguards for International Transfers
-              </h3>
-              <p className="text-gray">
-                We ensure appropriate safeguards are in place for all
-                international data transfers, including:
-              </p>
-              <ul className="list-disc pl-6 space-y-2 text-gray">
-                <li>
-                  Use of Standard Contractual Clauses (SCCs) approved by the
-                  European Commission
-                </li>
-                <li>
-                  Transferring data only to countries with adequacy decisions
-                  from the EU Commission
-                </li>
-                <li>
-                  Ensuring service providers comply with GDPR and maintain
-                  appropriate technical and organizational security measures
-                </li>
-                <li>
-                  Implementing data processing agreements with all third-party
-                  processors
+                  Technical and organizational security measures to protect your
+                  data during transfer and storage.
                 </li>
               </ul>
             </section>
 
-            {/* Section 10 */}
+            {/* Section 10 - Third-Party Links */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
                 10. Third-Party Links
               </h2>
-              <p className="text-gray">
+              <p className="text-gray mb-4">
                 Our website may contain links to third-party websites, including
-                the official U.S. government ESTA website. We are not
-                responsible for the privacy practices or content of these
-                external sites. We encourage you to review the privacy policies
-                of any third-party websites you visit.
+                official government immigration portals. We are not responsible
+                for the privacy practices or content of these external sites. We
+                encourage you to review the privacy policies of any third-party
+                websites you visit.
               </p>
             </section>
 
-            {/* Section 11 */}
+            {/* Section 11 - California Privacy Rights (CCPA) */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
-                11. California Privacy Rights
+                11. California Privacy Rights (CCPA)
               </h2>
               <p className="text-gray mb-4">
-                If you are a California resident, you have specific rights under
-                the California Consumer Privacy Act (CCPA):
+                If you are a California resident, you have the following rights
+                under the California Consumer Privacy Act (CCPA):
               </p>
               <ul className="list-disc pl-6 space-y-2 text-gray mb-4">
                 <li>
-                  Right to know what personal information we collect, use,
-                  disclose, and sell
-                </li>
-                <li>Right to request deletion of your personal information</li>
-                <li>
-                  Right to opt-out of the sale of personal information (Note: We
-                  do not sell personal information)
+                  <strong>Right to Know:</strong> You may request information
+                  about the categories and specific pieces of personal
+                  information we have collected about you.
                 </li>
                 <li>
-                  Right to non-discrimination for exercising your privacy rights
+                  <strong>Right to Delete:</strong> You may request the deletion
+                  of your personal information, subject to certain exceptions.
+                </li>
+                <li>
+                  <strong>Right to Non-Discrimination:</strong> We will not
+                  discriminate against you for exercising your CCPA rights.
                 </li>
               </ul>
-              <p className="text-gray">
-                To exercise these rights, contact us at
-                {PRIVACY_EMAIL}.
+              <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg mb-4">
+                <p className="text-gray">
+                  <strong>We do not sell personal information.</strong> As
+                  defined by the CCPA, we do not sell, and have not sold in the
+                  preceding 12 months, any personal information of our users to
+                  third parties.
+                </p>
+              </div>
+              <p className="text-gray mb-4">
+                To exercise your CCPA rights, please contact us at{" "}
+                <a
+                  href={`mailto:${PRIVACY_EMAIL}`}
+                  className="text-blue-600 hover:text-blue-700 underline"
+                >
+                  {PRIVACY_EMAIL}
+                </a>
+                . We will verify your identity before processing your request
+                and respond within 45 days.
               </p>
             </section>
 
-            {/* Section 12 */}
+            {/* Section 12 - Changes to This Policy */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
                 12. Changes to This Privacy Policy
               </h2>
-              <p className="text-gray">
+              <p className="text-gray mb-4">
                 We may update this Privacy Policy from time to time to reflect
-                changes in our practices, technology, legal requirements, or
-                other factors. We will notify you of any material changes by
-                posting the new Privacy Policy on our website and updating the
-                &quot;Last Updated&quot; date. Your continued use of our service
-                after such changes constitutes your acceptance of the updated
-                policy.
+                changes in our practices, legal requirements, or services. When
+                we make changes, we will update the &quot;Last Updated&quot;
+                date at the top of this page.
+              </p>
+              <p className="text-gray mb-4">
+                We encourage you to review this Privacy Policy periodically. For
+                material changes, we may notify you via email or through a
+                prominent notice on our website. Your continued use of our
+                services after any modifications indicates your acceptance of
+                the updated Privacy Policy.
               </p>
             </section>
 
-            {/* Section 13 */}
+            {/* Section 13 - Data Controller & Contact */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
-                13. Data Protection Officer & Contact
+                13. Data Controller and Contact Information
               </h2>
               <p className="text-gray mb-4">
-                For questions or concerns about our privacy practices or to
-                exercise your privacy rights, you can contact our Data
-                Protection Officer:
+                The data controller responsible for your personal information
+                is:
               </p>
-              <div className="bg-blue-50 rounded-lg p-6 mb-4">
-                <ul className="space-y-2 text-gray">
-                  <li>
-                    <strong>Email:</strong> {PRIVACY_EMAIL}
-                  </li>
-                  <li>
-                    <strong>Subject Line:</strong> Privacy Request / Data
-                    Protection
-                  </li>
-                  <li>
-                    <strong>Response Time:</strong> We will respond within 30
-                    days
-                  </li>
-                </ul>
-              </div>
-
-              <h3 className="text-xl font-bold text-gray-dark mb-3">
-                13.1 Data Controller Information
-              </h3>
-              <div className="bg-gray-50 rounded-lg p-6">
-                <p className="text-gray mb-2">
-                  <strong>Legal Name:</strong> {COMPANY_LEGAL_NAME}
+              <div className="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-lg mb-4">
+                <p className="text-gray font-semibold mb-2">{COMPANY_NAME}</p>
+                <p className="text-gray mb-1">{COMPANY_ADDRESS.line1}</p>
+                {COMPANY_ADDRESS.line2 && (
+                  <p className="text-gray mb-1">{COMPANY_ADDRESS.line2}</p>
+                )}
+                <p className="text-gray mb-1">
+                  {COMPANY_ADDRESS.city}, {COMPANY_ADDRESS.postalCode}
                 </p>
-                {/* <p className="text-gray mb-2">
-                  <strong>Organization Number:</strong> {COMPANY_ORG_NUMBER}
-                </p>
-                <p className="text-gray mb-2">
-                  <strong>Jurisdiction:</strong> {COMPANY_JURISDICTION}
-                </p> */}
-                <p className="text-gray mb-2">
-                  <strong>Registered Office:</strong> {COMPANY_ADDRESS.line1},{" "}
-                  {COMPANY_ADDRESS.postalCode} {COMPANY_ADDRESS.city},{" "}
-                  {COMPANY_ADDRESS.country}
-                </p>
-                <p className="text-gray mb-0">
-                  <strong>Trading As:</strong> {COMPANY_NAME} (
-                  www.visaportal.online)
-                </p>
-              </div>
-            </section>
-
-            {/* Contact Section */}
-            <section className="bg-blue-50 rounded-lg p-6 mt-12">
-              <h2 className="text-2xl font-bold text-gray-dark mb-4">
-                Questions About This Privacy Policy?
-              </h2>
-              <p className="text-gray mb-4">
-                If you have questions or concerns about this Privacy Policy or
-                our data practices, please contact us:
-              </p>
-              <ul className="space-y-2 text-gray">
-                <li>
-                  <strong>Email:</strong> {PRIVACY_EMAIL}
-                </li>
-                <li>
-                  <strong>Support Center:</strong>{" "}
+                <p className="text-gray mb-3">{COMPANY_ADDRESS.country}</p>
+                <p className="text-gray">
+                  <strong>Privacy Inquiries:</strong>{" "}
                   <a
-                    href="/support"
+                    href={`mailto:${PRIVACY_EMAIL}`}
                     className="text-blue-600 hover:text-blue-700 underline"
                   >
-                    Visit our Support Center
+                    {PRIVACY_EMAIL}
                   </a>
-                </li>
-              </ul>
-            </section>
-
-            {/* Acknowledgment */}
-            <div className="bg-gray-100 border border-gray-300 rounded-lg p-6 mt-8">
-              <p className="text-gray mb-0">
-                <strong>
-                  By using our service, you acknowledge that you have read and
-                  understood this Privacy Policy and agree to the collection,
-                  use, and disclosure of your information as described herein.
-                </strong>
+                </p>
+              </div>
+              <p className="text-gray mb-4">
+                If you have any questions, concerns, or requests regarding this
+                Privacy Policy or our data practices, please do not hesitate to
+                contact us at the email address above. We aim to respond to all
+                inquiries within 30 days.
               </p>
-            </div>
+            </section>
           </div>
         </Container>
       </Section>

@@ -6,8 +6,12 @@ import Section from "../components/ui/Section";
 import {
   SUPPORT_EMAIL,
   COMPANY_NAME,
-  COMPANY_LEGAL_NAME,
 } from "@/app/lib/constants";
+import {
+  getAllServices,
+  formatGovernmentFee,
+  formatFee,
+} from "@/app/lib/helpers/legal-content";
 
 export const metadata: Metadata = {
   title: "Refund Policy",
@@ -16,7 +20,8 @@ export const metadata: Metadata = {
 };
 
 export default function RefundPolicyPage() {
-  const lastUpdated = "January 13, 2026";
+  const lastUpdated = "March 11, 2026";
+  const services = getAllServices();
 
   return (
     <main>
@@ -29,7 +34,9 @@ export default function RefundPolicyPage() {
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
               Refund Policy
             </h1>
-            <p className="text-lg text-gray-300">Last Updated: {lastUpdated}</p>
+            <p className="text-lg text-gray-300">
+              Last Updated: {lastUpdated}
+            </p>
           </div>
         </Container>
       </Section>
@@ -42,9 +49,9 @@ export default function RefundPolicyPage() {
             <div className="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-lg mb-8">
               <p className="text-gray mb-2">
                 This Refund Policy outlines the terms and conditions for refunds
-                at {COMPANY_NAME}, operated by {COMPANY_LEGAL_NAME}. We strive
-                to provide excellent service, and this policy ensures
-                transparency regarding when refunds are available.
+                at {COMPANY_NAME}. We strive to provide excellent service, and
+                this policy ensures transparency regarding when refunds are
+                available.
               </p>
               <p className="text-gray mb-0">
                 Please read this policy carefully before using our services. By
@@ -52,7 +59,7 @@ export default function RefundPolicyPage() {
               </p>
             </div>
 
-            {/* Section 1 */}
+            {/* Section 1: Understanding Your Fees */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
                 1. Understanding Your Fees
@@ -70,17 +77,22 @@ export default function RefundPolicyPage() {
                   Government fees are official charges imposed by the respective
                   government authorities for processing your travel
                   authorization. These fees are paid directly to government
-                  agencies and are <strong>non-refundable under all
-                  circumstances</strong>, including:
+                  agencies and are{" "}
+                  <strong>
+                    non-refundable under all circumstances
+                  </strong>
+                  , including:
                 </p>
                 <ul className="list-disc pl-6 space-y-2 text-gray mb-3">
-                  <li>US ESTA: $40.00 USD (paid to U.S. Customs and Border Protection)</li>
-                  <li>UK ETA: £16.00 GBP (paid to UK Home Office)</li>
-                  <li>Other services: As specified at checkout</li>
+                  {services.map((service) => (
+                    <li key={service.type}>
+                      {service.name}: {formatGovernmentFee(service)}
+                    </li>
+                  ))}
                 </ul>
                 <p className="text-gray mb-0">
                   <strong>Important:</strong> Government fees are non-refundable
-                  regardless of application outcome (approval or denial).
+                  regardless of application outcome.
                 </p>
               </div>
 
@@ -103,15 +115,23 @@ export default function RefundPolicyPage() {
                 <p className="text-gray mb-3">
                   <strong>Service fee amounts vary by processing tier:</strong>
                 </p>
-                <ul className="list-disc pl-6 space-y-1 text-gray">
-                  <li>Standard Processing: Starting from $5.00</li>
-                  <li>Rush Processing: Starting from $15.00-$20.00</li>
-                  <li>Super Rush Processing: Starting from $35.00-$45.00</li>
-                </ul>
+                {services.map((service) => (
+                  <div key={service.type} className="mb-3">
+                    <p className="text-gray font-semibold">{service.name}:</p>
+                    <ul className="list-disc pl-6 space-y-1 text-gray">
+                      {service.processingTiers.map((tier) => (
+                        <li key={tier.type}>
+                          {tier.label} ({tier.description}):{" "}
+                          {formatFee(tier.serviceFee, service.pricing.currency)}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
               </div>
             </section>
 
-            {/* Section 2 */}
+            {/* Section 2: When Refunds Are Available */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
                 2. When Refunds Are Available
@@ -177,10 +197,10 @@ export default function RefundPolicyPage() {
               </div>
             </section>
 
-            {/* Section 3 */}
+            {/* Section 3: Non-Refundable Circumstances */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
-                4. Non-Refundable Circumstances
+                3. Non-Refundable Circumstances
               </h2>
               <p className="text-gray mb-4">
                 Refunds are <strong>NOT available</strong> in the following
@@ -220,14 +240,14 @@ export default function RefundPolicyPage() {
               </div>
             </section>
 
-            {/* Section 5 */}
+            {/* Section 4: How to Request a Refund */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
-                5. How to Request a Refund
+                4. How to Request a Refund
               </h2>
 
               <h3 className="text-xl font-bold text-gray-dark mb-3">
-                5.1 Refund Request Process
+                4.1 Refund Request Process
               </h3>
               <p className="text-gray mb-4">
                 To request a refund, follow these steps:
@@ -235,7 +255,8 @@ export default function RefundPolicyPage() {
               <ol className="list-decimal pl-6 space-y-3 text-gray mb-4">
                 <li>
                   <strong>Contact our support team:</strong> Email{" "}
-                  {SUPPORT_EMAIL} with "Refund Request" in the subject line
+                  {SUPPORT_EMAIL} with &quot;Refund Request&quot; in the subject
+                  line
                 </li>
                 <li>
                   <strong>Provide required information:</strong>
@@ -244,8 +265,7 @@ export default function RefundPolicyPage() {
                     <li>Email address used for application</li>
                     <li>Reason for refund request</li>
                     <li>
-                      Supporting documentation (if applicable, e.g., denial
-                      notification)
+                      Supporting documentation (if applicable)
                     </li>
                   </ul>
                 </li>
@@ -260,7 +280,7 @@ export default function RefundPolicyPage() {
               </ol>
 
               <h3 className="text-xl font-bold text-gray-dark mb-3">
-                5.2 Refund Processing Time
+                4.2 Refund Processing Time
               </h3>
               <div className="bg-white border border-gray-200 rounded-lg p-6 mb-4">
                 <p className="text-gray mb-3">
@@ -287,7 +307,7 @@ export default function RefundPolicyPage() {
               </div>
 
               <h3 className="text-xl font-bold text-gray-dark mb-3">
-                5.3 Refund Request Deadline
+                4.3 Refund Request Deadline
               </h3>
               <p className="text-gray">
                 Refund requests must be submitted within:
@@ -304,10 +324,10 @@ export default function RefundPolicyPage() {
               </ul>
             </section>
 
-            {/* Section 6 */}
+            {/* Section 5: Chargebacks and Disputes */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
-                6. Chargebacks and Disputes
+                5. Chargebacks and Disputes
               </h2>
 
               <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg mb-4">
@@ -342,24 +362,25 @@ export default function RefundPolicyPage() {
               </ul>
             </section>
 
-            {/* Section 7 */}
+            {/* Section 6: Amendments */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
-                7. Amendments to This Policy
+                6. Amendments to This Policy
               </h2>
               <p className="text-gray">
                 We may update this Refund Policy from time to time. Any changes
-                will be posted on this page with an updated "Last Updated" date.
-                Changes apply to applications submitted after the update date.
-                Applications submitted before policy changes remain subject to
-                the policy in effect at the time of submission.
+                will be posted on this page with an updated &quot;Last
+                Updated&quot; date. Changes apply to applications submitted after
+                the update date. Applications submitted before policy changes
+                remain subject to the policy in effect at the time of
+                submission.
               </p>
             </section>
 
-            {/* Section 8 */}
+            {/* Section 7: Contact Information */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
-                8. Contact Information
+                7. Contact Information
               </h2>
               <p className="text-gray mb-4">
                 For refund requests or questions about this policy, contact us:
@@ -388,7 +409,7 @@ export default function RefundPolicyPage() {
               </div>
             </section>
 
-            {/* Summary */}
+            {/* Quick Reference Summary */}
             <div className="bg-gray-100 border border-gray-300 rounded-lg p-6 mt-12">
               <h3 className="text-xl font-bold text-gray-dark mb-4">
                 Quick Reference Summary
@@ -396,23 +417,23 @@ export default function RefundPolicyPage() {
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <h4 className="font-bold text-gray-dark mb-3">
-                    ✓ Refundable:
+                    Refundable:
                   </h4>
                   <ul className="space-y-2 text-gray text-sm">
-                    <li>• Service fee before submission</li>
-                    <li>• Service fee for our errors</li>
-                    <li>• Service fee for duplicate applications</li>
+                    <li>Service fee before submission</li>
+                    <li>Service fee for our errors</li>
+                    <li>Service fee for duplicate applications</li>
                   </ul>
                 </div>
                 <div>
                   <h4 className="font-bold text-gray-dark mb-3">
-                    ✗ Non-Refundable:
+                    Non-Refundable:
                   </h4>
                   <ul className="space-y-2 text-gray text-sm">
-                    <li>• Government fees (always)</li>
-                    <li>• Service fee after submission</li>
-                    <li>• Change of mind after submission</li>
-                    <li>• Approved applications</li>
+                    <li>Government fees (always)</li>
+                    <li>Service fee after submission</li>
+                    <li>Change of mind after submission</li>
+                    <li>Approved applications</li>
                   </ul>
                 </div>
               </div>

@@ -6,11 +6,14 @@ import Section from "../components/ui/Section";
 import {
   SUPPORT_EMAIL,
   COMPANY_NAME,
-  COMPANY_LEGAL_NAME,
-  // COMPANY_ORG_NUMBER,
-  // COMPANY_JURISDICTION,
   COMPANY_ADDRESS,
+  COMPANY_TRADE_NAME,
 } from "@/app/lib/constants";
+import {
+  getAllServices,
+  formatGovernmentFee,
+  formatFee,
+} from "@/app/lib/helpers/legal-content";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
@@ -19,7 +22,8 @@ export const metadata: Metadata = {
 };
 
 export default function TermsPage() {
-  const lastUpdated = "January 13, 2026";
+  const lastUpdated = "March 11, 2026";
+  const services = getAllServices();
 
   return (
     <main>
@@ -32,7 +36,9 @@ export default function TermsPage() {
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
               Terms of Service
             </h1>
-            <p className="text-lg text-gray-300">Last Updated: {lastUpdated}</p>
+            <p className="text-lg text-gray-300">
+              Last Updated: {lastUpdated}
+            </p>
           </div>
         </Container>
       </Section>
@@ -49,40 +55,32 @@ export default function TermsPage() {
                 agree to be bound by these terms. If you do not agree with any
                 part of these terms, you should not use our service.
               </p>
-              {/* <p className="text-gray mb-0">
-                <strong>Legal Entity:</strong> {COMPANY_NAME} is operated by{" "}
-                {COMPANY_LEGAL_NAME}, a company incorporated under the laws of{" "}
-                {COMPANY_JURISDICTION} (Organization Number: {COMPANY_ORG_NUMBER}
-                ).
-              </p> */}
             </div>
 
-            {/* Section 1 */}
+            {/* Section 1: Service Description */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
                 1. Service Description
               </h2>
               <p className="text-gray mb-4">
                 {COMPANY_NAME} (&quot;we,&quot; &quot;our,&quot; or
-                &quot;us&quot;), a proprietary platform operated by{" "}
-                {COMPANY_LEGAL_NAME}, is a private commercial service that
-                provides application assistance for electronic travel
-                authorizations to multiple destinations worldwide. Our services
-                currently include:
+                &quot;us&quot;) is a private commercial service that provides
+                multi-destination travel authorization application assistance.
+                We help travelers navigate the electronic travel authorization
+                process for multiple countries worldwide. Our services currently
+                include:
               </p>
 
               <h3 className="text-xl font-bold text-gray-dark mb-3">
                 1.1 Available Services
               </h3>
               <ul className="list-disc pl-6 space-y-2 text-gray mb-4">
-                <li>
-                  <strong>United States ESTA:</strong> Application assistance
-                  for the U.S. Electronic System for Travel Authorization (ESTA)
-                </li>
-                <li>
-                  <strong>United Kingdom ETA:</strong> Application assistance
-                  for the UK Electronic Travel Authorization (ETA)
-                </li>
+                {services.map((service) => (
+                  <li key={service.type}>
+                    <strong>{service.name}:</strong> Application assistance for
+                    the {service.destination} {service.name.split(" ").pop()}
+                  </li>
+                ))}
                 <li>
                   Additional destinations as we expand our service portfolio
                 </li>
@@ -98,19 +96,55 @@ export default function TermsPage() {
                 <li>Email notifications</li>
                 <li>24/7 multilingual customer support</li>
                 <li>Document guidance and assistance</li>
-                <li>Multiple processing tier options (Standard, Rush, Super Rush)</li>
+                <li>
+                  Multiple processing tier options (
+                  {services[0]?.processingTiers
+                    .map((tier) => tier.label)
+                    .join(", ")}
+                  )
+                </li>
                 <li>Resubmission assistance if needed</li>
               </ul>
             </section>
 
-            {/* Section 2 */}
+            {/* Section 2: Disclaimer */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
                 2. Disclaimer
               </h2>
 
+              <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg mb-4">
+                <p className="text-gray mb-0">
+                  <strong>Important:</strong> {COMPANY_NAME} is a private
+                  commercial service and is{" "}
+                  <strong>
+                    not affiliated with, endorsed by, or connected to any
+                    government agency or authority
+                  </strong>
+                  .
+                </p>
+              </div>
+
               <h3 className="text-xl font-bold text-gray-dark mb-3">
-                2.1 No Guarantee of Approval
+                2.1 No Government Affiliation
+              </h3>
+              <p className="text-gray mb-4">
+                We are an independent service provider. The respective
+                government authorities responsible for processing travel
+                authorizations include, but are not limited to:
+              </p>
+              <ul className="list-disc pl-6 space-y-2 text-gray mb-4">
+                {services.map((service) => (
+                  <li key={service.type}>
+                    <strong>{service.destination}:</strong> The official
+                    government authority responsible for {service.name}{" "}
+                    applications
+                  </li>
+                ))}
+              </ul>
+
+              <h3 className="text-xl font-bold text-gray-dark mb-3">
+                2.2 No Guarantee of Approval
               </h3>
               <p className="text-gray">
                 While we maintain a high approval rate through our thorough
@@ -120,22 +154,21 @@ export default function TermsPage() {
                   application will be approved
                 </strong>
                 . The final decision on all travel authorization applications is
-                made solely by the respective government authorities (U.S.
-                Customs and Border Protection for ESTA, UK Home Office for UK
-                ETA, etc.). Approval depends on factors including but not
-                limited to: eligibility requirements, information provided in
-                your application, security screenings, and immigration history.
+                made solely by the respective government authorities. Approval
+                depends on factors including but not limited to: eligibility
+                requirements, information provided in your application, security
+                screenings, and immigration history.
               </p>
             </section>
 
-            {/* Section 3 */}
-            <section className="mb-8" id="refund-policy">
+            {/* Section 3: Fees and Payment */}
+            <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
                 3. Fees and Payment
               </h2>
 
               <h3 className="text-xl font-bold text-gray-dark mb-3">
-                3.1 Service Fees
+                3.1 Fee Structure
               </h3>
               <p className="text-gray mb-4">
                 Our fees vary by service and processing tier selected. Each
@@ -153,39 +186,58 @@ export default function TermsPage() {
                 </li>
               </ul>
 
-              <div className="bg-white border border-gray-200 rounded-lg p-6 mb-4">
-                <h4 className="font-bold text-gray-dark mb-3">
-                  Example Pricing (US ESTA):
-                </h4>
-                <ul className="space-y-2 text-gray">
-                  <li>
-                    • Government Fee: $40.00 USD (non-refundable)
-                  </li>
-                  <li>• Standard Processing (72 hours): $5.00 service fee</li>
-                  <li>• Rush Processing (24 hours): $20.00 service fee</li>
-                  <li>• Super Rush Processing (1 hour): $45.00 service fee</li>
-                </ul>
-                <p className="text-sm text-gray mt-3">
-                  <em>
-                    Exact pricing displayed during checkout. Fees may vary by
-                    destination and service type.
-                  </em>
-                </p>
-              </div>
+              <h3 className="text-xl font-bold text-gray-dark mb-3">
+                3.2 Current Pricing
+              </h3>
+              <p className="text-gray mb-4">
+                Below is the current pricing for each of our services:
+              </p>
+
+              {services.map((service) => (
+                <div
+                  key={service.type}
+                  className="bg-white border border-gray-200 rounded-lg p-6 mb-4"
+                >
+                  <h4 className="font-bold text-gray-dark mb-3">
+                    {service.name}
+                  </h4>
+                  <p className="text-gray mb-2">
+                    Government Fee: {formatGovernmentFee(service)}{" "}
+                    (non-refundable)
+                  </p>
+                  <ul className="space-y-1 text-gray">
+                    {service.processingTiers.map((tier) => (
+                      <li key={tier.type}>
+                        {tier.label} ({tier.description}):{" "}
+                        {formatFee(tier.serviceFee, service.pricing.currency)}{" "}
+                        service fee
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+
+              <p className="text-sm text-gray mt-2 mb-4">
+                <em>
+                  Exact pricing is displayed during checkout. Fees may be
+                  updated from time to time without prior notice.
+                </em>
+              </p>
 
               <h3 className="text-xl font-bold text-gray-dark mb-3">
-                3.2 Payment Processing
+                3.3 Payment Processing
               </h3>
               <p className="text-gray">
                 All payments are processed securely through Stripe, a certified
-                PCI Service Provider Level 1. We do not store your credit card
-                information on our servers. All fees must be paid in full before
-                your application is submitted to the relevant government
-                authorities.
+                PCI Service Provider Level 1. We accept major credit and debit
+                cards, as well as Google Pay and Apple Pay. We do not store your
+                credit card information on our servers. All fees must be paid in
+                full before your application is submitted to the relevant
+                government authorities.
               </p>
             </section>
 
-            {/* Section 4 */}
+            {/* Section 4: Refund Policy Summary */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
                 4. Refund Policy
@@ -228,10 +280,9 @@ export default function TermsPage() {
               </p>
               <ul className="list-disc pl-6 space-y-2 text-gray mb-4">
                 <li>
-                  <strong>Government Fees:</strong> All government fees (e.g.,
-                  US$40 for ESTA, £16 for UK ETA) are paid directly to the
-                  respective government authorities and are never refunded,
-                  regardless of application outcome
+                  <strong>Government Fees:</strong> All government fees are paid
+                  directly to the respective government authorities and are
+                  never refunded, regardless of application outcome
                 </li>
                 <li>
                   <strong>Our Service Fee after Submission:</strong> Once your
@@ -243,10 +294,10 @@ export default function TermsPage() {
                 4.3 Refund Process
               </h3>
               <p className="text-gray">
-                To request a refund, contact our support team at {SUPPORT_EMAIL}
-                . Approved refunds will be processed within 5-10 business days
-                to the original payment method. For complete refund policy
-                details, please visit our{" "}
+                To request a refund, contact our support team at{" "}
+                {SUPPORT_EMAIL}. Approved refunds will be processed within 5-10
+                business days to the original payment method. For complete
+                refund policy details, please visit our{" "}
                 <a
                   href="/refund-policy"
                   className="text-blue-600 hover:text-blue-700 underline font-semibold"
@@ -257,7 +308,7 @@ export default function TermsPage() {
               </p>
             </section>
 
-            {/* Section 5 */}
+            {/* Section 5: User Responsibilities */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
                 5. User Responsibilities
@@ -275,7 +326,7 @@ export default function TermsPage() {
                   Maintain the confidentiality of your account credentials
                 </li>
                 <li>
-                  Comply with all applicable U.S. laws and regulations regarding
+                  Comply with all applicable laws and regulations regarding
                   travel and immigration
                 </li>
                 <li>
@@ -286,16 +337,18 @@ export default function TermsPage() {
                   application before submission
                 </li>
               </ul>
-              <p className="text-gray mt-4">
-                <strong>Important:</strong> You are ultimately responsible for
-                the accuracy of all information submitted. Providing false or
-                misleading information may result in denial of your ESTA,
-                ineligibility for the Visa Waiver Program, and potential legal
-                consequences.
-              </p>
+              <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg mt-4">
+                <p className="text-gray mb-0">
+                  <strong>Important:</strong> You are ultimately responsible for
+                  the accuracy of all information submitted. Providing false or
+                  misleading information may result in denial of your travel
+                  authorization, ineligibility for future applications, and
+                  potential legal consequences.
+                </p>
+              </div>
             </section>
 
-            {/* Section 6 */}
+            {/* Section 6: Limitation of Liability */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
                 6. Limitation of Liability
@@ -306,7 +359,7 @@ export default function TermsPage() {
               <ul className="list-disc pl-6 space-y-2 text-gray">
                 <li>
                   We are not liable for any denial, delay, or rejection of your
-                  ESTA application by U.S. authorities
+                  travel authorization application by any government authority
                 </li>
                 <li>
                   We are not responsible for any travel delays, cancellations,
@@ -314,8 +367,8 @@ export default function TermsPage() {
                 </li>
                 <li>
                   Our total liability to you for any claim arising from our
-                  services shall not exceed the amount you paid us for our
-                  processing fee
+                  services shall not exceed the total amount you paid us for the
+                  specific application in question
                 </li>
                 <li>
                   We are not liable for indirect, incidental, consequential, or
@@ -328,7 +381,7 @@ export default function TermsPage() {
               </ul>
             </section>
 
-            {/* Section 7 */}
+            {/* Section 7: Privacy and Data Protection */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
                 7. Privacy and Data Protection
@@ -343,27 +396,28 @@ export default function TermsPage() {
                   Privacy Policy
                 </a>
                 . By using our service, you consent to our privacy practices as
-                described in that policy.
+                described in that policy. We are committed to protecting your
+                personal data in accordance with applicable data protection laws
+                and regulations.
               </p>
             </section>
 
-            {/* Section 8 */}
+            {/* Section 8: Intellectual Property */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
                 8. Intellectual Property
               </h2>
               <p className="text-gray">
                 All content on our website, including text, graphics, logos,
-                images, and software, is the property of {COMPANY_LEGAL_NAME} or
-                its content suppliers and is protected by international
-                copyright laws. The {COMPANY_NAME} brand and platform are
-                proprietary to {COMPANY_LEGAL_NAME}. You may not reproduce,
-                distribute, modify, or create derivative works from our content
-                without express written permission.
+                images, and software, is the property of {COMPANY_NAME} or its
+                content suppliers and is protected by international copyright
+                laws. You may not reproduce, distribute, modify, or create
+                derivative works from our content without express written
+                permission.
               </p>
             </section>
 
-            {/* Section 9 */}
+            {/* Section 9: Service Modifications */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
                 9. Service Modifications and Termination
@@ -381,6 +435,10 @@ export default function TermsPage() {
                 <li>
                   Terminate or suspend your account for violation of these terms
                 </li>
+                <li>
+                  Adjust pricing for any of our services with updated pricing
+                  reflected at checkout
+                </li>
               </ul>
               <p className="text-gray mt-4">
                 We will make reasonable efforts to notify users of significant
@@ -388,26 +446,14 @@ export default function TermsPage() {
               </p>
             </section>
 
-            {/* Section 10 */}
+            {/* Section 10: Governing Law */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
                 10. Governing Law and Disputes
               </h2>
 
               <h3 className="text-xl font-bold text-gray-dark mb-3">
-                10.1 Governing Law
-              </h3>
-              {/* <p className="text-gray mb-4">
-                These Terms of Service are governed by and construed in
-                accordance with the laws of {COMPANY_JURISDICTION}. As{" "}
-                {COMPANY_NAME} is operated by {COMPANY_LEGAL_NAME}, a company
-                incorporated in {COMPANY_JURISDICTION} (Organization Number:{" "}
-                {COMPANY_ORG_NUMBER}), Swedish law applies to the contractual
-                relationship between you and {COMPANY_LEGAL_NAME}.
-              </p> */}
-
-              <h3 className="text-xl font-bold text-gray-dark mb-3">
-                10.2 Dispute Resolution
+                10.1 Dispute Resolution
               </h3>
               <p className="text-gray mb-4">
                 Any disputes arising from these terms or our services shall be
@@ -430,7 +476,7 @@ export default function TermsPage() {
               </ul>
 
               <h3 className="text-xl font-bold text-gray-dark mb-3">
-                10.3 EU Consumer Rights
+                10.2 EU Consumer Rights
               </h3>
               <p className="text-gray">
                 If you are a consumer residing in the European Union, you retain
@@ -440,21 +486,33 @@ export default function TermsPage() {
               </p>
             </section>
 
-            {/* Section 11 */}
+            {/* Section 11: Third-Party Services */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
                 11. Third-Party Services
               </h2>
-              <p className="text-gray">
-                Our service uses third-party services including payment
-                processors (Stripe) and communication services. We are not
-                responsible for the practices or policies of these third
-                parties. Your use of third-party services is subject to their
-                respective terms and conditions.
+              <p className="text-gray mb-4">
+                Our service relies on third-party services to operate. These
+                include but are not limited to:
+              </p>
+              <ul className="list-disc pl-6 space-y-2 text-gray">
+                <li>
+                  <strong>Stripe:</strong> Payment processing, including credit
+                  card, Google Pay, and Apple Pay transactions
+                </li>
+                <li>
+                  <strong>Google Analytics:</strong> Website usage analytics and
+                  performance monitoring
+                </li>
+              </ul>
+              <p className="text-gray mt-4">
+                We are not responsible for the practices or policies of these
+                third parties. Your use of third-party services is subject to
+                their respective terms and conditions.
               </p>
             </section>
 
-            {/* Section 12 */}
+            {/* Section 12: Severability */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
                 12. Severability
@@ -467,7 +525,7 @@ export default function TermsPage() {
               </p>
             </section>
 
-            {/* Section 13 */}
+            {/* Section 13: Entire Agreement */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
                 13. Entire Agreement
@@ -475,9 +533,8 @@ export default function TermsPage() {
               <p className="text-gray mb-4">
                 These Terms of Service, together with our Privacy Policy, Cookie
                 Policy, and Refund Policy, constitute the entire agreement
-                between you and {COMPANY_LEGAL_NAME} (operating {COMPANY_NAME})
-                regarding the use of our service, superseding any prior
-                agreements.
+                between you and {COMPANY_NAME} regarding the use of our
+                service, superseding any prior agreements.
               </p>
 
               <h3 className="text-xl font-bold text-gray-dark mb-3">
@@ -485,22 +542,19 @@ export default function TermsPage() {
               </h3>
               <div className="bg-gray-50 rounded-lg p-6">
                 <p className="text-gray mb-2">
-                  <strong>Legal Name:</strong> {COMPANY_LEGAL_NAME}
-                </p>
-                {/* <p className="text-gray mb-2">
-                  <strong>Organization Number:</strong> {COMPANY_ORG_NUMBER}
+                  <strong>Company:</strong> {COMPANY_NAME}
                 </p>
                 <p className="text-gray mb-2">
-                  <strong>Jurisdiction:</strong> {COMPANY_JURISDICTION}
-                </p> */}
+                  <strong>Trade Name:</strong> {COMPANY_TRADE_NAME}
+                </p>
                 <p className="text-gray mb-2">
-                  <strong>Registered Office:</strong> {COMPANY_ADDRESS.line1},{" "}
+                  <strong>Address:</strong> {COMPANY_ADDRESS.line1},{" "}
                   {COMPANY_ADDRESS.postalCode} {COMPANY_ADDRESS.city},{" "}
                   {COMPANY_ADDRESS.country}
                 </p>
                 <p className="text-gray mb-0">
-                  <strong>Trading As:</strong> {COMPANY_NAME} (
-                  www.visaportal.online)
+                  <strong>Services Offered:</strong>{" "}
+                  {services.map((s) => s.name).join(", ")}
                 </p>
               </div>
             </section>

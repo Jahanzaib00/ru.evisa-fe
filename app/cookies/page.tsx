@@ -3,7 +3,7 @@ import Header from "../components/layout/Header";
 import Footer from "../components/home/Footer";
 import Container from "../components/ui/Container";
 import Section from "../components/ui/Section";
-import { PRIVACY_EMAIL, COMPANY_NAME, COMPANY_LEGAL_NAME } from "@/app/lib/constants";
+import { PRIVACY_EMAIL, COMPANY_NAME } from "@/app/lib/constants";
 
 export const metadata: Metadata = {
   title: "Cookie Policy",
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default function CookiePolicyPage() {
-  const lastUpdated = "January 13, 2026";
+  const lastUpdated = "March 11, 2026";
 
   return (
     <main>
@@ -34,13 +34,12 @@ export default function CookiePolicyPage() {
       <Section padding="xl">
         <Container>
           <div className="max-w-4xl mx-auto prose prose-lg">
-            {/* Introduction */}
+            {/* Introduction Callout */}
             <div className="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-r-lg mb-8">
               <p className="text-gray mb-2">
-                This Cookie Policy explains how {COMPANY_NAME}, operated by{" "}
-                {COMPANY_LEGAL_NAME}, uses cookies and similar tracking
-                technologies when you visit our website. This policy should be
-                read in conjunction with our Privacy Policy.
+                This Cookie Policy explains how {COMPANY_NAME} uses cookies and
+                similar tracking technologies when you visit our website. This
+                policy should be read in conjunction with our Privacy Policy.
               </p>
               <p className="text-gray mb-0">
                 By continuing to use our website, you consent to our use of
@@ -48,15 +47,15 @@ export default function CookiePolicyPage() {
               </p>
             </div>
 
-            {/* Section 1 */}
+            {/* Section 1: What Are Cookies */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
                 1. What Are Cookies?
               </h2>
               <p className="text-gray mb-4">
                 Cookies are small text files that are placed on your device
-                (computer, smartphone, or tablet) when you visit a website.
-                They are widely used to make websites work more efficiently and
+                (computer, smartphone, or tablet) when you visit a website. They
+                are widely used to make websites work more efficiently and
                 provide information to website owners.
               </p>
               <p className="text-gray">
@@ -67,15 +66,16 @@ export default function CookiePolicyPage() {
               </p>
             </section>
 
-            {/* Section 2 */}
+            {/* Section 2: Technologies We Use */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
                 2. Technologies We Use
               </h2>
               <p className="text-gray mb-4">
-                We use the following technologies on our website:
+                {COMPANY_NAME} uses the following technologies on our website:
               </p>
 
+              {/* 2.1 Google Analytics 4 */}
               <h3 className="text-xl font-bold text-gray-dark mb-3">
                 2.1 Google Analytics 4 (GA4)
               </h3>
@@ -120,6 +120,7 @@ export default function CookiePolicyPage() {
                 </p>
               </div>
 
+              {/* 2.2 Stripe Payment Processing */}
               <h3 className="text-xl font-bold text-gray-dark mb-3">
                 2.2 Stripe Payment Processing
               </h3>
@@ -155,6 +156,7 @@ export default function CookiePolicyPage() {
                 </p>
               </div>
 
+              {/* 2.3 Local Storage & Session Storage */}
               <h3 className="text-xl font-bold text-gray-dark mb-3">
                 2.3 Local Storage & Session Storage
               </h3>
@@ -195,6 +197,7 @@ export default function CookiePolicyPage() {
                 </p>
               </div>
 
+              {/* 2.4 Essential Cookies */}
               <h3 className="text-xl font-bold text-gray-dark mb-3">
                 2.4 Essential Cookies
               </h3>
@@ -219,7 +222,7 @@ export default function CookiePolicyPage() {
               </div>
             </section>
 
-            {/* Section 3 */}
+            {/* Section 3: Managing Cookie Preferences */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
                 3. Managing Your Cookie Preferences
@@ -236,7 +239,9 @@ export default function CookiePolicyPage() {
                 <li>Block all cookies</li>
                 <li>Block third-party cookies only</li>
                 <li>Delete cookies when you close your browser</li>
-                <li>Accept cookies by default but allow you to reject specific ones</li>
+                <li>
+                  Accept cookies by default but allow you to reject specific ones
+                </li>
                 <li>Notify you when a cookie is being set</li>
               </ul>
 
@@ -322,7 +327,7 @@ export default function CookiePolicyPage() {
               </div>
             </section>
 
-            {/* Section 4 */}
+            {/* Section 4: Do Not Track */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
                 4. Do Not Track (DNT) Signals
@@ -336,7 +341,7 @@ export default function CookiePolicyPage() {
               </p>
             </section>
 
-            {/* Section 5 */}
+            {/* Section 5: Updates */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
                 5. Updates to This Cookie Policy
@@ -352,7 +357,7 @@ export default function CookiePolicyPage() {
               </p>
             </section>
 
-            {/* Section 6 */}
+            {/* Section 6: Your Rights */}
             <section className="mb-8">
               <h2 className="text-2xl font-bold text-gray-dark mb-4">
                 6. Your Rights
@@ -387,8 +392,8 @@ export default function CookiePolicyPage() {
                 Questions About Our Cookie Policy?
               </h2>
               <p className="text-gray mb-4">
-                If you have any questions about our use of cookies or this
-                Cookie Policy, please contact us:
+                If you have any questions about how {COMPANY_NAME} uses cookies
+                or about this Cookie Policy, please contact us:
               </p>
               <ul className="space-y-2 text-gray">
                 <li>
@@ -409,7 +414,7 @@ export default function CookiePolicyPage() {
               </ul>
             </section>
 
-            {/* Acknowledgment */}
+            {/* Acknowledgment Footer */}
             <div className="bg-gray-100 border border-gray-300 rounded-lg p-6 mt-8">
               <p className="text-gray mb-0">
                 <strong>
