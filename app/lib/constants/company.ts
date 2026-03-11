@@ -10,7 +10,7 @@ export const PRIVACY_EMAIL = "visaportal.online@gmail.com";
 
 // Company Information
 export const COMPANY_NAME = "eVisa Portal";
-export const COMPANY_LEGAL_NAME = "Muhammad Jahanzaib Khursheed";
+export const COMPANY_LEGAL_NAME = "Shahid Hazoor";
 export const COMPANY_TRADE_NAME = "www.visaportal.online";
 // export const COMPANY_ORG_NUMBER = "559155-7607";
 // export const COMPANY_JURISDICTION = "Sweden";
@@ -20,11 +20,11 @@ export const CONTACT_PHONE = "+92 3096809637";
 
 // Company Address (Registered Office)
 export const COMPANY_ADDRESS = {
-  line1: "23 B, Block Y",
+  line1: "Mystängen 10 Hisings Kärra",
   line2: "",
-  city: "Bahawalpur",
-  postalCode: "63100",
-  country: "Pakistan",
+  city: "Gothenburg",
+  postalCode: "425 65",
+  country: "Sweden",
 } as const;
 
 // External Links
