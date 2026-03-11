@@ -112,13 +112,6 @@ function PaymentForm({
             applePay: "auto",
             googlePay: "auto",
           },
-          fields: {
-            billingDetails: {
-              address: {
-                country: "never",
-              },
-            },
-          },
         }}
       />
 
@@ -229,9 +222,7 @@ export default function PaymentModal({
       <div className="bg-white rounded-xl max-w-lg w-full shadow-2xl max-h-[90vh] overflow-y-auto">
         {/* Header */}
         <div className="bg-white border-b border-gray-light px-6 py-4 flex items-center justify-center">
-          <h2 className="text-2xl font-bold text-gray-dark mb-0!">
-            Payment
-          </h2>
+          <h2 className="text-2xl font-bold text-gray-dark mb-0!">Payment</h2>
         </div>
 
         {/* Payment Form */}
