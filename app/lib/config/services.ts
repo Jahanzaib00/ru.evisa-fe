@@ -1172,7 +1172,7 @@ export const THAILAND_TDAC_CONFIG: ServiceConfig = {
       label: "Standard",
       description: "24 hour processing",
       processingTime: 24,
-      serviceFee: 29.99,
+      serviceFee: 19.99,
       isDefault: true,
     },
     {
@@ -1180,14 +1180,14 @@ export const THAILAND_TDAC_CONFIG: ServiceConfig = {
       label: "Rush",
       description: "4 hour processing",
       processingTime: 4,
-      serviceFee: 39.99,
+      serviceFee: 29.99,
     },
     {
       type: ProcessingTierType.SUPER_RUSH,
       label: "Fast Track",
       description: "1 hour processing",
       processingTime: 1,
-      serviceFee: 49.99,
+      serviceFee: 39.99,
     },
   ],
 
