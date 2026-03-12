@@ -29,7 +29,7 @@ export const CONTACT_PHONE = "+92 3096809637";
 
 export const COMPANY_ADDRESS = {
   line1: "23 B block Y",
-  line2: "",
+  line2: "model town C",
   city: "Bahawalpur",
   postalCode: "63100",
   country: "Pakistan",
