@@ -19,12 +19,20 @@ export const COMPANY_TRADE_NAME = "www.visaportal.online";
 export const CONTACT_PHONE = "+92 3096809637";
 
 // Company Address (Registered Office)
+// export const COMPANY_ADDRESS = {
+//   line1: "Mystängen 10 Hisings Kärra",
+//   line2: "",
+//   city: "Гётеборг",
+//   postalCode: "425 65",
+//   country: "Швеция",
+// } as const;
+
 export const COMPANY_ADDRESS = {
-  line1: "Mystängen 10 Hisings Kärra",
+  line1: "23 B block Y",
   line2: "",
-  city: "Гётеборг",
-  postalCode: "425 65",
-  country: "Швеция",
+  city: "Bahawalpur",
+  postalCode: "63100",
+  country: "Pakistan",
 } as const;
 
 // External Links
