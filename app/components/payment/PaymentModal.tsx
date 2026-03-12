@@ -73,7 +73,9 @@ function PaymentForm({
         onError(errorMessage);
         setIsProcessing(false);
       } else if (paymentIntent && paymentIntent.status === "succeeded") {
-        // Payment successful
+        if (typeof window !== "undefined" && typeof (window as any).ym === "function") {
+          (window as any).ym(107284093, "reachGoal", "payment_complete", { order_price: amount / 100, currency: "RUB" });
+        }
         onSuccess();
       } else if (paymentIntent) {
         // Payment in unexpected state
