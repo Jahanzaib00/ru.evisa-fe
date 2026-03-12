@@ -15,15 +15,15 @@ import FileUpload from "@/app/components/ui/FileUpload";
 import RadioGroup from "@/app/components/ui/RadioGroup";
 
 const estaPassportSchema = z.object({
-  passportNumber: z.string().min(1, "Passport number is required"),
-  passportType: z.string().min(1, "Passport type is required"),
+  passportNumber: z.string().min(1, "Номер паспорта обязателен"),
+  passportType: z.string().min(1, "Тип паспорта обязателен"),
   passportIssueDay: z.number().min(1).max(31),
   passportIssueMonth: z.number().min(1).max(12),
   passportIssueYear: z.number().min(1900),
   passportExpiryDay: z.number().min(1).max(31),
   passportExpiryMonth: z.number().min(1).max(12),
   passportExpiryYear: z.number().min(1900),
-  nationalityOnPassport: z.string().min(1, "Nationality is required"),
+  nationalityOnPassport: z.string().min(1, "Гражданство обязательно"),
   isEPassport: z.boolean(),
   nationalIdNumber: z.string().optional(),
   countryOfResidence: z.string().optional(),
@@ -100,8 +100,8 @@ export default function ESTAPassportStep({ applicationId, onNext, onBack }: ESTA
   return (
     <div>
       <div className="mb-8">
-        <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Passport Information</h1>
-        <p className="text-gray-600">Enter your passport details and upload required documents.</p>
+        <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Паспортные данные</h1>
+        <p className="text-gray-600">Введите данные паспорта и загрузите необходимые документы.</p>
       </div>
 
       {error && (
@@ -115,46 +115,46 @@ export default function ESTAPassportStep({ applicationId, onNext, onBack }: ESTA
         renderContent={() => (
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
             <section className="space-y-4">
-              <Input label="Passport Number" error={errors.passportNumber?.message} required {...register("passportNumber")} />
+              <Input label="Номер паспорта" error={errors.passportNumber?.message} required {...register("passportNumber")} />
 
-              <Select label="Passport Type" error={errors.passportType?.message} required {...register("passportType")}>
-                <option value="">Select type</option>
-                <option value="REGULAR">Regular</option>
-                <option value="OFFICIAL">Official</option>
-                <option value="DIPLOMATIC">Diplomatic</option>
-                <option value="SERVICE">Service</option>
+              <Select label="Тип паспорта" error={errors.passportType?.message} required {...register("passportType")}>
+                <option value="">Выберите тип</option>
+                <option value="REGULAR">Обычный</option>
+                <option value="OFFICIAL">Служебный</option>
+                <option value="DIPLOMATIC">Дипломатический</option>
+                <option value="SERVICE">Служебный</option>
               </Select>
 
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">Passport Issue Date</label>
+                <label className="block text-sm font-medium text-gray-700">Дата выдачи паспорта</label>
                 <div className="grid grid-cols-3 gap-4">
-                  <Input label="Day" type="number" min={1} max={31} {...register("passportIssueDay", { valueAsNumber: true })} />
-                  <Input label="Month" type="number" min={1} max={12} {...register("passportIssueMonth", { valueAsNumber: true })} />
-                  <Input label="Year" type="number" min={1900} {...register("passportIssueYear", { valueAsNumber: true })} />
+                  <Input label="День" type="number" min={1} max={31} {...register("passportIssueDay", { valueAsNumber: true })} />
+                  <Input label="Месяц" type="number" min={1} max={12} {...register("passportIssueMonth", { valueAsNumber: true })} />
+                  <Input label="Год" type="number" min={1900} {...register("passportIssueYear", { valueAsNumber: true })} />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">Passport Expiry Date *</label>
+                <label className="block text-sm font-medium text-gray-700">Срок действия паспорта *</label>
                 <div className="grid grid-cols-3 gap-4">
-                  <Input label="Day" type="number" min={1} max={31} {...register("passportExpiryDay", { valueAsNumber: true })} />
-                  <Input label="Month" type="number" min={1} max={12} {...register("passportExpiryMonth", { valueAsNumber: true })} />
-                  <Input label="Year" type="number" min={1900} {...register("passportExpiryYear", { valueAsNumber: true })} />
+                  <Input label="День" type="number" min={1} max={31} {...register("passportExpiryDay", { valueAsNumber: true })} />
+                  <Input label="Месяц" type="number" min={1} max={12} {...register("passportExpiryMonth", { valueAsNumber: true })} />
+                  <Input label="Год" type="number" min={1900} {...register("passportExpiryYear", { valueAsNumber: true })} />
                 </div>
               </div>
 
-              <Input label="Nationality on Passport" error={errors.nationalityOnPassport?.message} required {...register("nationalityOnPassport")} />
+              <Input label="Гражданство по паспорту" error={errors.nationalityOnPassport?.message} required {...register("nationalityOnPassport")} />
 
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">Is your passport an e-Passport (with electronic chip)? *</label>
+                <label className="block text-sm font-medium text-gray-700">Ваш паспорт электронный (с чипом)? *</label>
                 <Controller
                   control={control}
                   name="isEPassport"
                   render={({ field }) => (
                     <RadioGroup
                       options={[
-                        { value: "true", label: "Yes" },
-                        { value: "false", label: "No" },
+                        { value: "true", label: "Да" },
+                        { value: "false", label: "Нет" },
                       ]}
                       value={field.value ? "true" : "false"}
                       onChange={(val: string) => {
@@ -166,14 +166,14 @@ export default function ESTAPassportStep({ applicationId, onNext, onBack }: ESTA
                 />
               </div>
 
-              <Input label="National ID Number (if applicable)" {...register("nationalIdNumber")} />
-              <Input label="Country of Residence" {...register("countryOfResidence")} />
+              <Input label="Номер национального удостоверения (если есть)" {...register("nationalIdNumber")} />
+              <Input label="Страна проживания" {...register("countryOfResidence")} />
             </section>
 
             <section className="space-y-4 pt-6 border-t border-gray-200">
-              <h2 className="text-lg font-semibold text-gray-900">Passport Upload</h2>
+              <h2 className="text-lg font-semibold text-gray-900">Загрузка паспорта</h2>
               <FileUpload
-                label="Passport Photo"
+                label="Фото паспорта"
                 uploadType="passport"
                 applicationId={applicationId}
                 travelerId={currentTravelerId}
@@ -184,9 +184,9 @@ export default function ESTAPassportStep({ applicationId, onNext, onBack }: ESTA
             </section>
 
             <div className="flex justify-between pt-6">
-              <Button type="button" variant="outline" onClick={onBack}>Back</Button>
+              <Button type="button" variant="outline" onClick={onBack}>Назад</Button>
               <Button type="submit" disabled={isLoading} className="min-w-[200px]">
-                {isLoading ? "Saving..." : "Save & Continue"}
+                {isLoading ? "Сохранение..." : "Сохранить и продолжить"}
               </Button>
             </div>
           </form>

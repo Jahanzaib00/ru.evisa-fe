@@ -13,10 +13,10 @@ import CountrySelect from "@/app/components/ui/CountrySelect";
 import TravelerAccordion from "@/app/components/application/TravelerAccordion";
 
 const tdacPersonalDetailsSchema = z.object({
-  gender: z.enum(["M", "F"], { message: "Please select your gender" }),
-  countryOfResidence: z.string().min(1, "Country of residence is required"),
+  gender: z.enum(["M", "F"], { message: "Укажите ваш пол" }),
+  countryOfResidence: z.string().min(1, "Страна проживания обязательна"),
   employmentStatus: z.enum(["EMPLOYED", "RETIRED", "STUDENT", "UNEMPLOYED"], {
-    message: "Please select your employment status",
+    message: "Укажите статус занятости",
   }),
 });
 
@@ -89,7 +89,7 @@ export default function TDACPersonalDetailsStep({ onNext, onBack }: TDACPersonal
             {currentTraveler.firstName} {currentTraveler.lastName}
           </h1>
         )}
-        <p className="text-gray-600">&mdash; Personal details</p>
+        <p className="text-gray-600">&mdash; Личные данные</p>
       </div>
 
       {error && (
@@ -108,10 +108,10 @@ export default function TDACPersonalDetailsStep({ onNext, onBack }: TDACPersonal
               control={control}
               render={({ field }) => (
                 <RadioGroup
-                  label="Gender"
+                  label="Пол"
                   options={[
-                    { value: "M", label: "Male" },
-                    { value: "F", label: "Female" },
+                    { value: "M", label: "Мужской" },
+                    { value: "F", label: "Женский" },
                   ]}
                   value={field.value}
                   onChange={field.onChange}
@@ -129,14 +129,14 @@ export default function TDACPersonalDetailsStep({ onNext, onBack }: TDACPersonal
               control={control}
               render={({ field }) => (
                 <CountrySelect
-                  label="Country of residence"
+                  label="Страна проживания"
                   value={field.value}
                   onChange={field.onChange}
                   onBlur={field.onBlur}
                   valueType="name"
                   required
                   error={errors.countryOfResidence?.message}
-                  helperText="Select the country where you live permanently, not temporarily."
+                  helperText="Укажите страну, в которой вы постоянно проживаете."
                 />
               )}
             />
@@ -147,12 +147,12 @@ export default function TDACPersonalDetailsStep({ onNext, onBack }: TDACPersonal
               control={control}
               render={({ field }) => (
                 <RadioGroup
-                  label="Employment status"
+                  label="Статус занятости"
                   options={[
-                    { value: "EMPLOYED", label: "Employed" },
-                    { value: "RETIRED", label: "Retired" },
-                    { value: "STUDENT", label: "Student" },
-                    { value: "UNEMPLOYED", label: "Unemployed" },
+                    { value: "EMPLOYED", label: "Работаю" },
+                    { value: "RETIRED", label: "На пенсии" },
+                    { value: "STUDENT", label: "Студент" },
+                    { value: "UNEMPLOYED", label: "Безработный" },
                   ]}
                   value={field.value}
                   onChange={field.onChange}
@@ -165,9 +165,9 @@ export default function TDACPersonalDetailsStep({ onNext, onBack }: TDACPersonal
             />
 
             <div className="flex justify-between pt-6">
-              <Button type="button" variant="outline" onClick={onBack}>Back</Button>
+              <Button type="button" variant="outline" onClick={onBack}>Назад</Button>
               <Button type="submit" disabled={isLoading} className="min-w-[200px]">
-                {isLoading ? "Saving..." : "Save & Continue"}
+                {isLoading ? "Сохранение..." : "Сохранить и продолжить"}
               </Button>
             </div>
           </form>

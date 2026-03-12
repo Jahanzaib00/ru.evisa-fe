@@ -127,45 +127,45 @@ export default function ESTAPersonalStep({ applicationId, onNext, onBack }: ESTA
                 <Input label="Фамилия" placeholder="Как указано в паспорте" error={errors.lastName?.message} required {...register("lastName")} />
               </div>
 
-              <Input label="Middle Name" error={errors.middleName?.message} {...register("middleName")} />
+              <Input label="Отчество" error={errors.middleName?.message} {...register("middleName")} />
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <Select label="Gender" error={errors.gender?.message} required {...register("gender")}>
-                  <option value="">Select gender</option>
-                  <option value="M">Male</option>
-                  <option value="F">Female</option>
-                  <option value="X">Other</option>
+                <Select label="Пол" error={errors.gender?.message} required {...register("gender")}>
+                  <option value="">Выберите пол</option>
+                  <option value="M">Мужской</option>
+                  <option value="F">Женский</option>
+                  <option value="X">Другой</option>
                 </Select>
 
-                <Input label="Day of Birth" type="number" min={1} max={31} error={errors.birthDay?.message} required {...register("birthDay", { valueAsNumber: true })} />
-                <Input label="Month of Birth" type="number" min={1} max={12} error={errors.birthMonth?.message} required {...register("birthMonth", { valueAsNumber: true })} />
+                <Input label="День рождения" type="number" min={1} max={31} error={errors.birthDay?.message} required {...register("birthDay", { valueAsNumber: true })} />
+                <Input label="Месяц рождения" type="number" min={1} max={12} error={errors.birthMonth?.message} required {...register("birthMonth", { valueAsNumber: true })} />
               </div>
 
-              <Input label="Year of Birth" type="number" min={1900} max={new Date().getFullYear()} error={errors.birthYear?.message} required {...register("birthYear", { valueAsNumber: true })} />
+              <Input label="Год рождения" type="number" min={1900} max={new Date().getFullYear()} error={errors.birthYear?.message} required {...register("birthYear", { valueAsNumber: true })} />
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Input label="City of Birth" error={errors.cityOfBirth?.message} required {...register("cityOfBirth")} />
+                <Input label="Город рождения" error={errors.cityOfBirth?.message} required {...register("cityOfBirth")} />
                 <Controller name="countryOfBirth" control={control} render={({ field }) => (
-                  <CountrySelect label="Country of Birth" error={errors.countryOfBirth?.message} required value={field.value} onChange={field.onChange} onBlur={field.onBlur} valueType="name" />
+                  <CountrySelect label="Страна рождения" error={errors.countryOfBirth?.message} required value={field.value} onChange={field.onChange} onBlur={field.onBlur} valueType="name" />
                 )} />
               </div>
 
-              <Select label="Marital Status" error={errors.maritalStatus?.message} required {...register("maritalStatus")}>
-                <option value="">Select status</option>
-                <option value="SINGLE">Single</option>
-                <option value="MARRIED">Married</option>
-                <option value="DIVORCED">Divorced</option>
-                <option value="WIDOWED">Widowed</option>
+              <Select label="Семейное положение" error={errors.maritalStatus?.message} required {...register("maritalStatus")}>
+                <option value="">Выберите статус</option>
+                <option value="SINGLE">Не женат/не замужем</option>
+                <option value="MARRIED">В браке</option>
+                <option value="DIVORCED">В разводе</option>
+                <option value="WIDOWED">Вдовец/вдова</option>
               </Select>
 
-              <Input label="Email Address" type="email" error={errors.email?.message} required {...register("email")} />
+              <Input label="Электронная почта" type="email" error={errors.email?.message} required {...register("email")} />
             </section>
 
             <section className="space-y-4 pt-6 border-t border-gray-200">
-              <h2 className="text-lg font-semibold text-gray-900">Personal Photo</h2>
-              <p className="text-sm text-gray-600">Upload a recent passport-style photo of yourself.</p>
+              <h2 className="text-lg font-semibold text-gray-900">Личное фото</h2>
+              <p className="text-sm text-gray-600">Загрузите недавнее фото паспортного формата.</p>
               <FileUpload
-                label="Personal Photo"
+                label="Личное фото"
                 uploadType="photo"
                 applicationId={applicationId}
                 travelerId={currentTravelerId}
@@ -176,21 +176,21 @@ export default function ESTAPersonalStep({ applicationId, onNext, onBack }: ESTA
             </section>
 
             <section className="space-y-4 pt-6 border-t border-gray-200">
-              <h2 className="text-lg font-semibold text-gray-900">Parents Information</h2>
+              <h2 className="text-lg font-semibold text-gray-900">Данные родителей</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Input label="Father's First Name" error={errors.fatherFirstName?.message} {...register("fatherFirstName")} />
-                <Input label="Father's Family Name" error={errors.fatherFamilyName?.message} {...register("fatherFamilyName")} />
+                <Input label="Имя отца" error={errors.fatherFirstName?.message} {...register("fatherFirstName")} />
+                <Input label="Фамилия отца" error={errors.fatherFamilyName?.message} {...register("fatherFamilyName")} />
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Input label="Mother's First Name" error={errors.motherFirstName?.message} {...register("motherFirstName")} />
-                <Input label="Mother's Family Name" error={errors.motherFamilyName?.message} {...register("motherFamilyName")} />
+                <Input label="Имя матери" error={errors.motherFirstName?.message} {...register("motherFirstName")} />
+                <Input label="Фамилия матери" error={errors.motherFamilyName?.message} {...register("motherFamilyName")} />
               </div>
             </section>
 
             <div className="flex justify-between pt-6">
-              <Button type="button" variant="outline" onClick={onBack}>Back</Button>
+              <Button type="button" variant="outline" onClick={onBack}>Назад</Button>
               <Button type="submit" disabled={isLoading} className="min-w-[200px]">
-                {isLoading ? "Saving..." : "Save & Continue"}
+                {isLoading ? "Сохранение..." : "Сохранить и продолжить"}
               </Button>
             </div>
           </form>

@@ -81,14 +81,14 @@ const PHONE_CODES: { code: string; dialCode: string; name: string }[] = [
 ].sort((a, b) => a.name.localeCompare(b.name));
 
 const mdacTripDetailsSchema = z.object({
-  phoneCountryCode: z.string().min(1, "Country code is required"),
-  phoneNumber: z.string().min(4, "Phone number is required"),
-  arrivalDate: z.string().min(1, "Arrival date is required"),
+  phoneCountryCode: z.string().min(1, "Код страны обязателен"),
+  phoneNumber: z.string().min(4, "Номер телефона обязателен"),
+  arrivalDate: z.string().min(1, "Дата прибытия обязательна"),
   hasFlightBooked: z.enum(["true", "false"]),
   flightNumber: z.string().optional(),
 }).refine(
   (data) => data.hasFlightBooked === "false" || (data.flightNumber && data.flightNumber.length > 0),
-  { message: "Flight number is required when a flight is booked", path: ["flightNumber"] }
+  { message: "Номер рейса обязателен при наличии брони", path: ["flightNumber"] }
 );
 
 type MDACTripDetailsFormData = z.infer<typeof mdacTripDetailsSchema>;
@@ -181,8 +181,8 @@ export default function MDACTripDetailsStep({ applicationId, onNext, onBack }: M
   return (
     <div>
       <div className="mb-8">
-        <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Trip details</h1>
-        <p className="text-gray-600">General details about your trip to Malaysia.</p>
+        <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Детали поездки</h1>
+        <p className="text-gray-600">Общие сведения о вашей поездке в Малайзию.</p>
       </div>
 
       {error && (
@@ -193,7 +193,7 @@ export default function MDACTripDetailsStep({ applicationId, onNext, onBack }: M
         {/* Phone Number */}
         <div className="w-full">
           <label className="block text-sm font-medium text-gray-dark mb-1.5">
-            Phone number <span className="text-accent">*</span>
+            Номер телефона <span className="text-accent">*</span>
           </label>
           <div className="flex gap-3">
             <div className="relative" ref={codeDropdownRef}>
@@ -221,7 +221,7 @@ export default function MDACTripDetailsStep({ applicationId, onNext, onBack }: M
                       type="text"
                       value={codeSearchTerm}
                       onChange={(e) => setCodeSearchTerm(e.target.value)}
-                      placeholder="Search country or code..."
+                      placeholder="Поиск страны или кода..."
                       className="w-full px-3 py-2 text-sm border border-gray-light rounded-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
                     />
                   </div>
@@ -252,21 +252,21 @@ export default function MDACTripDetailsStep({ applicationId, onNext, onBack }: M
               <input
                 {...register("phoneNumber")}
                 type="tel"
-                placeholder="Enter phone number"
+                placeholder="Введите номер телефона"
                 className={`w-full px-4 py-3 text-base border rounded-md transition-colors
                   ${errors.phoneNumber ? "border-accent focus:border-accent focus:ring-accent" : "border-gray-light focus:border-primary focus:ring-primary"}
                   focus:outline-none focus:ring-2 focus:ring-opacity-20 bg-white text-gray-dark placeholder-gray`}
               />
             </div>
           </div>
-          <p className="mt-1.5 text-sm text-gray">Confirm the country code, then enter the number.</p>
+          <p className="mt-1.5 text-sm text-gray">Подтвердите код страны, затем введите номер.</p>
           {errors.phoneNumber && (
             <p className="mt-1.5 text-sm text-accent font-medium">{errors.phoneNumber.message}</p>
           )}
         </div>
 
         <Input
-          label="Arrival date"
+          label="Дата прибытия"
           type="date"
           error={errors.arrivalDate?.message}
           required
@@ -278,10 +278,10 @@ export default function MDACTripDetailsStep({ applicationId, onNext, onBack }: M
           control={control}
           render={({ field }) => (
             <RadioGroup
-              label="Do you have a flight booked?"
+              label="У вас уже забронирован рейс?"
               options={[
-                { value: "true", label: "Yes" },
-                { value: "false", label: "No" },
+                { value: "true", label: "Да" },
+                { value: "false", label: "Нет" },
               ]}
               value={field.value}
               onChange={field.onChange}
@@ -293,8 +293,8 @@ export default function MDACTripDetailsStep({ applicationId, onNext, onBack }: M
 
         {hasFlightBooked === "true" && (
           <Input
-            label="Flight number"
-            placeholder="e.g. MH370"
+            label="Номер рейса"
+            placeholder="напр. MH370"
             error={errors.flightNumber?.message}
             required
             {...register("flightNumber")}
@@ -302,9 +302,9 @@ export default function MDACTripDetailsStep({ applicationId, onNext, onBack }: M
         )}
 
         <div className="flex justify-between pt-6">
-          <Button type="button" variant="outline" onClick={onBack}>Back</Button>
+          <Button type="button" variant="outline" onClick={onBack}>Назад</Button>
           <Button type="submit" disabled={isLoading} className="min-w-[200px]">
-            {isLoading ? "Saving..." : "Next"}
+            {isLoading ? "Сохранение..." : "Далее"}
           </Button>
         </div>
       </form>

@@ -266,13 +266,13 @@ export default function PersonalDetailsPage({ params }: Props) {
                     dayFieldName={`travelers.${index}.birthDay` as const}
                     monthFieldName={`travelers.${index}.birthMonth` as const}
                     yearFieldName={`travelers.${index}.birthYear` as const}
-                    dayОшибка={
+                    dayError={
                       errors.travelers?.[index]?.birthDay?.message as string
                     }
-                    monthОшибка={
+                    monthError={
                       errors.travelers?.[index]?.birthMonth?.message as string
                     }
-                    yearОшибка={
+                    yearError={
                       errors.travelers?.[index]?.birthYear?.message as string
                     }
                     yearRange="past"
