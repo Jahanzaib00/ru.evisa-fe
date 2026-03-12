@@ -45,7 +45,7 @@ function PaymentForm({
 
     if (!stripe || !elements) {
       onError(
-        "Payment system is not ready. Please refresh the page and try again.",
+        "Платёжная система не готова. Обновите страницу и попробуйте снова.",
       );
       return;
     }
@@ -68,7 +68,7 @@ function PaymentForm({
         // Extract and display user-friendly error message
         const errorMessage = extractErrorMessage(
           error,
-          "Payment failed. Please check your card details and try again.",
+          "Оплата не удалась. Проверьте данные карты и попробуйте снова.",
         );
         onError(errorMessage);
         setIsProcessing(false);
@@ -84,7 +84,7 @@ function PaymentForm({
           "Payment status",
         );
         onError(
-          "Payment is being processed. Please wait a moment and check your email for confirmation.",
+          "Платёж обрабатывается. Подождите и проверьте почту для подтверждения.",
         );
         setIsProcessing(false);
       }
@@ -95,7 +95,7 @@ function PaymentForm({
       // Extract and display error message
       const errorMessage = extractErrorMessage(
         err,
-        "An unexpected error occurred during payment. Please try again.",
+        "Произошла непредвиденная ошибка при оплате. Попробуйте ещё раз.",
       );
       onError(errorMessage);
       setIsProcessing(false);
@@ -139,33 +139,32 @@ function PaymentForm({
           </svg>
         )}
         {isProcessing
-          ? "Processing..."
-          : `Pay $${(amount / 100).toFixed(2)} USD`}
+          ? "Обработка..."
+          : `Оплатить ₽${(amount / 100).toFixed(2)}`}
       </button>
 
       {/* Terms Acknowledgment */}
       <div className="text-xs text-center">
         <p>
-          By submitting payment I acknowledge that I have read and accept the{" "}
-          {COMPANY_NAME}{" "}
+          Совершая оплату, я подтверждаю, что ознакомился и принимаю{" "}
           <a
             href="/terms"
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-600 hover:text-blue-700 underline font-medium"
           >
-            Terms of Service
+            Условия использования
           </a>{" "}
-          and{" "}
+          и{" "}
           <a
             href="/privacy"
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-600 hover:text-blue-700 underline font-medium"
           >
-            Privacy Policy
-          </a>
-          .
+            Политику конфиденциальности
+          </a>{" "}
+          {COMPANY_NAME}.
         </p>
       </div>
 
@@ -176,7 +175,7 @@ function PaymentForm({
         disabled={isProcessing}
         className="w-full text-gray hover:text-gray-dark font-medium py-2 transition-colors"
       >
-        Cancel
+        Отмена
       </button>
     </form>
   );
@@ -222,7 +221,7 @@ export default function PaymentModal({
       <div className="bg-white rounded-xl max-w-lg w-full shadow-2xl max-h-[90vh] overflow-y-auto">
         {/* Header */}
         <div className="bg-white border-b border-gray-light px-6 py-4 flex items-center justify-center">
-          <h2 className="text-2xl font-bold text-gray-dark mb-0!">Payment</h2>
+          <h2 className="text-2xl font-bold text-gray-dark mb-0!">Оплата</h2>
         </div>
 
         {/* Payment Form */}

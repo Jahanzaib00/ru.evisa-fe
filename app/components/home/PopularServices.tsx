@@ -51,14 +51,14 @@ function ServiceCard({ serviceType, available }: ServiceCardProps) {
         <h3 className="text-xl font-bold text-gray-900 mb-2">
           {serviceType.replace("_", " ")}
         </h3>
-        <p className="text-gray-600 mb-6">Coming Soon</p>
+        <p className="text-gray-600 mb-6">Скоро</p>
         <Button
           variant="outline"
           size="md"
           onClick={handleNotify}
           className="w-full"
         >
-          Notify Me
+          Уведомить меня
         </Button>
       </div>
     );
@@ -82,7 +82,7 @@ function ServiceCard({ serviceType, available }: ServiceCardProps) {
           <div>
             <h3 className="text-xl font-bold text-gray-900">{service.name}</h3>
             <p className="text-sm text-gray-600">
-              {eligibleCount} eligible countries
+              {eligibleCount} стран
             </p>
           </div>
         </div>
@@ -92,11 +92,11 @@ function ServiceCard({ serviceType, available }: ServiceCardProps) {
       <div className="space-y-3 mb-6">
         <div className="flex items-center gap-2 text-sm text-gray-700">
           <Clock className="w-4 h-4 text-primary flex-shrink-0" />
-          <span>Processed in {service.processing.superRush || service.processing.standard}</span>
+          <span>Обработка за {service.processing.superRush || service.processing.standard}</span>
         </div>
         <div className="flex items-center gap-2 text-sm text-gray-700">
           <Shield className="w-4 h-4 text-primary flex-shrink-0" />
-          <span>Valid for {service.validity.duration}</span>
+          <span>Действует {service.validity.duration}</span>
         </div>
         <div className="flex items-center gap-2 text-sm text-gray-700">
           <Globe2 className="w-4 h-4 text-primary flex-shrink-0" />
@@ -107,7 +107,7 @@ function ServiceCard({ serviceType, available }: ServiceCardProps) {
       {/* Pricing */}
       <div className="bg-blue-50 rounded-lg p-4 mb-6">
         <div className="flex items-baseline gap-2">
-          <span className="text-sm text-gray-600">from</span>
+          <span className="text-sm text-gray-600">от</span>
           <span className="text-3xl font-bold text-gray-900">
             {currencySymbol}
             {totalPrice.toFixed(2)}
@@ -117,13 +117,13 @@ function ServiceCard({ serviceType, available }: ServiceCardProps) {
           </span>
         </div>
         <p className="text-xs text-gray-500 mt-1">
-          Includes government & processing fees
+          Включая госпошлину и сервисный сбор
         </p>
       </div>
 
       {/* CTA */}
       <Button variant="primary" size="lg" fullWidth onClick={handleApply}>
-        Apply
+        Оформить
         <ArrowRight className="ml-2 w-5 h-5" />
       </Button>
     </div>
@@ -136,11 +136,10 @@ export default function PopularServices() {
       <Container>
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Most Popular Travel Authorizations
+            Популярные разрешения на въезд
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Fast, secure applications for the world's most requested travel
-            documents
+            Быстрое и безопасное оформление самых востребованных документов для путешествий
           </p>
         </div>
 

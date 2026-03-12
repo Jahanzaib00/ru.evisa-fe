@@ -142,7 +142,7 @@ export default function PassportDetailsPage({ params }: Props) {
   if (isVerifying) {
     return (
       <ApplicationLayout
-        title="Passport details"
+        title="Паспортные данные"
         showSidebar={false}
         showMobileCTA={false}
         showPrevious={false}
@@ -154,14 +154,14 @@ export default function PassportDetailsPage({ params }: Props) {
 
   return (
     <ApplicationLayout
-      title="Passport details"
+      title="Паспортные данные"
       showSidebar={true}
       showMobileCTA={true}
-      mobileButtonText={isLoading ? "Saving..." : "Save & Continue"}
+      mobileButtonText={isLoading ? "Сохранение..." : "Сохранить и продолжить"}
       mobileButtonDisabled={isLoading}
       onMobileButtonClick={handleContinue}
       onSidebarButtonClick={handleContinue}
-      sidebarButtonText={isLoading ? "Saving..." : "Save & Continue"}
+      sidebarButtonText={isLoading ? "Сохранение..." : "Сохранить и продолжить"}
       sidebarButtonDisabled={isLoading}
       showPrevious={true}
       onPreviousClick={handlePrevious}
@@ -183,7 +183,7 @@ export default function PassportDetailsPage({ params }: Props) {
                 />
               </svg>
               <div className="flex-1">
-                <p className="font-semibold text-sm">Error</p>
+                <p className="font-semibold text-sm">Ошибка</p>
                 <p className="text-sm mt-1">{error}</p>
               </div>
             </div>
@@ -207,7 +207,7 @@ export default function PassportDetailsPage({ params }: Props) {
                          hover:bg-white transition-colors text-left"
               >
                 <span className="font-semibold text-gray-dark text-base">
-                  Traveler #{index + 1} - {travelerName}
+                  Заявитель №{index + 1} - {travelerName}
                 </span>
                 <svg
                   className={`w-5 h-5 text-gray transition-transform ${
@@ -233,7 +233,7 @@ export default function PassportDetailsPage({ params }: Props) {
                     control={control}
                     render={({ field }) => (
                       <CountrySelect
-                        label="Nationality on passport"
+                        label="Гражданство по паспорту"
                         required
                         value={field.value}
                         onChange={field.onChange}
@@ -249,7 +249,7 @@ export default function PassportDetailsPage({ params }: Props) {
                   {/* Passport Number */}
                   <>
                     <Input
-                      label="Passport number"
+                      label="Номер паспорта"
                       placeholder="XXXXXXXXX"
                       required
                       maxLength={20}
@@ -265,7 +265,7 @@ export default function PassportDetailsPage({ params }: Props) {
 
                     {/* Passport Expiration Date */}
                     <DatePicker
-                      label="Passport expiration date"
+                      label="Срок действия паспорта"
                       required
                       register={register}
                       dayFieldName={`travelers.${index}.expiryDay` as const}

@@ -25,7 +25,7 @@ export default function LoginPage() {
     try {
       await login(email, password);
     } catch (err: any) {
-      setError(err.message || "Login failed. Please check your credentials.");
+      setError(err.message || "Не удалось войти. Проверьте ваши данные.");
     } finally {
       setIsLoading(false);
     }
@@ -54,26 +54,26 @@ export default function LoginPage() {
 
             <Input
               id="email"
-              label="Email address"
+              label="Электронная почта"
               name="email"
               type="email"
               autoComplete="email"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
+              placeholder="Введите email"
             />
 
             <Input
               id="password"
-              label="Password"
+              label="Пароль"
               name="password"
               type="password"
               autoComplete="current-password"
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter your password"
+              placeholder="Введите пароль"
             />
 
             <div className="flex justify-end text-sm">
@@ -81,7 +81,7 @@ export default function LoginPage() {
                 href="/forgot-password"
                 className="font-medium text-primary-light hover:text-primary transition duration-150 ease-in-out"
               >
-                Forgot password?
+                Забыли пароль?
               </Link>
             </div>
 
@@ -95,7 +95,7 @@ export default function LoginPage() {
                 isLoading ? <Spinner size="sm" variant="white" /> : undefined
               }
             >
-              {isLoading ? "Signing in..." : "Sign in"}
+              {isLoading ? "Вход..." : "Войти"}
             </Button>
           </form>
 
@@ -106,7 +106,7 @@ export default function LoginPage() {
               </div>
               <div className="relative flex justify-center text-sm">
                 <span className="px-2 bg-white text-gray-500">
-                  New to {COMPANY_NAME}?
+                  Впервые на {COMPANY_NAME}?
                 </span>
               </div>
             </div>
@@ -114,7 +114,7 @@ export default function LoginPage() {
             <div className="mt-6">
               <Link href="/signup" className="block">
                 <Button variant="outline" size="md" fullWidth>
-                  Create an account
+                  Создать аккаунт
                 </Button>
               </Link>
             </div>
@@ -127,7 +127,7 @@ export default function LoginPage() {
             href="/"
             className="text-sm font-medium text-gray hover:text-gray-dark transition duration-150 ease-in-out"
           >
-            ← Back to home
+            ← На главную
           </Link>
         </div>
       </div>

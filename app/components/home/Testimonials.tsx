@@ -10,22 +10,22 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    name: "Sarah M.",
-    location: "London, UK",
+    name: "Анна К.",
+    location: "Москва",
     rating: 5,
-    text: "Fast and easy process. Got my travel authorization approved in 12 hours. Excellent support team helped me with photo requirements. Highly recommend!",
+    text: "Быстро и удобно. Разрешение одобрили за 12 часов. Служба поддержки помогла с требованиями к фото. Однозначно рекомендую!",
   },
   {
-    name: "Michael Chen",
-    location: "Singapore",
+    name: "Дмитрий С.",
+    location: "Санкт-Петербург",
     rating: 5,
-    text: "Very professional service. The step-by-step guidance made the application painless. Worth every penny for the peace of mind.",
+    text: "Очень профессиональный сервис. Пошаговые инструкции сделали процесс оформления максимально понятным. Стоит каждого рубля ради спокойствия.",
   },
   {
-    name: "Emma Williams",
-    location: "Sydney, Australia",
+    name: "Елена В.",
+    location: "Екатеринбург",
     rating: 5,
-    text: "I was worried about making mistakes on the form, but their error checking caught everything. Approved in 4 hours. Thank you!",
+    text: "Переживала, что допущу ошибки в анкете, но их система проверки всё обнаружила. Одобрили за 4 часа. Спасибо!",
   },
 ];
 
@@ -55,10 +55,10 @@ export default function Testimonials() {
         {/* Section Header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4">
-            What Our Customers Say
+            Отзывы наших клиентов
           </h2>
           <p className="text-lg text-gray">
-            Join thousands of satisfied travelers who trusted us with their travel documents
+            Тысячи довольных путешественников уже доверили нам оформление своих документов
           </p>
         </div>
 
@@ -107,9 +107,9 @@ export default function Testimonials() {
             </div>
             <div className="text-left">
               <div className="font-bold text-xl text-gray-dark">
-                4.95 out of 5
+                4,95 из 5
               </div>
-              <div className="text-sm text-gray">Based on 66,000+ reviews</div>
+              <div className="text-sm text-gray">На основе 66 000+ отзывов</div>
             </div>
           </div>
         </div>

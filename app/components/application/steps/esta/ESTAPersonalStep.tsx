@@ -16,17 +16,17 @@ import FileUpload from "@/app/components/ui/FileUpload";
 
 // Validation schema
 const estaPersonalSchema = z.object({
-  firstName: z.string().min(1, "First name is required"),
+  firstName: z.string().min(1, "Имя обязательно"),
   middleName: z.string().optional(),
-  lastName: z.string().min(1, "Last name is required"),
+  lastName: z.string().min(1, "Фамилия обязательна"),
   gender: z.enum(["M", "F", "X"]),
   birthDay: z.number().min(1).max(31),
   birthMonth: z.number().min(1).max(12),
   birthYear: z.number().min(1900),
-  cityOfBirth: z.string().min(1, "City of birth is required"),
-  countryOfBirth: z.string().min(1, "Country of birth is required"),
+  cityOfBirth: z.string().min(1, "Город рождения обязателен"),
+  countryOfBirth: z.string().min(1, "Страна рождения обязательна"),
   maritalStatus: z.enum(["SINGLE", "MARRIED", "DIVORCED", "WIDOWED"]),
-  email: z.string().email("Invalid email"),
+  email: z.string().email("Неверный email"),
   fatherFirstName: z.string().optional(),
   fatherFamilyName: z.string().optional(),
   motherFirstName: z.string().optional(),
@@ -107,8 +107,8 @@ export default function ESTAPersonalStep({ applicationId, onNext, onBack }: ESTA
   return (
     <div>
       <div className="mb-8">
-        <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Personal Information</h1>
-        <p className="text-gray-600">Provide accurate personal details as they appear on your passport.</p>
+        <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Личная информация</h1>
+        <p className="text-gray-600">Укажите точные личные данные, как они указаны в вашем паспорте.</p>
       </div>
 
       {error && (
@@ -123,8 +123,8 @@ export default function ESTAPersonalStep({ applicationId, onNext, onBack }: ESTA
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
             <section className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Input label="First Name" placeholder="As shown on passport" error={errors.firstName?.message} required {...register("firstName")} />
-                <Input label="Last Name" placeholder="As shown on passport" error={errors.lastName?.message} required {...register("lastName")} />
+                <Input label="Имя" placeholder="Как указано в паспорте" error={errors.firstName?.message} required {...register("firstName")} />
+                <Input label="Фамилия" placeholder="Как указано в паспорте" error={errors.lastName?.message} required {...register("lastName")} />
               </div>
 
               <Input label="Middle Name" error={errors.middleName?.message} {...register("middleName")} />

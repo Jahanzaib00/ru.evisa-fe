@@ -100,7 +100,7 @@ export default function ProcessingOptionsPage({ params }: Props) {
   if (isVerifying || !service) {
     return (
       <ApplicationLayout
-        title="Choose your processing time"
+        title="Выберите скорость обработки"
         showSidebar={false}
         showMobileCTA={false}
         showPrevious={false}
@@ -116,14 +116,14 @@ export default function ProcessingOptionsPage({ params }: Props) {
 
   return (
     <ApplicationLayout
-      title="Choose your processing time"
+      title="Выберите скорость обработки"
       showSidebar={true}
       showMobileCTA={true}
-      mobileButtonText="Save & Continue"
+      mobileButtonText="Сохранить и продолжить"
       mobileButtonDisabled={!processingTier}
       onMobileButtonClick={handleContinue}
       onSidebarButtonClick={handleContinue}
-      sidebarButtonText="Save & Continue"
+      sidebarButtonText="Сохранить и продолжить"
       sidebarButtonDisabled={!processingTier}
       showPrevious={true}
       showProcessingFee={true}
@@ -147,7 +147,7 @@ export default function ProcessingOptionsPage({ params }: Props) {
                 />
               </svg>
               <div className="flex-1">
-                <p className="font-semibold text-sm">Error</p>
+                <p className="font-semibold text-sm">Ошибка</p>
                 <p className="text-sm mt-1">{error}</p>
               </div>
             </div>
@@ -194,7 +194,7 @@ export default function ProcessingOptionsPage({ params }: Props) {
       </div>
       {/* Info Box */}
       {totalApplicants > 1 && (
-        <div className="md:hidden mt-8 flex items-start gap-3">
+        <div className="mt-8 flex items-start gap-3">
           <svg
             className="w-5 h-5 text-primary shrink-0 mt-0.5"
             fill="currentColor"
@@ -207,7 +207,7 @@ export default function ProcessingOptionsPage({ params }: Props) {
             />
           </svg>
           <div className="text-sm text-gray">
-            processing fee is per applicant
+            стоимость обработки указана за одного заявителя
           </div>
         </div>
       )}

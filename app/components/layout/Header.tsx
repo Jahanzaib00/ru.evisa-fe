@@ -37,22 +37,22 @@ export default function Header() {
     {
       name: "US ESTA",
       href: "/services/esta",
-      description: "Travel authorization for the United States",
+      description: "Разрешение на въезд в США",
     },
     {
       name: "UK ETA",
       href: "/services/uk-eta",
-      description: "Electronic Travel Authorization for UK",
+      description: "Электронное разрешение для Великобритании",
     },
     {
       name: "Canada eTA",
       href: "/services/canada-eta",
-      description: "Electronic Travel Authorization for Canada",
+      description: "Электронное разрешение для Канады",
     },
     {
       name: "Thailand TDAC",
       href: "/services/thailand-tdac",
-      description: "Digital Arrival Card for Thailand",
+      description: "Цифровая карта прибытия в Таиланд",
     },
   ];
 
@@ -84,7 +84,7 @@ export default function Header() {
                 onClick={toggleServices}
                 className="inline-flex items-center px-3 py-2 text-sm font-semibold text-gray-700 hover:text-primary-light transition-colors duration-200"
               >
-                Services
+                Услуги
                 <svg
                   className={`ml-1 w-4 h-4 transition-transform duration-200 ${
                     isServicesOpen ? "rotate-180" : ""
@@ -176,7 +176,7 @@ export default function Header() {
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-primary-light transition-colors duration-150"
                       onClick={() => setIsUserMenuOpen(false)}
                     >
-                      My Applications
+                      Мои заявки
                     </Link>
                     {/* <Link
                       href="/profile"
@@ -189,7 +189,7 @@ export default function Header() {
                       onClick={handleLogout}
                       className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors duration-150"
                     >
-                      Sign Out
+                      Выйти
                     </button>
                   </div>
                 )}
@@ -200,7 +200,7 @@ export default function Header() {
                   href="/login"
                   className="text-gray-700 hover:text-primary-light font-medium transition-colors duration-200"
                 >
-                  Sign In
+                  Войти
                 </Link>
               </div>
             )}
@@ -213,7 +213,7 @@ export default function Header() {
               className="inline-flex items-center justify-center p-2 rounded-lg text-gray-700 duration-200"
               aria-expanded="false"
             >
-              <span className="sr-only">Open main menu</span>
+              <span className="sr-only">Открыть меню</span>
               {!isMobileMenuOpen ? (
                 <svg
                   className="block h-6 w-6"
@@ -266,7 +266,7 @@ export default function Header() {
             {/* Services Section */}
             <div className="py-2">
               <p className="px-3 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
-                Services
+                Услуги
               </p>
               {services.map((service) => (
                 <Link
@@ -296,14 +296,14 @@ export default function Header() {
                 className="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-primary-light hover:bg-blue-50 transition-colors duration-150"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Blog
+                Блог
               </Link>
               <Link
                 href="/support"
                 className="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-primary-light hover:bg-blue-50 transition-colors duration-150"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Support
+                Поддержка
               </Link>
             </div>
 
@@ -315,13 +315,13 @@ export default function Header() {
                   className="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-primary-light hover:bg-blue-50 transition-colors duration-150"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  My Applications
+                  Мои заявки
                 </Link>
                 <button
                   onClick={handleLogout}
                   className="w-full text-left block px-3 py-2 rounded-lg text-base font-medium text-red-600 hover:bg-red-50 transition-colors duration-150"
                 >
-                  Sign Out
+                  Выйти
                 </button>
               </div>
             ) : (
@@ -331,7 +331,7 @@ export default function Header() {
                   className="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-primary-light hover:bg-blue-50 transition-colors duration-150"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  Sign In
+                  Войти
                 </Link>
               </div>
             )}
@@ -343,7 +343,7 @@ export default function Header() {
                 className="block px-3 py-2.5 bg-primary-light text-white text-center text-base font-bold rounded-lg hover:bg-blue-700 transition-all duration-200"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Apply Now
+                Оформить сейчас
               </Link>
             </div>
           </div>

@@ -127,7 +127,7 @@ export default function SharedReviewStep({
       setSubmitError(
         err.response?.data?.message ||
           err.message ||
-          "Failed to submit application",
+          "Не удалось отправить заявку",
       );
     } finally {
       setIsSubmitting(false);
@@ -146,19 +146,19 @@ export default function SharedReviewStep({
           </svg>
         </div>
         <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
-          Application Submitted Successfully
+          Заявка успешно отправлена
         </h1>
         <p className="text-gray-600 mb-2">
-          Your application is being processed. You will receive a confirmation email shortly.
+          Ваша заявка обрабатывается. Вы получите подтверждение на электронную почту в ближайшее время.
         </p>
         <p className="text-sm text-gray-500 mb-8">
-          Reference: <span className="font-mono font-semibold text-gray-700">{shortRef}</span>
+          Номер заявки: <span className="font-mono font-semibold text-gray-700">{shortRef}</span>
         </p>
         <Button
           onClick={() => router.push(`/track/${applicationId}`)}
           className="min-w-[200px]"
         >
-          Track Application
+          Отследить заявку
         </Button>
       </div>
     );
@@ -168,11 +168,11 @@ export default function SharedReviewStep({
     <div className="max-w-6xl mx-auto">
       <div className="mb-8">
         <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
-          Review & Submit
+          Проверка и отправка
         </h1>
         <p className="text-gray-600">
-          Please review all information carefully before submitting your
-          application.
+          Пожалуйста, внимательно проверьте всю информацию перед отправкой
+          заявки.
         </p>
       </div>
 
@@ -201,7 +201,7 @@ export default function SharedReviewStep({
                       size="sm"
                       onClick={() => goToStep(step.index)}
                     >
-                      Edit
+                      Изменить
                     </Button>
                   </div>
 
@@ -221,7 +221,7 @@ export default function SharedReviewStep({
                                 className="text-primary underline"
                                 onClick={() => goToStep(step.index)}
                               >
-                                Review answers
+                                Проверить ответы
                               </button>
                             </p>
                           );
@@ -244,7 +244,7 @@ export default function SharedReviewStep({
             </div>
           ) : (
             <p className="text-sm text-gray-500">
-              Loading traveler information...
+              Загрузка данных заявителя...
             </p>
           )
         }
@@ -253,14 +253,14 @@ export default function SharedReviewStep({
       {/* Action Buttons */}
       <div className="flex justify-between mt-8">
         <Button variant="outline" onClick={onBack}>
-          Back
+          Назад
         </Button>
         <Button
           onClick={handleSubmit}
           disabled={isSubmitting}
           className="min-w-[200px]"
         >
-          {isSubmitting ? "Submitting..." : "Submit Application"}
+          {isSubmitting ? "Отправка..." : "Отправить заявку"}
         </Button>
       </div>
     </div>

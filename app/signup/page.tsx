@@ -34,13 +34,13 @@ export default function SignupPage() {
 
     // Validate passwords match
     if (formData.password !== formData.confirmPassword) {
-      setError("Passwords do not match");
+      setError("Пароли не совпадают");
       return;
     }
 
     // Validate password length
     if (formData.password.length < 8) {
-      setError("Password must be at least 8 characters long");
+      setError("Пароль должен содержать не менее 8 символов");
       return;
     }
 
@@ -54,7 +54,7 @@ export default function SignupPage() {
         lastName: formData.lastName,
       });
     } catch (err: any) {
-      setError(err.message || "Registration failed. Please try again.");
+      setError(err.message || "Регистрация не удалась. Попробуйте ещё раз.");
     } finally {
       setIsLoading(false);
     }
@@ -84,31 +84,31 @@ export default function SignupPage() {
             <div className="grid grid-cols-2 gap-4">
               <Input
                 id="firstName"
-                label="First name"
+                label="Имя"
                 name="firstName"
                 type="text"
                 autoComplete="given-name"
                 required
                 value={formData.firstName}
                 onChange={handleChange}
-                placeholder="John"
+                placeholder="Иван"
               />
               <Input
                 id="lastName"
-                label="Last name"
+                label="Фамилия"
                 name="lastName"
                 type="text"
                 autoComplete="family-name"
                 required
                 value={formData.lastName}
                 onChange={handleChange}
-                placeholder="Doe"
+                placeholder="Иванов"
               />
             </div>
 
             <Input
               id="email"
-              label="Email address"
+              label="Электронная почта"
               name="email"
               type="email"
               autoComplete="email"
@@ -120,26 +120,26 @@ export default function SignupPage() {
 
             <Input
               id="password"
-              label="Password"
+              label="Пароль"
               name="password"
               type="password"
               autoComplete="new-password"
               required
               value={formData.password}
               onChange={handleChange}
-              placeholder="At least 8 characters"
+              placeholder="Минимум 8 символов"
             />
 
             <Input
               id="confirmPassword"
-              label="Confirm password"
+              label="Подтвердите пароль"
               name="confirmPassword"
               type="password"
               autoComplete="new-password"
               required
               value={formData.confirmPassword}
               onChange={handleChange}
-              placeholder="Re-enter your password"
+              placeholder="Введите пароль ещё раз"
             />
 
             <Button
@@ -152,23 +152,23 @@ export default function SignupPage() {
                 isLoading ? <Spinner size="sm" variant="white" /> : undefined
               }
             >
-              {isLoading ? "Creating account..." : "Create account"}
+              {isLoading ? "Создание аккаунта..." : "Создать аккаунт"}
             </Button>
 
             <div className="text-xs text-gray text-center">
-              By signing up, you agree to our{" "}
+              Регистрируясь, вы соглашаетесь с{" "}
               <Link
                 href="/terms"
                 className="text-primary-light hover:text-primary"
               >
-                Terms of Service
+                Условиями использования
               </Link>{" "}
-              and{" "}
+              и{" "}
               <Link
                 href="/privacy"
                 className="text-primary-light hover:text-primary"
               >
-                Privacy Policy
+                Политикой конфиденциальности
               </Link>
             </div>
           </form>
@@ -180,7 +180,7 @@ export default function SignupPage() {
               </div>
               <div className="relative flex justify-center text-sm">
                 <span className="px-2 bg-white text-gray-500">
-                  Already have an account?
+                  Уже есть аккаунт?
                 </span>
               </div>
             </div>
@@ -188,7 +188,7 @@ export default function SignupPage() {
             <div className="mt-6">
               <Link href="/login" className="block">
                 <Button variant="outline" size="md" fullWidth>
-                  Sign in instead
+                  Войти
                 </Button>
               </Link>
             </div>
@@ -201,7 +201,7 @@ export default function SignupPage() {
             href="/"
             className="text-sm font-medium text-gray hover:text-gray-dark transition duration-150 ease-in-out"
           >
-            ← Back to home
+            ← На главную
           </Link>
         </div>
       </div>

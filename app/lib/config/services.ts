@@ -208,76 +208,76 @@ export const US_ESTA_CONFIG: ServiceConfig = {
   ],
 
   pricing: {
-    government: 40,
+    government: 3600,
 
-    currency: "USD",
+    currency: "RUB",
   },
 
   processingTiers: [
     {
       type: ProcessingTierType.STANDARD,
-      label: "Standard",
-      description: "24 hour processing",
-      processingTime: 24, // in hours for calculation
-      serviceFee: 19.95,
+      label: "Стандарт",
+      description: "Обработка за 24 часа",
+      processingTime: 24,
+      serviceFee: 1790,
       isDefault: true,
     },
     {
       type: ProcessingTierType.RUSH,
-      label: "Rush",
-      description: "4 hour processing",
+      label: "Срочный",
+      description: "Обработка за 4 часа",
       processingTime: 4,
-      serviceFee: 29.95,
+      serviceFee: 2690,
     },
     {
       type: ProcessingTierType.SUPER_RUSH,
-      label: "Fast Track",
-      description: "1 hour processing",
+      label: "Экспресс",
+      description: "Обработка за 1 час",
       processingTime: 1,
-      serviceFee: 39.95,
+      serviceFee: 3590,
     },
   ],
 
   validity: {
-    duration: "2 years",
-    stays: "90 days per visit",
+    duration: "2 года",
+    stays: "до 90 дней за визит",
     multipleEntry: true,
   },
 
   processing: {
-    standard: "24 hours",
-    rush: "4 hours",
-    superRush: "1 hour",
+    standard: "24 часа",
+    rush: "4 часа",
+    superRush: "1 час",
   },
 
   meta: {
-    title: "US ESTA Application | Fast ESTA Processing",
+    title: "Оформление US ESTA | Быстрая обработка ESTA",
     description:
-      "Apply for your US ESTA online. Fast processing, 24/7 support, and instant approval for eligible travelers.",
+      "Оформите US ESTA онлайн. Быстрая обработка, поддержка 24/7 и мгновенное одобрение для граждан подходящих стран.",
     keywords: [
       "esta",
-      "us visa",
-      "travel authorization",
-      "usa travel",
-      "esta application",
+      "виза сша",
+      "разрешение на въезд",
+      "поездка в сша",
+      "оформление esta",
     ],
   },
 
   prePaymentSteps: {
     tripDetails: {
-      title: "Apply now for your United States ESTA",
+      title: "Оформите United States ESTA прямо сейчас",
       description:
-        "The United States ESTA is mandatory for {nationality} passport holders planning to enter {destination}",
+        "United States ESTA обязательна для владельцев паспортов {nationality}, планирующих въезд в {destination}",
     },
     personalDetails: {
-      title: "Your personal details",
-      description: "Enter the details as they appear on your passport.",
+      title: "Ваши личные данные",
+      description: "Введите данные, как указано в вашем паспорте.",
       emailHelperText:
-        "Your approved United States ESTA will be sent to this email address.",
+        "Одобренная United States ESTA будет отправлена на этот адрес электронной почты.",
     },
     passportDetails: {
-      title: "Passport details",
-      description: "Enter your passport information.",
+      title: "Данные паспорта",
+      description: "Введите данные вашего паспорта.",
     },
   },
 
@@ -285,36 +285,36 @@ export const US_ESTA_CONFIG: ServiceConfig = {
     {
       type: StepType.PERSONAL,
       component: "ESTAPersonalStep",
-      title: "Personal Information",
+      title: "Личные данные",
       description:
-        "Provide accurate personal details as they appear on your passport",
+        "Укажите точные личные данные, как в вашем паспорте",
       fields: [
         {
-          label: "Full Name",
+          label: "Полное имя",
           concat: ["firstName", "middleName", "lastName"],
           required: ["firstName", "lastName"],
         },
         {
-          label: "Date of Birth",
+          label: "Дата рождения",
           date: { day: "birthDay", month: "birthMonth", year: "birthYear" },
         },
         {
-          label: "Gender",
+          label: "Пол",
           map: {
             key: "gender",
-            values: { M: "Male", F: "Female", X: "Other" },
+            values: { M: "Мужской", F: "Женский", X: "Другой" },
           },
         },
-        { label: "City of Birth", key: "cityOfBirth" },
-        { label: "Country of Birth", key: "countryOfBirth" },
-        { label: "Marital Status", key: "maritalStatus" },
+        { label: "Город рождения", key: "cityOfBirth" },
+        { label: "Страна рождения", key: "countryOfBirth" },
+        { label: "Семейное положение", key: "maritalStatus" },
         { label: "Email", key: "email", required: true },
         {
-          label: "Father's Name",
+          label: "Имя отца",
           concat: ["fatherFirstName", "fatherFamilyName"],
         },
         {
-          label: "Mother's Name",
+          label: "Имя матери",
           concat: ["motherFirstName", "motherFamilyName"],
         },
       ],
@@ -322,13 +322,13 @@ export const US_ESTA_CONFIG: ServiceConfig = {
     {
       type: StepType.PASSPORT,
       component: "ESTAPassportStep",
-      title: "Passport Information",
-      description: "Enter your passport details and upload required documents",
+      title: "Паспортные данные",
+      description: "Введите данные паспорта и загрузите необходимые документы",
       fields: [
-        { label: "Passport Number", key: "passportNumber", required: true },
-        { label: "Passport Type", key: "passportType" },
+        { label: "Номер паспорта", key: "passportNumber", required: true },
+        { label: "Тип паспорта", key: "passportType" },
         {
-          label: "Issue Date",
+          label: "Дата выдачи",
           date: {
             day: "passportIssueDay",
             month: "passportIssueMonth",
@@ -336,55 +336,55 @@ export const US_ESTA_CONFIG: ServiceConfig = {
           },
         },
         {
-          label: "Expiry Date",
+          label: "Срок действия",
           date: {
             day: "passportExpiryDay",
             month: "passportExpiryMonth",
             year: "passportExpiryYear",
           },
         },
-        { label: "Nationality", key: "nationalityOnPassport", required: true },
+        { label: "Гражданство", key: "nationalityOnPassport", required: true },
         {
-          label: "e-Passport",
-          boolean: { key: "isEPassport", trueLabel: "Yes", falseLabel: "No" },
+          label: "Электронный паспорт",
+          boolean: { key: "isEPassport", trueLabel: "Да", falseLabel: "Нет" },
         },
-        { label: "Country of Residence", key: "countryOfResidence" },
-        { label: "National ID Number", key: "nationalIdNumber" },
-        { key: "passportUrl", required: true }, // completion check only — raw URL not shown
+        { label: "Страна проживания", key: "countryOfResidence" },
+        { label: "Национальный ID", key: "nationalIdNumber" },
+        { key: "passportUrl", required: true },
       ],
     },
     {
       type: StepType.TRAVEL,
       component: "ESTAUSTravelStep",
-      title: "U.S. Travel Details",
-      description: "Tell us about your travel plans to the United States",
+      title: "Детали поездки в США",
+      description: "Расскажите о ваших планах поездки в Соединённые Штаты",
       fields: [
         {
-          label: "Purpose of Visit",
+          label: "Цель визита",
           key: "purposeOfVisit",
           source: "application",
           required: true,
         },
         {
-          label: "Transiting",
-          boolean: { key: "isTransiting", trueLabel: "Yes", falseLabel: "No" },
+          label: "Транзит",
+          boolean: { key: "isTransiting", trueLabel: "Да", falseLabel: "Нет" },
           source: "application",
         },
-        { label: "Arrival Date", key: "arrivalDate", source: "application" },
+        { label: "Дата прибытия", key: "arrivalDate", source: "application" },
         {
-          label: "Flight / Vessel Number",
+          label: "Номер рейса / судна",
           key: "flightVesselNumber",
           source: "application",
         },
-        { label: "Point of Entry", key: "pointOfEntry", source: "application" },
+        { label: "Пункт въезда", key: "pointOfEntry", source: "application" },
         {
-          label: "US Stay Address",
+          label: "Адрес пребывания в США",
           concat: ["usStayAddressLine1", "usStayCity", "usStayState"],
           separator: ", ",
           source: "application",
         },
         {
-          label: "US Point of Contact",
+          label: "Контактное лицо в США",
           key: "usPointOfContactName",
           source: "application",
         },
@@ -393,13 +393,13 @@ export const US_ESTA_CONFIG: ServiceConfig = {
     {
       type: StepType.CONTACT,
       component: "ESTAContactStep",
-      title: "Contact Information",
-      description: "Provide your contact details and emergency contact",
+      title: "Контактная информация",
+      description: "Укажите контактные данные и экстренный контакт",
       fields: [
-        { label: "Phone Number", key: "phoneNumber", required: true },
-        { label: "Phone Type", key: "phoneType" },
+        { label: "Номер телефона", key: "phoneNumber", required: true },
+        { label: "Тип телефона", key: "phoneType" },
         {
-          label: "Home Address",
+          label: "Домашний адрес",
           concat: [
             "addressLine1",
             "addressLine2",
@@ -412,63 +412,63 @@ export const US_ESTA_CONFIG: ServiceConfig = {
           required: ["addressLine1"],
         },
         {
-          label: "Emergency Contact",
+          label: "Экстренный контакт",
           concat: ["emergencyContactFirstName", "emergencyContactLastName"],
         },
-        { label: "Emergency Email", key: "emergencyContactEmail" },
-        { label: "Emergency Phone", key: "emergencyContactPhone" },
+        { label: "Email экстренного контакта", key: "emergencyContactEmail" },
+        { label: "Телефон экстренного контакта", key: "emergencyContactPhone" },
       ],
     },
     {
       type: StepType.EMPLOYMENT,
       component: "ESTAEmploymentStep",
-      title: "Employment Information",
-      description: "Tell us about your current employment status",
+      title: "Информация о занятости",
+      description: "Расскажите о вашем текущем трудоустройстве",
       fields: [
         {
-          label: "Employment Status",
+          label: "Статус занятости",
           boolean: {
             key: "isEmployed",
-            trueLabel: "Employed",
-            falseLabel: "Not Employed",
+            trueLabel: "Работаю",
+            falseLabel: "Не работаю",
           },
           required: true,
         },
-        { label: "Job Title", key: "jobTitle" },
-        { label: "Employer", key: "employerName" },
-        { label: "Employer City", key: "employerCity" },
-        { label: "Employer Country", key: "employerCountry" },
+        { label: "Должность", key: "jobTitle" },
+        { label: "Работодатель", key: "employerName" },
+        { label: "Город работодателя", key: "employerCity" },
+        { label: "Страна работодателя", key: "employerCountry" },
       ],
     },
     {
       type: StepType.ELIGIBILITY,
       component: "ESTAEligibilityStep",
-      title: "Eligibility Questions",
-      description: "Please answer all questions truthfully",
+      title: "Вопросы о праве на въезд",
+      description: "Пожалуйста, ответьте на все вопросы честно",
       fields: [
-        { key: "eligibilityQ1", required: true }, // completion check only
+        { key: "eligibilityQ1", required: true },
         {
-          label: "Status",
-          summary: "All 9 eligibility questions have been answered.",
+          label: "Статус",
+          summary: "Все 9 вопросов о праве на въезд заполнены.",
         },
       ],
     },
     {
       type: StepType.REVIEW,
       component: "SharedReviewStep",
-      title: "Review & Submit",
-      description: "Review all information before submission",
+      title: "Проверка и отправка",
+      description: "Проверьте все данные перед отправкой",
       neverComplete: true,
     },
   ],
 
   includedServices: [
-    "Form error checking & validation",
-    "Real-time status monitoring",
-    "Email & SMS notifications",
-    "24/7 multilingual support",
-    "Resubmission assistance (if needed)",
-    "Document review & guidance",
+    "Проверка формы на ошибки",
+    "Отслеживание статуса в реальном времени",
+    "Уведомления по email и SMS",
+    "Поддержка 24/7",
+    "Помощь с повторной подачей (при необходимости)",
+    "Проверка и консультация по документам",
   ],
 };
 
@@ -572,75 +572,75 @@ export const UK_ETA_CONFIG: ServiceConfig = {
   ],
 
   pricing: {
-    government: 16,
+    government: 1890,
 
-    currency: "GBP",
+    currency: "RUB",
   },
 
   processingTiers: [
     {
       type: ProcessingTierType.STANDARD,
-      label: "Standard",
-      description: "24 hour processing",
+      label: "Стандарт",
+      description: "Обработка за 24 часа",
       processingTime: 24,
-      serviceFee: 14.95,
+      serviceFee: 1490,
       isDefault: true,
     },
     {
       type: ProcessingTierType.RUSH,
-      label: "Rush",
-      description: "4 hour processing",
+      label: "Срочный",
+      description: "Обработка за 4 часа",
       processingTime: 4,
-      serviceFee: 23.95,
+      serviceFee: 2190,
     },
     {
       type: ProcessingTierType.SUPER_RUSH,
-      label: "Fast Track",
-      description: "1 hour processing",
+      label: "Экспресс",
+      description: "Обработка за 1 час",
       processingTime: 1,
-      serviceFee: 31.95,
+      serviceFee: 2890,
     },
   ],
 
   validity: {
-    duration: "2 years",
-    stays: "180 days per visit",
+    duration: "2 года",
+    stays: "до 180 дней за визит",
     multipleEntry: true,
   },
 
   processing: {
-    standard: "24 hours",
-    rush: "4 hours",
-    superRush: "1 hour",
+    standard: "24 часа",
+    rush: "4 часа",
+    superRush: "1 час",
   },
 
   meta: {
-    title: "UK ETA Application | Electronic Travel Authorization",
+    title: "Оформление UK ETA | Электронное разрешение на въезд",
     description:
-      "Apply for your UK ETA online. Fast, secure processing with instant approval for eligible travelers.",
+      "Оформите UK ETA онлайн. Быстрая и безопасная обработка с мгновенным одобрением для граждан подходящих стран.",
     keywords: [
       "uk eta",
-      "uk visa",
-      "uk travel authorization",
-      "electronic travel authorization",
+      "виза великобритания",
+      "разрешение на въезд в великобританию",
+      "электронное разрешение",
     ],
   },
 
   prePaymentSteps: {
     tripDetails: {
-      title: "Apply now for your United Kingdom ETA",
+      title: "Оформите United Kingdom ETA прямо сейчас",
       description:
-        "The United Kingdom ETA is mandatory for {nationality} passport holders planning to enter {destination}",
+        "United Kingdom ETA обязательна для владельцев паспортов {nationality}, планирующих въезд в {destination}",
     },
     personalDetails: {
-      title: "Your personal details",
-      description: "Enter the details as they appear on your passport.",
+      title: "Ваши личные данные",
+      description: "Введите данные, как указано в вашем паспорте.",
       emailHelperText:
-        "Your approved United Kingdom ETA will be sent to this email address.",
+        "Одобренная United Kingdom ETA будет отправлена на этот адрес электронной почты.",
     },
     passportDetails: {
-      title: "Passport details",
-      description: "Enter your passport information.",
+      title: "Данные паспорта",
+      description: "Введите данные вашего паспорта.",
     },
   },
 
@@ -648,23 +648,23 @@ export const UK_ETA_CONFIG: ServiceConfig = {
     {
       type: StepType.PERSONAL,
       component: "UKETAPersonalStep",
-      title: "Personal Information",
-      description: "Provide your basic personal details",
+      title: "Личные данные",
+      description: "Укажите основные личные данные",
       fields: [
         {
-          label: "Full Name",
+          label: "Полное имя",
           concat: ["firstName", "lastName"],
           required: ["firstName", "lastName"],
         },
         {
-          label: "Date of Birth",
+          label: "Дата рождения",
           date: { day: "birthDay", month: "birthMonth", year: "birthYear" },
         },
         {
-          label: "Gender",
+          label: "Пол",
           map: {
             key: "gender",
-            values: { M: "Male", F: "Female", X: "Other" },
+            values: { M: "Мужской", F: "Женский", X: "Другой" },
           },
         },
         { label: "Email", key: "email", required: true },
@@ -673,46 +673,46 @@ export const UK_ETA_CONFIG: ServiceConfig = {
     {
       type: StepType.PASSPORT,
       component: "UKETAPassportStep",
-      title: "Passport Information",
-      description: "Enter passport details and upload documents",
+      title: "Паспортные данные",
+      description: "Введите данные паспорта и загрузите документы",
       fields: [
-        { label: "Passport Number", key: "passportNumber", required: true },
+        { label: "Номер паспорта", key: "passportNumber", required: true },
         {
-          label: "Expiry Date",
+          label: "Срок действия",
           date: {
             day: "passportExpiryDay",
             month: "passportExpiryMonth",
             year: "passportExpiryYear",
           },
         },
-        { key: "passportUrl", required: true }, // completion check only
+        { key: "passportUrl", required: true },
       ],
     },
     {
       type: StepType.EMPLOYMENT,
       component: "UKETAEmploymentStep",
-      title: "Employment Information",
-      description: "Tell us about your occupation",
+      title: "Информация о занятости",
+      description: "Расскажите о вашей профессии",
       fields: [
-        { label: "Current Occupation", key: "jobTitle", required: true },
+        { label: "Текущая профессия", key: "jobTitle", required: true },
       ],
     },
     {
       type: StepType.REVIEW,
       component: "SharedReviewStep",
-      title: "Review & Submit",
-      description: "Review all information before submission",
+      title: "Проверка и отправка",
+      description: "Проверьте все данные перед отправкой",
       neverComplete: true,
     },
   ],
 
   includedServices: [
-    "Application review & validation",
-    "Real-time application tracking",
-    "Email notifications",
-    "24/7 customer support",
-    "Secure document storage",
-    "Expedited processing options",
+    "Проверка заявки",
+    "Отслеживание статуса в реальном времени",
+    "Email-уведомления",
+    "Поддержка 24/7",
+    "Безопасное хранение документов",
+    "Варианты ускоренной обработки",
   ],
 };
 
@@ -783,77 +783,77 @@ export const CANADA_ETA_CONFIG: ServiceConfig = {
   ],
 
   pricing: {
-    government: 7, // CAD $7 — official IRCC government fee
+    government: 490,
 
-    currency: "CAD",
+    currency: "RUB",
   },
 
   processingTiers: [
     {
       type: ProcessingTierType.STANDARD,
-      label: "Standard",
-      description: "24 hour processing",
+      label: "Стандарт",
+      description: "Обработка за 24 часа",
       processingTime: 24,
-      serviceFee: 24.95,
+      serviceFee: 1990,
       isDefault: true,
     },
     {
       type: ProcessingTierType.RUSH,
-      label: "Rush",
-      description: "4 hour processing",
+      label: "Срочный",
+      description: "Обработка за 4 часа",
       processingTime: 4,
-      serviceFee: 39.95,
+      serviceFee: 3290,
     },
     {
       type: ProcessingTierType.SUPER_RUSH,
-      label: "Fast Track",
-      description: "1 hour processing",
+      label: "Экспресс",
+      description: "Обработка за 1 час",
       processingTime: 1,
-      serviceFee: 44.95,
+      serviceFee: 3790,
     },
   ],
 
   validity: {
-    duration: "5 years",
-    stays: "6 months per visit",
+    duration: "5 лет",
+    stays: "до 6 месяцев за визит",
     multipleEntry: true,
   },
 
   processing: {
-    standard: "24 hours",
-    rush: "4 hours",
-    superRush: "1 hour",
+    standard: "24 часа",
+    rush: "4 часа",
+    superRush: "1 час",
   },
 
   meta: {
-    title: "Canada eTA Application | Fast Electronic Travel Authorization",
+    title: "Оформление Canada eTA | Быстрое электронное разрешение",
     description:
-      "Apply for your Canada eTA online. Fast processing, 24/7 support, and quick approval for eligible travelers.",
+      "Оформите Canada eTA онлайн. Быстрая обработка, поддержка 24/7 и оперативное одобрение для граждан подходящих стран.",
     keywords: [
       "canada eta",
-      "canada travel authorization",
-      "canadian eta",
-      "eta canada",
-      "canada visa waiver",
-      "apply for canada eta",
+      "разрешение на въезд в канаду",
+      "канадская eta",
+      "eta канада",
+      "безвизовый въезд канада",
+      "оформить canada eta",
     ],
   },
 
   prePaymentSteps: {
     tripDetails: {
-      title: "Apply now for your Canada eTA",
+      title: "Оформите Canada eTA прямо сейчас",
       description:
-        "The Canada eTA is mandatory for {nationality} passport holders planning to enter {destination}",
+        "Canada eTA обязательна для владельцев паспортов {nationality}, планирующих въезд в {destination}",
     },
     personalDetails: {
-      title: "Your personal details",
-      description: "Enter the details as they appear on your passport.",
+      title: "Ваши личные данные",
+      description: "Введите данные, как указано в вашем паспорте.",
       emailHelperText:
-        "Your approved Canada eTA will be sent to this email address.",
+        "Одобренная Canada eTA будет отправлена на этот адрес электронной почты.",
     },
     passportDetails: {
-      title: "Passport details",
-      description: "Enter your passport information.",
+      title: "Данные паспорта",
+      description: "Введите данные вашего паспорта.",
     },
   },
 
@@ -862,39 +862,39 @@ export const CANADA_ETA_CONFIG: ServiceConfig = {
     {
       type: StepType.PERSONAL,
       component: "CanadaETAPersonalStep",
-      title: "Personal Information",
+      title: "Личные данные",
       description:
-        "Provide your personal details as they appear on your passport",
+        "Укажите личные данные, как в вашем паспорте",
       fields: [
         {
-          label: "Full Name",
+          label: "Полное имя",
           concat: ["firstName", "lastName"],
           required: ["firstName", "lastName"],
         },
         {
-          label: "Date of Birth",
+          label: "Дата рождения",
           date: { day: "birthDay", month: "birthMonth", year: "birthYear" },
         },
         {
-          label: "Gender",
+          label: "Пол",
           map: {
             key: "gender",
-            values: { M: "Male", F: "Female", X: "Other" },
+            values: { M: "Мужской", F: "Женский", X: "Другой" },
           },
         },
-        { label: "Marital Status", key: "maritalStatus" },
+        { label: "Семейное положение", key: "maritalStatus" },
         { label: "Email", key: "email", required: true },
       ],
     },
     {
       type: StepType.PASSPORT,
       component: "CanadaETAPassportStep",
-      title: "Passport Information",
-      description: "Enter your passport details and upload required documents",
+      title: "Паспортные данные",
+      description: "Введите данные паспорта и загрузите необходимые документы",
       fields: [
-        { label: "Passport Number", key: "passportNumber", required: true },
+        { label: "Номер паспорта", key: "passportNumber", required: true },
         {
-          label: "Issue Date",
+          label: "Дата выдачи",
           date: {
             day: "passportIssueDay",
             month: "passportIssueMonth",
@@ -902,51 +902,51 @@ export const CANADA_ETA_CONFIG: ServiceConfig = {
           },
         },
         {
-          label: "Expiry Date",
+          label: "Срок действия",
           date: {
             day: "passportExpiryDay",
             month: "passportExpiryMonth",
             year: "passportExpiryYear",
           },
         },
-        { label: "Nationality", key: "nationalityOnPassport", required: true },
+        { label: "Гражданство", key: "nationalityOnPassport", required: true },
         {
-          label: "e-Passport",
-          boolean: { key: "isEPassport", trueLabel: "Yes", falseLabel: "No" },
+          label: "Электронный паспорт",
+          boolean: { key: "isEPassport", trueLabel: "Да", falseLabel: "Нет" },
         },
-        { label: "Country of Residence", key: "countryOfResidence" },
-        { key: "passportUrl", required: true }, // completion check only
+        { label: "Страна проживания", key: "countryOfResidence" },
+        { key: "passportUrl", required: true },
       ],
     },
     {
       type: StepType.ELIGIBILITY,
       component: "CanadaETAEligibilityStep",
-      title: "Eligibility Questions",
-      description: "Please answer all questions truthfully",
+      title: "Вопросы о праве на въезд",
+      description: "Пожалуйста, ответьте на все вопросы честно",
       fields: [
-        { key: "eligibilityQ1", required: true }, // completion check only
+        { key: "eligibilityQ1", required: true },
         {
-          label: "Status",
-          summary: "All eligibility questions have been answered.",
+          label: "Статус",
+          summary: "Все вопросы о праве на въезд заполнены.",
         },
       ],
     },
     {
       type: StepType.REVIEW,
       component: "SharedReviewStep",
-      title: "Review & Submit",
-      description: "Review all information before submission",
+      title: "Проверка и отправка",
+      description: "Проверьте все данные перед отправкой",
       neverComplete: true,
     },
   ],
 
   includedServices: [
-    "Application review & validation",
-    "Real-time application tracking",
-    "Email & SMS notifications",
-    "24/7 multilingual support",
-    "Secure document storage",
-    "Resubmission assistance (if needed)",
+    "Проверка заявки",
+    "Отслеживание статуса в реальном времени",
+    "Уведомления по email и SMS",
+    "Поддержка 24/7",
+    "Безопасное хранение документов",
+    "Помощь с повторной подачей (при необходимости)",
   ],
 };
 
@@ -1163,75 +1163,75 @@ export const THAILAND_TDAC_CONFIG: ServiceConfig = {
   pricing: {
     government: 0,
 
-    currency: "USD",
+    currency: "RUB",
   },
 
   processingTiers: [
     {
       type: ProcessingTierType.STANDARD,
-      label: "Standard",
-      description: "24 hour processing",
+      label: "Стандарт",
+      description: "Обработка за 24 часа",
       processingTime: 24,
-      serviceFee: 19.99,
+      serviceFee: 1790,
       isDefault: true,
     },
     {
       type: ProcessingTierType.RUSH,
-      label: "Rush",
-      description: "4 hour processing",
+      label: "Срочный",
+      description: "Обработка за 4 часа",
       processingTime: 4,
-      serviceFee: 29.99,
+      serviceFee: 2690,
     },
     {
       type: ProcessingTierType.SUPER_RUSH,
-      label: "Fast Track",
-      description: "1 hour processing",
+      label: "Экспресс",
+      description: "Обработка за 1 час",
       processingTime: 1,
-      serviceFee: 39.99,
+      serviceFee: 3590,
     },
   ],
 
   validity: {
-    duration: "30 days after arrival",
-    stays: "30 days per entry",
+    duration: "30 дней после прибытия",
+    stays: "30 дней за въезд",
     multipleEntry: false,
   },
 
   processing: {
-    standard: "24 hours",
-    rush: "4 hours",
-    superRush: "1 hour",
+    standard: "24 часа",
+    rush: "4 часа",
+    superRush: "1 час",
   },
 
   meta: {
-    title: "Thailand TDAC Application | Digital Arrival Card Online",
+    title: "Оформление Thailand TDAC | Цифровая карта прибытия онлайн",
     description:
-      "Apply for your Thailand Digital Arrival Card (TDAC) online. Fast, hassle-free processing with expert review and 24/7 support.",
+      "Оформите цифровую карту прибытия в Таиланд (TDAC) онлайн. Быстрая обработка с проверкой и поддержкой 24/7.",
     keywords: [
       "thailand tdac",
-      "thailand digital arrival card",
-      "tdac application",
-      "thailand arrival card",
-      "thailand travel",
-      "tdac online",
+      "цифровая карта прибытия таиланд",
+      "оформление tdac",
+      "карта прибытия таиланд",
+      "поездка в таиланд",
+      "tdac онлайн",
     ],
   },
 
   prePaymentSteps: {
     tripDetails: {
-      title: "Apply now for your Thailand Digital Arrival Card",
+      title: "Оформите цифровую карту прибытия в Таиланд",
       description:
-        "The Thailand Digital Arrival Card (TDAC) is mandatory for {nationality} passport holders planning to enter {destination}",
+        "Цифровая карта прибытия в Таиланд (TDAC) обязательна для владельцев паспортов {nationality}, планирующих въезд в {destination}",
     },
     personalDetails: {
-      title: "Your personal details",
-      description: "Enter the details as they appear on your passport.",
+      title: "Ваши личные данные",
+      description: "Введите данные, как указано в вашем паспорте.",
       emailHelperText:
-        "Your completed Thailand TDAC will be sent to this email address.",
+        "Заполненная Thailand TDAC будет отправлена на этот адрес электронной почты.",
     },
     passportDetails: {
-      title: "Passport details",
-      description: "Enter your passport information.",
+      title: "Данные паспорта",
+      description: "Введите данные вашего паспорта.",
     },
   },
 
@@ -1239,18 +1239,18 @@ export const THAILAND_TDAC_CONFIG: ServiceConfig = {
     {
       type: StepType.TRAVEL,
       component: "TDACTripDetailsStep",
-      title: "Trip details",
-      description: "General details",
+      title: "Детали поездки",
+      description: "Основная информация",
       fields: [
-        { label: "Phone Number", key: "phoneNumber", required: true },
+        { label: "Номер телефона", key: "phoneNumber", required: true },
         {
-          label: "Arrival Date",
+          label: "Дата прибытия",
           key: "arrivalDate",
           source: "application",
           required: true,
         },
         {
-          label: "Flight Number",
+          label: "Номер рейса",
           key: "flightVesselNumber",
           source: "application",
         },
@@ -1259,31 +1259,31 @@ export const THAILAND_TDAC_CONFIG: ServiceConfig = {
     {
       type: StepType.PERSONAL,
       component: "TDACPersonalDetailsStep",
-      title: "Personal details",
-      description: "Basic personal information",
+      title: "Личные данные",
+      description: "Основная личная информация",
       fields: [
         {
-          label: "Gender",
+          label: "Пол",
           map: {
             key: "gender",
-            values: { M: "Male", F: "Female" },
+            values: { M: "Мужской", F: "Женский" },
           },
           required: true,
         },
         {
-          label: "Country of Residence",
+          label: "Страна проживания",
           key: "countryOfResidence",
           required: true,
         },
         {
-          label: "Employment Status",
+          label: "Статус занятости",
           map: {
             key: "jobTitle",
             values: {
-              EMPLOYED: "Employed",
-              RETIRED: "Retired",
-              STUDENT: "Student",
-              UNEMPLOYED: "Unemployed",
+              EMPLOYED: "Работаю",
+              RETIRED: "На пенсии",
+              STUDENT: "Студент",
+              UNEMPLOYED: "Не работаю",
             },
           },
           required: true,
@@ -1293,19 +1293,19 @@ export const THAILAND_TDAC_CONFIG: ServiceConfig = {
     {
       type: StepType.REVIEW,
       component: "SharedReviewStep",
-      title: "Review & Submit",
-      description: "Review all information before submission",
+      title: "Проверка и отправка",
+      description: "Проверьте все данные перед отправкой",
       neverComplete: true,
     },
   ],
 
   includedServices: [
-    "Expert form review & validation",
-    "Real-time application tracking",
-    "Email & SMS notifications",
-    "24/7 multilingual support",
-    "Error-free submission guarantee",
-    "Dedicated support agent",
+    "Экспертная проверка формы",
+    "Отслеживание статуса в реальном времени",
+    "Уведомления по email и SMS",
+    "Поддержка 24/7",
+    "Гарантия безошибочной подачи",
+    "Персональный агент поддержки",
   ],
 };
 
@@ -1395,77 +1395,77 @@ export const INDONESIA_EVOA_CONFIG: ServiceConfig = {
   ],
 
   pricing: {
-    government: 32.36,
-    currency: "USD",
+    government: 2900,
+    currency: "RUB",
   },
 
   processingTiers: [
     {
       type: ProcessingTierType.STANDARD,
-      label: "Standard",
-      description: "24 hour processing",
+      label: "Стандарт",
+      description: "Обработка за 24 часа",
       processingTime: 24,
-      serviceFee: 19.99,
+      serviceFee: 1790,
       isDefault: true,
     },
     {
       type: ProcessingTierType.RUSH,
-      label: "Rush",
-      description: "4 hour processing",
+      label: "Срочный",
+      description: "Обработка за 4 часа",
       processingTime: 4,
-      serviceFee: 29.99,
+      serviceFee: 2690,
     },
     {
       type: ProcessingTierType.SUPER_RUSH,
-      label: "Fast Track",
-      description: "1 hour processing",
+      label: "Экспресс",
+      description: "Обработка за 1 час",
       processingTime: 1,
-      serviceFee: 34.99,
+      serviceFee: 3190,
     },
   ],
 
   validity: {
-    duration: "90 days after issued",
-    stays: "30 days",
+    duration: "90 дней после выдачи",
+    stays: "30 дней",
     multipleEntry: false,
   },
 
   processing: {
-    standard: "24 hours",
-    rush: "4 hours",
-    superRush: "1 hour",
+    standard: "24 часа",
+    rush: "4 часа",
+    superRush: "1 час",
   },
 
   meta: {
-    title: "Indonesia eVOA Application | Electronic Visa on Arrival Online",
+    title: "Оформление Indonesia eVOA | Электронная виза по прибытии",
     description:
-      "Apply for your Indonesia eVOA (Electronic Visa on Arrival) online. Fast, hassle-free processing with expert review and 24/7 support.",
+      "Оформите Indonesia eVOA (электронная виза по прибытии) онлайн. Быстрая обработка с проверкой и поддержкой 24/7.",
     keywords: [
       "indonesia evoa",
-      "indonesia visa on arrival",
-      "indonesia e-visa",
-      "evoa application",
-      "indonesia travel visa",
-      "bali visa",
-      "indonesia online visa",
+      "виза по прибытии индонезия",
+      "электронная виза индонезия",
+      "оформление evoa",
+      "виза индонезия",
+      "виза бали",
+      "виза индонезия онлайн",
     ],
   },
 
   prePaymentSteps: {
     tripDetails: {
-      title: "Apply now for your Indonesia eVOA",
+      title: "Оформите Indonesia eVOA прямо сейчас",
       description:
-        "The Indonesia eVOA (Electronic Visa on Arrival) is required for {nationality} passport holders planning to enter {destination}",
+        "Indonesia eVOA (электронная виза по прибытии) обязательна для владельцев паспортов {nationality}, планирующих въезд в {destination}",
     },
     personalDetails: {
-      title: "Your personal details",
-      description: "Enter the details as they appear on your passport.",
+      title: "Ваши личные данные",
+      description: "Введите данные, как указано в вашем паспорте.",
       emailHelperText:
-        "Your completed Indonesia eVOA will be sent to this email address.",
+        "Заполненная Indonesia eVOA будет отправлена на этот адрес электронной почты.",
     },
     passportDetails: {
-      title: "Passport details",
-      description: "Enter your passport information.",
+      title: "Данные паспорта",
+      description: "Введите данные вашего паспорта.",
     },
   },
 
@@ -1473,18 +1473,18 @@ export const INDONESIA_EVOA_CONFIG: ServiceConfig = {
     {
       type: StepType.TRAVEL,
       component: "EVOATripDetailsStep",
-      title: "Trip details",
-      description: "General details",
+      title: "Детали поездки",
+      description: "Основная информация",
       fields: [
-        { label: "Phone Number", key: "phoneNumber", required: true },
+        { label: "Номер телефона", key: "phoneNumber", required: true },
         {
-          label: "Arrival Date",
+          label: "Дата прибытия",
           key: "arrivalDate",
           source: "application",
           required: true,
         },
         {
-          label: "Flight Number",
+          label: "Номер рейса",
           key: "flightVesselNumber",
           source: "application",
         },
@@ -1493,31 +1493,31 @@ export const INDONESIA_EVOA_CONFIG: ServiceConfig = {
     {
       type: StepType.PERSONAL,
       component: "EVOAPersonalDetailsStep",
-      title: "Personal details",
-      description: "Basic personal information",
+      title: "Личные данные",
+      description: "Основная личная информация",
       fields: [
         {
-          label: "Gender",
+          label: "Пол",
           map: {
             key: "gender",
-            values: { M: "Male", F: "Female" },
+            values: { M: "Мужской", F: "Женский" },
           },
           required: true,
         },
         {
-          label: "Country of Residence",
+          label: "Страна проживания",
           key: "countryOfResidence",
           required: true,
         },
         {
-          label: "Employment Status",
+          label: "Статус занятости",
           map: {
             key: "jobTitle",
             values: {
-              EMPLOYED: "Employed",
-              RETIRED: "Retired",
-              STUDENT: "Student",
-              UNEMPLOYED: "Unemployed",
+              EMPLOYED: "Работаю",
+              RETIRED: "На пенсии",
+              STUDENT: "Студент",
+              UNEMPLOYED: "Не работаю",
             },
           },
           required: true,
@@ -1527,19 +1527,19 @@ export const INDONESIA_EVOA_CONFIG: ServiceConfig = {
     {
       type: StepType.REVIEW,
       component: "SharedReviewStep",
-      title: "Review & Submit",
-      description: "Review all information before submission",
+      title: "Проверка и отправка",
+      description: "Проверьте все данные перед отправкой",
       neverComplete: true,
     },
   ],
 
   includedServices: [
-    "Expert form review & validation",
-    "Real-time application tracking",
-    "Email & SMS notifications",
-    "24/7 multilingual support",
-    "Error-free submission guarantee",
-    "Dedicated support agent",
+    "Экспертная проверка формы",
+    "Отслеживание статуса в реальном времени",
+    "Уведомления по email и SMS",
+    "Поддержка 24/7",
+    "Гарантия безошибочной подачи",
+    "Персональный агент поддержки",
   ],
 };
 
@@ -1756,76 +1756,76 @@ export const MALAYSIA_MDAC_CONFIG: ServiceConfig = {
   pricing: {
     government: 0,
 
-    currency: "USD",
+    currency: "RUB",
   },
 
   processingTiers: [
     {
       type: ProcessingTierType.STANDARD,
-      label: "Standard",
-      description: "24 hour processing",
+      label: "Стандарт",
+      description: "Обработка за 24 часа",
       processingTime: 24,
-      serviceFee: 9.95,
+      serviceFee: 890,
       isDefault: true,
     },
     {
       type: ProcessingTierType.RUSH,
-      label: "Rush",
-      description: "4 hour processing",
+      label: "Срочный",
+      description: "Обработка за 4 часа",
       processingTime: 4,
-      serviceFee: 14.95,
+      serviceFee: 1290,
     },
     {
       type: ProcessingTierType.SUPER_RUSH,
-      label: "Fast Track",
-      description: "1 hour processing",
+      label: "Экспресс",
+      description: "Обработка за 1 час",
       processingTime: 1,
-      serviceFee: 17.95,
+      serviceFee: 1590,
     },
   ],
 
   validity: {
-    duration: "90 days after arrival",
-    stays: "90 days per entry",
+    duration: "90 дней после прибытия",
+    stays: "90 дней за въезд",
     multipleEntry: false,
   },
 
   processing: {
-    standard: "24 hours",
-    rush: "4 hours",
-    superRush: "1 hour",
+    standard: "24 часа",
+    rush: "4 часа",
+    superRush: "1 час",
   },
 
   meta: {
-    title: "Malaysia MDAC Application | Digital Arrival Card Online",
+    title: "Оформление Malaysia MDAC | Цифровая карта прибытия онлайн",
     description:
-      "Apply for your Malaysia Digital Arrival Card (MDAC) online. Fast, hassle-free processing with expert review and 24/7 support.",
+      "Оформите цифровую карту прибытия в Малайзию (MDAC) онлайн. Быстрая обработка с проверкой и поддержкой 24/7.",
     keywords: [
       "malaysia mdac",
-      "malaysia digital arrival card",
-      "mdac application",
-      "malaysia arrival card",
-      "malaysia travel",
-      "mdac online",
-      "malaysia entry card",
+      "цифровая карта прибытия малайзия",
+      "оформление mdac",
+      "карта прибытия малайзия",
+      "поездка в малайзию",
+      "mdac онлайн",
+      "карта въезда малайзия",
     ],
   },
 
   prePaymentSteps: {
     tripDetails: {
-      title: "Apply now for your Malaysia Digital Arrival Card",
+      title: "Оформите цифровую карту прибытия в Малайзию",
       description:
-        "The Malaysia Digital Arrival Card (MDAC) is mandatory for {nationality} passport holders planning to enter {destination}",
+        "Цифровая карта прибытия в Малайзию (MDAC) обязательна для владельцев паспортов {nationality}, планирующих въезд в {destination}",
     },
     personalDetails: {
-      title: "Your personal details",
-      description: "Enter the details as they appear on your passport.",
+      title: "Ваши личные данные",
+      description: "Введите данные, как указано в вашем паспорте.",
       emailHelperText:
-        "Your completed Malaysia MDAC will be sent to this email address.",
+        "Заполненная Malaysia MDAC будет отправлена на этот адрес электронной почты.",
     },
     passportDetails: {
-      title: "Passport details",
-      description: "Enter your passport information.",
+      title: "Данные паспорта",
+      description: "Введите данные вашего паспорта.",
     },
   },
 
@@ -1833,18 +1833,18 @@ export const MALAYSIA_MDAC_CONFIG: ServiceConfig = {
     {
       type: StepType.TRAVEL,
       component: "MDACTripDetailsStep",
-      title: "Trip details",
-      description: "General details",
+      title: "Детали поездки",
+      description: "Основная информация",
       fields: [
-        { label: "Phone Number", key: "phoneNumber", required: true },
+        { label: "Номер телефона", key: "phoneNumber", required: true },
         {
-          label: "Arrival Date",
+          label: "Дата прибытия",
           key: "arrivalDate",
           source: "application",
           required: true,
         },
         {
-          label: "Flight Number",
+          label: "Номер рейса",
           key: "flightVesselNumber",
           source: "application",
         },
@@ -1853,31 +1853,31 @@ export const MALAYSIA_MDAC_CONFIG: ServiceConfig = {
     {
       type: StepType.PERSONAL,
       component: "MDACPersonalDetailsStep",
-      title: "Personal details",
-      description: "Basic personal information",
+      title: "Личные данные",
+      description: "Основная личная информация",
       fields: [
         {
-          label: "Gender",
+          label: "Пол",
           map: {
             key: "gender",
-            values: { M: "Male", F: "Female" },
+            values: { M: "Мужской", F: "Женский" },
           },
           required: true,
         },
         {
-          label: "Country of Residence",
+          label: "Страна проживания",
           key: "countryOfResidence",
           required: true,
         },
         {
-          label: "Employment Status",
+          label: "Статус занятости",
           map: {
             key: "jobTitle",
             values: {
-              EMPLOYED: "Employed",
-              RETIRED: "Retired",
-              STUDENT: "Student",
-              UNEMPLOYED: "Unemployed",
+              EMPLOYED: "Работаю",
+              RETIRED: "На пенсии",
+              STUDENT: "Студент",
+              UNEMPLOYED: "Не работаю",
             },
           },
           required: true,
@@ -1887,19 +1887,19 @@ export const MALAYSIA_MDAC_CONFIG: ServiceConfig = {
     {
       type: StepType.REVIEW,
       component: "SharedReviewStep",
-      title: "Review & Submit",
-      description: "Review all information before submission",
+      title: "Проверка и отправка",
+      description: "Проверьте все данные перед отправкой",
       neverComplete: true,
     },
   ],
 
   includedServices: [
-    "Expert form review & validation",
-    "Real-time application tracking",
-    "Email & SMS notifications",
-    "24/7 multilingual support",
-    "Error-free submission guarantee",
-    "Dedicated support agent",
+    "Экспертная проверка формы",
+    "Отслеживание статуса в реальном времени",
+    "Уведомления по email и SMS",
+    "Поддержка 24/7",
+    "Гарантия безошибочной подачи",
+    "Персональный агент поддержки",
   ],
 };
 
@@ -2015,8 +2015,10 @@ export function getCurrencySymbol(currencyCode: string): string {
     eur: "€",
     CAD: "CA$",
     cad: "CA$",
+    RUB: "₽",
+    rub: "₽",
   };
-  return symbols[currencyCode] || "$";
+  return symbols[currencyCode] || "₽";
 }
 
 /**

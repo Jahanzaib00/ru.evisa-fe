@@ -81,13 +81,13 @@ export default function PersonalDetailsPage({ params }: Props) {
   // Auto-expand first traveler with validation errors
   useEffect(() => {
     if (errors.travelers && Array.isArray(errors.travelers)) {
-      const firstErrorIndex = errors.travelers.findIndex(
-        (travelerError) =>
-          travelerError && Object.keys(travelerError).length > 0,
+      const firstОшибкаIndex = errors.travelers.findIndex(
+        (travelerОшибка) =>
+          travelerОшибка && Object.keys(travelerОшибка).length > 0,
       );
 
-      if (firstErrorIndex !== -1) {
-        setExpandedTraveler(firstErrorIndex);
+      if (firstОшибкаIndex !== -1) {
+        setExpandedTraveler(firstОшибкаIndex);
       }
     }
   }, [errors.travelers]);
@@ -109,7 +109,7 @@ export default function PersonalDetailsPage({ params }: Props) {
     const success = await saveTravelers({ travelers: mergedTravelers });
 
     if (!success) {
-      // Error is already set in hook
+      // Ошибка is already set in hook
       // If error indicates invalid state, user will be redirected on next verification
       return;
     }
@@ -140,8 +140,8 @@ export default function PersonalDetailsPage({ params }: Props) {
   if (isVerifying) {
     return (
       <ApplicationLayout
-        title="Your personal details"
-        description="Enter the details as they appear on your passport."
+        title="Личные данные"
+        description="Введите данные, как они указаны в вашем паспорте."
         showSidebar={false}
         showMobileCTA={false}
         showPrevious={false}
@@ -153,21 +153,21 @@ export default function PersonalDetailsPage({ params }: Props) {
 
   return (
     <ApplicationLayout
-      title="Your personal details"
-      description="Enter the details as they appear on your passport."
+      title="Личные данные"
+      description="Введите данные, как они указаны в вашем паспорте."
       showSidebar={true}
       showMobileCTA={true}
-      mobileButtonText={isLoading ? "Saving..." : "Save & Continue"}
+      mobileButtonText={isLoading ? "Сохранение..." : "Сохранить и продолжить"}
       mobileButtonDisabled={isLoading}
       onMobileButtonClick={handleContinue}
       onSidebarButtonClick={handleContinue}
-      sidebarButtonText={isLoading ? "Saving..." : "Save & Continue"}
+      sidebarButtonText={isLoading ? "Сохранение..." : "Сохранить и продолжить"}
       sidebarButtonDisabled={isLoading}
       showPrevious={true}
       onPreviousClick={handlePrevious}
     >
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        {/* Error Message */}
+        {/* Ошибка Message */}
         {error && (
           <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg">
             <div className="flex items-start gap-3">
@@ -183,7 +183,7 @@ export default function PersonalDetailsPage({ params }: Props) {
                 />
               </svg>
               <div className="flex-1">
-                <p className="font-semibold text-sm">Error</p>
+                <p className="font-semibold text-sm">Ошибка</p>
                 <p className="text-sm mt-1">{error}</p>
               </div>
             </div>
@@ -196,7 +196,7 @@ export default function PersonalDetailsPage({ params }: Props) {
           const travelerName =
             travelerData?.firstName && travelerData?.lastName
               ? `${travelerData.firstName} ${travelerData.lastName}`
-              : `Traveler #${index + 1}`;
+              : `Заявитель №${index + 1}`;
 
           return (
             <div
@@ -211,7 +211,7 @@ export default function PersonalDetailsPage({ params }: Props) {
                          hover:bg-white transition-colors text-left"
               >
                 <span className="font-semibold text-gray-dark text-base">
-                  Traveler #{index + 1}
+                  Заявитель №{index + 1}
                   {travelerData?.firstName && travelerData?.lastName && (
                     <span className="font-normal text-gray ml-2">
                       - {travelerData.firstName} {travelerData.lastName}
@@ -238,8 +238,8 @@ export default function PersonalDetailsPage({ params }: Props) {
                 <div className="px-6 py-6 bg-white border-t border-gray-light space-y-6">
                   {/* First and Middle Name */}
                   <Input
-                    label="First and middle name"
-                    placeholder="John Michael"
+                    label="Имя и отчество"
+                    placeholder="Иван Петрович"
                     required
                     {...register(`travelers.${index}.firstName` as const)}
                     error={
@@ -249,8 +249,8 @@ export default function PersonalDetailsPage({ params }: Props) {
 
                   {/* Last Name */}
                   <Input
-                    label="Last name"
-                    placeholder="Smith"
+                    label="Фамилия"
+                    placeholder="Иванов"
                     required
                     {...register(`travelers.${index}.lastName` as const)}
                     error={
@@ -260,19 +260,19 @@ export default function PersonalDetailsPage({ params }: Props) {
 
                   {/* Date of Birth */}
                   <DatePicker
-                    label="Date of birth"
+                    label="Дата рождения"
                     required
                     register={register}
                     dayFieldName={`travelers.${index}.birthDay` as const}
                     monthFieldName={`travelers.${index}.birthMonth` as const}
                     yearFieldName={`travelers.${index}.birthYear` as const}
-                    dayError={
+                    dayОшибка={
                       errors.travelers?.[index]?.birthDay?.message as string
                     }
-                    monthError={
+                    monthОшибка={
                       errors.travelers?.[index]?.birthMonth?.message as string
                     }
-                    yearError={
+                    yearОшибка={
                       errors.travelers?.[index]?.birthYear?.message as string
                     }
                     yearRange="past"
@@ -283,11 +283,11 @@ export default function PersonalDetailsPage({ params }: Props) {
                   {index === 0 && (
                     <Input
                       type="email"
-                      label="Email address"
-                      placeholder="john.smith@example.com"
+                      label="Электронная почта"
+                      placeholder="ivan.ivanov@example.com"
                       required
                       {...register(`travelers.${index}.email` as const)}
-                      helperText={`Your approved ${service?.name} will be sent to this email address.`}
+                      helperText={`Одобренное разрешение ${service?.name} будет отправлено на этот адрес.`}
                       error={
                         errors.travelers?.[index]?.email?.message as string
                       }

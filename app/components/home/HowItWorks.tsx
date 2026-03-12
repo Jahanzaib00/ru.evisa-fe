@@ -17,23 +17,23 @@ interface Step {
 const steps: Step[] = [
   {
     number: 1,
-    title: "Complete Application",
+    title: "Заполните заявку",
     description:
-      "Fill out our simplified form with your passport and travel details. Takes about 10 minutes.",
+      "Заполните простую форму с данными паспорта и поездки. Занимает около 10 минут.",
     icon: <FileText className="w-8 h-8" />,
   },
   {
     number: 2,
-    title: "We Review & Submit",
+    title: "Мы проверяем и подаём",
     description:
-      "Our experts review for errors, submit to the relevant authorities, and track your application status in real-time.",
+      "Наши специалисты проверяют заявку на ошибки, подают в соответствующие органы и отслеживают статус в реальном времени.",
     icon: <Eye className="w-8 h-8" />,
   },
   {
     number: 3,
-    title: "Receive Authorization",
+    title: "Получите разрешение",
     description:
-      "Get your approved travel authorization via email. Most applications are approved within 24-72 hours.",
+      "Получите одобренное разрешение на въезд по электронной почте. Большинство заявок одобряется в течение 24–72 часов.",
     icon: <Mail className="w-8 h-8" />,
   },
 ];
@@ -51,10 +51,10 @@ export default function HowItWorks() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4">
-            How It Works
+            Как это работает
           </h2>
           <p className="text-lg text-gray max-w-2xl mx-auto">
-            Our streamlined process makes getting your travel authorization simple and fast
+            Наш отлаженный процесс делает получение разрешения на въезд простым и быстрым
           </p>
         </div>
 
@@ -96,7 +96,7 @@ export default function HowItWorks() {
         {/* CTA */}
         <div className="flex justify-center mt-12">
           <Button variant="secondary" size="md" onClick={handleCTAClick}>
-            Start Your Application
+            Начать оформление
           </Button>
         </div>
       </Container>

@@ -16,15 +16,14 @@ interface FooterColumn {
 
 const footerColumns: FooterColumn[] = [
   {
-    title: "Company",
+    title: "Компания",
     links: [
-      { text: "About Us", href: "/about" },
-      { text: "Support Center", href: "/support" },
-      // { text: "Contact", href: "/support" },
+      { text: "О нас", href: "/about" },
+      { text: "Центр поддержки", href: "/support" },
     ],
   },
   {
-    title: "Services",
+    title: "Услуги",
     links: [
       { text: "US ESTA", href: "/services/esta" },
       { text: "UK ETA", href: "/services/uk-eta" },
@@ -32,24 +31,24 @@ const footerColumns: FooterColumn[] = [
     ],
   },
   {
-    title: "Legal",
+    title: "Правовая информация",
     links: [
-      { text: "Privacy Policy", href: "/privacy" },
-      { text: "Terms of Service", href: "/terms" },
-      { text: "Refund Policy", href: "/refund-policy" },
-      { text: "Cookie Policy", href: "/cookies" },
+      { text: "Политика конфиденциальности", href: "/privacy" },
+      { text: "Условия использования", href: "/terms" },
+      { text: "Политика возврата", href: "/refund-policy" },
+      { text: "Политика cookies", href: "/cookies" },
     ],
   },
   {
-    title: "Resources",
+    title: "Ресурсы",
     links: [
-      { text: "ESTA Countries", href: "/united-states/countries" },
-      { text: "ESTA Guides", href: "/united-states/guide" },
-      { text: "UK ETA Countries", href: "/united-kingdom/countries" },
-      { text: "UK ETA Guides", href: "/united-kingdom/guide" },
-      { text: "Canada eTA Countries", href: "/canada/countries" },
-      { text: "Canada eTA Guides", href: "/canada/guide" },
-      { text: "Blog & News", href: "/blog" },
+      { text: "Страны ESTA", href: "/united-states/countries" },
+      { text: "Руководства ESTA", href: "/united-states/guide" },
+      { text: "Страны UK ETA", href: "/united-kingdom/countries" },
+      { text: "Руководства UK ETA", href: "/united-kingdom/guide" },
+      { text: "Страны Canada eTA", href: "/canada/countries" },
+      { text: "Руководства Canada eTA", href: "/canada/guide" },
+      { text: "Блог и новости", href: "/blog" },
     ],
   },
 ];
@@ -71,9 +70,9 @@ export default function Footer() {
             <div>
               <h3 className="text-2xl font-bold mb-4">eVisa Portal</h3>
               <p className="text-sm text-gray-300 leading-relaxed">
-                Expert assistance with travel authorization applications
-                worldwide. Fast, secure, and reliable service for all your
-                travel documents.
+                Профессиональная помощь в оформлении разрешений на въезд
+                по всему миру. Быстрый, безопасный и надёжный сервис для всех
+                ваших документов.
               </p>
             </div>
 
@@ -124,7 +123,7 @@ export default function Footer() {
         <div className="border-t border-gray-600 py-8">
           {/* Copyright */}
           <div className="text-center text-sm text-gray-400 space-y-2">
-            <p>&copy; {currentYear} eVisa Portal. All rights reserved.</p>
+            <p>&copy; {currentYear} eVisa Portal. Все права защищены.</p>
           </div>
         </div>
       </Container>

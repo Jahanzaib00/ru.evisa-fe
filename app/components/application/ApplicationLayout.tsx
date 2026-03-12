@@ -34,11 +34,11 @@ export default function ApplicationLayout({
   description,
   showSidebar = true,
   showMobileCTA = true,
-  mobileButtonText = "Continue",
+  mobileButtonText = "Продолжить",
   mobileButtonDisabled = false,
   onMobileButtonClick,
   onSidebarButtonClick,
-  sidebarButtonText = "Save & Continue",
+  sidebarButtonText = "Сохранить и продолжить",
   sidebarButtonDisabled = false,
   showPrevious = true,
   showPricing = true,
@@ -106,7 +106,7 @@ export default function ApplicationLayout({
       {showMobileCTA && onMobileButtonClick && (
         <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-light p-4 shadow-lg z-40">
           <div className="flex items-center justify-between mb-3">
-            <span className="text-sm text-gray">Total</span>
+            <span className="text-sm text-gray">Итого</span>
             <span
               className={`${
                 showTotalAmount ? "text-lg" : "text-md"
@@ -117,7 +117,7 @@ export default function ApplicationLayout({
                 ? `${currencySymbol}${getTotalAmount().toFixed(
                     2,
                   )} ${currency.toUpperCase()}`
-                : "Calculated at checkout"}
+                : "Рассчитывается при оплате"}
             </span>
           </div>
           <button

@@ -22,9 +22,9 @@ export const CONTACT_PHONE = "+92 3096809637";
 export const COMPANY_ADDRESS = {
   line1: "Mystängen 10 Hisings Kärra",
   line2: "",
-  city: "Gothenburg",
+  city: "Гётеборг",
   postalCode: "425 65",
-  country: "Sweden",
+  country: "Швеция",
 } as const;
 
 // External Links

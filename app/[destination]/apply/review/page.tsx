@@ -94,14 +94,14 @@ export default function ReviewPage({ params }: Props) {
     const displayHours = hours % 12 || 12;
     const displayMinutes = minutes.toString().padStart(2, "0");
 
-    const dayLabel = isToday ? "Today" : "Tomorrow";
+    const dayLabel = isToday ? "Сегодня" : "Завтра";
 
-    return `${dayLabel} by ${displayHours}:${displayMinutes} ${ampm}`;
+    return `${dayLabel} до ${displayHours}:${displayMinutes}`;
   };
 
   const handlePayment = async () => {
     if (!applicationId) {
-      setError("No application found. Please complete the previous steps.");
+      setError("Заявка не найдена. Пожалуйста, заполните предыдущие шаги.");
       return;
     }
 
@@ -157,7 +157,7 @@ export default function ReviewPage({ params }: Props) {
       // Extract and display error message
       const errorMessage = extractErrorMessage(
         err,
-        "Failed to initialize payment. Please try again.",
+        "Не удалось инициализировать оплату. Пожалуйста, попробуйте ещё раз.",
       );
       setError(errorMessage);
 
@@ -193,7 +193,7 @@ export default function ReviewPage({ params }: Props) {
     logError(new Error(errorMessage), "Payment processing");
 
     // Display error to user
-    setError(errorMessage || "Payment failed. Please try again.");
+    setError(errorMessage || "Оплата не удалась. Пожалуйста, попробуйте ещё раз.");
 
     // Close payment modal and clear client secret
     setShowPaymentModal(false);
@@ -207,14 +207,14 @@ export default function ReviewPage({ params }: Props) {
   return (
     <>
       <ApplicationLayout
-        title="Review your order"
+        title="Проверка заказа"
         showSidebar={true}
         showMobileCTA={true}
-        mobileButtonText="Continue to payment"
+        mobileButtonText="Перейти к оплате"
         mobileButtonDisabled={isProcessing}
         onMobileButtonClick={handlePayment}
         onSidebarButtonClick={handlePayment}
-        sidebarButtonText="Continue to payment"
+        sidebarButtonText="Перейти к оплате"
         sidebarButtonDisabled={isProcessing}
         showPrevious={false}
         showTotalAmount={true}
@@ -238,7 +238,7 @@ export default function ReviewPage({ params }: Props) {
             </svg>
             <div className="text-sm">
               <span className="font-semibold text-gray-dark">
-                Expected delivery date:
+                Ожидаемая дата готовности:
               </span>{" "}
               <span className="text-gray">{getExpectedDeliveryTime()}</span>
             </div>
@@ -256,21 +256,21 @@ export default function ReviewPage({ params }: Props) {
                   <div className="space-y-2 text-sm text-gray">
                     <div>
                       <span className="font-medium text-gray-dark">
-                        Valid for:
+                        Срок действия:
                       </span>{" "}
                       {service.validity.duration}
                     </div>
                     <div>
                       <span className="font-medium text-gray-dark">
-                        Max stay:
+                        Макс. пребывание:
                       </span>{" "}
                       {service.validity.stays}
                     </div>
                     <div>
                       <span className="font-medium text-gray-dark">
-                        Number of entries:
+                        Количество въездов:
                       </span>{" "}
-                      {service.validity.multipleEntry ? "Multiple" : "Single"}
+                      {service.validity.multipleEntry ? "Многократный" : "Однократный"}
                     </div>
                   </div>
                 </div>
@@ -285,7 +285,7 @@ export default function ReviewPage({ params }: Props) {
               {/* Travelers List */}
               <div className="border-t border-gray-light pt-4">
                 <p className="font-medium text-gray-dark mb-3 text-sm">
-                  Travelers:
+                  Заявители:
                 </p>
                 <div className="space-y-2">
                   {travelers.map((traveler, index) => (
@@ -335,7 +335,7 @@ export default function ReviewPage({ params }: Props) {
               />
             </svg>
             <div className="flex-1">
-              <p className="font-semibold text-sm">Payment Error</p>
+              <p className="font-semibold text-sm">Ошибка оплаты</p>
               <p className="text-sm mt-1">{error}</p>
             </div>
             <button

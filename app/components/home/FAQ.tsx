@@ -12,24 +12,24 @@ interface FAQItem {
 
 const faqs: FAQItem[] = [
   {
-    question: "How long does processing take?",
+    question: "Сколько времени занимает обработка заявки?",
     answer:
-      "Processing times vary by service. US ESTA applications are typically approved within 24-72 hours, while UK ETA applications are often approved instantly. We recommend applying at least 3 days before your flight. We monitor your application status and notify you immediately upon approval.",
+      "Сроки обработки зависят от типа услуги. Заявки US ESTA обычно одобряются в течение 24–72 часов, а UK ETA — часто мгновенно. Рекомендуем подавать заявку минимум за 3 дня до вылета. Мы отслеживаем статус и сразу уведомляем вас об одобрении.",
   },
   {
-    question: "How long are travel authorizations valid?",
+    question: "Как долго действует разрешение на въезд?",
     answer:
-      "Validity depends on the service. US ESTA is valid for 2 years with 90-day stays, while UK ETA is valid for 2 years with 180-day stays. All authorizations expire when your passport expires, whichever comes first.",
+      "Срок действия зависит от типа услуги. US ESTA действует 2 года с пребыванием до 90 дней, UK ETA — 2 года с пребыванием до 180 дней. Все разрешения прекращают действие при истечении срока паспорта.",
   },
   {
-    question: "What if my application is denied?",
+    question: "Что делать, если заявку отклонили?",
     answer:
-      "If denied, you'll need to apply for a traditional visa at the embassy. We provide full support and guidance if this occurs. Denials are rare (less than 1% of applications) and usually happen due to previous immigration violations or ineligibility criteria.",
+      "В случае отказа вам нужно будет подать на обычную визу через посольство. Мы окажем полную поддержку и консультацию. Отказы случаются крайне редко (менее 1% заявок) и обычно связаны с нарушениями иммиграционного законодательства.",
   },
   {
-    question: "Can I edit my application after submission?",
+    question: "Можно ли изменить заявку после подачи?",
     answer:
-      "Once submitted, you cannot edit most fields. However, some services allow updates to contact information and travel details. If you made a critical error, you may need to submit a new application. Contact our support team for guidance on your specific situation.",
+      "После подачи большинство полей изменить нельзя. Однако некоторые сервисы позволяют обновить контактную информацию и детали поездки. При критической ошибке может потребоваться новая заявка. Свяжитесь с нашей службой поддержки для консультации.",
   },
 ];
 
@@ -76,11 +76,10 @@ export default function FAQ() {
           {/* Section Header */}
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4">
-              Frequently Asked Questions
+              Часто задаваемые вопросы
             </h2>
             <p className="text-lg text-gray">
-              Get answers to common questions about travel authorization
-              applications
+              Ответы на популярные вопросы об оформлении разрешений на въезд
             </p>
           </div>
 
@@ -132,12 +131,12 @@ export default function FAQ() {
           {/* View All FAQ Link */}
           <div className="text-center mt-10">
             <p className="text-gray">
-              Still have questions?{" "}
+              Остались вопросы?{" "}
               <a
                 href="/support"
                 className="text-primary-light font-semibold hover:text-primary underline"
               >
-                Contact our support team
+                Свяжитесь с нашей службой поддержки
               </a>
             </p>
           </div>

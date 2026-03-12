@@ -11,17 +11,17 @@ interface Step {
 }
 
 const BASE_STEPS: Step[] = [
-  { number: 1, label: "Your info", pathPattern: "/apply/personal-details" },
-  { number: 2, label: "Passport", pathPattern: "/apply/passport-details" },
+  { number: 1, label: "Ваши данные", pathPattern: "/apply/personal-details" },
+  { number: 2, label: "Паспорт", pathPattern: "/apply/passport-details" },
 ];
 
 const PROCESSING_STEP: Step = {
   number: 3,
-  label: "Processing",
+  label: "Обработка",
   pathPattern: "/apply/processing-options",
 };
 
-const CHECKOUT_LABEL = "Checkout";
+const CHECKOUT_LABEL = "Оплата";
 
 export default function StepProgress() {
   const pathname = usePathname();

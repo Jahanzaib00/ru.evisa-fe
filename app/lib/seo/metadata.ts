@@ -9,7 +9,7 @@ import { ServiceConfig } from "@/app/lib/config/services";
 import { Country } from "@/app/lib/data/countries";
 
 const SITE_NAME = "eVisa Portal";
-const SITE_TAGLINE = "ESTA, UK ETA & eVisa Services";
+const SITE_TAGLINE = "ESTA, UK ETA и электронные визы";
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL || "https://www.visaportal.online";
 const TWITTER_HANDLE = "@eVisaPortal"; // Update with actual handle
@@ -85,7 +85,7 @@ export function generateMetadata(config: SEOConfig): Metadata {
     // Open Graph
     openGraph: {
       type: ogType,
-      locale: "en_US",
+      locale: "ru_RU",
       url: canonical,
       title: fullTitle,
       description,
@@ -137,23 +137,23 @@ export function generateHomeMetadata(): Metadata {
   return generateMetadata({
     title: `EVISA Portal`,
     description:
-      "Apply for US ESTA, UK ETA, and eVisa services online. Expert assistance, 99% approval rate, 24/7 support. Fast processing for all travel authorizations. Trusted by 50,000+ travelers worldwide.",
+      "Оформление US ESTA, UK ETA и электронных виз онлайн. Профессиональная помощь, 99% одобрений, поддержка 24/7. Быстрая обработка всех разрешений на въезд. Более 50 000 довольных клиентов.",
     keywords: [
-      "eVisa application",
-      "ESTA application",
-      "UK ETA application",
+      "электронная виза",
+      "оформление ESTA",
+      "оформление UK ETA",
       "US ESTA",
       "UK ETA",
-      "travel authorization",
-      "visa waiver program",
-      "electronic travel authorization",
-      "evisa online",
-      "apply ESTA",
-      "apply UK ETA",
-      "USA travel permit",
-      "UK travel authorization",
-      "eVisa assistance",
-      "fast evisa approval",
+      "разрешение на въезд",
+      "безвизовый въезд",
+      "электронное разрешение",
+      "eVisa онлайн",
+      "подать ESTA",
+      "подать UK ETA",
+      "виза в США",
+      "виза в Великобританию",
+      "помощь с визой",
+      "быстрое оформление визы",
     ],
   });
 }
@@ -173,15 +173,15 @@ export function generateGuideMetadata(
     title: guideTitle,
     description: guideDescription,
     keywords: [
-      "ESTA guide",
-      "ESTA information",
-      "travel authorization guide",
-      "USA travel requirements",
+      "руководство ESTA",
+      "информация ESTA",
+      "руководство по разрешению на въезд",
+      "требования для поездки в США",
       ...keywords,
     ],
     canonicalUrl: `${SITE_URL}/${destination}/guide/${guideSlug}`,
     ogType: "article",
-    author: "eVisa Portal Team",
+    author: "Команда eVisa Portal",
   });
 }
 
@@ -203,9 +203,9 @@ export function generateBlogMetadata(
     title,
     description,
     keywords: [
-      "travel authorization",
-      "visa guide",
-      "travel requirements",
+      "разрешение на въезд",
+      "визовый гид",
+      "требования для поездки",
       ...keywords,
     ],
     canonicalUrl: `${SITE_URL}/blog/${slug}`,
@@ -228,34 +228,34 @@ interface ServiceTemplate {
 
 const SERVICE_TEMPLATES: Record<string, ServiceTemplate> = {
   US_ESTA: {
-    programName: "Visa Waiver Program",
-    validity: "2 years validity",
-    maxStay: "90 days max stay",
-    processingTime: "24-72 hours processing",
+    programName: "Программа безвизового въезда",
+    validity: "Действует 2 года",
+    maxStay: "До 90 дней пребывания",
+    processingTime: "Обработка 24–72 часа",
   },
   UK_ETA: {
-    programName: "Electronic Travel Authorisation",
-    validity: "2 years validity",
-    maxStay: "6 months max stay",
-    processingTime: "Usually instant",
+    programName: "Электронное разрешение на въезд",
+    validity: "Действует 2 года",
+    maxStay: "До 6 месяцев пребывания",
+    processingTime: "Обычно мгновенно",
   },
   CANADA_ETA: {
-    programName: "Electronic Travel Authorization",
-    validity: "5 years validity",
-    maxStay: "6 months max stay",
-    processingTime: "Minutes to hours",
+    programName: "Электронное разрешение на въезд",
+    validity: "Действует 5 лет",
+    maxStay: "До 6 месяцев пребывания",
+    processingTime: "От нескольких минут до часов",
   },
   THAILAND_TDAC: {
-    programName: "Digital Arrival Card",
-    validity: "Single use",
-    maxStay: "30 days per entry",
-    processingTime: "Same day processing",
+    programName: "Цифровая карта прибытия",
+    validity: "Однократное использование",
+    maxStay: "30 дней за въезд",
+    processingTime: "Обработка в тот же день",
   },
   INDONESIA_EVOA: {
-    programName: "Electronic Visa on Arrival",
-    validity: "30 days validity",
-    maxStay: "30 days max stay",
-    processingTime: "1-24 hours processing",
+    programName: "Электронная виза по прибытии",
+    validity: "Действует 30 дней",
+    maxStay: "До 30 дней пребывания",
+    processingTime: "Обработка 1–24 часа",
   },
 };
 
@@ -269,17 +269,17 @@ export function generateCountryPageMetadata(
   const template = SERVICE_TEMPLATES[service.type];
 
   return generateMetadata({
-    title: `${service.name} for ${country.name} Citizens`,
-    description: `Complete guide to ${service.name} for ${country.name} citizens. ${template.validity}, ${template.maxStay}, ${template.processingTime}. Requirements, application process, and fees for ${country.name} nationals traveling to ${service.destination}. Apply now with expert assistance.`,
+    title: `${service.name} для граждан ${country.name}`,
+    description: `Полное руководство по ${service.name} для граждан ${country.name}. ${template.validity}, ${template.maxStay}, ${template.processingTime}. Требования, процесс подачи и стоимость для граждан ${country.name}, путешествующих в ${service.destination}. Оформите сейчас с профессиональной помощью.`,
     keywords: [
       `${service.slug} ${country.name}`,
-      `${country.name} ${service.slug} application`,
-      `${country.name} ${service.destination} travel`,
-      `${country.name} travel authorization`,
-      `${service.slug} for ${country.name} citizens`,
+      `${country.name} ${service.slug} оформление`,
+      `${country.name} ${service.destination} поездка`,
+      `${country.name} разрешение на въезд`,
+      `${service.slug} для граждан ${country.name}`,
       `${country.name} ${template.programName}`,
-      `${country.name} to ${service.destination}`,
-      `${service.destination} visa ${country.name}`,
+      `${country.name} в ${service.destination}`,
+      `${service.destination} виза ${country.name}`,
     ],
     canonicalUrl: `${SITE_URL}/${service.destination.toLowerCase().replace(/ /g, "-")}/${service.slug}-for-${country.slug}`,
     ogImage: `${SITE_URL}/images/countries/${country.code.toLowerCase()}-${

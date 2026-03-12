@@ -17,11 +17,11 @@ export default function FinalCTA() {
       <Container>
         <div className="text-center text-white">
           <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white">
-            Ready to Get Your Travel Authorization?
+            Готовы оформить разрешение на въезд?
           </h2>
 
           <p className="text-xl md:text-2xl mb-8 opacity-90 mx-auto text-white">
-            Join 500,000+ travelers who trusted us with their applications
+            Более 500 000 путешественников уже доверили нам оформление документов
           </p>
 
           <div className="flex flex-col items-center gap-4">
@@ -31,7 +31,7 @@ export default function FinalCTA() {
               onClick={handleCTAClick}
               className="min-w-[300px]"
             >
-              Start Your Application Now
+              Начать оформление
             </Button>
 
             <div className="flex items-center gap-2 text-sm opacity-90 mt-2 text-white">
@@ -49,7 +49,7 @@ export default function FinalCTA() {
                 />
               </svg>
               <span className="font-semibold text-white">
-                Average processing time: 24 hours
+                Среднее время обработки: 24 часа
               </span>
             </div>
 
@@ -66,7 +66,7 @@ export default function FinalCTA() {
                     clipRule="evenodd"
                   />
                 </svg>
-                <span className="text-white">Secure & Encrypted</span>
+                <span className="text-white">Шифрование данных</span>
               </div>
 
               <div className="flex items-center gap-2">
@@ -81,7 +81,7 @@ export default function FinalCTA() {
                     clipRule="evenodd"
                   />
                 </svg>
-                <span className="text-white">99% Approval Rate</span>
+                <span className="text-white">99% одобрений</span>
               </div>
 
               <div className="flex items-center gap-2">
@@ -96,7 +96,7 @@ export default function FinalCTA() {
                     clipRule="evenodd"
                   />
                 </svg>
-                <span className="text-white">24/7 Support</span>
+                <span className="text-white">Поддержка 24/7</span>
               </div>
             </div>
           </div>

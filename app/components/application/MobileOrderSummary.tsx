@@ -27,7 +27,7 @@ export default function MobileOrderSummary() {
         ? getDefaultProcessingTier(serviceType)
         : null;
   const serviceFee = tier?.serviceFee || 0;
-  const processingTimeLabel = tier?.label || "Standard";
+  const processingTimeLabel = tier?.label || "Стандарт";
 
   const currency = service?.pricing.currency || "USD";
   const currencySymbol = getCurrencySymbol(currency);
@@ -45,12 +45,12 @@ export default function MobileOrderSummary() {
               isExpanded ? "rounded-b-none border-b-0" : ""
             }`}
         aria-expanded={isExpanded}
-        aria-label={isExpanded ? "Hide order summary" : "Show order summary"}
+        aria-label={isExpanded ? "Скрыть сводку заказа" : "Показать сводку заказа"}
       >
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="text-sm font-medium text-gray-dark">
-              Order summary
+              Сводка заказа
             </span>
             <svg
               className={`w-4 h-4 text-gray transition-transform ${
@@ -85,7 +85,7 @@ export default function MobileOrderSummary() {
           <div className="pt-4 space-y-3 text-sm">
             {governmentFee > 0 && (
               <div className="flex justify-between items-baseline">
-                <span className="text-gray">Government fees</span>
+                <span className="text-gray">Государственные сборы</span>
                 <div className="text-right">
                   {isMultipleTravelers && (
                     <p className="text-xs text-gray mb-0.5">
@@ -105,7 +105,7 @@ export default function MobileOrderSummary() {
               <div>
                 {tier && (
                   <p className="text-sm text-gray mt-0.5">
-                    {processingTimeLabel} processing fee
+                    {processingTimeLabel} — сервисный сбор
                   </p>
                 )}
               </div>
@@ -128,10 +128,10 @@ export default function MobileOrderSummary() {
           {/* Total */}
           <div className="border-t border-gray-light mt-4 pt-4">
             <div className="flex justify-between items-baseline">
-              <span className="text-sm font-medium text-gray-dark">Total</span>
+              <span className="text-sm font-medium text-gray-dark">Итого</span>
               <div className="text-right">
                 {isMultipleTravelers && (
-                  <p className="text-xs text-gray mb-1">For all travelers</p>
+                  <p className="text-xs text-gray mb-1">За всех заявителей</p>
                 )}
                 <p className="text-2xl font-bold text-gray-dark">
                   {currencySymbol}
@@ -155,7 +155,7 @@ export default function MobileOrderSummary() {
                   clipRule="evenodd"
                 />
               </svg>
-              <span>We take strong measures to protect your information.</span>
+              <span>Мы принимаем надёжные меры для защиты ваших данных.</span>
             </div>
           </div>
         </div>

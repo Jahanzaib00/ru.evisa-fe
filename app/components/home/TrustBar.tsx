@@ -10,8 +10,8 @@ interface Stat {
 
 const stats: Stat[] = [
   {
-    value: "70,000+",
-    label: "Applications Processed",
+    value: "70 000+",
+    label: "Заявок обработано",
     icon: (
       <svg
         className="w-8 h-8"
@@ -30,7 +30,7 @@ const stats: Stat[] = [
   },
   {
     value: "99%",
-    label: "Approval Rate",
+    label: "Одобрений",
     icon: (
       <svg
         className="w-8 h-8"
@@ -49,7 +49,7 @@ const stats: Stat[] = [
   },
   {
     value: "24/7",
-    label: "Expert Support",
+    label: "Поддержка",
     icon: (
       <svg
         className="w-8 h-8"
@@ -67,8 +67,8 @@ const stats: Stat[] = [
     ),
   },
   {
-    value: "1 Hour",
-    label: "Average Processing",
+    value: "1 час",
+    label: "Среднее время обработки",
     icon: (
       <svg
         className="w-8 h-8"
@@ -131,7 +131,7 @@ export default function TrustBar() {
                 clipRule="evenodd"
               />
             </svg>
-            <span className="font-semibold">SSL Secured</span>
+            <span className="font-semibold">SSL-защита</span>
           </div>
 
           <div className="flex items-center gap-2 text-(--color-gray)">
@@ -146,7 +146,7 @@ export default function TrustBar() {
                 clipRule="evenodd"
               />
             </svg>
-            <span className="font-semibold">Secure Payment</span>
+            <span className="font-semibold">Безопасная оплата</span>
           </div>
 
           <div className="flex items-center gap-2 text-(--color-gray)">
@@ -157,7 +157,7 @@ export default function TrustBar() {
             >
               <path d="M10 2a5 5 0 00-5 5v2a2 2 0 00-2 2v5a2 2 0 002 2h10a2 2 0 002-2v-5a2 2 0 00-2-2H7V7a3 3 0 015.905-.75 1 1 0 001.937-.5A5.002 5.002 0 0010 2z" />
             </svg>
-            <span className="font-semibold">Privacy Protected</span>
+            <span className="font-semibold">Защита данных</span>
           </div>
         </div>
       </Container>

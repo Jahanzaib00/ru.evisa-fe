@@ -36,14 +36,14 @@ export function generateOrganizationSchema(): WithContext<Organization> {
     url: SITE_URL,
     logo: LOGO_URL,
     description:
-      "Expert eVisa application service for ESTA, UK ETA, and travel authorizations worldwide. Fast, secure, and reliable processing with 24/7 support. Trusted by 50,000+ travelers.",
+      "Профессиональный сервис оформления eVisa: ESTA, UK ETA и разрешения на въезд по всему миру. Быстрая, безопасная и надёжная обработка с поддержкой 24/7. Более 50 000 довольных клиентов.",
     email: CONTACT_EMAIL,
     foundingDate: "2024",
     contactPoint: {
       "@type": "ContactPoint",
-      contactType: "Customer Service",
+      contactType: "Служба поддержки",
       email: CONTACT_EMAIL,
-      availableLanguage: ["English"],
+      availableLanguage: ["Russian", "English"],
       areaServed: "Worldwide",
     },
     sameAs: [
@@ -76,7 +76,7 @@ export function generateWebSiteSchema(): WithContext<WebSite> {
     name: SITE_NAME,
     url: SITE_URL,
     description:
-      "Fast and reliable eVisa application service for ESTA, UK ETA, and travel authorizations worldwide",
+      "Быстрый и надёжный сервис оформления eVisa: ESTA, UK ETA и разрешения на въезд по всему миру",
     publisher: {
       "@type": "Organization",
       name: SITE_NAME,
@@ -243,20 +243,20 @@ export function generateServiceSchema(config?: {
   url?: string;
 }): WithContext<Service> {
   const {
-    name = "ESTA Application Service",
-    description = "Expert assistance with U.S. ESTA (Electronic System for Travel Authorization) applications. Fast processing, 99% approval rate, 24/7 support.",
+    name = "Сервис оформления ESTA",
+    description = "Профессиональная помощь с оформлением ESTA (Электронная система авторизации поездок) в США. Быстрая обработка, 99% одобрений, поддержка 24/7.",
     provider = "eVisa Portal",
     areaServed = "Worldwide",
-    price = "45.00",
-    priceCurrency = "USD",
+    price = "5390",
+    priceCurrency = "RUB",
     url = `${SITE_URL}/apply`,
   } = config || {};
 
   return {
     "@context": "https://schema.org",
     "@type": "Service",
-    serviceType: `${name} Application Assistance`,
-    name: `${name} Application Service`,
+    serviceType: `Помощь в оформлении ${name}`,
+    name: `Сервис оформления ${name}`,
     description,
     provider: {
       "@type": "Organization",
@@ -275,13 +275,13 @@ export function generateServiceSchema(config?: {
         "@type": "ContactPoint",
         email: CONTACT_EMAIL,
       },
-      availableLanguage: ["English"],
+      availableLanguage: ["Russian", "English"],
     },
     offers: {
       "@type": "Offer",
       price,
       priceCurrency,
-      description: `Complete ${name} application service including government fee and processing fee`,
+      description: `Complete ${name} — полный сервис оформления, включая государственную пошлину и сервисный сбор`,
       availability: "https://schema.org/InStock",
     },
   };
@@ -368,28 +368,28 @@ interface ServiceTemplate {
 
 const SERVICE_TEMPLATES: Record<string, ServiceTemplate> = {
   US_ESTA: {
-    programName: "Visa Waiver Program",
-    validity: "2 years",
-    maxStay: "90 days per visit",
-    processingTime: "24-72 hours",
+    programName: "Программа безвизового въезда",
+    validity: "2 года",
+    maxStay: "до 90 дней за визит",
+    processingTime: "24–72 часа",
     description:
-      "Expert assistance with U.S. ESTA (Electronic System for Travel Authorization) applications under the Visa Waiver Program. Valid for 2 years with stays up to 90 days.",
+      "Профессиональная помощь с оформлением ESTA (Электронная система авторизации поездок) в рамках программы безвизового въезда. Действует 2 года, пребывание до 90 дней.",
   },
   UK_ETA: {
-    programName: "Electronic Travel Authorisation",
-    validity: "2 years",
-    maxStay: "6 months per visit",
-    processingTime: "Usually instant",
+    programName: "Электронное разрешение на въезд",
+    validity: "2 года",
+    maxStay: "до 6 месяцев за визит",
+    processingTime: "Обычно мгновенно",
     description:
-      "Fast UK Electronic Travel Authorisation (ETA) application service. Valid for 2 years with stays up to 6 months. Most applications approved instantly.",
+      "Быстрое оформление UK ETA (электронное разрешение на въезд в Великобританию). Действует 2 года, пребывание до 6 месяцев. Большинство заявок одобряется мгновенно.",
   },
   CANADA_ETA: {
-    programName: "Electronic Travel Authorization",
-    validity: "5 years",
-    maxStay: "6 months per visit",
-    processingTime: "Minutes to hours",
+    programName: "Электронное разрешение на въезд",
+    validity: "5 лет",
+    maxStay: "до 6 месяцев за визит",
+    processingTime: "От нескольких минут до часов",
     description:
-      "Canada Electronic Travel Authorization (eTA) application assistance. Valid for 5 years with stays up to 6 months. Fast processing within minutes to hours.",
+      "Помощь в оформлении Canada eTA (электронное разрешение на въезд в Канаду). Действует 5 лет, пребывание до 6 месяцев. Быстрая обработка от нескольких минут.",
   },
 };
 
@@ -410,8 +410,8 @@ export function generateCountryPageSchema(
     {
       "@context": "https://schema.org",
       "@type": "WebPage",
-      name: `${service.name} for ${country.name} Citizens`,
-      description: `Complete guide to ${service.name} for ${country.name} citizens. Valid for ${template.validity}, stays up to ${template.maxStay}, processing time ${template.processingTime}.`,
+      name: `${service.name} для граждан ${country.name}`,
+      description: `Полное руководство по ${service.name} для граждан ${country.name}. Действует ${template.validity}, пребывание ${template.maxStay}, обработка ${template.processingTime}.`,
       url,
       breadcrumb: {
         "@type": "BreadcrumbList",
@@ -419,7 +419,7 @@ export function generateCountryPageSchema(
           {
             "@type": "ListItem",
             position: 1,
-            name: "Home",
+            name: "Главная",
             item: SITE_URL,
           },
           {
@@ -431,7 +431,7 @@ export function generateCountryPageSchema(
           {
             "@type": "ListItem",
             position: 3,
-            name: "Countries",
+            name: "Страны",
             item: `${SITE_URL}/${destinationSlug}/countries`,
           },
           {
@@ -454,9 +454,9 @@ export function generateCountryPageSchema(
     {
       "@context": "https://schema.org",
       "@type": "Service",
-      serviceType: `${service.name} for ${country.name} Citizens`,
-      name: `${service.name} for ${country.name}`,
-      description: `Specialized ${service.name} application assistance for ${country.name} nationals traveling to ${service.destination}. ${template.description}`,
+      serviceType: `${service.name} для граждан ${country.name}`,
+      name: `${service.name} для ${country.name}`,
+      description: `Специализированная помощь в оформлении ${service.name} для граждан ${country.name}, путешествующих в ${service.destination}. ${template.description}`,
       provider: {
         "@type": "Organization",
         name: SITE_NAME,
@@ -469,7 +469,7 @@ export function generateCountryPageSchema(
       availableChannel: {
         "@type": "ServiceChannel",
         serviceUrl: `${SITE_URL}/${destinationSlug}/apply`,
-        availableLanguage: ["English"],
+        availableLanguage: ["Russian", "English"],
       },
       offers: {
         "@type": "Offer",
@@ -477,7 +477,7 @@ export function generateCountryPageSchema(
           service.pricing.government + getDefaultProcessingTier(service.type).serviceFee
         ).toString(),
         priceCurrency: service.pricing.currency,
-        description: `Complete ${service.name} application service including government fee and processing fee`,
+        description: `Complete ${service.name} — полный сервис оформления, включая государственную пошлину и сервисный сбор`,
         availability: "https://schema.org/InStock",
       },
     },
@@ -488,7 +488,7 @@ export function generateCountryPageSchema(
         {
           "@type": "ListItem",
           position: 1,
-          name: "Home",
+          name: "Главная",
           item: SITE_URL,
         },
         {
@@ -526,32 +526,32 @@ export function generateCountryFAQSchema(
   // Service-specific FAQs
   const faqs = [
     {
-      question: `What is ${service.name}?`,
-      answer: `${service.name} is an ${template.programName} that allows ${country.name} citizens to travel to ${service.destination} for tourism or business. It is valid for ${template.validity} and allows stays of up to ${template.maxStay}.`,
+      question: `Что такое ${service.name}?`,
+      answer: `${service.name} — это ${template.programName}, которое позволяет гражданам ${country.name} путешествовать в ${service.destination} с целью туризма или бизнеса. Действует ${template.validity}, пребывание ${template.maxStay}.`,
     },
     {
-      question: `How long does ${service.slug.toUpperCase()} processing take for ${
+      question: `Сколько времени занимает обработка ${service.slug.toUpperCase()} для граждан ${
         country.name
-      } citizens?`,
-      answer: `${template.processingTime}. We provide expert assistance to ensure your application is completed correctly and submitted promptly. Most ${country.name} applicants receive approval quickly when all information is accurate.`,
+      }?`,
+      answer: `${template.processingTime}. Мы обеспечиваем профессиональную помощь, чтобы ваша заявка была заполнена правильно и подана вовремя. Большинство заявителей из ${country.name} получают одобрение быстро при корректном заполнении данных.`,
     },
     {
-      question: `What documents do ${country.name} citizens need for ${service.name}?`,
-      answer: `${country.name} citizens need a valid passport with at least 6 months validity, personal information, travel details, and payment information. Additional documents may be required based on your specific circumstances.`,
+      question: `Какие документы нужны гражданам ${country.name} для ${service.name}?`,
+      answer: `Гражданам ${country.name} необходим действующий паспорт со сроком действия не менее 6 месяцев, личные данные, информация о поездке и платёжные данные. В зависимости от обстоятельств могут потребоваться дополнительные документы.`,
     },
     {
-      question: `How much does ${service.name} cost for ${country.name} citizens?`,
-      answer: `The total cost is ${service.pricing.currency} ${
+      question: `Сколько стоит ${service.name} для граждан ${country.name}?`,
+      answer: `Общая стоимость составляет ${service.pricing.currency} ${
         service.pricing.government + getDefaultProcessingTier(service.type).serviceFee
-      }, which includes the government fee (${service.pricing.currency} ${
+      }, включая государственную пошлину (${service.pricing.currency} ${
         service.pricing.government
-      }) and our service fee (${service.pricing.currency} ${
+      }) и наш сервисный сбор (${service.pricing.currency} ${
         getDefaultProcessingTier(service.type).serviceFee
-      }) for expert application assistance.`,
+      }) за профессиональную помощь в оформлении.`,
     },
     {
-      question: `Can ${country.name} citizens apply for ${service.name} online?`,
-      answer: `Yes, ${country.name} citizens can apply for ${service.name} entirely online. Our service helps you complete the application correctly, reviews your information, and submits it to the government on your behalf.`,
+      question: `Могут ли граждане ${country.name} оформить ${service.name} онлайн?`,
+      answer: `Да, граждане ${country.name} могут оформить ${service.name} полностью онлайн. Наш сервис помогает правильно заполнить заявку, проверяет данные и подаёт их в государственные органы от вашего имени.`,
     },
   ];
 

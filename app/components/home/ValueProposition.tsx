@@ -25,9 +25,9 @@ const benefits: Benefit[] = [
         />
       </svg>
     ),
-    title: "Simple Application Process",
+    title: "Простой процесс подачи",
     description:
-      "Our easy-to-follow form takes just 10 minutes. We check for errors before submission to maximize approval chances.",
+      "Наша понятная форма заполняется за 10 минут. Мы проверяем заявку на ошибки перед отправкой для максимальных шансов одобрения.",
   },
   {
     icon: (
@@ -45,9 +45,9 @@ const benefits: Benefit[] = [
         />
       </svg>
     ),
-    title: "Fast Processing",
+    title: "Быстрая обработка",
     description:
-      "Most applications approved within 24 hours. We monitor your status and notify you immediately.",
+      "Большинство заявок одобряется в течение 24 часов. Мы следим за статусом и сразу уведомляем вас.",
   },
   {
     icon: (
@@ -65,9 +65,9 @@ const benefits: Benefit[] = [
         />
       </svg>
     ),
-    title: "Secure & Private",
+    title: "Безопасность и конфиденциальность",
     description:
-      "Bank-level encryption protects your personal information. We never share your data with third parties.",
+      "Банковский уровень шифрования защищает ваши персональные данные. Мы никогда не передаём информацию третьим лицам.",
   },
   {
     icon: (
@@ -85,9 +85,9 @@ const benefits: Benefit[] = [
         />
       </svg>
     ),
-    title: "Expert Support",
+    title: "Экспертная поддержка",
     description:
-      "24/7 live support. Our team helps with any questions throughout the process.",
+      "Поддержка 24/7. Наша команда поможет с любыми вопросами на каждом этапе.",
   },
 ];
 
@@ -98,10 +98,10 @@ export default function ValueProposition() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-dark mb-4">
-            Why Choose Our Service?
+            Почему выбирают нас?
           </h2>
           <p className="text-lg text-gray mx-auto">
-            We make travel authorization applications simple, secure, and stress-free
+            Мы делаем оформление разрешений на въезд простым, безопасным и без лишних хлопот
           </p>
         </div>
 

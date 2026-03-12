@@ -16,18 +16,18 @@ interface DatePickerProps<T extends FieldValues> {
 }
 
 const MONTHS = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
+  "Январь",
+  "Февраль",
+  "Март",
+  "Апрель",
+  "Май",
+  "Июнь",
+  "Июль",
+  "Август",
+  "Сентябрь",
+  "Октябрь",
+  "Ноябрь",
+  "Декабрь",
 ];
 
 export default function DatePicker<T extends FieldValues>({
@@ -57,7 +57,7 @@ export default function DatePicker<T extends FieldValues>({
       </label>
       <div className="grid grid-cols-3 gap-3">
         <Select {...register(dayFieldName)} error={dayError}>
-          <option value="">Day</option>
+          <option value="">День</option>
           {Array.from({ length: 31 }, (_, i) => (
             <option key={i + 1} value={i + 1}>
               {i + 1}
@@ -66,7 +66,7 @@ export default function DatePicker<T extends FieldValues>({
         </Select>
 
         <Select {...register(monthFieldName)} error={monthError}>
-          <option value="">Month</option>
+          <option value="">Месяц</option>
           {MONTHS.map((month, i) => (
             <option key={i + 1} value={i + 1}>
               {month}
@@ -75,7 +75,7 @@ export default function DatePicker<T extends FieldValues>({
         </Select>
 
         <Select {...register(yearFieldName)} error={yearError}>
-          <option value="">Year</option>
+          <option value="">Год</option>
           {years.map((year) => (
             <option key={year} value={year}>
               {year}

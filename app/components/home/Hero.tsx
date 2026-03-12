@@ -14,12 +14,12 @@ import type { Country } from "@/app/lib/countries";
 
 // Destination options — uses CountrySelect's Country type
 const DESTINATION_COUNTRIES: Country[] = [
-  { code: "US", name: "United States" },
-  { code: "GB", name: "United Kingdom" },
-  { code: "CA", name: "Canada" },
-  { code: "TH", name: "Thailand" },
-  { code: "ID", name: "Indonesia" },
-  { code: "MY", name: "Malaysia" },
+  { code: "US", name: "США" },
+  { code: "GB", name: "Великобритания" },
+  { code: "CA", name: "Канада" },
+  { code: "TH", name: "Таиланд" },
+  { code: "ID", name: "Индонезия" },
+  { code: "MY", name: "Малайзия" },
 ];
 
 // Map country code → destination slug for routing
@@ -57,15 +57,14 @@ export default function Hero() {
       <Container maxWidth="lg" className="text-center">
         {/* Main Headline */}
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-dark leading-tight mb-6">
-          Your Travel Documents,{" "}
-          <span className="text-primary-light">Simplified</span>
+          Ваши документы для поездки —{" "}
+          <span className="text-primary-light">просто и быстро</span>
         </h1>
 
         {/* Subheadline */}
         <p className="text-lg md:text-xl text-gray-700 mb-10 leading-relaxed max-w-2xl mx-auto">
-          Expert assistance with ETAs, ESTAs, and Digital Arrival Cards.{}
-          <br className="hidden md:block" /> Apply online in minutes with guided
-          support and fast processing.
+          Профессиональная помощь с оформлением ETA, ESTA и цифровых карт прибытия.{}
+          <br className="hidden md:block" /> Подайте заявку онлайн за несколько минут с пошаговой поддержкой.
         </p>
 
         {/* Country Selection Form */}
@@ -73,20 +72,20 @@ export default function Hero() {
           <div className="space-y-5">
             {/* Destination Selector — reuses CountrySelect */}
             <CountrySelect
-              label="Where are you traveling to?"
+              label="Куда вы едете?"
               value={destinationCode}
               onChange={setDestinationCode}
-              placeholder="Choose your destination"
+              placeholder="Выберите страну назначения"
               valueType="code"
               countries={DESTINATION_COUNTRIES}
             />
 
             {/* Nationality Selector */}
             <CountrySelect
-              label="Select your nationality"
+              label="Ваше гражданство"
               value={nationality}
               onChange={setNationality}
-              placeholder="Choose your country"
+              placeholder="Выберите вашу страну"
               valueType="name"
             />
 
@@ -98,7 +97,7 @@ export default function Hero() {
               disabled={!nationality}
               className="px-2 text-lg md:text-xl"
             >
-              Get started!
+              Начать оформление!
               <ArrowRight className="ml-2" />
             </Button>
           </div>

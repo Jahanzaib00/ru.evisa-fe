@@ -74,7 +74,7 @@ export default function TravelerAccordion({
                 </div>
                 <div>
                   <p className="text-base font-semibold text-gray-900">
-                    Traveler {index + 1}
+                    Заявитель {index + 1}
                   </p>
                   {(traveler.firstName || traveler.lastName) && (
                     <p className="text-sm text-gray-600">

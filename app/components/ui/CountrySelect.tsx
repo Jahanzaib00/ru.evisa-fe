@@ -30,7 +30,7 @@ const CountrySelect = forwardRef<HTMLButtonElement, CountrySelectProps>(
       helperText,
       required = false,
       disabled = false,
-      placeholder = "Select a country",
+      placeholder = "Выберите страну",
       valueType = "name",
       countries = ALL_COUNTRIES,
     },
@@ -47,9 +47,13 @@ const CountrySelect = forwardRef<HTMLButtonElement, CountrySelectProps>(
     );
 
     // Filter countries based on search
-    const filteredCountries = countries.filter((country) =>
-      country.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    const filteredCountries = countries.filter((country) => {
+      const term = searchTerm.toLowerCase();
+      return (
+        country.name.toLowerCase().includes(term) ||
+        (country.nameEn && country.nameEn.toLowerCase().includes(term))
+      );
+    });
 
     // Close dropdown when clicking outside
     useEffect(() => {
@@ -164,7 +168,7 @@ const CountrySelect = forwardRef<HTMLButtonElement, CountrySelectProps>(
                 type="text"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                placeholder="Search countries..."
+                placeholder="Поиск страны..."
                 className="w-full px-3 py-2 text-sm border border-gray-light rounded-md
                          focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
               />
@@ -216,7 +220,7 @@ const CountrySelect = forwardRef<HTMLButtonElement, CountrySelectProps>(
                 })
               ) : (
                 <div className="px-4 py-8 text-center text-gray text-sm">
-                  No eligible country found
+                  Подходящая страна не найдена
                 </div>
               )}
             </div>

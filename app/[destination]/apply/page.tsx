@@ -111,7 +111,7 @@ function TripDetailsContent({ destination }: { destination: string }) {
         router.push(nextStep);
       })
       .catch(() => {
-        setResumeError("We couldn't load your application. Please try again.");
+        setResumeError("Не удалось загрузить вашу заявку. Пожалуйста, попробуйте ещё раз.");
         setIsResuming(false);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -154,7 +154,7 @@ function TripDetailsContent({ destination }: { destination: string }) {
   if (isResuming) {
     return (
       <ApplicationLayout
-        title="Restoring your application…"
+        title="Восстановление заявки…"
         showSidebar={false}
         showMobileCTA={false}
         showPrevious={false}
@@ -181,11 +181,11 @@ function TripDetailsContent({ destination }: { destination: string }) {
       showProgressBar={false}
       showSidebar={true}
       showMobileCTA={true}
-      mobileButtonText="Start Application"
+      mobileButtonText="Начать оформление"
       mobileButtonDisabled={isLoading}
       onMobileButtonClick={handleContinue}
       onSidebarButtonClick={handleContinue}
-      sidebarButtonText="Start Application"
+      sidebarButtonText="Начать оформление"
       sidebarButtonDisabled={isLoading}
       showPricing={false}
       showPrevious={false}
@@ -207,7 +207,7 @@ function TripDetailsContent({ destination }: { destination: string }) {
                 />
               </svg>
               <div className="flex-1">
-                <p className="font-semibold text-sm">Error</p>
+                <p className="font-semibold text-sm">Ошибка</p>
                 <p className="text-sm mt-1">{displayError}</p>
               </div>
             </div>
@@ -217,7 +217,7 @@ function TripDetailsContent({ destination }: { destination: string }) {
         {/* Nationality Selector */}
         <div>
           <CountrySelect
-            label="What's your nationality?"
+            label="Ваше гражданство?"
             value={nationality}
             onChange={(value) => setNationality(value)}
             valueType="name"
@@ -228,7 +228,7 @@ function TripDetailsContent({ destination }: { destination: string }) {
         {/* Applicants Counter */}
         <div>
           <label className="block text-sm font-medium text-gray-dark mb-3">
-            Total applicants
+            Количество заявителей
           </label>
           <div className="flex items-center gap-4">
             <button
@@ -240,7 +240,7 @@ function TripDetailsContent({ destination }: { destination: string }) {
                          hover:border-primary hover:text-primary transition-colors
                          disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:border-gray-light
                          disabled:hover:text-gray-dark"
-              aria-label="Decrease applicants"
+              aria-label="Уменьшить количество"
             >
               <Minus />
             </button>
@@ -258,13 +258,13 @@ function TripDetailsContent({ destination }: { destination: string }) {
                          hover:border-primary hover:text-primary transition-colors
                          disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:border-gray-light
                          disabled:hover:text-gray-dark"
-              aria-label="Increase applicants"
+              aria-label="Увеличить количество"
             >
               <Plus />
             </button>
           </div>
           <p className="mt-10 text-sm text-gray">
-            Maximum {MAX_APPLICANTS} applicants per application
+            Максимум {MAX_APPLICANTS} заявителей на одну заявку
           </p>
         </div>
       </div>
@@ -313,7 +313,7 @@ export default function TripDetailsPage({ params }: Props) {
     <Suspense
       fallback={
         <ApplicationLayout
-          title="Loading…"
+          title="Загрузка…"
           showSidebar={false}
           showMobileCTA={false}
           showPrevious={false}

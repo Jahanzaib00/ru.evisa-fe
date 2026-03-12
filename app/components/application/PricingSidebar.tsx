@@ -23,7 +23,7 @@ interface PricingSidebarProps {
 
 export default function PricingSidebar({
   showButton = true,
-  buttonText = "Save & Continue",
+  buttonText = "Сохранить и продолжить",
   buttonDisabled = false,
   onButtonClick,
   showPrevious = true,
@@ -40,7 +40,7 @@ export default function PricingSidebar({
 
   // Get service configuration
   const service = serviceType ? getService(serviceType) : null;
-  const serviceName = service?.name || "Travel Authorization";
+  const serviceName = service?.name || "Разрешение на въезд";
   const governmentFee = service?.pricing.government || 0;
 
   // Get the processing tier (default if not set)
@@ -80,7 +80,7 @@ export default function PricingSidebar({
               />
             </svg>
             <div>
-              <p className="font-medium text-gray-dark">Valid for</p>
+              <p className="font-medium text-gray-dark">Срок действия</p>
               <p className="text-gray">{validityText}</p>
             </div>
           </div>
@@ -94,9 +94,9 @@ export default function PricingSidebar({
               <path d="M8.445 14.832A1 1 0 0010 14v-2.798l5.445 3.63A1 1 0 0017 14V6a1 1 0 00-1.555-.832L10 8.798V6a1 1 0 00-1.555-.832l-6 4a1 1 0 000 1.664l6 4z" />
             </svg>
             <div>
-              <p className="font-medium text-gray-dark">Number of entries</p>
+              <p className="font-medium text-gray-dark">Количество въездов</p>
               <p className="text-gray">
-                {isMultipleEntry ? "Multiple entry" : "Single entry"}
+                {isMultipleEntry ? "Многократный" : "Однократный"}
               </p>
             </div>
           </div>
@@ -114,7 +114,7 @@ export default function PricingSidebar({
               />
             </svg>
             <div>
-              <p className="font-medium text-gray-dark">Max stay</p>
+              <p className="font-medium text-gray-dark">Макс. пребывание</p>
               <p className="text-gray">{maxStay}</p>
             </div>
           </div>
@@ -133,14 +133,14 @@ export default function PricingSidebar({
                   </span>
                   <p className="text-xs text-gray mt-0.5">
                     {totalApplicants}{" "}
-                    {totalApplicants === 1 ? "traveler" : "travelers"}
+                    {totalApplicants === 1 ? "заявитель" : "заявителей"}
                   </p>
                 </div>
               </div>
 
               {governmentFee > 0 && (
                 <div className="flex justify-between items-baseline">
-                  <span className="text-gray">Government fees</span>
+                  <span className="text-gray">Государственные сборы</span>
                   <div className="text-right">
                     {isMultipleTravelers && (
                       <p className="text-xs text-gray mb-0.5">
@@ -161,7 +161,7 @@ export default function PricingSidebar({
                   <div>
                     {tier && (
                       <p className="text-sm text-gray mt-0.5">
-                        {tier.label} processing fee
+                        {tier.label} — сервисный сбор
                       </p>
                     )}
                   </div>
@@ -184,14 +184,14 @@ export default function PricingSidebar({
             <div className="border-t border-gray-light pt-4 mb-6">
               <div className="flex justify-between items-baseline">
                 <span className="text-sm font-medium text-gray-dark">
-                  Total
+                  Итого
                 </span>
                 <div className="text-right">
                   {showTotalAmount ? (
                     <>
                       {totalApplicants > 1 && (
                         <p className="text-xs text-gray mb-1">
-                          For all travelers
+                          За всех заявителей
                         </p>
                       )}
                       <p className="text-2xl font-bold text-gray-dark">
@@ -201,7 +201,7 @@ export default function PricingSidebar({
                     </>
                   ) : (
                     <p className="text-md font-semibold text-gray-dark">
-                      Calculated at checkout
+                      Рассчитывается при оплате
                     </p>
                   )}
                 </div>
@@ -245,7 +245,7 @@ export default function PricingSidebar({
                   d="M15 19l-7-7 7-7"
                 />
               </svg>
-              Previous
+              Назад
             </button>
           )}
         </div>
@@ -265,7 +265,7 @@ export default function PricingSidebar({
               clipRule="evenodd"
             />
           </svg>
-          <span>We take strong measures to protect your information.</span>
+          <span>Мы принимаем надёжные меры для защиты ваших данных.</span>
         </div>
       </div>
     </div>
