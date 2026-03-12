@@ -1166,28 +1166,16 @@ export const THAILAND_TDAC_CONFIG: ServiceConfig = {
     currency: "RUB",
   },
 
+  skipProcessingOptions: true,
+
   processingTiers: [
     {
       type: ProcessingTierType.STANDARD,
       label: "Стандарт",
-      description: "Обработка за 24 часа",
-      processingTime: 24,
-      serviceFee: 1790,
-      isDefault: true,
-    },
-    {
-      type: ProcessingTierType.RUSH,
-      label: "Срочный",
-      description: "Обработка за 4 часа",
-      processingTime: 4,
-      serviceFee: 2690,
-    },
-    {
-      type: ProcessingTierType.SUPER_RUSH,
-      label: "Экспресс",
       description: "Обработка за 1 час",
       processingTime: 1,
-      serviceFee: 3590,
+      serviceFee: 1790,
+      isDefault: true,
     },
   ],
 
@@ -1198,9 +1186,7 @@ export const THAILAND_TDAC_CONFIG: ServiceConfig = {
   },
 
   processing: {
-    standard: "24 часа",
-    rush: "4 часа",
-    superRush: "1 час",
+    standard: "1 час",
   },
 
   meta: {
