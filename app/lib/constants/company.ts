@@ -10,7 +10,7 @@ export const PRIVACY_EMAIL = "visaportal.online@gmail.com";
 
 // Company Information
 export const COMPANY_NAME = "eVisa Portal";
-export const COMPANY_LEGAL_NAME = "Shahid Hazoor";
+export const COMPANY_LEGAL_NAME = "NSD Consulting AB";
 export const COMPANY_TRADE_NAME = "www.visaportal.online";
 // export const COMPANY_ORG_NUMBER = "559155-7607";
 // export const COMPANY_JURISDICTION = "Sweden";
