@@ -8,13 +8,10 @@ export const tripDetailsSchema = z
     passportExpiryYear: z.string().optional(),
     travelMonth: z.string().optional(),
     travelYear: z.string().optional(),
-    addPassportLater: z.boolean().default(false),
   })
   .refine(
     (data) => {
-      // If not adding passport later, validate expiry is at least 6 months from now
-      if (data.addPassportLater) return true;
-
+      // Ensure passport expiry is at least 6 months from now
       if (
         !data.passportExpiryDay ||
         !data.passportExpiryMonth ||
@@ -98,8 +95,7 @@ export const personalDetailsSchema = z
 export const passportSchema = z
   .object({
     nationalityOnPassport: z.string().min(1, "Nationality is required"),
-    addLater: z.boolean().default(false),
-    passportNumber: z.string().optional(),
+    passportNumber: z.string().min(1, "Passport number is required"),
     expiryDay: z.string().optional(),
     expiryMonth: z.string().optional(),
     expiryYear: z.string().optional(),
@@ -108,22 +104,8 @@ export const passportSchema = z
   })
   .refine(
     (data) => {
-      // If not adding later, passport number is required
-      if (!data.addLater && !data.passportNumber) return false;
-      return true;
-    },
-    {
-      message: "Passport number is required",
-      path: ["passportNumber"],
-    }
-  )
-  .refine(
-    (data) => {
-      // If not adding later, validate passport number format (alphanumeric, 6-20 chars)
-      if (!data.addLater && data.passportNumber) {
-        return /^[A-Z0-9]{6,20}$/i.test(data.passportNumber);
-      }
-      return true;
+      // passport number format (alphanumeric, 6-20 chars)
+      return /^[A-Z0-9]{6,20}$/i.test(data.passportNumber);
     },
     {
       message: "Invalid passport number format",
@@ -132,23 +114,12 @@ export const passportSchema = z
   )
   .refine(
     (data) => {
-      // If not adding later, expiry date is required
-      if (!data.addLater) {
-        return !!(data.expiryDay && data.expiryMonth && data.expiryYear);
-      }
-      return true;
-    },
-    {
-      message: "Expiry date is required",
-      path: ["expiryDay"],
-    }
-  )
-  .refine(
-    (data) => {
-      // If not adding later, validate passport expiry is at least 6 months from now
-      if (data.addLater) return true;
-
-      if (!data.expiryDay || !data.expiryMonth || !data.expiryYear) {
+      // expiry date is required and must be 6+ months
+      if (
+        !data.expiryDay ||
+        !data.expiryMonth ||
+        !data.expiryYear
+      ) {
         return false;
       }
 

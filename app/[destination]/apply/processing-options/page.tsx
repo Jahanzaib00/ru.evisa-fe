@@ -191,9 +191,10 @@ export default function ProcessingOptionsPage({ params }: Props) {
             </button>
           );
         })}
-
-        {/* Info Box */}
-        {/* <div className="mt-6 bg-blue-50 border border-blue-200 rounded-lg p-4 flex items-start gap-3">
+      </div>
+      {/* Info Box */}
+      {totalApplicants > 1 && (
+        <div className="md:hidden mt-8 flex items-start gap-3">
           <svg
             className="w-5 h-5 text-primary shrink-0 mt-0.5"
             fill="currentColor"
@@ -206,17 +207,10 @@ export default function ProcessingOptionsPage({ params }: Props) {
             />
           </svg>
           <div className="text-sm text-gray">
-            <p className="font-semibold text-gray-dark mb-1">
-              Processing time starts after submission
-            </p>
-            <p>
-              Your application will be processed and reviewed within the selected
-              timeframe after you submit all required information and complete
-              payment.
-            </p>
+            processing fee is per applicant
           </div>
-        </div> */}
-      </div>
+        </div>
+      )}
     </ApplicationLayout>
   );
 }

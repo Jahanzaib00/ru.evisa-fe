@@ -1396,7 +1396,6 @@ export const INDONESIA_EVOA_CONFIG: ServiceConfig = {
 
   pricing: {
     government: 32.36,
-
     currency: "USD",
   },
 
@@ -1406,7 +1405,7 @@ export const INDONESIA_EVOA_CONFIG: ServiceConfig = {
       label: "Standard",
       description: "24 hour processing",
       processingTime: 24,
-      serviceFee: 24.95,
+      serviceFee: 19.99,
       isDefault: true,
     },
     {
@@ -1414,14 +1413,14 @@ export const INDONESIA_EVOA_CONFIG: ServiceConfig = {
       label: "Rush",
       description: "4 hour processing",
       processingTime: 4,
-      serviceFee: 34.95,
+      serviceFee: 29.99,
     },
     {
       type: ProcessingTierType.SUPER_RUSH,
       label: "Fast Track",
       description: "1 hour processing",
       processingTime: 1,
-      serviceFee: 39.95,
+      serviceFee: 34.99,
     },
   ],
 

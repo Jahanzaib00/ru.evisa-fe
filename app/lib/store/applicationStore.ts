@@ -1,7 +1,12 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { ApplicationStatus, ServiceType } from "../api/types";
-import { getService, ProcessingTierType, getProcessingTier, getDefaultProcessingTier } from "../config/services";
+import {
+  getService,
+  ProcessingTierType,
+  getProcessingTier,
+  getDefaultProcessingTier,
+} from "../config/services";
 
 interface Traveler {
   firstName: string;
@@ -26,7 +31,6 @@ interface TripDetails {
   passportExpiryYear?: string;
   travelMonth?: string;
   travelYear?: string;
-  addPassportLater?: boolean;
 }
 
 interface TravelInfo {
@@ -141,7 +145,7 @@ export const useApplicationStore = create<ApplicationState>()(
                 birthYear: "",
                 email: "",
                 marketingOptIn: false,
-              }
+              },
           ),
         }),
 
@@ -163,7 +167,7 @@ export const useApplicationStore = create<ApplicationState>()(
       updateTraveler: (index, data) =>
         set((state) => ({
           travelers: state.travelers.map((t, i) =>
-            i === index ? { ...t, ...data } : t
+            i === index ? { ...t, ...data } : t,
           ),
         })),
 
@@ -212,10 +216,13 @@ export const useApplicationStore = create<ApplicationState>()(
 
           // Get the processing tier (default if not set)
           const tier = state.processingTier
-            ? getProcessingTier(state.serviceType, state.processingTier) || getDefaultProcessingTier(state.serviceType)
+            ? getProcessingTier(state.serviceType, state.processingTier) ||
+              getDefaultProcessingTier(state.serviceType)
             : getDefaultProcessingTier(state.serviceType);
 
-          const baseFee = (service.pricing.government + tier.serviceFee) * state.totalApplicants;
+          const baseFee =
+            (service.pricing.government + tier.serviceFee) *
+            state.totalApplicants;
           return parseFloat(baseFee.toFixed(2));
         } catch {
           return 0;
@@ -247,6 +254,6 @@ export const useApplicationStore = create<ApplicationState>()(
         eligibility: state.eligibility,
         processingTier: state.processingTier,
       }),
-    }
-  )
+    },
+  ),
 );

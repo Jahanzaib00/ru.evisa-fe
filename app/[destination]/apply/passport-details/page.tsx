@@ -37,14 +37,12 @@ export default function PassportDetailsPage({ params }: Props) {
     register,
     handleSubmit,
     control,
-    watch,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(passportDetailsSchema),
     defaultValues: {
       travelers: travelers.map((t) => ({
         nationalityOnPassport: nationality || "spain",
-        addLater: false,
         passportNumber: t.passportNumber || "",
         expiryDay: t.passportExpiryDay || "",
         expiryMonth: t.passportExpiryMonth || "",
@@ -194,7 +192,6 @@ export default function PassportDetailsPage({ params }: Props) {
 
         {fields.map((field, index) => {
           const isExpanded = expandedTraveler === index;
-          const addLater = watch(`travelers.${index}.addLater`);
           const travelerName = `${travelers[index]?.firstName} ${travelers[index]?.lastName}`;
 
           return (
@@ -249,59 +246,45 @@ export default function PassportDetailsPage({ params }: Props) {
                     )}
                   />
 
-                  {/* Add Passport Details Later Checkbox */}
-                  <div className="bg-gray-lightest rounded-lg p-4">
-                    <Checkbox
-                      {...register(`travelers.${index}.addLater` as const)}
-                      label="Add passport details later"
-                    />
-                  </div>
-
                   {/* Passport Number */}
-                  {!addLater && (
-                    <>
-                      <Input
-                        label="Passport number"
-                        placeholder="XXXXXXXXX"
-                        required={!addLater}
-                        maxLength={20}
-                        className="uppercase"
-                        {...register(
-                          `travelers.${index}.passportNumber` as const,
-                        )}
-                        error={
-                          errors.travelers?.[index]?.passportNumber
-                            ?.message as string
-                        }
-                      />
+                  <>
+                    <Input
+                      label="Passport number"
+                      placeholder="XXXXXXXXX"
+                      required
+                      maxLength={20}
+                      className="uppercase"
+                      {...register(
+                        `travelers.${index}.passportNumber` as const,
+                      )}
+                      error={
+                        errors.travelers?.[index]?.passportNumber
+                          ?.message as string
+                      }
+                    />
 
-                      {/* Passport Expiration Date */}
-                      <DatePicker
-                        label="Passport expiration date"
-                        required
-                        register={register}
-                        dayFieldName={`travelers.${index}.expiryDay` as const}
-                        monthFieldName={
-                          `travelers.${index}.expiryMonth` as const
-                        }
-                        yearFieldName={`travelers.${index}.expiryYear` as const}
-                        dayError={
-                          errors.travelers?.[index]?.expiryDay
-                            ?.message as string
-                        }
-                        monthError={
-                          errors.travelers?.[index]?.expiryMonth
-                            ?.message as string
-                        }
-                        yearError={
-                          errors.travelers?.[index]?.expiryYear
-                            ?.message as string
-                        }
-                        yearRange="future"
-                        yearCount={30}
-                      />
-                    </>
-                  )}
+                    {/* Passport Expiration Date */}
+                    <DatePicker
+                      label="Passport expiration date"
+                      required
+                      register={register}
+                      dayFieldName={`travelers.${index}.expiryDay` as const}
+                      monthFieldName={`travelers.${index}.expiryMonth` as const}
+                      yearFieldName={`travelers.${index}.expiryYear` as const}
+                      dayError={
+                        errors.travelers?.[index]?.expiryDay?.message as string
+                      }
+                      monthError={
+                        errors.travelers?.[index]?.expiryMonth
+                          ?.message as string
+                      }
+                      yearError={
+                        errors.travelers?.[index]?.expiryYear?.message as string
+                      }
+                      yearRange="future"
+                      yearCount={30}
+                    />
+                  </>
                 </div>
               )}
             </div>
