@@ -14,12 +14,12 @@ import type { Country } from "@/app/lib/countries";
 
 // Destination options — uses CountrySelect's Country type
 const DESTINATION_COUNTRIES: Country[] = [
-  { code: "US", name: "США" },
-  { code: "GB", name: "Великобритания" },
-  { code: "CA", name: "Канада" },
-  { code: "TH", name: "Таиланд" },
-  { code: "ID", name: "Индонезия" },
-  { code: "MY", name: "Малайзия" },
+  { code: "US", name: "США", nameEn: "United States" },
+  { code: "GB", name: "Великобритания", nameEn: "United Kingdom" },
+  { code: "CA", name: "Канада", nameEn: "Canada" },
+  { code: "TH", name: "Таиланд", nameEn: "Thailand" },
+  { code: "ID", name: "Индонезия", nameEn: "Indonesia" },
+  { code: "MY", name: "Малайзия", nameEn: "Malaysia" },
 ];
 
 // Map country code → destination slug for routing
